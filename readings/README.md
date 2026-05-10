@@ -28,6 +28,17 @@ Organized by topic. Stops draw from these as needed — see each city's `README.
 - **de Chaisemartin & D'Haultfoeuille (2020)**, "Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects," *AER* 110(9). [DOI](https://doi.org/10.1257/aer.20181169)
 - **Baker, Larcker, Wang (2022)**, "How Much Should We Trust Staggered Difference-in-Differences Estimates?," *J. Financial Economics*. [arXiv](https://arxiv.org/abs/2110.13088)
 
+## DiD — frontier (Sant'Anna et al. and related, 2024–26)
+
+The 2026 European tour emphasizes these recent papers — they're the "frontiers of new panel methods" the courses are built around.
+
+- **Caetano & Callaway (2024)**, "Difference-in-Differences with Time-Varying Covariates," working paper. [arXiv:2406.15288](https://arxiv.org/abs/2406.15288) — covariates that change over time (Brantly Callaway and Carolina Caetano).
+- **Sant'Anna et al.**, "Triple Difference-in-Differences and Overlap Violations" (DDD_OVS). [PDF](https://psantanna.com/files/DDD_OVS.pdf) — the modern triple-diff paper.
+- **Sant'Anna**, "Doubly Robust Difference-in-Differences Estimation under Weak Overlap" (DR_WeakOverlap). [PDF](https://psantanna.com/files/DR_WeakOverlap.pdf) — DR-DiD when overlap is weak.
+- **Goodman-Bacon, Sant'Anna, Whitten (2026)**, "When Should We (Not) Worry about Parallel Trends?" *AEA Papers & Proceedings*. [PDF](https://psantanna.com/files/GSW2026_AEAPP.pdf) — when pre-trends should be parallel; complements the Roth-Sant'Anna sensitivity work.
+- **Sant'Anna et al.**, "Difference-in-Differences with Compositional Changes" (DiD_CC). [PDF](https://psantanna.com/files/DiD_CC.pdf) — modern compositional-change DiD; complements the Hong (2011) Netflix paper.
+- **Roth & Sant'Anna**, "When Is Parallel Trends Sensitive to Functional Form?" *Econometrica*. [PDF](https://psantanna.com/files/ECTA19402.pdf) · [DOI](https://doi.org/10.3982/ECTA19402) — parallel trends + functional form.
+
 ## DiD — sensitivity & pre-trends
 
 - **Roth (2022)**, "Pretest with Caution: Event-Study Estimates after Testing for Parallel Trends," *AER: Insights*.
