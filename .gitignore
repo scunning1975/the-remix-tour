@@ -37,3 +37,13 @@ Thumbs.db
 
 # Zip files (regenerable from source)
 *.zip
+
+# Shinylive WebAssembly bundles — large, regenerable, deployed separately
+**/shinylive_export/
+
+# Internal correspondence / handoffs — not workshop material
+zurich/decks/correspondence/
+
+# LaTeX text-dump previews (regenerable)
+zurich/decks/*.txt
+zurich/decks/*.vrb

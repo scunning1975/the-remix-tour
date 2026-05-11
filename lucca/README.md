@@ -1,6 +1,6 @@
 # Lucca — IMT School Seminar + PhD Meetings
 
-**Stop 5 of 7** · June 18–20, 2026 · IMT School for Advanced Studies, Lucca
+**Stop 7 of 8** · June 18–20, 2026 · IMT School for Advanced Studies, Lucca
 
 A research seminar (Thu Jun 18) plus PhD student meetings (Fri Jun 19 + Sat Jun 20 morning). Different format from the courses — this is a single-talk + one-on-one engagement.
 

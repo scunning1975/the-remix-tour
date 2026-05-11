@@ -1,6 +1,6 @@
 # Ispra — European Commission JRC
 
-**Stop 3 of 7** · June 3–4, 2026 · Joint Research Centre, Ispra (Italy)
+**Stop 4 of 8** · June 3–4, 2026 · Joint Research Centre, Ispra (Italy)
 
 A 2-day, 16-hour course on panel-data causal inference for EC scientists at JRC Ispra.
 

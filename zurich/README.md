@@ -1,6 +1,6 @@
 # Zurich — UZH Topics in Causal Inference
 
-**Stop 1 of 7** · May 11–13, 2026 · University of Zurich, Department of Economics
+**Stop 1 of 8** · May 11–13, 2026 · University of Zurich, Department of Economics
 
 A 3-day PhD course on the **frontiers of new panel methods** — taught by Scott Cunningham at UZH. (Daniel Rees teaches a separate 1-day Hidden Curriculum workshop on Thu May 14.)
 
@@ -10,7 +10,7 @@ A 3-day PhD course on the **frontiers of new panel methods** — taught by Scott
 
 > **"Advanced Topics in Applied Causal Inference"** *(working title — alt: "Topics in Causal Inference")*
 >
-> Causal inference is regularly evolving, and at a pace fast enough that requires regular investments. This weeklong course will cover the **frontiers of new panel methods**. Students will gain a deeper understanding of difference-in-differences, both theoretically and in its application, from instructors Scott Cunningham and Dan Rees.
+> Causal inference is regularly evolving, and at a pace fast enough that requires regular investments. This weeklong course will cover the **frontiers of new panel methods**. Students will gain a deeper understanding of difference-in-differences, both theoretically and in its application.
 
 *(Description per Scott's Nov 17, 2025 email to Roberto Weber. Mini-course assessment is pass/fail; format under discussion with Dan.)*
 
@@ -66,7 +66,7 @@ Just enough to set up the panel methods cleanly:
 ### Day 3 — Synthetic Control + frontier
 - Abadie-Diamond-Hainmueller; permutation + conformal inference
 - Augmented and penalized SCM; synthetic difference-in-differences
-- **Continuous-treatment DiD** (Caetano-Callaway-Payne-Rodrigues / Callaway-Goodman-Bacon-Sant'Anna)
+- **Continuous-treatment DiD** (Callaway-Goodman-Bacon-Sant'Anna) — pair with the **`baconplus`** shiny app for the weight-decomposition view
 - **DiD under compositional changes** (Sant'Anna [DiD_CC](https://psantanna.com/files/DiD_CC.pdf)) — complements the Hong (2011) Netflix paper
 
 ---

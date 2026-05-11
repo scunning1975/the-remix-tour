@@ -93,6 +93,14 @@ The 2026 European tour emphasizes these recent papers — they're the "frontiers
 
 ---
 
+## Interactive tools / shiny apps
+
+- **Bacon-Decomposition** — bundled in each stop's `shiny_apps/` folder. Goodman-Bacon decomposition explorer.
+- **Event-Study** — bundled in each stop's `shiny_apps/` folder. Interactive event-study plotter.
+- **CBS** (`baconplus`) — Continuous-treatment DiD TWFE decomposition (Callaway–Goodman-Bacon–Sant'Anna v4). Live: <https://scunning1975.github.io/baconplus/> · Source: <https://github.com/scunning1975/baconplus>. The right tool for the continuous-DiD lecture.
+
+---
+
 ## Books / book-length references
 
 - **Cunningham, Scott (2021).** *Causal Inference: The Mixtape*. Yale University Press. [Free version](https://mixtape.scunning.com)

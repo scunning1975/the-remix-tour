@@ -1,6 +1,6 @@
 # Berlin — DIW Berlin Causal Inference Masterclass
 
-**Stop 6 of 7** · June 15–16, 2026 · DIW Berlin (organized by Univ. of Potsdam)
+**Stop 6 of 8** · June 15–16, 2026 · DIW Berlin (organized by Univ. of Potsdam)
 
 A 2-day Causal Inference Masterclass at DIW Berlin — 3 lectures + a research talk + office hours. Audience drawn from the joint PhD program of seven Berlin/Brandenburg institutions.
 

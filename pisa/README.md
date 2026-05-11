@@ -1,6 +1,6 @@
 # Pisa — Sant'Anna School Seasonal School (CME)
 
-**Stop 4 of 7** · June 8–10, 2026 · Sant'Anna School of Advanced Studies, Pisa
+**Stop 5 of 8** · June 8–10, 2026 · Sant'Anna School of Advanced Studies, Pisa
 
 17 academic hours over 3 days at the Sant'Anna Seasonal School "Causal Methods for Economics." This stop is distinctive on the tour for its use of **Claude Code** as a teaching environment for live coding.
 

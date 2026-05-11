@@ -1,6 +1,6 @@
 # Leuven — KU Leuven LEER, Recent DiD Developments
 
-**Stop 7 of 7** · June 24, 2026 · KU Leuven, Faculty of Economics and Business
+**Stop 8 of 8** · June 24, 2026 · KU Leuven, Faculty of Economics and Business
 
 A one-day course (Wed Jun 24, 9 AM–4 PM) on recent developments in the difference-in-differences literature, taught for the LEER (Leuven Economics of Education Research) group.
 

@@ -1,6 +1,6 @@
 # Glasgow — Adam Smith Business School, Statistical Inference
 
-**Stop 2 of 7** · May 18–22, 2026 · University of Glasgow
+**Stop 2 of 8** · May 18–22, 2026 · University of Glasgow
 
 A 5-day PhD-level Statistical Inference course at Adam Smith Business School. The fullest arc on the tour — adds continuous DiD, augmented SCM, and sensitivity analysis on top of the standard foundations + DiD + synthetic control.
 
@@ -24,7 +24,7 @@ A 5-day PhD-level Statistical Inference course at Adam Smith Business School. Th
 |---|---|
 | Mon May 18 | **Foundations** — potential outcomes, identification, canonical 2×2 DiD, parallel trends, pre-testing. Hands-on: implement DiD in R + Stata. |
 | Tue May 19 | **Modern DiD** — Goodman-Bacon, Callaway-Sant'Anna, Sun-Abraham, BJS. Hands-on: replicate a published DiD using a modern estimator. |
-| Wed May 20 | **Continuous DiD** — Caetano-Callaway-Payne-Rodrigues; identification with continuous dose. Hands-on: continuous-treatment DiD in practice. |
+| Wed May 20 | **Continuous DiD** — Callaway-Goodman-Bacon-Sant'Anna framework; identification with continuous dose; weight-curve decomposition (paired with the `baconplus` shiny app). Hands-on: continuous-treatment DiD in practice. |
 | Thu May 21 | **Synthetic Control** — Abadie-Diamond-Hainmueller; permutation + conformal inference; augmented + penalized SCM; synth-DiD. Hands-on: build synthetic controls. |
 | Fri May 22 | **Compositional change & sensitivity** — heterogeneous effects across groups; Roth-Sant'Anna and Rambachan-Roth sensitivity bounds; choosing methods. Final hands-on lab + Q&A. |
 
