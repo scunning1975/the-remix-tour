@@ -1115,7 +1115,89 @@ TWFE event-study: biased pre-period leads, attenuated lags. \;CS, SA, BJS all re
 %% =====================================================================
 %%                                LESSON 9
 %% =====================================================================
-\remixsection{9.\ Synthesis \\[0.3em] {\normalsize\normalfont What's the same, what's different, what to do tomorrow morning}}
+\remixsection{9.\ Honest DiD \\[0.3em] {\normalsize\normalfont You can't test parallel trends. You can bound the violation.}}
+
+%% ---------- L9-F1: PT is not testable ----------
+\begin{frame}{Parallel trends is not testable. Pretests are not the same assumption.}
+\vspace{0.4em}
+\textbf{The standard ritual.} \;Show that pre-period coefficients are statistically indistinguishable from zero. \;Conclude: ``parallel trends holds.''
+\vspace{0.5em}
+
+\textbf{Roth (2022) showed this is a mistake.}
+\begin{itemize}\small
+  \item Pre-trends measure differences in the \textit{wrong} periods --- they test whether trends were parallel \textit{before} treatment, not whether they'd be parallel \textit{after} in its absence.
+  \item Pre-tests are typically \highlight{low-powered}: failing to reject ``$\beta_{\text{pre}} = 0$'' is consistent with non-trivial violation.
+  \item Conditioning on the pretest passing \textit{distorts} the post-period estimator (selection on the pretest outcome).
+\end{itemize}
+\vspace{0.4em}
+\highlight{You cannot test PT. \;What you can do: bound the plausible violation.}
+\end{frame}
+
+%% ---------- L9-F2: Rambachan-Roth reframing ----------
+\begin{frame}{Rambachan \& Roth (2023): bound the violation, get partial-ID bounds}
+\vspace{0.5em}
+\textbf{The reframe.} \;Take the post-period PT violation $\delta_t = \mathbb{E}[Y^0_t - Y^0_{t-1} \mid D{=}1] - \mathbb{E}[Y^0_t - Y^0_{t-1} \mid D{=}0]$ as an unknown nuisance.
+
+\vspace{0.5em}
+\begin{enumerate}\small
+  \item Pick a \textit{class} of plausible $\delta_t$ paths.
+  \item For each path in that class, the ATT is point-identified.
+  \item The union over the class gives a \highlight{partial-identification interval} for the ATT.
+\end{enumerate}
+
+\vspace{0.5em}
+\textbf{The output isn't a point estimate.} \;It's a \textit{robust confidence set}: ``if the violation belongs to this class, the ATT lies in this interval.''
+
+\vspace{0.4em}
+\meta{Software: \texttt{HonestDiD} in R; \texttt{honestdid} in Stata (M.\ C{\'a}ceres Bravo). \;Plugs into the output of CS, SA, or BJS.}
+\end{frame}
+
+%% ---------- L9-F3: Two restriction classes ----------
+\begin{frame}{Two restriction classes: smoothness ($M$) and relative magnitudes ($\bar M$)}
+\vspace{0.4em}
+\textbf{Smoothness ($M$-class).} \;The violation can't accelerate too fast:
+\begin{center}\small
+$|\delta_{t+1} - \delta_t| \;\leq\; M \quad\text{for all } t.$
+\end{center}
+``Trajectory of any unobserved violation is at most $M$ units off a line.'' \;Larger $M$ $\Rightarrow$ more flexibility $\Rightarrow$ wider bounds. \;$M=0$ pins down linear extrapolation.
+
+\vspace{0.6em}
+\textbf{Relative magnitudes ($\bar M$-class).} \;Post-period violation $\leq \bar M$ times the largest pre-period observed difference:
+\begin{center}\small
+$|\delta_{\text{post}}| \;\leq\; \bar M \cdot \max_{\text{pre}}|\widehat{\delta}_{\text{pre}}|.$
+\end{center}
+``If the pre-trend looks small, the post-trend can't be much bigger.'' \;Common values $\bar M \in \{0.5,\, 1,\, 2\}$.
+
+\vspace{0.3em}
+\highlight{Pick the class that matches what you'd defend at the seminar.}
+\end{frame}
+
+%% ---------- L9-F4: The breakdown value ----------
+\begin{frame}{The breakdown value: how much PT violation would erase your result?}
+\vspace{0.4em}
+For each $M$ (or $\bar M$), Rambachan-Roth give you a confidence set $\mathcal{C}(M)$ for the ATT.
+\vspace{0.5em}
+\begin{block}{Breakdown value}
+\centering
+$M^{\text{break}} \;=\; \min\{\, M \;:\; 0 \in \mathcal{C}(M)\,\}.$
+\end{block}
+\vspace{0.5em}
+\textbf{Read it.} \;``If parallel trends is allowed to deviate by more than $M^{\text{break}}$ per period, my significant result could vanish.''
+
+\vspace{0.5em}
+\begin{itemize}\small
+  \item Large breakdown value $\Rightarrow$ result is robust to plausible violations.
+  \item Small breakdown value $\Rightarrow$ result is fragile; even tiny violations break significance.
+  \item Reported \textit{alongside} the headline, not in place of it.
+\end{itemize}
+\vspace{0.3em}
+\meta{This is the diagnostic you'll compute on the Brazil mental-health-reform application in the lab.}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 10
+%% =====================================================================
+\remixsection{10.\ Synthesis \\[0.3em] {\normalsize\normalfont What's the same, what's different, what to do tomorrow morning}}
 
 %% ---------- L6-F1: The afternoon-morning thread ----------
 \begin{frame}{Yesterday afternoon plus this morning $=$ one workflow}
@@ -1170,22 +1252,24 @@ A reasonable thing to do, in order:
 \meta{Goodman-Bacon, Sant'Anna, Whitten (2026) gives a refined re-analysis framework for pre-trends-parallel settings.}
 \end{frame}
 
-%% ---------- Lab ----------
-\begin{frame}{Lab: rerun baker, rerun baker\_cs, compare}
+%% ---------- Lab: Brazil mental-health reform ----------
+\begin{frame}{Lab: the 9-step checklist on Dias \&\ Fontes (2024)}
+\vspace{0.2em}
+\textbf{The paper.} \;CAPS mental-health centers rolling out across Brazilian municipalities, 2002--2016. \;Outcome: homicide rate.
+\vspace{0.4em}
+\begin{enumerate}\scriptsize
+  \item Decide on the target parameter (write down what you want, then defend it).
+  \item Cohort count table. \;Identify never-treated, always-treated. \;Drop the 2002 cohort and say why.
+  \item Plot the treatment rollout (calendar grid in grayscale).
+  \item Plot the raw outcome by cohort. \;What do you see before estimation?
+  \item Covariate balance table (normalized differences, 2002 baseline).
+  \item Run TWFE first as a \textit{diagnostic} (don't interpret causally yet).
+  \item Bacon decomposition \&\ dCdH negative-weight diagnostic.
+  \item CS with DR-DiD: simple, group, calendar, event aggregations.
+  \item Honest DiD: $\bar M$-bounds and breakdown value.
+\end{enumerate}
 \vspace{0.3em}
-\begin{itemize}\small
-  \item \textbf{Step 1.} \;Run \texttt{simulations/staggered/baker.do} to (re)generate the dynamic-TE dataset. \;Confirm the truth is $+82$ and TWFE is $-6.69$.
-  \vspace{0.2em}
-  \item \textbf{Step 2.} \;Run the Bacon decomposition (\texttt{ddtiming}). \;Verify the two weights and the two 2$\times$2 averages reproduce the textbook table.
-  \vspace{0.2em}
-  \item \textbf{Step 3.} \;Run \texttt{baker\_cs.do}: CS with DR-DiD, plus four aggregations (\texttt{simple}, \texttt{group}, \texttt{calendar}, \texttt{event}).
-  \vspace{0.2em}
-  \item \textbf{Step 4.} \;Drop the 2004 cohort. \;Re-run TWFE: notice it stops sign-flipping (no longer have an universally-treated tail). \;Re-run CS: now lands on the truth.
-  \vspace{0.2em}
-  \item \textbf{Step 5.} \;Write a one-paragraph summary: which assumption is doing the work, and what would have to be true for TWFE to be correct?
-\end{itemize}
-
-\meta{Walkthrough: \texttt{zurich/labs/Baker/README.md}. \;Code: \texttt{simulations/staggered/baker.do}, plus the CS files Scott will provide.}
+\meta{Walkthrough: \texttt{zurich/labs/Brazil/README.md}. \;Reference code: \texttt{labs/Brazil/code/brazil.do} and \texttt{brazil.R}. \;Data on Scott's GitHub: \texttt{mixtape/brazil.dta}.}
 \end{frame}
 
 %% ---------- Tomorrow ----------
