@@ -94,16 +94,17 @@ $\mathbb{E}[\Delta Y(0) \mid D=1, X] \;=\; \mathbb{E}[\Delta Y(0) \mid D=0, X]$
 \end{frame}
 
 %% ---------- Slide 4: Today's seven beats ----------
-\begin{frame}{This afternoon, seven beats}
+\begin{frame}{This afternoon, eight beats}
 \vspace{0.3em}
 \begin{enumerate}\small
   \item Conditional parallel trends --- the identifying assumption we'll lean on
-  \item OLS-with-controls: the bias decomposition that drives demand for everything below
-  \item Outcome regression (Heckman-Ichimura-Todd)
+  \item Outcome regression (Heckman-Ichimura-Todd) --- and the bias OLS-with-controls actually identifies
   \item Inverse propensity weighting (Abadie 2005)
   \item \textit{The trap}: ``can't I just control for the propensity score?''
   \item Doubly robust DiD (Sant'Anna \& Zhao 2020)
   \item Hidden linearity bias --- TWFE-with-controls fully exposed (Caetano \& Callaway 2024)
+  \item Compositional change (Sant'Anna \& Xu)
+  \item Choosing \& checking $X$ --- the practical close
 \end{enumerate}
 \vspace{0.4em}
 \begin{center}
@@ -134,73 +135,9 @@ $\mathbb{E}[\Delta Y(0) \mid D{=}1, X] \;=\; \mathbb{E}[\Delta Y(0) \mid D{=}0, 
 \end{itemize}
 \end{frame}
 
-%% ---------- L1-F2: picking covariates ----------
-\begin{frame}{Picking $X$: pre-treatment confounders, not post-treatment outcomes}
-\vspace{0.4em}
-\begin{itemize}\small
-  \item You want $X$ that (i) predicts the treatment (causes selection) AND (ii) predicts $Y(0)$ (causes outcome differences).
-  \item \highlight{Pre-treatment} only. Post-treatment $X$ may be affected by $D$ and will leak.
-  \item Three practical screens (Imbens-Rubin, normalized differences):
-  \begin{itemize}\small
-    \item[--] Drop treated post-period, regress $Y(0)$ on candidate $X$
-    \item[--] Within control units, regress $Y(0)$ on candidate $X$
-    \item[--] Use $t{-}2$ and $t{-}1$ to estimate $\Delta Y(0)$ and regress on $X$
-  \end{itemize}
-\end{itemize}
-\vspace{0.3em}
-\meta{Source: Imbens \& Rubin (2015), \textit{Causal Inference for Statistics, Social, and Biomedical Sciences}.}
-\end{frame}
+%% (L1-F2 picking-covariates frame moved to Lesson 8.)
 
-%% ---------- L1-F2b: balance — normalized differences ----------
-\begin{frame}{Check the balance: normalized differences}
-\vspace{0.6em}
-Before you trust your $X$, check that the treated and control groups are \textit{actually} comparable on it.
-\vspace{0.6em}
-\begin{block}{Normalized difference}
-\centering
-\large
-$\text{Norm. Diff}_{X} \;=\; \dfrac{\overline{X}_T - \overline{X}_C}{\sqrt{(S^2_T + S^2_C)/2}}$
-\end{block}
-\vspace{0.6em}
-\begin{itemize}\small
-  \item A unit-free imbalance measure --- comparable across variables.
-  \item \highlight{Rule of thumb: $< 0.25$.} \;Above that, classical OLS/IPW have trouble.
-  \item Unlike a $t$-statistic, it doesn't shrink to zero just because the sample is small.
-\end{itemize}
-\meta{Imbens \& Rubin (2015), \textit{Causal Inference for Statistics, Social, and Biomedical Sciences}, Ch.\ 14.}
-\end{frame}
-
-%% ---------- L1-F2c: balance — the two jobs of a confounder ----------
-\begin{frame}{What balance tells you (and what it doesn't)}
-\vspace{0.5em}
-A confounder has \textit{two} jobs:
-\vspace{0.4em}
-\begin{enumerate}
-  \item $X \to D$: \;different distribution in treated vs.\ control.
-  \item $X \to \Delta\mathbb{E}[Y^0]$: \;predicts the untreated outcome trend.
-\end{enumerate}
-\vspace{0.5em}
-The balance check only diagnoses \textbf{(1)}.
-\vspace{0.4em}
-\begin{itemize}\small
-  \item Pick $X$ theoretically --- variables you believe predict $Y^0$ trends.
-  \item \textit{Then} run normalized differences to see whether they're differentially distributed.
-  \item Imbalance + predictiveness $\Rightarrow$ controlling matters. \;Imbalance without predictiveness $\Rightarrow$ noise.
-\end{itemize}
-\end{frame}
-
-%% ---------- L1-F2d: a real balance table ----------
-\begin{frame}{A balance table in the wild}
-\vspace{0.3em}
-\begin{center}
-\includegraphics[width=0.74\textwidth,height=0.68\textheight,keepaspectratio]{figures/table_jel_covariates.jpg}
-\end{center}
-\vspace{0.1em}
-\begin{center}
-\scriptsize\color{warmgray}\itshape
-Every variable, its treated mean, its control mean, the normalized difference. \;One column tells you whether the design will make you sweat.
-\end{center}
-\end{frame}
+%% (L1-F2b, F2c, F2d balance frames moved to Lesson 8.)
 
 %% =====================================================================
 %%                                LESSON 2
@@ -1539,6 +1476,146 @@ The robust estimator costs efficiency. \;Worth paying when composition might shi
 \begin{center}
 \small\color{warmgray}\itshape
 First defense: check whether $X$ moved across time. \;Then run the Hausman test. \;Then report both estimates.
+\end{center}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 8
+%% =====================================================================
+\remixsection{8.\ Choosing \& checking $X$ \\[0.3em] {\normalsize\normalfont The practical close --- picking, balance, and when controls are unnecessary}}
+
+%% ---------- L8-F1: picking covariates ----------
+\begin{frame}{Picking $X$: theory or LASSO on $\Delta Y(0)$}
+You want $X$ that (i) predicts the treatment \textit{and} (ii) predicts the untreated trend. \;\highlight{Pre-treatment only} --- post-treatment $X$ can be affected by $D$ and will leak.
+
+\vspace{0.4em}
+\textbf{Two paths to choose which $X$:}
+\begin{itemize}\small
+  \item \textbf{Theory / common sense.} \;Variables you believe drive both selection and the untreated trend. \;This is how most of it actually gets done.
+  \item \textbf{Data-driven.} \;LASSO (or another selector) on
+  \begin{center}\footnotesize
+  $\Delta Y(0)_i \;\sim\; X_i, \quad$ fit on untreated unit-periods only.
+  \end{center}
+  Keep what LASSO keeps.
+\end{itemize}
+
+\vspace{0.4em}
+\textbf{The regressand is \boldmath$\Delta Y(0)$.} \;Not $Y(1)$. Not post-treatment $Y$ --- that's $Y(1)$, and using it lets $D$ leak through the back door. This is \highlight{Heckman-Ichimura-Todd (1997)} logic: the data can only teach you which $X$'s predict the untreated counterfactual trend.
+
+\vspace{0.3em}
+Beyond that --- functional form, interactions, transformations --- the data is mostly silent.
+\end{frame}
+
+%% ---------- L8-F2a: balanced — the easy case ----------
+\begin{frame}{If $X$ is balanced, you don't need to control for it}
+\vspace{0.4em}
+Same logic as an RCT: \;balanced $X$ across treatment and control makes the comparison fair without conditioning.
+
+\vspace{0.7em}
+\textbf{Worked example.} \;Let sex be the only confounder. Within sex, the untreated trends are:
+\vspace{0.4em}
+\begin{center}
+$\Delta Y^0_{\text{men}} \;=\; 10 - 6 \;=\; 4 \qquad\qquad \Delta Y^0_{\text{women}} \;=\; 8 - 5 \;=\; 3.$
+\end{center}
+
+\vspace{0.7em}
+\textbf{Balanced --- both groups 50\% male.}
+\vspace{0.2em}
+\begin{center}
+$\mathbb{E}[\Delta Y^0 \mid D{=}1] \;=\; 0.5(4) + 0.5(3) \;=\; 3.5 \;=\; \mathbb{E}[\Delta Y^0 \mid D{=}0].$
+\end{center}
+
+\vspace{0.5em}
+\highlight{Unconditional PT holds.} \;You didn't condition on sex --- and you didn't need to.
+\end{frame}
+
+%% ---------- L8-F2b: imbalanced — the bias appears ----------
+\begin{frame}{Imbalance turns a confounder into bias}
+\vspace{0.4em}
+Same untreated trends as before --- men $+4$, women $+3$ --- but now the groups have different sex composition:
+
+\vspace{0.7em}
+\textbf{Imbalanced --- treated 75\% male, control 25\% male.}
+\vspace{0.3em}
+\begin{center}
+$\mathbb{E}[\Delta Y^0 \mid D{=}1] \;=\; 0.75(4) + 0.25(3) \;=\; 3.75$ \\[0.4em]
+$\mathbb{E}[\Delta Y^0 \mid D{=}0] \;=\; 0.25(4) + 0.75(3) \;=\; 3.25.$
+\end{center}
+
+\vspace{0.6em}
+\highlight{Gap $=$ 0.5.} \;That's the bias a naive DiD on $\Delta Y$ would carry.
+
+\vspace{0.6em}
+\textbf{Takeaway.} \;Balance is what licenses unconditional PT. \;Imbalance turns a $Y^0$-predictor into a bias on $\Delta Y^0$.
+\end{frame}
+
+%% ---------- L8-F3: balance — normalized differences ----------
+\begin{frame}{Check the balance: normalized differences}
+\vspace{0.6em}
+Before you trust your $X$, check that the treated and control groups are \textit{actually} comparable on it.
+\vspace{0.6em}
+\begin{block}{Normalized difference}
+\centering
+\large
+$\text{Norm. Diff}_{X} \;=\; \dfrac{\overline{X}_T - \overline{X}_C}{\sqrt{(S^2_T + S^2_C)/2}}$
+\end{block}
+\vspace{0.6em}
+\begin{itemize}\small
+  \item A unit-free imbalance measure --- comparable across variables.
+  \item \highlight{Rule of thumb: $< 0.25$.} \;Above that, classical OLS/IPW have trouble.
+  \item Unlike a $t$-statistic, it doesn't shrink to zero just because the sample is small.
+\end{itemize}
+\meta{Imbens \& Rubin (2015), \textit{Causal Inference for Statistics, Social, and Biomedical Sciences}, Ch.\ 14.}
+\end{frame}
+
+%% ---------- L8-F4a: balance — the two jobs of a confounder ----------
+\begin{frame}{What balance tells you (and what it doesn't)}
+\vspace{0.5em}
+A confounder has \textit{two} jobs:
+\vspace{0.5em}
+\begin{enumerate}
+  \item $X \to D$: \;different distribution in treated vs.\ control.
+  \item $X \to \Delta\mathbb{E}[Y^0]$: \;predicts the untreated outcome trend.
+\end{enumerate}
+\vspace{0.6em}
+\highlight{The balance check only diagnoses (1).}
+\vspace{0.5em}
+\begin{itemize}\small
+  \item Pick $X$ theoretically --- variables you believe predict $Y^0$ trends.
+  \item \textit{Then} run normalized differences to see whether they're differentially distributed.
+  \item Imbalance + predictiveness $\Rightarrow$ controlling matters. \;Imbalance without predictiveness $\Rightarrow$ noise.
+\end{itemize}
+\end{frame}
+
+%% ---------- L8-F4b: don't over-spend on already-balanced X ----------
+\begin{frame}{Don't over-spend on already-balanced $X$}
+\vspace{0.5em}
+Adding controls in OLS DiD is cheap. \;In IPW or DR, it isn't.
+
+\vspace{0.6em}
+The propensity score is fit by logistic regression, which is fragile in high dimensions:
+
+\vspace{0.5em}
+\begin{block}{Events-per-variable rule}
+\centering
+Roughly \highlight{5--10 events per covariate} for stable logistic estimates, \\ where ``events'' $=$ treated units.
+\end{block}
+
+\vspace{0.6em}
+\textbf{Implication.} \;A balanced $X$ that doesn't strongly predict $\Delta Y^0$ doesn't deserve a slot in the pscore model. \;The balance table tells you where to spend the budget.
+\meta{EPV guideline: Peduzzi et al.\ (1996), \textit{J.\ Clin.\ Epidemiol.}}
+\end{frame}
+
+%% ---------- L8-F5: a real balance table ----------
+\begin{frame}{A balance table in the wild}
+\vspace{0.3em}
+\begin{center}
+\includegraphics[width=0.74\textwidth,height=0.68\textheight,keepaspectratio]{figures/table_jel_covariates.jpg}
+\end{center}
+\vspace{0.1em}
+\begin{center}
+\scriptsize\color{warmgray}\itshape
+Every variable, its treated mean, its control mean, the normalized difference. \;One column tells you whether the design will make you sweat.
 \end{center}
 \end{frame}
 

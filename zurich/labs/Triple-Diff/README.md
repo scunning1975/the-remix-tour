@@ -14,7 +14,9 @@ Standard incidence theory says: if a benefit is **group-specific** (covers only 
 
 That's a triple-diff:
 
-$$\text{DDD} = \big[\text{DiD on married women 20-40}\big] - \big[\text{DiD on the placebo demographic}\big].$$
+```
+DDD = [DiD on married women 20–40]  −  [DiD on the placebo demographic]
+```
 
 Gruber found a DDD of **−0.054 log points** (SE 0.026) — a ~5.4% relative wage fall for the targeted group. Full shifting of the mandate's cost onto the targeted workers' wages.
 
@@ -26,7 +28,7 @@ We give you `gruber1994.dta` (CSV also available) — a teaching extract built f
 
 - Age 20–65
 - Not self-employed
-- Real hourly wage between \$1 and \$100 (1978 dollars; CPI-deflated)
+- Real hourly wage between 1 and 100 dollars (1978 dollars; CPI-deflated)
 - Keep treated demographic (married women 20–40) plus placebo demographic (workers over 40, or single males 20–40)
 - Keep the 8 states Gruber uses: IL, NJ, NY (treated) and OH, IN, CT, MA, NC (placebo)
 
@@ -59,16 +61,25 @@ g <- read_dta("data/gruber1994.dta")
 
 ## Part 1 — Compute the DDD by hand
 
-1. Compute the **eight cell means** of `log_wage`. Show them in a 2 × 2 × 2 table that looks like Gruber's Table 3.
+**Step 1.** Compute the **eight cell means** of `log_wage`. Show them in a 2 × 2 × 2 table that looks like Gruber's Table 3.
 
-2. Compute the **DiD on married women** (the treated demographic):
-   $$\text{DiD}_{\text{treated}} \;=\; \big(\bar Y^{\text{exp}}_{\text{post}} - \bar Y^{\text{exp}}_{\text{pre}}\big)_{\text{married}} - \big(\bar Y^{\text{non}}_{\text{post}} - \bar Y^{\text{non}}_{\text{pre}}\big)_{\text{married}}$$
+**Step 2.** Compute the **DiD on married women** (the treated demographic):
 
-3. Compute the **DiD on the placebo demographic** (older + single males 20–40):
-   $$\text{DiD}_{\text{placebo}} \;=\; \big(\bar Y^{\text{exp}}_{\text{post}} - \bar Y^{\text{exp}}_{\text{pre}}\big)_{\text{placebo}} - \big(\bar Y^{\text{non}}_{\text{post}} - \bar Y^{\text{non}}_{\text{pre}}\big)_{\text{placebo}}$$
+```
+DiD_treated  =  ( Ȳ_exp,post  −  Ȳ_exp,pre )_married   −   ( Ȳ_non,post  −  Ȳ_non,pre )_married
+```
 
-4. Compute the **DDD**:
-   $$\widehat\delta_{\text{DDD}} \;=\; \text{DiD}_{\text{treated}} - \text{DiD}_{\text{placebo}}.$$
+**Step 3.** Compute the **DiD on the placebo demographic** (older + single males 20–40):
+
+```
+DiD_placebo  =  ( Ȳ_exp,post  −  Ȳ_exp,pre )_placebo   −   ( Ȳ_non,post  −  Ȳ_non,pre )_placebo
+```
+
+**Step 4.** Compute the **DDD**:
+
+```
+δ_DDD  =  DiD_treated  −  DiD_placebo
+```
 
 You should land near **−0.060**. If your number is off by more than 0.005, you computed a cell mean wrong — go back and check.
 
@@ -104,7 +115,7 @@ summary(ddd_fit)
 # The coefficient on state_law:married_woman:after is your DDD.
 ```
 
-The coefficient on the three-way interaction is $\widehat\delta_{\text{DDD}}$. Report it with its standard error.
+The coefficient on the three-way interaction is `δ_DDD`. Report it with its standard error.
 
 ---
 
