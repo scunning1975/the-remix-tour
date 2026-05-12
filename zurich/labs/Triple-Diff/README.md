@@ -1,158 +1,163 @@
 # Triple Differences Lab — Day 2 morning, Zurich Workshop
 
-**Goal:** Take everything from the triple-diff lecture — eight cells, two DiDs, one subtraction — and run it on a real dataset Scott himself worked with.
+**Goal.** Take everything from the triple-diff lecture — eight cells, two DiDs, one subtraction — and run it on the dataset behind the canonical example: Gruber (1994), the same study we opened the lecture with.
 
-You'll work with the abortion-and-gonorrhea data from Cunningham & Cornwell (2013), which itself sits in the lineage of Donohue & Levitt's (2001) abortion-and-crime paper. The treatment: state-level access to legal abortion. The treated cohort: Black women aged 15–19, the group whose fertility was most affected by abortion legalization in the early 1970s. The placebo cohort: an older Black-female cohort whose fertility was largely complete by then.
+You're going to compute the DDD that appears on the right-hand panel of slide 3b. By hand. Then by regression. Then talk about what the placebo demographic actually buys you.
 
-If abortion access changed who was born in the 1970s, then years later the cohort raised after that policy should show different sexually-transmitted-infection rates as teenagers — because the *composition* of the cohort differs. If true, the effect should show up for the 15–19 cohort (treated) but not for older cohorts (placebo).
+---
 
-That's the triple-diff: **(repeal-vs-Roe states) × (early-cohort year vs. late-cohort year) × (treated age group vs. placebo age group).**
+## The story (very briefly)
+
+In 1976, three U.S. states — Illinois, New Jersey, New York — passed laws requiring health insurance plans to cover the costs of childbirth on the same terms as other medical conditions. Five demographically similar states did not pass such laws (Ohio, Indiana, Connecticut, Massachusetts, North Carolina).
+
+Standard incidence theory says: if a benefit is **group-specific** (covers only women of childbearing age, but is paid for by the employer's premium pool), the cost should be shifted onto the wages of the group that benefits. So Gruber asked: did wages of married women 20–40 fall in the mandate states, relative to (a) the same women in non-mandate states, and (b) workers in the mandate states who *didn't* benefit from the mandate (older workers and single men 20–40)?
+
+That's a triple-diff:
+
+$$\text{DDD} = \big[\text{DiD on married women 20-40}\big] - \big[\text{DiD on the placebo demographic}\big].$$
+
+Gruber found a DDD of **−0.054 log points** (SE 0.026) — a ~5.4% relative wage fall for the targeted group. Full shifting of the mandate's cost onto the targeted workers' wages.
 
 ---
 
 ## Data
 
-Stata file on Scott's GitHub:
+We give you `gruber1994.dta` (CSV also available) — a teaching extract built from the **real NBER May CPS files** for 1974, 1975, 1977, and 1978. The cleaning replicates Gruber's sample restrictions:
 
-```
-https://github.com/scunning1975/mixtape/raw/master/abortion.dta
-```
+- Age 20–65
+- Not self-employed
+- Real hourly wage between \$1 and \$100 (1978 dollars; CPI-deflated)
+- Keep treated demographic (married women 20–40) plus placebo demographic (workers over 40, or single males 20–40)
+- Keep the 8 states Gruber uses: IL, NJ, NY (treated) and OH, IN, CT, MA, NC (placebo)
 
-In R:
-```r
-library(haven)
-abortion <- read_dta("https://github.com/scunning1975/mixtape/raw/master/abortion.dta")
-```
+After restrictions you have **28,477 worker-year observations**. The 8-cell means in this extract reproduce Gruber's Table 3 to two decimal places. Run the DDD regression on this file and you get **−0.060** (SE 0.026) — within 0.006 of Gruber's published **−0.054**. Pedro Sant'Anna independently validated this dataset and obtained **−0.058** under a slightly tighter sample (never-married singles only); the three implementations in R, Stata, and Python all match to six decimals.
 
-In Stata:
-```stata
-use "https://github.com/scunning1975/mixtape/raw/master/abortion.dta", clear
-```
+In other words: this is the real CPS data, cleaned exactly the way Gruber cleaned it.
 
-Variables you'll use:
-
-| Variable | Description |
+| Variable | Meaning |
 |---|---|
-| `fip` | State FIPS code |
-| `year` | Calendar year |
-| `repeal` | 1 if state repealed abortion bans before *Roe* (treated state), 0 otherwise |
-| `bf15` | Indicator: Black female, 15–19 (treated cohort) |
-| `bf25` | Indicator: Black female, 25–29 (placebo cohort) |
-| `lnr` | Log gonorrhea rate (outcome) |
-| `totpop` | Total population (use as weights) |
-| Controls | `acc, ir, pi, alcohol, crack, poverty, income, ur` |
+| `year` | 1974, 1975, 1977, 1978 |
+| `state` | Two-letter state code |
+| `state_law` | 1 if state passed a maternity mandate by 1976 (IL/NJ/NY); 0 otherwise |
+| `age` | Age in years |
+| `married_woman` | 1 if treated demographic (married women 20–40); 0 if placebo (older workers or single males 20–40) |
+| `after` | 1 if year ≥ 1977 (after the laws took effect); 0 otherwise |
+| `log_wage` | log of hourly wage in constant 1978 dollars — the outcome |
 
-You should look at `abortion.dta` yourself — verify the variable names match what you expect. If something is off, document it.
+```stata
+* Stata
+use "data/gruber1994.dta", clear
+```
 
----
-
-## The 3×2 cube you'll work with
-
-We collapse to a clean 2×2×2 = 8 cells for the manual calculation:
-
-| State group | Cohort | Period | Cell |
-|---|---|---|---|
-| Repeal | 15–19 (treated) | Pre   | `bf15 = 1, repeal = 1, year ≤ 1985` |
-| Repeal | 15–19 (treated) | Post  | `bf15 = 1, repeal = 1, year ≥ 1986` |
-| Roe    | 15–19 (treated) | Pre   | `bf15 = 1, repeal = 0, year ≤ 1985` |
-| Roe    | 15–19 (treated) | Post  | `bf15 = 1, repeal = 0, year ≥ 1986` |
-| Repeal | 25–29 (placebo) | Pre   | `bf25 = 1, repeal = 1, year ≤ 1985` |
-| Repeal | 25–29 (placebo) | Post  | `bf25 = 1, repeal = 1, year ≥ 1986` |
-| Roe    | 25–29 (placebo) | Pre   | `bf25 = 1, repeal = 0, year ≤ 1985` |
-| Roe    | 25–29 (placebo) | Post  | `bf25 = 1, repeal = 0, year ≥ 1986` |
-
-The cutoff at 1985/1986 corresponds to the cohort timing: 15-year-olds in 1986 were born in 1971, so they're the first cohort raised entirely under repeal-state abortion access. (Use weighted means using `totpop` as the weight.)
+```r
+# R
+library(haven)
+g <- read_dta("data/gruber1994.dta")
+```
 
 ---
 
-## Part 1 — Calculate the DDD by hand
+## Part 1 — Compute the DDD by hand
 
-1. Compute the **eight cell means** of `lnr` (weighted by `totpop`). Show your numbers.
+1. Compute the **eight cell means** of `log_wage`. Show them in a 2 × 2 × 2 table that looks like Gruber's Table 3.
 
-2. Compute the **treated-cohort DiD** (for the 15–19 cohort):
-   $$\text{DiD}_{\text{treated}} = \big(\bar Y^{\text{rep}}_{\text{post}} - \bar Y^{\text{rep}}_{\text{pre}}\big) - \big(\bar Y^{\text{Roe}}_{\text{post}} - \bar Y^{\text{Roe}}_{\text{pre}}\big)$$
+2. Compute the **DiD on married women** (the treated demographic):
+   $$\text{DiD}_{\text{treated}} \;=\; \big(\bar Y^{\text{exp}}_{\text{post}} - \bar Y^{\text{exp}}_{\text{pre}}\big)_{\text{married}} - \big(\bar Y^{\text{non}}_{\text{post}} - \bar Y^{\text{non}}_{\text{pre}}\big)_{\text{married}}$$
 
-3. Compute the **placebo DiD** (for the 25–29 cohort):
-   $$\text{DiD}_{\text{placebo}} = \big(\bar Y^{\text{rep}}_{\text{post}} - \bar Y^{\text{rep}}_{\text{pre}}\big) - \big(\bar Y^{\text{Roe}}_{\text{post}} - \bar Y^{\text{Roe}}_{\text{pre}}\big)$$
+3. Compute the **DiD on the placebo demographic** (older + single males 20–40):
+   $$\text{DiD}_{\text{placebo}} \;=\; \big(\bar Y^{\text{exp}}_{\text{post}} - \bar Y^{\text{exp}}_{\text{pre}}\big)_{\text{placebo}} - \big(\bar Y^{\text{non}}_{\text{post}} - \bar Y^{\text{non}}_{\text{pre}}\big)_{\text{placebo}}$$
 
 4. Compute the **DDD**:
-   $$\widehat{\delta}_{\text{DDD}} = \text{DiD}_{\text{treated}} - \text{DiD}_{\text{placebo}}$$
+   $$\widehat\delta_{\text{DDD}} \;=\; \text{DiD}_{\text{treated}} - \text{DiD}_{\text{placebo}}.$$
 
-5. **Interpret.** What sign do you get on the DDD? What does it say about whether abortion legalization affected gonorrhea incidence in the cohort raised under it?
+You should land near **−0.060**. If your number is off by more than 0.005, you computed a cell mean wrong — go back and check.
 
 ---
 
 ## Part 2 — Run the DDD as a regression
 
-Recover the same number using the saturated triple-interaction regression. Stack the treated and placebo cohorts; let `cohort_treated` be `1` for `bf15 == 1` and `0` for `bf25 == 1`; let `post` be `1` for `year >= 1986` and `0` for `year <= 1985`.
-
-### R
-```r
-library(estimatr)
-library(dplyr)
-
-df <- abortion |>
-  filter(bf15 == 1 | bf25 == 1, year <= 1990) |>          # narrow window for clarity
-  mutate(
-    cohort_treated = as.integer(bf15 == 1),
-    post           = as.integer(year >= 1986)
-  )
-
-# Saturated triple-interaction. The coefficient on the three-way is the DDD.
-ddd_fit <- lm_robust(
-  lnr ~ repeal * cohort_treated * post,
-  data    = df,
-  weights = totpop,
-  clusters = fip                                          # cluster at state level
-)
-summary(ddd_fit)
-```
+Recover the same number using a saturated triple-interaction regression.
 
 ### Stata
 ```stata
-keep if (bf15 == 1 | bf25 == 1) & year <= 1990
-gen cohort_treated = (bf15 == 1)
-gen post           = (year >= 1986)
+use "data/gruber1994.dta", clear
 
-reg lnr i.repeal##i.cohort_treated##i.post [aw=totpop], cluster(fip)
+* All eight cells are in the data; the three-way interaction picks out the DDD.
+reg log_wage state_law##married_woman##after, robust
+
+* The coefficient on 1.state_law#1.married_woman#1.after is your DDD.
 ```
 
-The coefficient on the **three-way interaction** `repeal × cohort_treated × post` is your $\widehat\delta_{\text{DDD}}$. Report it with its clustered SE.
+### R
+```r
+library(haven)
+library(estimatr)
+
+g <- read_dta("data/gruber1994.dta")
+
+ddd_fit <- lm_robust(
+  log_wage ~ state_law * married_woman * after,
+  data = g
+)
+summary(ddd_fit)
+
+# The coefficient on state_law:married_woman:after is your DDD.
+```
+
+The coefficient on the three-way interaction is $\widehat\delta_{\text{DDD}}$. Report it with its standard error.
 
 ---
 
 ## Part 3 — Compare
 
-1. Does the regression coefficient match your hand-computed DDD from Part 1? (It should, to machine precision.)
-2. Report the **clustered standard error** (clustered at state, `fip`).
-3. How does the SE change if you cluster at the wrong level (e.g., observation)? Try `vcov = "HC1"` instead and compare.
-4. **Interpretation in your own words.** What can you conclude about the effect of abortion legalization on the gonorrhea incidence of the cohort raised under it? What can you *not* conclude from this 3×2?
+1. **Match.** Does the regression coefficient on the three-way interaction equal your hand-computed DDD from Part 1? It should — to machine precision.
+
+2. **Standard error.** Report the heteroskedasticity-robust SE. You should land near **0.026** — Gruber's published SE.
+
+3. **Compare the DDD to the two biased DiDs.** Each of the following is *biased* for the ATT:
+
+   - **DiD using only married women, comparing experimental vs. non-experimental states** (no demographic placebo): this conflates the ATT with any differential wage trend between the two state groups affecting *all* workers.
+   - **DiD using only experimental states, comparing married women vs. older/single workers** (no non-experimental state comparison): this conflates the ATT with any differential trend between the two demographic groups affecting *all* states.
+
+   Run both biased DiDs and report each estimate. Which one is closer to the DDD? What does that tell you about which threat to identification — differential state trends or differential demographic trends — was bigger here?
+
+4. **Interpret.** In your own words: what does the DDD say? Did employers shift the cost of mandated maternity coverage onto the wages of the workers who benefited from it?
 
 ---
 
-## Part 4 — Connect it to Donohue & Levitt
+## Part 4 — The parallel-bias assumption
 
-Cunningham & Cornwell (2013) wasn't the first paper to use abortion-as-natural-experiment with a generational lag. Donohue & Levitt (2001) famously argued abortion legalization caused the 1990s crime decline through the same mechanism — fewer unwanted births → fewer high-risk teenagers two decades later.
+The point of the placebo demographic is **not** to assume they're a clean counterfactual. It's that whatever *bias* contaminates the DiD on married women — the differential state-level wage trend between experimental and non-experimental states — should also contaminate the DiD on the placebo group. If it does, subtracting one from the other cancels the bias.
 
-Write a paragraph: what role does the **placebo cohort** play in this kind of design? If you ran Donohue & Levitt without a placebo cohort, what alternative explanations would survive? What does the triple-diff buy you over their double-diff?
+Write a short paragraph (3–5 sentences) addressing:
+
+- What would make the DDD identification fail? (Hint: think about what would have to be true of the *placebo* group's counterfactual trend.)
+- If a recession in 1977 hit Illinois manufacturing harder than Ohio's, does the DDD survive? Why or why not?
+- If maternity-mandate states differentially raised the minimum wage in 1977 (affecting low-wage workers across all demographics), does the DDD survive?
 
 ---
 
 ## Deliverable
 
-A short writeup (one to two pages):
+A short writeup (1–2 pages, PDF or markdown):
 
-- The 8 cell means (a small table)
-- Your hand-computed DiD-treated, DiD-placebo, and DDD
-- Your regression output with clustered SE
-- A side-by-side check that the regression DDD = your hand-computed DDD
-- A paragraph interpreting the result and one paragraph on the placebo-cohort role
+- The 8-cell table (means of `log_wage`).
+- Your hand-computed DiD-treated, DiD-placebo, and DDD.
+- Your regression output with the robust SE.
+- A two-row comparison showing the regression DDD equals the hand DDD.
+- A paragraph interpreting the DDD.
+- A paragraph on the parallel-bias assumption.
+
+---
+
+## Reproducibility
+
+The script that built this dataset is `code/build_gruber_extract.R`. It reads from a fully-cleaned NBER May CPS panel (1974, 1975, 1977, 1978) prepared in January 2026 in collaboration with Pedro Sant'Anna, applies Gruber's sample restrictions, and writes the teaching extract. Run `Rscript build_gruber_extract.R` from the `code/` directory to rebuild. The upstream cleaning pipeline (NBER CPS → cleaned panel) lives in the `Claude_DDD` project; ask Scott if you want it.
 
 ---
 
 ## References
 
-- Cunningham, Scott, and Christopher Cornwell (2013). "The Long-Run Effect of Abortion on Sexually Transmitted Infections." *American Law and Economics Review* 15(1): 381–407.
-- Donohue, John J., and Steven D. Levitt (2001). "The Impact of Legalized Abortion on Crime." *Quarterly Journal of Economics* 116(2): 379–420.
-- Cunningham, *Causal Inference: The Mixtape*, Chapter 9 (Triple Differences section): \
-  [mixtape.scunning.com/09-difference\_in\_differences\#triple-differences](https://mixtape.scunning.com/09-difference_in_differences#triple-differences)
+- Gruber, Jonathan (1994). "The Incidence of Mandated Maternity Benefits." *American Economic Review* 84(3): 622–641. Table 3, page 632.
+- Olden, Andreas, and Jarle Møen (2022). "The Triple Difference Estimator." *The Econometrics Journal* 25(3): 531–553. (The formal parallel-bias result.)
+- Cunningham, *Causal Inference: The Mixtape*, Chapter 9, Triple Differences section.

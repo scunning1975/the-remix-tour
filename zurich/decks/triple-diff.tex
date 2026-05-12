@@ -670,21 +670,19 @@ The first defense is the placebo-group event study. If the placebo group has its
 \end{enumerate}
 \end{frame}
 
-%% ---------- Lab: triple-diff on Scott's abortion data ----------
-\begin{frame}{Lab over lunch: abortion legalization \& gonorrhea (3$\times$2)}
+%% ---------- Lab: triple-diff on Gruber (1994) ----------
+\begin{frame}{Lab over lunch: Gruber (1994) by hand}
+\textbf{Goal.} Take the 8 cells from slide 3b and recover Gruber's DDD --- by hand, then by regression.
 \vspace{0.3em}
-\textbf{Goal.} Take the DDD machinery and run it on data Scott actually published with.
-\vspace{0.4em}
 \begin{itemize}\small
-  \item Cunningham \& Cornwell (2013), in the lineage of Donohue \& Levitt (2001). \;\highlight{Treated cohort:} Black females 15--19 (\texttt{bf15}). \;\highlight{Placebo cohort:} Black females 25--29 (\texttt{bf25}).
-  \item Repeal states vs.\ Roe states; \;pre/post the affected birth cohort. \;Eight cells.
-  \item \textbf{Part 1:} compute the 8 cell means and the DDD by hand (weighted by \texttt{totpop}).
-  \item \textbf{Part 2:} recover the same number via \texttt{lnr $\sim$ repeal\#cohort\_treated\#post}, clustered at \texttt{fip}.
-  \item \textbf{Part 3:} compare hand vs.\ regression; check what happens if you cluster wrong.
-  \item \textbf{Part 4:} write a paragraph on what the placebo cohort buys you over Donohue \& Levitt's straight DD.
+  \item Data: \texttt{gruber1994.dta} --- 28{,}477 worker-years from the real NBER May CPS (1974/75/77/78), Gruber's sample restrictions applied. Cross-validated with P.\ Sant'Anna in R/Stata/Python.
+  \item \textbf{Part 1:} 8 cell means of \texttt{log\_wage}; DiD on married women; DiD on placebo; subtract. Target: \highlight{DDD $\approx -0.060$} (Gruber: $-0.054$).
+  \item \textbf{Part 2:} recover the same number via \texttt{log\_wage $\sim$ state\_law\#married\_woman\#after}.
+  \item \textbf{Part 3:} run the two \textit{biased} DiDs. Which is closer to the DDD? What does that say about which threat was bigger?
+  \item \textbf{Part 4:} paragraph on parallel-bias --- what would have to be true of the placebo group's counterfactual for the DDD to fail?
 \end{itemize}
-\vspace{0.4em}
-\meta{Walkthrough: \texttt{zurich/labs/Triple-Diff/README.md}. \;Data: \texttt{abortion.dta} on Scott's GitHub.}
+\vspace{0.3em}
+\meta{\texttt{zurich/labs/Triple-Diff/README.md}; data in same folder.}
 \end{frame}
 
 %% ---------- Bridge ----------
