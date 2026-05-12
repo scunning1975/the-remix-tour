@@ -594,43 +594,65 @@ $\widehat{\delta}_{\text{IPW}} \;=\; \dfrac{1}{N_1}\displaystyle\sum_i \bigg(\df
 \highlight{Identification:} under conditional PT + common support, IPW recovers the ATT. \;\;Proof next slide.
 \end{frame}
 
-%% ---------- L3-F2b: PROOF that IPW recovers ATT ----------
-\begin{frame}{Proof: IPW recovers the ATT under conditional PT}
+%% ---------- L3-F2b: PROOF, step 1 — substitute D=1 and D=0 ----------
+\begin{frame}{Substitute $D{=}1$ and $D{=}0$: the operator does different things to each}
+\vspace{0.4em}
+The operator we care about:
+\[
+\frac{D - p(X)}{1 - p(X)} \cdot \Delta Y
+\]
+\vspace{0.4em}
+\textbf{For a $D{=}1$ row:}
+\[
+\frac{\textcolor{warmgray}{1 - p(X)}}{\textcolor{warmgray}{1 - p(X)}} \cdot \Delta Y \;=\; \Delta Y
+\]
+Just the treated unit's change. \;\highlight{No reweighting.}
+\vspace{0.4em}
+\textbf{For a $D{=}0$ row:}
+\[
+\frac{0 - p(X)}{1 - p(X)} \cdot \Delta Y \;=\; -\frac{p(X)}{1 - p(X)} \cdot \Delta Y
+\]
+Controls get reweighted by $p(X)/(1-p(X))$ \;--- and with a negative sign.
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+The reweighting only happens to the control group's first differences. \\[0.1em]
+That's because it's the $Y^0$ that's missing, not the $Y^1$.
+\end{center}
+\end{frame}
+
+%% ---------- L3-F2c: PROOF, step 2 — take expectations ----------
+\begin{frame}{Take expectations: under conditional PT, the operator recovers the ATT}
 \vspace{0.3em}
 \footnotesize
-\textbf{1. The operator we need to evaluate:}
-\vspace{-0.3em}
-\[
-\mathbb{E}\!\left[\frac{D - p(X)}{1 - p(X)}\, \Delta Y\right]
-\;=\; \mathbb{E}\!\left[\frac{D\,\Delta Y}{1-p(X)}\right] \;-\; \mathbb{E}\!\left[\frac{p(X)\,\Delta Y}{1-p(X)}\right].
-\]
-
-\textbf{2. Iterate expectations over $X$, then condition on $D$.}\;\; For each piece:
+\textbf{Treated piece} ($D=1$ rows contribute $\Delta Y$):
 \vspace{-0.2em}
 \[
-\mathbb{E}\!\left[\tfrac{D\,\Delta Y}{1-p(X)} \mid X\right]
- \;=\; \tfrac{p(X)}{1-p(X)}\, \mathbb{E}[\Delta Y \mid D{=}1, X]
+\mathbb{E}[\Delta Y \cdot \mathbb{1}\{D{=}1\}] \;=\; \Pr(D{=}1) \cdot \mathbb{E}[\,Y^1_{\text{post}} - Y^0_{\text{pre}} \mid D{=}1\,]
 \]
+\textbf{Control piece} ($D=0$ rows contribute $-\frac{p(X)}{1-p(X)}\Delta Y$). \;By iterated expectations:
+\vspace{-0.2em}
+\begin{align*}
+-\mathbb{E}\!\left[\tfrac{p(X)}{1-p(X)}\,\Delta Y \cdot \mathbb{1}\{D{=}0\}\right]
+&\;=\; -\mathbb{E}\!\left[\tfrac{p(X)}{\textcolor{warmgray}{1-p(X)}} \cdot \textcolor{warmgray}{(1-p(X))} \cdot \mathbb{E}[\Delta Y \mid D{=}0, X]\right] \\
+&\;=\; -\mathbb{E}\!\big[p(X)\,\mathbb{E}[\Delta Y \mid D{=}0, X]\big]
+\end{align*}
+\textbf{Apply conditional PT}: \;$\mathbb{E}[\Delta Y^0 \mid D{=}0, X] = \mathbb{E}[\Delta Y^0 \mid D{=}1, X]$, so the control piece becomes
+\vspace{-0.2em}
 \[
-\mathbb{E}\!\left[\tfrac{p(X)\,\Delta Y}{1-p(X)} \mid X\right]
- \;=\; \tfrac{p(X)}{1-p(X)}\, (1-p(X))\, \mathbb{E}[\Delta Y \mid D{=}0, X] \cdot \tfrac{1}{1-p(X)}
- \;=\; \tfrac{p(X)}{1-p(X)}\, \mathbb{E}[\Delta Y \mid D{=}0, X]
+-\,\mathbb{E}\!\big[p(X)\,\mathbb{E}[Y^0_{\text{post}} - Y^0_{\text{pre}} \mid D{=}1, X]\big]
+\;=\; -\Pr(D{=}1) \cdot \mathbb{E}[\,Y^0_{\text{post}} - Y^0_{\text{pre}} \mid D{=}1\,]
 \]
-
-\textbf{3. Subtract:}
-\vspace{-0.3em}
+\textbf{Add the two pieces}: $Y^0_{\text{pre}}$ cancels, leaving
+\vspace{-0.2em}
 \[
-\mathbb{E}\!\left[\tfrac{D-p(X)}{1-p(X)} \Delta Y \,\Big|\, X\right]
- \;=\; \tfrac{p(X)}{1-p(X)}\,\big\{\mathbb{E}[\Delta Y\mid 1, X] - \mathbb{E}[\Delta Y\mid 0, X]\big\}.
+\Pr(D{=}1) \cdot \mathbb{E}[\,Y^1_{\text{post}} - Y^0_{\text{post}} \mid D{=}1\,]
+\;=\; \Pr(D{=}1) \cdot \text{ATT}
 \]
-
-\textbf{4. Apply conditional PT.}\;\; The bracket equals $\mathbb{E}[\Delta Y(1) - \Delta Y(0) \mid D{=}1, X] = \text{ATT}(X)$:
-\vspace{-0.3em}
+\textbf{Normalize by $\Pr(D{=}1) \approx N_1/N$}:
 \[
-\;=\; \tfrac{p(X)}{1-p(X)}\,\text{ATT}(X).
+\widehat\delta_{\text{IPW}} \;=\; \frac{1}{N_1}\sum_i \frac{D_i - p(X_i)}{1-p(X_i)}\,\Delta Y_i \;\to\; \text{ATT}. \quad\blacksquare
 \]
-
-\textbf{5. Take expectations over $X$ and normalize by $N_1/N$.}\;\;After cancellation, $\widehat\delta_{\text{IPW}} \to \mathbb{E}[\text{ATT}(X) \mid D{=}1] = \text{ATT}$. \;$\blacksquare$
 \end{frame}
 
 %% ---------- L3-F3: common support ----------
