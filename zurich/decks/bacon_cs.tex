@@ -809,7 +809,205 @@ CS can only estimate ATT$(g,t)$ if there is a valid comparison group for $(g, t)
 %% =====================================================================
 %%                                LESSON 6
 %% =====================================================================
-\remixsection{6.\ Synthesis \\[0.3em] {\normalsize\normalfont What's the same, what's different, what to do tomorrow morning}}
+\remixsection{6.\ Sun \& Abraham (2021) \\[0.3em] {\normalsize\normalfont Bacon was static. Event-studies have their own contamination.}}
+
+%% ---------- L6-F1: The applied event study ----------
+\begin{frame}{Researchers love event studies --- and TWFE will lie to you on them}
+\vspace{0.2em}
+\begin{center}
+\includegraphics[width=0.62\textwidth,height=0.62\textheight,keepaspectratio]{figures/mml_eventstudy.png}
+\end{center}
+\vspace{-0.2em}
+\begin{center}
+\small\color{warmgray}\itshape
+Anderson et al.\ (2013): raw traffic-fatality rates for treated states (re-centered to treatment date) vs.\ controls. The classic dynamic-effects display.
+\end{center}
+\end{frame}
+
+%% ---------- L6-F2: The classic event-study spec ----------
+\begin{frame}{The classic dynamic-TWFE event-study spec}
+\vspace{0.4em}
+Researchers want to plot pre-treatment placebo coefficients and post-treatment dynamic effects. \;The standard regression:
+\vspace{0.4em}
+\begin{center}
+$Y_{i,t} \;=\; \alpha_i \;+\; \delta_t \;+\; \displaystyle\sum_{g \in G} \mu_g\,\mathbf{1}\{t - E_i \in g\} \;+\; \varepsilon_{i,t}$
+\end{center}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item $E_i$ is unit $i$'s treatment date. \;$t - E_i$ is event time (relative-to-treatment).
+  \item $G$ is the set of event-time bins (leads and lags) included.
+  \item Coefficient $\mu_g$ is supposed to be the average treatment effect at event-time bin $g$.
+\end{itemize}
+\vspace{0.4em}
+\highlight{Bacon told us static TWFE is biased.} \;Sun \& Abraham (2021) ask: \textit{what about the dynamic version?}
+\end{frame}
+
+%% ---------- L6-F3: SA's proposition ----------
+\begin{frame}{SA's proposition: $\mu_g$ is contaminated by other leads and lags}
+\vspace{0.4em}
+Even under parallel trends and no anticipation, the TWFE event-study coefficient on bin $g$ is:
+\vspace{0.4em}
+\begin{align*}
+\mu_g \;=\; & \underbrace{\textstyle\sum_{l \in g} \sum_e w^g_{e,l}\, \text{CATT}_{e,l}}_{\text{the target (own bin)}} \\[0.2em]
+            & + \underbrace{\textstyle\sum_{g' \neq g} \sum_{l' \in g'} \sum_e w^g_{e,l'}\, \text{CATT}_{e,l'}}_{\text{contamination from \textit{other} included bins}} \\[0.2em]
+            & + \underbrace{\textstyle\sum_{l' \in g^{\text{excl}}} \sum_e w^g_{e,l'}\, \text{CATT}_{e,l'}}_{\text{contamination from \textit{excluded} bins}}
+\end{align*}
+\vspace{0.2em}
+\highlight{Other-bin weights sum to zero --- but only cancel under treatment-effect homogeneity.} \;With heterogeneous CATTs, the contamination doesn't cancel.
+\end{frame}
+
+%% ---------- L6-F4: What this means in practice ----------
+\begin{frame}{The disturbing corollary: pre-period $\mu_g$ can be nonzero even when PT holds}
+\vspace{0.5em}
+Under PT $+$ no anticipation but \textit{not} homogeneity:
+\vspace{0.5em}
+\begin{itemize}\small
+  \item A pre-period lead $\mu_{-2}$ should be zero if pre-trends are truly parallel.
+  \item In TWFE it isn't --- it picks up CATTs from \textit{post-treatment} bins through the cross-bin weights.
+  \item So a ``failed placebo'' may just be the cross-bin contamination.
+  \item And a ``passing placebo'' may just be cancellation, not evidence of PT.
+\end{itemize}
+\vspace{0.5em}
+\textbf{Lesson:} \;Don't drop excluded bins arbitrarily. \;Lagged effects contaminate through the excluded bins.
+
+\vspace{0.4em}
+\meta{Same disease as Bacon's static decomposition, but applied to leads and lags --- so it affects the entire \textit{plot} you're showing the audience.}
+\end{frame}
+
+%% ---------- L6-F5: SA's fix - the IW estimator ----------
+\begin{frame}{SA's fix: the interaction-weighted estimator (3 steps)}
+\vspace{0.4em}
+\begin{enumerate}\small
+  \item \textbf{Estimate each $\widehat{\delta}_{e,l}$ separately.} \;A saturated regression with cohort $\times$ event-time interactions, using the never-treated (or last-treated) as control:
+  \vspace{0.1em}
+  \begin{center}\scriptsize
+  $Y_{i,t} \;=\; \alpha_i \;+\; \lambda_t \;+\; \displaystyle\sum_{e \notin C} \sum_{l \neq -1} \delta_{e,l}\big[\mathbf{1}\{E_i = e\} \cdot D^l_{i,t}\big] \;+\; \varepsilon_{i,t}$
+  \end{center}
+  \item \textbf{Estimate cohort shares} in the relevant periods: \;$\widehat{\Pr}(E_i = e \mid E_i \in [-l, T-l])$.
+  \item \textbf{Aggregate} the $\widehat{\delta}_{e,l}$ using the cohort shares as weights.
+\end{enumerate}
+\vspace{0.5em}
+\textbf{Same logic as CS.} \;Estimate cohort-event-time cells first; aggregate after. \;\highlight{Forward-engineer the parameter.}
+\vspace{0.4em}
+\meta{Software: \texttt{eventstudyinteract} (Stata, SSC); \texttt{fixest::sunab} (R).}
+\end{frame}
+
+%% ---------- L6-F6: TWFE vs SA, side by side ----------
+\begin{frame}{TWFE event study vs.\ SA, side by side}
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.68\textheight,keepaspectratio]{figures/twfe_vs_sa_event.png}
+\end{center}
+\vspace{-0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+TWFE leads slope downward pre-treatment --- the cross-bin contamination. \;SA's pre-period sits at zero; lags trace the dynamic profile.
+\end{center}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 7
+%% =====================================================================
+\remixsection{7.\ de Chaisemartin \& D'Haultf{\oe}uille \\[0.3em] {\normalsize\normalfont Negative weights on \textit{unit-level} effects, plus the on-off case}}
+
+%% ---------- L7-F1: What dCdH adds ----------
+\begin{frame}{dCdH (2020) adds three things to the staggered toolkit}
+\vspace{0.5em}
+\begin{enumerate}\small
+  \item \textbf{A different decomposition.} \;Bacon decomposed TWFE into 2$\times$2 building blocks with \textit{positive} weights. \;dCdH decomposes TWFE into \textit{unit-level} treatment effects --- where weights can be \highlight{negative}.
+  \vspace{0.3em}
+  \item \textbf{The on-off case.} \;CS and SA assume irreversible treatment. \;dCdH handles units that switch into and out of treatment (think: a state policy that was repealed). Roe v.\ Wade adopted in 1973, overturned in 2022.
+  \vspace{0.3em}
+  \item \textbf{A diagnostic.} \;Run the TWFE you were going to run, then count the \textit{share of unit-period treatment effects} that receive negative weights. Report the sign-flip threshold.
+\end{enumerate}
+\end{frame}
+
+%% ---------- L7-F2: The decomposition ----------
+\begin{frame}{The dCdH decomposition: weights on unit-level effects}
+\vspace{0.4em}
+Let $\Delta^g_{i,t} = Y^1_{i,t} - Y^\infty_{i,t}$ be the \textit{unit-level} treatment effect for unit $i$ in period $t$. Under PT, no anticipation, and SUTVA:
+\vspace{0.4em}
+\begin{block}{Theorem (dCdH 2020)}
+\centering
+$\delta^{\text{TWFE}} \;=\; \mathbb{E}\bigg[ \displaystyle\sum_{i,t:\, D_{i,t}=1} \tfrac{1}{N^T}\, w_{i,t}\, \Delta^g_{i,t} \bigg], \qquad \displaystyle\sum_{i,t:\, D_{i,t}=1} \tfrac{w_{i,t}}{N^T} = 1, \quad w_{i,t} \text{ \textbf{can be negative}}.$
+\end{block}
+\vspace{0.5em}
+\begin{itemize}\small
+  \item Weights come from the OLS residual of $D_{i,t}$ on unit and time FE.
+  \item Bacon's weights are on \textit{2$\times$2s} (and always positive). \;dCdH's weights are on \textit{individual treatment effects} (and may be negative).
+\end{itemize}
+\end{frame}
+
+%% ---------- L7-F3: Why negative weights are dangerous ----------
+\begin{frame}{Negative weights break the ``no sign-flip property''}
+\vspace{0.5em}
+\textbf{Thought experiment.} \;Suppose every unit gains from the treatment ($\Delta^g_{i,t} > 0$ for all $i,t$).
+\vspace{0.4em}
+\begin{itemize}\small
+  \item If all $w_{i,t} > 0$: $\widehat{\delta}^{\text{TWFE}}$ is a positive weighted average of positive effects. \;Sign matches.
+  \item If some $w_{i,t} < 0$: nothing prevents $\widehat{\delta}^{\text{TWFE}}$ from being \highlight{negative} --- even though every unit gained.
+\end{itemize}
+\vspace{0.6em}
+\textbf{This is what we saw in baker.do.} \;Truth $+82$, TWFE $-6.69$. Some unit-level effects got large negative weights; they swamped the positive-weight contributions.
+\vspace{0.5em}
+\meta{Pre-dCdH, ``OLS is a weighted average'' was reassuring. dCdH made it disturbing.}
+\end{frame}
+
+%% ---------- L7-F4: When does it bite ----------
+\begin{frame}{When the negative weights bite (and when they don't)}
+\vspace{0.5em}
+\textbf{The diagnostic dCdH recommends running, before you publish anything:}
+\vspace{0.4em}
+\begin{enumerate}\small
+  \item Fraction of unit-period treatment effects receiving \textit{negative} weight in your TWFE.
+  \item The minimum amount of heterogeneity in $\Delta^g_{i,t}$ that would flip the sign of $\widehat{\delta}^{\text{TWFE}}$.
+\end{enumerate}
+\vspace{0.5em}
+\textbf{Rules of thumb:}
+\begin{itemize}\small
+  \item Large never-treated group $\Rightarrow$ fewer negative weights, smaller magnitudes.
+  \item Treatment dates packed close together $\Rightarrow$ also fewer.
+  \item Long panel with a few early-treated cohorts $\Rightarrow$ the worst case.
+\end{itemize}
+\vspace{0.5em}
+\meta{Software: \texttt{twowayfeweights} (Stata, SSC; R via the \texttt{TwoWayFEWeights} package) reports both diagnostics on your specific dataset.}
+\end{frame}
+
+%% ---------- L7-F5: The on-off case ----------
+\begin{frame}{The on-off case: \texttt{did\_multiplegt} for switching treatment}
+\vspace{0.5em}
+Suppose treatment can switch on \textit{and} off (Roe v.\ Wade 1973 $\to$ Dobbs 2022; minimum-wage rollbacks; tax cuts that sunset).
+\vspace{0.4em}
+\begin{itemize}\small
+  \item CS and SA both assume \highlight{irreversible} treatment --- they cannot estimate effects in this setting.
+  \item dCdH propose a different estimator built on \textit{instantaneous} effects between adjacent periods, comparing units that just switched against units whose treatment status is unchanged.
+  \item Equivalent to CS \&\ SA when treatment is irreversible (with their particular weighting), but \textit{also} handles the on-off case.
+\end{itemize}
+\vspace{0.5em}
+\meta{Software: \texttt{did\_multiplegt} (Stata); the \texttt{DIDmultiplegt} R package.}
+\end{frame}
+
+%% ---------- L7-F6: The weighting lesson ----------
+\begin{frame}{The unifying lesson across Bacon, SA, and dCdH}
+\vspace{0.6em}
+\begin{block}{What makes weights ``good''}
+\centering
+The economic question is: \;\textit{what parameter do you want?} \\[0.3em]
+OLS doesn't ask. \;OLS picks weights from the residual variance of $D$.
+\end{block}
+\vspace{0.7em}
+\begin{itemize}
+  \item Bacon: TWFE = weighted average of 2$\times$2s. \;Weights positive but variance-driven.
+  \item SA: event-study $\mu_g$ = weighted average of CATT$_{e,l}$ \textit{across} bins. \;Cross-bin contamination.
+  \item dCdH: TWFE = weighted average of unit-level $\Delta^g_{i,t}$. \;\highlight{Weights can be negative.}
+\end{itemize}
+\vspace{0.6em}
+\textbf{All three say the same thing:} \;If you let OLS pick the weights, you've let it pick your economic question for you. \;Forward-engineer instead.
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 8
+%% =====================================================================
+\remixsection{8.\ Synthesis \\[0.3em] {\normalsize\normalfont What's the same, what's different, what to do tomorrow morning}}
 
 %% ---------- L6-F1: The afternoon-morning thread ----------
 \begin{frame}{Yesterday afternoon plus this morning $=$ one workflow}
@@ -841,7 +1039,7 @@ CS can only estimate ATT$(g,t)$ if there is a valid comparison group for $(g, t)
   \item TWFE = ATT only when (a) treatment effects are homogeneous across cohorts, AND (b) treatment effects don't change over time within a cohort.
   \item Both fail in almost every applied setting.
   \item Even when they hold, the variance weights are still strange (depend on panel length).
-  \item \textbf{If you must report it, also report CS, Sun-Abraham, or imputation, and explain the differences.}
+  \item \textbf{If you must report it, also report CS, SA, or dCdH --- and the dCdH negative-weight diagnostic. Explain the differences.}
 \end{itemize}
 
 \vspace{0.5em}
@@ -855,17 +1053,13 @@ A reasonable thing to do, in order:
 
 \vspace{0.5em}
 \begin{enumerate}\small
-  \item \textbf{Run the Bacon decomposition} (\texttt{ddtiming} in Stata, \texttt{bacondecomp} in R). \;See whether the forbidden 2$\times$2s carry meaningful weight.
-  \vspace{0.2em}
-  \item \textbf{Re-estimate with CS or Sun-Abraham.} \;Compare the headline to TWFE.
-  \vspace{0.2em}
-  \item \textbf{If they disagree:} \;the difference \textit{is} the $-\Delta\text{ATT}$ or VWPT contamination. Trust the design-based estimator.
-  \vspace{0.2em}
-  \item \textbf{If they agree:} \;in your specific setting, the dynamics and heterogeneity didn't bite. \;Report both, explain.
+  \item \textbf{Run the Bacon decomposition} (\texttt{ddtiming}; \texttt{bacondecomp} in R). \;See whether the forbidden 2$\times$2s carry weight.
+  \item \textbf{Run the dCdH diagnostic} (\texttt{twowayfeweights}). \;Sizeable negative-weight share $\Rightarrow$ headline is suspect.
+  \item \textbf{Re-estimate with CS or SA.} \;Compare the new headline to TWFE.
+  \item \textbf{If they disagree:} \;the difference \textit{is} the $-\Delta\text{ATT}$ / VWPT / negative-weight contamination. Trust the design-based estimator.
+  \item \textbf{If they agree:} \;in your setting, dynamics and heterogeneity didn't bite. \;Report both, explain.
 \end{enumerate}
-
-\vspace{0.5em}
-\meta{Goodman-Bacon, Sant'Anna, Whitten (2026) gives a more refined re-analysis framework for pre-trends-parallel settings.}
+\meta{Goodman-Bacon, Sant'Anna, Whitten (2026) gives a refined re-analysis framework for pre-trends-parallel settings.}
 \end{frame}
 
 %% ---------- Lab ----------
@@ -890,11 +1084,10 @@ A reasonable thing to do, in order:
 \begin{frame}{Tomorrow afternoon}
 \vspace{0.5em}
 \begin{itemize}
-  \item \textbf{Sun \& Abraham (2021).} \;Event-study fully saturated by cohort $\times$ event-time --- equivalent to CS with the never-treated comparison.
-  \item \textbf{de Chaisemartin \& D'Haultf{\oe}uille (2020).} \;The negative-weight diagnosis, the treatment-on/off case, and \texttt{did\_multiplegt}.
-  \item \textbf{Borusyak-Jaravel-Spiess (2024)} imputation \;/\; Wooldridge (2021) extended TWFE: the third path when comparison units don't exist.
-  \item Honest event-studies and reading pre-trends (Roth, Rambachan-Roth).
-  \item Continuous and multi-valued treatment: when ``dose'' matters.
+  \item \textbf{Honest event-studies.} \;Roth (2022) on the perils of conditioning on pretest passes. \;Rambachan \& Roth (2023) partial-identification bounds.
+  \item \textbf{Imputation as a third path.} \;Borusyak-Jaravel-Spiess (2024) \;/\; Wooldridge (2021) extended TWFE \;/\; Gardner (2021): consistent estimators when no comparison group exists.
+  \item \textbf{Continuous and multi-valued treatment.} \;Dose-specific ATT, average causal response (Callaway, Goodman-Bacon, Sant'Anna 2024).
+  \item \textbf{Goodman-Bacon, Sant'Anna, Whitten (2026)} --- a refined re-analysis framework for ``pre-trends parallel'' settings, with sharper conditions for when TWFE event-studies can be trusted.
 \end{itemize}
 
 \vspace{0.7em}
