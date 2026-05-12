@@ -50,3 +50,6 @@ zurich/decks/*.vrb
 
 # Local audit logs (timestamped) - not part of workshop materials
 zurich/audits/
+
+# PDF split-pdf working artifacts
+readings/pdfs_build/
