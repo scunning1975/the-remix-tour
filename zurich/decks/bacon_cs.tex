@@ -78,7 +78,7 @@
   {University of Zurich \textperiodcentered\ May 13, 2026}
 
 %% ---------- Slide 2: The opening puzzle ----------
-\begin{frame}{Stevenson \& Wolfers (2006), revisited}
+\begin{frame}{Goodman-Bacon (2021): the headline TWFE is not the ATT}
 \vspace{0.4em}
 \textbf{The question.} \;Did no-fault unilateral divorce laws reduce female suicide rates? \;Treatment timing varies across states from 1969 to 1985.
 
@@ -218,6 +218,18 @@ $\widehat{\delta}_{\ell k}^{2\times 2,\,\ell} \;=\; \big(\bar y_\ell^{\textsc{Po
 \end{center}
 \end{frame}
 
+%% ---------- L1-F3b: The forbidden 2x2 visualized ----------
+\begin{frame}{The forbidden 2$\times$2, visualized}
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.7\textheight,keepaspectratio]{figures/bacon_forbidden_2x2.png}
+\end{center}
+\vspace{-0.2em}
+\begin{center}
+\small\color{warmgray}\itshape
+Group $\ell$ treated in \textsc{Post}; group $k$ \textit{already treated} since \textsc{Mid}. \;One side is a treated unit that should never have been a control.
+\end{center}
+\end{frame}
+
 %% ---------- L1-F4: Bacon's decomposition formally ----------
 \begin{frame}{The full Bacon decomposition}
 \vspace{0.4em}
@@ -234,6 +246,7 @@ $\widehat{\delta}_{\ell k}^{2\times 2,\,\ell} \;=\; \big(\bar y_\ell^{\textsc{Po
   \item Second sum: every \textit{pair} of timing groups $(k, \ell)$ with $k$ earlier, $\ell$ later, contributes two 2$\times$2s --- one with $\ell$ as not-yet-treated control (fine), one with $k$ as already-treated control (\highlight{forbidden}).
   \item Weights $s_{kU}, s_{k\ell}$, and the within-pair weight $\mu_{k\ell}$ come from OLS algebra, not theory.
 \end{itemize}
+\meta{Notation: we write the forbidden 2$\times$2 as $\widehat{\delta}^{2\times 2,\ell}_{\ell k}$. Bacon (2021, Eq.\ 10a) writes it as $\widehat{\beta}^{2\times 2,\ell}_{k\ell}$. Same object; we follow Scott's CI-2 convention.}
 \end{frame}
 
 %% ---------- L1-F5: The variance weights ----------
@@ -410,12 +423,11 @@ The three flavors of 2$\times$2 in causal pieces:
                                           &\phantom{\;=\;}\; -\; \Delta\text{ATT}_k
 \end{align*}
 
-\vspace{0.4em}
-Plug these into Bacon's weighted sum. \;The TWFE probability limit is:
+Plug these into Bacon's weighted sum. \;The TWFE probability limit:
 \begin{center}
 \highlight{$\text{plim}\, \widehat{\delta}^{\text{TWFE}} \;=\; \text{VWATT} \;+\; \text{VWPT} \;-\; \Delta\text{ATT}$}
 \end{center}
-where VW means ``variance-weighted'' using the Bacon weights.
+\meta{Bacon (2021, Eq.\ 15) writes VWCT (variance-weighted \textit{common} trends). Same object as our VWPT.}
 \end{frame}
 
 %% ---------- L2-F6: Reading the result ----------
@@ -444,13 +456,35 @@ That's exactly what happens in baker.do: dynamics big enough that $-\Delta\text{
 %% =====================================================================
 \remixsection{3.\ baker.do, in code \\[0.3em] {\normalsize\normalfont Set the seed, write the DGP, compute the truth, run TWFE, watch it fail}}
 
-%% ---------- L3-F1: The DGP ----------
-\begin{frame}[fragile]{The DGP in 12 lines (baker.do)}
+%% ---------- L3-F1a: The panel — the explicit-line discipline ----------
+\begin{frame}[fragile]{The panel: 30 explicit lines, because repetition \textit{is} the lesson}
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+set obs 40
+gen state = _n
+expand 25
+bysort state: gen firms = runiform(0,5)
+expand 30
+sort state
+bysort state firms: gen year = _n
+
+replace year = 1980 if year==1
+replace year = 1981 if year==2
+replace year = 1982 if year==3
+replace year = 1983 if year==4
+replace year = 1984 if year==5
+replace year = 1985 if year==6
+replace year = 1986 if year==7   // cohort 1 first treated here
+replace year = 1987 if year==8
+replace year = 1988 if year==9
+... (22 more explicit lines, one per year, through 2009) ...
+\end{lstlisting}
+\meta{A loop would be shorter. The 30 lines \textit{are the lesson}: each is one substitution, one beat. See \texttt{simulations/README.md} \S1.}
+\end{frame}
+
+%% ---------- L3-F1b: The DGP ----------
+\begin{frame}[fragile]{The DGP, in 12 more explicit lines}
 \begin{lstlisting}[language=Stata,basicstyle=\ttfamily\scriptsize]
-* 40 states, 25 firms per state, 30 years (1980-2009)
-* 4 cohorts treated at 1986, 1992, 1998, 2004
 set seed 20200403
-* ... set up the panel (state, firms, year) ...
 
 * Group-specific TE means (heterogeneous across cohorts)
 gen te1 = rnormal(10, 0.04)    // cohort 1986
@@ -464,7 +498,7 @@ gen y0         = firms + n + e
 gen te_dynamic = te*treat*(year - treat_date + 1)
 gen y          = y0 + te_dynamic
 \end{lstlisting}
-\meta{One step per line, named variables, no loops. \;\texttt{simulations/staggered/baker.do}.}
+\meta{One step per line, named variables, no loops. \;Full file: \texttt{simulations/staggered/baker.do}.}
 \end{frame}
 
 %% ---------- L3-F2: The truth ----------
@@ -531,6 +565,27 @@ $(0.5)(+51.80) \;+\; (0.5)(-65.18) \;=\; -6.69.$
 
 \vspace{0.7em}
 \textbf{Read it.} \;Half the weight is on a 2$\times$2 averaging $-65$ --- a 2$\times$2 that uses an already-treated group as control. \;\highlight{That's the forbidden comparison doing the damage.}
+\end{frame}
+
+%% ---------- L3-F5: Closing the Stevenson-Wolfers loop ----------
+\begin{frame}{Bacon's own decomposition of Stevenson-Wolfers}
+\vspace{0.5em}
+We opened with Stevenson-Wolfers. \;Bacon ran the same decomposition on their actual data.
+
+\vspace{0.7em}
+\begin{center}\large
+$\widehat{\beta}^{\text{DD}}_{\text{SW}} \;=\; -3.08 \quad\;\;(\text{156 components})$
+\end{center}
+
+\vspace{0.7em}
+\begin{itemize}\small
+  \item The late-vs-early-treated 2$\times$2s average \highlight{$+3.51$} --- the wrong sign, pulled by treatment-effect heterogeneity over time.
+  \item Drop those terms: the rest averages $-5.44$, close to the event-study average ($-4.92$).
+  \item The single TWFE coefficient of $-3.08$ is masking a $+3.51$ vs.\ $-5.44$ split. \;\highlight{Same disease as baker.do, less extreme.}
+\end{itemize}
+
+\vspace{0.4em}
+\meta{Goodman-Bacon (2021, \S4 and Fig.\ 5). \;The SW headline survives qualitatively but its magnitude is contaminated.}
 \end{frame}
 
 %% =====================================================================
@@ -658,29 +713,17 @@ PT-GT-all & All groups, all periods & Strongest assumption; imposes parallel pre
 
 %% ---------- L5-F4: The estimator (three flavors) ----------
 \begin{frame}{The estimator --- and yesterday's DR is the recommended one}
-\vspace{0.5em}
-For each $\text{ATT}(g,t)$, three options for the building-block estimator:
-
-\vspace{0.5em}
+Three options for the building-block estimator of each $\text{ATT}(g,t)$:
 \begin{enumerate}\small
-  \item \textbf{Outcome Regression (OR).} \;Heckman-Ichimura-Todd: model $\Delta Y(0)$ on $X$ using controls, impute the treated counterfactual.
-  \vspace{0.2em}
-  \item \textbf{Inverse Propensity Weighting (IPW).} \;Abadie (2005): weight controls by $p(X)/(1-p(X))$.
-  \vspace{0.2em}
-  \item \textbf{Doubly Robust (DR).} \;Sant'Anna-Zhao (2020). \;Consistent if \textit{either} the OR model or the pscore model is correct.
+  \item \textbf{OR.} \;Heckman-Ichimura-Todd: model $\Delta Y(0)$ on $X$, impute the treated counterfactual.
+  \item \textbf{IPW.} \;Abadie (2005): weight controls by $p(X)/(1-p(X))$.
+  \item \textbf{DR.} \;Sant'Anna-Zhao (2020). \;Consistent if \textit{either} model is correct.
 \end{enumerate}
-
-\vspace{0.6em}
-\begin{block}{The practitioner's-guide recommendation}
+\begin{block}{The practitioner's-guide recommendation: ``Favor doubly robust.''}
 \centering
-``Favor doubly robust over RA or IPW alone.''
+$\widehat{\delta}_{\text{DR}}(g,t) \;=\; \mathbb{E}\Big[\, w_{\text{DR}}(X)\,\big(\Delta Y \;-\; \widehat{\mu}_0(X)\big) \,\Big]$
 \end{block}
-
-\vspace{0.5em}
-\begin{center}
-\small\color{warmgray}\itshape
-The DR-DiD we proved yesterday is exactly the engine sitting inside each cell of CS.
-\end{center}
+\highlight{The DR-DiD you proved yesterday afternoon. \;Same engine, applied cell-by-cell to every feasible $(g,t)$.}
 \end{frame}
 
 %% ---------- L5-F5: Aggregation ----------
@@ -844,11 +887,13 @@ A reasonable thing to do, in order:
 \end{frame}
 
 %% ---------- Tomorrow ----------
-\begin{frame}{Tomorrow}
+\begin{frame}{Tomorrow afternoon}
 \vspace{0.5em}
 \begin{itemize}
-  \item Sensitivity analysis: how robust is CS to PT failing? \;(Rambachan-Roth.)
-  \item Honest event-studies and how to read pre-trends without fooling yourself.
+  \item \textbf{Sun \& Abraham (2021).} \;Event-study fully saturated by cohort $\times$ event-time --- equivalent to CS with the never-treated comparison.
+  \item \textbf{de Chaisemartin \& D'Haultf{\oe}uille (2020).} \;The negative-weight diagnosis, the treatment-on/off case, and \texttt{did\_multiplegt}.
+  \item \textbf{Borusyak-Jaravel-Spiess (2024)} imputation \;/\; Wooldridge (2021) extended TWFE: the third path when comparison units don't exist.
+  \item Honest event-studies and reading pre-trends (Roth, Rambachan-Roth).
   \item Continuous and multi-valued treatment: when ``dose'' matters.
 \end{itemize}
 
