@@ -1,0 +1,739 @@
+%% lalonde.tex — Zurich Day 1 walkthrough: LaLonde (1986), Dehejia-Wahba (2002), the homework
+%% Scott Cunningham, University of Zurich, May 12, 2026
+
+\documentclass[11pt,aspectratio=169]{beamer}
+\usepackage{remix}
+\usepackage{booktabs}
+\renewcommand{\remixfooter}{University of Zurich\,\textperiodcentered\,Department of Economics\,\textperiodcentered\,May 2026}
+
+\begin{document}
+
+%% ---------- Title ----------
+\remixtitleframe
+  {LaLonde, Dehejia--Wahba, and Why the 2$\times$2 Still Matters}
+  {The story behind yesterday's homework}
+  {Scott Cunningham \textperiodcentered\ Baylor University}
+  {University of Zurich \textperiodcentered\ May 12, 2026}
+
+%% =====================================================================
+%%                                LESSON 1
+%% =====================================================================
+\remixsection{1.\ LaLonde 1986}
+
+\begin{frame}{The National Supported Work Demonstration}
+\vspace{1em}
+\begin{center}
+\large
+A federally funded \textbf{randomized} job-training program.
+\end{center}
+\vspace{0.4em}
+\begin{center}
+\large
+1975--1979. Four target groups, including \\[0.2em] disadvantaged adult men.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Random assignment to treatment vs.\ control. \;Outcome: real earnings in 1978.
+\end{center}
+\end{frame}
+
+\begin{frame}{LaLonde's experimental benchmark}
+\vspace{1.6em}
+\begin{center}
+\Large
+$\widehat{\text{ATT}}^{\text{RCT}} \;\approx\; \$886$
+\end{center}
+\vspace{0.6em}
+\begin{center}
+1978 dollars. \;Adult-male subsample.
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+Random assignment $\Rightarrow$ no selection. \;This is the \textit{truth}.
+\end{center}
+\end{frame}
+
+\begin{frame}{Then LaLonde threw away the controls}
+\vspace{1em}
+\begin{center}
+\large
+He kept the treated --- the 297 NSW men.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+He replaced the controls with samples from the \\[0.2em] \textbf{CPS} and the \textbf{PSID}.
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\small\color{warmgray}\itshape
+A simulation of what an applied researcher would face --- \\
+no experiment, just observational data and methods.
+\end{center}
+\end{frame}
+
+\begin{frame}{Then he tried every method going at the time}
+\vspace{0.6em}
+\begin{itemize}
+  \item OLS with controls
+  \item Two-step Heckman selection corrections
+  \item Fixed effects on pre-program earnings
+  \item Difference-in-differences
+\end{itemize}
+\vspace{0.6em}
+\begin{center}
+\large\itshape\color{charcoal}
+Could any of them recover \$886?
+\end{center}
+\end{frame}
+
+\begin{frame}{No}
+\vspace{1.6em}
+\begin{center}
+\large
+Estimates ranged from \;\highlight{$-$\$16{,}000} \;to \;\highlight{$+$\$3{,}000}.
+\end{center}
+\vspace{1em}
+\begin{center}
+\large
+Most were negative. \;Most missed the benchmark by orders of magnitude.
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+LaLonde (1986), \textit{AER} 76(4): 604--620.
+\end{center}
+\end{frame}
+
+\begin{frame}{The headline that shook applied econometrics}
+\vspace{1.6em}
+\begin{center}
+\Large\itshape\color{charcoal}
+``The econometric procedures \\[0.2em] cannot replicate the experimental results.''
+\end{center}
+\vspace{1.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+This is the paper that made program evaluation \\
+move toward randomization and design.
+\end{center}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 2
+%% =====================================================================
+\remixsection{2.\ Dehejia \& Wahba 2002}
+
+\begin{frame}{Dehejia \& Wahba reopened the case}
+\vspace{1em}
+\begin{center}
+\large
+\textbf{Rajeev Dehejia} and \textbf{Sadek Wahba}, \\[0.2em] \textit{Review of Economics and Statistics} (2002).
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\large
+They asked: \;does \textbf{propensity score matching} \\[0.2em] do better than LaLonde's methods?
+\end{center}
+\end{frame}
+
+\begin{frame}{First, they re-cut the experimental sample}
+\vspace{1em}
+\begin{center}
+\large
+They restricted to NSW men with earnings observed in \\[0.2em] \textbf{both 1974 and 1975}.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+A smaller, slightly different population.
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+This is the subsample the homework uses: \texttt{lalonde\_exp\_panel.dta}.
+\end{center}
+\end{frame}
+
+\begin{frame}{A new experimental benchmark}
+\vspace{1.6em}
+\begin{center}
+\Large
+$\widehat{\text{ATT}}^{\text{RCT}}_{\text{D\&W}} \;\approx\; \$1{,}794$
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+Roughly \;\highlight{\$1{,}700} \;in the way we usually report it.
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+Why bigger than LaLonde's \$886? \;\textit{Different subsample, different ATT.}
+\end{center}
+\end{frame}
+
+\begin{frame}{Why the headlines differ}
+\vspace{0.5em}
+\begin{itemize}
+  \item Both numbers come from the \textit{same} NSW experiment.
+  \item LaLonde used the full adult-male sample.
+  \item D\&W used a \textit{subset} --- only men with two years of pre-program earnings.
+  \item Subsetting on a covariate changes the population whose ATT you're estimating.
+  \item Same identification (random assignment). \;Different target group.
+\end{itemize}
+\vspace{0.5em}
+\begin{center}
+\small\color{warmgray}\itshape
+This is not a contradiction --- it is the ATT defined on different units.
+\end{center}
+\end{frame}
+
+\begin{frame}{D\&W's quasi-experimental result}
+\vspace{1em}
+\begin{center}
+\large
+With \textbf{propensity-score matching} on \\[0.2em] CPS / PSID controls...
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\Large
+they recovered \;\highlight{$\approx \$1{,}700$}.
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\small\color{warmgray}\itshape
+A constructive answer to LaLonde: \;design plus matching \textit{can} work.
+\end{center}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 3
+%% =====================================================================
+\remixsection{3.\ What you did yesterday}
+
+\begin{frame}{Yesterday's lab was on D\&W's experimental subsample}
+\vspace{1em}
+\begin{center}
+\large
+\texttt{lalonde\_exp\_panel.dta} \;--- a panel of NSW men, \\[0.2em] years 74, 75, 78.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+\textbf{The benchmark (post-period diff): $\$1{,}794$.}
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+You had \textit{no covariates}. \;Just \texttt{re}, \texttt{ever\_treated}, \texttt{year}. \;\;$n_T = 185, \;n_C = 260$.
+\end{center}
+\end{frame}
+
+\begin{frame}{Step 1: four averages, by hand}
+\vspace{0.4em}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & \textbf{Pre (75)} & \textbf{Post (78)} \\
+\midrule
+Treated   & $\bar Y^T_{75}$ & $\bar Y^T_{78}$ \\
+Control   & $\bar Y^C_{75}$ & $\bar Y^C_{78}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\small\color{warmgray}\itshape
+Four averages. Three subtractions. \;One DiD.
+\end{center}
+\end{frame}
+
+\begin{frame}{Step 2: the DiD}
+\vspace{1em}
+\begin{center}
+$\widehat{\delta}_{\text{DiD}} \;=\; (\,\bar Y^T_{78} - \bar Y^T_{75}\,) \;-\; (\,\bar Y^C_{78} - \bar Y^C_{75}\,)$
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small
+$=\; (\$6{,}349 - \$1{,}532) \;-\; (\$4{,}555 - \$1{,}267) \;=\; \$4{,}817 - \$3{,}288$
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\Large
+$\widehat{\delta}_{\text{DiD}} \;=\; \$1{,}529$
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Post-period diff-in-means alone: \;$\$6{,}349 - \$4{,}555 = \$1{,}794$.
+\end{center}
+\end{frame}
+
+\begin{frame}{Two valid estimators, two different numbers}
+\vspace{0.8em}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Post-period diff-in-means \;(78 only)        & \$1{,}794 \\
+DiD \;(78 vs.\ 75)                            & \$1{,}529 \\
+\midrule
+Difference                                    & \$\phantom{1{,}}265 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+The pre-period gap was \;$\bar Y^T_{75} - \bar Y^C_{75} = +\$265$.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+DiD subtracts it. \;Post-period diff doesn't.
+\end{center}
+\end{frame}
+
+\begin{frame}{Unbiasedness is a repeated-sampling concept}
+\vspace{1em}
+\begin{center}
+\large
+Random assignment makes \;$\mathbb{E}[\widehat\delta] \;=\; \text{ATT}$
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+across hypothetical re-randomizations of the experiment.
+\end{center}
+\vspace{1em}
+\begin{center}
+\large
+It does \textit{not} make \;$\widehat\delta \;=\; \text{ATT}$ \;in any one sample.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Our pre-period happened to have $+\$265$ of random imbalance. \;Different draw, different imbalance, different DiD.
+\end{center}
+\end{frame}
+
+\begin{frame}{Step 3: three regressions, same number}
+\vspace{0.6em}
+\begin{itemize}
+  \item \textbf{OLS with interactions}: \;\texttt{re \textasciitilde\ ever\_treated * post}
+  \item \textbf{TWFE}: \;\texttt{feols(re \textasciitilde\ ever\_treated:post | id + year)}
+  \item \textbf{Long differences}: \;\texttt{lm(re78 $-$ re75 \textasciitilde\ ever\_treated)}
+\end{itemize}
+\vspace{0.6em}
+\begin{center}
+\large
+All three return \;\highlight{$\widehat\delta = \$1{,}529$}, to machine precision.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+The equivalence breaks once we add staggered timing, covariates, or weights. \;Tomorrow.
+\end{center}
+\end{frame}
+
+\begin{frame}{Step 4: the event study tells the same story}
+\vspace{0.4em}
+\begin{itemize}
+  \item $\beta_{74} = -\$277$ \;--- small, close to zero. \;\highlight{Pre-trend check passes.}
+  \item $\beta_{75}$ is the omitted baseline (zero by construction).
+  \item $\beta_{78} = +\$1{,}529$ \;--- same as the DiD.
+\end{itemize}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Each event-study coefficient is a 2$\times$2 DiD with 75 as baseline. \;Same arithmetic, three points.
+\end{center}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 4
+%% =====================================================================
+\remixsection{4.\ Why the ATT didn't move}
+
+\begin{frame}{A puzzle}
+\vspace{1em}
+\begin{center}
+\large
+We used \textbf{non-experimental controls} (CPS, PSID) \\[0.2em] in the larger LaLonde--D\&W literature.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+And yet the ATT we target is still \;\highlight{$\approx \$1{,}700$.}
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\large\itshape\color{charcoal}
+Why doesn't the ATT change when we change the controls?
+\end{center}
+\end{frame}
+
+\begin{frame}{Because the ATT is a property of the treated}
+\vspace{1.4em}
+\begin{center}
+\Large
+$\text{ATT} \;=\; \mathbb{E}[Y^1 - Y^0 \mid D = 1,\, \text{Post}]$
+\end{center}
+\vspace{1.2em}
+\begin{center}
+\large
+Only the \;\highlight{$D = 1$} \;side appears.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+The control units are just a \textit{tool} to learn about $\mathbb{E}[Y^0 \mid D{=}1, \text{Post}]$.
+\end{center}
+\end{frame}
+
+\begin{frame}{Random assignment gave us a clean tool}
+\vspace{1.4em}
+\begin{center}
+\large
+Under random assignment:
+\end{center}
+\vspace{0.4em}
+\begin{center}
+\Large
+$\mathbb{E}[Y^0 \mid D{=}1] \;=\; \mathbb{E}[Y^0 \mid D{=}0]$
+\end{center}
+\vspace{1em}
+\begin{center}
+So $\mathbb{E}[Y \mid D{=}0, \text{Post}]$ \textit{is} the counterfactual we need. \\[0.2em]
+No selection bias.
+\end{center}
+\end{frame}
+
+\begin{frame}{Non-experimental controls break that equality}
+\vspace{1em}
+\begin{center}
+\large
+CPS men and NSW participants are not interchangeable.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+$\mathbb{E}[Y^0 \mid D{=}1] \;\neq\; \mathbb{E}[Y^0 \mid D{=}0]$
+\end{center}
+\vspace{1em}
+\begin{center}
+\large
+Selection bias enters.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+NSW men had worse pre-program earnings. \;The CPS pool didn't.
+\end{center}
+\end{frame}
+
+\begin{frame}{But the \textit{target} hasn't changed}
+\vspace{1.2em}
+\begin{center}
+\large
+$\mathbb{E}[Y^0 \mid D{=}1, \text{Post}]$ is a feature of the NSW men.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+It does not depend on who we picked as controls.
+\end{center}
+\vspace{1em}
+\begin{center}
+\large
+What the controls control is \textit{our estimate} of that target --- \\[0.2em] and the size of the bias.
+\end{center}
+\end{frame}
+
+\begin{frame}{So what is DiD for, in this story?}
+\vspace{0.6em}
+\begin{itemize}
+  \item In the RCT sample: DiD just \textit{confirms} the post-period difference-in-means.
+  \item In the non-experimental sample: DiD tries to \textit{net out} the pre-existing level gap between NSW and CPS men.
+  \item The truth is fixed at \$1{,}700. \;The question is whether DiD's parallel-trends assumption is enough to recover it.
+\end{itemize}
+\vspace{0.6em}
+\begin{center}
+\large\itshape\color{charcoal}
+Did it?
+\end{center}
+\end{frame}
+
+\begin{frame}{In yesterday's experimental lab: yes (in expectation)}
+\vspace{1em}
+\begin{center}
+\Large
+$\widehat{\delta}_{\text{DiD}} \;=\; \$1{,}529$ \;\;vs.\;\; benchmark \;$\$1{,}794$
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\large
+Within sampling variation. \;Pre-trend was flat. \\[0.3em] Design did its job.
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+This afternoon, with covariates and non-experimental controls --- a harder test.
+\end{center}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 5
+%% =====================================================================
+\remixsection{5.\ Now make it harder}
+
+\begin{frame}{Throw away the experimental controls}
+\vspace{1em}
+\begin{center}
+\large
+Keep the 297 NSW treated men.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+Replace the controls with a random sample of \\[0.2em] American households from the \textbf{CPS}.
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+Data: \texttt{lalonde\_nonexp\_panel.dta}. \;Same treated rows. \;New controls.
+\end{center}
+\end{frame}
+
+\begin{frame}{Selection is severe}
+\vspace{0.8em}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+        & \textbf{1974}    & \textbf{1975}    & \textbf{1978}    \\
+\midrule
+NSW (treated, $n=185$)   & \$2{,}096        & \$1{,}532        & \$6{,}349        \\
+CPS (control, $n=15{,}992$) & \$14{,}017       & \$13{,}651       & \$14{,}847       \\
+\midrule
+Diff                      & $-\$11{,}921$    & $-\$12{,}119$    & $-\$8{,}498$    \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\large
+$\mathbb{E}[Y^0 \mid D{=}1] \;\ll\; \mathbb{E}[Y^0 \mid D{=}0]$
+\end{center}
+\vspace{0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+The level gap is huge --- and so is the \textit{growth-rate} gap. \;DiD doesn't fix that.
+\end{center}
+\end{frame}
+
+\begin{frame}{Naive DiD on this sample}
+\vspace{1.2em}
+\begin{center}
+\Large
+$\widehat{\delta}_{\text{naive DiD}} \;=\; +\$3{,}621$
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+\textit{Right sign. \;Wrong magnitude.} \;The benchmark is \;\highlight{$\$1{,}794$}.
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\small\color{warmgray}\itshape
+NSW men had unusually low pre-earnings ($\$1{,}532$) and bounced back fast. \\
+CPS controls didn't. \;DiD attributes the gap in growth rates entirely to treatment.
+\end{center}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 6
+%% =====================================================================
+\remixsection{6.\ Four estimators to rescue the ATT}
+
+\begin{frame}{The roster}
+\vspace{0.5em}
+\begin{itemize}
+  \item \textbf{DiD with additive $X$} (your published spec) --- one slope per covariate
+  \item \textbf{Outcome Regression} (Heckman, Ichimura \& Todd 1997) --- model the trend on controls; impute the treated counterfactual
+  \item \textbf{Inverse Propensity Weighting} (Abadie 2005) --- reweight controls to look like the treated
+  \item \textbf{Doubly Robust DiD} (Sant'Anna \& Zhao 2020) --- OR + IPW combined
+\end{itemize}
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+Each lives or dies on a different assumption. \;Compare to the \$1{,}794 benchmark.
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{DiD with additive $X$}
+\vspace{0.6em}
+\begin{center}
+\small
+\verb|reg re ever_treated##post X1 X2 ... Xk, robust|
+\end{center}
+\vspace{0.6em}
+\begin{itemize}\small
+  \item Pooled OLS on all years. \;No fixed effects.
+  \item Covariates enter \textit{linearly} with one slope --- same pre and post.
+  \item Identifies the ATT only if Assumptions 1--6 hold (parallel trends, no anticipation, SUTVA, homogeneous $\tau$ in $X$, parallel $X$-trends for treated and control).
+\end{itemize}
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+This is what \texttt{lalonde-did-stata.do} actually computes on the non-experimental panel.
+\end{center}
+\end{frame}
+
+\begin{frame}{Outcome Regression --- impute the counterfactual}
+\vspace{0.6em}
+Use the \textit{controls only} to model the trend:
+\vspace{0.2em}
+\begin{center}
+\small
+$\widehat\mu_0(X) \;=\; \widehat{\mathbb{E}}[\Delta Y \mid D{=}0,\, X]$
+\end{center}
+\vspace{0.6em}
+Then impute the counterfactual change for each treated unit, and average:
+\vspace{0.2em}
+\begin{center}
+\small
+$\widehat\delta_{\text{OR}} \;=\; \dfrac{1}{N_1}\displaystyle\sum_{i:\, D_i=1}\big(\Delta Y_i - \widehat\mu_0(X_i)\big)$
+\end{center}
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+Identification rests on $\widehat\mu_0(X)$ being correctly specified.
+\end{center}
+\end{frame}
+
+\begin{frame}{Inverse Propensity Weighting}
+\vspace{0.8em}
+Estimate $\widehat p(X) = \Pr(D{=}1 \mid X)$ by logit. Weight controls by:
+\vspace{0.2em}
+\begin{center}
+$w_i \;=\; \dfrac{\widehat p(X_i)}{1 - \widehat p(X_i)}$
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small
+$\widehat\delta_{\text{IPW}} \;=\; \mathbb{E}[\Delta Y \mid D{=}1] \;-\; \mathbb{E}_w[\Delta Y \mid D{=}0]$
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Identification rests on $\widehat p(X)$ being correctly specified.
+\end{center}
+\end{frame}
+
+\begin{frame}{Doubly Robust DiD}
+\vspace{1.2em}
+\begin{center}
+\large
+If \textit{either} $\widehat\mu_0(X)$ \textit{or} $\widehat p(X)$ is correct, DR is consistent.
+\end{center}
+\vspace{1em}
+\begin{center}
+\large
+Use the pscore as a \textbf{weight,} not as a \textbf{regressor.}
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\small\color{warmgray}\itshape
+Sant'Anna \& Zhao (2020). \;Implemented in \texttt{drdid} (Stata, R).
+\end{center}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 7
+%% =====================================================================
+\remixsection{7.\ How close did each one get?}
+
+\begin{frame}{The comparison}
+\vspace{0.3em}
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+\textbf{Estimator (Scott's published \texttt{drdid all})} & \textbf{ATT} & \textbf{Distance from \$1{,}794} \\
+\midrule
+Naive DiD (no $X$)                                & $+\$3{,}621$ & overshoots by \$1{,}827 \\
+DiD with additive $X$ (your \texttt{reg} spec)    & $+\$3{,}522$ & overshoots by \$1{,}728 \\
+\midrule
+\multicolumn{3}{l}{\textit{Design-aware estimators (\texttt{drdid all}):}} \\
+\;\;OR --- Regression-adjusted (\texttt{reg})         & $+\$1{,}770$ & $-\$24$ \\
+\;\;IPW --- Abadie (\texttt{ipw})                     & $+\$1{,}861$ & $+\$67$ \\
+\;\;DR-IPW (\texttt{dripw})                            & $+\$1{,}979$ & $+\$185$ \\
+\;\;DR-improved (\texttt{drimp})                       & $+\$2{,}033$ & $+\$239$ \\
+\midrule
+\textbf{RCT benchmark (post-period diff)}        & \textbf{$+\$1{,}794$} & --- \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+Naive DiD and additive-$X$ DiD both overshoot by $\sim\$1{,}800$ --- additive controls barely help. \\[0.2em]
+The \texttt{drdid} design-aware estimators all land within $\$240$ of the benchmark; OR is closest at \$24 below.
+\end{center}
+\end{frame}
+
+\begin{frame}{OR lands closest; all four design-aware estimators are within \$240}
+\vspace{0.5em}
+\begin{itemize}
+  \item \textbf{OR} (\texttt{reg}, \$1{,}770) sits \textbf{\$24 below} --- closest of all.
+  \item \textbf{IPW} (Abadie, \$1{,}861) sits \$67 above.
+  \item \textbf{DR-IPW} (\$1{,}979) sits \$185 above.
+  \item \textbf{DR-improved} (\$2{,}033) sits \$239 above --- furthest of the design-aware row.
+  \item Additive-$X$ DiD (\$3{,}522) barely moves off naive DiD (\$3{,}621).
+\end{itemize}
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+``Doubly robust'' means \textit{robust to one misspecification,} not magically best in every sample. \\
+With $n_T = 185$ and $n_C \approx 16{,}000$, sampling variation alone explains the spread among design-aware estimators.
+\end{center}
+\end{frame}
+
+\begin{frame}{What this lab teaches you}
+\vspace{0.8em}
+\begin{itemize}
+  \item The \textbf{ATT is fixed} ($\approx +\$1{,}794$). \;The controls only change the bias.
+  \item \textbf{Additive $X$ barely helps:} \$3{,}522 vs naive \$3{,}621. \;You need a design-aware estimator.
+  \item OR, IPW, DR-IPW, DR-improved offer four different uses of the same $X$ --- all land within \$240 of the benchmark.
+  \item On this dataset, \textbf{OR (regression-adjusted) lands closest} at \$24 below.
+  \item No method is magic. Each rests on an assumption you can name.
+\end{itemize}
+\end{frame}
+
+%% =====================================================================
+%%                                CLOSING
+%% =====================================================================
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\fill[cream] (current page.south west) rectangle (current page.north east);
+\node[anchor=center, text width=0.84\paperwidth, align=center, text=charcoal] at (current page.center) {%
+  \fontsize{20pt}{30pt}\selectfont
+  The ATT lives on the \textbf{treated.}\\[0.6em]
+  The controls only tell you \\[0.2em]
+  whether your method \\[0.2em]
+  can {\color{accent}\bfseries see it.}
+};
+\draw[accent, line width=1pt] ([yshift=1.8cm,xshift=0.28\paperwidth]current page.south west) -- ([yshift=1.8cm,xshift=-0.28\paperwidth]current page.south east);
+\end{tikzpicture}
+\end{frame}
+
+\end{document}

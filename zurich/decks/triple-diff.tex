@@ -68,22 +68,103 @@
 \end{itemize}
 \end{frame}
 
-%% ---------- Slide 3: The applied problem ----------
-\begin{frame}{The applied problem}
-\vspace{0.5em}
-You think a state's policy moved an outcome. You build the 2$\times$2:
-\vspace{0.3em}
+%% ---------- Slide 3a: the policy ----------
+\begin{frame}{Some US states required firms to cover maternity benefits}
+\vspace{1.2em}
 \begin{center}
-\small
-$\widehat{\delta}_{2\times 2} = (\overline{Y}^{TX}_{\text{post}} - \overline{Y}^{TX}_{\text{pre}}) - (\overline{Y}^{AR}_{\text{post}} - \overline{Y}^{AR}_{\text{pre}})$
+\large In the 1970s.
 \end{center}
-\vspace{0.4em}
-\begin{itemize}
-  \item But you suspect Texas was already on a different trajectory --- for reasons unrelated to the policy.
-  \item PT is violated. The 2$\times$2 is biased. \highlight{Now what?}
-  \item One option: find a group inside Texas that experiences \textit{the same trend bias} but is NOT subject to the policy. Subtract their bias off.
-  \item That move is the \highlight{triple difference}.
-\end{itemize}
+\vspace{0.6em}
+\begin{center}
+\large Same terms as any other medical condition.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large Other states did not.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 3b: the question ----------
+\begin{frame}{Did the law lower women's wages?}
+\vspace{2em}
+\begin{center}
+\large
+The question was about \textbf{incidence}.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large
+Did the cost of the mandate fall on \\[0.2em]
+\highlight{married women aged 20--40}?
+\end{center}
+\end{frame}
+
+%% ---------- Slide 3c: the obvious 2x2 ----------
+\begin{frame}{The obvious move is a 2$\times$2}
+\vspace{2.4em}
+\begin{center}
+$\widehat{\delta}_{2\times 2} \;=\; (\,\overline{Y}^{\text{mandate}}_{\text{post}} - \overline{Y}^{\text{mandate}}_{\text{pre}}\,) \;-\; (\,\overline{Y}^{\text{control}}_{\text{post}} - \overline{Y}^{\text{control}}_{\text{pre}}\,)$
+\end{center}
+\vspace{2em}
+\begin{center}
+\small\color{warmgray}\itshape
+Four cell means, three subtractions. \;Day 1, all over again.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 3d: skepticism ----------
+\begin{frame}{But parallel trends might not hold}
+\vspace{1.4em}
+\begin{center}
+\Large
+$(NJ_t - PA_t) \;\neq\; 0$
+\end{center}
+\vspace{1.2em}
+\begin{center}
+The two state groups look too different. \\[0.4em]
+The event study you have on hand isn't flat in the pre.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 3e: the pause ----------
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\fill[cream] (current page.south west) rectangle (current page.north east);
+\node[anchor=center, text width=0.78\paperwidth, align=center, text=charcoal] at (current page.center) {%
+  \fontsize{30pt}{40pt}\selectfont
+  \itshape What do you do \\[0.2em] instead?
+};
+\draw[accent, line width=1pt] ([yshift=2.4cm,xshift=0.28\paperwidth]current page.south west) -- ([yshift=2.4cm,xshift=-0.28\paperwidth]current page.south east);
+\end{tikzpicture}
+\end{frame}
+
+%% ---------- Slide 3f: Gruber 1994 ----------
+\begin{frame}{In 1994, Gruber introduced a new design}
+\vspace{0.8em}
+\begin{center}
+\textbf{Gruber, J. (1994).} \;\textit{The Incidence of Mandated Maternity Benefits.}\\[0.2em]
+\textit{American Economic Review} 84(3): 622--641.
+\end{center}
+\vspace{1em}
+\begin{center}
+Based on his \textbf{Harvard dissertation} (1992). \\[0.3em]
+Advised by Larry Summers. \;Larry Katz on the committee.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 3g: the lineage ----------
+\begin{frame}{The Section keeps showing up}
+\vspace{1.6em}
+\begin{center}
+\Large
+\textbf{Orley Ashenfelter} \;$\longrightarrow$\; \textbf{Henry Farber} \;$\longrightarrow$\; \textbf{Larry Katz} \;$\longrightarrow$\; \textbf{Jonathan Gruber}
+\end{center}
+\vspace{2em}
+\begin{center}
+\small\color{warmgray}\itshape
+Katz has chaired or served on \highlight{250+} dissertation committees. \\[0.2em]
+The credibility revolution has many roots. \;Princeton's IRS is one of them, again.
+\end{center}
 \end{frame}
 
 %% ---------- Slide 4: Today's seven beats ----------
@@ -251,20 +332,37 @@ $(NJ_t - PA_t)^{\text{married}} \;=\; (NJ_t - PA_t)^{\text{placebo}}$
 \meta{Olden \& Møen (2022), \textit{Econometrics Journal} 25(3). They call it the \textit{bias stability} assumption (after Fr{\"o}lich \& Sperlich 2019).}
 \end{frame}
 
-%% ---------- L2-F5: my own footnote — the credibility move ----------
-\begin{frame}{A pedagogical aside: I got it slightly wrong}
-\vspace{0.3em}
-\begin{itemize}
-  \item In the \textit{Mixtape} 1st edition, I stated the DDD identifying assumption \textit{verbally} --- and imprecisely.
-  \item Olden \& Møen (2022) wrote down the first formal statement (above).
-  \item The 2nd edition (Yale UP, 2026) now carries their equation, with a footnote crediting them and quoting my earlier imprecise version.
-\end{itemize}
-\vspace{0.5em}
-\begin{block}{Why I'm telling you this}
-\small
-DDD has been used in top journals since Gruber (1994) --- yet for nearly three decades nobody had written down its identifying assumption in expectations. The literature ran on intuition. \\[0.3em]
-\highlight{Method papers fill quiet gaps. Read them.}
-\end{block}
+%% ---------- L2-F5: what I wrote in the 1st edition ----------
+\begin{frame}{What I wrote in the \textit{Mixtape}, 1st edition}
+\vspace{0.4em}
+\pullquote{The effect can be isolated if the gap between high- and low-wage employment would have evolved similarly in the treatment state counterfactual as it did in the historical control states.}{\textit{Causal Inference: The Mixtape}, 1st ed.}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Right idea --- verbally. \;Olden \& Møen (2022) wrote it in expectations.
+\end{center}
+\end{frame}
+
+%% ---------- L2-F5b: the meta lesson ----------
+\begin{frame}{Method papers fill quiet gaps}
+\vspace{1.4em}
+\begin{center}
+DDD has been used in top journals since \textbf{Gruber 1994}.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+For nearly three decades, nobody wrote down its identifying assumption \\[0.2em] in expectations.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\large\itshape\color{charcoal}
+The literature ran on intuition.
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+Read the method papers. The 2nd edition (Yale UP, 2026) now carries Olden \& Møen's equation.
+\end{center}
 \end{frame}
 
 %% ---------- L2-F6: design vs falsification ----------

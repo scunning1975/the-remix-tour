@@ -159,7 +159,7 @@ $\mathbb{E}[\Delta Y(0) \mid D{=}1, X] \;=\; \mathbb{E}[\Delta Y(0) \mid D{=}0, 
 %% ---------- L2-F0a: Lead with the bias decomposition ----------
 \begin{frame}{Before any fix: what does OLS-with-controls actually identify?}
 \vspace{0.4em}
-The workhorse: $Y_{it} = \alpha_i + \gamma_t + \alpha\, D_{it} + \theta\, X_{it} + \varepsilon_{it}$. Estimate $\widehat\alpha$ by TWFE-OLS.
+The workhorse: $Y_{it} = \alpha_i + \gamma_t + \alpha\, D_{it} + \beta\, X_{it} + \varepsilon_{it}$. Estimate $\widehat\alpha$ by TWFE-OLS.
 \vspace{0.5em}
 \begin{block}{The Caetano-Callaway (2024) decomposition}
 \vspace{-0.2em}
@@ -178,7 +178,7 @@ $\widehat{\alpha}_{\text{TWFE+}X} \;\;\xrightarrow{p}\;\; \underbrace{\overline{
 \begin{frame}{The three bias terms, named}
 \footnotesize
 \begin{block}{Bias A: heterogeneous $\tau$ in $X$}
-Treatment effect varies with $X$, but TWFE fits one $\theta$. \;\highlight{Proof: next 4 slides (steps 1--4).}
+Treatment effect varies with $X$, but TWFE fits one $\beta$. \;\highlight{Proof: next 4 slides (steps 1--4).}
 \end{block}
 \begin{block}{Bias B: non-parallel $X$-trends across treated and control}
 $Y^0$ trends depend on $X$ in different ways for treated vs.\ control. \;\highlight{Proof: 3 slides after that (steps 5--7).}
@@ -215,13 +215,13 @@ Three failures, three fixes. \;OR addresses A; IPW addresses A and B differently
 \begin{frame}{The TWFE-with-controls regression --- and the three assumptions it hides}
 \vspace{0.4em}
 \[
-Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, (T_t \times D_i) \;+\; \theta\, X_{it} \;+\; \varepsilon_{it}
+Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, (T_t \times D_i) \;+\; \beta\, X_{it} \;+\; \varepsilon_{it}
 \]
 \vspace{0.1em}
 \begin{itemize}\small
   \item Standard move: add $X_{it}$ to the TWFE. \;\; \textit{``Sure! If you're willing to impose three more assumptions.''}
   \item \textbf{(1) Additive functional form} in $X$ (linear, no $D \times X$ interaction).
-  \item \textbf{(2) Homogeneous treatment effects} in $X$ (the slope $\theta$ doesn't depend on $D$).
+  \item \textbf{(2) Homogeneous treatment effects} in $X$ (the slope $\beta$ doesn't depend on $D$).
   \item \textbf{(3) No $X$-specific trends differing across treated and control.}
 \end{itemize}
 \vspace{0.4em}
@@ -236,7 +236,7 @@ Next slide: the proof of (2). Where does the homogeneity-in-$X$ assumption come 
 \vspace{0.4em}
 \textbf{The TWFE model with one covariate $X$:}
 \[
-Y_{it} \;=\; \alpha_1 + \alpha_2\, T_t + \alpha_3\, D_i + \delta\,(T_t \times D_i) + \theta\, X_{it} + \varepsilon_{it}.
+Y_{it} \;=\; \alpha_1 + \alpha_2\, T_t + \alpha_3\, D_i + \delta\,(T_t \times D_i) + \beta\, X_{it} + \varepsilon_{it}.
 \]
 \vspace{0.3em}
 \textbf{Conditional parallel trends} says, for each value of $X$:
@@ -260,49 +260,49 @@ Three observed conditional means $\Rightarrow$ one unobserved counterfactual. \;
 \vspace{0.4em}
 \textbf{From the TWFE model, the observed conditional means are:}
 \begin{align*}
-\mathbb{E}[Y_0 \mid D{=}1, X] &= \alpha_1 + \alpha_3 + \theta\, X \\
-\mathbb{E}[Y_1 \mid D{=}0, X] &= \alpha_1 + \alpha_2 + \theta\, X \\
-\mathbb{E}[Y_0 \mid D{=}0, X] &= \alpha_1 + \theta\, X
+\mathbb{E}[Y_0 \mid D{=}1, X] &= \alpha_1 + \alpha_3 + \beta\, X \\
+\mathbb{E}[Y_1 \mid D{=}0, X] &= \alpha_1 + \alpha_2 + \beta\, X \\
+\mathbb{E}[Y_0 \mid D{=}0, X] &= \alpha_1 + \beta\, X
 \end{align*}
 \textbf{Plug into the identity from step 1:}
 \[
-\mathbb{E}[Y^0_1 \mid D{=}1, X] \;=\; \alpha_1 + \alpha_2 + \alpha_3 + \theta\, X.
+\mathbb{E}[Y^0_1 \mid D{=}1, X] \;=\; \alpha_1 + \alpha_2 + \alpha_3 + \beta\, X.
 \]
 \textbf{The treated $Y^1$ post-period, from the TWFE model:}
 \[
-\mathbb{E}[Y^1_1 \mid D{=}1, X] \;=\; \alpha_1 + \alpha_2 + \alpha_3 + \delta + \theta\, X.
+\mathbb{E}[Y^1_1 \mid D{=}1, X] \;=\; \alpha_1 + \alpha_2 + \alpha_3 + \delta + \beta\, X.
 \]
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-Both potential outcomes carry the \textit{same} $\theta$ in $X$. \;Subtract: ATT $= \delta$. \;Clean. \;\textit{Suspiciously clean.}
+Both potential outcomes carry the \textit{same} $\beta$ in $X$. \;Subtract: ATT $= \delta$. \;Clean. \;\textit{Suspiciously clean.}
 \end{center}
 \end{frame}
 
 %% ---------- L2-F2d: PROOF step 3 — what if the two slopes differ? ----------
 \begin{frame}{Proof, step 3 --- what if $Y^1$ and $Y^0$ have different slopes in $X$?}
 \vspace{0.4em}
-\textbf{Let the slopes differ.} \;Write $\theta_1$ for the $Y^1$ slope and $\theta_2$ for the $Y^0$ slope:
+\textbf{Let the slopes differ.} \;Write $\beta_1$ for the $Y^1$ slope and $\beta_2$ for the $Y^0$ slope:
 \begin{align*}
-\mathbb{E}[Y^1_1 \mid D{=}1, X] &= \alpha_1 + \alpha_2 + \alpha_3 + \delta + \boxed{\theta_1}\, X \\
-\mathbb{E}[Y^0_1 \mid D{=}1, X] &= \alpha_1 + \alpha_2 + \alpha_3 \phantom{\;+\;\delta} + \boxed{\theta_2}\, X
+\mathbb{E}[Y^1_1 \mid D{=}1, X] &= \alpha_1 + \alpha_2 + \alpha_3 + \delta + \boxed{\beta_1}\, X \\
+\mathbb{E}[Y^0_1 \mid D{=}1, X] &= \alpha_1 + \alpha_2 + \alpha_3 \phantom{\;+\;\delta} + \boxed{\beta_2}\, X
 \end{align*}
 \vspace{0.1em}
 \textbf{The true ATT given $X$:}
 \[
-\text{ATT}(X) \;=\; \mathbb{E}[Y^1 - Y^0 \mid D{=}1, X] \;=\; \delta \;+\; (\theta_1 - \theta_2)\, X.
+\text{ATT}(X) \;=\; \mathbb{E}[Y^1 - Y^0 \mid D{=}1, X] \;=\; \delta \;+\; (\beta_1 - \beta_2)\, X.
 \]
 \vspace{0.2em}
 \begin{itemize}\small
-  \item If $\theta_1 \neq \theta_2$, the treatment effect \textit{depends on $X$}.
-  \item TWFE fits \highlight{one} $\theta$, not two.
-  \item So $\widehat{\delta}$ recovers the ATT only when $\theta_1 = \theta_2$.
+  \item If $\beta_1 \neq \beta_2$, the treatment effect \textit{depends on $X$}.
+  \item TWFE fits \highlight{one} $\beta$, not two.
+  \item So $\widehat{\delta}$ recovers the ATT only when $\beta_1 = \beta_2$.
 \end{itemize}
 \end{frame}
 
 %% ---------- L2-F2e: PROOF step 4 — the named assumption ----------
-\begin{frame}{Proof, step 4 --- the named assumption: \textit{homogeneous} $\tau$ in $X$}
+\begin{frame}{Proof, step 4 --- \textbf{Assumption 4}: homogeneous $\tau$ in $X$}
 \vspace{0.5em}
-\begin{block}{Assumption}
+\begin{block}{Assumption 4 (Homogeneous treatment effects in $X$)}
 \centering
 \textbf{TWFE-with-$X$ requires the treatment effect to be the same at every value of $X$.}
 \end{block}
@@ -320,63 +320,201 @@ If the effect actually varies with $X$, TWFE-with-$X$ averages across the variat
 \end{center}
 \end{frame}
 
-%% ---------- L2-F2f: PROOF step 5 — the second restriction, four cell means ----------
-\begin{frame}{Proof, step 5 --- the second restriction starts with four cell means}
-\vspace{0.4em}
-\textbf{Assume now} the homogeneity in $X$ holds, so a single $\theta$ governs both potential outcomes. \;Take expectations of the TWFE equation at each of the four cells:
-\vspace{0.2em}
-\begin{align*}
-\mathbb{E}[Y_1 \mid D{=}1] &= \alpha_1 + \alpha_2 + \alpha_3 + \delta + \theta\, X_{11} \\
-\mathbb{E}[Y_0 \mid D{=}1] &= \alpha_1 + \phantom{\alpha_2 + }\alpha_3 \phantom{\;+\;\delta} + \theta\, X_{10} \\
-\mathbb{E}[Y_1 \mid D{=}0] &= \alpha_1 + \alpha_2 \phantom{\;+\;\alpha_3 + \delta} + \theta\, X_{01} \\
-\mathbb{E}[Y_0 \mid D{=}0] &= \alpha_1 \phantom{\;+\;\alpha_2 + \alpha_3 + \delta} + \theta\, X_{00}
-\end{align*}
-\vspace{0.1em}
-\begin{center}
-\footnotesize\color{warmgray}\itshape
-$X_{dt} = \mathbb{E}[X \mid D{=}d, T{=}t]$: the cell-mean of $X$. \;Four cells, four $X$-means.
-\end{center}
-\end{frame}
 
-%% ---------- L2-F2g: PROOF step 6 — take the DiD, what survives? ----------
-\begin{frame}{Proof, step 6 --- take the DiD, what survives?}
-\vspace{0.4em}
-\textbf{Form the DiD on cell means.} \;The $\alpha$'s cancel, $\delta$ survives, and a bracketed term in $X$-cells is left:
-\vspace{0.3em}
+%% =====================================================================
+%% PROOF PART 2: Assumptions 5 & 6 — Y^0 trends don't depend on X
+%% Trimmed: 6 proof slides + 2 simulation + 2 Spec A vs Spec B = 10 slides
+%% =====================================================================
+
+%% ---------- L2-F2f: PROOF step 5 — what we need + TWFE Y^0 model ----------
+\begin{frame}{Proof, step 5 --- the goal: parallel trends on $Y^0$, and TWFE's model}
+\vspace{0.6em}
+\textbf{What we need.} \;Parallel trends on the untreated potential outcome:
 \[
-\delta^{\text{DD}} \;=\; \delta \;+\; \theta\,\big[(X_{11} - X_{10}) \;-\; (X_{01} - X_{00})\big].
+\mathbb{E}[Y^0_{\text{post}} - Y^0_{\text{pre}} \mid D{=}1] \;=\; \mathbb{E}[Y^0_{\text{post}} - Y^0_{\text{pre}} \mid D{=}0]
 \]
-\vspace{0.3em}
-\textbf{For $\delta^{\text{DD}}$ to equal the true ATT $\delta$, the bracket must vanish:}
+\vspace{0.4em}
+\textbf{TWFE's structural model for $Y^0$:}
 \[
-\boxed{\; (X_{11} - X_{10}) \;=\; (X_{01} - X_{00}) \;}
+Y^0_{it} \;=\; \alpha_1 \;+\; \alpha_2\,T_t \;+\; \alpha_3\,D_i \;+\; \textcolor{accent}{\beta}\,X_{it} \;+\; \varepsilon^0_{it}
 \]
 \vspace{0.2em}
 \begin{center}
 \small\color{warmgray}\itshape
-The $X$ trend for the treated must equal the $X$ trend for the controls.
+\textcolor{accent}{$\beta$} is the slope of $Y^0$ on $X$. \;The question for the next slides: what does the model assume to make PT hold?
 \end{center}
 \end{frame}
 
-%% ---------- L2-F2h: PROOF step 7 — the assumption, in Y(0) language ----------
-\begin{frame}{Proof, step 7 --- the assumption: $Y^0$ trends don't depend on $X$}
-\vspace{0.5em}
-\begin{block}{Assumption}
+%% ---------- L2-F2g: PROOF step 6 — Y^0 trend within a group ----------
+\begin{frame}{Proof, step 6 --- $Y^0$'s within-group trend, by subtraction}
+\vspace{0.4em}
+\textbf{For group $D$, write the post and pre conditional means:}
+\vspace{-0.1em}
+\begin{align*}
+\mathbb{E}[Y^0_{\text{post}} \mid D] \;&=\; \textcolor{warmgray}{\alpha_1} + \alpha_2 + \textcolor{warmgray}{\alpha_3 D} + \beta\,\mathbb{E}[X \mid D, \text{post}] \\
+\mathbb{E}[Y^0_{\text{pre}}  \mid D] \;&=\; \textcolor{warmgray}{\alpha_1} \phantom{\;+\;\alpha_2}\, + \textcolor{warmgray}{\alpha_3 D} + \beta\,\mathbb{E}[X \mid D, \text{pre}]
+\end{align*}
+\vspace{-0.1em}
+\textbf{Subtract:} the \textcolor{warmgray}{$\alpha_1$ and $\alpha_3 D$} cancel.
+\[
+\boxed{\;\mathbb{E}[Y^0_{\text{post}} - Y^0_{\text{pre}} \mid D] \;=\; \alpha_2 \;+\; \beta \cdot \Delta X^D\;}
+\]
+where $\Delta X^D \equiv \mathbb{E}[X|D,\text{post}] - \mathbb{E}[X|D,\text{pre}]$.
+\end{frame}
+
+%% ---------- L2-F2h: PROOF step 7 — apply PT, derive constraint ----------
+\begin{frame}{Proof, step 7 --- PT forces $\beta\,(\Delta X^T - \Delta X^C) = 0$}
+\vspace{0.7em}
+\textbf{Set the two trends equal (PT on $Y^0$):}
+\[
+\textcolor{warmgray}{\alpha_2} + \beta\,\Delta X^T \;=\; \textcolor{warmgray}{\alpha_2} + \beta\,\Delta X^C
+\]
+\vspace{0.2em}
+\textbf{The $\alpha_2$ cancels. Rearrange:}
+\[
+\boxed{\;\; \beta \, (\Delta X^T - \Delta X^C) \;=\; 0 \;\;}
+\]
+\vspace{0.4em}
+Two ways for this to hold:
+\begin{itemize}\small
+  \item $\beta = 0$ \;$\Rightarrow$\; $Y^0$ doesn't depend on $X$.
+  \item $\Delta X^T = \Delta X^C$ \;$\Rightarrow$\; $X$-trends parallel across groups.
+\end{itemize}
+\end{frame}
+
+%% ---------- L2-F2i: PROOF step 8 — Assumptions 5 & 6 named ----------
+\begin{frame}{Proof, step 8 --- \textbf{Assumptions 5 \& 6}: $Y^0$ trends don't depend on $X$}
+\vspace{0.4em}
+\begin{block}{Assumptions 5 \& 6}
 \centering
-\textbf{The evolution of the untreated potential outcome $Y^0$ over time is the same regardless of $X$.}
+\small\textbf{$Y^0$'s trend over time does not depend on $X$ --- within either the treated or the control group.}
 \end{block}
+\vspace{0.4em}
+\begin{itemize}\footnotesize
+  \item Rich people cannot trend differently than poor people.
+  \item Men cannot trend differently than women.
+  \item College grads cannot trend differently than high-school dropouts.
+\end{itemize}
+\vspace{0.2em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+The realized-$X$ version (``$X$-trends equal'') is a \textit{consequence}, not the assumption.
+\end{center}
+\vspace{0.1em}
+\begin{center}
+\footnotesize
+\highlight{Without these six (1--3 baseline DiD plus 4, 5, 6), TWFE-with-$X$ does not identify the ATT.}
+\end{center}
+\end{frame}
+
+%% =====================================================================
+%% Simulation: see PT fail when X-trends differ across groups
+%% =====================================================================
+
+%% ---------- L2-F2j: Simulation, the code ----------
+\begin{frame}[fragile]{TWFE-additive-$X$ fails when $\Delta X$ moves differently across groups}
+\vspace{0.3em}
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize,frame=none,language=R,keywordstyle=\color{accentdark}\bfseries,commentstyle=\color{warmgray}\itshape]
+set.seed(1234)
+N <- 1000
+df <- data.frame(id = rep(1:N, each=2), year = rep(1:2, N))
+df$treat <- as.integer(df$id <= 500)
+df$post  <- as.integer(df$year == 2)
+
+# X moves up by 0.5 ONLY for treated, ONLY in post
+df$x  <- runif(nrow(df)) + 0.5 * df$treat * df$post
+
+# Y(0): same slope beta = 2 for both groups, no time effect
+df$y0 <- 10 + 2 * df$x + rnorm(nrow(df), 0, 0.3)
+
+aggregate(y0 ~ treat + year, data = df, mean)
+\end{lstlisting}
+\vspace{0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+$\beta = 2$ is constant. \;What breaks PT is that $\Delta X^T = 0.5$ while $\Delta X^C = 0$.
+\end{center}
+\end{frame}
+
+%% ---------- L2-F2k: Simulation, the result + plot ----------
+\begin{frame}{Same $\beta$, different $\Delta X$ $\Rightarrow$ additive-$X$ DiD picks up the gap as treatment}
+\begin{center}
+\includegraphics[width=0.72\textwidth]{figures/pt_fails_in_y0.pdf}
+\end{center}
+\vspace{-0.4em}
+\begin{center}
+\scriptsize
+$\Delta Y^0_T - \Delta Y^0_C \approx +1.04$; \;$\beta(\Delta X^T - \Delta X^C) = 2 \cdot 0.5 = 1.0$. \;\highlight{Match.}
+\end{center}
+\meta{Code: \texttt{simulations/covariates/comparing\_did.do}.}
+\end{frame}
+
+%% =====================================================================
+%% Connect to the lab: Spec A (additive X) vs Spec B (Post*X + id FE)
+%% =====================================================================
+
+%% ---------- L2-F2l: Spec A vs Spec B, side-by-side ----------
+\begin{frame}{Same LaLonde data, two specs, two answers --- same proof, two assumption sets}
+\vspace{0.5em}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}l|l|r@{}}
+\toprule
+ \textbf{Spec A} (your published \texttt{reg}) & additive $X$, pooled OLS & \highlight{$\$3{,}522$} \\
+ \textbf{Spec B} (alternative TWFE) & id FE $+$ Post $\times X$ & \highlight{$\$1{,}559$} \\
+ \midrule
+ RCT benchmark & post-period diff-in-means & $\$1{,}794$ \\
+\bottomrule
+\end{tabular}
+\end{center}
 \vspace{0.6em}
-\begin{itemize}
-  \item Rich people cannot be on a different trend than poor people.
-  \item Men cannot be on a different trend than women.
-  \item Old cannot be on a different trend than young.
+\begin{itemize}\small
+  \item \textbf{Spec A} assumes Assumptions 5 \& 6: $Y^0$'s trend doesn't depend on $X$. \;The proof we just did.
+  \item \textbf{Spec B} drops 5 \& 6 by letting $\beta_{\text{pre}} \neq \beta_{\text{post}}$ and absorbing time-invariant $X$ levels with id FE. \;A \textit{different} assumption.
+\end{itemize}
+\end{frame}
+
+%% ---------- L2-F2m: closer, more honest -----
+\begin{frame}{Neither is ``the'' answer --- each defends a different conjecture}
+\vspace{0.8em}
+\begin{center}
+\large
+Spec A and Spec B are both valid panel-data DiD estimators.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+They identify the ATT under \textit{different} assumptions about how $Y^0$ depends on $X$.
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+Spec A is more honest about \textit{what} it's assuming: ``$Y^0$'s trend doesn't depend on $X$.'' \\[0.2em]
+Spec B is a different conjecture: ``$\beta$ may shift over time, but the same way in both groups.'' \\[0.4em]
+The \textbf{doubly-robust} estimators (Lesson 5) lean on both at once.
+\end{center}
+\end{frame}
+
+%% ---------- L2-F2n: bridge to Caetano-Callaway (two channels: time-varying X AND changing beta) ----------
+\begin{frame}{Two ways additive-$X$ TWFE breaks --- and both lead to Caetano-Callaway}
+\vspace{0.4em}
+\textbf{Channel 1: time-varying $X$.}
+\begin{itemize}\small
+  \item $X$ moves over time within each person, and moves differently across groups.
+  \item $\Delta X^T - \Delta X^C \neq 0$ enters the regression as bias.
+  \item This is what the simulation just showed.
+\end{itemize}
+\vspace{0.4em}
+\textbf{Channel 2: changing $\beta$ over time.}
+\begin{itemize}\small
+  \item Even with $\Delta X^T = \Delta X^C$, if $\beta_{\text{pre}} \neq \beta_{\text{post}}$ the $X$-effect itself shifts.
+  \item TWFE-additive-$X$ fits one $\beta$ --- can't capture this.
 \end{itemize}
 \vspace{0.6em}
 \begin{center}
 \small\color{warmgray}\itshape
-\highlight{This is a restriction on the DGP, not on the data.} \;Two assumptions, named:\\
-\textbf{(homogeneity)} $\tau$ doesn't depend on $X$. \;\textbf{(parallel $X$-trends)} $Y^0$ trends don't depend on $X$. \\
-Without both, TWFE-with-$X$ does not identify the ATT.
+\textbf{Caetano \& Callaway (2024)} formalize both as \highlight{hidden linearity bias}. \\[0.1em]
+The full result --- and the AIPW fix --- is \textbf{Lesson 6}.
 \end{center}
 \end{frame}
 
@@ -549,7 +687,7 @@ Y_i \;=\; \alpha \;+\; \tau D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilo
 \begin{frame}{A simulation makes it visible}
 \vspace{-0.2em}
 \begin{center}
-\includegraphics[width=0.86\linewidth,height=0.70\textheight,keepaspectratio]{figures/ipw_comparison.pdf}
+\includegraphics[width=0.80\linewidth,height=0.62\textheight,keepaspectratio]{figures/ipw_comparison.pdf}
 \end{center}
 \vspace{-0.4em}
 \begin{center}
@@ -558,6 +696,7 @@ Y_i \;=\; \alpha \;+\; \tau D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilo
 Method A (IPW reweighting): bias $\approx 0$. \;
 Method B (regression with $\widehat{p}$): \highlight{bias $\approx -10\%$}.
 \end{center}
+\meta{Code: \texttt{zurich/decks/code/IPW-Demo/ipw\_simulation.R}.}
 \end{frame}
 
 %% ---------- L4-F4: codeblock ----------
@@ -774,6 +913,121 @@ summary(result)
 \end{frame}
 
 %% =====================================================================
+%% L5 CODA — Monte Carlo: which estimator wins, and where does DR break?
+%% Restored from CI-2 02-Covariates.tex (lines 815--905). Sant'Anna's 4-DGP design.
+%% =====================================================================
+
+%% ---------- L5-MC1: Monte Carlo setup ----------
+\begin{frame}{A Monte Carlo to settle the rankings}
+\vspace{0.6em}
+\begin{itemize}
+  \item Compare four estimators on the same data: \textbf{TWFE} (with $X$ as additive controls), \textbf{OR}, \textbf{IPW}, \textbf{DR}.
+  \item \textbf{4 DGPs} (Sant'Anna's design): vary whether the OR model and the pscore model are correctly specified.
+  \item \textbf{Sample size:} 1{,}000 units. \;\textbf{Replications:} 10{,}000.
+  \item \textbf{Report:} bias, RMSE, SE, 95\% coverage, CI length.
+\end{itemize}
+\vspace{0.5em}
+\begin{center}
+\small\color{warmgray}\itshape
+The question we want answered: \;when does DR pay off, and when does it break?
+\end{center}
+\meta{Driver code: \texttt{simulations/covariates/covariates\_monte\_carlo.\{do,R\}}}
+\end{frame}
+
+%% ---------- L5-MC2: DGP1 results ----------
+\begin{frame}{DGP 1 --- both models correct}
+\vspace{0.4em}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+            & \textbf{Bias} & \textbf{RMSE} & \textbf{SE} & \textbf{Coverage} & \textbf{CI length} \\
+\midrule
+TWFE        & $-20.95$ & $21.12$ & $2.53$ & $0.000$ & $9.91$ \\
+OR          & $-0.001$ & $0.10$  & $0.10$ & $0.950$ & $0.40$ \\
+IPW         & $+0.026$ & $2.77$  & $2.66$ & $0.952$ & $10.44$ \\
+\rowcolor{remixgreenlight}
+DR          & $-0.001$ & $0.11$  & $0.11$ & $0.947$ & $0.41$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+TWFE catastrophic (Bias $\approx -21$; coverage zero). \;OR \& DR both efficient (Bias $\approx 0$, coverage 95\%). \;IPW unbiased but \textbf{wide CIs}.
+\end{center}
+\end{frame}
+
+%% ---------- L5-MC3: DGP1 visualization ----------
+\begin{frame}{DGP 1 --- visualizing the sampling distribution}
+\vspace{0.3em}
+\begin{center}
+\includegraphics[width=0.68\textwidth]{figures/mc_dr_1.pdf}
+\end{center}
+\vspace{-0.2em}
+\begin{center}
+\small\color{warmgray}\itshape
+When both models are correct, OR and DR concentrate tightly on the truth. IPW is unbiased but noisy. TWFE is off the map.
+\end{center}
+\end{frame}
+
+%% ---------- L5-MC4: DGP4 results ----------
+\begin{frame}{DGP 4 --- both models \textit{wrong}}
+\vspace{0.4em}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+            & \textbf{Bias} & \textbf{RMSE} & \textbf{SE} & \textbf{Coverage} & \textbf{CI length} \\
+\midrule
+TWFE        & $-16.38$ & $16.54$ & $3.63$ & $0.000$ & $14.22$ \\
+OR          & $-5.20$  & $5.36$  & $1.29$ & $0.015$ & $5.05$  \\
+\rowcolor{remixgreenlight}
+IPW         & $-1.08$  & $2.66$  & $2.37$ & $0.949$ & $9.31$  \\
+DR          & $-3.19$  & $3.45$  & $1.29$ & $0.308$ & $5.07$  \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+DR is \textit{not} magic. When both models fail, DR is biased and undercovers (0.31 vs.\ nominal 0.95). \;IPW alone now wins on coverage --- it doesn't rely on the outcome model.
+\end{center}
+\end{frame}
+
+%% ---------- L5-MC5: DGP4 visualization ----------
+\begin{frame}{DGP 4 --- the sampling distribution tells the same story}
+\vspace{0.3em}
+\begin{center}
+\includegraphics[width=0.68\textwidth]{figures/mc_dr_2.pdf}
+\end{center}
+\vspace{-0.2em}
+\begin{center}
+\small\color{warmgray}\itshape
+DR no longer hugs the truth. IPW is wider but \textit{centered}. \;Doubly robust $\neq$ doubly unbeatable.
+\end{center}
+\end{frame}
+
+%% ---------- L5-MC6: takeaway ----------
+\begin{frame}{What the Monte Carlo teaches}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item \textbf{TWFE with additive $X$:} never wins. \;Coverage is zero in every DGP. \highlight{Stop using it as a default.}
+  \item \textbf{OR:} efficient when the outcome model is right. Disaster when it's wrong (Bias $-5$, coverage $1.5\%$).
+  \item \textbf{IPW:} less efficient but \textit{robust to outcome misspecification}. The unsexy workhorse.
+  \item \textbf{DR:} best of both \textit{when at least one is right}. \;Not better than IPW when \textit{both} are wrong.
+\end{itemize}
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+``Doubly robust'' means \textit{robust to one misspecification.} \;Not two. \;Not magic.
+\end{center}
+\meta{Replication: \texttt{simulations/covariates/covariates\_monte\_carlo.\{do,R\}}; figures \texttt{mc\_dr\_1.png, mc\_dr\_2.png}.}
+\end{frame}
+
+%% =====================================================================
 %%                                LESSON 6
 %%        Caetano & Callaway: hidden linearity bias (same disease as L4)
 %% =====================================================================
@@ -913,11 +1167,29 @@ Caetano-Callaway's recommended estimator:
 \]
 \vspace{0.1em}
 \begin{itemize}\small
-  \item $\widehat{m}_0(X_{t-1}, Z)$: outcome regression of $\Delta Y$ on \textit{pre-period level} of $X$ and \textit{time-invariant} $Z$ --- fit on \textbf{controls only}.
-  \item Combine with IPW on a generalized propensity score (also using $X_{t-1}, Z$) for full doubly-robust safety.
-  \item R packages: \texttt{pte}, \texttt{twfeweights}.
-  \item This is just DR-DiD (L5) with the \textit{right} conditioning set: levels of time-varying $X$ + time-invariant $Z$.
+  \item $\widehat{m}_0(X_{t-1}, Z)$: outcome regression of $\Delta Y$ on \textit{pre-treatment level} of $X$ and \textit{time-invariant} $Z$ --- fit on \textbf{controls only}.
+  \item \highlight{Why $X_{t-1}$, not $X_t$?} \;Because $X_t$ in the post-period could itself be affected by treatment. The pre-treatment level is uncontaminated.
+  \item Combine with IPW on a generalized propensity score (same conditioning set) for full doubly-robust safety.
+  \item CC's fully preferred spec also includes $\Delta X = X_t - X_{t-1}$ for dimension reduction. R: \texttt{pte}, \texttt{twfeweights}.
 \end{itemize}
+\end{frame}
+
+%% ---------- L6-F6a: A student asks — why X_{t-1}, not X_t? ----------
+\begin{frame}{Pre-treatment $X$ is uncontaminated --- post-treatment $X$ is not}
+\vspace{0.4em}
+\pullquote{Why $X_{t-1}$ and not $X_t$? You're throwing away the most recent data point.}{A student, raising a hand}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item $X_t$ sits \highlight{downstream of treatment}. If the policy moves $X$ --- even a little --- you've controlled for a \textit{post-treatment outcome}.
+  \item Conditioning on a post-treatment variable doesn't reduce bias. It \highlight{re-introduces} bias --- the bad-controls problem (Angrist--Pischke 2009, Ch.\ 3).
+  \item $X_{t-1}$ is settled before $D$ is assigned. It carries the selection information without carrying any of the treatment.
+\end{itemize}
+\vspace{0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+The rule generalizes: \;condition on the latest pre-treatment value, never the contemporaneous one.
+\end{center}
+\meta{Caetano \& Callaway (2024), \S 3; classic ``bad controls'' point goes back to Rosenbaum (1984).}
 \end{frame}
 
 %% ---------- L6-F7: SYG numbers ----------
@@ -950,6 +1222,23 @@ Reg.\ adj.\ with $\Delta X + X_{t-1} + Z$              & $+0.078$               
 %% =====================================================================
 \remixsection{7.\ Compositional Change}
 
+%% ---------- L7-F0: why this lesson exists (dev-econ motivation) ----------
+\begin{frame}{Most applied work doesn't have a panel}
+\vspace{0.6em}
+\pullquote{Panels are expensive. \;Repeated cross-sections are how a lot of applied work actually gets done.}{Anyone who's ever priced a long household-survey panel}
+\vspace{0.8em}
+\begin{itemize}
+  \item \textbf{US workhorses:} CPS, NLSY, ACS, CEX --- repeated cross-sections, not panels.
+  \item \textbf{Development workhorses:} LSMS (World Bank), DHS (USAID), MICS (UNICEF), IFLS (Indonesia), IHDS (India) --- repeated rounds, mostly different households each wave.
+  \item Same DiD recipe runs on all of them. \highlight{Same compositional-change problem too.}
+\end{itemize}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Hong (2013) found it in the CEX. \;Sant'Anna \& Xu's own application is shipments through the South Africa--Mozambique trade corridor. \;The disease travels.
+\end{center}
+\end{frame}
+
 %% ---------- L7-F1: a different X-moves problem ----------
 \begin{frame}{Two flavors of ``$X$ moves''}
 \vspace{0.4em}
@@ -973,18 +1262,46 @@ Reg.\ adj.\ with $\Delta X + X_{t-1} + Z$              & $+0.078$               
 \end{itemize}
 \end{frame}
 
-%% ---------- L7-F2: Hong Napster ----------
+%% ---------- L7-F2: Hong Napster — narrative ----------
 \begin{frame}{Hong (2013): Napster, internet users, and music expenditure}
-\vspace{0.5em}
-\begin{itemize}
-  \item Repeated cross-sections, 1996 and 2002.
-  \item In 1996, internet users were a small, atypical slice --- mostly young, urban, technical.
-  \item By 2002, internet users looked much more like the general population.
-  \item Compare ``internet users'' to ``non-users,'' 1996 vs.\ 2002. \\ \highlight{Did Napster reduce music spending --- or did the composition of internet users change?}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item Repeated cross-sections from the CEX, 1996--2001.
+  \item In 1996--97, internet users were a small, atypical slice --- younger, higher-income, more urban, more educated.
+  \item By 2000--01, internet users looked much more like the general population.
+  \item Compare ``internet users'' to ``non-users,'' 1996 vs.\ 2001. \\ \highlight{Did Napster reduce music spending --- or did the composition of internet users change?}
   \item Hong's answer: the naive DiD confounds the two. The compositional shift accounts for much of the apparent ``Napster effect.''
 \end{itemize}
+\vspace{0.3em}
+\meta{Hong (2013), \textit{Journal of Applied Econometrics} 28(2): 297--324.}
+\end{frame}
+
+%% ---------- L7-F2b: Hong — the table ----------
+\begin{frame}{Hong's Table I --- the internet-user composition shifts}
 \vspace{0.4em}
-\meta{Hong (2013) JEEA. Figures in \texttt{CI-2/lecture\_includes/hong\_napster.png}.}
+\begin{center}
+\includegraphics[width=0.86\textwidth]{figures/hong_table.png}
+\end{center}
+\vspace{0.2em}
+\begin{center}
+\small\color{warmgray}\itshape
+1997 $\rightarrow$ 2000: mean age 40 $\rightarrow$ 44, income \$53k $\rightarrow$ \$48k, college share 43\% $\rightarrow$ 37\%. \;That gap is what naive DiD attributes to ``Napster.''
+\end{center}
+\end{frame}
+
+%% ---------- L7-F2c: Hong — the figures ----------
+\begin{frame}{Hong's Figures 1 \& 3 --- diffusion and absorption of zero-spenders}
+\vspace{0.2em}
+\begin{center}
+\includegraphics[width=0.46\textwidth]{figures/Hong_1.pdf}\hspace{0.4em}
+\includegraphics[width=0.46\textwidth]{figures/Hong_2.pdf}
+\end{center}
+\vspace{0.1em}
+\begin{center}
+\small\color{warmgray}\itshape
+Left: internet diffusion (top axis) and average quarterly music expenditure (bottom). \\[0.1em]
+Right: stacked share of households by Internet adoption $\times$ music-spending status --- the user pool absorbs more zero-spenders as it grows.
+\end{center}
 \end{frame}
 
 %% ---------- L7-F3: bridge — what's left for SX ----------
@@ -1012,68 +1329,143 @@ Hong (2013) gave us the intuition --- and a single empirical example. To use thi
 \end{frame}
 
 %% ---------- L7-F4a: SX — the estimand ----------
-\begin{frame}{Sant'Anna \& Xu: first, fix an estimand}
-\vspace{0.5em}
+\begin{frame}{Sant'Anna \& Xu name the target: the ATT for the post-period treated}
+\vspace{0.3em}
 \pullquote{What \textit{is} ``the'' ATT when the sample composition is moving?}{Anyone trying to use Hong in their own paper}
-\vspace{0.7em}
-\begin{block}{The SX target}
-The population ATT averaged over a \highlight{fixed reference $X$-distribution} --- typically the pre-period.
-\end{block}
 \vspace{0.4em}
-\begin{itemize}
-  \item The naive DiD targets a \textit{moving} mixture --- a weighted average of period-specific ATTs, weighted by whatever happened to be in each period's sample.
-  \item Pick a reference. Now you know what number you're trying to estimate.
+\begin{block}{The SX target}
+\centering
+\small $\tau \;=\; \mathbb{E}\big[\,\tau(X) \,\big|\, D{=}1,\, T{=}1\,\big]$ --- ATT averaged over the \highlight{post-period treated} $X$-distribution.
+\end{block}
+\vspace{0.2em}
+\begin{itemize}\small
+  \item \highlight{Why this target?} \;It's the population that actually got treated --- the policy-relevant parameter.
+  \item Naive DiD targets a \textit{moving} mixture --- whoever happened to be in each period's sample.
+  \item SX pin the target to a single population so you know what number you're trying to estimate.
 \end{itemize}
 \end{frame}
 
-%% ---------- L7-F4b: SX — the test ----------
-\begin{frame}{Second, test for compositional shift}
-\vspace{0.6em}
-\begin{block}{Hausman-style test}
-\small
-Compute the naive DiD. Compute the DiD on the sample \textit{reweighted to the reference $X$-distribution}. Compare.
-\end{block}
-\vspace{0.6em}
-\begin{itemize}
-  \item Under the null (no compositional shift), the two estimates agree.
-  \item Under the alternative, they diverge --- and the gap is informative about how much your point estimate is doing compositional vs.\ behavioral work.
-  \item Standard $\chi^2$ inference.
+%% ---------- L7-F4a-bis: A student asks — why this estimand? ----------
+\begin{frame}{The post-period treated is the population the policy is for}
+\vspace{0.4em}
+\pullquote{Why average $\tau(X)$ over the post-period treated? Why not the pre-period treated, or both?}{A student, raising a hand}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item The post-period treated is \highlight{who actually got the policy}. Whatever number you report is implicitly about them.
+  \item Sant'Anna--Zhao's $\tau_{sz}$ averages over the \textit{pooled} (pre $+$ post) treated --- a population that doesn't correspond to any policy decision.
+  \item If $\tau(X)$ is heterogeneous and the post-period treated are a different mix from the pre-period treated, $\tau_{sz}$ answers a question \highlight{nobody asked}.
 \end{itemize}
 \vspace{0.3em}
 \begin{center}
 \small\color{warmgray}\itshape
-This is the move Hong didn't have. He showed his data had the problem. The Hausman test lets \textit{you} check yours.
+Pick the estimand that matches the counterfactual you actually want to compare.
+\end{center}
+\meta{Sant'Anna \& Xu (2023), \S 2; bias decomposition Eq.\ 2.4.}
+\end{frame}
+
+%% ---------- L7-F4b: SX — the test ----------
+\begin{frame}{SX's Hausman test: compare two doubly-robust estimators}
+\vspace{0.5em}
+\begin{block}{The test}
+\small
+Compute the standard DR-DiD estimator $\widehat\tau_{\text{dr}}$. \;Compute the SX composition-corrected DR estimator $\widehat\tau_{\text{sx}}$. \;Compare.
+\end{block}
+\vspace{0.5em}
+\begin{itemize}\small
+  \item Under the null (no compositional shift), the two DR estimators agree --- both consistent for the same $\tau$.
+  \item Under the alternative, they diverge --- and the gap quantifies how much your point estimate is doing compositional vs.\ behavioral work.
+  \item Standard $\chi^2$ inference on $\widehat\tau_{\text{dr}} - \widehat\tau_{\text{sx}}$.
+\end{itemize}
+\vspace{0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+This is the move Hong didn't have. \;He showed \textit{his} data had the problem. \;The Hausman test lets \textit{you} check yours.
 \end{center}
 \end{frame}
 
 %% ---------- L7-F4c: SX — the estimator ----------
-\begin{frame}{Third, reweight and estimate}
-\vspace{0.6em}
-\begin{block}{The SX estimator}
+\begin{frame}{The SX estimator: reweight to the post-period treated, then DR-DiD}
+\vspace{0.5em}
+\begin{block}{Mechanics}
 \small
-Reweight units in each period so the within-period $X$-distribution matches the chosen reference. Then compute DiD on the reweighted sample.
+For each period $t$, reweight observations so the within-period $X$-distribution matches the \textbf{post-period treated} distribution. \;Then run DR-DiD on the reweighted panel.
 \end{block}
-\vspace{0.6em}
-\begin{itemize}
-  \item Mechanically: IPW-style reweighting, with weights derived from $f_{\text{ref}}(X) / f_t(X)$ at each period.
-  \item \highlight{Doubly robust} version available --- combine the IPW reweighting with an outcome model (callback to Lesson 5).
-  \item Software: implementable from the IPW machinery you already know.
+\vspace{0.5em}
+\begin{itemize}\small
+  \item Weights come from a 4-cell generalized propensity score: $\Pr(D, T \mid X)$, not the simple $f_{\text{ref}}/f_t$ density ratio.
+  \item \highlight{Doubly robust} --- consistent if either the PS or the outcome model is right.
+  \item Built on the IPW machinery from Lesson 3 $+$ the DR machinery from Lesson 5.
 \end{itemize}
 \end{frame}
 
-%% ---------- L7-F5: when this matters ----------
-\begin{frame}{When compositional change matters in practice}
-\vspace{0.5em}
-\begin{itemize}
-  \item \textbf{Survey data over long horizons.} CPS, NLSY, ACS --- sample composition drifts as response rates, demographics, frame definitions change.
-  \item \textbf{Administrative outcomes with selective coverage.} Who enters the data may itself respond to policy (Medicaid take-up, charter-school enrollment).
-  \item \textbf{New technology adoption.} Hong's Napster, again. The adopter pool changes over time --- almost by definition.
-  \item \textbf{Long pre-periods in event studies.} The further back you go, the more likely the population you're comparing has shifted.
+%% ---------- L7-F4d: SX — empirical application (SADC trade corridor) ----------
+\begin{frame}{SX in the wild: tariff reductions and \textit{bribery} at the SADC border}
+\vspace{0.3em}
+\begin{itemize}\small
+  \item \textbf{Setting:} Sequeira (2016) studied SADC tariff reductions (2008, $\sim$5\% cut on selected products) at the South Africa--Mozambique border. \;Some products were treated; others weren't.
+  \item \textbf{Outcome:} \textit{bribery} at customs (probability, amount, amount/value, amount/tonne).
+  \item \textbf{Data:} repeated cross-sections of shipment records, 2007--2013. \;$\sim$80\% of pre-treatment shipments involved bribery.
+  \item \textbf{SX's question:} does compositional change in \textit{which shipments get observed} contaminate Sequeira's DiD?
+\end{itemize}
+\vspace{0.2em}
+\begin{block}{Hausman test result}
+\centering
+\small \highlight{$p = 0.338$ --- fail to reject.} \;Composition is not biting here.
+\end{block}
+\vspace{0.1em}
+\begin{center}
+\small\color{warmgray}\itshape
+DR-DiD and SX composition-corrected DR agree. \;Sequeira's finding holds: tariff reductions reduce bribery.
+\end{center}
+\end{frame}
+
+%% ---------- L7-F4d-bis: A student asks — was SX even useful? ----------
+\begin{frame}{Failing to reject \textit{is} the validation --- that's the point}
+\vspace{0.4em}
+\pullquote{The Hausman test failed to reject. So SX wasn't really doing anything here, right?}{A student, raising a hand}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item Wrong frame. The test isn't a switch that turns SX ``on'' when it rejects. \highlight{It's a diagnostic that tells you whether composition mattered for your ATT.}
+  \item In Sequeira: $p = 0.338$ \textit{is} the result. It says ``the composition correction would have moved the number, but didn't move it enough to matter.''
+  \item In Hong's Napster setting --- richer adopters in 1996, mass-market by 2001 --- it would have rejected. \highlight{Same test. Different application. Different verdict.}
 \end{itemize}
 \vspace{0.3em}
 \begin{center}
 \small\color{warmgray}\itshape
-First defense: check whether $X$ distribution moved across time. Then run the Hausman test. Then report both estimates.
+You don't get to know which world you're in until you run the test. \;That's why you run it.
+\end{center}
+\meta{Sant'Anna \& Xu (2023), Theorem 4.1; Sequeira (2016) for the application.}
+\end{frame}
+
+%% ---------- L7-F4e: SX — the right way to use the Hausman test ----------
+\begin{frame}{Use the SX test to \textit{validate}, not to \textit{select}}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item \textbf{Wrong:} run Hausman as a pre-test; pick $\widehat\tau_{\text{sx}}$ if it rejects, $\widehat\tau_{\text{dr}}$ if not.
+  \item \textbf{Why wrong:} pre-test-then-select distorts inference (Roth 2022; Guggenberger 2010). Standard errors lose coverage.
+  \item \textbf{Right:} if you're worried about composition, \textit{just report $\widehat\tau_{\text{sx}}$}. Use the test to communicate whether composition was a concern, not to choose which estimate to print.
+\end{itemize}
+\vspace{0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+The robust estimator costs efficiency. \;Worth paying when composition might shift.
+\end{center}
+\end{frame}
+
+%% ---------- L7-F5: when this matters ----------
+\begin{frame}{When compositional change matters --- and it's almost always}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item \textbf{Long-horizon US survey data.} CPS, NLSY, ACS, CEX --- sample composition drifts as response rates, demographics, frame definitions change.
+  \item \textbf{Developing-country household surveys.} LSMS, DHS, MICS, IFLS, IHDS --- rotating cross-sections, expanding sampling frames between rounds.
+  \item \textbf{Administrative outcomes with selective coverage.} Who enters the data may itself respond to policy (Medicaid take-up, charter-school enrollment, customs declarations).
+  \item \textbf{Policy-diffusion settings.} New technology, new programs, new tariff regimes --- the adopter pool shifts.
+  \item \textbf{Long pre-periods in event studies.} The further back you go, the more likely the comparison population has shifted.
+\end{itemize}
+\vspace{0.2em}
+\begin{center}
+\small\color{warmgray}\itshape
+First defense: check whether $X$ moved across time. \;Then run the Hausman test. \;Then report both estimates.
 \end{center}
 \end{frame}
 

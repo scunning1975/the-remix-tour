@@ -47,3 +47,6 @@ zurich/decks/correspondence/
 # LaTeX text-dump previews (regenerable)
 zurich/decks/*.txt
 zurich/decks/*.vrb
+
+# Local audit logs (timestamped) - not part of workshop materials
+zurich/audits/
