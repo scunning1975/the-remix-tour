@@ -1007,7 +1007,115 @@ OLS doesn't ask. \;OLS picks weights from the residual variance of $D$.
 %% =====================================================================
 %%                                LESSON 8
 %% =====================================================================
-\remixsection{8.\ Synthesis \\[0.3em] {\normalsize\normalfont What's the same, what's different, what to do tomorrow morning}}
+\remixsection{8.\ Borusyak-Jaravel-Spiess imputation \\[0.3em] {\normalsize\normalfont The Heckman-Ichimura-Todd move, lifted to fixed effects}}
+
+%% ---------- L8-F1: All causal inference is imputation ----------
+\begin{frame}{All causal inference is imputation}
+\vspace{0.6em}
+\begin{block}{Imbens \& Rubin (2015), \textit{Causal Inference}}
+\centering
+\itshape
+``At some level, all methods for causal inference can be viewed as imputation methods, although some more explicitly than others.''
+\end{block}
+
+\vspace{0.7em}
+\textbf{What's the missing thing?} \;Always $Y^0$ for the treated. \;What we never observe.
+
+\vspace{0.4em}
+\textbf{What's the estimator?} \;A model for $Y^0$ fit on the people who reveal it (the untreated), then plugged in for the treated.
+
+\vspace{0.5em}
+\highlight{You already saw one today.} \;Yesterday afternoon's OR-DiD was imputation. \;BJS is the same trick, with a different model.
+\end{frame}
+
+%% ---------- L8-F2: Recap HIT/OR-DiD ----------
+\begin{frame}{Yesterday's HIT / OR-DiD recipe (recap)}
+\vspace{0.5em}
+\textbf{Heckman, Ichimura, Todd (1997).} \;The conditional-PT version of imputation:
+\vspace{0.5em}
+\begin{enumerate}\small
+  \item \textbf{Fit the model} of the untreated trend on $X$, using only $D=0$:
+  \begin{center}\small
+  $\widehat{\mu}_0(X) \;=\; \widehat{\mathbb{E}}[\Delta Y \mid D{=}0,\, X]$
+  \end{center}
+  \item \textbf{Impute} each treated unit's counterfactual trend $\widehat{\mu}_0(X_i)$.
+  \item \textbf{Average} the residual on the treated:
+  \begin{center}\small
+  $\widehat{\delta}_{\text{OR}} \;=\; \dfrac{1}{N_1}\displaystyle\sum_{i:D_i=1}\big(\Delta Y_i - \widehat{\mu}_0(X_i)\big)$
+  \end{center}
+\end{enumerate}
+\vspace{0.5em}
+\textbf{The counterfactual model is on \boldmath$\Delta Y$, indexed by \boldmath$X$.}
+\end{frame}
+
+%% ---------- L8-F3: The BJS recipe ----------
+\begin{frame}{The BJS (2024) recipe, side-by-side}
+\vspace{0.5em}
+\textbf{Borusyak, Jaravel, Spiess (2024).} \;Same imputation logic, but the counterfactual model is on \textit{levels} $Y(0)$ indexed by \textit{fixed effects}:
+\vspace{0.5em}
+\begin{enumerate}\small
+  \item \textbf{Fit the model} of untreated $Y(0)$ on unit FE $+$ time FE (and any pre-treatment $X$), using only $D=0$ observations:
+  \begin{center}\small
+  $Y(0)_{it} \;=\; \alpha_i \;+\; \lambda_t \;+\; X'_{it}\delta \;+\; \varepsilon_{it}$
+  \end{center}
+  \item \textbf{Impute} the counterfactual for each treated $(i,t)$: \;$\widehat{Y}^0_{it} \;=\; \widehat{\alpha}_i + \widehat{\lambda}_t + X'_{it}\widehat{\delta}$.
+  \item \textbf{Average} the residual on the treated unit-periods:
+  \begin{center}\small
+  $\widehat{\tau}_{it} \;=\; Y^1_{it} - \widehat{Y}^0_{it}, \qquad \widehat{\delta}_W \;=\; \displaystyle\sum_{(i,t)\in\Omega_1} w_{it}\,\widehat{\tau}_{it}$
+  \end{center}
+\end{enumerate}
+\vspace{0.4em}
+\highlight{Same three moves as HIT.} \;Only the counterfactual model differs.
+\end{frame}
+
+%% ---------- L8-F4: Why it works (no forbidden contrast) ----------
+\begin{frame}{Why BJS avoids the forbidden contrast}
+\vspace{0.5em}
+The fixed-effects regression in Step 1 is fit on \highlight{untreated observations only.}
+
+\vspace{0.5em}
+\begin{itemize}\small
+  \item No treated observation enters the model that predicts $Y(0)$.
+  \item Already-treated units contribute their pre-treatment periods only (those are still untreated).
+  \item The fixed effects propagate across time, so $\widehat{\alpha}_i$ for unit $i$ can still be estimated even if $i$ is eventually treated --- using $i$'s own pre-treatment observations.
+\end{itemize}
+
+\vspace{0.6em}
+\textbf{Compare to TWFE.} \;TWFE fits $\delta$ \textit{and} the fixed effects on \textit{all} observations simultaneously --- so a treated unit's post-period influences the estimated FE, which feeds back into the residual that defines $\widehat{\delta}$. That's the forbidden-contrast channel.
+
+\vspace{0.5em}
+\highlight{BJS just refuses to let that happen.} \;Same model class, different fitting sample.
+\end{frame}
+
+%% ---------- L8-F5: BJS comparison plot ----------
+\begin{frame}{BJS compared with TWFE, CS, SA on the same DGP}
+\begin{center}
+\includegraphics[width=0.74\textwidth,height=0.68\textheight,keepaspectratio]{figures/bjs_comparison.pdf}
+\end{center}
+\vspace{-0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+TWFE event-study: biased pre-period leads, attenuated lags. \;CS, SA, BJS all recover the dynamic profile. \;Three different counterfactual models, same answer.
+\end{center}
+\end{frame}
+
+%% ---------- L8-F6: When to use which ----------
+\begin{frame}{When BJS, when CS, when SA, when dCdH?}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item \textbf{CS (DR).} \;You want $\text{ATT}(g,t)$ building blocks. \;You have covariates that matter for conditional PT. \;\highlight{First choice when standard staggered.}
+  \item \textbf{SA.} \;You specifically want an event-study plot. \;Equivalent to CS with never-treated; gives closed-form SEs.
+  \item \textbf{BJS.} \;You want a single $\widehat{\tau}_{it}$ for every treated unit-period --- maximum flexibility, can compute any aggregate. \;Comfortable assuming the parametric Y(0) model.
+  \item \textbf{dCdH.} \;Your treatment switches \textit{on and off}. \;CS, SA, BJS all assume irreversibility; dCdH does not.
+\end{itemize}
+\vspace{0.4em}
+\meta{Practitioner's guide framing: all four are forward-engineered estimators. Pick the one that matches the parameter you want and the assumptions you can defend.}
+\end{frame}
+
+%% =====================================================================
+%%                                LESSON 9
+%% =====================================================================
+\remixsection{9.\ Synthesis \\[0.3em] {\normalsize\normalfont What's the same, what's different, what to do tomorrow morning}}
 
 %% ---------- L6-F1: The afternoon-morning thread ----------
 \begin{frame}{Yesterday afternoon plus this morning $=$ one workflow}
@@ -1039,7 +1147,7 @@ OLS doesn't ask. \;OLS picks weights from the residual variance of $D$.
   \item TWFE = ATT only when (a) treatment effects are homogeneous across cohorts, AND (b) treatment effects don't change over time within a cohort.
   \item Both fail in almost every applied setting.
   \item Even when they hold, the variance weights are still strange (depend on panel length).
-  \item \textbf{If you must report it, also report CS, SA, or dCdH --- and the dCdH negative-weight diagnostic. Explain the differences.}
+  \item \textbf{If you must report it, also report CS, SA, BJS, or dCdH --- and the dCdH negative-weight diagnostic. Explain the differences.}
 \end{itemize}
 
 \vspace{0.5em}
@@ -1055,7 +1163,7 @@ A reasonable thing to do, in order:
 \begin{enumerate}\small
   \item \textbf{Run the Bacon decomposition} (\texttt{ddtiming}; \texttt{bacondecomp} in R). \;See whether the forbidden 2$\times$2s carry weight.
   \item \textbf{Run the dCdH diagnostic} (\texttt{twowayfeweights}). \;Sizeable negative-weight share $\Rightarrow$ headline is suspect.
-  \item \textbf{Re-estimate with CS or SA.} \;Compare the new headline to TWFE.
+  \item \textbf{Re-estimate with CS, SA, or BJS.} \;Compare the new headline to TWFE.
   \item \textbf{If they disagree:} \;the difference \textit{is} the $-\Delta\text{ATT}$ / VWPT / negative-weight contamination. Trust the design-based estimator.
   \item \textbf{If they agree:} \;in your setting, dynamics and heterogeneity didn't bite. \;Report both, explain.
 \end{enumerate}
@@ -1084,10 +1192,10 @@ A reasonable thing to do, in order:
 \begin{frame}{Tomorrow afternoon}
 \vspace{0.5em}
 \begin{itemize}
-  \item \textbf{Honest event-studies.} \;Roth (2022) on the perils of conditioning on pretest passes. \;Rambachan \& Roth (2023) partial-identification bounds.
-  \item \textbf{Imputation as a third path.} \;Borusyak-Jaravel-Spiess (2024) \;/\; Wooldridge (2021) extended TWFE \;/\; Gardner (2021): consistent estimators when no comparison group exists.
+  \item \textbf{Honest event-studies.} \;Roth (2022) on conditioning on pretest passes. \;Rambachan \& Roth (2023) partial-identification bounds.
   \item \textbf{Continuous and multi-valued treatment.} \;Dose-specific ATT, average causal response (Callaway, Goodman-Bacon, Sant'Anna 2024).
-  \item \textbf{Goodman-Bacon, Sant'Anna, Whitten (2026)} --- a refined re-analysis framework for ``pre-trends parallel'' settings, with sharper conditions for when TWFE event-studies can be trusted.
+  \item \textbf{Goodman-Bacon, Sant'Anna, Whitten (2026)} --- a refined re-analysis framework for pre-trends-parallel settings.
+  \item \textbf{Two-stage DiD} (Gardner 2021) --- the GMM cousin of BJS, with the same forward-engineered architecture.
 \end{itemize}
 
 \vspace{0.7em}
