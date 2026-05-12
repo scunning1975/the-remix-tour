@@ -148,7 +148,58 @@ $\mathbb{E}[\Delta Y(0) \mid D{=}1, X] \;=\; \mathbb{E}[\Delta Y(0) \mid D{=}0, 
   \end{itemize}
 \end{itemize}
 \vspace{0.3em}
-\meta{Source: Imbens \& Rubin (2015); \texttt{02-Covariates.tex} frames 156--183.}
+\meta{Source: Imbens \& Rubin (2015), \textit{Causal Inference for Statistics, Social, and Biomedical Sciences}.}
+\end{frame}
+
+%% ---------- L1-F2b: balance — normalized differences ----------
+\begin{frame}{Check the balance: normalized differences}
+\vspace{0.6em}
+Before you trust your $X$, check that the treated and control groups are \textit{actually} comparable on it.
+\vspace{0.6em}
+\begin{block}{Normalized difference}
+\centering
+\large
+$\text{Norm. Diff}_{X} \;=\; \dfrac{\overline{X}_T - \overline{X}_C}{\sqrt{(S^2_T + S^2_C)/2}}$
+\end{block}
+\vspace{0.6em}
+\begin{itemize}\small
+  \item A unit-free imbalance measure --- comparable across variables.
+  \item \highlight{Rule of thumb: $< 0.25$.} \;Above that, classical OLS/IPW have trouble.
+  \item Unlike a $t$-statistic, it doesn't shrink to zero just because the sample is small.
+\end{itemize}
+\meta{Imbens \& Rubin (2015), \textit{Causal Inference for Statistics, Social, and Biomedical Sciences}, Ch.\ 14.}
+\end{frame}
+
+%% ---------- L1-F2c: balance — the two jobs of a confounder ----------
+\begin{frame}{What balance tells you (and what it doesn't)}
+\vspace{0.5em}
+A confounder has \textit{two} jobs:
+\vspace{0.4em}
+\begin{enumerate}
+  \item $X \to D$: \;different distribution in treated vs.\ control.
+  \item $X \to \Delta\mathbb{E}[Y^0]$: \;predicts the untreated outcome trend.
+\end{enumerate}
+\vspace{0.5em}
+The balance check only diagnoses \textbf{(1)}.
+\vspace{0.4em}
+\begin{itemize}\small
+  \item Pick $X$ theoretically --- variables you believe predict $Y^0$ trends.
+  \item \textit{Then} run normalized differences to see whether they're differentially distributed.
+  \item Imbalance + predictiveness $\Rightarrow$ controlling matters. \;Imbalance without predictiveness $\Rightarrow$ noise.
+\end{itemize}
+\end{frame}
+
+%% ---------- L1-F2d: a real balance table ----------
+\begin{frame}{A balance table in the wild}
+\vspace{0.3em}
+\begin{center}
+\includegraphics[width=0.74\textwidth,height=0.68\textheight,keepaspectratio]{figures/table_jel_covariates.jpg}
+\end{center}
+\vspace{0.1em}
+\begin{center}
+\scriptsize\color{warmgray}\itshape
+Every variable, its treated mean, its control mean, the normalized difference. \;One column tells you whether the design will make you sweat.
+\end{center}
 \end{frame}
 
 %% =====================================================================
