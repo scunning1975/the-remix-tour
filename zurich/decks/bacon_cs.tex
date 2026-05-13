@@ -131,7 +131,7 @@ Event study of no-fault divorce on female suicide (replication of SW from Bacon 
 \end{center}
 \vspace{-0.4em}
 \begin{center}\small\color{warmgray}\itshape
-$\widehat{\beta}^{\text{TWFE}}$ converges to its estimand at $-3.08$ (LLN/CLT). \;That much is unbiased. \;\highlight{Even when parallel trends holds}, the bias is $-\Delta\text{ATT}_k$ --- the dynamic-heterogeneity term from already-treated cohorts being used as controls. \;Sign unknown.
+$\widehat{\beta}^{\text{TWFE}}$ converges to its estimand at $-3.08$ (LLN/CLT). \;\textit{Parallel trends does its job} --- every 2$\times$2 is a real ATT. \;\highlight{Heterogeneous treatment effects are the killer:} the forbidden 2$\times$2 picks up not just $\text{ATT}_\ell$ but also $-\Delta\text{ATT}_k$ from the already-treated control. \;Sign unknown without more structure.
 \end{center}
 \end{frame}
 

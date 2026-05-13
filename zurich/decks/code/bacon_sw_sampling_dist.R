@@ -103,8 +103,8 @@ p <- ggplot(df, aes(x = beta_hat)) +
     x = expression(hat(beta)^{"TWFE"} ~ " (suicides per million women)"),
     y = "density",
     caption = expression(atop(
-      "LLN/CLT: " * hat(beta) * " converges to the OLS population estimand.  Whether the estimand IS the ATT is a separate question.",
-      "Even when parallel trends holds, bias = " * - Delta * "ATT — the dynamic-heterogeneity term from already-treated controls.  Sign unknown."
+      "Parallel trends does its job: every 2x2 is a real ATT.  Heterogeneous treatment effects are the killer.",
+      "The forbidden 2x2 picks up not just ATT but also " * - Delta * "ATT from the already-treated control.  Sign unknown."
     ))
   ) +
   theme_remix(base_size = 12) +
