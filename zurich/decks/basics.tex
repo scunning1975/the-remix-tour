@@ -1312,6 +1312,192 @@ DiD: treated and controls only need to be identical in \textit{trends} of $Y(0)$
 \end{block}
 \end{frame}
 
+%% =========================================================================
+%% Slides 38c1–38c6: Four ways the 2x2 can go wrong (case decomposition tour)
+%% =========================================================================
+
+%% ---------- Slide 38c1: Section intro ----------
+\begin{frame}{Four ways the 2$\times$2 can go wrong}
+\footnotesize
+The proof on the last slide identifies the ATT \textbf{only} when three things hold:
+\begin{enumerate}\setlength\itemsep{2pt}
+  \item[\textbf{(i)}] \highlight{No Anticipation (NA)} --- pre-period $Y$ for the treated group equals $Y(0)$
+  \item[\textbf{(ii)}] \highlight{Parallel Trends (PT)} --- $Y(0)$ moves the same way in both groups
+  \item[\textbf{(iii)}] The comparison group is itself \highlight{untreated}
+\end{enumerate}
+
+\vspace{0.4em}
+Four scenarios. The same \textbf{+0 trick} works on all of them --- only the zero you add changes.
+\vspace{-0.3em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item \textbf{Case 1.}\; NA \checkmark, never-treated control \checkmark \hfill $\widehat{\text{DiD}} = \text{ATT}$
+  \item \textbf{Case 2.}\; \textbf{NA fails}, never-treated control \hfill $\widehat{\text{DiD}} = \text{ATT} - \text{ATT}_{\text{pre}}$
+  \item \textbf{Case 3.}\; NA \checkmark, but control absorbs \textbf{spillover} \hfill $\widehat{\text{DiD}} = \text{ATT} - \text{spillover}$
+  \item \textbf{Case 4.}\; NA \checkmark, but control is \textbf{already-treated} \hfill $\widehat{\text{DiD}} = \text{ATT} - \Delta\text{ATT}$
+\end{itemize}
+
+\vspace{0.3em}
+\meta{Each case: the +0 trick, a numerical example, a Monte Carlo verdict at the end.}
+\end{frame}
+
+%% ---------- Slide 38c2: Case 1 — NA + never-treated ----------
+\begin{frame}{Case 1.\ NA holds, never-treated comparison}
+\footnotesize
+\textbf{Switching equation.} \;Treated-post is $Y(1)$; the other three cells are $Y(0)$.
+\vspace{-0.2em}
+\[
+\widehat{\text{DiD}} \;=\; \big[\mathbb{E}[Y(1)|1,\text{Post}] - \mathbb{E}[Y(0)|1,\text{Pre}]\big]
+                  \;-\; \big[\mathbb{E}[Y(0)|0,\text{Post}] - \mathbb{E}[Y(0)|0,\text{Pre}]\big]
+\]
+\vspace{-1.1em}
+
+\textbf{Add the zero.} \;Insert $+\,\mathbb{E}[Y(0)|1,\text{Post}] - \mathbb{E}[Y(0)|1,\text{Post}]$. \;Rearrange:
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\mathbb{E}[Y(1)-Y(0)|1,\text{Post}]}_{\textstyle\text{\color{accent}\bfseries ATT}}
+                  \;+\; \underbrace{\big\{\Delta\mathbb{E}[Y(0)|1] - \Delta\mathbb{E}[Y(0)|0]\big\}}_{\text{non-PT bias}\;=\;0\;\text{under PT}}
+\]
+\vspace{-0.6em}
+
+\begin{block}{Numerical example}
+ATT $= 10$, \;PT bias $= 0$. \quad $\widehat{\text{DiD}} = \mathbf{10}$. \;\checkmark
+\end{block}
+\meta{Monte Carlo (2000 reps, $n=200$/group, $\sigma=2$): mean $\widehat{\text{DiD}} = 10.005$.}
+\end{frame}
+
+%% ---------- Slide 38c3: Case 2 — NA fails ----------
+\begin{frame}{Case 2.\ NA fails --- anticipation contaminates $Y_{\text{Pre}}$}
+\footnotesize
+Suppose the treated group anticipates and adjusts \textit{before} the policy lands. Then their pre-period outcome contains some $Y(1)$ response: \;$\mathbb{E}[Y|1,\text{Pre}] = \mathbb{E}[Y(0)|1,\text{Pre}] + \textcolor{accent}{\text{ATT}_{\text{pre}}}$.
+
+\vspace{0.3em}
+\textbf{Same +0 trick}, propagated:
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\text{ATT}_{\text{Post}}}_{\text{what we want}}
+                  \;+\; \underbrace{\text{non-PT bias}}_{=\,0}
+                  \;-\; \underbrace{\textcolor{accent}{\text{ATT}_{\text{pre}}}}_{\text{anticipation}}
+\]
+\vspace{-0.6em}
+
+\begin{block}{Numerical example}
+ATT $= 10$, \;PT bias $= 0$, \;ATT$_{\text{pre}} = 3$. \quad $\widehat{\text{DiD}} = 10 - 3 = \mathbf{7}$. \;\highlight{biased down}
+\end{block}
+\meta{Monte Carlo: mean $\widehat{\text{DiD}} = 7.01$. \;If treatment effects are roughly constant, DiD can collapse to zero.}
+\end{frame}
+
+%% ---------- Slide 38c4: Case 3 — spillover ----------
+\begin{frame}{Case 3.\ Spillover --- the control group absorbs $Y(1)$ in Post}
+\footnotesize
+Suppose the policy spills onto the comparison group in the post period (general-equilibrium, displacement, social interaction). Then \;$\mathbb{E}[Y|0,\text{Post}] = \mathbb{E}[Y(0)|0,\text{Post}] + \textcolor{accent}{\text{spillover}}$.
+
+\vspace{0.3em}
+\textbf{Same recipe} --- the zero you add lives on the control side, not the treated side:
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\text{ATT}}_{\text{what we want}}
+                  \;+\; \underbrace{\text{non-PT bias}}_{=\,0}
+                  \;-\; \underbrace{\textcolor{accent}{\text{spillover}}}_{\text{control got treated too}}
+\]
+\vspace{-0.6em}
+
+\begin{block}{Numerical example}
+ATT $= 10$, \;PT bias $= 0$, \;spillover $= 4$. \quad $\widehat{\text{DiD}} = 10 - 4 = \mathbf{6}$. \;\highlight{biased toward zero}
+\end{block}
+\meta{Monte Carlo: mean $\widehat{\text{DiD}} = 6.01$. \;The Stable Unit Treatment Value Assumption (SUTVA) failed --- the ``control'' wasn't really untreated.}
+\end{frame}
+
+%% ---------- Slide 38c5: Case 4 — already-treated control ----------
+\begin{frame}{Case 4.\ The forbidden 2$\times$2 --- already-treated comparison}
+\footnotesize
+Now the ``comparison'' group was treated \textit{before} the pre-period. Both their pre and post cells are $Y(1)$, with effects that can move over time: \;$\Delta\text{ATT} \equiv \text{ATT}(\text{Post},D{=}0) - \text{ATT}(\text{Pre},D{=}0)$.
+
+\vspace{0.2em}
+\textbf{Same recipe, three zeros} (one per $Y(0)$ counterfactual we need):
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\text{ATT}}_{\text{what we want}}
+                  \;+\; \underbrace{\text{non-PT bias}}_{=\,0}
+                  \;-\; \underbrace{\textcolor{accent}{\Delta\text{ATT}}}_{\text{control's effect dynamics}}
+\]
+\vspace{-0.7em}
+
+\textbf{Two numerical examples.}\;ATT$=10$, PT bias$=0$:
+\vspace{-0.2em}
+\begin{itemize}\setlength\itemsep{1pt}
+  \item Control's ATT(Pre)$=1$, ATT(Post)$=5$, $\Delta\text{ATT}=4$: \;$\widehat{\text{DiD}} = 10-4 = \mathbf{6}$
+  \item Control's ATT(Pre)$=1$, ATT(Post)$=15$, $\Delta\text{ATT}=14$: \;$\widehat{\text{DiD}} = 10-14 = \mathbf{-4}$ \;\highlight{sign flip}
+\end{itemize}
+
+\begin{block}{The Bacon insight}
+The forbidden 2$\times$2 identifies $-\Delta\text{ATT}$. \;If treatment effects \textbf{grow over time}, DiD reports the \textit{wrong sign}. \;Foreshadows Bacon (2021), tomorrow.
+\end{block}
+\end{frame}
+
+%% ---------- Slide 38c6: The Monte Carlo verdict ----------
+\begin{frame}{Monte Carlo verdict --- 2000 reps, four cases, one truth}
+\vspace{-0.2em}
+\begin{center}
+\includegraphics[height=0.74\textheight,keepaspectratio]{figures/case_decompositions.pdf}
+\end{center}
+\vspace{-0.4em}
+\meta{Only Case 1 puts the truth at the center of the sampling distribution. The other three are sharp, narrow, and \textit{wrong}.}
+\end{frame}
+
+%% =========================================================================
+%% Slides 38d1–38d5: Preview of Bacon (2021) — staggered DiD in pictures
+%% =========================================================================
+
+%% ---------- Slide 38d1: The picture — three cohorts, three windows ----------
+\begin{frame}{Tomorrow in pictures --- three cohorts, three windows}
+\vspace{-0.4em}
+\begin{center}
+\includegraphics[height=0.70\textheight,keepaspectratio]{figures/bacon_goodman_2.png}
+\end{center}
+\vspace{-0.3em}
+\meta{Three groups: $k$ treated early ($t^*_k$), $l$ treated late ($t^*_l$), $U$ never treated. \;Bacon (2021): staggered TWFE is a weighted sum of \textbf{four} 2$\times$2s built from these windows.}
+\end{frame}
+
+%% ---------- Slide 38d2: Clean 2x2 — Early vs Untreated ----------
+\begin{frame}{Clean 2$\times$2 \#1: Early vs Untreated}
+\vspace{-0.4em}
+\begin{center}
+\includegraphics[height=0.70\textheight,keepaspectratio]{figures/bacon_goodman_3.png}
+\end{center}
+\vspace{-0.3em}
+\meta{Pre $=$ before $t^*_k$, Post $=$ after $t^*_k$. \;$U$ never receives treatment, so its observed $Y$ is always $Y(0)$. \;\highlight{Identifies ATT$(k)$} under PT.}
+\end{frame}
+
+%% ---------- Slide 38d3: Clean 2x2 — Late vs Untreated ----------
+\begin{frame}{Clean 2$\times$2 \#2: Late vs Untreated}
+\vspace{-0.4em}
+\begin{center}
+\includegraphics[height=0.70\textheight,keepaspectratio]{figures/bacon_goodman_4.png}
+\end{center}
+\vspace{-0.3em}
+\meta{Pre $=$ before $t^*_l$, Post $=$ after $t^*_l$. \;Same logic: $U$ stays $Y(0)$ throughout. \;\highlight{Identifies ATT$(l)$} under PT.}
+\end{frame}
+
+%% ---------- Slide 38d4: Clean 2x2 — Early vs Late (not-yet-treated control) ----------
+\begin{frame}{Clean 2$\times$2 \#3: Early vs Late \meta{\textmd{(Late is not-yet-treated)}}}
+\vspace{-0.4em}
+\begin{center}
+\includegraphics[height=0.68\textheight,keepaspectratio]{figures/bacon_goodman_6.png}
+\end{center}
+\vspace{-0.3em}
+\meta{Window: $\text{PRE}(k)$ vs $\text{MID}(k,l)$. \;$l$ is valid \textit{here} because it hasn't been treated yet ($Y^l = Y(0)$). \;\highlight{Identifies ATT$(k)$ over MID} under PT. \;Modern estimators (CS, dCdH, SA) preserve this move.}
+\end{frame}
+
+%% ---------- Slide 38d5: Forbidden 2x2 — Late vs Early (already-treated control) ----------
+\begin{frame}{Forbidden 2$\times$2: Late vs Early \meta{\textmd{(Early is already-treated)}}}
+\vspace{-0.4em}
+\begin{center}
+\includegraphics[height=0.62\textheight,keepaspectratio]{figures/bacon_goodman_7.png}
+\end{center}
+\vspace{-0.3em}
+\meta{Window: $\text{MID}(k,l)$ vs $\text{POST}(l)$. \;The ``control'' is $k$ --- \textbf{already-treated}, with effects that move. \;Bias $=-\Delta\text{ATT}_k$. \;\highlight{This is Case 4 from the simulation, in disguise.} \;TWFE silently aggregates this with the three clean 2$\times$2s above.}
+\end{frame}
+
 %% ---------- Slide 38c: No Anticipation — the "trivial" assumption ----------
 \begin{frame}{No Anticipation --- the other assumption}
 \footnotesize
