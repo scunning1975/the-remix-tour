@@ -102,10 +102,9 @@ p <- ggplot(df, aes(x = beta_hat)) +
     subtitle = expression("8,000 iid draws of " * hat(beta) * " ~ N(-3.08, 1.27"^2 * ")  ·  Bacon (2021) SW replication"),
     x = expression(hat(beta)^{"TWFE"} ~ " (suicides per million women)"),
     y = "density",
-    caption = expression(atop(
-      "Parallel trends does its job: every 2x2 is a real ATT.  Heterogeneous treatment effects are the killer.",
-      "The forbidden 2x2 picks up not just ATT but also " * - Delta * "ATT from the already-treated control.  Sign unknown."
-    ))
+    caption = expression(
+      "PT works  -  every 2x2 is a real ATT.  Heterogeneity kills  -  forbidden 2x2 picks up " * - Delta * "ATT."
+    )
   ) +
   theme_remix(base_size = 12) +
   theme(plot.caption = element_text(size = 9.5,
