@@ -124,24 +124,36 @@ Event study of no-fault divorce on female suicide (replication of SW from Bacon 
 \end{center}
 \end{frame}
 
-%% ---------- Slide 5: Bacon decomposes the -3.08 ----------
-\begin{frame}{Inside the $-3.08$: 156 components, two competing forces}
+%% ---------- Slide 5: Is the finding unbiased? ----------
+\begin{frame}{Their finding $\;-3.08\;$ (s.e.\ 1.27).  Is it unbiased?}
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.62\textheight,keepaspectratio]{figures/bacon_sw_sampling_dist.pdf}
+\end{center}
+\vspace{-0.3em}
+\begin{center}\small\color{warmgray}\itshape
+$\widehat{\beta}^{\text{TWFE}}$ converges to its OLS population estimand at $-3.08$ (LLN/CLT). \;That much is unbiased.
+\;Whether the estimand IS the ATT is a \textit{separate} question --- and under heterogeneity, the bias is $-\Delta\text{ATT}$, somewhere we cannot pin down without more structure.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 6: Bacon decomposes the estimand ----------
+\begin{frame}{What \textit{is} the estimand?  Bacon decomposes it into 156 components}
 \vspace{0.5em}
-Bacon (2021) decomposes the $-3.08$ TWFE coefficient into 156 underlying 2$\times$2 components.
+Bacon (2021) writes the TWFE estimand as a weighted average of underlying 2$\times$2 DiDs. \;On SW data: 156 components.
 
 \vspace{0.7em}
 \begin{itemize}
   \item Late-treated-vs-already-treated 2$\times$2s average \highlight{$+3.51$} --- the \textit{wrong sign}, pulled there by treatment-effect heterogeneity over time.
   \vspace{0.3em}
-  \item Drop those terms: the rest averages $-5.44$, very close to the event-study average of $-4.92$ in the figure on the previous slide.
+  \item Drop those terms: the rest averages $-5.44$, very close to the event-study average of $-4.92$ from the figure two slides back.
 \end{itemize}
 
 \vspace{0.7em}
-\textbf{The puzzle.} \;Same data, same regression --- but the single TWFE coefficient ($-3.08$) is masking a $+3.51$ vs.\ $-5.44$ split. \;\highlight{Why?}
+\textbf{So the estimand $-3.08$ is averaging $+3.51$ with $-5.44$.} \;Both pieces come from the same regression on the same data. \;\highlight{Whether either piece is the ATT depends on what we assume.}
 
 \vspace{0.4em}
-That's the question this morning.
-\meta{Goodman-Bacon, A.\ (2021), \textit{J.\ Econometrics} 225(2): 254--277. \;Decomposition in Fig.\ 6 of the paper.}
+That's what this morning develops.
+\meta{Goodman-Bacon, A.\ (2021), \textit{J.\ Econometrics} 225(2): 254--277. \;Decomposition in Fig.\ 6.}
 \end{frame}
 
 %% ---------- Slide 4: Roadmap ----------
