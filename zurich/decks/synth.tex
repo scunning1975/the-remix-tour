@@ -468,6 +468,47 @@ $\widehat{\tau}^{\,\text{SDID}} \;=\; \displaystyle\arg\min_{\tau, \mu, \alpha_i
 \highlight{SDID is DiD with both kinds of weights bolted on.}
 \end{frame}
 
+%% ---------- L5-F4: SDID nests SC and DiD as special cases ----------
+\begin{frame}{SDID nests both SC and DiD}
+\footnotesize
+Set parts of SDID to defaults and you recover the other estimators exactly.
+
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item \textbf{Additive systematic component} ($L_{it} = \alpha_i + \beta_t$): \;oracle $\widetilde{w}_i \to 1/N_{co}$ and $\widetilde{\lambda}_t \to 1/T_{pre}$. \;\highlight{SDID $\to$ DiD asymptotically.}
+  \item \textbf{Set $w_0 = 0$ and $\zeta = 0$} (no intercept, no ridge) with $N_{tr}=1$: \;the Abadie--Diamond--Hainmueller weight problem exactly. \;\highlight{SDID $\to$ SC.}
+\end{itemize}
+
+\vspace{0.6em}
+\highlight{Reading.} \;SC, DiD, and SDID are one estimator at three settings of $(w_0, \zeta, \lambda)$. \;Bad pre-trends? Time weights kick in. Sharp pre-trend match? Unit weights collapse to SC. Additive $L$? Weights go uniform and you have DiD.
+\end{frame}
+
+%% ---------- L5-F5: Prop 99 head-to-head ----------
+\begin{frame}{Prop 99 revisited: what each estimator says}
+\footnotesize
+Same California data we just used in \S2 --- \highlight{five estimators, five answers} (paper Table 1, p.\,8).
+\vspace{0.3em}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Method} & \textbf{Estimate} (packs/year) & \textbf{SE} \\
+\midrule
+SDID & $-15.6$ & $(8.4)$ \\
+SC (Abadie et al.\ 2010) & $-19.6$ & $(9.9)$ \\
+DID & $-27.3$ & $(17.7)$ \\
+MC (matrix completion) & $-20.2$ & $(11.5)$ \\
+DIFP (Doudchenko--Imbens) & $-11.1$ & $(9.5)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item SDID sits \textit{between} SC and DIFP --- SC's tight pre-period match \textit{and} a DiD-style intercept.
+  \item \textbf{SDID's SE (8.4) is the smallest} despite being the more flexible estimator. \;Locality of weighting strips out predictable variation.
+\end{itemize}
+\end{frame}
+
 %% =====================================================================
 %%                                LESSON 6
 %% =====================================================================
@@ -504,7 +545,7 @@ $\widehat{\lambda} \;=\; \displaystyle\arg\min_{\lambda_0, \lambda} \sum_{i \in 
 \begin{itemize}\small
   \item Pre-periods get weight in proportion to how well they predict each control unit's \textit{post}-period average.
   \item Constraints: $\lambda_t \geq 0$, $\sum \lambda_t = 1$.
-  \item No regularization on time weights (the paper finds it isn't needed).
+  \item No substantive regularization on time weights. \;\meta{Asymmetry is structural: errors are assumed independent across units but serially correlated within unit --- there's no within-time cross-unit correlation to ridge away.}
 \end{itemize}
 
 \vspace{0.7em}
@@ -581,6 +622,20 @@ $\widehat{\tau}^{\,\text{SDID}} - \tau \;=\; \underbrace{\varepsilon(\widetilde{
 %%                                LESSON 8
 %% =====================================================================
 \remixsection{8.\ SDID on baker.do \\[0.3em] {\normalsize\normalfont Demonstration: does SDID recover the truth?}}
+
+%% ---------- L8-F0: Why we drop the 2004 cohort ----------
+\begin{frame}{Pre-flight check: SDID needs \textit{block} treatment}
+\footnotesize
+The paper's main result (Theorem 1) assumes block assignment: \;$W_{it} = \mathbf{1}\{i > N_{co},\, t > T_{pre}\}$. \;All treated units start treatment at the same time. No staggered adoption in the headline.
+
+\vspace{0.5em}
+\begin{block}{So what about staggered settings (like baker.do)?}
+Appendix VI (pp.\,41--42): split a staggered panel into block sub-panels (one per adoption date), run SDID on each, take a weighted average (weights $\propto$ fraction of treated unit-period pairs).
+\end{block}
+
+\vspace{0.4em}
+\textbf{Practical implication for baker.do:} drop the always-treated 2004 cohort to create a clean block (1986/1992/1998 treated vs.\ never-treated). \;Same restriction we used for CS this morning. \;For richer multi-cohort designs, Ben-Michael, Feller \& Rothstein (2019) is the cousin paper.
+\end{frame}
 
 %% ---------- L8-F1: The setup ----------
 \begin{frame}{Recall this morning's simulation (baker.do)}
@@ -659,7 +714,7 @@ CS (DR-DiD) & $68.33$ & $68.34^{\ast\ast\ast}$ \\
 \begin{frame}{When to reach for SDID}
 \vspace{0.5em}
 \begin{itemize}
-  \item \textbf{Many treated units.} \;Original SC needs $N_1 = 1$. \;SDID handles a large block of treated states cleanly.
+  \item \textbf{A \textit{block} of treated units.} \;SC was designed for $N_1 = 1$ (and runs unit-by-unit beyond that). \;SDID is designed for a block of treated states treated jointly at the same time.
   \vspace{0.3em}
   \item \textbf{Imperfect pre-period match.} \;If SC's convex hull doesn't include the treated unit, SDID's $w_0$ intercept can soak up the level gap and match trends.
   \vspace{0.3em}
@@ -677,7 +732,7 @@ CS (DR-DiD) & $68.33$ & $68.34^{\ast\ast\ast}$ \\
   \vspace{0.3em}
   \item \textbf{Visually inspect pre-trends after weighting.} \;The pre-period match \textit{after} applying $\widehat{w}_i$ and $\widehat{\lambda}_t$ is what matters. \;The \texttt{sdid, graph} option produces it.
   \vspace{0.3em}
-  \item \textbf{Standard errors with small treated groups.} \;Bootstrap is unstable when $N_1$ is small; placebo and jackknife are alternatives.
+  \item \textbf{Standard errors --- depends on $N_{tr}$.} \;With $N_{tr}=1$ (e.g., Prop 99) only \textbf{placebo} is defined (jackknife collapses). \;Small $N_{tr}>1$: bootstrap is unstable; jackknife (conservative) and placebo are alternatives. \;Large $N_{tr}$: bootstrap is preferred.
   \vspace{0.3em}
   \item \textbf{Heterogeneous effects.} \;SDID reports an ATT. \;If you suspect substantial heterogeneity, also run CS by group.
 \end{itemize}
@@ -688,6 +743,103 @@ CS (DR-DiD) & $68.33$ & $68.34^{\ast\ast\ast}$ \\
 %% =====================================================================
 \remixsection{10.\ Synthesis \\[0.3em] {\normalsize\normalfont SC, DiD, SDID --- when to use which}}
 
+%% ---------- L10-F0a: Opening — three lenses ----------
+\begin{frame}{Which estimator should I use?}
+\footnotesize
+The choice between SC, DiD, and SDID follows from three things you can see \textit{before} running anything.
+
+\vspace{0.6em}
+\begin{enumerate}\setlength\itemsep{6pt}
+  \item \textbf{Treatment timing.} \;One treated unit? A block? Staggered cohorts?
+  \item \textbf{Pre-trends.} \;Parallel in raw data? Different in level? Different in slope?
+  \item \textbf{Specific concerns.} \;Heterogeneous effects? Dynamic effects? Inference with $N_{tr}=1$?
+\end{enumerate}
+
+\vspace{0.8em}
+\highlight{Three lenses --- three slides --- one decision.}
+
+\vspace{0.4em}
+\meta{The lenses interact. Read all three before choosing. The decision matrix at the end consolidates.}
+\end{frame}
+
+%% ---------- L10-F0b: Lens 1 — Treatment timing ----------
+\begin{frame}{Lens 1: how many treated units, and when?}
+\footnotesize
+\textbf{Count the treated units and look at adoption dates.} \;The shape of $W_{it}$ drives the choice.
+
+\vspace{0.4em}
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{0.42\textwidth} l}
+\toprule
+\textbf{Setting} & \textbf{First-choice estimator} \\
+\midrule
+$N_{tr} = 1$, long pre-period & \textbf{SC} (or SDID with placebo SE) \\
+$N_{tr} > 1$, single adoption date (block) & \textbf{SDID} \\
+$N_{tr} > 1$, staggered adoption & \textbf{CS / dCdH} (or SDID block-by-block, App.\ VI) \\
+$N_{tr}$ very large, parallel trends credible & \textbf{DiD} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item SDID's headline theorem is for \textit{block} assignment. Staggered settings: the Bacon-decomp issues from this morning still apply.
+  \item DiD is right when pre-trends genuinely line up --- don't over-engineer.
+\end{itemize}
+\end{frame}
+
+%% ---------- L10-F0c: Lens 2 — Pre-trends ----------
+\begin{frame}{Lens 2: what do the pre-trends look like?}
+\footnotesize
+\textbf{Plot the raw pre-trend lines.} \;What you see tells you which assumption is cheap and which is binding.
+
+\vspace{0.4em}
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{0.46\textwidth} l}
+\toprule
+\textbf{Pre-period pattern} & \textbf{Use} \\
+\midrule
+Parallel slopes, similar levels & \textbf{DiD} (cheapest assumption) \\
+Parallel slopes, different levels & \textbf{SDID} ($w_0$ absorbs the gap) \\
+Non-parallel; donor reweighting matches exactly & \textbf{SC} (if convex hull holds) \\
+Non-parallel; donor pool doesn't bracket treated & \textbf{SDID} or augmented SC \\
+Pre-period too short to read trend & No estimator saves a bad design \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+\highlight{If pre-trends visibly diverge, DiD is the wrong tool.} \;The question is which weighting fix.
+\end{frame}
+
+%% ---------- L10-F0d: Lens 3 — Specific concerns ----------
+\begin{frame}{Lens 3: what's your specific concern?}
+\footnotesize
+\textbf{Match the worry to the estimator that addresses it.}
+
+\vspace{0.3em}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{p{0.46\textwidth} l}
+\toprule
+\textbf{Specific concern} & \textbf{Use} \\
+\midrule
+Heterogeneous effects across cohorts & \textbf{CS} (reports ATT$(g,t)$) \\
+Dynamic effects growing over time & CS event study; or \textbf{synthdid} ES aggregation \\
+$N_{tr} = 1$, need inference & \textbf{SC} or \textbf{SDID with placebo} \\
+Time-varying confounders $X_{it}$ & \textbf{DR-DiD} (yesterday); or residualize first \\
+Audience needs transparent weights & \textbf{SC} (sparse donor pool visible) \\
+Long panel, many states, suspect PT & \textbf{SDID} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.4em}
+\meta{Lenses interact. $N_{tr}=1$ (Lens 1) plus parallel trends in raw data (Lens 2) means SC and DiD both work --- Lens 3 (transparency? inference? heterogeneity?) breaks the tie.}
+\end{frame}
+
 %% ---------- L10-F1: One-page comparison ----------
 \begin{frame}{Three estimators, one decision matrix}
 \vspace{0.4em}
@@ -696,7 +848,7 @@ CS (DR-DiD) & $68.33$ & $68.34^{\ast\ast\ast}$ \\
 \toprule
  & \textbf{Synthetic Control} & \textbf{DiD / CS} & \textbf{SDID} \\
 \midrule
-Treated units & One & Many & Many \\
+Treated units & One (or per-unit) & Many & Many, block-treated \\
 Pre-trends & Match by weights & Assume parallel & Weighted-match \\
 Time weights & Equal & Equal & Optimized \\
 Inference & Placebo permutation & Bootstrap / SE & Bootstrap / jackknife / placebo \\
