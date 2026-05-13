@@ -686,29 +686,21 @@ $\text{ATT}(g, t) \;=\; \mathbb{E}\big[\, Y_{i,t}(1) - Y_{i,t}(0) \,\big|\, G_i 
 \end{frame}
 
 %% ---------- L5-F3: PT in staggered settings ----------
-\begin{frame}{Three flavors of parallel trends for staggered settings}
+\begin{frame}{Parallel trends in a staggered setting --- two choices of control}
 \vspace{0.5em}
-The 2$\times$2 PT assumption generalizes three ways:
-
-\vspace{0.5em}
-\begin{center}\small
-\begin{tabular}{p{0.27\textwidth} p{0.3\textwidth} p{0.32\textwidth}}
-\toprule
-\textbf{Assumption} & \textbf{Comparison group} & \textbf{When to use} \\
-\midrule
-PT-GT-Nev & Never-treated only & Conservative; needs a never-treated to exist \\
-PT-GT-NYT & Not-yet-treated & \highlight{Authors' preferred} --- middle ground \\
-PT-GT-all & All groups, all periods & Strongest assumption; imposes parallel pre-trends \\
-\bottomrule
-\end{tabular}
-\end{center}
+You can ask the parallel-trends assumption to hold against either of two control groups:
 
 \vspace{0.6em}
-\begin{itemize}\small
-  \item NYT lets late-treated groups serve as controls for earlier-treated groups in their pre-treatment window. \;Never as already-treated controls.
-  \item The forbidden 2$\times$2 of Bacon is \textit{ruled out by construction}.
+\begin{itemize}
+  \item \textbf{Never-treated units.} \;Cleanest comparison; needs at least one such group to exist.
+  \item \textbf{Not-yet-treated units.} \;Late-treated cohorts serve as controls for earlier cohorts \textit{during their own pre-treatment window}. \;Never as already-treated controls.
 \end{itemize}
-\meta{Baker, Callaway, Cunningham, Goodman-Bacon, Sant'Anna (2025), ``DiD: A Practitioner's Guide.''}
+
+\vspace{0.7em}
+Either way, \highlight{the forbidden 2$\times$2 of Bacon is ruled out by construction.} \;CS never uses an already-treated unit as a comparison.
+
+\vspace{0.6em}
+\meta{If you have a clean never-treated group, use it. If you don't, use not-yet-treated. The math is the same.}
 \end{frame}
 
 %% ---------- L5-F4: The estimator (three flavors) ----------
@@ -791,8 +783,8 @@ CS can only estimate ATT$(g,t)$ if there is a valid comparison group for $(g, t)
 
 \vspace{0.5em}
 \begin{itemize}\small
-  \item Under \textbf{PT-GT-Nev}: need a never-treated unit observed at $t$.
-  \item Under \textbf{PT-GT-NYT}: need a not-yet-treated unit observed at $t$.
+  \item \textbf{Never-treated comparison:} you need at least one unit untreated at $t$.
+  \item \textbf{Not-yet-treated comparison:} you need at least one unit that hasn't \textit{yet} reached its treatment date by $t$.
 \end{itemize}
 
 \vspace{0.6em}
@@ -843,17 +835,21 @@ $Y_{i,t} \;=\; \alpha_i \;+\; \delta_t \;+\; \displaystyle\sum_{g \in G} \mu_g\,
 \end{frame}
 
 %% ---------- L6-F3: SA's proposition ----------
-\begin{frame}{SA's proposition: $\mu_g$ is contaminated by other leads and lags}
+\begin{frame}{Each lead and lag picks up treatment effects from \textit{other} leads and lags}
 \vspace{0.4em}
-Even under parallel trends and no anticipation, the TWFE event-study coefficient on bin $g$ is:
+Write $\text{ATT}_{e,l}$ for the treatment effect on cohort $e$ at $l$ years from its treatment date.
+
 \vspace{0.4em}
+Even under parallel trends and no anticipation, the TWFE coefficient on event-time bin $g$ is:
+
+\vspace{0.3em}
 \begin{align*}
-\mu_g \;=\; & \underbrace{\textstyle\sum_{l \in g} \sum_e w^g_{e,l}\, \text{CATT}_{e,l}}_{\text{the target (own bin)}} \\[0.2em]
-            & + \underbrace{\textstyle\sum_{g' \neq g} \sum_{l' \in g'} \sum_e w^g_{e,l'}\, \text{CATT}_{e,l'}}_{\text{contamination from \textit{other} included bins}} \\[0.2em]
-            & + \underbrace{\textstyle\sum_{l' \in g^{\text{excl}}} \sum_e w^g_{e,l'}\, \text{CATT}_{e,l'}}_{\text{contamination from \textit{excluded} bins}}
+\mu_g \;=\; & \underbrace{\textstyle\sum_{l \in g} \sum_e w^g_{e,l}\, \text{ATT}_{e,l}}_{\text{the target (own bin)}} \\[0.2em]
+            & + \underbrace{\textstyle\sum_{g' \neq g} \sum_{l' \in g'} \sum_e w^g_{e,l'}\, \text{ATT}_{e,l'}}_{\text{leakage from \textit{other} included bins}} \\[0.2em]
+            & + \underbrace{\textstyle\sum_{l' \in g^{\text{excl}}} \sum_e w^g_{e,l'}\, \text{ATT}_{e,l'}}_{\text{leakage from \textit{excluded} bins}}
 \end{align*}
-\vspace{0.2em}
-\highlight{Other-bin weights sum to zero --- but only cancel under treatment-effect homogeneity.} \;With heterogeneous CATTs, the contamination doesn't cancel.
+\vspace{0.1em}
+\highlight{The cross-bin weights sum to zero --- but only cancel when treatment effects are identical across cohorts.} \;Once they're heterogeneous, the leakage doesn't cancel.
 \end{frame}
 
 %% ---------- L6-F4: What this means in practice ----------
@@ -863,9 +859,9 @@ Under PT $+$ no anticipation but \textit{not} homogeneity:
 \vspace{0.5em}
 \begin{itemize}\small
   \item A pre-period lead $\mu_{-2}$ should be zero if pre-trends are truly parallel.
-  \item In TWFE it isn't --- it picks up CATTs from \textit{post-treatment} bins through the cross-bin weights.
-  \item So a ``failed placebo'' may just be the cross-bin contamination.
-  \item And a ``passing placebo'' may just be cancellation, not evidence of PT.
+  \item In TWFE it isn't --- it picks up post-treatment effects from \textit{other} cohorts through the cross-bin weights.
+  \item So a ``failed placebo'' may just be the cross-bin leakage.
+  \item And a ``passing placebo'' may just be cancellation, not evidence of parallel trends.
 \end{itemize}
 \vspace{0.5em}
 \textbf{Lesson:} \;Don't drop excluded bins arbitrarily. \;Lagged effects contaminate through the excluded bins.
@@ -922,54 +918,55 @@ TWFE leads slope downward pre-treatment --- the cross-bin contamination. \;SA's 
 \end{frame}
 
 %% ---------- L7-F2: The decomposition ----------
-\begin{frame}{The dCdH decomposition: weights on unit-level effects}
+\begin{frame}{The dCdH decomposition: weights on \textit{cell-level} treatment effects}
 \vspace{0.4em}
-Let $\Delta^g_{i,t} = Y^1_{i,t} - Y^\infty_{i,t}$ be the \textit{unit-level} treatment effect for unit $i$ in period $t$. Under PT, no anticipation, and SUTVA:
-\vspace{0.4em}
-\begin{block}{Theorem (dCdH 2020)}
+Let $\Delta_{g,t}$ be the average treatment effect for group $g$ in period $t$ --- one number per treated cell of the panel. \;Under parallel trends and no anticipation:
+\vspace{0.3em}
+\begin{block}{Theorem 1 (dCdH 2020)}
 \centering
-$\delta^{\text{TWFE}} \;=\; \mathbb{E}\bigg[ \displaystyle\sum_{i,t:\, D_{i,t}=1} \tfrac{1}{N^T}\, w_{i,t}\, \Delta^g_{i,t} \bigg], \qquad \displaystyle\sum_{i,t:\, D_{i,t}=1} \tfrac{w_{i,t}}{N^T} = 1, \quad w_{i,t} \text{ \textbf{can be negative}}.$
+$\beta_{\text{fe}} \;=\; \mathbb{E}\!\left[\displaystyle\sum_{(g,t):\,D_{g,t}=1} \tfrac{N_{g,t}}{N_1}\, w_{g,t}\, \Delta_{g,t}\right], \quad \displaystyle\sum_{(g,t)}\tfrac{N_{g,t}}{N_1}w_{g,t} = 1, \quad w_{g,t} \text{ \textbf{can be negative}}.$
 \end{block}
-\vspace{0.5em}
+\vspace{0.4em}
 \begin{itemize}\small
-  \item Weights come from the OLS residual of $D_{i,t}$ on unit and time FE.
-  \item Bacon's weights are on \textit{2$\times$2s} (and always positive). \;dCdH's weights are on \textit{individual treatment effects} (and may be negative).
+  \item The weights $w_{g,t}$ are built from the residuals of regressing $D_{g,t}$ on group and time fixed effects.
+  \item Bacon decomposes the \textit{estimator} into 2$\times$2 building blocks (always positive). \;dCdH decompose the \textit{estimand} into cell-level effects (\highlight{may be negative}).
+  \item And dCdH applies to \textit{any} TWFE design, not just staggered.
 \end{itemize}
 \end{frame}
 
 %% ---------- L7-F3: Why negative weights are dangerous ----------
 \begin{frame}{Negative weights break the ``no sign-flip property''}
 \vspace{0.5em}
-\textbf{Thought experiment.} \;Suppose every unit gains from the treatment ($\Delta^g_{i,t} > 0$ for all $i,t$).
+\textbf{Thought experiment.} \;Suppose every treated cell gained from the treatment ($\Delta_{g,t} > 0$ for all $(g,t)$).
 \vspace{0.4em}
 \begin{itemize}\small
-  \item If all $w_{i,t} > 0$: $\widehat{\delta}^{\text{TWFE}}$ is a positive weighted average of positive effects. \;Sign matches.
-  \item If some $w_{i,t} < 0$: nothing prevents $\widehat{\delta}^{\text{TWFE}}$ from being \highlight{negative} --- even though every unit gained.
+  \item If all $w_{g,t} > 0$: TWFE is a positive weighted average of positive effects. \;Sign matches.
+  \item If some $w_{g,t} < 0$: nothing prevents TWFE from being \highlight{negative} --- even though every cell gained.
 \end{itemize}
 \vspace{0.6em}
-\textbf{This is what we saw in baker.do.} \;Truth $+82$, TWFE $-6.69$. Some unit-level effects got large negative weights; they swamped the positive-weight contributions.
+\textbf{This is what we saw in baker.do.} \;Truth $+82$, TWFE $-6.69$. Some cells got large negative weights; they swamped the positive-weight contributions.
 \vspace{0.5em}
 \meta{Pre-dCdH, ``OLS is a weighted average'' was reassuring. dCdH made it disturbing.}
 \end{frame}
 
 %% ---------- L7-F4: When does it bite ----------
 \begin{frame}{When the negative weights bite (and when they don't)}
-\vspace{0.5em}
-\textbf{The diagnostic dCdH recommends running, before you publish anything:}
+\vspace{0.4em}
+\textbf{Run two diagnostics on your data before publishing:}
 \vspace{0.4em}
 \begin{enumerate}\small
-  \item Fraction of unit-period treatment effects receiving \textit{negative} weight in your TWFE.
-  \item The minimum amount of heterogeneity in $\Delta^g_{i,t}$ that would flip the sign of $\widehat{\delta}^{\text{TWFE}}$.
+  \item \textbf{The share of treated cells with negative weight.} \;If a meaningful fraction of cells gets a minus sign, your headline is built on those cancellations.
+  \item \textbf{The smallest amount of heterogeneity in $\Delta_{g,t}$ that could flip the sign of TWFE.} \;If small, your sign is fragile. If large, your sign is robust.
 \end{enumerate}
 \vspace{0.5em}
 \textbf{Rules of thumb:}
 \begin{itemize}\small
-  \item Large never-treated group $\Rightarrow$ fewer negative weights, smaller magnitudes.
-  \item Treatment dates packed close together $\Rightarrow$ also fewer.
-  \item Long panel with a few early-treated cohorts $\Rightarrow$ the worst case.
+  \item A big never-treated group helps: fewer negative weights, smaller magnitudes.
+  \item Treatment dates packed close together: also fewer.
+  \item A long panel with a few early-treated cohorts: the worst case.
 \end{itemize}
-\vspace{0.5em}
-\meta{Software: \texttt{twowayfeweights} (Stata, SSC; R via the \texttt{TwoWayFEWeights} package) reports both diagnostics on your specific dataset.}
+\vspace{0.4em}
+\meta{Software: \texttt{twowayfeweights} (Stata SSC); R via \texttt{TwoWayFEWeights}. \;Both numbers come out on your specific dataset.}
 \end{frame}
 
 %% ---------- L7-F5: The on-off case ----------
@@ -988,20 +985,19 @@ Suppose treatment can switch on \textit{and} off (Roe v.\ Wade 1973 $\to$ Dobbs 
 
 %% ---------- L7-F6: The weighting lesson ----------
 \begin{frame}{The unifying lesson across Bacon, SA, and dCdH}
-\vspace{0.6em}
 \begin{block}{What makes weights ``good''}
 \centering
-The economic question is: \;\textit{what parameter do you want?} \\[0.3em]
-OLS doesn't ask. \;OLS picks weights from the residual variance of $D$.
+The economic question is: \textit{what parameter do you want?} \\[0.2em]
+OLS doesn't ask. OLS picks weights from the residual variance of $D$.
 \end{block}
-\vspace{0.7em}
-\begin{itemize}
-  \item Bacon: TWFE = weighted average of 2$\times$2s. \;Weights positive but variance-driven.
-  \item SA: event-study $\mu_g$ = weighted average of CATT$_{e,l}$ \textit{across} bins. \;Cross-bin contamination.
-  \item dCdH: TWFE = weighted average of unit-level $\Delta^g_{i,t}$. \;\highlight{Weights can be negative.}
+\vspace{0.5em}
+\begin{itemize}\small
+  \item Bacon: TWFE = weighted average of 2$\times$2s. Weights positive, driven by treatment-status variance.
+  \item SA: $\mu_g$ = weighted average of treatment effects across cohorts and event-times. Cross-bin leakage.
+  \item dCdH: TWFE = weighted average of cell-level treatment effects $\Delta_{g,t}$. \highlight{Weights can be negative.}
 \end{itemize}
-\vspace{0.6em}
-\textbf{All three say the same thing:} \;If you let OLS pick the weights, you've let it pick your economic question for you. \;Forward-engineer instead.
+\vspace{0.5em}
+\textbf{All three say the same thing:} if you let OLS pick the weights, you've let it pick your economic question. \;Forward-engineer instead.
 \end{frame}
 
 %% =====================================================================
