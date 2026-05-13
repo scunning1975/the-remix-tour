@@ -104,7 +104,7 @@ p <- ggplot(df, aes(x = beta_hat)) +
     y = "density",
     caption = expression(atop(
       "LLN/CLT: " * hat(beta) * " converges to the OLS population estimand.  Whether the estimand IS the ATT is a separate question.",
-      "Under heterogeneity, bias = " * - Delta * "ATT — and we don't know which side of the estimand the ATT lives on."
+      "Even when parallel trends holds, bias = " * - Delta * "ATT — the dynamic-heterogeneity term from already-treated controls.  Sign unknown."
     ))
   ) +
   theme_remix(base_size = 12) +

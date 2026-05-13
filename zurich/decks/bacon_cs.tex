@@ -127,12 +127,11 @@ Event study of no-fault divorce on female suicide (replication of SW from Bacon 
 %% ---------- Slide 5: Is the finding unbiased? ----------
 \begin{frame}{Their finding $\;-3.08\;$ (s.e.\ 1.27).  Is it unbiased?}
 \begin{center}
-\includegraphics[width=0.78\textwidth,height=0.62\textheight,keepaspectratio]{figures/bacon_sw_sampling_dist.pdf}
+\includegraphics[width=0.76\textwidth,height=0.6\textheight,keepaspectratio]{figures/bacon_sw_sampling_dist.pdf}
 \end{center}
-\vspace{-0.3em}
+\vspace{-0.4em}
 \begin{center}\small\color{warmgray}\itshape
-$\widehat{\beta}^{\text{TWFE}}$ converges to its OLS population estimand at $-3.08$ (LLN/CLT). \;That much is unbiased.
-\;Whether the estimand IS the ATT is a \textit{separate} question --- and under heterogeneity, the bias is $-\Delta\text{ATT}$, somewhere we cannot pin down without more structure.
+$\widehat{\beta}^{\text{TWFE}}$ converges to its estimand at $-3.08$ (LLN/CLT). \;That much is unbiased. \;\highlight{Even when parallel trends holds}, the bias is $-\Delta\text{ATT}_k$ --- the dynamic-heterogeneity term from already-treated cohorts being used as controls. \;Sign unknown.
 \end{center}
 \end{frame}
 
