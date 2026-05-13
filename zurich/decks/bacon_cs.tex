@@ -77,55 +77,75 @@
   {Scott Cunningham \textperiodcentered\ Baylor University}
   {University of Zurich \textperiodcentered\ May 13, 2026}
 
-%% ---------- Slide 2: The opening puzzle ----------
-\begin{frame}{Goodman-Bacon (2021): the headline TWFE is not the ATT}
+%% ---------- Slide 2: SW story ----------
+\begin{frame}{Stevenson \&\ Wolfers (2006): can law reduce intimate violence?}
 \vspace{0.4em}
-\textbf{The question.} \;Did no-fault unilateral divorce laws reduce female suicide rates? \;Treatment timing varies across states from 1969 to 1985.
+Before 1969, divorce in the U.S.\ required showing fault --- adultery, abandonment, cruelty --- and either spouse could veto. \;Starting with California in 1969, states began adopting \highlight{unilateral divorce} laws: either spouse can dissolve the marriage, no fault required, no veto. \;By 1985 most states had moved.
 
 \vspace{0.6em}
-\textbf{The setup.} \;Staggered adoption $+$ two-way fixed effects:
+\textbf{The theory.} \;Lower exit cost shifts bargaining power within marriage. \;A woman with a credible threat to leave faces less violence and depression. \;Less violence, less depression $\Rightarrow$ fewer suicides.
+
+\vspace{0.6em}
+\textbf{The question.} \;Did the staggered timing of unilateral-divorce reforms reduce women's suicide rates?
+
+\vspace{0.4em}
+\meta{Stevenson, B., and J.\ Wolfers (2006). ``Bargaining in the Shadow of the Law: Divorce Laws and Family Distress.'' \textit{QJE} 121(1): 267--288.}
+\end{frame}
+
+%% ---------- Slide 3: SW data + design ----------
+\begin{frame}{Their data and design}
+\vspace{0.5em}
+\textbf{Data.} \;NCHS Multiple Cause of Death (1964--1996); 1960 Census $+$ SEER for population denominators; SW's own coding of state divorce-law dates.
+
+\vspace{0.4em}
+\textbf{Outcome.} \;Age-adjusted female suicide rate per million women.
+
+\vspace{0.4em}
+\textbf{Sample.} \;37 states that adopted unilateral divorce 1969--1985 (staggered); 14 control states (5 never-reform, 8 pre-1964 reform, 1 excluded).
+
+\vspace{0.6em}
+\textbf{The design.} \;Staggered two-way fixed effects:
 \begin{center}\small
 $y_{ist} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, D_{ist} \;+\; \varepsilon_{ist}$
 \end{center}
 
-\vspace{0.5em}
-\textbf{The headline result.} \;Stevenson-Wolfers report a meaningful negative effect: unilateral divorce reduced female suicide.
-
-\vspace{0.6em}
-\textbf{Goodman-Bacon (2021) revisited it.} \;That headline TWFE coefficient is \highlight{not} the ATT. It's a weighted average of every 2$\times$2 DiD you could draw with the data --- including 2$\times$2s where one already-treated state is used as the control for a later-treated state.
-
-\vspace{0.5em}
-\meta{Goodman-Bacon, A.\ (2021), ``Difference-in-differences with variation in treatment timing,'' \textit{J.\ Econometrics} 225(2): 254--277.}
+\vspace{0.4em}
+\textbf{Their headline.} \;An 8--16\%\ decline in women's suicide rate in unilateral-divorce states, growing over time. \;Companion declines in domestic violence and intimate-partner homicide.
 \end{frame}
 
-%% ---------- Slide 3: The puzzle in one number ----------
-\begin{frame}{A small simulation makes the problem visible}
-\vspace{0.4em}
-\textbf{baker.do.} \;1{,}000 firms, 4 cohorts of states, treated at 1986/1992/1998/2004. \;\textit{Dynamic} treatment effects: ATT grows each year since treatment.
-
-\vspace{0.5em}
+%% ---------- Slide 4: The event study ----------
+\begin{frame}{Their event study: the effect grows over time}
 \begin{center}
-\begin{tabular}{lcc}
-\toprule
-& \textbf{The truth} & \textbf{TWFE estimate} \\
-\midrule
-Mean ATT across cohorts and post-periods & $+82$ & $-6.69$ \\
-\bottomrule
-\end{tabular}
+% TODO clip from Bacon (2021) JoE Figure 4 (event-study panel for SW)
+% and save to figures/bacon_sw_eventstudy.png.
+\includegraphics[width=0.7\textwidth,height=0.6\textheight,keepaspectratio]{figures/bacon_sw_eventstudy.png}
+\end{center}
+\vspace{-0.2em}
+\begin{center}\small\color{warmgray}\itshape
+SW's event study of female suicide rates relative to a state's no-fault-divorce reform year. \;Pre-period coefficients hover near zero; post-period coefficients turn negative and grow. \;Average post-treatment event-study coefficient: \highlight{$-4.92$ suicides per million women}.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 5: Bacon revisits ----------
+\begin{frame}{Goodman-Bacon (2021) re-examined the SW estimate}
+\vspace{0.5em}
+Bacon (2021) ran the same TWFE regression on the same data --- the static specification, not the event study.
+
+\vspace{0.6em}
+\begin{center}\large
+$\widehat{\beta}^{\,\text{TWFE}}_{\text{SW}} \;=\; -3.08 \quad\;\;(\text{156 components})$
 \end{center}
 
 \vspace{0.7em}
-\highlight{The sign flipped.}
-
-\vspace{0.4em}
 \begin{itemize}\small
-  \item Same data. Same DGP. Same TWFE regression you've been running.
-  \item No econometric error in the regression itself --- OLS gave you exactly what OLS gives.
-  \item Something is wrong with the \textit{estimand} TWFE is targeting.
+  \item The late-treated-vs-already-treated 2$\times$2s average \highlight{$+3.51$} --- the \textit{wrong sign}, pulled there by treatment-effect heterogeneity over time.
+  \item Drop those terms: the rest averages $-5.44$, very close to the event-study average of $-4.92$.
+  \item The single TWFE coefficient of $-3.08$ masks a $+3.51$ vs.\ $-5.44$ split.
 \end{itemize}
 
 \vspace{0.4em}
-\meta{Simulation: \texttt{the-remix-tour/simulations/staggered/baker.do}; seed 20200403.}
+\textbf{The puzzle this opens.} \;Why is TWFE's static-spec headline so much smaller in magnitude than the event-study average from the same data? \;\highlight{That's the question this morning.}
+\meta{Goodman-Bacon, A.\ (2021), ``Difference-in-differences with variation in treatment timing,'' \textit{J.\ Econometrics} 225(2): 254--277.}
 \end{frame}
 
 %% ---------- Slide 4: Roadmap ----------
@@ -565,27 +585,6 @@ $(0.5)(+51.80) \;+\; (0.5)(-65.18) \;=\; -6.69.$
 
 \vspace{0.7em}
 \textbf{Read it.} \;Half the weight is on a 2$\times$2 averaging $-65$ --- a 2$\times$2 that uses an already-treated group as control. \;\highlight{That's the forbidden comparison doing the damage.}
-\end{frame}
-
-%% ---------- L3-F5: Closing the Stevenson-Wolfers loop ----------
-\begin{frame}{Bacon's own decomposition of Stevenson-Wolfers}
-\vspace{0.5em}
-We opened with Stevenson-Wolfers. \;Bacon ran the same decomposition on their actual data.
-
-\vspace{0.7em}
-\begin{center}\large
-$\widehat{\beta}^{\text{DD}}_{\text{SW}} \;=\; -3.08 \quad\;\;(\text{156 components})$
-\end{center}
-
-\vspace{0.7em}
-\begin{itemize}\small
-  \item The late-vs-early-treated 2$\times$2s average \highlight{$+3.51$} --- the wrong sign, pulled by treatment-effect heterogeneity over time.
-  \item Drop those terms: the rest averages $-5.44$, close to the event-study average ($-4.92$).
-  \item The single TWFE coefficient of $-3.08$ is masking a $+3.51$ vs.\ $-5.44$ split. \;\highlight{Same disease as baker.do, less extreme.}
-\end{itemize}
-
-\vspace{0.4em}
-\meta{Goodman-Bacon (2021, \S4 and Fig.\ 5). \;The SW headline survives qualitatively but its magnitude is contaminated.}
 \end{frame}
 
 %% =====================================================================
