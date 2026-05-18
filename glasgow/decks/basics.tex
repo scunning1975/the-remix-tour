@@ -2736,8 +2736,8 @@ A single regression drops \textit{one} event-time dummy. \;Multicollinearity won
 \end{block}
 \end{frame}
 
-%% ---------- Slide 51f: Implication for PT falsification ----------
-\begin{frame}{Why the hinge matters for parallel-trends tests}
+%% ---------- Slide 51f: Implication for pre-trends test ----------
+\begin{frame}{Why the hinge matters for the pre-trends test}
 \vspace{0.4em}
 The pre-period coefficients $\hat\beta_{-q}, \ldots, \hat\beta_{-2}$ are:
 \vspace{-0.2em}
@@ -2748,12 +2748,36 @@ The pre-period coefficients $\hat\beta_{-q}, \ldots, \hat\beta_{-2}$ are:
 \vspace{0.4em}
 \begin{itemize}\setlength\itemsep{4pt}
   \item These are \textit{long-difference trends from $t = -1$} --- not point-to-point changes.
-  \item If you use them as a \highlight{parallel-trends falsification}, you're testing that those long-difference trends are zero.
-  \item The post-period coefficients use the \textit{same hinge}. \;The falsification model must match the long-difference structure of the post-period model.
+  \item A \highlight{pre-trends check} asks whether those long differences are statistically zero.
+  \item Post-period coefficients use the \textit{same hinge}. \;The pre-period model has to match the long-difference structure of the post-period model.
 \end{itemize}
 
 \vspace{0.3em}
 \meta{Match the model, match the test. \;A different baseline is a different question.}
+\end{frame}
+
+%% ---------- Slide 51g: Pre-trends are NOT parallel trends ----------
+\begin{frame}{Pre-trends are not parallel trends}
+\footnotesize
+\textbf{The parallel-trends assumption} (post-period, counterfactual):
+\vspace{-0.3em}
+\[
+\big\{ \mathbb{E}[Y(0)|D{=}1, t] - \mathbb{E}[Y(0)|D{=}1, t{-}1] \big\} \;-\; \big\{ \mathbb{E}[Y(0)|D{=}0, t] - \mathbb{E}[Y(0)|D{=}0, t{-}1] \big\} \;=\; 0
+\]
+
+\vspace{-0.4em}
+\textbf{Parallel \textit{pre}-trends} (pre-period, observable):
+\vspace{-0.3em}
+\[
+\big\{ \mathbb{E}[Y(0)|D{=}1, t{-}2] - \mathbb{E}[Y(0)|D{=}1, t{-}1] \big\} \;-\; \big\{ \mathbb{E}[Y(0)|D{=}0, t{-}2] - \mathbb{E}[Y(0)|D{=}0, t{-}1] \big\} \;=\; 0
+\]
+
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Different periods. \;Different conditional expectations. \;\highlight{Different quantities.}
+  \item Neither implies the other. \;Pre-trends can be flat and post-period PT can fail. \;Pre-trends can wobble and post-period PT can still hold.
+  \item Flat pre-trends are \textbf{heuristic evidence}, not a test of the identifying assumption.
+\end{itemize}
 \end{frame}
 
 %% ---------- Slide 53: Live in R ----------
