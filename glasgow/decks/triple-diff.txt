@@ -1,0 +1,495 @@
+THE REMIX
+
+
+
+
+Triple Differences
+Day 2 of 3, Morning: When parallel trends
+fails, find a third group
+
+Scott Cunningham · Baylor University
+University of Zurich · May 12, 2026
+
+
+Causal Inference: The Remix · Yale University Press · forthcoming
+2026
+        Yesterday’s closing claim, today’s tension
+
+
+
+
+       DiD is a research design with two ingredients — the 2×2 calculation
+       and parallel trends — and together they identify the ATT.
+       — Day 1 closing slide
+
+
+         Yesterday: if you believe PT, the 2×2 identifies the ATT.
+         Today: what if you don’t believe PT?
+         Two answers — both responses to a PT violation. This morning: a third group. This afternoon:
+         covariates.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                               2
+        The applied problem
+
+
+     You think a state’s policy moved an outcome. You build the 2×2:
+
+                                            TX       TX         AR       AR
+                                 δb2×2 = (Y post − Y pre ) − (Y post − Y pre )
+
+
+         But you suspect Texas was already on a different trajectory — for reasons unrelated to the
+         policy.
+         PT is violated. The 2×2 is biased. Now what?
+         One option: find a group inside Texas that experiences the same trend bias but is NOT subject
+         to the policy. Subtract their bias off.
+         That move is the triple difference.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                3
+        This morning, six beats
+
+
+
+
+      1. Gruber 1994: the canonical DDD application
+      2. Two biased DiDs — and one parallel-bias assumption
+      3. The 8-cell calculation, by hand
+      4. A simulation: see the bias, see DDD recover the ATT
+      5. DDD as a regression specification
+      6. When DDD goes wrong — and Gruber’s actual numbers
+
+
+
+
+University of Zurich · Department of Economics · May 2026      4
+Maternity Mandate
+        The policy: 1976 maternity insurance mandates
+
+
+
+         Several states in 1976 mandated that employer-provided health insurance cover childbirth on
+         the same terms as any other medical condition.
+         Before: pregnancy could be excluded from coverage.
+         Cost to insurers → cost to employers → cost to whom?
+
+
+
+      The economic question
+
+      Did the burden shift back to childbearing-age women in the form of lower wages? Or did
+      employers absorb it? Or was it shifted to consumers?
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                              6
+        Whose wages would have to fall?
+
+
+
+
+     If the mandate truly raises the employment cost of childbearing-age women, classical
+     incidence reasoning predicts the cost shifts to them via lower wages.
+
+         Treated cell: married women 20–40 in mandate states.
+         Comparison group — naive: married women 20–40 in non-mandate states.
+         But: women’s labor-market outcomes were diverging across states for many reasons
+         (manufacturing decline, services growth, two-earner-household norms). PT is suspect.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                       7
+        Gruber’s move: bring in a third group
+
+
+         In the same state, in the same labor market, take a group the mandate should not touch: single
+         men and older women.
+         They live in the same economy. The same trends hit them.
+         But they’re not the ones the mandate raised the cost of employing.
+
+
+
+      The bet
+
+      If the differential state trend hits the treated group AND the placebo group equally hard, the
+      placebo group’s “DiD” just is the bias.
+      Subtract the placebo DiD from the naive DiD — get the ATT.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                 8
+DiDs, One Bias
+        Biased DiD #1 — married women, two states
+
+
+
+                                           Mandate states (NJ)   Control states (PA)
+
+                   Pre                           Y = NJ               Y = PA
+                   Post                    Y = N J + N Jt + D      Y = P A + P At
+
+                   Difference (post-pre)         N Jt + D               P At
+
+
+                      δbDiD = (N Jt + D) − P At = D +            (N Jt − P At )
+                                                                |     {z      }
+                                                             bias if N Jt ̸= P At
+     The naive DiD recovers the ATT only if the state trends were the same. Assume they
+     aren’t.
+
+
+University of Zurich · Department of Economics · May 2026                                 10
+        Biased DiD #2 — single men + older women, same two states
+
+
+
+
+                                            Mandate states (NJ)   Control states (PA)
+
+                    Pre                          Y = NJ                Y = PA
+                    Post                      Y = N J + N Jt       Y = P A + P At
+
+                    Difference (post-pre)          N Jt                  P At
+
+
+                                  placebo
+                                δbDiD     = N Jt − P At = N Jt − P At
+      No treatment here. The placebo DiD is the bias — nothing else.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                               11
+        Subtract the bias — triple difference
+
+                                                             placebo
+                                           δbDDD = δbDiD − δbDiD
+                                                      
+                            = D + (N Jt − P At ) − (N Jt − P At ) = D
+
+
+
+      The new identifying assumption: parallel bias
+
+                                   (N Jt − P At )married = (N Jt − P At )placebo
+
+
+         Not “two parallel trends.” One assumption: the differential state trend hits both groups the same.
+         Trends can differ. Levels can differ. The cross-state gap in trends has to be the same across the
+         two demographic groups.
+
+University of Zurich · Department of Economics · May 2026                                                     12
+        The DDD cube — two states × two periods × two groups
+
+
+                                              Pre     Post
+
+
+                              Placebo                                      Control states
+
+                                                                     Mandate states
+
+                              Married
+
+
+
+                                    8 cells: states × groups × periods
+
+
+
+
+     We need 8 averages. We will form 3 subtractions twice over — a 2×2 DiD for each group — then subtract the
+                                   placebo DiD from the treated DiD. One number.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                        14
+        The 8 cells, filled in from the simulation
+
+
+                                                    Mandate states    Control states
+                                                     Pre      Post     Pre      Post
+
+                      Married women 20–40           70,503   73,813   49,006   60,013
+                      Placebo (men + older women)   71,510   82,490   50,003   63,742
+
+
+
+         Naive DiD (married women): ($57,488 − $58,722) − ($70,224 − $66,760) ≈ −$7,697
+         Placebo DiD (men + older women): ≈ −$2,759
+         DDD: −$7,697 − (−$2,759) = −$4,938
+
+
+              True ATT in the simulation: −$5,000. DDD recovers it. Naive DiD is off by 54%.
+
+
+
+University of Zurich · Department of Economics · May 2026                                      15
+        The DDD formula — one line, eight cells
+
+
+
+                                    T X,M    T X,M         AR,M   AR,M 
+                           δbDDD = (Y 1     −Y0      ) − (Y 1    −Y0    )
+                                     T X,P    T X,P        AR,P   AR,P 
+                                  − (Y 1    −Y0      ) − (Y 1    −Y0   )
+
+
+         Superscripts: state (TX = mandate, AR = control), group (M = married, P = placebo)
+         Subscripts: 0 = pre, 1 = post
+         Read it as: (DiD for the treated group) minus (DiD for the placebo group).
+         Two DiDs. One subtraction. That is all.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                     16
+Makes It Visible
+        See the bias before you read the regression
+                  Two diff−in−diffs. One bias. Both groups feel the same differential trend.
+                  Treated cells (married women × mandate states) drop $5,000 in 2015. The placebo group does NOT −− but its DiD is still biased.
+
+                                                                                              mandate begins
+
+                                  $90k
+
+
+
+                                  $80k
+
+
+
+
+                  Mean earnings
+                                  $70k
+
+
+
+                                  $60k
+
+
+
+                                  $50k
+
+
+
+                                         2010            2012                       2014                       2016                      2018              2020
+
+
+                                                                          Married women 20−40         Placebo: men + older women
+
+                                                                                     Control states      Mandate states
+
+                  Simulated DGP. Mandate states trend $500/yr SLOWER than control states. That trend bias hits BOTH groups equally −− the basis for DDD.
+
+
+
+
+                 Mandate states (green) trend slower than control states (blue) — for BOTH groups.
+                That’s the bias. The placebo group is in the same economy — it feels the same shift.
+
+University of Zurich · Department of Economics · May 2026                                                                                                         18
+        The simulation, code first
+
+      # DGP knobs:
+      # 40 states (1-20 mandate, 21-40 control)
+      # 3 worker groups (men, married women 20-40, older women)
+      # 2010-2020; treatment turns on in 2015
+      # TRUE ATT for married x mandate x post = -$5,000
+
+      df$state_trend <- if_else(df$experimental==1, 1000, 1500) # !! differential
+      df$group_trend <- if_else(df$worker==2, 500, 1000)
+      df$y0 <- df$baseline +
+              df$state_trend * df$year_diff +
+              df$group_trend * df$year_diff + rnorm(N, 0, 1500)
+
+      df$treat <- (df$experimental==1 & df$worker==2 & df$after==1)
+      df$y1 <- df$y0 - 5000 * df$treat
+      df$earnings <- df$treat * df$y1 + (1-df$treat) * df$y0
+
+
+     Full script: decks/code/Triple-Diff/ddd_simulation.R
+
+University of Zurich · Department of Economics · May 2026                           19
+        Three event studies, one figure
+                   Two biased DiDs, one unbiased Triple Diff
+                   The bias of the naive DiD equals the placebo DiD. Subtract them −− get the ATT.
+
+
+
+
+                                               $   0
+
+
+
+
+                   Event−study coefficient
+                                             $−3,000
+
+
+
+                                                          true ATT = −$5,000
+
+
+                                             $−6,000
+
+
+
+
+                                                       2010         2011       2012          2013          2014       2015         2016     2017          2018     2019   2020
+
+
+                                                                                      Naive DiD (biased)      Placebo DiD (also biased)   Triple Diff (unbiased)
+
+                   95% CI; SE clustered at state. The two biased DiDs track each other above zero; the DDD lands near −$5,000 after treatment.
+
+
+
+
+     Naive DiD (blue) lands too negative. Placebo DiD (gray) is the bias — nonzero even though nothing happened.
+                                 Triple Diff (green) lands at the true ATT of −$5,000.
+
+University of Zurich · Department of Economics · May 2026                                                                                                                        20
+        The saturated triple-interaction regression
+
+
+
+
+                        Yijt = α + β1 Di + β2 Gj + β3 τt + β4 (Di × Gj ) + β5 (Di × τt )
+                                + β6 (Gj × τt ) + δ (Di × Gj × τt ) + εijt
+
+
+
+         Di : state is a mandate state.   Gj : worker is in the treated group (married women 20–40).   τt :
+         post-period.
+         δ is the triple interaction — the DDD estimate of the ATT.
+         Every two-way interaction is also there. The triple strips out everything but the answer.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                     22
+        What the regression assumes
+
+
+         Parallel bias: the differential state-trend that biases the treated DiD biases the placebo DiD by
+         the same amount.
+         No anticipation: the treated group didn’t shift behavior before t = 2015.
+         SUTVA: one unit’s treatment doesn’t change another unit’s Y (0).
+
+
+
+      What DDD does not require
+
+      Two parallel-trends assumptions (one per group). That misconception — DDD as a “double
+      check” — is wrong.
+      DDD has one identifying assumption, and it’s weaker than the DiD’s. That’s its appeal.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                    23
+and When DDD Goes Wrong
+        Gruber (1994): DDD and DiD give nearly the same answer
+
+
+         Gruber’s naive DiD:   −6.2% (mandate effect on married-women wages)
+         Gruber’s triple diff: −5.4%
+         These are very close. Was DDD necessary?
+
+
+
+      The honest answer
+
+      Probably not in his case. But that’s the wrong question.
+      The value of DDD is what it would have caught. The placebo DiD was a real opportunity to
+      invalidate the design. It didn’t. The design is more credible because it could have failed.
+
+
+     This is the Popper move from Day 1, in a different costume.
+
+
+University of Zurich · Department of Economics · May 2026                                           25
+        When DDD is worse than DiD
+
+
+
+         The placebo group is also treated — by a different policy that hit at the same time. Now the
+         placebo DiD reflects that policy, and subtracting it injects bias instead of removing it.
+         The bias is not common — the differential state-trend hits the treated group but not the
+         placebo group (or hits with a different magnitude). DDD identifies a parameter you didn’t want.
+         Wrong placebo group — one that experiences the policy through indirect channels.
+         Subtracting it removes signal, not bias.
+
+
+     The first defense is the placebo-group event study. If the placebo group has its own discontinuity at
+                                 the treatment date, the placebo isn’t placebo.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                    26
+        Even DDD wants its event study
+
+
+
+
+         DDD is a design, not a black box. You owe the reader the same five pieces from Day 1:
+         – Bite: did the policy bind?
+         – Event study: pre-trends on the DDD coefficient (we built one — show it)
+         – Falsification: a placebo for the placebo group itself
+         – Main result: the DDD point estimate
+         – Mechanism: the channel from policy to outcome
+         The event study is the way you defend parallel bias. Plot it. Show that pre-period DDD
+         coefficients are flat. Then the post-period estimate is credible.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                         27
+        What we’ve done this morning
+
+
+
+
+      1. Gruber 1994: a maternity-benefit story that DiD couldn’t tell
+      2. Two biased DiDs → one bias → subtract
+      3. The 8 cells, by hand, with the simulation matching
+      4. A picture showing parallel bias in trends
+      5. DDD as the saturated triple-interaction regression
+      6. One identifying assumption, not two — and how it fails
+
+
+
+
+University of Zurich · Department of Economics · May 2026                28
+        This afternoon
+
+
+
+
+         DDD’s escape hatch needs a third group that shares the bias.
+         Often you don’t have one.
+         Then the move is: condition on covariates. Inverse propensity weighting, outcome regression,
+         doubly robust.
+         And one false friend: controlling for the propensity score in a regression. That’s not what DR is.
+         We’ll see why.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                     29
+shift the treated counterfactual would have,
+            DDD recovers the ATT.
+
+             Back after lunch — covariates.
+

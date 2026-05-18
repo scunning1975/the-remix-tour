@@ -1,0 +1,2065 @@
+THE REMIX
+
+
+
+
+Advanced Topics in Ap-
+plied Causal Inference
+Day 1 of 3: Foundations
+
+Scott Cunningham · Baylor University
+University of Zurich · May 11–13, 2026
+
+
+Causal Inference: The Remix · Yale University Press · forthcoming
+2026
+        This week: three days of mine, one of Dan’s
+
+
+
+
+            Mon May 11          Foundations — the 2×2, parallel trends, event studies
+
+            Tue May 12          Covariates and staggered adoption
+
+            Wed May 13          Synthetic control and the frontier
+
+            Thu May 14          Dan Rees teaches the separate Hidden Curriculum work-
+                                shop
+
+
+
+
+University of Zurich · Department of Economics · May 2026                               2
+        Who am I?
+
+
+
+
+     Scott Cunningham · Professor of Economics, Baylor University
+
+         Empirical work: sex work, relationship markets, drug policy, abortion, corrections, suicide and
+         mental illness — and AI agents and AI methodologies
+         Podcast: The Mixtape with Scott
+         Substack: Scott’s Substack
+         Teaching platform: Mixtape Sessions
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                  3
+        We’ll show Claude Code for research throughout the week
+
+
+
+
+         Live demonstrations: building, debugging, and reasoning with an AI agent in your terminal
+         Three days of casual integration — not a Claude Code course, but an honest look at the
+         workflow
+         Bring your laptop if you want to follow along
+
+
+     If you’ve never tried it, that’s fine. Watch first; install later.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                            4
+        AI agents touch research in two places
+
+
+
+
+             1. Production                                    2. Verification
+            Agents that write the research                   Agents that audit the research —
+            — pose questions, pull data, run                 check identification, robustness,
+            analyses, draft papers.                          hidden choices, replicability.
+
+
+
+
+                             Both are growing fast. Both matter for what you do.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                        5
+        Production: Project APE, right here at UZH
+
+
+
+
+         David Yanagizawa-Drott (UZH Economics, Social Catalyst Lab)
+         Open experiment in fully autonomous economic policy evaluation
+         1,000 economics papers generated end-to-end by LLMs — benchmarked against AER and AEJ
+         papers
+         ape.socialcatalystlab.org
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                        6
+        Interestingly: APE’s go-to method is difference-in-differences
+
+
+
+
+         Of all the program evaluation designs an agent could pick, DiD comes up most often
+         Within DiD: Callaway & Sant’Anna (2021) is the most common estimator
+         Production agents are converging on the same designs we are
+         Which means what you’re learning this week is exactly what they’re using
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                     7
+        And yet — my audits find surprising variation
+
+
+
+
+         Highly scaffolded, narrowly restricted use of agents on DiD
+         Across runs: variation in specifications, sample restrictions, and conclusions
+         Signs of specification searching — even when agents are warned about known biased
+         estimators
+         The production layer is not transparent. You have to audit it.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                    8
+        Competence in both technique and interpretation
+
+
+
+
+         Technique: the estimators, the assumptions, the conditions under which they hold
+         Interpretation: what the number means, when it’s wrong, what alternative designs would say
+         Neither one alone is enough — and agents are not yet able to do either reliably without you
+         watching
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                              9
+        Returns to econometric skill are higher, not lower
+
+
+
+
+         As we rely more on APE, we’ll be less hands-on with the code
+         That’s exactly why continuing education and workshops matter more, not less
+         Ongoing investment in your own skill becomes the differentiator
+         That’s why we’re spending three days on something as basic as DiD. You have to know it
+         cold.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                         10
+        Pass / fail: a dataset, an analysis, an interpretation
+
+
+
+
+         Seven students writing for credit
+         I’ll provide a dataset and a research question
+         You’ll run an analysis using the methods we cover and write a short interpretation
+         Not real-research scale — enough to test that you can apply the design
+
+
+     Format finalizing with Dan; details by Wednesday.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                     11
+        Today’s seven lessons
+
+
+
+
+      1. Three founders of DiD: Semmelweis, Snow, Ashenfelter
+      2. Three regressions, one answer
+      3. Potential outcomes, target parameters, and parallel trends
+      4. Standard errors: vanilla, robust, cluster-robust
+      5. The minimum wage wars
+      6. Two ATTs, two parallel trends — a callback to weighting
+      7. Event studies as falsifications — and 2×2s
+
+
+
+
+University of Zurich · Department of Economics · May 2026             12
+T HE R EMIX                    Zurich · May 2026
+
+
+
+
+                   L ESSON
+
+
+              1. DiD Origins
+        DiD is a research design, not a regression
+
+
+
+
+       A research design is an identification strategy: it reveals the invisible
+       target parameter hidden inside a calculation.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                          14
+        DiD has two ingredients
+
+
+
+
+                              1.                                                2.
+                        A calculation                +              An assumption
+                           (the 2×2)                                     (parallel trends)
+
+
+
+
+                                       Together they identify the ATT.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                    15
+        One of several causal panel methods
+
+
+
+
+         Difference-in-differences — today and tomorrow
+         Synthetic control — Wednesday
+         Panel IV, matrix completion, factor models — mentioned, not deep-dived
+         Each is a different research design. Different assumptions. Different target parameters.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                           16
+        DiD has three inventors
+
+
+
+
+         Ignaz Semmelweis — Vienna, 1847. Two clinics, one intervention, a clean comparison.
+         John Snow — London, 1854. Two water companies, a natural experiment.
+         Orley Ashenfelter — Princeton, 1970s. Formalizes the calculation: “four averages and three
+         subtractions.”
+
+
+     Each one ran a DiD before the name existed. We’ll meet them in order.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                             17
+        Vienna, 1840s: two clinics, two mortality rates
+
+
+
+
+         Vienna General Hospital, First Obstetric Clinic
+         Pregnant women were assigned to the physicians’ wing or the midwives’ wing by day of
+         admission — effectively at random
+         Physicians’ wing: 13–18% mortality from puerperal fever
+         Midwives’ wing: about 3%
+         Women would deliver in the street rather than risk the physicians’ wing
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                       18
+        His hypothesis, and his DiD
+
+
+
+
+         Semmelweis — an assistant on the wards — noticed the physicians did cadaver dissections
+         before delivering babies. The midwives did not.
+         Hypothesis: something on the physicians’ hands was causing the fever.
+         May 1847: he instituted chlorinated lime handwashing for physicians only
+         Midwives served as the untreated comparison group — a DiD by hand
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                          19
+        The data
+
+                       Maternal mortality fell from 11.4% to 1.3% within a year of handwashing
+                       Vienna General Hospital, First and Second Obstetric Clinics, 1841−1849
+
+
+
+
+                       16%                                                                             Handwashing
+                                                                                                       begins May 1847
+
+
+
+
+                       12%
+
+
+
+
+                        8%
+
+
+
+
+                        4%
+
+
+                                                                                                                         Second Clinic (midwives)
+                                                                                                                         First Clinic (physicians)
+                        0%
+
+                                1841       1842        1843       1844        1845       1846   1847     1848     1849
+                       Source: Semmelweis (1861), annual mortality per 100 admissions.
+
+
+
+
+                  Monthly mortality, First Obstetric Clinic. Handwashing began mid-1847.
+
+University of Zurich · Department of Economics · May 2026                                                                                            20
+        Rejected
+
+
+
+
+         Superiors attributed the drop to a new ventilation system
+         Miasma theory of disease was still dominant
+         Semmelweis was passed over for promotion, eventually left Vienna
+         Published his major treatise in 1861; largely ignored
+         Committed to an asylum in 1865, died there at 47 — from infected wounds, the very condition
+         he had been fighting
+
+     Pasteur and Lister vindicated germ theory in the years that followed.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                              21
+        London, 1854: John Snow vs. miasma
+
+
+
+
+         Three cholera waves had hit London since the 1830s
+         Dominant theory: miasma — “foul air”
+         Snow’s theory: a waterborne pathogen, ingested, expelled, recirculated
+         In 1854, an outbreak gave him a natural experiment
+
+
+
+
+University of Zurich · Department of Economics · May 2026                         22
+        The Metropolis Water Act of 1852
+
+
+
+
+         Required London water companies to move their intake pipes upstream, above the city sewage
+         Lambeth moved its intake to Thames Ditton in 1852 — clean water
+         Southwark & Vauxhall delayed — still drew from polluted central Thames
+         Both served overlapping London neighborhoods. Same streets, different water.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                             23
+        Customers of two companies, the same streets
+
+
+
+
+                   Snow walked the streets, recording each household’s water company.
+
+University of Zurich · Department of Economics · May 2026                               24
+        Snow’s DiD — two paths to the same number
+
+                                                    1849 outbreak     1854 outbreak          Change →
+                                                    (pre-treatment)   (post-treatment)       (over time)
+
+        Lambeth (treated)                                Y LB              Y LA              Y LA − Y LB
+        Southwark & Vauxhall (control)                   Y SB              Y SA              Y SA − Y SB
+
+        Change ↓ (between companies)                 Y LB − Y SB       Y LA − Y SA              DiD
+                                                                                                d
+
+
+               d = (Y LA − Y LB ) − (Y SA − Y SB ) = (Y LA − Y SA ) − (Y LB − Y SB )
+               DiD
+                       |               {z                  }    |               {z               }
+                                 right, then down                         down, then right
+
+
+     Same four cells. Same answer. Under parallel trends, that number is the treatment effect of clean
+                                                water.
+
+University of Zurich · Department of Economics · May 2026                                                  25
+        The same two paths are two regressions
+     RIGHT, THEN DOWN                                            DOWN, THEN RIGHT
+     First-difference each unit, then regress on the treatment   Compute the within-period treated-vs-control gap, then
+     dummy.                                                      regress on Post.
+
+      1. ∆Yi = Yi,post − Yi,pre                                   1. Gt = Y t, treat − Y t, control
+
+      2. ∆Yi = α + δ Di + ui                                      2. Gt = α + δ Postt + ut
+
+     Slope δ̂ is the DiD.                                        Slope δ̂ is the same DiD.
+
+      # Path 1 -- right then down: unit first-differences on D
+      wide <- df |> pivot_wider(names_from = period, values_from = Y)
+      wide$d <- wide$post - wide$pre
+      coef(lm(d ~ treat, data = wide))["treat"] # = DiD
+
+      # Path 2 -- down then right: period-level gap on Post
+      gap <- df |> group_by(period) |>
+                 summarize(G = mean(Y[treat == 1]) - mean(Y[treat == 0]))
+      gap$post <- c(0, 1)
+      coef(lm(G ~ post, data = gap))["post"] # = same DiD
+
+
+University of Zurich · Department of Economics · May 2026                                                                 26
+        Snow identified cholera before germ theory
+
+
+
+
+         Cholera mortality in Lambeth-supplied houses: a small fraction of Southwark & Vauxhall houses
+         The water hypothesis was right — but the pathogen wouldn’t be isolated for another 29 years
+         (Koch, 1883)
+         Snow died in 1858, also before vindication
+         This is identification by design, decades before the term existed
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                27
+        Modern DiD: Orley Ashenfelter formalizes it
+
+
+
+         Princeton, Industrial Relations Section, late 1970s
+         Worker surveys — matching trainees in federal job-training programs to non-trainees
+         Massive panel regressions: individual fixed effects + time fixed effects
+         Audience: federal labor-policy bureaucrats who held the budget
+
+
+
+       Their eyes would glaze over whenever you said ‘regression.’
+       — Orley Ashenfelter, in conversation with Scott
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                      28
+        His move: “four averages and three subtractions”
+
+
+
+
+         Stop leading with the regression
+         Lead with the thing the regression is computing — the four cell means and the three
+         subtractions between them
+         Then, if anyone wants the equation, give them the equation
+
+
+
+                            Regressions are average-making machines anyway.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                      29
+        The four averages
+
+
+
+                                       Pre (t = 0)                   Post (t = 1)
+
+
+                        Control         Y D=0, t=0                   Y D=0, t=1
+
+
+
+                        Treated         Y D=1, t=0                   Y D=1, t=1
+
+
+
+
+                                        Four cells. Four averages.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                           30
+        The three subtractions
+
+
+
+
+                                                                                    
+                               d = Y −Y
+                               DiD                              − Y 01 − Y 00
+                                    11  10
+                                       |        {z          }     |        {z          }
+                                           treated change             control change
+
+
+
+
+                          Three subtractions because the outer minus is the third.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                  31
+        castle.dta: stand-your-ground laws, U.S. states
+
+
+
+
+         Cheng & Hoekstra (2013): did expanding self-defense laws raise homicide rates?
+         State-year panel
+         Today: restrict to 2005–2006 — a clean 2×2
+         Treated states: those that adopted in 2006. Control: those that hadn’t.
+
+
+     Loads directly: use
+     https://github.com/scunning1975/mixtape/raw/master/castle.dta
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                 32
+        The four cells, by hand — in Stata
+
+
+
+
+      use castle.dta, clear
+      keep if year >= 2005 & year <= 2006
+      gen post = (year == 2006)
+      gen treat = (effyear == 2006)
+
+      * Four cell means
+      summarize l_homicide if treat==1 & post==1 // Y11
+      summarize l_homicide if treat==1 & post==0 // Y10
+      summarize l_homicide if treat==0 & post==1 // Y01
+      summarize l_homicide if treat==0 & post==0 // Y00
+
+
+
+
+University of Zurich · Department of Economics · May 2026   33
+        The four cells, by hand — in R
+
+
+
+
+      library(haven); library(dplyr)
+      df <- read_dta("castle.dta") |>
+        filter(year %in% 2005:2006) |>
+        mutate(post = as.integer(year == 2006),
+              treat = as.integer(effyear == 2006))
+
+      df |>
+        group_by(treat, post) |>
+        summarize(Ybar = mean(l_homicide), .groups = "drop")
+
+
+
+
+University of Zurich · Department of Economics · May 2026      34
+        The four cells, by hand — in Python
+
+
+
+
+      import pandas as pd
+      df = pd.read_stata("castle.dta")
+      df = df.query("year >= 2005 & year <= 2006").copy()
+      df["post"] = (df.year == 2006).astype(int)
+      df["treat"] = (df.effyear == 2006).astype(int)
+
+      df.groupby(["treat", "post"])["l_homicide"].mean()
+
+
+
+
+University of Zurich · Department of Economics · May 2026   35
+        We get a number. Hold it.
+
+
+
+
+                            DiD
+                            d
+                                = (Y 11 − Y 10 ) − (Y 01 − Y 00 )
+
+
+                         This is the answer. Now we’ll get it three more ways.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                        36
+        Same data. Three languages. One number.
+
+
+                       Stata
+
+                           display (y11 - y10) - (y01 - y00)             δ̂ ≈ 0.10
+
+                       R
+
+                           (Y11 - Y10) - (Y01 - Y00)                     δ̂ ≈ 0.10
+
+                       Python
+
+                           (y11 - y10) - (y01 - y00)                     δ̂ ≈ 0.10
+
+
+       Log homicide rate is about 10% higher in 2006-adopting states relative to non-adopting states.
+                                    Stand-your-ground in real numbers.
+
+University of Zurich · Department of Economics · May 2026                                               37
+T HE R EMIX                       Zurich · May 2026
+
+
+
+
+                     L ESSON
+
+
+               2. Three Regres-
+              sions, One Answer
+        Three regressions, three languages
+
+
+
+
+         I’ll show the Stata version for each of the three specifications
+         The full multi-language versions are in:
+         – decks/code/equivalence/equivalence.do
+         – decks/code/equivalence/equivalence.R
+         – decks/code/equivalence/equivalence.py
+         All three languages, all three regressions, the same number to machine epsilon
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                 39
+        Regression 1: OLS with interactions
+
+
+
+
+      reg l_homicide post##treat, cluster(sid)
+
+
+     The coefficient on 1.post#1.treat is the DiD.
+
+            The saturated specification:   Y = β0 + β1 Post + β2 Treat + β3 (Post × Treat) + ε
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                        40
+        Regression 2: Two-way fixed effects
+
+
+
+
+      xtset sid year
+      xtreg l_homicide c.treat#c.post i.year, fe vce(cluster sid)
+
+
+     State fixed effects absorb time-invariant differences. Year fixed effects absorb common
+     shocks.
+
+                           In the 2×2 case, the TWFE coefficient equals the DiD.
+                             Tomorrow we’ll see when that equivalence breaks.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                      41
+        Regression 3: Long differences
+
+
+
+
+      keep sid year l_homicide treat
+      reshape wide l_homicide, i(sid) j(year)
+      gen diff = l_homicide2006 - l_homicide2005
+      reg diff treat, vce(cluster sid)
+
+
+     Collapse to one observation per state. The slope on treat is the DiD.
+
+                      Time-differencing eliminates the unit fixed effects mechanically.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                 42
+        All three return the same number
+
+
+
+
+                             Regression 1 (OLS with interactions)      βb3
+                             Regression 2 (TWFE)                       βb3
+                             Regression 3 (Long differences)           βb3
+                             Four averages, three subtractions         βb3
+
+
+                                       Identical to machine epsilon.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                    43
+        This equivalence is what made DiD extensible
+
+
+
+
+         OLS infrastructure absorbs covariates, fixed effects, multiple groups, multiple periods
+         The 2×2 generalizes through the regression
+         But the equivalence breaks once you add complexity
+         OLS then needs additional assumptions for the coefficients to retain a causal interpretation
+
+
+     Tomorrow: covariates, staggered adoption, continuous treatment. Each one breaks something.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                               44
+T HE R EMIX                                                Zurich · May 2026
+
+
+
+
+                                L ESSON
+
+
+              3. Potential Outcomes,
+                  Target Parameters, and Parallel Trends
+        Ingredient 1: done. Ingredient 2: now.
+
+
+
+
+                            1. ✓                                       2. ?
+                        A calculation               +            An assumption
+                           (the 2×2)                                  (today)
+
+
+
+
+            The calculation gives us a number. The assumption tells us what the number means.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                       46
+        Princeton econometrics, 1980s
+
+
+
+
+         Joshua Angrist’s recollection: in Princeton’s PhD program, potential outcomes were not taught
+         Econometrics was about coefficients — “the structure,” “the causal effect” — not about weighted
+         averages of unit-level effects
+         The vocabulary that lets us write Yi (1) − Yi (0) was not yet standard in economics
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                  47
+        Rubin (1974) revives Neyman (1923)
+
+
+
+
+         Jerzy Neyman, 1923 dissertation: introduced potential outcomes notation
+         Donald Rubin, 1974: “Estimating Causal Effects of Treatments in Randomized and
+         Nonrandomized Studies”
+         Together they gave us the explicit language of counterfactuals — Yi (1) and Yi (0) as the two
+         states of the same unit
+
+
+     50-year gap. The notation existed before economists started using it.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                48
+        The individual treatment effect
+
+
+
+
+                                          δi = Yi (1) − Yi (0)
+
+         One per unit. Different across units in general — treatment effects are heterogeneous.
+         We only ever see one of Yi (1) or Yi (0). The other is the counterfactual.
+         So δi is never directly observed at the individual level.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                         49
+        Three averages of δi — three estimands
+
+
+     All three are expected values. The only difference is whom we average over :
+
+         ATE = E[δi ]                                                        average over everyone
+         ATT = E[δi | Di = 1]                                        average over treated units only
+         ATU = E[δi | Di = 0]                                      average over untreated units only
+
+
+
+                        ATE = π · ATT + (1 − π) · ATU,      where π = Pr(D = 1).
+
+
+
+      With heterogeneous effects, the three are different numbers. The one you want depends on the
+                                                 question.
+
+
+
+University of Zurich · Department of Economics · May 2026                                              50
+        Eight people, three averages
+
+                                  i   Yi (0)   Yi (1)    δi   Di    Yi (observed)
+                                  1     5        9       4     1          9
+                                  2     4        10      6     1          10
+                                  3     6        11      5     1          11
+                                  4     7        12      5     1          12
+                                  5     5        8       3     1          8
+
+                                  6     2        3       1     0          2
+                                  7     3        5       2     0          3
+                                  8     1        4       3     0          1
+
+
+
+     ATE = 18 (4+6+5+5+3+1+2+3) = 3.625              ATT = 15 (4+6+5+5+3) = 4.6        ATU = 13 (1+2+3) = 2.0
+
+
+                 Three different numbers. If we had both potential outcomes, this is the arithmetic.
+
+
+University of Zurich · Department of Economics · May 2026                                                       51
+        Which causal effect do you want? Weighting decides.
+
+
+
+
+     Solon, Haider & Wooldridge (2015), What Are We Weighting For?
+
+         In a survey, you weight to make estimates nationally representative.
+         In causal inference, you weight because you want a different parameter.
+         Different question. Different reason.
+
+
+     ATE, ATT, ATU are all expected values. But which expectation? Over which units? With what
+     weights? That’s not a survey-design question — it’s a parameter-of-interest question.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                        52
+        Ten people, two counties
+
+                            Person   Y (0)   Y (1)   δi = Y (1) − Y (0)   County
+
+                            Alan       0      1              1              1
+                            Betty      1      1              0              1
+                            Chad       1      1              0              1
+                            Daniel     0      0              0              1
+                            Edith      0      1              1              1
+                            Frank      0      1              1              1
+                            George     0      0              0              1
+                            Hank       0      1              1              1
+
+                            Ida        1      0             −1              2
+                            Janet      1      0             −1              2
+
+
+
+                   County 1: eight people. County 2: two people. Compute the average δ
+             for each county — and the average δ across all ten. Do you get the same answer?
+
+University of Zurich · Department of Economics · May 2026                                      53
+        Same data, two weights, two parameters
+
+
+
+
+         Within counties: County 1 avg δ = 18 (1+0+0+0+1+1+0+1) = +0.5.
+                   County 2 avg δ = 12 (−1+(−1)) = −1.0.
+                                      1
+         ATE for the average person: 10 (8 · 0.5 + 2 · (−1)) = +0.2
+         ATE for the average county: 12 (0.5 + (−1)) = −0.25
+
+
+
+     Same potential outcomes. Different signs. Whichever you report depends on what you’re trying to
+                                                answer.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                              54
+        Scale it up: 254 counties, 30 million people
+     You just saw it with 10 people. Now blow it up.
+     Texas: 254 counties. The 5 biggest (Harris, Dallas, Tarrant, Bexar, Travis) hold 41% of the
+     population. The other 249 share the rest.
+
+
+      The setup
+
+      Every person has their own treatment effect δi .
+      Half: δi ∼ N (+5, 1). Half: δi ∼ N (−1, 0.5).      E[δ] = +2.
+
+
+     We assign people to counties two different ways:
+
+      ▶ Random — each county is a random sample of the population.
+      ▶ Sort by δ — high-effect people end up in the 5 big counties.
+
+     The δi values are identical in both scenarios. Only who-lives-where changes.
+University of Zurich · Department of Economics · May 2026                                          55
+        Sorting on δ can flip the sign of your answer
+
+                      254 county ATEs, plotted against the per−person ATE
+                      Same delta values in both panels. Population mean of delta = +2. Only the sorting changes.
+
+                                                                          Random sorting                                                             Sort by delta
+
+
+
+
+                                          5.0
+
+
+
+
+                      County−level ATE
+                                          2.5
+                                                    avg of 254 county ATEs = +2.00         per−person ATE = +2.00                                                    per−person ATE = +2.00
+
+
+
+
+                                          0.0
+                                                                                                                             avg of 254 county ATEs = −0.88
+
+
+
+                                         −2.5
+
+                                                1             50          100        150          200          254       1             50          100         150           200            254
+                                                                                                          County (ranked by ATE)
+
+
+                                                                                                          Large county    Small county
+
+                      Each dot is one county. Large dots = 5 big counties (60K people each). Small dots = 249 small counties (~1.2K each). Solid line: ATE for the average person. Dashed line: average of the 254 county ATEs.
+
+
+
+
+      Random: every county’s ATE equals the population’s. δ -sort: per-person line at +2, avg of county ATEs flips to −0.88.
+           Random sorting is the benchmark — rarely reality. People choose where to live, and on traits that move δ .
+
+
+University of Zurich · Department of Economics · May 2026                                                                                                                                                                         56
+        Two parameters, two answers
+
+
+
+     Under δ -sort, the 5 big counties cluster at ≈ +5. The 249 small counties cluster at ≈ −1.
+
+                         1
+                              P
+         Per-person ATE: N      i δi — weight every person by 1/N .
+         The 15M high-δ people balance the 15M low-δ people. Answer: +2.
+                              1
+                                   P
+         Avg of county ATEs: 254     c δ c — weight every county by 1/254.
+         5(+5)+249(−1)
+              254      =   -0.88. The 249 small counties dominate.
+
+
+                     Same data. Two weights. Two parameters. Sometimes two signs.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                         57
+        What this means for DiD on aggregate data
+
+
+     DiD usually runs on aggregates: counties, states, hospitals.
+
+         Equal weights per unit ⇒ unit-weighted ATE: the effect for the average location.
+         Weight by population ⇒ person-weighted ATE: the effect for the average person.
+
+
+      Which one you want depends on the question
+
+      Person-weighted for aggregate human welfare: how many people are affected, by how much?
+      Unit-weighted when locations have autonomy and goals: each policy unit chooses
+      independently — the unit is the agent.
+
+
+     Solon, Haider & Wooldridge (2015). Code: decks/code/Tiebout-Roy/tiebout_roy_chart.R
+
+
+
+University of Zurich · Department of Economics · May 2026                                       58
+        The switching equation
+
+
+
+
+                             Yi = Di · Yi (1) + (1 − Di ) · Yi (0)
+
+
+         In our 8-person table, look at the Yi column — it’s Yi (1) for Di = 1 and Yi (0) for Di = 0.
+         This is all we ever see in the data: the realized half. The counterfactual half is forever missing.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                      59
+        What if we just compared Y between treated and untreated?
+
+
+     The simple difference in observed outcomes (SDO):
+
+                               SDO = E[Yi | Di = 1] − E[Yi | Di = 0]
+
+      For our 8 people:
+
+                              1                  1
+                    SDO =     5 (9+10+11+12+8) − 3 (2+3+1)     = 10 − 2 = 8
+
+
+
+                               But ATT = 4.6. ATE = 3.625. ATU = 2.0.
+                                The SDO is bigger than any of them.
+
+
+
+University of Zurich · Department of Economics · May 2026                     60
+        SDO = ATT + selection bias
+
+
+     Add and subtract E[Yi (0) | Di = 1] inside the SDO and rearrange:
+
+               E[Y | D = 1] − E[Y | D = 0] = E[Y (1) − Y (0) | D = 1]
+               |              {z              }     |           {z                }
+                             SDO                               ATT
+                                                  + E[Y (0) | D = 1] − E[Y (0) | D = 0]
+                                                    |                 {z              }
+                                                                 selection bias
+
+
+
+     In the 8-person example:
+                        1               1
+     selection bias =   5 (5+4+6+7+5) − 3 (2+3+1)           = 5.4 − 2.0 = 3.4
+     SDO = 4.6 + 3.4 = 8        ✓
+
+
+
+University of Zurich · Department of Economics · May 2026                                 61
+        Calculations alone aren’t enough
+
+
+         The SDO is something we can always calculate from the data.
+         It is the population estimand of the naive comparison.
+         But it is not the target parameter — in general, SDO ̸= ATT ̸= ATE ̸= ATU.
+         The gap is the selection bias. It does not go away by collecting more data.
+
+
+
+      To turn a calculation into a causal target, we need an identification strategy
+
+      RCT: random assignment makes selection bias zero.
+      IV: relevance + exclusion.
+      RDD: continuity at the cutoff.
+      DiD: parallel trends + no anticipation + stability (SUTVA).
+
+
+University of Zurich · Department of Economics · May 2026                              62
+        Let’s connect causal inference with statistics for a second
+
+
+
+
+         So far the language has been causal: Y (1), Y (0), the switching equation, the counterfactual.
+         Causal claims are about populations — the average effect on the treated,
+         E[Y (1) − Y (0) | D = 1].
+         But we never see the population. We see a sample.
+         Which means we need the statistical layer too: sampling distributions, estimators, convergence.
+
+
+     The two layers interlock — one tells us what we want to estimate; the other tells us how close our
+     estimate gets.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                  63
+        Suppose you had all the data
+
+
+
+
+                                      What would you compute?
+
+
+
+                               A regression. A difference of means. A ratio.
+                                       Whatever the data permits.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                      64
+        That’s a population estimand
+
+
+
+
+      Population estimand
+
+      The calculation you could do if you had the entire population.
+      A function of population moments — means, variances, regressions.
+      Not a sample quantity. Not necessarily causal.
+
+
+     Sometimes denoted θ . The thing your estimator is converging to in the limit.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                            65
+        Shape is statistics. Center is identification.
+
+                      A tight sampling distribution can still miss the truth
+                      LLN: beta_hat converges to the population estimand. Identification: the estimand equals ATT only if PT holds.
+
+                                                PT holds: estimand = ATT                                        PT fails: estimand differs from ATT by bias
+
+                                                   ATT estimand                                                             ATT                    estimand
+
+
+                                2
+
+
+
+
+                      density
+                                1
+
+
+
+
+                                0
+                                    0.5         1.0              1.5             2.0                     0.5             1.0              1.5           2.0
+                                                                                                   β
+                      Same sampling distribution shape in both panels (LLN + CLT). What changes is whether the estimand is the causal parameter.
+
+
+
+
+     Shape of the sampling distribution ← LLN + CLT. Independent of whether the design is causal.
+     Center of the sampling distribution ← identification. Equals ATT only if PT holds.
+     Same data, same estimator, same statistics — two completely different conclusions.
+
+University of Zurich · Department of Economics · May 2026                                                                                                     66
+        Regress earnings on a college dummy. Causal?
+
+
+
+
+        β = E[ Earnings | College = 1 ] − E[ Earnings | College = 0 ]
+
+
+                                    Is β the causal effect of college?
+
+
+
+
+University of Zurich · Department of Economics · May 2026                67
+        Yes if randomized. No if selection.
+
+
+
+
+             Randomized                                     Selection
+             Treatment assigned by coin flip.               College-goers differ from non-
+             Treated and untreated popula-                  college-goers in ability, family
+             tions are identical in expectation.            background, ambition.
+             β is the causal effect.                        β is biased.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                      68
+        An estimand can be biased. A target parameter cannot.
+
+
+
+
+      Population estimand
+
+      What the math gives you with all the data.
+      Sometimes equals the causal effect. Sometimes doesn’t.
+
+     Target parameter
+     The causal object you actually want.
+     Defined in potential-outcomes notation.
+     Unbiased by construction — it is the causal effect.
+
+
+
+
+University of Zurich · Department of Economics · May 2026       69
+        Bias is what rides along with the causal term
+
+
+
+
+                             Estimand
+                             | {z }              = |Causal
+                                                        {z term} +         |Bias
+                                                                             {z }
+                           what the math gives      target parameter   everything else
+
+
+
+
+                        Bias is the gap. Sometimes zero (randomization). Often not.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                70
+        Identification strips the bias
+
+
+
+
+         Identification = a set of assumptions under which the bias term vanishes
+         With those assumptions, the population estimand equals the target parameter
+         Different designs use different identifying assumptions:
+         – Randomization → ATE
+         – Parallel trends → ATT
+         – Instrumental variables → LATE
+         – Regression discontinuity → local ATE
+
+
+
+
+University of Zurich · Department of Economics · May 2026                              71
+        The ATT is the DiD target parameter
+
+
+
+
+                                    h                                           i
+                     ATT = E Yi (1) − Yi (0) Di = 1, t = Post
+
+
+                     The average treatment effect on the treated, after treatment.
+
+
+     Treated units. Post-treatment period. Not the ATE.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                            72
+        The proof: add a zero, rearrange
+
+
+
+     Add and subtract E[Y (0) | D = 1, t = 1] inside the 2×2:
+
+
+                          DiD = E[Y (1) − Y (0) | D = 1, t = 1]
+                          d
+                                |             {z              }
+                                                ATT
+                                     
+                                    + ∆E[Y (0) | D = 1] − ∆E[Y (0) | D = 0]
+                                     |                  {z                  }
+                                                non-parallel-trends bias
+
+      Under No Anticipation, Y (1) = Y (0) pre-treatment. Under Parallel Trends, the bias term vanishes.
+     The 2×2 then equals the ATT.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                  73
+        Parallel trends is weaker than randomization
+
+
+                           Y
+                                                                      treated = Y (1)
+                                                                ATT
+                                                                      Y (0) counter.
+
+
+                                                                      control = Y (0)
+
+
+
+
+                                                                                   time
+                                          treatment
+
+
+
+
+              All three Y (0) trajectories (control, treated-pre, counterfactual) share one slope.
+                                 Levels can differ. Trends must move together.
+
+
+
+University of Zurich · Department of Economics · May 2026                                            74
+        Now we have both ingredients
+
+
+
+
+                            1. ✓                                 2. ✓
+                        A calculation               +       An assumption
+                           (the 2×2)                         (parallel trends)
+
+
+
+                                               −→ ATT
+
+
+
+
+University of Zurich · Department of Economics · May 2026                        75
+        Open the sheet — stability and trends, by hand
+
+
+
+
+         Four tabs in sequence: Potential Outcomes → 2X2 → Balancing → 2XT #1
+         Show: Y = Y (0) pre-treatment, for everyone
+         Show: Y = Y (0) for control units, regardless of what treated units do
+         That second point is stability — one unit’s treatment doesn’t change another’s Y (0)
+
+
+     Sheet: https: // docs. google. com/ spreadsheets/ d/
+     1onabpc14JdrGo6NFv0zCWo-nuWDLLV2L1qNogDT9SBw/ edit
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                       76
+T HE R EMIX                                        Zurich · May 2026
+
+
+
+
+                            L ESSON
+
+
+              4. Standard Errors
+                 Vanilla, Robust, Cluster-Robust
+        The point estimate can be unbiased — the standard error often is not
+
+
+
+
+         OLS gives us a β̂ that converges to the right thing under PT + NA + SUTVA
+         But the spread of β̂ across hypothetical samples — the standard error — depends on the error
+         structure
+         Wrong SE → wrong t-statistic → wrong p-value → wrong conclusion
+
+
+     Three problems live here: heteroskedasticity, within-cluster correlation, and serial correlation.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                78
+        Three flavors of standard error
+
+
+
+
+         Vanilla (homoskedastic): assumes Var(εi | Xi ) = σ 2 for all i
+         Robust (Eicker-Huber-White): lets each residual speak for itself — handles heteroskedasticity
+         Cluster-robust (CRVE): groups residuals by cluster, lets within-cluster errors correlate freely
+
+
+     Same point estimate, three different SEs. The SE you pick is a claim about the error structure.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                  79
+        Heteroskedasticity: variance changes with X
+
+
+
+
+         Homoskedastic: same error variance everywhere — one σ 2 summarizes all observations
+         Heteroskedastic: variance grows or shrinks with X (fan-shaped scatter is the classic picture)
+         Vanilla SE pools every ê2i with equal weight → underestimates variance where X is extreme
+         Robust SE weights each ê2i by that observation’s leverage
+
+
+     The sandwich estimator: (X ′ X)−1 ·                ′
+                                                                · (X ′ X)−1 .
+                                           P      2
+                                                            
+                                              i êi xi xi
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                80
+        Bertrand, Duflo & Mullainathan (QJE 2004)
+
+
+
+
+        “How Much Should We Trust Differences-in-Differences Estimates?”
+         They generate placebo laws — random treatment assignments in state-year panels
+         True effect: zero
+         With vanilla / robust SEs: rejection rate far above 5% — the test over-rejects
+         With cluster-robust SEs at the state level: rejection rate near 5%
+
+     State-year panels have within-state serial correlation. Ignoring it inflates t-statistics.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                         81
+        Cluster-robust SE: sum scores within cluster, then square
+
+
+                                                P
+     For each cluster g , the “score” is sg =      i∈g xi êi .
+
+                                                                               !
+                             dCRVE (β̂) = (X ′ X)−1                   sg s′g   (X ′ X)−1
+                                                              X
+                             Var
+                                                                  g
+
+
+
+         Robust SE squares each observation’s contribution
+         CRVE squares each cluster’s sum — cross-terms within a cluster get added in
+         If errors are correlated within a cluster, those cross-terms are positive and the SE grows
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                             82
+        A six-observation worked example
+
+
+
+     Two clusters, three observations each, same residual pattern within cluster:
+
+
+         Method                                       What it sums                          SE
+
+         HC1 (robust)                      each ê2i x2i , treated as independent          0.153
+         CRVE (cluster-robust)      cluster scores s2g , with cross-terms within cluster   0.242
+
+
+           HC1 understates uncertainty by ≈ 37%. Same six observations, same point estimate.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                          83
+        Live: what should the t-statistic look like?
+
+
+
+
+         Set up a placebo panel: true effect = 0. Run 500 times.
+         For each run: estimate β̂ (unbiased, ≈ 0) and compute three SEs.
+         Form three t-statistics: t = β̂/SE.
+         Under correct inference, t should be distributed N (0, 1) — ≈ 5% in each tail beyond ±1.96.
+         If SE is too small → histogram wider than N (0, 1) → over-rejection.
+
+     Static: decks/code/SE-Demo/se_simulation.R · Interactive:
+     shiny::runApp("decks/code/SE-Demo") — dial ρ live
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                              84
+        Drive the app: two sliders, two stories
+        Two DGP knobs — ρ (clustering) and het (heteroskedasticity). Try these four corners:
+
+
+
+
+                     ρ      het     What you see
+
+                     0      0       All three SEs correct (≈ 5%). Baseline.
+                     0      high    Vanilla ≈ HC3 — balanced binary D makes het symmetric.
+                     high   0       Vanilla ≈ HC3, both over-reject. CRVE is the fix.
+                     high   high    Same. CRVE still the fix.
+
+
+     Green box = within 2.5pp of 5%. Red = > 7.5%. Gray = mildly off.
+
+     The lesson: with binary balanced treatment, clustering is the binding constraint — robust
+     SE alone won’t save you.
+
+
+
+University of Zurich · Department of Economics · May 2026                                        85
+T HE R EMIX               Zurich · May 2026
+
+
+
+
+                L ESSON
+
+
+      5. The Minimum Wage Wars
+        New Jersey raises its minimum wage. Pennsylvania doesn’t.
+
+
+
+
+         April 1992: New Jersey raises minimum wage from $4.25 to $5.05
+         Pennsylvania’s stays at $4.25
+         Card & Krueger (1994) survey fast-food restaurants on both sides of the border, before and after
+         The natural 2×2: treated = NJ, control = PA
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                   87
+        The headline: employment did not fall in New Jersey
+
+
+
+
+         Standard economic theory: a binding minimum wage should reduce employment
+         Card & Krueger found: employment in NJ fast food actually rose slightly relative to PA
+         DiD estimate: roughly +2.76 jobs per restaurant
+         Published American Economic Review 1994
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                         88
+        Card on the study
+
+
+
+
+       It turns out that the labor market is not a simple, textbook market. There
+       are frictions. Employers have some discretion. The minimum wage
+       worked through margins we hadn’t fully imagined.
+       — David Card, paraphrased from later interviews
+
+
+
+
+University of Zurich · Department of Economics · May 2026                           89
+        Neumark and Wascher push back
+
+
+
+
+         Neumark & Wascher (2000): different data — BLS administrative payroll records, not surveys
+         Found a small negative employment effect
+         Card & Krueger (2000): counter-replication with their own administrative data, no effect
+         The fight continues today. Whoever you trust, the design framework is the same.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                             90
+        Pre-trends are the gut check
+
+
+
+
+         If NJ employment was already trending differently before the wage hike, the DiD is biased
+         If pre-trends look parallel, that’s evidence (not proof) the design holds
+         Card & Krueger’s pre-period: NJ and PA fast-food employment moved together
+         That’s why the 2×2 was credible. Not the regression — the pre-period parallelism.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                            91
+T HE R EMIX                                   Zurich · May 2026
+
+
+
+
+                           L ESSON
+
+
+              6. Two ATTs, Two PTs
+                    A callback to weighting
+        There isn’t one parallel trends
+
+     Remember Lesson 3: per-person ATE and per-county ATE were different parameters under
+     selection. Sometimes different signs.
+
+
+      The 2×2 decomposition has two terms
+
+                                             δb = ATT + PT
+                Weighting changes the expectation operator. So both terms get re-weighted.
+
+
+
+         Weighted vs unweighted DiD: different ATTs. We’ve seen this.
+         Weighted vs unweighted DiD: different parallel-trends assumptions. That’s new.
+         Two parameters. Two identifying assumptions. Not the same 2×2.
+
+
+University of Zurich · Department of Economics · May 2026                                    93
+        Two decompositions, four assumptions
+
+
+
+                                   Unweighted 2×2                      Population-weighted 2×2
+                                    average county                          average person
+
+      Estimator                          δunw
+                                         b                                       δwtd
+                                                                                 b
+      Target parameter                  ATTunw                                  ATTwtd
+      PT assumption      E[∆Y (0) | D = 1] = E[∆Y (0) | D = 0]   e[∆Y (0) | D = 1] = E
+                                                                 E                   e[∆Y (0) | D = 0]
+
+
+
+         e is the population-weighted expectation (each county weighted by its size S ).
+         E[·]
+         Same data. Two estimators. Two different parameters. Two different PT assumptions.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                94
+        The weighted-mean identity
+
+     A short algebraic fact: for any variable Y and any weight S ,
+
+                                      E[SY ]           Cov(S, Y )
+                              E[Y ] =
+                              e              = E[Y ] +            .
+                                          E[S]                     E[S]
+
+     Proof sketch: E[SY ] = E[S] E[Y ] + Cov(S, Y ), then divide by E[S].
+
+
+      What it says
+
+      The weighted mean equals the unweighted mean plus a covariance correction.
+      The correction is zero only when the weight is uncorrelated with the outcome.
+
+
+     We’re going to apply this identity to ∆Y (0) — the untreated trend — and watch the PT
+     term split apart.
+University of Zurich · Department of Economics · May 2026                                    95
+        The lemma: PTwtd = PTunw + (covariance gap)
+
+
+     Apply the identity conditionally on D = d:
+
+                                                                  Cov(S, ∆Y (0) | D=d)
+                E[∆Y
+                e    (0) | D=d] = E[∆Y (0) | D=d] +
+                                                                      E[S | D=d]
+                                                                  |       {z         }
+                                                                          κd
+
+     Subtract the D=0 version from the D=1 version:
+
+                                      PTwtd = PTunw + (κ1 − κ0 )
+
+
+         κd asks: within group d, do big counties trend differently than small ones?
+         κ1 − κ0 : the covariance gap. The wedge between the two PTs.
+
+
+
+University of Zurich · Department of Economics · May 2026                                96
+        The knife-edge: both PTs hold iff κ1 = κ0
+
+
+                                      PTwtd = PTunw + (κ1 − κ0 )
+
+
+         κ1 = κ0 = 0 is not required. The covariances can be huge — they just have to be equal across
+         treated and control.
+         If κ1 ̸= κ0 : at most one of the two PTs can be true.
+         One 2×2 design can identify ATTunw , or ATTwtd , but in general not both.
+
+
+
+      What creates a nonzero covariance gap?
+
+      Selection on the weight. Big counties get treated for reasons related to their size, and big
+      counties’ Y (0) trends differently than small ones’. The two together produce the gap.
+
+
+University of Zurich · Department of Economics · May 2026                                               97
+        Simulation: the weighted PT is the covariance gap
+                                Weighted PT tracks the covariance gap
+                                With PTunw = 0 by construction, PTwtd = κ1 − κ0 across 41 selection regimes
+
+
+                                                               1.0
+
+                                                                            Slope 1 −− the lemma in pictures
+
+
+
+                                                               0.5
+
+
+
+
+                                Weighted PT violation PTwtd
+                                                                                                                                          selection strength γ1
+                                                                                                                                                2
+
+                                                                                                       selection independent of S              1
+                                                                                                       (both PTs hold)
+                                                               0.0
+                                                                                                                                               0
+
+                                                                                                                                               −1
+
+                                                                                                                                               −2
+                                                              −0.5
+
+
+
+
+                                                              −1.0
+
+                                                                     −1.0        −0.5            0.0                 0.5            1.0
+                                                                                        Covariance gap κ1 − κ0
+                                Each dot is one regime (one value of selection strength). 100,000 units per regime. Sampling noise is invisible −− the line is algebraic, not statistical.
+
+
+
+
+               N =100,000, PTunw = 0 by construction. Sweep selection strength γ1 from −2 to +2.
+                     PTwtd traces κ1 − κ0 exactly. Slope 1. Not a regularity — an identity.
+
+University of Zurich · Department of Economics · May 2026                                                                                                                                    98
+        Weighted vs unweighted is not a robustness check
+
+
+         Running both and hoping they agree is not a robustness check — it’s a comparison of two
+         different estimands under two different assumptions.
+         Disagreement is information about the covariance gap, not about whether DiD “works.”
+         Pick the parameter your question demands. Then defend the corresponding PT.
+
+
+
+      So what do you do?
+
+      Event studies (next!) interrogate which PT you can defend. You can run them weighted,
+      unweighted, or both — but each tests a different assumption.
+
+
+     Derivation and simulation: decks/code/Weighted-PT/weighted_pt_chart.R.
+     Background: Scott’s Substack, “Diff-in-Diff, population weights and parallel trends,” Part 1 & 2.
+
+University of Zurich · Department of Economics · May 2026                                                99
+T HE R EMIX                                     Zurich · May 2026
+
+
+
+
+                          L ESSON
+
+
+              7. Event Studies
+                 as Falsifications — and 2×2s
+        DiD is a courtroom case
+
+
+
+
+       Scientific theories achieve credibility not just by explaining observed
+       phenomena, but by excluding alternative explanations.
+       — Scott Cunningham, The Remix (forthcoming, Yale 2026)
+
+
+         You are the prosecutor. The DiD coefficient is your claim of guilt.
+         A claim is not evidence. The evidence is everything you do around the claim.
+         Popper: a theory earns credibility by deriving what else should be true if it’s right — and testing
+         those predictions.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                      101
+        Five parts of a strong DiD
+
+
+
+
+      1. Bite — the policy actually changed what it was supposed to change
+      2. Event study — pre/post coefficients around treatment
+      3. Falsification — run a rival theory on a placebo group or outcome and try to reject it
+      4. Main result — the DiD on the actual outcome
+      5. Mechanism — the causal pathway from D to Y
+
+
+     The point estimate alone is a case “so weak that readers and the public are justified to reject it.”
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                   102
+        A falsification puts a rival theory on trial
+
+
+     Write down what else the rival theory would predict — something irrelevant to your
+     treatment — and test it.
+
+         Same outcome, alternative groups. A group your treatment shouldn’t reach, but the rival
+         would.
+         Min wage on low-wage employment? Re-run on higher-wage workers.
+         Same group, alternative outcomes. Outcomes your treatment shouldn’t move, but the rival
+         would.
+         Cigarette tax on smoking-related hospitalizations? Re-run on appendicitis and fractures.
+
+
+     Failing to reject the rival’s prediction weakens the rival — it never confirms you. That’s the Popperian
+     asymmetry.
+
+
+
+University of Zurich · Department of Economics · May 2026                                                       103
+        A clean falsification: peer effects on height
+
+
+
+         Christakis & Fowler (2007): peer-effect contagion in obesity
+         Cohen-Cole & Fletcher (2008): re-run the same model on height, acne, and headaches
+         All three show “contagion”
+
+
+
+
+       We have not been able to become taller by having tall friends.
+       — Cohen-Cole & Fletcher, paraphrased
+
+     The result isn’t necessarily wrong. But the empirical model is suspect.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                     104
+        The event study is the falsification built into the timeline
+
+
+
+
+         Every coefficient at τ = −2, −3, . . . , −q asks the same question:
+         Is something already moving the treated group relative to controls, before D turned on?
+         That’s a rival theory. The pre-period coefficients are its placebo test.
+         This one is built into the regression. The others (placebo group, placebo outcome) you have to
+         construct.
+
+     Scott’s stronger claim: falsifications are more important than event studies for assessing parallel
+     trends.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                  105
+        An event study is the 2×2 viewed in motion
+
+
+
+
+         Instead of one pre-period and one post-period, use many
+         Estimate a separate effect at each event-time relative to treatment
+         Plot them as a sequence: β̂−4 , β̂−3 , . . . , β̂−1 , β̂0 , β̂+1 , . . .
+         The graph tells two stories: pre-trends (left of zero) and dynamics (right of zero)
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                      106
+        Every coefficient is a 2×2 against t = −1
+
+
+
+     The saturated event-study regression:
+                                          X
+                     Yit = αi + λt +             βk · 1{event timeit = k} · Di + εit
+                                         k̸=−1
+
+
+
+         Unit FE αi , time FE λt
+         One indicator per event-time, treated only
+         Drop k = −1 as the reference — every other β̂k is a 2×2 against the period just before
+         treatment
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                         107
+        The baseline is the hinge
+
+
+
+
+                                              treatment                  β̂k
+
+
+
+                                      baseline
+                                                                               event time
+                           -3    -2      -1      0        +1   +2   +3
+
+
+
+
+          The reference period anchors the sequence. Each β̂k asks: how does k differ from −1?
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                        108
+        castle.dta event study, live
+
+
+
+
+      library(fixest); library(ggplot2)
+      df <- read_dta("castle.dta")
+      df <- df %>% mutate(event_time = year - effyear)
+
+      es <- feols(l_homicide ~ i(event_time, ref = -1) | sid + year,
+                 data = df, cluster = ~sid)
+
+      iplot(es, main = "Event study: castle.dta")
+
+
+     Full script: CI-2/Lab/Basic-DiD/simple_eventstudy.R
+
+
+
+
+University of Zurich · Department of Economics · May 2026              109
+        What pre-trends do and don’t tell us
+
+
+
+
+         Flat pre-trends → evidence consistent with parallel trends
+         Sloped pre-trends → evidence against parallel trends
+         Flat pre-trends ⇏ parallel trends must hold post-treatment
+         It’s one falsification. Run the others too — placebo groups, placebo outcomes.
+         Pre-trends are a gut check, not a proof. More tomorrow (Roth-Sant’Anna,
+         Ghanem-Sant’Anna-Wüthrich).
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                 110
+        Try it yourself: the Event-Study Shiny app
+
+
+
+
+         Interactive: slide treatment effects, dose timing, slopes
+         Watch the event-study plot update in real time
+         Preview of tomorrow’s staggered-adoption problems
+
+
+     App: CI-2/Shiny-Apps/Event-Study/app.R
+
+
+
+
+University of Zurich · Department of Economics · May 2026            111
+        What we’ve done today
+
+
+
+
+      1. Three founders, one design — four averages, three subtractions
+      2. Three regressions, one answer
+      3. Potential outcomes, target parameters, and parallel trends
+      4. Standard errors: when robust isn’t robust enough
+      5. The minimum wage wars
+      6. Two ATTs, two parallel trends — a callback to weighting
+      7. Event studies as falsifications and 2×2s
+
+
+
+
+University of Zurich · Department of Economics · May 2026                 112
+        Tomorrow: when the 2×2 stops working
+
+
+
+
+         Covariates — IPW, OR, doubly robust
+         Time-varying covariates (Caetano & Callaway)
+         Triple differences (Ortiz-Villavicencio & Sant’Anna)
+         Staggered adoption — Goodman-Bacon, Callaway-Sant’Anna, Sun-Abraham, BJS
+
+
+
+
+University of Zurich · Department of Economics · May 2026                           113
+        DiD is a research design
+         with two ingredients —
+the 2×2 calculation and parallel trends.
+     Together they identify the ATT.
+
+               See you tomorrow.
+

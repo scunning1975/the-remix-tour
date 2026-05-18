@@ -1,0 +1,21 @@
+\frametitle{The simulation, code first}
+\vspace{0.2em}
+\begin{lstlisting}[language=R]
+# DGP knobs:
+#   40 states (1-20 mandate, 21-40 control)
+#   3 worker groups (men, married women 20-40, older women)
+#   2010-2020; treatment turns on in 2015
+#   TRUE ATT for married x mandate x post = -$5,000
+
+df$state_trend <- if_else(df$experimental==1, 1000, 1500)  # !! differential
+df$group_trend <- if_else(df$worker==2,       500, 1000)
+df$y0 <- df$baseline +
+         df$state_trend * df$year_diff +
+         df$group_trend * df$year_diff + rnorm(N, 0, 1500)
+
+df$treat    <- (df$experimental==1 & df$worker==2 & df$after==1)
+df$y1       <- df$y0 - 5000 * df$treat
+df$earnings <- df$treat * df$y1 + (1-df$treat) * df$y0
+\end{lstlisting}
+\vspace{0.2em}
+\meta{Full script: \texttt{decks/code/Triple-Diff/ddd\_simulation.R}}

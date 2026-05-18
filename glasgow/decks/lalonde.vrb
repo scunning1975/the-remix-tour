@@ -1,0 +1,17 @@
+\frametitle{DiD with additive $X$}
+\vspace{0.6em}
+\begin{center}
+\small
+\verb|reg re ever_treated##post X1 X2 ... Xk, robust|
+\end{center}
+\vspace{0.6em}
+\begin{itemize}\small
+  \item Pooled OLS on all years. \;No fixed effects.
+  \item Covariates enter \textit{linearly} with one slope --- same pre and post.
+  \item Identifies the ATT only if Assumptions 1--6 hold (parallel trends, no anticipation, SUTVA, homogeneous $\tau$ in $X$, parallel $X$-trends for treated and control).
+\end{itemize}
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+This is what \texttt{lalonde-did-stata.do} actually computes on the non-experimental panel.
+\end{center}

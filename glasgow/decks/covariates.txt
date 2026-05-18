@@ -1,0 +1,826 @@
+THE REMIX
+
+
+
+
+Covariates in DiD
+Day 2 of 3: Afternoon
+
+Scott Cunningham · Baylor University
+University of Zurich · May 12, 2026
+
+
+Causal Inference: The Remix · Yale University Press · forthcoming
+2026
+        The PT-violation problem, take two
+
+
+
+         This morning: a third group that shares the differential trend.
+         But often, you don’t have a clean placebo group.
+         This afternoon: condition on covariates that absorb the differential trend.
+
+
+      Today’s three estimators, and one false friend
+
+      OR (outcome regression)      IPW (inverse propensity weighting)      DR (doubly robust)
+      And: “can’t I just control for the propensity score in a regression?”
+      That’s the false friend. We’ll see why before DR.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                       2
+        The applied problem
+
+
+
+         Your treated states differ from your controls on observables — baseline income, demographics,
+         industry mix, education.
+         If Y (0) trends differ across these dimensions, unconditional PT is implausible.
+         But maybe within strata of X , PT holds:
+
+
+                              E[∆Y (0) | D = 1, X] = E[∆Y (0) | D = 0, X]
+
+
+         This is conditional parallel trends. The escape valve for designs without a placebo group.
+         Three estimators target this. They differ in which side of the conditioning they model.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                3
+        This afternoon, seven beats
+
+
+      1. Conditional parallel trends — the new identifying assumption
+      2. Outcome regression (Heckman-Ichimura-Todd)
+      3. Inverse propensity weighting (Abadie 2005)
+      4. The trap: “can’t I just control for the propensity score?”
+      5. Doubly robust DiD (Sant’Anna & Zhao 2020)
+      6. The same trap, in TWFE: hidden linearity bias (Caetano & Callaway 2024)
+      7. Compositional change (Hong 2013; Sant’Anna & Xu 2026)
+
+
+                 The two “trap” lessons share one explanation. We’ll connect them explicitly.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                       4
+T HE R EMIX                     Zurich · May 2026
+
+
+
+
+                    L ESSON
+
+
+              1. Conditional
+              Parallel Trends
+        Conditional parallel trends, formally
+
+
+
+      The new identifying assumption
+
+                                E[∆Y (0) | D=1, X] = E[∆Y (0) | D=0, X]
+
+
+         Within strata of X , the untreated trend is the same for treated and control.
+         Equivalently: any differential trend across treated and control is fully explained by their
+         differences in X .
+         Trade-off: weaker than unconditional PT (good), but you have to pick the right X (hard).
+         Two ways to use X : model the outcome side (µ(X)), or model the treatment side (p(X)). Each
+         is one of our estimators.
+
+
+
+University of Zurich · Department of Economics · May 2026                                              6
+        Picking X : pre-treatment confounders, not post-treatment outcomes
+
+
+
+
+         You want X that (i) predicts the treatment (causes selection) AND (ii) predicts Y (0) (causes
+         outcome differences).
+         Pre-treatment only. Post-treatment X may be affected by D and will leak.
+         Three practical screens (Imbens-Rubin, normalized differences):
+         – Drop treated post-period, regress Y (0) on candidate X
+         – Within control units, regress Y (0) on candidate X
+         – Use t−2 and t−1 to estimate ∆Y (0) and regress on X
+
+     Source: Imbens & Rubin (2015); 02-Covariates.tex frames 156–183.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                7
+T HE R EMIX                      Zurich · May 2026
+
+
+
+
+                       L ESSON
+
+
+              2. Outcome Regression
+        Outcome regression: model the trend, impute the counterfactual
+
+
+     Heckman, Ichimura & Todd (1997).
+
+      1. Use only the control group to fit a model of ∆Y on X :
+
+                                           µ
+                                           b0 (X) = E[∆Y
+                                                    b    | D=0, X]
+
+      2. For each treated unit, predict the counterfactual trend µ
+                                                                 b0 (Xi ).
+      3. The OR-DiD estimator:
+                                                1 X                            
+                                       δbOR =                 ∆Yi − µ
+                                                                    b0 (Xi )
+                                                N1
+                                                   i: Di =1
+
+
+     Interpretation: OR imputes what the treated would have done if untreated — using only
+     the control group’s X -to-trend mapping.
+
+
+University of Zurich · Department of Economics · May 2026                                    9
+        The TWFE-with-controls regression
+
+
+                              Yit = αi + γt + τ Dit + β ′ Xit + εit
+
+
+         Standard move: just add Xit to the TWFE.     “Sure! If you’re willing to impose three more
+         assumptions.”
+         Implicit assumption 1: additive functional form in X (linear, no D × X interaction).
+         Implicit assumption 2: constant treatment effect τ across all values of X .
+         Implicit assumption 3: X itself not affected by treatment.
+
+
+     The shortcut works only when these hold. When τ varies with X , TWFE-with-controls is not an OR
+                                          estimator of the ATT.
+      Forward link: we’ll see in Lesson 6 that this is the same disease as the pscore-trap. Caetano &
+                                 Callaway (2024) call it hidden linearity bias.
+
+University of Zurich · Department of Economics · May 2026                                               10
+        Why OR can fail: it’s all model
+
+
+
+         OR’s entire identification rests on µ
+                                             b0 (X) being correctly specified.
+         Get the functional form wrong — a missing nonlinearity, a missing interaction — and OR is
+         biased.
+         Especially fragile in the post-period, where you’re extrapolating from the control distribution of X
+         to the treated distribution.
+         If treated units have X -values rare among controls, OR is leaning on the model where the data
+         are thin.
+
+
+                            This is why IPW exists — as a different way to use X .
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                       11
+T HE R EMIX                        Zurich · May 2026
+
+
+
+
+                     L ESSON
+
+
+              3. Inverse Propen-
+                sity Weighting
+        The propensity score, in one minute
+
+
+
+         Definition: p(X) = Pr(D=1 | X) — the probability of treatment given covariates.
+         Estimated by logit/probit maximum likelihood:
+                                 X                                                      
+                 θb = arg max         Di log p(Xi ; θ) + (1 − Di ) log(1 − p(Xi ; θ))
+                             θ
+                                  i
+
+
+         Rosenbaum-Rubin (1983): if D is unconfounded given X (a vector), it is unconfounded given
+         p(X) (a scalar).
+         One number summarizes all of X .
+         The pscore lives in [0, 1]. Treated units have higher p(X) on average. The pscore reorganizes
+         the data along the dimension of selection.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                13
+        Abadie (2005): reweight the controls
+
+
+                                             p(X)
+         Idea: reweight control units by            so the reweighted control sample looks like the treated
+                                           1 − p(X)
+         sample in X .
+         Then take a simple DiD on the reweighted sample.
+
+
+
+      The Abadie IPW-DiD estimator
+                                                                        
+                                                1 X        Di − p(Xi )
+                                    δbIPW =                                  ∆Yi
+                                                N1 i       1 − p(Xi )
+
+
+     Identification: under conditional PT + common support, IPW recovers the ATT.
+     No outcome model required.
+
+University of Zurich · Department of Economics · May 2026                                                     14
+        Common support is non-negotiable
+
+
+
+                               p(X)
+         IPW’s weights are            for controls. As p(X) → 1, the weight → ∞.
+                             1 − p(X)
+         If some treated X -values have p(X) ≈ 1, then NO control unit is comparable — and the
+         weights are unstable.
+         Standard responses:
+         – Trim units with p(X) > 0.95 (or < 0.05).
+         – Report sensitivity to the trim threshold.
+         – In the limit, “weak overlap” breaks identification entirely. (Advanced deck.)
+
+     The pscore optimizer (IRLS, Newton-Raphson) can also misbehave near separation. Forward link to
+     advanced.
+
+
+
+University of Zurich · Department of Economics · May 2026                                              15
+T HE R EMIX                                            Zurich · May 2026
+
+
+
+
+                            L ESSON
+
+
+               4. The Trap
+              “Can’t I just control for the pscore?”
+        A natural temptation
+
+
+
+
+       If the propensity score is the one-scalar summary of confounding, why
+       not just add it as a regressor? Done.
+       — The audience, right now
+
+
+         It sounds right. Rosenbaum-Rubin says one scalar suffices. Regression handles scalars.
+         So: Yi = α + τ Di + γ pb(Xi ) + εi
+         Surely this recovers τ as the ATT? No. And the reason matters.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                         17
+        What that regression actually assumes
+
+
+
+                                  Yi = α + τ Di + γ pb(Xi ) + εi
+
+
+         No D × X interaction. No D × pb interaction.
+         The treatment effect is forced constant across the entire range of pb(X).
+         Equivalently: the same dose of policy produces the same effect on a person with pb(X) = 0.10
+         as on a person with pb(X) = 0.90.
+         That’s an assumption about the outcome side — one that Rosenbaum-Rubin says nothing
+         about.
+         Rosenbaum-Rubin gives you a valid reweighting tool. It does not authorize
+         regression-on-pscore.
+
+
+
+University of Zurich · Department of Economics · May 2026                                               18
+        A simulation makes it visible
+                          Estimate minus true ATT, across 500 Monte Carlo runs
+                          Heterogeneous treatment effects with selection on X
+
+                                                                         A: IPW (correct)
+
+                          75
+                          50
+                          25
+                           0
+
+                                                                  B: Regression w/ additive PS
+
+                          75
+                          50
+                          25
+                           0
+
+                                                                          C: Naive OLS
+                          80
+                          60
+                          40
+                          20
+                           0
+                                −0.3                     0.0                      0.3            0.6   0.9
+                                                                        estimate − true ATT
+
+
+
+
+         500 reps. Heterogeneous τ (X) = 1 + 0.5 X1 . Method A (IPW reweighting): bias ≈ 0. Method B
+                                                       b): bias ≈ −10%.
+                                      (regression with p
+
+University of Zurich · Department of Economics · May 2026                                                    19
+        The simulation, one screen of R
+
+      N <- 1000
+      X1 <- rnorm(N); X2 <- rnorm(N)
+      p <- plogis(0.5*X1 + 0.3*X2 - 0.2) # true propensity
+      D <- rbinom(N, 1, p)
+      Y0 <- X1 + 0.5*X2 + rnorm(N)
+      Y1 <- Y0 + (1 + 0.5*X1) # heterogeneous tau(X)
+      Y <- D*Y1 + (1-D)*Y0
+
+      phat <- glm(D ~ X1 + X2, family=binomial)$fitted.values
+
+      # Method A: IPW -- reweight controls
+      w <- ifelse(D==1, 1, phat/(1-phat))
+      A <- mean(Y[D==1]) - weighted.mean(Y[D==0], w[D==0])
+
+      # Method B: regression with pscore as a control
+      B <- coef(lm(Y ~ D + phat))["D"] # <-- the trap
+
+
+     Full simulation: decks/code/IPW-Demo/ipw_simulation.R
+
+
+University of Zurich · Department of Economics · May 2026       20
+        Weight versus regressor — different uses of the same scalar
+
+         The propensity score is a tool. The same scalar can be used as:
+         – a weight (Method A: reweight controls) — recovers ATT
+         – a regressor (Method B: add as control) — imposes homogeneous effects
+         Same number. Different uses. Different identifying assumptions.
+         Method B’s bias is not noise. It is the heterogeneity in τ (X) that the regression cannot see.
+
+
+
+      The lesson before DR
+
+      “Doubly robust” is sometimes mis-summarized as “IPW plus a regression control.”
+      That’s wrong. DR is something else — it uses the pscore as a weight, AND it uses an outcome
+      model.
+      But it does NOT use the pscore as a regressor.
+
+
+University of Zurich · Department of Economics · May 2026                                                 21
+        Name the disease: additive-control-side bias
+
+     Whenever you put a covariate on the right-hand side of an outcome regression additively
+     (no D × X interaction), you force:
+
+                            τ is constant across all values of that covariate.
+
+
+         Method B (Lesson 4): the covariate is pb(X) — a scalar summary of X .
+         Force constant τ across pb(X). Heterogeneity in τ (X) is invisible.
+         TWFE-with-controls (Lesson 2): the covariate is X itself.
+         Force constant τ across X . Heterogeneity in τ (X) is invisible.
+         Same disease, different costume. Caetano & Callaway (2024) name the TWFE version
+         hidden linearity bias. It’s the same root.
+
+
+     DR’s escape: use X and pb(X) as weights and to model the counterfactual µ0 (X) on controls only
+                                 — never as additive regressors of Y .
+
+University of Zurich · Department of Economics · May 2026                                              22
+T HE R EMIX                      Zurich · May 2026
+
+
+
+
+                      L ESSON
+
+
+              5. Doubly Robust DiD
+        Doubly robust: two chances to be right
+
+
+
+         OR needs µ
+                  b0 (X) correctly specified.
+         IPW needs pb(X) correctly specified.
+         Neither is foolproof. Each fails if its own model is wrong.
+
+
+
+      The Sant’Anna & Zhao (2020) move
+
+      Combine them. The DR-DiD estimator is consistent if either model is correct — not necessarily
+      both.
+
+
+     Two chances to be right.         That is what “doubly robust” means.
+
+
+
+University of Zurich · Department of Economics · May 2026                                             24
+        The DR-DiD estimator
+
+
+                                                                                       
+                                                   p(X)(1−D)    !
+                                        D        1−p(X)                             
+                        δbDR = E           −  p(X)(1−D)          ∆Y − µ0 (X) 
+                                       E[D]   E       1−p(X)
+
+
+
+         p(X): propensity score model
+         µ0 (X): outcome model fitted on controls: µ0 (X) = E[∆Y | D=0, X]
+         The IPW weight reweights the comparison. The OR term centers the residual on the imputed
+         counterfactual.
+         If p is right, the IPW piece does the work. If µ0 is right, the OR piece does the work.
+         Either one is enough.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                           25
+        DR is not regression-with-pscore
+
+
+
+
+         Look at the formula. pb(X) appears as a weight, never as a regressor.
+         µ0 (X) models the outcome, but on controls only — to impute the counterfactual trend.
+         The two pieces are combined by a re-centering and reweighting, NOT by adding pb to a
+         regression’s right-hand side.
+
+
+      The pscore is the tool. Using it as a weight is doubly robust. Using it as a regressor is the trap
+                                               from Lesson 4.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                  26
+        Efficiency and the influence function
+
+
+         Under conditional PT + common support, DR-DiD is semiparametrically efficient.
+         No estimator of the ATT that uses only the same assumptions can have a smaller asymptotic
+         variance.
+         The asymptotic variance has a closed form via the influence function (this is what the drdid
+         package computes for SEs).
+
+
+
+      Practical recipe
+
+      Pick X for confounding (Lesson 1). Estimate pb(X) by logit.     Estimate µ
+                                                                               b0 (X) on controls.
+      Plug into the DR-DiD formula. Influence-function SEs.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                               27
+        DR-DiD, in code
+
+      library(DRDID)
+
+      # Panel data: outcome y, treatment indicator d, time t, id, covariates X
+      result <- drdid(
+        yname = "y",
+        tname = "t",
+        idname = "id",
+        dname = "d",
+        xformla = ~ x1 + x2 + x3, # covariates for BOTH p(X) and mu_0(X)
+        data = panel_df,
+        estMethod = "imp", # Sant’Anna & Zhao (2020) DR
+        weightsname = NULL,
+        boot = FALSE,
+        inffunc = TRUE # influence-function SEs
+      )
+      summary(result)
+
+     Same X used for both models. Misspecify one — the other catches you.
+University of Zurich · Department of Economics · May 2026                        28
+T HE R EMIX                                    Zurich · May 2026
+
+
+
+
+                            L ESSON
+
+
+              6. Hidden Linearity Bias
+                     Caetano & Callaway 2024
+        An applied problem you’ve already run
+
+
+
+       TWFE with time-varying controls is the workhorse DiD specification.
+       Almost every DiD paper runs it.
+       — Anybody who’s seen a job-market paper
+
+
+         Standard recipe: include population, income, demographic shares, region indicators, etc. on the
+         right-hand side. Run TWFE. Done.
+         What if I told you that regression doesn’t control for what you think it controls for?
+         Caetano & Callaway (2024, R&R REStat): yes. The fixed-effect transformation quietly drops
+         your X levels and your time-invariant Z .
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                  30
+        An application: stand-your-ground laws (Cheng & Hoekstra 2013)
+
+         50 states, 2000–2010. 20 states adopt stand-your-ground laws. Outcome: log homicide rate.
+         Treated states differ from controls in levels:
+         – South dummy: std. diff. = 0.81 (large)
+         – Poverty rate: std. diff. = 1.06 (huge)
+         – Median income: std. diff. = −1.08 (huge)
+         But the differences in changes of these covariates are small.
+
+
+
+      The headline result
+
+      TWFE with covariates: α b = +0.067, significant.
+                                      d ≈ 0, insignificant.
+      AIPW with the right covariates: ATT
+      The positive TWFE result is largely artefact of hidden linearity bias.
+
+
+University of Zurich · Department of Economics · May 2026                                            31
+        What TWFE actually controls for, after the FE transformation
+
+     You wrote down this model:
+
+                           Yit = αi + γt + τ Dit + Xit′ β + Zi′ δ + εit
+
+      First-difference (or within-transform) to kill αi :
+
+                               ∆Yit = γet + τ ∆Dit + ∆Xit′ β + ∆εit
+
+
+
+         αi vanishes (good).
+         Zi vanishes too (time-invariant). Region: gone.
+         Xit becomes ∆Xit . Population level: gone. Only population growth remains.
+         Your “controls” are now changes in X , not levels.
+
+
+University of Zurich · Department of Economics · May 2026                             32
+        What you should be controlling for
+
+
+
+     The correct first-differenced model for ∆Y (0) (Caetano-Callaway Eq. 4):
+
+                      ∆Yit (0) = γet + Zi′ δet + ∆Xit′ βt + Xi,t−1
+                                                             ′
+                                                                   βet + ∆εit
+                                            |{z}      | {z }      |   {z      }
+                                           time-inv   changes         level
+
+
+
+         Time-invariant Z (region) belongs on the right — because trends differ by region.
+         Pre-period level Xi,t−1 belongs on the right — because the level of population predicts the
+         trend in homicides.
+         TWFE drops both. Hidden linearity bias.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                              33
+        Same disease as Lesson 4 — with a different costume
+
+
+
+        Estimator                    What goes on RHS additively           What gets forced constant
+
+        Method B (L4)                pb(X) as control                      τ across pb(X)
+        TWFE-with-controls (L2,L6)   ∆X as control                         τ across ∆X
+        General formulation          W = f (X) as additive RHS regressor   τ across W
+
+
+
+         The pscore-trap (L4) and TWFE-with-controls (L2/L6) are the same identifying mistake.
+         Putting any covariate on the additive right-hand side of an outcome regression forces τ constant
+         across that covariate.
+                                                        Pr(D=1 | X). The math doesn’t know that.
+         The pscore is just a specific function f (X) = c
+
+
+
+University of Zurich · Department of Economics · May 2026                                                   34
+        The fix: AIPW with (Xt−1 , Z)
+
+
+     Caetano-Callaway’s recommended estimator:
+                                                              
+                                      b D=1 ∆Y − b
+                                  d = E
+                                  ATT            m0 (Xt−1 , Z)
+
+
+
+         m
+         b 0 (Xt−1 , Z): outcome regression of ∆Y on pre-period level of X and time-invariant Z — fit
+         on controls only.
+         Combine with IPW on a generalized propensity score (also using Xt−1 , Z ) for full doubly-robust
+         safety.
+         R packages: pte, twfeweights.
+         This is just DR-DiD (L5) with the right conditioning set: levels of time-varying X + time-invariant
+         Z.
+
+
+University of Zurich · Department of Economics · May 2026                                                      35
+        Stand-your-ground revisited — the numbers
+
+
+
+                    Specification                                            A
+                                                                             dTT       SE
+
+                    TWFE with ∆X (the standard recipe)                     +0.067     0.026
+                    Reg. adj. with ∆X + Z                                  +0.106     0.058
+                    Reg. adj. with Xt−1 + Z (Caetano-Callaway preferred)   +0.019     0.043
+                    Reg. adj. with ∆X + Xt−1 + Z                           +0.078     0.180
+
+
+
+         The TWFE positive effect (+6.7%) shrinks to near-zero (+1.9%) when you control for levels of
+         X and Z .
+         The bias was hidden in plain sight — the regression compiled fine. It just wasn’t controlling for
+         what we thought.
+
+
+University of Zurich · Department of Economics · May 2026                                                    36
+T HE R EMIX                  Zurich · May 2026
+
+
+
+
+                   L ESSON
+
+
+         7. Compositional Change
+        Two flavors of “X moves”
+
+
+
+               Flavor      What’s moving                                 Estimator
+
+               Lesson 6    Same units, Xit moves over time               Caetano-Callaway AIPW
+               Lesson 7    New units each period, X distribution moves   Hong / Sant’Anna-Xu
+
+
+
+         Both break unconditional PT in finite samples even when it holds in the population.
+         L6 (panel): the FE transformation loses the X level.   L7 (repeated cross-sections): the sample
+         composition shifts.
+         Different fixes. Same family of concerns: X is moving, and your estimator pretends it isn’t.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                  38
+        Hong (2013): Napster, internet users, and music expenditure
+
+
+
+         Repeated cross-sections, 1996 and 2002.
+         In 1996, internet users were a small, atypical slice — mostly young, urban, technical.
+         By 2002, internet users looked much more like the general population.
+         Compare “internet users” to “non-users,” 1996 vs. 2002.
+         Did Napster reduce music spending — or did the composition of internet users change?
+         Hong’s answer: the naive DiD confounds the two. The compositional shift accounts for much of
+         the apparent “Napster effect.”
+
+     Hong (2013) JEEA. Figures in CI-2/lecture_includes/hong_napster.png.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                               39
+        So why do we need Sant’Anna & Xu given Hong showed it?
+
+
+     Hong (2013) gave us the intuition — and a single empirical example. To use this in your
+     own work you need three things Hong didn’t formalize:
+
+      1. A target estimand. What is “the” ATT under compositional shift? Is it the average over the
+         post-period sample (your data) or the pre-period sample? These are different parameters.
+      2. A test. Hong showed his data had the problem. How do you know yours does, without the
+         benefit of a second empirical paper?
+      3. A correction. If your test rejects, what estimator should you report? Hong didn’t give you one —
+         he flagged the problem.
+
+
+            Sant’Anna & Xu (2026) give you all three. The story stays Hong’s; the toolkit is new.
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                                   40
+        Sant’Anna & Xu (2026): estimand, test, estimator
+
+      The estimand
+
+      Population ATT under a fixed reference X -distribution (typically pre-period). The naive DiD targets a different mixture.
+
+
+
+      The Hausman-style test
+
+      Compare naive DiD vs. reweighted DiD. If they differ, compositional change is doing work. Standard χ2 inference.
+
+
+
+      The estimator
+
+      Reweight units to match the reference X -distribution (IPW-style), then compute DiD on the reweighted sample. DR
+      version available.
+
+
+     Source: readings/SantAnna_DiD_CompositionalChanges_text.md
+University of Zurich · Department of Economics · May 2026                                                                         41
+        When compositional change matters in practice
+
+
+         Survey data over long horizons. CPS, NLSY, ACS — sample composition drifts as response
+         rates, demographics, frame definitions change.
+         Administrative outcomes with selective coverage. Who enters the data may itself respond to
+         policy (Medicaid take-up, charter-school enrollment).
+         New technology adoption. Hong’s Napster, again. The adopter pool changes over time —
+         almost by definition.
+         Long pre-periods in event studies. The further back you go, the more likely the population
+         you’re comparing has shifted.
+
+
+     First defense: check whether X distribution moved across time. Then run the Hausman test. Then
+                                           report both estimates.
+
+
+
+University of Zurich · Department of Economics · May 2026                                             42
+        What we’ve done this afternoon
+
+      1. Conditional PT — the new identifying assumption
+      2. Outcome regression: model the trend, impute the counterfactual
+      3. IPW: reweight controls to look like the treated
+      4. The trap: “controlling for the pscore” imposes constant τ across pb(X)
+      5. Doubly robust: pscore as a weight (not regressor) + outcome model
+      6. Hidden linearity bias (Caetano-Callaway): same disease, costume = TWFE-with-controls
+      7. Compositional change (Hong; Sant’Anna-Xu): when the units shift, not X
+
+
+     The unifying lesson: covariates on the additive RHS of an outcome regression impose constraints
+                                                    on τ .
+                          DR’s escape is to use them as weights, not regressors.
+
+
+University of Zurich · Department of Economics · May 2026                                              43
+        Tomorrow
+
+
+
+
+         Day 3: when even covariates can’t save you. Synthetic control, the frontier methods.
+         Plus: when treatment timing differs across units — the staggered-adoption mess
+         (Goodman-Bacon, Callaway-Sant’Anna, Sun-Abraham, BJS, dCdH).
+
+
+
+
+University of Zurich · Department of Economics · May 2026                                       44
+          Doubly robust isn’t “control-
+         ling for the propensity score.”
+It’s reweighting the comparison group with IPW,
+      imputing the missing trend with OR,
+     and getting two chances to be right.
+
+                  See you tomorrow.
+

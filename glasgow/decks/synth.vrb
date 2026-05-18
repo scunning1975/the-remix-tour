@@ -1,0 +1,24 @@
+\frametitle{The SDID code, in five lines}
+\vspace{0.4em}
+\begin{lstlisting}[language=Stata,basicstyle=\ttfamily\scriptsize]
+* Install once, then load baker.dta
+ssc install sdid, replace
+
+* Drop the always-treated 2004 cohort so we have a feasible never-treated group
+drop if treat_date == 2004
+
+* Run SDID with the treatment indicator
+sdid y state year treat, vce(bootstrap) reps(200) graph
+\end{lstlisting}
+
+\vspace{0.7em}
+\textbf{What the command does:}
+\begin{itemize}\small
+  \item Estimates $\widehat{w}_i$ to match pre-period across units.
+  \item Estimates $\widehat{\lambda}_t$ to weight informative pre-periods.
+  \item Runs the weighted TWFE regression and reports $\widehat{\tau}^{\,\text{SDID}}$ with bootstrap SE.
+  \item \texttt{graph} produces the unit-and-time-weighted parallel-trends picture.
+\end{itemize}
+
+\vspace{0.4em}
+\meta{Software: \texttt{sdid} (Pailañir \& Clarke, Stata SSC). R: \texttt{synthdid}.}

@@ -1,0 +1,22 @@
+\frametitle{DR-DiD, in code}
+\vspace{0.2em}
+\begin{lstlisting}[language=R]
+library(DRDID)
+
+# Panel data: outcome y, treatment indicator d, time t, id, covariates X
+result <- drdid(
+  yname        = "y",
+  tname        = "t",
+  idname       = "id",
+  dname        = "d",
+  xformla      = ~ x1 + x2 + x3,    # covariates for BOTH p(X) and mu_0(X)
+  data         = panel_df,
+  estMethod    = "imp",             # Sant'Anna & Zhao (2020) DR
+  weightsname  = NULL,
+  boot         = FALSE,
+  inffunc      = TRUE               # influence-function SEs
+)
+summary(result)
+\end{lstlisting}
+\vspace{0.1em}
+\meta{Same X used for both models. Misspecify one --- the other catches you.}

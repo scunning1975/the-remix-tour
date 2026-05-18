@@ -1,0 +1,14 @@
+\frametitle{castle.dta event study, live}
+\vspace{0.3em}
+\begin{lstlisting}[language=R]
+library(fixest); library(ggplot2)
+df <- read_dta("castle.dta")
+df <- df %>% mutate(event_time = year - effyear)
+
+es <- feols(l_homicide ~ i(event_time, ref = -1) | sid + year,
+            data = df, cluster = ~sid)
+
+iplot(es, main = "Event study: castle.dta")
+\end{lstlisting}
+\vspace{0.4em}
+\meta{Full script: \texttt{CI-2/Lab/Basic-DiD/simple\_eventstudy.R}}
