@@ -1009,69 +1009,52 @@ DiD usually runs on aggregates: counties, states, hospitals.
 \meta{Solon, Haider \& Wooldridge (2015). Code: \texttt{decks/code/Tiebout-Roy/tiebout\_roy\_chart.R}}
 \end{frame}
 
-%% ---------- Slide 28h4: The weighted mean — formula ----------
-\begin{frame}{The weighted mean --- the formula behind ``weighting decides''}
-\footnotesize
-\textbf{Weighted average.} \;Given values $Y_1, \ldots, Y_n$ with weights $w_1, \ldots, w_n$:
-\vspace{-0.2em}
+%% ---------- Slide 28h4: The weighted mean — one formula ----------
+\begin{frame}{The weighted mean --- a single formula}
+\vspace{0.5em}
+\begin{center}
+\Large
 \[
-\overline{Y}_w \;=\; \frac{w_1 Y_1 + w_2 Y_2 + \cdots + w_n Y_n}{w_1 + w_2 + \cdots + w_n}
-\;=\; \frac{\sum_i w_i\,Y_i}{\sum_i w_i}.
+\overline{Y}_w \;=\; \frac{\sum_i w_i\,Y_i}{\sum_i w_i}
 \]
+\end{center}
 
-\textbf{Two special cases of the same formula.}
-\begin{itemize}\setlength\itemsep{2pt}
-  \item All weights equal ($w_i = 1$): \;collapses to the ordinary average \;$\overline{Y} = \frac{1}{n}\sum_i Y_i$ \;\textit{(unit-weighted)}.
-  \item Weights = cell counts (population, persons-per-county): \;\textit{person-weighted}.
+\vspace{1em}
+The weight is the choice:
+\begin{itemize}\setlength\itemsep{6pt}
+  \item $w_i = 1$ for every unit $\;\Rightarrow\;$ \highlight{unit-weighted} (the average county).
+  \item $w_i =$ population $\;\Rightarrow\;$ \highlight{person-weighted} (the average person).
 \end{itemize}
-
-\vspace{0.4em}
-\textbf{Same operation, three syntaxes.}
-\begin{itemize}\setlength\itemsep{2pt}
-  \item \textbf{Stata:} \;\texttt{reg y x [aweight=pop]}
-  \item \textbf{R:} \;\texttt{lm(y \textasciitilde\ x, weights = pop)} \,or\, \texttt{feols(y \textasciitilde\ x, weights = \textasciitilde pop)}
-  \item \textbf{Python:} \;\texttt{smf.wls('y \textasciitilde\ x', data=df, weights=df.pop).fit()}
-\end{itemize}
-
-\vspace{0.2em}
-\meta{This is also the formula behind ``two ATTs, two parallel trends'' later --- weighted least squares with population weights.}
 \end{frame}
 
 %% ---------- Slide 28h5: Two DiDs on the same 10 people ----------
-\begin{frame}{Apply it: two DiDs on the same 10 people}
-\footnotesize
-The earlier 10-person table. \;Compute a DiD for each county separately:
-\begin{itemize}\setlength\itemsep{1pt}
-  \item \textbf{County 1} (8 people): \;DiD$_1 = +0.5$
-  \item \textbf{County 2} (2 people): \;DiD$_2 = -1.0$
-\end{itemize}
+\begin{frame}{Two weights, two signs}
+\vspace{0.4em}
+\textbf{Same 10 people.} \;County 1 DiD $= +0.5$ (8 people). \;County 2 DiD $= -1.0$ (2 people).
+
+\vspace{1em}
+\begin{center}
+\textbf{Person-weighted:} \;\;
+$\dfrac{8 \cdot (+0.5) + 2 \cdot (-1.0)}{8 + 2} \;=\; \mathbf{+0.2}$
+\end{center}
 
 \vspace{0.5em}
-\textbf{Person-weighted DiD} (weight by population):
-\vspace{-0.2em}
-\[
-\widehat{\text{DiD}}_{\text{pop}} \;=\; \frac{8 \cdot (+0.5) \;+\; 2 \cdot (-1.0)}{8 + 2} \;=\; \frac{4 - 2}{10} \;=\; \mathbf{+0.2}
-\]
-
-\vspace{0.2em}
-\textbf{Unit-weighted DiD} (one weight per county):
-\vspace{-0.2em}
-\[
-\widehat{\text{DiD}}_{\text{unit}} \;=\; \frac{(+0.5) + (-1.0)}{2} \;=\; \mathbf{-0.25}
-\]
-
-\vspace{0.4em}
 \begin{center}
-\small\color{warmgray}\itshape
-Same data. \;Same county DiDs. \;\highlight{Different signs} when you aggregate. \;The weight is the choice.
+\textbf{Unit-weighted:} \;\;
+$\dfrac{(+0.5) + (-1.0)}{2} \;=\; \mathbf{-0.25}$
+\end{center}
+
+\vspace{1em}
+\begin{center}
+\highlight{Same data. Different weight. Different sign.}
 \end{center}
 \end{frame}
 
-%% ---------- Slide 28h6: Castle data, weighted — Stata ----------
-\begin{frame}[fragile]{Castle data, weighted by population: Stata}
+%% ---------- Slide 28h6a: Castle data, manual weighted 2x2 — Stata ----------
+\begin{frame}[fragile]{Castle data: the weighted 2$\times$2 by hand}
 \footnotesize
-\textbf{Manual weighted 2$\times$2.} \;Four cell means, each with \texttt{aw=popwt}:
-\vspace{-0.2em}
+Four cell means, each with \texttt{[aw=popwt]}:
+\vspace{0.2em}
 \begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
 summarize l_homicide if treat==1 & post==1 [aw=popwt]
 gen wy11 = `r(mean)'
@@ -1081,92 +1064,106 @@ summarize l_homicide if treat==0 & post==1 [aw=popwt]
 gen wy01 = `r(mean)'
 summarize l_homicide if treat==0 & post==0 [aw=popwt]
 gen wy00 = `r(mean)'
+
 gen wdid = (wy11 - wy10) - (wy01 - wy00)
 display wdid          // 0.0964
 \end{lstlisting}
+\end{frame}
 
-\vspace{0.3em}
-\textbf{Same number via regression:}
-\vspace{-0.2em}
-\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+%% ---------- Slide 28h6b: Same number via Stata regression ----------
+\begin{frame}[fragile]{Same number via regression: Stata}
+\vspace{0.6em}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\small]
 reg l_homicide post##treat [aweight=popwt], cluster(sid)
-// Coefficient on 1.post#1.treat = 0.0964
 \end{lstlisting}
 
-\vspace{0.2em}
-\meta{Same number to machine epsilon. \;\texttt{aweight} \textit{is} the formula on slide 28h4 --- applied inside OLS.}
+\vspace{0.8em}
+\begin{center}
+Coefficient on \texttt{1.post\#1.treat} $\;=\; \mathbf{0.0964}$
+\end{center}
+
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape \texttt{aweight} \textit{is} the formula --- run inside OLS.
+\end{center}
 \end{frame}
 
-%% ---------- Slide 28h7: Castle data, weighted — R ----------
-\begin{frame}[fragile]{Same in R}
-\vspace{0.4em}
-\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
-library(haven); library(dplyr); library(fixest)
-castle <- read_dta("castle.dta")
+%% ---------- Slide 28h7: Same number via R ----------
+\begin{frame}[fragile]{Same number via regression: R}
+\vspace{0.6em}
+\begin{lstlisting}[language=R,basicstyle=\ttfamily\small]
+library(fixest)
 
-# Manual: weighted means by cell, then (Y11-Y10)-(Y01-Y00)
-castle |>
-  group_by(treat, post) |>
-  summarize(Ybar = weighted.mean(l_homicide, popwt),
-            .groups = "drop")
-# (wy11 - wy10) - (wy01 - wy00)  ->  0.0964
-
-# Regression with population weights, clustered SEs
-feols(l_homicide ~ post * treat, data = castle,
-      weights = ~popwt, cluster = ~sid)
-# Coefficient on post:treat = 0.0964
+feols(l_homicide ~ post * treat,
+      data    = castle,
+      weights = ~popwt,
+      cluster = ~sid)
 \end{lstlisting}
+
+\vspace{0.8em}
+\begin{center}
+Coefficient on \texttt{post:treat} $\;=\; \mathbf{0.0964}$
+\end{center}
 \end{frame}
 
-%% ---------- Slide 28h8: Castle data, weighted — Python ----------
-\begin{frame}[fragile]{Same in Python}
-\vspace{0.4em}
-\begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize]
-import pandas as pd
+%% ---------- Slide 28h8: Same number via Python ----------
+\begin{frame}[fragile]{Same number via regression: Python}
+\vspace{0.6em}
+\begin{lstlisting}[language=Python,basicstyle=\ttfamily\small]
 import statsmodels.formula.api as smf
 
-castle = pd.read_stata("castle.dta")
-
-# Manual: weighted means, four cells
-def wmean(df):
-    return (df.l_homicide * df.popwt).sum() / df.popwt.sum()
-means = castle.groupby(["treat", "post"]).apply(wmean)
-# (wy11 - wy10) - (wy01 - wy00)  ->  0.0964
-
-# Regression with population weights, clustered SEs
-mod = smf.wls("l_homicide ~ post * treat", data=castle,
-              weights=castle["popwt"]).fit(
-        cov_type="cluster", cov_kwds={"groups": castle["sid"]})
-print(mod.params["post:treat"])    # 0.0964
+mod = smf.wls("l_homicide ~ post * treat",
+              data    = castle,
+              weights = castle["popwt"]).fit(
+        cov_type = "cluster",
+        cov_kwds = {"groups": castle["sid"]})
 \end{lstlisting}
+
+\vspace{0.8em}
+\begin{center}
+\texttt{mod.params["post:treat"]} $\;=\; \mathbf{0.0964}$
+\end{center}
 \end{frame}
 
-%% ---------- Slide 29: From parameters to the target parameter ----------
-\begin{frame}{The switching equation --- and a target parameter}
-\footnotesize
-\textbf{Everything until now has been about \textit{parameters}.}
-\begin{itemize}\setlength\itemsep{1pt}
-  \item ATE, ATT, ATU --- three parameters, three weights, sometimes three signs.
-  \item Whichever you report is a choice about \textit{which causal effect you actually want}.
+%% ---------- Slide 29a: From parameter choice to ATT ----------
+\begin{frame}{Pick a target parameter}
+\vspace{0.6em}
+Everything until now has been about \textit{parameters}: ATE, ATT, ATU.
+\vspace{0.3em}
+\begin{itemize}
+  \item Three weights. Three signs. Three answers.
+  \item The choice is about \textit{which causal effect you actually want}.
 \end{itemize}
 
-\vspace{0.4em}
-\textbf{Pick one: today's target parameter is the ATT.} \;The average effect for the units that actually received the treatment.
+\vspace{1.2em}
+\begin{center}
+\Large\highlight{Today's target: the ATT.}
+\end{center}
 
-\vspace{0.6em}
-\textbf{But to estimate \textit{any} of these parameters from data}, you confront:
-\vspace{-0.2em}
+\vspace{0.8em}
+\begin{center}
+\small\color{warmgray}\itshape The average effect for the units that actually received the treatment.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 29b: The switching equation ----------
+\begin{frame}{The switching equation: you see one half}
+\vspace{0.8em}
+\begin{center}
+\Large
 \[
 Y_i \;=\; D_i \cdot Y_i(1) \;+\; (1 - D_i) \cdot Y_i(0)
 \]
-\vspace{-0.7em}
-\begin{itemize}\setlength\itemsep{1pt}
-  \item The \highlight{switching equation}: for each unit you see one half, never both.
-  \item All three parameters ask about $Y(1)$ \textit{and} $Y(0)$ together. \;The data hands you one column.
+\end{center}
+
+\vspace{1em}
+\begin{itemize}\setlength\itemsep{6pt}
+  \item For each unit: $Y_i(1)$ if treated, $Y_i(0)$ if not.
+  \item ATT asks about \textit{both} columns. The data hands you one.
 \end{itemize}
 
-\vspace{0.3em}
-\meta{The rest of the day is strategies for recovering the ATT from the realized half. \;DiD is the first one.}
+\vspace{0.8em}
+\meta{The rest of the day: strategies for recovering the ATT from the half you see.}
 \end{frame}
 
 %% ---------- Slide 29a1: SDO calculation ----------
