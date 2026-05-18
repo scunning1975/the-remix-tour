@@ -53,3 +53,7 @@ zurich/audits/
 
 # PDF split-pdf working artifacts
 readings/pdfs_build/
+
+# Local working notes (not for the repo)
+**/_TODO_*.md
+**/_notes_*.md
