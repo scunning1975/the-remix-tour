@@ -2614,56 +2614,146 @@ Write down what \textit{else} the rival theory would predict --- something irrel
 
 %% ---------- Slide 51: The saturated regression ----------
 \begin{frame}{Every coefficient is a 2$\times$2 against $t = -1$}
-\vspace{0.4em}
+\vspace{0.6em}
 The saturated event-study regression:
-\vspace{0.4em}
+\vspace{0.2em}
 \[
 Y_{it} \;=\; \alpha_i + \lambda_t + \sum_{k \neq -1} \beta_k \cdot \mathbf{1}\{\text{event time}_{it} = k\} \cdot D_i \;+\; \varepsilon_{it}
 \]
+
+\vspace{0.8em}
+\begin{center}
+\Large \highlight{Drop $k = -1$ as the reference.}
+\end{center}
+
 \vspace{0.4em}
-\begin{itemize}
-  \item Unit FE $\alpha_i$, time FE $\lambda_t$
-  \item One indicator per event-time, treated only
-  \item \highlight{Drop $k=-1$ as the reference} --- every other $\hat{\beta}_k$ is a 2$\times$2 against the period just before treatment
+\begin{center}
+\small\color{warmgray}\itshape Every other $\hat\beta_k$ is then a 2$\times$2 DiD between event-time $k$ and the period just before treatment. \;Let's prove it numerically.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 51b: Toy data ----------
+\begin{frame}{A tiny panel where you can do the math in your head}
+\footnotesize
+\textbf{Cell means $\overline{Y}_{g,t}$.} \;Two treated units (T), two controls (C). \;Treatment turns on at event-time $0$.
+\vspace{0.4em}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Event time $k$} & $-3$ & $-2$ & $-1$ & $0$ & $+1$ \\
+\midrule
+\textbf{Treated} \;$\overline{Y}^T_k$ & $7$ & $8$ & $9$ & $13$ & $16$ \\
+\textbf{Control} \;$\overline{Y}^C_k$ & $2$ & $3$ & $4$ & $5$ & $6$ \\
+\midrule
+$\overline{Y}^T_k - \overline{Y}^C_k$ & $5$ & $5$ & $5$ & $8$ & $10$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item Pre-period: T--C gap is constant at $5$. \;\highlight{Parallel trends.}
+  \item True ATT$(0) = 3$, \;True ATT$(+1) = 5$.
 \end{itemize}
 \end{frame}
 
-%% ---------- Slide 52: t-1 is the hinge ----------
-\begin{frame}{The baseline is the hinge}
-\vspace{0.4em}
+%% ---------- Slide 51c: Every β̂_k by hand against t=-1 ----------
+\begin{frame}{Each $\hat\beta_k$ by hand --- one formula, four answers}
+\footnotesize
+The 2$\times$2 against $t = -1$: \;$\hat\beta_k \;=\; (\overline{Y}^T_k - \overline{Y}^T_{-1}) - (\overline{Y}^C_k - \overline{Y}^C_{-1})$
+
+\vspace{0.5em}
 \begin{center}
-\begin{tikzpicture}[scale=0.95]
-\draw[->, slate, thick] (-4.5,0) -- (4.5,0) node[right, text=charcoal, font=\small] {event time};
-
-%% tick marks
-\foreach \x/\lab in {-3/-3, -2/-2, -1/-1, 0/0, 1/+1, 2/+2, 3/+3} {
-  \draw[slate] (\x,-0.1) -- (\x,0.1);
-  \node[font=\scriptsize, text=charcoal, anchor=north] at (\x,-0.15) {\lab};
-}
-
-%% Highlight t=-1
-\fill[accent] (-1,0) circle (0.12);
-\node[font=\scriptsize\bfseries, text=accent, anchor=south] at (-1,0.2) {baseline};
-
-%% Treatment line
-\draw[dashed, accent, thick] (0,-0.5) -- (0,1.5);
-\node[font=\scriptsize, text=accent, anchor=south] at (0,1.5) {treatment};
-
-%% Coefficient dots
-\foreach \x/\y in {-3/0.6, -2/0.4, 0/1.0, 1/1.3, 2/1.4, 3/1.4} {
-  \fill[charcoal] (\x,\y) circle (0.08);
-}
-%% Reference (zero) at t=-1
-\node[font=\scriptsize, text=charcoal, anchor=south] at (3.5,1.45) {$\hat\beta_k$};
-
-\end{tikzpicture}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{$k$} & \textbf{Calculation} & \textbf{$\hat\beta_k$} \\
+\midrule
+$-3$ & $(7 - 9) - (2 - 4) \;=\; -2 - (-2)$ & $\mathbf{0}$ \\
+$-2$ & $(8 - 9) - (3 - 4) \;=\; -1 - (-1)$ & $\mathbf{0}$ \\
+$0$  & $(13 - 9) - (5 - 4) \;=\; 4 - 1$    & $\mathbf{3}$ \\
+$+1$ & $(16 - 9) - (6 - 4) \;=\; 7 - 2$    & $\mathbf{5}$ \\
+\bottomrule
+\end{tabular}
 \end{center}
-\vspace{0.4em}
+
+\vspace{0.5em}
 \begin{center}
-\small\color{warmgray}\itshape
-Each $\hat\beta_k$ is a 2$\times$2 DiD with pre $= -1$, post $= k$: \\[0.15em]
-$\big(\overline{Y}^T_k - \overline{Y}^T_{-1}\big) - \big(\overline{Y}^C_k - \overline{Y}^C_{-1}\big)$. \;\; The hinge is at $-1$, not in the levels.
+\small\color{warmgray}\itshape Same arithmetic each row. Pre $\to$ zeros (PT holds). Post $\to$ the true ATT.
 \end{center}
+\end{frame}
+
+%% ---------- Slide 51d: Same numbers via OLS in R ----------
+\begin{frame}[fragile]{Same numbers via OLS in R}
+\vspace{0.5em}
+\begin{lstlisting}[language=R,basicstyle=\ttfamily\small]
+library(fixest)
+feols(Y ~ i(event_time, treat, ref = -1) | unit + period,
+      data = toy)
+\end{lstlisting}
+
+\vspace{0.6em}
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lc@{}}
+\toprule
+\textbf{coefficient} & \textbf{estimate} \\
+\midrule
+\texttt{event\_time::-3:treat} & $0$ \\
+\texttt{event\_time::-2:treat} & $0$ \\
+\texttt{event\_time::0:treat}  & $3$ \\
+\texttt{event\_time::1:treat}  & $5$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+\begin{center}
+\small\color{warmgray}\itshape OLS matches the manual 2$\times$2s to machine epsilon. The regression \textit{is} the formula.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 51e: Different hinge, different question ----------
+\begin{frame}{You could have picked a different hinge}
+\footnotesize
+Re-compute $\hat\beta_{-3}$, but with $t = -2$ as the baseline:
+\vspace{-0.2em}
+\[
+\tilde\beta_{-3} \;=\; (\overline{Y}^T_{-3} - \overline{Y}^T_{-2}) - (\overline{Y}^C_{-3} - \overline{Y}^C_{-2}) \;=\; (7 - 8) - (2 - 3) \;=\; \mathbf{0}
+\]
+
+\vspace{0.4em}
+And the post-period one with $t = -2$ as the baseline:
+\vspace{-0.2em}
+\[
+\tilde\beta_{0} \;=\; (\overline{Y}^T_{0} - \overline{Y}^T_{-2}) - (\overline{Y}^C_{0} - \overline{Y}^C_{-2}) \;=\; (13 - 8) - (5 - 3) \;=\; \mathbf{3}
+\]
+
+\vspace{0.6em}
+\begin{block}{What OLS \textit{can't} give you simultaneously}
+A single regression drops \textit{one} event-time dummy. \;Multicollinearity won't let it report 2$\times$2s against both $t = -1$ \textit{and} $t = -2$ at once. \;The convention is $t = -1$. \;It's a choice, not math.
+\end{block}
+\end{frame}
+
+%% ---------- Slide 51f: Implication for PT falsification ----------
+\begin{frame}{Why the hinge matters for parallel-trends tests}
+\vspace{0.4em}
+The pre-period coefficients $\hat\beta_{-q}, \ldots, \hat\beta_{-2}$ are:
+\vspace{-0.2em}
+\[
+\hat\beta_k \;=\; \underbrace{(\overline{Y}^T_k - \overline{Y}^T_{-1})}_{\text{long-difference, treated}} \;-\; \underbrace{(\overline{Y}^C_k - \overline{Y}^C_{-1})}_{\text{long-difference, control}}
+\]
+
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item These are \textit{long-difference trends from $t = -1$} --- not point-to-point changes.
+  \item If you use them as a \highlight{parallel-trends falsification}, you're testing that those long-difference trends are zero.
+  \item The post-period coefficients use the \textit{same hinge}. \;The falsification model must match the long-difference structure of the post-period model.
+\end{itemize}
+
+\vspace{0.3em}
+\meta{Match the model, match the test. \;A different baseline is a different question.}
 \end{frame}
 
 %% ---------- Slide 53: Live in R ----------
