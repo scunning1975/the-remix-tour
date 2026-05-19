@@ -93,13 +93,12 @@ $\mathbb{E}[\Delta Y(0) \mid D=1, X] \;=\; \mathbb{E}[\Delta Y(0) \mid D=0, X]$
 \end{itemize}
 \end{frame}
 
-%% ---------- Slide 4: Today's seven beats ----------
-\begin{frame}{This afternoon, seven beats}
+%% ---------- Slide 4: Today's six beats ----------
+\begin{frame}{This afternoon, six beats}
 \vspace{0.3em}
 \begin{enumerate}\small
   \item Outcome regression (Heckman-Ichimura-Todd, 1997) --- the bias OLS-with-controls actually identifies, plus the conditional-PT assumption that anchors the rest of the afternoon
   \item Inverse propensity weighting (Abadie 2005)
-  \item \textit{The trap}: ``can't I just control for the propensity score?''
   \item Doubly robust DiD (Sant'Anna \& Zhao 2020)
   \item Hidden linearity bias --- TWFE-with-controls fully exposed (Caetano \& Callaway 2024)
   \item Compositional change (Sant'Anna \& Xu)
@@ -672,126 +671,9 @@ That's because it's the $Y^0$ that's missing, not the $Y^1$.
 \end{frame}
 
 %% =====================================================================
-%%                                LESSON 3 — THE NEW BLOCK
+%%                                LESSON 3
 %% =====================================================================
-\remixsection{3.\ The Trap \\[0.3em] {\normalsize\normalfont ``Can't I just control for the pscore?''}}
-
-%% ---------- L4-F1: the temptation ----------
-\begin{frame}{A natural temptation}
-\vspace{0.6em}
-\pullquote{If the propensity score is the one-scalar summary of confounding, why not just add it as a regressor? Done.}{The audience, right now}
-\vspace{0.6em}
-\begin{itemize}\small
-  \item It sounds right. Rosenbaum-Rubin says \textit{one scalar suffices}. Regression handles scalars.
-  \item So: $\;\; Y_i \;=\; \alpha \;+\; \tau D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilon_i$
-  \item Surely this recovers $\tau$ as the ATT? \highlight{No.} And the reason matters.
-\end{itemize}
-\end{frame}
-
-%% ---------- L4-F2: what's wrong with it ----------
-\begin{frame}{What that regression actually assumes}
-\vspace{0.4em}
-\[
-Y_i \;=\; \alpha \;+\; \tau D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilon_i
-\]
-\vspace{0.1em}
-\begin{itemize}\small
-  \item No $D \times X$ interaction. No $D \times \widehat{p}$ interaction. \\
-  \highlight{The treatment effect is forced constant} across the entire range of $\widehat{p}(X)$.
-  \item Equivalently: the same dose of policy produces the same effect on a person with $\widehat{p}(X)=0.10$ as on a person with $\widehat{p}(X)=0.90$.
-  \item That's an assumption about \highlight{the outcome side} --- one that Rosenbaum-Rubin says nothing about.
-  \item Rosenbaum-Rubin gives you a valid \textit{reweighting} tool. It does not authorize regression-on-pscore.
-\end{itemize}
-\end{frame}
-
-%% ---------- L4-F3: simulation ----------
-\begin{frame}{A simulation makes it visible}
-\vspace{-0.2em}
-\begin{center}
-\includegraphics[width=0.80\linewidth,height=0.62\textheight,keepaspectratio]{figures/ipw_comparison.pdf}
-\end{center}
-\vspace{-0.4em}
-\begin{center}
-\footnotesize\color{warmgray}\itshape
-500 reps. Heterogeneous $\tau(X) = 1 + 0.5\, X_1$.\;
-Method A (IPW reweighting): bias $\approx 0$. \;
-Method B (regression with $\widehat{p}$): \highlight{bias $\approx -10\%$}.
-\end{center}
-\meta{Code: \texttt{glasgow/decks/code/IPW-Demo/ipw\_simulation.R}.}
-\end{frame}
-
-%% ---------- L4-F4: codeblock ----------
-\begin{frame}[fragile]{The simulation, one screen of R}
-\vspace{0.1em}
-\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
-N  <- 1000
-X1 <- rnorm(N); X2 <- rnorm(N)
-p  <- plogis(0.5*X1 + 0.3*X2 - 0.2)        # true propensity
-D  <- rbinom(N, 1, p)
-Y0 <- X1 + 0.5*X2 + rnorm(N)
-Y1 <- Y0 + (1 + 0.5*X1)                    # heterogeneous tau(X)
-Y  <- D*Y1 + (1-D)*Y0
-
-phat <- glm(D ~ X1 + X2, family=binomial)$fitted.values
-
-# Method A: IPW -- reweight controls
-w  <- ifelse(D==1, 1, phat/(1-phat))
-A  <- mean(Y[D==1]) - weighted.mean(Y[D==0], w[D==0])
-
-# Method B: regression with pscore as a control
-B  <- coef(lm(Y ~ D + phat))["D"]          # <-- the trap
-\end{lstlisting}
-\meta{Full simulation: \texttt{decks/code/IPW-Demo/ipw\_simulation.R}}
-\end{frame}
-
-%% ---------- L4-F5: the intuition ----------
-\begin{frame}{Weight versus regressor --- different uses of the same scalar}
-\vspace{0.4em}
-\begin{itemize}
-  \item The propensity score is a \highlight{tool}. The same scalar can be used as:
-  \begin{itemize}\small
-    \item[--] a \textbf{weight} (Method A: reweight controls) --- recovers ATT
-    \item[--] a \textbf{regressor} (Method B: add as control) --- imposes homogeneous effects
-  \end{itemize}
-  \item Same number. Different uses. \textit{Different identifying assumptions.}
-  \item Method B's bias is not noise. It is the heterogeneity in $\tau(X)$ that the regression cannot see.
-\end{itemize}
-\vspace{0.5em}
-\begin{block}{The lesson before DR}
-\small
-``Doubly robust'' is sometimes mis-summarized as ``IPW plus a regression control.'' \\[0.2em]
-\highlight{That's wrong.} DR is something else --- it uses the pscore as a weight, AND it uses an outcome model. \\
-But it does NOT use the pscore as a regressor.
-\end{block}
-\end{frame}
-
-%% ---------- L4-F6: name the disease ----------
-\begin{frame}{Name the disease: \textit{additive-control-side bias}}
-\vspace{0.4em}
-Whenever you put a covariate on the right-hand side of an outcome regression \textit{additively} (no $D \times X$ interaction), you force:
-\vspace{-0.2em}
-\[
-\tau \;\;\text{is constant across all values of that covariate.}
-\]
-\vspace{-0.4em}
-\begin{itemize}\small
-  \item Method B (Lesson 4): the covariate is $\widehat{p}(X)$ --- a scalar summary of $X$. \\
-        Force constant $\tau$ across $\widehat{p}(X)$. Heterogeneity in $\tau(X)$ is invisible.
-  \item TWFE-with-controls (Lesson 2): the covariate is $X$ itself. \\
-        Force constant $\tau$ across $X$. Heterogeneity in $\tau(X)$ is invisible.
-  \item \highlight{Same disease, different costume.} Caetano \& Callaway (2024) name the TWFE version \textit{hidden linearity bias}. It's the same root.
-\end{itemize}
-\vspace{0.3em}
-\begin{center}
-\small\color{warmgray}\itshape
-DR's escape: use $X$ and $\widehat{p}(X)$ as \textit{weights} and to model the \textit{counterfactual} $\mu_0(X)$ on controls only --- never as additive regressors of $Y$.
-\end{center}
-\end{frame}
-
-%% =====================================================================
-%%                                LESSON 4
-%% =====================================================================
-\remixsection{4.\ Doubly Robust DiD}
+\remixsection{3.\ Doubly Robust DiD}
 
 %% ---------- L5-F1: the idea ----------
 \begin{frame}{Doubly robust: two chances to be right}
@@ -1048,11 +930,150 @@ DR no longer hugs the truth. IPW is wider but \textit{centered}. \;Doubly robust
 \meta{Replication: \texttt{simulations/covariates/covariates\_monte\_carlo.\{do,R\}}; figures \texttt{mc\_dr\_1.png, mc\_dr\_2.png}.}
 \end{frame}
 
+
+%% =========================================================================
+%% ABSORBED (was Section 3 'The Trap'): closing addendum to DR-DiD.
+%% Pedagogy: DR is sometimes misdescribed as 'regression-with-pscore-as-
+%% control'. That IS the trap, and it is exactly what DR is NOT.
+%% =========================================================================
+
+
+%% ---------- L3-Trap0: bridge — DR vs the misunderstanding ----------
+\begin{frame}{Closing addendum: DR is \textit{not} regression-plus-pscore}
+\footnotesize
+A common misdescription you'll hear:
+\vspace{0.3em}
+\pullquote{Doubly robust DiD is just outcome regression plus the propensity score as another control.}{Heard at more than one seminar}
+
+\vspace{0.6em}
+\textbf{No.} \;That description conflates three different things:
+\begin{itemize}\setlength\itemsep{2pt}
+  \item what \textbf{outcome regression} actually does (model $\mu_0(X)$ on controls; impute counterfactuals),
+  \item what \textbf{IPW} actually does (use $\widehat{p}(X)$ as a \textit{weight}, not a regressor),
+  \item what \textbf{DR} actually does (combine the two).
+\end{itemize}
+
+\vspace{0.4em}
+\highlight{Adding $\widehat{p}(X)$ as a regressor on the right-hand side is its own --- different --- estimator.} \;It's a trap. \;The next few slides walk through exactly why.
+\end{frame}
+
+%% ---------- L4-F1: the temptation ----------
+\begin{frame}{A natural temptation}
+\vspace{0.6em}
+\pullquote{If the propensity score is the one-scalar summary of confounding, why not just add it as a regressor? Done.}{The audience, right now}
+\vspace{0.6em}
+\begin{itemize}\small
+  \item It sounds right. Rosenbaum-Rubin says \textit{one scalar suffices}. Regression handles scalars.
+  \item So: $\;\; Y_i \;=\; \alpha \;+\; \tau D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilon_i$
+  \item Surely this recovers $\tau$ as the ATT? \highlight{No.} And the reason matters.
+\end{itemize}
+\end{frame}
+
+%% ---------- L4-F2: what's wrong with it ----------
+\begin{frame}{What that regression actually assumes}
+\vspace{0.4em}
+\[
+Y_i \;=\; \alpha \;+\; \tau D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilon_i
+\]
+\vspace{0.1em}
+\begin{itemize}\small
+  \item No $D \times X$ interaction. No $D \times \widehat{p}$ interaction. \\
+  \highlight{The treatment effect is forced constant} across the entire range of $\widehat{p}(X)$.
+  \item Equivalently: the same dose of policy produces the same effect on a person with $\widehat{p}(X)=0.10$ as on a person with $\widehat{p}(X)=0.90$.
+  \item That's an assumption about \highlight{the outcome side} --- one that Rosenbaum-Rubin says nothing about.
+  \item Rosenbaum-Rubin gives you a valid \textit{reweighting} tool. It does not authorize regression-on-pscore.
+\end{itemize}
+\end{frame}
+
+%% ---------- L4-F3: simulation ----------
+\begin{frame}{A simulation makes it visible}
+\vspace{-0.2em}
+\begin{center}
+\includegraphics[width=0.80\linewidth,height=0.62\textheight,keepaspectratio]{figures/ipw_comparison.pdf}
+\end{center}
+\vspace{-0.4em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+500 reps. Heterogeneous $\tau(X) = 1 + 0.5\, X_1$.\;
+Method A (IPW reweighting): bias $\approx 0$. \;
+Method B (regression with $\widehat{p}$): \highlight{bias $\approx -10\%$}.
+\end{center}
+\meta{Code: \texttt{glasgow/decks/code/IPW-Demo/ipw\_simulation.R}.}
+\end{frame}
+
+%% ---------- L4-F4: codeblock ----------
+\begin{frame}[fragile]{The simulation, one screen of R}
+\vspace{0.1em}
+\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
+N  <- 1000
+X1 <- rnorm(N); X2 <- rnorm(N)
+p  <- plogis(0.5*X1 + 0.3*X2 - 0.2)        # true propensity
+D  <- rbinom(N, 1, p)
+Y0 <- X1 + 0.5*X2 + rnorm(N)
+Y1 <- Y0 + (1 + 0.5*X1)                    # heterogeneous tau(X)
+Y  <- D*Y1 + (1-D)*Y0
+
+phat <- glm(D ~ X1 + X2, family=binomial)$fitted.values
+
+# Method A: IPW -- reweight controls
+w  <- ifelse(D==1, 1, phat/(1-phat))
+A  <- mean(Y[D==1]) - weighted.mean(Y[D==0], w[D==0])
+
+# Method B: regression with pscore as a control
+B  <- coef(lm(Y ~ D + phat))["D"]          # <-- the trap
+\end{lstlisting}
+\meta{Full simulation: \texttt{decks/code/IPW-Demo/ipw\_simulation.R}}
+\end{frame}
+
+%% ---------- L4-F5: the intuition ----------
+\begin{frame}{Weight versus regressor --- different uses of the same scalar}
+\vspace{0.4em}
+\begin{itemize}
+  \item The propensity score is a \highlight{tool}. The same scalar can be used as:
+  \begin{itemize}\small
+    \item[--] a \textbf{weight} (Method A: reweight controls) --- recovers ATT
+    \item[--] a \textbf{regressor} (Method B: add as control) --- imposes homogeneous effects
+  \end{itemize}
+  \item Same number. Different uses. \textit{Different identifying assumptions.}
+  \item Method B's bias is not noise. It is the heterogeneity in $\tau(X)$ that the regression cannot see.
+\end{itemize}
+\vspace{0.5em}
+\begin{block}{The lesson before DR}
+\small
+``Doubly robust'' is sometimes mis-summarized as ``IPW plus a regression control.'' \\[0.2em]
+\highlight{That's wrong.} DR is something else --- it uses the pscore as a weight, AND it uses an outcome model. \\
+But it does NOT use the pscore as a regressor.
+\end{block}
+\end{frame}
+
+%% ---------- L4-F6: name the disease ----------
+\begin{frame}{Name the disease: \textit{additive-control-side bias}}
+\vspace{0.4em}
+Whenever you put a covariate on the right-hand side of an outcome regression \textit{additively} (no $D \times X$ interaction), you force:
+\vspace{-0.2em}
+\[
+\tau \;\;\text{is constant across all values of that covariate.}
+\]
+\vspace{-0.4em}
+\begin{itemize}\small
+  \item Method B (Lesson 4): the covariate is $\widehat{p}(X)$ --- a scalar summary of $X$. \\
+        Force constant $\tau$ across $\widehat{p}(X)$. Heterogeneity in $\tau(X)$ is invisible.
+  \item TWFE-with-controls (Lesson 2): the covariate is $X$ itself. \\
+        Force constant $\tau$ across $X$. Heterogeneity in $\tau(X)$ is invisible.
+  \item \highlight{Same disease, different costume.} Caetano \& Callaway (2024) name the TWFE version \textit{hidden linearity bias}. It's the same root.
+\end{itemize}
+\vspace{0.3em}
+\begin{center}
+\small\color{warmgray}\itshape
+DR's escape: use $X$ and $\widehat{p}(X)$ as \textit{weights} and to model the \textit{counterfactual} $\mu_0(X)$ on controls only --- never as additive regressors of $Y$.
+\end{center}
+\end{frame}
+
 %% =====================================================================
-%%                                LESSON 5
+%%                                LESSON 4
 %%        Caetano & Callaway: hidden linearity bias (same disease as L4)
 %% =====================================================================
-\remixsection{5.\ Hidden Linearity Bias \\[0.3em] {\normalsize\normalfont Caetano \& Callaway 2024}}
+\remixsection{4.\ Hidden Linearity Bias \\[0.3em] {\normalsize\normalfont Caetano \& Callaway 2024}}
 
 %% ---------- L6-F0: TWFE-with-controls has TWO distinct problems ----------
 \begin{frame}{TWFE-with-controls has two distinct problems}
@@ -1239,9 +1260,9 @@ Reg.\ adj.\ with $\Delta X + X_{t-1} + Z$              & $+0.078$               
 \end{frame}
 
 %% =====================================================================
-%%                                LESSON 6
+%%                                LESSON 5
 %% =====================================================================
-\remixsection{6.\ Compositional Change}
+\remixsection{5.\ Compositional Change}
 
 %% ---------- L7-F0: why this lesson exists (dev-econ motivation) ----------
 \begin{frame}{Most applied work doesn't have a panel}
@@ -1491,9 +1512,9 @@ First defense: check whether $X$ moved across time. \;Then run the Hausman test.
 \end{frame}
 
 %% =====================================================================
-%%                                LESSON 7
+%%                                LESSON 6
 %% =====================================================================
-\remixsection{7.\ Choosing \& checking $X$ \\[0.3em] {\normalsize\normalfont The practical close --- picking, balance, and when controls are unnecessary}}
+\remixsection{6.\ Choosing \& checking $X$ \\[0.3em] {\normalsize\normalfont The practical close --- picking, balance, and when controls are unnecessary}}
 
 %% ---------- L8-F1: picking covariates ----------
 \begin{frame}{Picking $X$: theory or LASSO on $\Delta Y(0)$}
@@ -1660,8 +1681,7 @@ Every variable, its treated mean, its control mean, the normalized difference. \
   \item Conditional PT --- the new identifying assumption
   \item Outcome regression: model the trend, impute the counterfactual
   \item IPW: reweight controls to look like the treated
-  \item The trap: ``controlling for the pscore'' imposes constant $\tau$ across $\widehat{p}(X)$
-  \item Doubly robust: pscore as a \textit{weight} (not regressor) + outcome model
+  \item Doubly robust: pscore as a \textit{weight} (not regressor) + outcome model --- and why \textit{controlling for} the pscore is the trap
   \item Hidden linearity bias (Caetano-Callaway): \textit{same disease}, costume = TWFE-with-controls
   \item Compositional change (Hong; Sant'Anna-Xu): when the \textit{units} shift, not $X$
 \end{enumerate}
