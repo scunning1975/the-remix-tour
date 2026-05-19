@@ -1534,7 +1534,31 @@ The comparison group's Post outcome is also $Y(1)$, not $Y(0)$. \;Switching equa
 \begin{block}{Numerical example}
 ATT $= 10$, \;PT bias $= 0$, \;ATT$_{D{=}0,\text{Post}} = 4$. \quad $\widehat{\text{DiD}} = 10 - 4 = \mathbf{6}$. \;\highlight{biased toward zero}
 \end{block}
-\meta{The ``spillover'' isn't a vague nuisance --- it \textit{is} an ATT, just for the wrong group.}
+\end{frame}
+
+%% ---------- Slide 38c4b: Case 3 — commentary on the decomposition ----------
+\begin{frame}{Case 3, in shorthand}
+\footnotesize
+The decomposition from the previous slide, written compactly:
+
+\vspace{0.6em}
+\begin{center}
+\Large
+$\widehat{\text{DiD}} \;=\; (+1)\cdot \text{ATT}_{\text{Post}} \;+\; (+1)\cdot\text{PTA} \;+\; (-1)\cdot\text{ATT}_{\text{Post},\,D=0}$
+\end{center}
+
+\vspace{0.6em}
+\textbf{The weights sum to one:} $\;+1 + 1 - 1 = 1$. \;But one weight is \highlight{negative}.
+
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item A clean weighted average of ATTs has \textit{all positive} weights.
+  \item This isn't that. \;The spillover ATT enters with a $-1$.
+  \item Under PT (bias $=0$), DiD is the treated ATT \textit{minus} the control ATT.
+\end{itemize}
+
+\vspace{0.3em}
+\meta{Memorize the formula. Work the algebra. Watch for negative weights --- they show up again in staggered DiD.}
 \end{frame}
 
 %% ---------- Slide 38c5: Case 4 — already-treated control ----------
@@ -1564,6 +1588,30 @@ The forbidden 2$\times$2 identifies $-\Delta\text{ATT}$. \;If treatment effects 
 \end{block}
 \end{frame}
 
+%% ---------- Slide 38c5b: The Monte Carlo program ----------
+\begin{frame}[fragile]{The Monte Carlo, in one R script}
+\footnotesize
+\textbf{Where it lives:}
+\vspace{-0.2em}
+\begin{lstlisting}[language=bash,basicstyle=\ttfamily\scriptsize]
+decks/code/case_decompositions.R
+\end{lstlisting}
+
+\vspace{0.5em}
+\textbf{What it does:}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item Generates treatment effects for every unit (true ATT $= 10$).
+  \item Simulates four DGPs --- one per case from the last four slides.
+  \item Repeats 2000 times. \;Records $\widehat{\text{DiD}}$ each time.
+  \item Plots the sampling distribution of $\widehat{\text{DiD}}$ for each case.
+\end{itemize}
+
+\vspace{0.5em}
+\begin{center}
+\small\color{warmgray}\itshape If the algebra was right, the simulation lands where the algebra said.
+\end{center}
+\end{frame}
+
 %% ---------- Slide 38c6: The Monte Carlo verdict ----------
 \begin{frame}{Monte Carlo verdict --- 2000 reps, four cases, one truth}
 \vspace{-0.2em}
@@ -1572,60 +1620,6 @@ The forbidden 2$\times$2 identifies $-\Delta\text{ATT}$. \;If treatment effects 
 \end{center}
 \vspace{-0.4em}
 \meta{Only Case 1 puts the truth at the center of the sampling distribution. The other three are sharp, narrow, and \textit{wrong}.}
-\end{frame}
-
-%% =========================================================================
-%% Slides 38d1–38d5: Preview of Bacon (2021) — staggered DiD in pictures
-%% =========================================================================
-
-%% ---------- Slide 38d1: The picture — three cohorts, three windows ----------
-\begin{frame}{Tomorrow in pictures --- three cohorts, three windows}
-\vspace{-0.4em}
-\begin{center}
-\includegraphics[height=0.70\textheight,keepaspectratio]{figures/bacon_goodman_2.png}
-\end{center}
-\vspace{-0.3em}
-\meta{Three groups: $k$ treated early ($t^*_k$), $l$ treated late ($t^*_l$), $U$ never treated. \;Bacon (2021): staggered TWFE is a weighted sum of \textbf{four} 2$\times$2s built from these windows.}
-\end{frame}
-
-%% ---------- Slide 38d2: Clean 2x2 — Early vs Untreated ----------
-\begin{frame}{Clean 2$\times$2 \#1: Early vs Untreated}
-\vspace{-0.4em}
-\begin{center}
-\includegraphics[height=0.70\textheight,keepaspectratio]{figures/bacon_goodman_3.png}
-\end{center}
-\vspace{-0.3em}
-\meta{Pre $=$ before $t^*_k$, Post $=$ after $t^*_k$. \;$U$ never receives treatment, so its observed $Y$ is always $Y(0)$. \;\highlight{Identifies ATT$(k)$} under PT.}
-\end{frame}
-
-%% ---------- Slide 38d3: Clean 2x2 — Late vs Untreated ----------
-\begin{frame}{Clean 2$\times$2 \#2: Late vs Untreated}
-\vspace{-0.4em}
-\begin{center}
-\includegraphics[height=0.70\textheight,keepaspectratio]{figures/bacon_goodman_4.png}
-\end{center}
-\vspace{-0.3em}
-\meta{Pre $=$ before $t^*_l$, Post $=$ after $t^*_l$. \;Same logic: $U$ stays $Y(0)$ throughout. \;\highlight{Identifies ATT$(l)$} under PT.}
-\end{frame}
-
-%% ---------- Slide 38d4: Clean 2x2 — Early vs Late (not-yet-treated control) ----------
-\begin{frame}{Clean 2$\times$2 \#3: Early vs Late \meta{\textmd{(Late is not-yet-treated)}}}
-\vspace{-0.4em}
-\begin{center}
-\includegraphics[height=0.68\textheight,keepaspectratio]{figures/bacon_goodman_6.png}
-\end{center}
-\vspace{-0.3em}
-\meta{Window: $\text{PRE}(k)$ vs $\text{MID}(k,l)$. \;$l$ is valid \textit{here} because it hasn't been treated yet ($Y^l = Y(0)$). \;\highlight{Identifies ATT$(k)$ over MID} under PT. \;Modern estimators (CS, dCdH, SA) preserve this move.}
-\end{frame}
-
-%% ---------- Slide 38d5: Forbidden 2x2 — Late vs Early (already-treated control) ----------
-\begin{frame}{Forbidden 2$\times$2: Late vs Early \meta{\textmd{(Early is already-treated)}}}
-\vspace{-0.4em}
-\begin{center}
-\includegraphics[height=0.62\textheight,keepaspectratio]{figures/bacon_goodman_7.png}
-\end{center}
-\vspace{-0.3em}
-\meta{Window: $\text{MID}(k,l)$ vs $\text{POST}(l)$. \;The ``control'' is $k$ --- \textbf{already-treated}, with effects that move. \;Bias $=-\Delta\text{ATT}_k$. \;\highlight{This is Case 4 from the simulation, in disguise.} \;TWFE silently aggregates this with the three clean 2$\times$2s above.}
 \end{frame}
 
 %% ---------- Slide 38c: No Anticipation — the "trivial" assumption ----------
