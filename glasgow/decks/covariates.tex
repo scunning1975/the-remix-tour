@@ -172,22 +172,57 @@ $\widehat{\alpha}_{\text{TWFE+}X} \;\;\xrightarrow{p}\;\; \underbrace{\overline{
 \end{itemize}
 \end{frame}
 
-%% ---------- L2-F0b: read the three bias terms ----------
-\begin{frame}{The three bias terms, named}
+%% ---------- L2-F0b1: Bias A in potential outcomes ----------
+\begin{frame}{Bias A: heterogeneous $\tau$ in $X$}
 \footnotesize
-\begin{block}{Bias A: heterogeneous $\tau$ in $X$}
-Treatment effect varies with $X$, but TWFE fits one $\beta$. \;\highlight{Proof: next 4 slides (steps 1--4).}
-\end{block}
-\begin{block}{Bias B: non-parallel $X$-trends across treated and control}
-$Y^0$ trends depend on $X$ in different ways for treated vs.\ control. \;\highlight{Proof: 3 slides after that (steps 5--7).}
-\end{block}
-\begin{block}{Bias C: the FE transformation drops $X$-levels and time-invariant $Z$}
-What you wrote as a control isn't what you ended up conditioning on. \;\highlight{Lesson 6.}
-\end{block}
-\begin{center}
-\footnotesize\color{warmgray}\itshape
-Three failures, three fixes. \;OR addresses A; IPW addresses A and B differently; DR closes both at once.
-\end{center}
+\textbf{In potential outcomes:}
+\[
+\tau(X) \;\equiv\; \mathbb{E}[Y(1) - Y(0) \mid X,\,D{=}1] \;\;\text{is a \textit{function} of } X.
+\]
+The true ATT averages $\tau(X)$ over the treated $X$-distribution:
+\[
+\text{ATT} \;=\; \mathbb{E}\big[\tau(X) \mid D{=}1\big].
+\]
+
+\textbf{What TWFE-additive-$X$ fits:} \;one scalar $\hat{\delta}$ --- a weighted average of $\tau(X)$ whose weights depend on OLS mechanics (the variance of $D$ given $X$), \textit{not} the treated $X$-distribution.
+
+\vspace{0.5em}
+\highlight{In plain English.} \;Treatment works better for some types of people than others (e.g., training helps younger workers more). \;TWFE fits one number for everyone --- a different weighted average than the one you wanted.
+\end{frame}
+
+%% ---------- L2-F0b2: Bias B in potential outcomes ----------
+\begin{frame}{Bias B: $X$ moves differently over time across groups}
+\footnotesize
+\textbf{For PT-on-$Y$ to hold under the TWFE-additive-$X$ model:}
+\[
+\mathbb{E}[\Delta Y(0) \mid D{=}1] \;=\; \mathbb{E}[\Delta Y(0) \mid D{=}0].
+\]
+Under the model $Y(0)_{it} = \alpha_i + \gamma_t + \beta X_{it} + \varepsilon$, this requires:
+\[
+\beta \cdot \big(\mathbb{E}[\Delta X \mid D{=}1] - \mathbb{E}[\Delta X \mid D{=}0]\big) \;=\; 0.
+\]
+Two ways for this to hold: \;$\beta = 0$ (the covariate is irrelevant), or $\Delta X^T = \Delta X^C$ ($X$ trends the same way across groups). \;Otherwise: bias.
+
+\vspace{0.5em}
+\highlight{In plain English.} \;The covariate trends differently for treated and control --- say, the policy nudged $X$ for one group but not the other --- and because $Y$ depends on $X$, that group difference shows up in the DiD as a fake treatment effect.
+\end{frame}
+
+%% ---------- L2-F0b3: Bias C in potential outcomes ----------
+\begin{frame}{Bias C: the FE transformation eats time-invariant covariates}
+\footnotesize
+\textbf{Within-unit demeaning:} \;$\tilde{X}_{it} = X_{it} - \bar{X}_i$. \;If $X$ is time-invariant for unit $i$ (race, education at baseline, pre-program earnings), then $\tilde{X}_{it} = 0$ in every period.
+
+\vspace{0.5em}
+\[
+\text{TWFE-additive-}X \;\;\text{ estimates as if those covariates were} \;\; 0.
+\]
+The same goes for any time-invariant $Z$. \;\;\textit{What you wrote as a control isn't what the regression conditioned on.}
+
+\vspace{0.5em}
+\textbf{The fix:} \;$Z$ has to enter as $(\text{Post}\times Z)$ --- which the FE cannot eat, because post varies within unit.
+
+\vspace{0.5em}
+\highlight{In plain English.} \;You thought you controlled for race in LaLonde. The regression didn't see race --- it demeaned it to zero. That's why additive-$X$ on LaLonde gives the same answer as no covariates at all.
 \end{frame}
 
 %% ---------- L2-F1: OR narrative ----------
@@ -499,6 +534,49 @@ Additive-$X$ TWFE is one regression that silently assumes \textit{all three} of 
 %% ---------- L2-F2n: bridge superseded by the four-knob simulation above.
 %% The synthesis slide (bias-to-fix map) covers the same ground better. ----------
 
+%% ---------- L2-F2o: The proper TWFE spec for Biases B and C ----------
+\begin{frame}{The proper TWFE spec --- and what it still can't handle}
+\footnotesize
+\textbf{To kill Bias B and Bias C inside TWFE, you need:}
+\[
+Y_{it} \;=\; \alpha_i + \gamma_t + \delta\,(D_i{\times}\text{post}_t) \;+\; X_{it}'\gamma_X \;+\; (\text{post}_t \cdot X_{it})'\gamma_{pX} \;+\; (\text{post}_t \cdot Z_i)'\gamma_{pZ} \;+\; \varepsilon_{it}
+\]
+
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item $(\text{post}\times X)$ handles Bias B: lets $X$'s effect shift at the policy break.
+  \item $(\text{post}\times Z)$ handles Bias C: rescues time-invariant baseline characteristics from the FE.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{What this spec \textit{cannot} fix:} \;Bias A. \;If $\tau$ depends on $X$, no single $\hat\delta$ recovers the ATT.
+
+\vspace{0.4em}
+\highlight{The next move: estimators that handle Bias A by averaging over the treated $X$-distribution explicitly.}
+\end{frame}
+
+%% ---------- L2-F2p: Three doors to the same fix ----------
+\begin{frame}{Three doors to the same fix}
+\footnotesize
+Three estimators that handle heterogeneous $\tau(X)$ --- each does it differently:
+
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item \textbf{Outcome regression (OR), \;Heckman, Ichimura \& Todd (1997).} \\
+        Fit $\widehat{\mu}_0(X)$ on controls. \;Impute the counterfactual for each treated unit. \;Average over the treated $X$-distribution. \;\meta{This lesson.}
+  \item \textbf{Inverse propensity weighting (IPW), \;Abadie (2005).} \\
+        Reweight the controls by $\widehat{p}(X)/(1-\widehat{p}(X))$ to match the treated $X$-distribution. \;\meta{Lesson 2.}
+  \item \textbf{Doubly-robust DiD, \;Sant'Anna \& Zhao (2020).} \\
+        Combine OR and IPW. \;Consistent if \textit{either} model is right. \;\meta{Lesson 3.}
+\end{itemize}
+
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+Three doors, same room. \;The choice between them is mostly a choice about which model you'd rather defend.
+\end{center}
+\end{frame}
+
 %% ---------- L2-F3: OR caution ----------
 \begin{frame}{Why OR can fail: it's all model}
 \vspace{0.4em}
@@ -771,6 +849,27 @@ The pscore is the tool. \highlight{Using it as a weight is doubly robust.} Using
 \small
 Pick $X$ for confounding (Lesson 1). \;\; Estimate $\widehat{p}(X)$ by logit. \;\; Estimate $\widehat{\mu}_0(X)$ on controls. \;\; Plug into the DR-DiD formula. \;\; Influence-function SEs.
 \end{block}
+\end{frame}
+
+%% ---------- L5-F4b: Allusion to double-debiased ML ----------
+\begin{frame}{The modern frontier: double-debiased ML}
+\footnotesize
+\textbf{Chernozhukov, Chetverikov, Demirer, Duflo, Hansen, Newey \& Robins (2018), \textit{The Econometrics Journal}.}
+
+\vspace{0.5em}
+Same DR architecture --- model the outcome, model the treatment, combine them. \;Two extensions:
+
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item \textbf{Replace logit / OLS with any ML learner.} \;Lasso, random forests, gradient boosting, neural nets. \;The DR formula stays.
+  \item \textbf{Cross-fitting.} \;Estimate $\widehat{p}$ and $\widehat{\mu}_0$ on one half of the sample, plug in on the other. \;Swap. \;Keeps the influence-function argument valid even when the nuisance models overfit.
+\end{itemize}
+
+\vspace{0.5em}
+\highlight{Same lesson, more flexible tools.} \;DR is what makes the ML extension principled --- without doubly-robustness, fitting nuisance models with ML would invalidate the standard errors.
+
+\vspace{0.4em}
+\meta{Reading: Chernozhukov et al.\ (2018, \textit{Econometrics Journal}). \;The DRDID + ML combination is the active frontier.}
 \end{frame}
 
 %% ---------- L5-F5: live code ----------
