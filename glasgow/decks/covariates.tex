@@ -451,47 +451,8 @@ $\Delta Y^0_T - \Delta Y^0_C \approx +1.04$; \;$\beta(\Delta X^T - \Delta X^C) =
 %% Connect to the lab: Spec A (additive X) vs Spec B (Post*X + id FE)
 %% =====================================================================
 
-%% ---------- L2-F2l: Spec A vs Spec B, side-by-side ----------
-\begin{frame}{Same LaLonde data, two specs, two answers --- same proof, two assumption sets}
-\vspace{0.5em}
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.35}
-\begin{tabular}{@{}l|l|r@{}}
-\toprule
- \textbf{Spec A} (your published \texttt{reg}) & additive $X$, pooled OLS & \highlight{$\$3{,}522$} \\
- \textbf{Spec B} (alternative TWFE) & id FE $+$ Post $\times X$ & \highlight{$\$1{,}559$} \\
- \midrule
- RCT benchmark & post-period diff-in-means & $\$1{,}794$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-\vspace{0.6em}
-\begin{itemize}\small
-  \item \textbf{Spec A} assumes Assumptions 5 \& 6: $Y^0$'s trend doesn't depend on $X$. \;The proof we just did.
-  \item \textbf{Spec B} drops 5 \& 6 by letting $\beta_{\text{pre}} \neq \beta_{\text{post}}$ and absorbing time-invariant $X$ levels with id FE. \;A \textit{different} assumption.
-\end{itemize}
-\end{frame}
-
-%% ---------- L2-F2m: closer, more honest -----
-\begin{frame}{Neither is ``the'' answer --- each defends a different conjecture}
-\vspace{0.8em}
-\begin{center}
-\large
-Spec A and Spec B are both valid panel-data DiD estimators.
-\end{center}
-\vspace{0.6em}
-\begin{center}
-They identify the ATT under \textit{different} assumptions about how $Y^0$ depends on $X$.
-\end{center}
-\vspace{1em}
-\begin{center}
-\small\color{warmgray}\itshape
-Spec A is more honest about \textit{what} it's assuming: ``$Y^0$'s trend doesn't depend on $X$.'' \\[0.2em]
-Spec B is a different conjecture: ``$\beta$ may shift over time, but the same way in both groups.'' \\[0.4em]
-The \textbf{doubly-robust} estimators (Lesson 5) lean on both at once.
-\end{center}
-\end{frame}
+%% ---------- LaLonde walkthrough MOVED to back of deck (closing example). ----------
+%% Mid-deck stays free of LaLonde; the full story is introduced once at the end.
 
 %% ---------- L2-F2n: bridge to Caetano-Callaway (two channels: time-varying X AND changing beta) ----------
 \begin{frame}{Two ways additive-$X$ TWFE breaks --- and both lead to Caetano-Callaway}
@@ -1654,6 +1615,289 @@ Every variable, its treated mean, its control mean, the normalized difference. \
 %% =====================================================================
 %%                                ACT III
 %% =====================================================================
+
+%% =====================================================================
+%%  CLOSING EXAMPLE — LaLonde: what conditional PT actually buys you
+%% =====================================================================
+
+%% ---------- LL-1: Closer setup ----------
+\begin{frame}{A closing example: what does conditional PT actually buy you?}
+\vspace{0.4em}
+We've spent the afternoon \textit{assuming} conditional PT is more credible than unconditional PT.
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item Is it?
+  \item Is there \textit{empirical evidence} that conditioning on $X$ recovers a known truth?
+\end{itemize}
+\vspace{0.7em}
+\highlight{Yes. The canonical case is LaLonde.}
+\end{frame}
+
+%% ---------- LL-2: LaLonde 1986, the setup ----------
+\begin{frame}{LaLonde (1986)}
+\vspace{0.5em}
+\textbf{The National Supported Work Demonstration} --- a 1970s RCT for hard-to-employ adults.
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Random assignment to job training. Outcome: real 1978 earnings.
+  \item Years on record: \texttt{74}, \texttt{75}, \texttt{78}.
+  \item The experiment gives the truth by construction.
+\end{itemize}
+\vspace{0.5em}
+\meta{LaLonde then asked: can observational methods recover that truth on \textit{non}-experimental data?}
+\end{frame}
+
+%% ---------- LL-3: The benchmark ----------
+\begin{frame}{The benchmark: \$1,794}
+\vspace{1em}
+\begin{center}
+\Large
+$\widehat{\text{ATT}}^{\text{RCT}} \;=\; \overline{Y}^{T}_{78} - \overline{Y}^{C}_{78} \;=\; 6{,}349 - 4{,}555 \;=\; \$1{,}794$
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+Post-period difference in means on the experimental sample. \;Random assignment makes this the truth.
+\end{center}
+\end{frame}
+
+%% ---------- LL-4: The challenge ----------
+\begin{frame}{The challenge: swap the experimental controls for CPS}
+\vspace{0.4em}
+\textbf{Build a non-experimental panel.}
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Keep the NSW \textit{treated} group.
+  \item Replace the experimental controls with a random sample of CPS households.
+  \item Selection into NSW is sharply negative --- trainees had lower pre-earnings than the CPS pool.
+\end{itemize}
+\vspace{0.6em}
+\highlight{Can observational DiD recover \$1,794 on this panel?}
+\end{frame}
+
+%% ---------- LL-5: Spec 0 — the equation ----------
+\begin{frame}{Spec 0: naive DiD, no covariates}
+\vspace{1.2em}
+\begin{center}
+\Large
+$Y_{it} \;=\; \alpha \;+\; \beta_1\,\text{treat}_i \;+\; \beta_2\,\text{post}_t \;+\; \textcolor{accent}{\tau}\,(\text{treat}_i \times \text{post}_t) \;+\; \varepsilon_{it}$
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+No $X$ anywhere. \;$\widehat{\tau}$ is the DiD coefficient on the interaction.
+\end{center}
+\end{frame}
+
+%% ---------- LL-6: Spec 0 — Stata ----------
+\begin{frame}[fragile]{Spec 0 in Stata}
+\vspace{0.8em}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\small]
+use lalonde_nonexp_panel.dta, clear
+gen post  = (year == 78)
+gen treat = (ever_treated == 1)
+
+reg re i.treat##i.post
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-7: Spec 0 result ----------
+\begin{frame}{Spec 0 result: \$3,522 --- way off}
+\vspace{1em}
+\begin{center}
+\renewcommand{\arraystretch}{1.45}
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Estimate} & \\
+\midrule
+RCT benchmark         & $\$1{,}794$ \\
+\textbf{Spec 0} (no covariates) & \highlight{$\$3{,}522$} \\
+\midrule
+Gap                    & $+\$1{,}728$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+Doubles the truth. \;The non-experimental selection is doing real damage.
+\end{center}
+\end{frame}
+
+%% ---------- LL-8: Spec A — the equation ----------
+\begin{frame}{Spec A: add the $X$s as additive controls}
+\vspace{0.6em}
+\begin{center}
+$Y_{it} \;=\; \alpha + \beta_1\,\text{treat}_i + \beta_2\,\text{post}_t + \textcolor{accent}{\tau}\,(\text{treat}_i {\times} \text{post}_t) \;+\; X_i'\,\gamma \;+\; \varepsilon_{it}$
+\end{center}
+
+\vspace{0.6em}
+\textbf{Twelve covariates}, the standard LaLonde set:
+\begin{center}
+\small\ttfamily age, agesq, educ, educsq, marr, nodegree, black, hisp, re74, re75, u74, u75
+\end{center}
+
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+The natural thing to try. \;Surely conditioning on age, education, race, and pre-earnings fixes it?
+\end{center}
+\end{frame}
+
+%% ---------- LL-9: Spec A in Stata ----------
+\begin{frame}[fragile]{Spec A in Stata}
+\vspace{0.6em}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+global X "age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75"
+
+reg re i.treat##i.post $X
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-10: Spec A in R ----------
+\begin{frame}[fragile]{Spec A in R}
+\vspace{0.6em}
+\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
+library(fixest)
+
+feols(re ~ treat*post + age + agesq + educ + educsq
+                     + marr + nodegree + black + hisp
+                     + re74 + re75 + u74 + u75,
+      data = d)
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-11: Spec A in Python ----------
+\begin{frame}[fragile]{Spec A in Python}
+\vspace{0.6em}
+\begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize]
+import statsmodels.formula.api as smf
+
+X = ("age + agesq + educ + educsq + marr + nodegree "
+     "+ black + hisp + re74 + re75 + u74 + u75")
+
+mod = smf.ols(f"re ~ treat*post + {X}", data=d).fit()
+print(mod.params["treat:post"])
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-12: Spec A result ----------
+\begin{frame}{Spec A result: \$3,522 --- \textit{identical} to Spec 0?!}
+\vspace{0.6em}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}lr@{}}
+\toprule
+RCT benchmark               & $\$1{,}794$ \\
+Spec 0 (no covariates)      & $\$3{,}522$ \\
+\textbf{Spec A} (additive $X$) & \highlight{$\$3{,}522$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.8em}
+\textbf{Why?} \;Most of these $X$s are \textit{time-invariant} within a person --- age (within a window), education, race, pre-earnings.
+
+\vspace{0.4em}
+\highlight{Additive $X$ on a panel with time-invariant covariates does nothing} for the DiD coefficient. \;You need to let $X$'s effect \textit{move} in the post period.
+\end{frame}
+
+%% ---------- LL-13: Spec B — the equation ----------
+\begin{frame}{Spec B: let $X$'s effect interact with post}
+\vspace{0.7em}
+\begin{center}
+$Y_{it} = \alpha + \beta_1\,\text{treat}_i + \beta_2\,\text{post}_t + \textcolor{accent}{\tau}\,(\text{treat}_i{\times}\text{post}_t) \;+\; X_i'\gamma_1 \;+\; (\text{post}_t \cdot X_i)'\gamma_2 \;+\; \varepsilon_{it}$
+\end{center}
+
+\vspace{0.7em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item The $\gamma_1$ vector: $X$'s baseline effect (pre period).
+  \item The $\gamma_2$ vector: how $X$'s effect \textit{shifts} in post.
+\end{itemize}
+
+\vspace{0.5em}
+\begin{center}
+\small\color{warmgray}\itshape
+This is what saturating $X$ with the time index actually means. \;The post-period gets its own $X$-coefficient.
+\end{center}
+\end{frame}
+
+%% ---------- LL-14: Spec B in Stata ----------
+\begin{frame}[fragile]{Spec B in Stata}
+\vspace{0.6em}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+global X "age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75"
+
+reg re i.treat##i.post i.post##(c.($X))
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-15: Spec B in R ----------
+\begin{frame}[fragile]{Spec B in R}
+\vspace{0.6em}
+\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
+library(fixest)
+
+feols(re ~ treat*post
+        + post*(age + agesq + educ + educsq
+                + marr + nodegree + black + hisp
+                + re74 + re75 + u74 + u75),
+      data = d)
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-16: Spec B in Python ----------
+\begin{frame}[fragile]{Spec B in Python}
+\vspace{0.6em}
+\begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize]
+import statsmodels.formula.api as smf
+
+X = ("age + agesq + educ + educsq + marr + nodegree "
+     "+ black + hisp + re74 + re75 + u74 + u75")
+
+mod = smf.ols(f"re ~ treat*post + post*({X})", data=d).fit()
+print(mod.params["treat:post"])
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-17: Spec B result ----------
+\begin{frame}{Spec B result: \$1,184 --- much closer to \$1,794}
+\vspace{0.5em}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}lr@{}}
+\toprule
+RCT benchmark             & $\$1{,}794$ \\
+Spec 0 (no covariates)    & $\$3{,}522$ \\
+Spec A (additive $X$)     & $\$3{,}522$ \\
+\textbf{Spec B} ($\text{post} {\times} X$) & \highlight{$\$1{,}184$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Not exact. \;But the movement is \textit{toward} the truth, not away from it. \;From \$1,728 above to \$610 below.
+\end{center}
+\end{frame}
+
+%% ---------- LL-18: Synthesis ----------
+\begin{frame}{What this buys you: conditional PT is credible}
+\vspace{0.5em}
+\textbf{LaLonde's lesson, three decades on:}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Without covariates, observational DiD on the non-experimental sample is \highlight{wrong}.
+  \item With covariates entered \textit{correctly} (interacted with post, or via matching / IPW / DR), it moves toward the truth.
+  \item Dehejia \& Wahba (2002) and S\l{}oczy\'{n}ski (recent) recover \$1,794 closely on this same data using propensity-score methods.
+\end{itemize}
+
+\vspace{0.6em}
+\highlight{Conditional PT is a real, defensible identifying assumption.} \;The empirical evidence is exactly this exercise --- and it's why the rest of the afternoon was worth the time.
+
+\vspace{0.4em}
+\meta{The lab: run the four covariate-aware estimators (TWFE-$X$, OR, IPW, DR-DiD) on the same data and see which one gets closest.}
+\end{frame}
 
 %% ---------- Lab: LaLonde with covariates ----------
 \begin{frame}{Lab: LaLonde under selection (\textit{the four estimators, one truth})}
