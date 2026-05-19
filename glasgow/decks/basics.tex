@@ -1661,8 +1661,27 @@ Push the pre-period earlier --- before any anticipation could plausibly have sta
 \end{block}
 \end{frame}
 
-%% ---------- Slide 39: PT is weaker than randomization ----------
-\begin{frame}{Parallel trends is weaker than randomization}
+%% ---------- Slide 39a: Design vs. model — where PT lives ----------
+\begin{frame}{Parallel trends: a different \textit{kind} of assumption}
+\footnotesize
+\textbf{Randomization is a design.} \;The parent process \textit{guarantees} full distributional equivalence between treatment groups. \;In the population, $\mathbb{E}[Y(1)|D{=}0] = \mathbb{E}[Y(1)|D{=}1]$. \;Plug-ins identify the ATE.
+
+\vspace{0.6em}
+\textbf{Parallel trends is a model.} \;An asserted $Y(0)$ trend. \;Sibling to RDD smoothness and synthetic control's factor model. \;\highlight{No parent process backs it.}
+
+\vspace{0.7em}
+\textit{Stronger? Weaker? \;Different kind of thing.}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item \textbf{Weaker}: you only need equal $Y(0)$ \textit{trends}, not full distributional equivalence.
+  \item \textbf{Stronger}: you have to defend the assertion with no design that enforces it.
+\end{itemize}
+
+\vspace{0.4em}
+\meta{Pre-trends and falsifications are heuristics, not identification --- they're finger-in-the-air checks for whether the asserted model looks reasonable.}
+\end{frame}
+
+%% ---------- Slide 39b: Parallel trends, drawn ----------
+\begin{frame}{Parallel trends, drawn}
 \vspace{0.2em}
 \begin{center}
 \begin{tikzpicture}[scale=1.0]
