@@ -1482,7 +1482,6 @@ Four scenarios. The same \textbf{+0 trick} works on all of them --- only the zer
 \begin{block}{Numerical example}
 ATT $= 10$, \;PT bias $= 0$. \quad $\widehat{\text{DiD}} = \mathbf{10}$. \;\checkmark
 \end{block}
-\meta{Monte Carlo (2000 reps, $n=200$/group, $\sigma=2$): mean $\widehat{\text{DiD}} = 10.005$.}
 \end{frame}
 
 %% ---------- Slide 38c3: Case 2 — NA fails ----------
@@ -1503,28 +1502,39 @@ Suppose the treated group anticipates and adjusts \textit{before} the policy lan
 \begin{block}{Numerical example}
 ATT $= 10$, \;PT bias $= 0$, \;ATT$_{\text{pre}} = 3$. \quad $\widehat{\text{DiD}} = 10 - 3 = \mathbf{7}$. \;\highlight{biased down}
 \end{block}
-\meta{Monte Carlo: mean $\widehat{\text{DiD}} = 7.01$. \;If treatment effects are roughly constant, DiD can collapse to zero.}
+\meta{If treatment effects are roughly constant, DiD can collapse to zero.}
 \end{frame}
 
-%% ---------- Slide 38c4: Case 3 — spillover ----------
-\begin{frame}{Case 3.\ Spillover --- the control group absorbs $Y(1)$ in Post}
-\footnotesize
-Suppose the policy spills onto the comparison group in the post period (general-equilibrium, displacement, social interaction). Then \;$\mathbb{E}[Y|0,\text{Post}] = \mathbb{E}[Y(0)|0,\text{Post}] + \textcolor{accent}{\text{spillover}}$.
-
-\vspace{0.3em}
-\textbf{Same recipe} --- the zero you add lives on the control side, not the treated side:
+%% ---------- Slide 38c4: Case 3 — control receives treatment too ----------
+\begin{frame}{Case 3.\ The control group also receives treatment in Post}
+\scriptsize
+The comparison group's Post outcome is also $Y(1)$, not $Y(0)$. \;Switching equation:
 \vspace{-0.3em}
 \[
-\widehat{\text{DiD}} \;=\; \underbrace{\text{ATT}}_{\text{what we want}}
-                  \;+\; \underbrace{\text{non-PT bias}}_{=\,0}
-                  \;-\; \underbrace{\textcolor{accent}{\text{spillover}}}_{\text{control got treated too}}
+\widehat{\text{DiD}} \;=\; \big[\mathbb{E}[Y(1)|1,\text{Post}] - \mathbb{E}[Y(0)|1,\text{Pre}]\big] \;-\; \big[\mathbb{E}[Y(1)|0,\text{Post}] - \mathbb{E}[Y(0)|0,\text{Pre}]\big]
+\]
+\vspace{-1.0em}
+
+\textbf{Add two zeros} --- one missing counterfactual on each side:
+\vspace{-0.2em}
+\[
++\,\mathbb{E}[Y(0)|1,\text{Post}] - \mathbb{E}[Y(0)|1,\text{Post}] \quad\text{and}\quad +\,\mathbb{E}[Y(0)|0,\text{Post}] - \mathbb{E}[Y(0)|0,\text{Post}]
+\]
+\vspace{-1.0em}
+
+\textbf{Rearrange.} \;Treated side $\to$ ATT $+$ treated $Y(0)$ trend. \;Control side $\to$ a \textit{control-group} ATT $+$ control $Y(0)$ trend.
+\vspace{-0.2em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\mathbb{E}[Y(1){-}Y(0)|1,\text{Post}]}_{\textstyle\text{\color{accent}\bfseries ATT}}
+   \;+\; \underbrace{\big\{\Delta\mathbb{E}[Y(0)|1] - \Delta\mathbb{E}[Y(0)|0]\big\}}_{\text{non-PT bias}\,=\,0\text{ under PT}}
+   \;-\; \underbrace{\mathbb{E}[Y(1){-}Y(0)|0,\text{Post}]}_{\textstyle\text{\color{accent}\bfseries ATT}_{D{=}0,\text{Post}}\;\text{\rmfamily\itshape (the spillover)}}
 \]
 \vspace{-0.6em}
 
 \begin{block}{Numerical example}
-ATT $= 10$, \;PT bias $= 0$, \;spillover $= 4$. \quad $\widehat{\text{DiD}} = 10 - 4 = \mathbf{6}$. \;\highlight{biased toward zero}
+ATT $= 10$, \;PT bias $= 0$, \;ATT$_{D{=}0,\text{Post}} = 4$. \quad $\widehat{\text{DiD}} = 10 - 4 = \mathbf{6}$. \;\highlight{biased toward zero}
 \end{block}
-\meta{Monte Carlo: mean $\widehat{\text{DiD}} = 6.01$. \;The Stable Unit Treatment Value Assumption (SUTVA) failed --- the ``control'' wasn't really untreated.}
+\meta{The ``spillover'' isn't a vague nuisance --- it \textit{is} an ATT, just for the wrong group.}
 \end{frame}
 
 %% ---------- Slide 38c5: Case 4 — already-treated control ----------
