@@ -94,11 +94,10 @@ $\mathbb{E}[\Delta Y(0) \mid D=1, X] \;=\; \mathbb{E}[\Delta Y(0) \mid D=0, X]$
 \end{frame}
 
 %% ---------- Slide 4: Today's seven beats ----------
-\begin{frame}{This afternoon, eight beats}
+\begin{frame}{This afternoon, seven beats}
 \vspace{0.3em}
 \begin{enumerate}\small
-  \item Conditional parallel trends --- the identifying assumption we'll lean on
-  \item Outcome regression (Heckman-Ichimura-Todd) --- and the bias OLS-with-controls actually identifies
+  \item Outcome regression (Heckman-Ichimura-Todd, 1997) --- the bias OLS-with-controls actually identifies, plus the conditional-PT assumption that anchors the rest of the afternoon
   \item Inverse propensity weighting (Abadie 2005)
   \item \textit{The trap}: ``can't I just control for the propensity score?''
   \item Doubly robust DiD (Sant'Anna \& Zhao 2020)
@@ -116,8 +115,9 @@ We lead with the bias of OLS. \;\;Each fix below removes one piece of that bias.
 %% =====================================================================
 %%                                LESSON 1
 %% =====================================================================
-\remixsection{1.\ Conditional Parallel Trends}
+\remixsection{1.\ Outcome Regression \\[0.3em] {\normalsize\normalfont What OLS-with-controls gives you --- and what it doesn't}}
 
+%% ---------- L1-F0a: Conditional PT — the identifying assumption ----------
 %% ---------- L1-F1: the assumption ----------
 \begin{frame}{Conditional parallel trends, formally}
 \vspace{0.4em}
@@ -135,14 +135,25 @@ $\mathbb{E}[\Delta Y(0) \mid D{=}1, X] \;=\; \mathbb{E}[\Delta Y(0) \mid D{=}0, 
 \end{itemize}
 \end{frame}
 
-%% (L1-F2 picking-covariates frame moved to Lesson 8.)
+%% ---------- L1-F0b: A note on history of thought ----------
+\begin{frame}{A note on history of thought}
+\footnotesize
+\textbf{The first articulation of any parallel-trends-type assumption} in the DiD literature is:
+\begin{block}{Heckman, Ichimura \& Todd (1997), \textit{Review of Economic Studies}}
+\small
+``Matching as an econometric evaluation estimator: evidence from evaluating a job training programme.''
+\end{block}
 
-%% (L1-F2b, F2c, F2d balance frames moved to Lesson 8.)
+\vspace{0.4em}
+\textbf{The irony.} What HIT wrote down was the \highlight{\textit{conditional}} PT assumption ---
+$\mathbb{E}[\Delta Y(0) \mid D{=}1, X] = \mathbb{E}[\Delta Y(0) \mid D{=}0, X]$.
 
-%% =====================================================================
-%%                                LESSON 2
-%% =====================================================================
-\remixsection{2.\ Outcome Regression \\[0.3em] {\normalsize\normalfont What OLS-with-controls gives you --- and what it doesn't}}
+\vspace{0.5em}
+\textbf{Unconditional PT came later.} \;The morning's version --- $\mathbb{E}[\Delta Y(0) \mid D{=}1] = \mathbb{E}[\Delta Y(0) \mid D{=}0]$ --- is the special case of HIT's assumption with no $X$.
+
+\vspace{0.5em}
+\meta{The first PTA written down was the conditional one. \;The unconditional one is what the textbook taught next.}
+\end{frame}
 
 %% ---------- L2-F0a: Lead with the bias decomposition ----------
 \begin{frame}{Before any fix: what does OLS-with-controls actually identify?}
@@ -523,9 +534,9 @@ This is why IPW exists --- as a different way to use $X$.
 \end{frame}
 
 %% =====================================================================
-%%                                LESSON 3
+%%                                LESSON 2
 %% =====================================================================
-\remixsection{3.\ Inverse Propensity Weighting}
+\remixsection{2.\ Inverse Propensity Weighting}
 
 %% ---------- L3-F1: pscore intuition ----------
 \begin{frame}{The propensity score, in one minute}
@@ -661,9 +672,9 @@ That's because it's the $Y^0$ that's missing, not the $Y^1$.
 \end{frame}
 
 %% =====================================================================
-%%                                LESSON 4 — THE NEW BLOCK
+%%                                LESSON 3 — THE NEW BLOCK
 %% =====================================================================
-\remixsection{4.\ The Trap \\[0.3em] {\normalsize\normalfont ``Can't I just control for the pscore?''}}
+\remixsection{3.\ The Trap \\[0.3em] {\normalsize\normalfont ``Can't I just control for the pscore?''}}
 
 %% ---------- L4-F1: the temptation ----------
 \begin{frame}{A natural temptation}
@@ -778,9 +789,9 @@ DR's escape: use $X$ and $\widehat{p}(X)$ as \textit{weights} and to model the \
 \end{frame}
 
 %% =====================================================================
-%%                                LESSON 5
+%%                                LESSON 4
 %% =====================================================================
-\remixsection{5.\ Doubly Robust DiD}
+\remixsection{4.\ Doubly Robust DiD}
 
 %% ---------- L5-F1: the idea ----------
 \begin{frame}{Doubly robust: two chances to be right}
@@ -1038,10 +1049,10 @@ DR no longer hugs the truth. IPW is wider but \textit{centered}. \;Doubly robust
 \end{frame}
 
 %% =====================================================================
-%%                                LESSON 6
+%%                                LESSON 5
 %%        Caetano & Callaway: hidden linearity bias (same disease as L4)
 %% =====================================================================
-\remixsection{6.\ Hidden Linearity Bias \\[0.3em] {\normalsize\normalfont Caetano \& Callaway 2024}}
+\remixsection{5.\ Hidden Linearity Bias \\[0.3em] {\normalsize\normalfont Caetano \& Callaway 2024}}
 
 %% ---------- L6-F0: TWFE-with-controls has TWO distinct problems ----------
 \begin{frame}{TWFE-with-controls has two distinct problems}
@@ -1228,9 +1239,9 @@ Reg.\ adj.\ with $\Delta X + X_{t-1} + Z$              & $+0.078$               
 \end{frame}
 
 %% =====================================================================
-%%                                LESSON 7
+%%                                LESSON 6
 %% =====================================================================
-\remixsection{7.\ Compositional Change}
+\remixsection{6.\ Compositional Change}
 
 %% ---------- L7-F0: why this lesson exists (dev-econ motivation) ----------
 \begin{frame}{Most applied work doesn't have a panel}
@@ -1480,9 +1491,9 @@ First defense: check whether $X$ moved across time. \;Then run the Hausman test.
 \end{frame}
 
 %% =====================================================================
-%%                                LESSON 8
+%%                                LESSON 7
 %% =====================================================================
-\remixsection{8.\ Choosing \& checking $X$ \\[0.3em] {\normalsize\normalfont The practical close --- picking, balance, and when controls are unnecessary}}
+\remixsection{7.\ Choosing \& checking $X$ \\[0.3em] {\normalsize\normalfont The practical close --- picking, balance, and when controls are unnecessary}}
 
 %% ---------- L8-F1: picking covariates ----------
 \begin{frame}{Picking $X$: theory or LASSO on $\Delta Y(0)$}
