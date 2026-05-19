@@ -1680,6 +1680,41 @@ Push the pre-period earlier --- before any anticipation could plausibly have sta
 \meta{Pre-trends and falsifications are heuristics, not identification --- they're finger-in-the-air checks for whether the asserted model looks reasonable.}
 \end{frame}
 
+%% ---------- Slide 39a2: The model-based family ----------
+\begin{frame}{The model-based family of identification}
+\footnotesize
+\textbf{Three siblings.} \;Each asserts something about $Y(0)$ that the data cannot directly confirm.
+
+\vspace{0.7em}
+\begin{itemize}\setlength\itemsep{5pt}
+  \item \textbf{Parallel trends} (DiD): \;$\mathbb{E}[Y(0) \mid D{=}1]$ \textit{trends} like $\mathbb{E}[Y(0) \mid D{=}0]$ in the post period.
+  \item \textbf{Smoothness} (RDD): \;$\mathbb{E}[Y(0) \mid X{=}x]$ is continuous as $x$ crosses the threshold.
+  \item \textbf{Factor model} (synthetic control): \;$Y(0)_{it}$ follows a low-rank structure the donor pool spans.
+\end{itemize}
+
+\vspace{0.7em}
+\highlight{None of these are designed.} \;You assert them, then check that the asserted shape is consistent with what you can observe. \;The assumption itself lives in the counterfactual --- where the data is silent.
+\end{frame}
+
+%% ---------- Slide 39a3: What backs a model-based assumption ----------
+\begin{frame}{What backs a model-based assumption}
+\footnotesize
+\textbf{Randomization is its own defense.} \;The lottery was fair; the assumption holds by construction.
+
+\vspace{0.5em}
+\textbf{A model-based assumption has no such defense.} \;What backs it instead:
+
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item \textbf{Institutional reasoning.} \;Why would treated and control move together absent treatment? \;What forces shaped both? \;Where does the variation in treatment come from?
+  \item \textbf{Choice of comparison group.} \;Closer in covariates, exposure, and history $\to$ more credible.
+  \item \textbf{Pre-period anchoring.} \;A long stable pre-period of parallel movement makes the asserted post-period trend easier to believe.
+\end{itemize}
+
+\vspace{0.4em}
+\meta{The most credible DiDs (Card-Krueger, Mariel) earn their credibility from the institutional story --- not from the pre-trend test.}
+\end{frame}
+
 %% ---------- Slide 39b: Parallel trends, drawn ----------
 \begin{frame}{Parallel trends, drawn}
 \vspace{0.2em}
