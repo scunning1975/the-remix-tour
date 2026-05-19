@@ -1639,34 +1639,163 @@ Every variable, its treated mean, its control mean, the normalized difference. \
 %% =====================================================================
 
 %% =====================================================================
-%%  CLOSING EXAMPLE — LaLonde: what conditional PT actually buys you
+%%  CLOSING EXAMPLE — LaLonde: history, then the four specs, then synthesis
 %% =====================================================================
 
-%% ---------- LL-1: Closer setup ----------
-\begin{frame}{A closing example: what does conditional PT actually buy you?}
-\vspace{0.4em}
-We've spent the afternoon \textit{assuming} conditional PT is more credible than unconditional PT.
-\vspace{0.6em}
-\begin{itemize}\setlength\itemsep{4pt}
-  \item Is it?
-  \item Is there \textit{empirical evidence} that conditioning on $X$ recovers a known truth?
-\end{itemize}
-\vspace{0.7em}
-\highlight{Yes. The canonical case is LaLonde.}
-\end{frame}
-
-%% ---------- LL-2: LaLonde 1986, the setup ----------
-\begin{frame}{LaLonde (1986)}
+%% ---------- LL-Hist-1: The empirical crisis of the 1970s ----------
+\begin{frame}{The empirical crisis of the 1970s}
 \vspace{0.5em}
-\textbf{The National Supported Work Demonstration} --- a 1970s RCT for hard-to-employ adults.
+Empirical economics in the 1970s did not have a strong reputation.
 \vspace{0.5em}
 \begin{itemize}\setlength\itemsep{3pt}
-  \item Random assignment to job training. Outcome: real 1978 earnings.
-  \item Years on record: \texttt{74}, \texttt{75}, \texttt{78}.
-  \item The experiment gives the truth by construction.
+  \item Most empirical work was a postscript to a theory paper. \;Sargent on rational expectations is a representative case --- the regression was an afterthought.
+  \item IV in the 1970s could be done without even \textit{reporting} the instrument. \;\meta{Orley Ashenfelter and Janet Currie, in conversation.}
+  \item Outlandish estimates were routine and rarely interrogated.
 \end{itemize}
 \vspace{0.5em}
-\meta{LaLonde then asked: can observational methods recover that truth on \textit{non}-experimental data?}
+\highlight{There was a sense that econometric methods couldn't quite be trusted} --- and no shared standard for adjudicating that.
+\end{frame}
+
+%% ---------- LL-Hist-2: The Lewis smell test ----------
+\begin{frame}{The Lewis smell test}
+\vspace{0.5em}
+\textbf{H. Gregg Lewis} (Chicago) studied union wage differentials. \;In his book reviewing the literature, he simply \textit{ignored} estimates he couldn't justify --- particularly when they came from IV or Heckman selection corrections.
+
+\vspace{0.5em}
+He preferred OLS with controls and a story you could defend.
+
+\vspace{0.7em}
+\textbf{Card called this the ``Lewis smell test.''}
+
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+If you could get a result past Lewis's skepticism, that was worth noting. \;Otherwise --- skip it.
+\end{center}
+\end{frame}
+
+%% ---------- LL-Hist-3: The other world — program evaluation ----------
+\begin{frame}{The other world: program evaluation}
+\vspace{0.5em}
+\textbf{There was one corner of empirical work that took the question seriously.}
+
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Federal job-training programs in the 1970s --- evaluations commissioned by the Department of Labor.
+  \item Princeton's \highlight{Industrial Relations Section} --- older than the Econ department --- ran the empirical agenda.
+  \item Job training was a \textit{totem} in the Section. \;Heckman used it as a recurring metaphor (including the 1997 ReStud with Ichimura, Todd, and the later Smith papers).
+\end{itemize}
+
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+Two worlds: empirics-as-afterthought, and program evaluation. \;The credibility gap was huge.
+\end{center}
+\end{frame}
+
+%% ---------- LL-Hist-4: Orley and his students ----------
+\begin{frame}{Orley Ashenfelter and his students}
+\vspace{0.6em}
+Orley was at the center of Princeton's IRS. \;He gave students problems.
+
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item \textbf{Ron Oaxaca} \;$\to$\; the wage decomposition (1973).
+  \item \textbf{Josh Angrist} \;$\to$\; Vietnam draft-lottery IV (1990).
+  \item \textbf{Bob LaLonde} \;$\to$\; the job-training paper (1986).
+\end{itemize}
+
+\vspace{0.6em}
+\highlight{Angrist once said: ``I wish I had written LaLonde.''}
+
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+Foundational papers from one supervisor's office.
+\end{center}
+\end{frame}
+
+%% ---------- LL-Hist-5: NSW + Orley's suggestion ----------
+\begin{frame}{The NSW experiment, and Orley's suggestion}
+\vspace{0.5em}
+\textbf{The National Supported Work Demonstration (NSW).} \;Late-1970s federal job-training program run by MDRC. \;Hard-to-employ adults. \;\highlight{Randomly assigned} treatment and control.
+
+\vspace{0.6em}
+\textbf{Orley to LaLonde:}
+\vspace{-0.2em}
+\begin{center}
+\textit{``Estimate the ATT from the experiment --- that's the truth. \\Then drop the experimental control. Replace it with survey data. \\Re-run the contemporary econometric methods. See what you get.''}
+\end{center}
+
+\vspace{0.5em}
+\begin{center}
+\small\color{warmgray}\itshape
+A placebo-style design \textit{before} placebo designs were a thing. \;A direct honesty test.
+\end{center}
+\end{frame}
+
+%% ---------- LL-Hist-6: What LaLonde found ----------
+\begin{frame}{What LaLonde found (1986)}
+\vspace{0.6em}
+\textbf{The truth from the RCT:} \;ATT $\approx +\$800$.
+
+\vspace{0.6em}
+\textbf{What observational methods gave:} \;all over the map. \;Wrong magnitudes. \;Often \textit{wrong signs}.
+
+\vspace{0.8em}
+\begin{center}
+\highlight{The conclusion --- and it cratered the credibility of observational program evaluation:}
+\end{center}
+
+\vspace{0.4em}
+\begin{center}
+\textit{The standard econometric methods of the day could not be trusted to recover known causal effects.}
+\end{center}
+\end{frame}
+
+%% ---------- LL-Hist-7: Dehejia-Wahba revisit ----------
+\begin{frame}{Dehejia \& Wahba (1999, 2002): the rescue}
+\vspace{0.4em}
+Mid-1990s. \;Harvard. \;\textbf{Imbens and Rubin's causal-inference class.} \;Students include Rajeev Dehejia, Sadek Wahba, Bruce Sacerdote, (later) David Autor.
+
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Rosenbaum--Rubin (1983) introduced the propensity score. \;\textit{LaLonde didn't use it.}
+  \item Dehejia \& Wahba revisit the same data with \highlight{propensity-score matching}. \;They restrict to a sample with \textit{two years} of pre-treatment earnings.
+  \item On that sample they recover \highlight{$\$1{,}794$} --- very close to the experimental ATT.
+\end{itemize}
+
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+Smith \& Todd (2005) later debated the sample-selection choice. \;The DW result held up enough for the literature to take ``conditional PT'' seriously.
+\end{center}
+\end{frame}
+
+%% ---------- LL-Hist-8: Bridge to the walkthrough ----------
+\begin{frame}{A closing example: what does conditional PT actually buy you?}
+\vspace{0.5em}
+We've spent the afternoon \textit{assuming} conditional PT is more credible than unconditional PT.
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Is it?
+  \item Is there \textit{empirical} evidence that conditioning on $X$ recovers a known truth?
+\end{itemize}
+\vspace{0.6em}
+\highlight{Yes. The canonical case is LaLonde.} \;We'll now run four observational specifications on the non-experimental panel and see which ones recover $\$1{,}794$.
+\end{frame}
+
+%% ---------- LL-2 (old name kept): LaLonde data, the panel ----------
+\begin{frame}{The LaLonde panel}
+\vspace{0.5em}
+\textbf{Data structure} (Dehejia \& Wahba's two-year-pre version):
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item Random assignment to NSW job training. Outcome: real 1978 earnings.
+  \item Years on record: \texttt{74}, \texttt{75}, \texttt{78}.
+\end{itemize}
+\vspace{0.5em}
+\meta{The experimental panel gives the truth. \;The non-experimental panel (NSW treated + CPS controls) is our test case.}
 \end{frame}
 
 %% ---------- LL-3: The benchmark ----------
@@ -1901,6 +2030,123 @@ Spec A (additive $X$)     & $\$3{,}522$ \\
 \begin{center}
 \small\color{warmgray}\itshape
 Not exact. \;But the movement is \textit{toward} the truth, not away from it. \;From \$1,728 above to \$610 below.
+\end{center}
+\end{frame}
+
+%% ---------- LL-Spec-C-1: Spec C — equation ----------
+\begin{frame}{Spec C: heterogeneous $\tau$ in $X$ --- the saturated approach}
+\footnotesize
+\textbf{The motivation.} \;If the treatment effect itself depends on $X$ (e.g., training works better for younger workers), then \textit{no} single $\hat{\tau}$ coefficient is the ATT. \;You need to model the heterogeneity and average correctly.
+
+\vspace{0.6em}
+\textbf{The two-step regression-adjustment / OR estimator} (Heckman, Ichimura \& Todd, 1997):
+\vspace{0.2em}
+\begin{enumerate}\setlength\itemsep{2pt}
+  \item Fit $\Delta Y \;=\; \alpha + X'\gamma + \nu$ on \textit{controls only}. \;(Models how $Y(0)$ trends as a function of $X$.)
+  \item Predict the counterfactual $\widehat{\Delta Y_i}$ for each treated unit. \;Compute $\hat\tau_i = \Delta Y_i - \widehat{\Delta Y_i}$.
+  \item $\widehat{\text{ATT}} = \tfrac{1}{N_{tr}}\sum_{i:D_i=1} \hat\tau_i$.
+\end{enumerate}
+
+\vspace{0.5em}
+\begin{center}
+\small\color{warmgray}\itshape
+Equivalent (but slower): run a fully saturated regression $Y \sim \text{treat}{\cdot}\text{post}{\cdot}X$, predict counterfactual, average over the treated $X$ distribution.
+\end{center}
+\end{frame}
+
+%% ---------- LL-Spec-C-2: Spec C in Stata ----------
+\begin{frame}[fragile]{Spec C in Stata}
+\vspace{0.4em}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+* Reshape to wide. dy = re_78 - re_75
+reshape wide re, i(id) j(year)
+gen dy = re78 - re75
+
+global X "age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75"
+
+* Step 1: regress dy on X using CONTROLS only
+reg dy $X if ever_treated == 0
+
+* Step 2: predict counterfactual dY_hat for treated
+predict dy_hat
+gen tau_hat = dy - dy_hat if ever_treated == 1
+
+* Step 3: ATT = mean of tau_hat over treated
+summarize tau_hat if ever_treated == 1
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-Spec-C-3: Spec C in R ----------
+\begin{frame}[fragile]{Spec C in R}
+\vspace{0.4em}
+\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
+library(dplyr); library(tidyr)
+
+wide <- d |>
+  pivot_wider(names_from = year, values_from = re,
+              names_prefix = "re_") |>
+  mutate(dy = re_78 - re_75)
+
+# Step 1: OR model on controls only
+or_model <- lm(dy ~ age + agesq + educ + educsq + marr + nodegree
+                  + black + hisp + re74 + re75 + u74 + u75,
+               data = wide |> filter(ever_treated == 0))
+
+# Step 2: predict counterfactual for treated
+treated <- wide |> filter(ever_treated == 1)
+treated$tau_hat <- treated$dy - predict(or_model, treated)
+
+# Step 3: ATT
+mean(treated$tau_hat)
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-Spec-C-4: Spec C in Python ----------
+\begin{frame}[fragile]{Spec C in Python}
+\vspace{0.4em}
+\begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize]
+import statsmodels.formula.api as smf
+
+wide = d.pivot(index="id", columns="year", values="re").reset_index()
+wide["dy"] = wide[78] - wide[75]
+# (merge ever_treated and the X's back in)
+
+X = ("age + agesq + educ + educsq + marr + nodegree "
+     "+ black + hisp + re74 + re75 + u74 + u75")
+
+# Step 1: OR model on controls
+or_model = smf.ols(f"dy ~ {X}",
+                   data=wide.query("ever_treated == 0")).fit()
+
+# Step 2: predict counterfactual for treated
+treated = wide.query("ever_treated == 1").copy()
+treated["tau_hat"] = treated["dy"] - or_model.predict(treated)
+
+# Step 3: ATT
+print(treated["tau_hat"].mean())
+\end{lstlisting}
+\end{frame}
+
+%% ---------- LL-Spec-C-5: Spec C result ----------
+\begin{frame}{Spec C result: \$1,263 --- closer still}
+\vspace{0.5em}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}lr@{}}
+\toprule
+RCT benchmark                                          & $\$1{,}794$ \\
+Spec 0 (no covariates)                                 & $\$3{,}522$ \\
+Spec A (additive $X$)                                  & $\$3{,}522$ \\
+Spec B ($\text{post}{\times}X$)                        & $\$1{,}184$ \\
+\textbf{Spec C} (saturated OR / regression adjustment) & \highlight{$\$1{,}263$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Allowing $\tau$ to depend on $X$ moves the estimate further toward the truth --- but no regression estimator gets all the way. \;That's why propensity-score matching (Dehejia--Wahba) and DR-DiD (Sant'Anna--Zhao) exist: \\they put $\widehat{p}(X)$ in the right place.
 \end{center}
 \end{frame}
 
