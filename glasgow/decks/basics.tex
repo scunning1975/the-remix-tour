@@ -206,8 +206,8 @@
   \item Potential outcomes, target parameters, and parallel trends
   \item Standard errors: vanilla, robust, cluster-robust
   \item The minimum wage wars
-  \item Two ATTs, two parallel trends --- a callback to weighting
   \item Event studies as falsifications --- and 2{$\times$}2s
+  \item Two ATTs, two parallel trends --- a callback to weighting
 \end{enumerate}
 \end{frame}
 
@@ -2395,207 +2395,8 @@ I have a paper in progress using \highlight{LLM agents to study minimum-wage DiD
 
 %% =====================================================================
 %%                                LESSON 6
-%%        Two ATTs, Two Parallel Trends --- a callback to weighting
 %% =====================================================================
-\remixsection{6.\ Two ATTs, Two PTs \\[0.3em] {\normalsize\normalfont A callback to weighting}}
-
-%% ---------- W1: Section opener — there isn't one parallel trends ----------
-\begin{frame}{There isn't \textit{one} parallel trends}
-\vspace{0.4em}
-Remember Lesson 3: per-person ATE and per-county ATE were different parameters under selection. Sometimes different signs.
-\vspace{0.5em}
-\begin{block}{The 2$\times$2 decomposition has \textit{two} terms}
-\small
-\centering
-$\widehat{\delta} \;=\; \text{ATT} \;+\; \text{PT}$ \\[0.3em]
-Weighting changes the expectation operator. So \textit{both} terms get re-weighted.
-\end{block}
-\vspace{0.5em}
-\begin{itemize}\small
-  \item Weighted vs unweighted DiD: different ATTs. We've seen this.
-  \item Weighted vs unweighted DiD: \highlight{different parallel-trends assumptions}. \;That's new.
-  \item Two parameters. Two identifying assumptions. \textit{Not} the same 2$\times$2.
-\end{itemize}
-\end{frame}
-
-%% ---------- W2: Two decompositions side by side ----------
-\begin{frame}{Two decompositions, four assumptions}
-\vspace{0.5em}
-\begin{center}
-\renewcommand{\arraystretch}{1.5}
-\footnotesize
-\begin{tabular}{@{}l c c@{}}
-\toprule
- & \textbf{Unweighted 2$\times$2} & \textbf{Population-weighted 2$\times$2} \\
- & \textit{average county} & \textit{average person} \\
-\midrule
-Estimator & $\widehat{\delta}_{\text{unw}}$ & $\widehat{\delta}_{\text{wtd}}$ \\
-Target parameter & $\text{ATT}_{\text{unw}}$ & $\text{ATT}_{\text{wtd}}$ \\
-PT assumption & $\mathbb{E}[\Delta Y(0) \mid D=1] = \mathbb{E}[\Delta Y(0) \mid D=0]$ & $\widetilde{\mathbb{E}}[\Delta Y(0) \mid D=1] = \widetilde{\mathbb{E}}[\Delta Y(0) \mid D=0]$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-\vspace{0.6em}
-\begin{itemize}\small
-  \item $\widetilde{\mathbb{E}}[\cdot]$ is the population-weighted expectation (each county weighted by its size $S$).
-  \item \highlight{Same data. Two estimators. Two different parameters. Two different PT assumptions.}
-\end{itemize}
-\end{frame}
-
-%% ---------- W3a: Setting up the weighted mean ----------
-\begin{frame}{First, what \textit{is} the weighted mean?}
-\vspace{0.4em}
-For any variable $Y$ and any weight $S$:
-\vspace{-0.2em}
-\[
-\widetilde{\mathbb{E}}[Y] \;\;\equiv\;\; \frac{\mathbb{E}[S\, Y]}{\mathbb{E}[S]}.
-\]
-\vspace{-0.4em}
-\begin{itemize}\small
-  \item Each unit's $Y$ is multiplied by its weight $S$. Bigger units count more.
-  \item Divide by total weight $\mathbb{E}[S]$ to recover an average.
-\end{itemize}
-\vspace{0.4em}
-\begin{block}{What we're about to prove}
-\centering
-$\widetilde{\mathbb{E}}[Y] \;=\; \mathbb{E}[Y] \;+\; \dfrac{\mathrm{Cov}(S, Y)}{\mathbb{E}[S]}$
-\end{block}
-\end{frame}
-
-%% ---------- W3b: Proving the identity, line by line ----------
-\begin{frame}{Proving it: five lines from first principles}
-\footnotesize
-\vspace{0.2em}
-\textbf{1. Definition.} \quad $\widetilde{\mathbb{E}}[Y] \;=\; \dfrac{\mathbb{E}[S\, Y]}{\mathbb{E}[S]}$
-\vspace{0.3em}
-
-\textbf{2. Covariance.} \quad $\mathrm{Cov}(S, Y) \;=\; \mathbb{E}[S\, Y] \;-\; \mathbb{E}[S]\,\mathbb{E}[Y]$
-\vspace{0.3em}
-
-\textbf{3. Solve for $\mathbb{E}[S\, Y]$.} \quad $\mathbb{E}[S\, Y] \;=\; \mathbb{E}[S]\,\mathbb{E}[Y] \;+\; \mathrm{Cov}(S, Y)$
-\vspace{0.3em}
-
-\textbf{4. Substitute into line 1.} \quad $\widetilde{\mathbb{E}}[Y] \;=\; \dfrac{\mathbb{E}[S]\,\mathbb{E}[Y] \;+\; \mathrm{Cov}(S, Y)}{\mathbb{E}[S]}$
-\vspace{0.3em}
-
-\textbf{5. Distribute.} \quad $\widetilde{\mathbb{E}}[Y] \;=\; \mathbb{E}[Y] \;+\; \dfrac{\mathrm{Cov}(S, Y)}{\mathbb{E}[S]} \qquad \blacksquare$
-\vspace{0.4em}
-
-\normalsize
-\begin{center}
-\color{warmgray}\itshape\small
-Two definitions and three algebraic moves. That's the entire identity.
-\end{center}
-\end{frame}
-
-%% ---------- W3c: What it says ----------
-\begin{frame}{What the identity says}
-\vspace{0.5em}
-\[
-\widetilde{\mathbb{E}}[Y] \;=\; \mathbb{E}[Y] \;+\; \frac{\mathrm{Cov}(S, Y)}{\mathbb{E}[S]}
-\]
-\vspace{0.1em}
-\begin{itemize}
-  \item Weighted mean $=$ unweighted mean $+$ a \highlight{covariance correction}.
-  \item Correction is zero $\iff$ $S$ is uncorrelated with $Y$. Otherwise the two means diverge.
-  \item $\mathrm{Cov}(S, Y) > 0$ ($S$ co-moves with $Y$ across units): the weighted mean exceeds the unweighted.
-  \item $\mathrm{Cov}(S, Y) < 0$ ($S$ moves opposite $Y$): the weighted mean is smaller.
-\end{itemize}
-\vspace{0.5em}
-\begin{center}
-\small\color{warmgray}\itshape
-Next: apply this identity to $\Delta Y(0)$, conditional on $D$. Watch the PT term split into two pieces.
-\end{center}
-\end{frame}
-
-%% ---------- W4: Apply to PT — the lemma ----------
-\begin{frame}{Apply to $\Delta Y(0)$, conditional on $D{=}d$}
-\vspace{0.2em}
-Substitute $\Delta Y(0)$ for $Y$, condition on $D{=}d$:
-\vspace{-0.3em}
-\[
-\widetilde{\mathbb{E}}\!\big[\Delta Y(0) \,\big|\, D{=}d\big] \;=\; \mathbb{E}\!\big[\Delta Y(0) \,\big|\, D{=}d\big] \;+\; \underbrace{\frac{\mathrm{Cov}\!\big(S,\, \Delta Y(0) \,\big|\, D{=}d\big)}{\mathbb{E}\!\big[S \,\big|\, D{=}d\big]}}_{\displaystyle \kappa_d}
-\]
-\vspace{-0.1em}
-
-Subtract the $D{=}0$ version from the $D{=}1$ version. Unweighted differences give $\text{PT}_{\text{unw}}$; weighted ones give $\text{PT}_{\text{wtd}}$:
-\vspace{-0.1em}
-\[
-\boxed{\;\text{PT}_{\text{wtd}} \;\;=\;\; \text{PT}_{\text{unw}} \;\;+\;\; (\kappa_1 - \kappa_0)\;}
-\]
-\end{frame}
-
-%% ---------- W4b: Reading kappa_d ----------
-\begin{frame}{Reading $\kappa_d$: a covariance, scaled, \textit{within} group $d$}
-\[
-\kappa_d \;=\; \frac{\mathrm{Cov}\!\big(S,\, \Delta Y(0) \,\big|\, D{=}d\big)}{\mathbb{E}\!\big[S \,\big|\, D{=}d\big]}
-\]
-\begin{itemize}\small
-  \item \textbf{Numerator}: within group $d$, does unit size $S$ co-move with the untreated trend $\Delta Y(0)$? Positive $\Rightarrow$ big units trend up faster within $d$.
-  \item \textbf{Denominator}: average size in group $d$. Normalizes so $\kappa_d$ is in $\Delta Y(0)$ units.
-  \item \textbf{Subscript}: computed \textit{separately} for treated ($d{=}1$) and control ($d{=}0$).
-\end{itemize}
-\vspace{0.3em}
-\begin{block}{The covariance gap}
-\centering
-$\kappa_1 - \kappa_0$ \;=\; ``does the size--trend relationship differ across treated and control?''
-\end{block}
-\end{frame}
-
-%% ---------- W5: The knife-edge ----------
-\begin{frame}{The knife-edge: both PTs hold iff $\kappa_1 = \kappa_0$}
-\vspace{0.4em}
-\[
-\text{PT}_{\text{wtd}} \;=\; \text{PT}_{\text{unw}} \;+\; (\kappa_1 - \kappa_0)
-\]
-\vspace{-0.2em}
-\begin{itemize}\small
-  \item $\kappa_1 = \kappa_0 = 0$ is \textit{not} required. The covariances can be huge --- they just have to be \textit{equal} across treated and control.
-  \item If $\kappa_1 \neq \kappa_0$: \;\highlight{at most one of the two PTs can be true.}
-  \item One 2$\times$2 design can identify $\text{ATT}_{\text{unw}}$, or $\text{ATT}_{\text{wtd}}$, but in general \textit{not both}.
-\end{itemize}
-\vspace{0.5em}
-\begin{block}{What creates a nonzero covariance gap?}
-\small
-Selection on the weight. Big counties get treated for reasons \textit{related to their size}, and big counties' $Y(0)$ trends differently than small ones'. The two together produce the gap.
-\end{block}
-\end{frame}
-
-%% ---------- W6: The simulation picture ----------
-\begin{frame}{Simulation: the weighted PT \textit{is} the covariance gap}
-\vspace{-0.2em}
-\begin{center}
-\includegraphics[width=0.78\linewidth,height=0.70\textheight,keepaspectratio]{figures/weighted_pt_covgap.pdf}
-\end{center}
-\vspace{-0.4em}
-\begin{center}
-\footnotesize\color{warmgray}\itshape
-$N{=}100{,}000$, $\text{PT}_{\text{unw}}=0$ by construction. Sweep selection strength $\gamma_1$ from $-2$ to $+2$.\\
-\highlight{$\text{PT}_{\text{wtd}}$ traces $\kappa_1 - \kappa_0$ exactly.}\; Slope 1. Not a regularity --- an identity.
-\end{center}
-\end{frame}
-
-%% ---------- W7: Implications — not a robustness check ----------
-\begin{frame}{Weighted vs unweighted is \textit{not} a robustness check}
-\vspace{0.4em}
-\begin{itemize}\small
-  \item Running both and hoping they agree is \textit{not} a robustness check --- it's a comparison of two different estimands under two different assumptions.
-  \item Disagreement is information about the \highlight{covariance gap}, not about whether DiD ``works.''
-  \item Pick the parameter your question demands. Then defend the corresponding PT.
-\end{itemize}
-\vspace{0.6em}
-\begin{block}{So what do you do?}
-\small
-Event studies (next!) interrogate \textit{which} PT you can defend. You can run them weighted, unweighted, or both --- but each tests a different assumption.
-\end{block}
-\vspace{0.2em}
-\meta{Derivation and simulation: \texttt{decks/code/Weighted-PT/weighted\_pt\_chart.R}. \\ Background: Scott's Substack, ``Diff-in-Diff, population weights and parallel trends,'' Part 1 \& 2.}
-\end{frame}
-
-%% =====================================================================
-%%                                LESSON 7
-%% =====================================================================
-\remixsection{7.\ Event Studies \\[0.3em] {\normalsize\normalfont as Falsifications --- and 2$\times$2s}}
+\remixsection{6.\ Event Studies \\[0.3em] {\normalsize\normalfont as Falsifications --- and 2$\times$2s}}
 
 %% ---------- F1: DiD is a courtroom case ----------
 \begin{frame}{DiD is a courtroom case}
@@ -2860,6 +2661,231 @@ iplot(es, main = "Event study: castle.dta")
 \vspace{0.4em}
 \meta{Full script: \texttt{CI-2/Lab/Basic-DiD/simple\_eventstudy.R}}
 \end{frame}
+%% =====================================================================
+%%                                LESSON 7
+%%        Two ATTs, Two Parallel Trends --- a callback to weighting
+%% =====================================================================
+\remixsection{7.\ Two ATTs, Two PTs \\[0.3em] {\normalsize\normalfont A callback to weighting}}
+
+%% ---------- W1: Section opener — there isn't one parallel trends ----------
+\begin{frame}{There isn't \textit{one} parallel trends}
+\vspace{0.4em}
+Remember Lesson 3: per-person ATE and per-county ATE were different parameters under selection. Sometimes different signs.
+\vspace{0.5em}
+\begin{block}{The 2$\times$2 decomposition has \textit{two} terms}
+\small
+\centering
+$\widehat{\delta} \;=\; \text{ATT} \;+\; \text{PT}$ \\[0.3em]
+Weighting changes the expectation operator. So \textit{both} terms get re-weighted.
+\end{block}
+\vspace{0.5em}
+\begin{itemize}\small
+  \item Weighted vs unweighted DiD: different ATTs. We've seen this.
+  \item Weighted vs unweighted DiD: \highlight{different parallel-trends assumptions}. \;That's new.
+  \item Two parameters. Two identifying assumptions. \textit{Not} the same 2$\times$2.
+\end{itemize}
+\end{frame}
+
+%% ---------- W2: Two decompositions side by side ----------
+\begin{frame}{Two decompositions, four assumptions}
+\vspace{0.5em}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\footnotesize
+\begin{tabular}{@{}l c c@{}}
+\toprule
+ & \textbf{Unweighted 2$\times$2} & \textbf{Population-weighted 2$\times$2} \\
+ & \textit{average county} & \textit{average person} \\
+\midrule
+Estimator & $\widehat{\delta}_{\text{unw}}$ & $\widehat{\delta}_{\text{wtd}}$ \\
+Target parameter & $\text{ATT}_{\text{unw}}$ & $\text{ATT}_{\text{wtd}}$ \\
+PT assumption & $\mathbb{E}[\Delta Y(0) \mid D=1] = \mathbb{E}[\Delta Y(0) \mid D=0]$ & $\widetilde{\mathbb{E}}[\Delta Y(0) \mid D=1] = \widetilde{\mathbb{E}}[\Delta Y(0) \mid D=0]$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.6em}
+\begin{itemize}\small
+  \item $\widetilde{\mathbb{E}}[\cdot]$ is the population-weighted expectation (each county weighted by its size $S$).
+  \item \highlight{Same data. Two estimators. Two different parameters. Two different PT assumptions.}
+\end{itemize}
+\end{frame}
+
+%% ---------- W3a: Setting up the weighted mean ----------
+\begin{frame}{First, what \textit{is} the weighted mean?}
+\vspace{0.4em}
+For any variable $Y$ and any weight $S$:
+\vspace{-0.2em}
+\[
+\widetilde{\mathbb{E}}[Y] \;\;\equiv\;\; \frac{\mathbb{E}[S\, Y]}{\mathbb{E}[S]}.
+\]
+\vspace{-0.4em}
+\begin{itemize}\small
+  \item Each unit's $Y$ is multiplied by its weight $S$. Bigger units count more.
+  \item Divide by total weight $\mathbb{E}[S]$ to recover an average.
+\end{itemize}
+\vspace{0.4em}
+\begin{block}{What we're about to prove}
+\centering
+$\widetilde{\mathbb{E}}[Y] \;=\; \mathbb{E}[Y] \;+\; \dfrac{\mathrm{Cov}(S, Y)}{\mathbb{E}[S]}$
+\end{block}
+\end{frame}
+
+%% ---------- W3b: Proving the identity, line by line ----------
+\begin{frame}{Proving it: five lines from first principles}
+\footnotesize
+\vspace{0.2em}
+\textbf{1. Definition.} \quad $\widetilde{\mathbb{E}}[Y] \;=\; \dfrac{\mathbb{E}[S\, Y]}{\mathbb{E}[S]}$
+\vspace{0.3em}
+
+\textbf{2. Covariance.} \quad $\mathrm{Cov}(S, Y) \;=\; \mathbb{E}[S\, Y] \;-\; \mathbb{E}[S]\,\mathbb{E}[Y]$
+\vspace{0.3em}
+
+\textbf{3. Solve for $\mathbb{E}[S\, Y]$.} \quad $\mathbb{E}[S\, Y] \;=\; \mathbb{E}[S]\,\mathbb{E}[Y] \;+\; \mathrm{Cov}(S, Y)$
+\vspace{0.3em}
+
+\textbf{4. Substitute into line 1.} \quad $\widetilde{\mathbb{E}}[Y] \;=\; \dfrac{\mathbb{E}[S]\,\mathbb{E}[Y] \;+\; \mathrm{Cov}(S, Y)}{\mathbb{E}[S]}$
+\vspace{0.3em}
+
+\textbf{5. Distribute.} \quad $\widetilde{\mathbb{E}}[Y] \;=\; \mathbb{E}[Y] \;+\; \dfrac{\mathrm{Cov}(S, Y)}{\mathbb{E}[S]} \qquad \blacksquare$
+\vspace{0.4em}
+
+\normalsize
+\begin{center}
+\color{warmgray}\itshape\small
+Two definitions and three algebraic moves. That's the entire identity.
+\end{center}
+\end{frame}
+
+%% ---------- W3c: What it says ----------
+\begin{frame}{What the identity says}
+\vspace{0.5em}
+\[
+\widetilde{\mathbb{E}}[Y] \;=\; \mathbb{E}[Y] \;+\; \frac{\mathrm{Cov}(S, Y)}{\mathbb{E}[S]}
+\]
+\vspace{0.1em}
+\begin{itemize}
+  \item Weighted mean $=$ unweighted mean $+$ a \highlight{covariance correction}.
+  \item Correction is zero $\iff$ $S$ is uncorrelated with $Y$. Otherwise the two means diverge.
+  \item $\mathrm{Cov}(S, Y) > 0$ ($S$ co-moves with $Y$ across units): the weighted mean exceeds the unweighted.
+  \item $\mathrm{Cov}(S, Y) < 0$ ($S$ moves opposite $Y$): the weighted mean is smaller.
+\end{itemize}
+\vspace{0.5em}
+\begin{center}
+\small\color{warmgray}\itshape
+Next: apply this identity to $\Delta Y(0)$, conditional on $D$. Watch the PT term split into two pieces.
+\end{center}
+\end{frame}
+
+%% ---------- W4: Apply to PT — the lemma ----------
+\begin{frame}{Apply to $\Delta Y(0)$, conditional on $D{=}d$}
+\vspace{0.2em}
+Substitute $\Delta Y(0)$ for $Y$, condition on $D{=}d$:
+\vspace{-0.3em}
+\[
+\widetilde{\mathbb{E}}\!\big[\Delta Y(0) \,\big|\, D{=}d\big] \;=\; \mathbb{E}\!\big[\Delta Y(0) \,\big|\, D{=}d\big] \;+\; \underbrace{\frac{\mathrm{Cov}\!\big(S,\, \Delta Y(0) \,\big|\, D{=}d\big)}{\mathbb{E}\!\big[S \,\big|\, D{=}d\big]}}_{\displaystyle \kappa_d}
+\]
+\vspace{-0.1em}
+
+Subtract the $D{=}0$ version from the $D{=}1$ version. Unweighted differences give $\text{PT}_{\text{unw}}$; weighted ones give $\text{PT}_{\text{wtd}}$:
+\vspace{-0.1em}
+\[
+\boxed{\;\text{PT}_{\text{wtd}} \;\;=\;\; \text{PT}_{\text{unw}} \;\;+\;\; (\kappa_1 - \kappa_0)\;}
+\]
+\end{frame}
+
+%% ---------- W4b: Reading kappa_d ----------
+\begin{frame}{Reading $\kappa_d$: a covariance, scaled, \textit{within} group $d$}
+\[
+\kappa_d \;=\; \frac{\mathrm{Cov}\!\big(S,\, \Delta Y(0) \,\big|\, D{=}d\big)}{\mathbb{E}\!\big[S \,\big|\, D{=}d\big]}
+\]
+\begin{itemize}\small
+  \item \textbf{Numerator}: within group $d$, does unit size $S$ co-move with the untreated trend $\Delta Y(0)$? Positive $\Rightarrow$ big units trend up faster within $d$.
+  \item \textbf{Denominator}: average size in group $d$. Normalizes so $\kappa_d$ is in $\Delta Y(0)$ units.
+  \item \textbf{Subscript}: computed \textit{separately} for treated ($d{=}1$) and control ($d{=}0$).
+\end{itemize}
+\vspace{0.3em}
+\begin{block}{The covariance gap}
+\centering
+$\kappa_1 - \kappa_0$ \;=\; ``does the size--trend relationship differ across treated and control?''
+\end{block}
+\end{frame}
+
+%% ---------- W5: The knife-edge ----------
+\begin{frame}{The knife-edge: both PTs hold iff $\kappa_1 = \kappa_0$}
+\vspace{0.4em}
+\[
+\text{PT}_{\text{wtd}} \;=\; \text{PT}_{\text{unw}} \;+\; (\kappa_1 - \kappa_0)
+\]
+\vspace{-0.2em}
+\begin{itemize}\small
+  \item $\kappa_1 = \kappa_0 = 0$ is \textit{not} required. The covariances can be huge --- they just have to be \textit{equal} across treated and control.
+  \item If $\kappa_1 \neq \kappa_0$: \;\highlight{at most one of the two PTs can be true.}
+  \item One 2$\times$2 design can identify $\text{ATT}_{\text{unw}}$, or $\text{ATT}_{\text{wtd}}$, but in general \textit{not both}.
+\end{itemize}
+\vspace{0.5em}
+\begin{block}{What creates a nonzero covariance gap?}
+\small
+Selection on the weight. Big counties get treated for reasons \textit{related to their size}, and big counties' $Y(0)$ trends differently than small ones'. The two together produce the gap.
+\end{block}
+\end{frame}
+
+%% ---------- W5b: Case A event study — covgap = 0, both PTs hold ----------
+\begin{frame}{Case A: covgap $\approx$ 0 --- both pre-trends look flat}
+\vspace{0.2em}
+\begin{center}
+\includegraphics[width=0.96\linewidth,height=0.68\textheight,keepaspectratio]{figures/weighted_pt_eventstudy_A.pdf}
+\end{center}
+\vspace{-0.3em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+Same data. \;Both event studies look clean. \;\highlight{Different post estimates --- because they target different ATTs.}
+\end{center}
+\end{frame}
+
+%% ---------- W5c: Case B event study — covgap large, weighted PT fails ----------
+\begin{frame}{Case B: covgap large --- the weighted event study breaks}
+\vspace{0.2em}
+\begin{center}
+\includegraphics[width=0.96\linewidth,height=0.68\textheight,keepaspectratio]{figures/weighted_pt_eventstudy_B.pdf}
+\end{center}
+\vspace{-0.3em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+Selection on size shifts $\kappa_1 - \kappa_0$ away from zero. \;The unweighted event study still passes; the weighted one drifts. \;\highlight{The pre-trend test belongs to the assumption you're running.}
+\end{center}
+\end{frame}
+
+%% ---------- W6: The simulation picture ----------
+\begin{frame}{Simulation: the weighted PT \textit{is} the covariance gap}
+\vspace{-0.2em}
+\begin{center}
+\includegraphics[width=0.78\linewidth,height=0.70\textheight,keepaspectratio]{figures/weighted_pt_covgap.pdf}
+\end{center}
+\vspace{-0.4em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+$N{=}100{,}000$, $\text{PT}_{\text{unw}}=0$ by construction. Sweep selection strength $\gamma_1$ from $-2$ to $+2$.\\
+\highlight{$\text{PT}_{\text{wtd}}$ traces $\kappa_1 - \kappa_0$ exactly.}\; Slope 1. Not a regularity --- an identity.
+\end{center}
+\end{frame}
+
+%% ---------- W7: Implications — not a robustness check ----------
+\begin{frame}{Weighted vs unweighted is \textit{not} a robustness check}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item Running both and hoping they agree is \textit{not} a robustness check --- it's a comparison of two different estimands under two different assumptions.
+  \item Disagreement is information about the \highlight{covariance gap}, not about whether DiD ``works.''
+  \item Pick the parameter your question demands. Then defend the corresponding PT.
+\end{itemize}
+\vspace{0.6em}
+\begin{block}{So what do you do?}
+\small
+Event studies (we just saw) interrogate \textit{which} PT you can defend. You can run them weighted, unweighted, or both --- but each tests a different assumption.
+\end{block}
+\vspace{0.2em}
+\meta{Derivation and simulation: \texttt{decks/code/Weighted-PT/weighted\_pt\_chart.R}. \\ Background: Scott's Substack, ``Diff-in-Diff, population weights and parallel trends,'' Part 1 \& 2.}
+\end{frame}
+
 
 %% =====================================================================
 %%   Closing example: Miller, Johnson & Wherry (2021 QJE)
@@ -3018,8 +3044,8 @@ Five sliders. Watch the event-study coefficients trace the truth in real time.
   \item Potential outcomes, target parameters, and parallel trends
   \item Standard errors: when robust isn't robust enough
   \item The minimum wage wars
-  \item Two ATTs, two parallel trends --- a callback to weighting
   \item Event studies as falsifications and 2$\times$2s
+  \item Two ATTs, two parallel trends --- a callback to weighting
 \end{enumerate}
 \end{frame}
 
