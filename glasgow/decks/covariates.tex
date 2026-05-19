@@ -409,42 +409,84 @@ The realized-$X$ version (``$X$-trends equal'') is a \textit{consequence}, not t
 %% Simulation: see PT fail when X-trends differ across groups
 %% =====================================================================
 
-%% ---------- L2-F2j: Simulation, the code ----------
-\begin{frame}[fragile]{TWFE-additive-$X$ fails when $\Delta X$ moves differently across groups}
-\vspace{0.3em}
-\begin{lstlisting}[basicstyle=\ttfamily\footnotesize,frame=none,language=R,keywordstyle=\color{accentdark}\bfseries,commentstyle=\color{warmgray}\itshape]
-set.seed(1234)
-N <- 1000
-df <- data.frame(id = rep(1:N, each=2), year = rep(1:2, N))
-df$treat <- as.integer(df$id <= 500)
-df$post  <- as.integer(df$year == 2)
+%% ---------- L2-Sim1: Setup — four knobs that break TWFE-additive-X ----------
+\begin{frame}{Four ways to break TWFE-with-$X$}
+\footnotesize
+Generate $Y(0)$ \textit{directly}, cell-by-cell --- so the true DGP isn't $\alpha + \delta D + \beta X + \varepsilon$. \;Each version turns on one knob.
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item \textbf{DGP 0 — clean linear.} \;$Y(0) = \alpha_i + \gamma_t + \beta X + \varepsilon$. \;No violation. Sanity check.
+  \item \textbf{DGP 1 --- time-varying $\beta$.} \;$\beta_{\text{pre}} = 1,\ \beta_{\text{post}} = 3$. \;$X$'s effect on $Y$ shifts at the policy break.
+  \item \textbf{DGP 2 --- heterogeneous $\tau$ in $X$.} \;$\tau_i = 2 + 4(X_i - \tfrac{1}{2})$. \;Treatment effect grows with $X$.
+  \item \textbf{DGP 3 --- time-invariant $Z$.} \;$Y(0)$ depends on a baseline $Z$ only in post. \;FE within-unit transformation \textit{eats} $Z$.
+\end{itemize}
+\vspace{0.5em}
+\highlight{True $\tau = 2$ in every DGP.} \;Selection: treated units' $X$ shifts up by $0.3$ in post (the typical empirical pattern).
+\end{frame}
 
-# X moves up by 0.5 ONLY for treated, ONLY in post
-df$x  <- runif(nrow(df)) + 0.5 * df$treat * df$post
+%% ---------- L2-Sim2: The DGP in R ----------
+\begin{frame}[fragile]{The DGP, in R}
+\vspace{0.4em}
+\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
+# Common setup
+N <- 4000
+units <- data.frame(id = 1:N,
+                    D  = rbinom(N, 1, 0.5),
+                    Z  = rbinom(N, 1, 0.5))
+panel <- merge(units, data.frame(t = c(0, 1)))
+panel$post <- as.integer(panel$t == 1)
+panel$X <- runif(nrow(panel)) + 0.3 * panel$D * panel$post
 
-# Y(0): same slope beta = 2 for both groups, no time effect
-df$y0 <- 10 + 2 * df$x + rnorm(nrow(df), 0, 0.3)
+# Y(0), one of four versions:
+panel$Y0 <- panel$alpha + 0.5*panel$post + 1*panel$X + panel$eps          # DGP 0
+# Y0 = ... + ifelse(panel$post == 0, 1, 3) * panel$X + ...                # DGP 1
+# tau = 2 + 4*(X - 0.5)                                                   # DGP 2
+# Y0 = ... + 5*panel$Z*panel$post + ...                                   # DGP 3
 
-aggregate(y0 ~ treat + year, data = df, mean)
+panel$Y <- panel$Y0 + panel$D * panel$post * panel$tau
 \end{lstlisting}
-\vspace{0.3em}
+\meta{Full script: \texttt{decks/code/Covariates-Bias/twfe\_bias\_dgp.R}.}
+\end{frame}
+
+%% ---------- L2-Sim3: Results table ----------
+\begin{frame}{Results: which spec fixes which bias? \;\;(true $\tau = 2$)}
+\definecolor{biasedred}{HTML}{FED7D7}
+\vspace{0.4em}
 \begin{center}
-\small\color{warmgray}\itshape
-$\beta = 2$ is constant. \;What breaks PT is that $\Delta X^T = 0.5$ while $\Delta X^C = 0$.
+\renewcommand{\arraystretch}{1.35}
+\footnotesize
+\begin{tabular}{@{}l|cccc@{}}
+\toprule
+ & \textbf{no covariates} & \textbf{additive $X$} & \textbf{Post${\times}X$} & \textbf{Post${\times}X+Z$} \\
+\midrule
+\textbf{DGP 0} clean              & \cellcolor{biasedred}$2.30$ & \cellcolor{remixgreenlight}$2.02$ & \cellcolor{remixgreenlight}$2.01$ & \cellcolor{remixgreenlight}$2.01$ \\
+\textbf{DGP 1} time-varying $\beta$ & \cellcolor{biasedred}$2.91$ & \cellcolor{biasedred}$2.30$ & \cellcolor{remixgreenlight}$1.99$ & \cellcolor{remixgreenlight}$1.99$ \\
+\textbf{DGP 2} het $\tau$ in $X$    & \cellcolor{biasedred}$3.51$ & \cellcolor{biasedred}$2.91$ & \cellcolor{biasedred}$2.64$ & \cellcolor{biasedred}$2.64$ \\
+\textbf{DGP 3} time-inv $Z$         & \cellcolor{biasedred}$2.15$ & \cellcolor{biasedred}$1.85$ & \cellcolor{biasedred}$1.83$ & \cellcolor{remixgreenlight}$1.98$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+\colorbox{remixgreenlight}{\strut\,green\,}: spec recovers $\tau \approx 2$. \quad \colorbox{biasedred}{\strut\,red\,}: spec is biased.
 \end{center}
 \end{frame}
 
-%% ---------- L2-F2k: Simulation, the result + plot ----------
-\begin{frame}{Same $\beta$, different $\Delta X$ $\Rightarrow$ additive-$X$ DiD picks up the gap as treatment}
-\begin{center}
-\includegraphics[width=0.72\textwidth]{figures/pt_fails_in_y0.pdf}
-\end{center}
-\vspace{-0.4em}
-\begin{center}
-\scriptsize
-$\Delta Y^0_T - \Delta Y^0_C \approx +1.04$; \;$\beta(\Delta X^T - \Delta X^C) = 2 \cdot 0.5 = 1.0$. \;\highlight{Match.}
-\end{center}
-\meta{Code: \texttt{simulations/covariates/comparing\_did.do}.}
+%% ---------- L2-Sim4: Synthesis — bias-to-fix map ----------
+\begin{frame}{The bias-to-fix map}
+\footnotesize
+\begin{itemize}\setlength\itemsep{4pt}
+  \item \textbf{Time-varying $\beta$} \;$\to$ \;the fix is Post${\times}X$. \;Let $X$'s effect move with the policy break.
+  \item \textbf{Heterogeneous $\tau$ in $X$} \;$\to$ \;Post${\times}X$ \textit{still misses it.} \;You need a saturated $D{\times}X$ interaction, or DR-DiD (Lesson 4), or matching.
+  \item \textbf{Time-invariant $Z$} \;$\to$ \;the fix is Post${\times}Z$. \;Additive $Z$ does nothing because FE absorbs it.
+\end{itemize}
+
+\vspace{0.4em}
+\begin{block}{The unifying lesson (Caetano \& Callaway 2024)}
+\small
+Additive-$X$ TWFE is one regression that silently assumes \textit{all three} of these don't apply. \;When they do, the bias has a name: \highlight{hidden linearity bias.} \;Each fix is a relaxation.
+\end{block}
 \end{frame}
 
 %% =====================================================================
@@ -454,28 +496,8 @@ $\Delta Y^0_T - \Delta Y^0_C \approx +1.04$; \;$\beta(\Delta X^T - \Delta X^C) =
 %% ---------- LaLonde walkthrough MOVED to back of deck (closing example). ----------
 %% Mid-deck stays free of LaLonde; the full story is introduced once at the end.
 
-%% ---------- L2-F2n: bridge to Caetano-Callaway (two channels: time-varying X AND changing beta) ----------
-\begin{frame}{Two ways additive-$X$ TWFE breaks --- and both lead to Caetano-Callaway}
-\vspace{0.4em}
-\textbf{Channel 1: time-varying $X$.}
-\begin{itemize}\small
-  \item $X$ moves over time within each person, and moves differently across groups.
-  \item $\Delta X^T - \Delta X^C \neq 0$ enters the regression as bias.
-  \item This is what the simulation just showed.
-\end{itemize}
-\vspace{0.4em}
-\textbf{Channel 2: changing $\beta$ over time.}
-\begin{itemize}\small
-  \item Even with $\Delta X^T = \Delta X^C$, if $\beta_{\text{pre}} \neq \beta_{\text{post}}$ the $X$-effect itself shifts.
-  \item TWFE-additive-$X$ fits one $\beta$ --- can't capture this.
-\end{itemize}
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-\textbf{Caetano \& Callaway (2024)} formalize both as \highlight{hidden linearity bias}. \\[0.1em]
-The full result --- and the AIPW fix --- is \textbf{Lesson 6}.
-\end{center}
-\end{frame}
+%% ---------- L2-F2n: bridge superseded by the four-knob simulation above.
+%% The synthesis slide (bias-to-fix map) covers the same ground better. ----------
 
 %% ---------- L2-F3: OR caution ----------
 \begin{frame}{Why OR can fail: it's all model}
