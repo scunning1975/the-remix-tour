@@ -14,6 +14,12 @@
 \usepackage{booktabs}
 \usepackage{colortbl}
 
+%% ---------- Sandwich-estimator color tracing (bread / meat) ----------
+\definecolor{breadcolor}{HTML}{2B6CB0}   % ocean blue — the bread is always (X'X)^{-1}
+\definecolor{meatcolor}{HTML}{A51C30}    % crimson    — the meat is the error-structure middle
+\newcommand{\bread}[1]{\textcolor{breadcolor}{#1}}
+\newcommand{\meat}[1]{\textcolor{meatcolor}{#1}}
+
 %% ---------- TikZ styles in the PREAMBLE (never inside a beamer frame) ----------
 \tikzset{
   ingredient/.style={
@@ -1923,13 +1929,13 @@ We only ever see \textit{one sample}. But we're trying to describe how $\hat\bet
 The variance of $\hat\beta$ across hypothetical samples has one general form:
 \vspace{-0.2em}
 \[
-\text{Var}(\hat\beta) \;=\; \underbrace{(X'X)^{-1}}_{\textstyle \text{bread}}\;\; \underbrace{X'\,\text{Var}(\varepsilon \mid X)\,X}_{\textstyle \text{meat}} \;\; \underbrace{(X'X)^{-1}}_{\textstyle \text{bread}}.
+\text{Var}(\hat\beta) \;=\; \underbrace{\bread{(X'X)^{-1}}}_{\textstyle \bread{\text{bread}}}\;\; \underbrace{\meat{X'\,\text{Var}(\varepsilon \mid X)\,X}}_{\textstyle \meat{\text{meat}}} \;\; \underbrace{\bread{(X'X)^{-1}}}_{\textstyle \bread{\text{bread}}}.
 \]
 \vspace{0.0em}
 \begin{itemize}\small
-  \item The \textbf{bread} $(X'X)^{-1}$ comes from OLS mechanics. We always have it.
-  \item The \textbf{meat} $X' \text{Var}(\varepsilon \mid X)\, X$ is where the \textit{error structure} lives.
-  \item All three flavors (vanilla, robust, cluster-robust) have the same bread. \\ \highlight{They differ only in how they estimate the meat.}
+  \item The \bread{\textbf{bread}} $\bread{(X'X)^{-1}}$ comes from OLS mechanics. We always have it.
+  \item The \meat{\textbf{meat}} $\meat{X' \text{Var}(\varepsilon \mid X)\, X}$ is where the \textit{error structure} lives.
+  \item All three flavors (vanilla, robust, cluster-robust) have the same \bread{bread}. \\ \highlight{They differ only in how they estimate the \meat{meat}.}
 \end{itemize}
 \vspace{0.4em}
 \begin{center}
@@ -1947,14 +1953,14 @@ The rest of this lesson: what goes in the middle, and what changes if we get it 
 Start from the general sandwich:
 \vspace{-0.2em}
 \[
-\text{Var}(\hat\beta) \;=\; (X'X)^{-1}\, \big(X' \,\text{Var}(\varepsilon \mid X)\, X\big)\, (X'X)^{-1}
+\text{Var}(\hat\beta) \;=\; \bread{(X'X)^{-1}}\, \meat{\big(X' \,\text{Var}(\varepsilon \mid X)\, X\big)}\, \bread{(X'X)^{-1}}
 \]
 \vspace{-0.2em}
 
-Under homoskedasticity $\text{Var}(\varepsilon \mid X) = \sigma^2 \mathbf{I}$, so $X'\sigma^2\mathbf{I}\,X = \sigma^2 (X'X)$, and the sandwich collapses:
+Under homoskedasticity $\text{Var}(\varepsilon \mid X) = \sigma^2 \mathbf{I}$, so the \meat{meat} becomes $\meat{\sigma^2 (X'X)}$, and the sandwich collapses:
 \vspace{-0.2em}
 \[
-\text{Var}(\hat\beta) \;=\; (X'X)^{-1}\, \sigma^2(X'X)\, (X'X)^{-1} \;=\; \sigma^2 (X'X)^{-1}.
+\text{Var}(\hat\beta) \;=\; \bread{(X'X)^{-1}}\, \meat{\sigma^2(X'X)}\, \bread{(X'X)^{-1}} \;=\; \meat{\sigma^2}\, \bread{(X'X)^{-1}}.
 \]
 \vspace{0.1em}
 \begin{itemize}\small
@@ -1966,10 +1972,10 @@ Under homoskedasticity $\text{Var}(\varepsilon \mid X) = \sigma^2 \mathbf{I}$, s
 %% ---------- Slide C: HETEROSKEDASTICITY — the collapse breaks ----------
 \begin{frame}{Heteroskedasticity: the collapse breaks}
 \vspace{0.5em}
-Now $\sigma_i^2 = \text{Var}(\varepsilon_i \mid X_i)$ varies with $i$. The middle of the sandwich is:
+Now $\sigma_i^2 = \text{Var}(\varepsilon_i \mid X_i)$ varies with $i$. The \meat{meat} is:
 \vspace{-0.2em}
 \[
-X'\, \text{diag}(\sigma_1^2, \,\sigma_2^2, \,\dots,\, \sigma_n^2)\, X \;\;\neq\;\; \sigma^2 (X'X).
+\meat{X'\, \text{diag}(\sigma_1^2, \,\sigma_2^2, \,\dots,\, \sigma_n^2)\, X} \;\;\neq\;\; \meat{\sigma^2 (X'X)}.
 \]
 \vspace{-0.2em}
 \begin{itemize}\small
@@ -1989,7 +1995,7 @@ X'\, \text{diag}(\sigma_1^2, \,\sigma_2^2, \,\dots,\, \sigma_n^2)\, X \;\;\neq\;
 We don't know $\sigma_i^2$. Replace it with the empirical $\hat e_i^2$. The sandwich stays a sandwich:
 \vspace{-0.2em}
 \[
-\widehat{\text{Var}}_{\text{HC}}(\hat\beta) \;=\; (X'X)^{-1}\, \bigg(\sum_i \hat e_i^2\, X_i X_i'\bigg)\, (X'X)^{-1}.
+\widehat{\text{Var}}_{\text{HC}}(\hat\beta) \;=\; \bread{(X'X)^{-1}}\, \meat{\bigg(\sum_i \hat e_i^2\, X_i X_i'\bigg)}\, \bread{(X'X)^{-1}}.
 \]
 \vspace{0.1em}
 \begin{itemize}\small
@@ -2016,24 +2022,24 @@ We don't know $\sigma_i^2$. Replace it with the empirical $\hat e_i^2$. The sand
 \footnotesize
 \begin{tabular}{@{}cccrrr@{}}
 \toprule
-$i$ & cluster $g$ & $\tilde x_i$ & $\hat e_i$ & $\hat e_i^2$ & $\tilde x_i^2 \cdot \hat e_i^2$ \\
+$i$ & cluster $g$ & $\tilde x_i$ & $\hat e_i$ & $\hat e_i^2$ & $\meat{\tilde x_i^2 \cdot \hat e_i^2}$ \\
 \midrule
-1 & \textcolor{accent}{1} & $-2$ & $+0.5$ & $0.25$ & \textcolor{accent}{$1.00$} \\
-2 & \textcolor{accent}{1} & $-2$ & $+0.5$ & $0.25$ & \textcolor{accent}{$1.00$} \\
-3 & \textcolor{ocean}{2}  & $0$  & $-1.0$ & $1.00$ & $0.00$ \\
-4 & \textcolor{ocean}{2}  & $0$  & $-1.0$ & $1.00$ & $0.00$ \\
-5 & \textcolor{forest}{3} & $+2$ & $+0.5$ & $0.25$ & \textcolor{forest}{$1.00$} \\
-6 & \textcolor{forest}{3} & $+2$ & $+0.5$ & $0.25$ & \textcolor{forest}{$1.00$} \\
+1 & 1 & $-2$ & $+0.5$ & $0.25$ & \meat{$1.00$} \\
+2 & 1 & $-2$ & $+0.5$ & $0.25$ & \meat{$1.00$} \\
+3 & 2 & $0$  & $-1.0$ & $1.00$ & \meat{$0.00$} \\
+4 & 2 & $0$  & $-1.0$ & $1.00$ & \meat{$0.00$} \\
+5 & 3 & $+2$ & $+0.5$ & $0.25$ & \meat{$1.00$} \\
+6 & 3 & $+2$ & $+0.5$ & $0.25$ & \meat{$1.00$} \\
 \midrule
-\multicolumn{5}{r}{meat $\;=\;$} & $\mathbf{4.00}$ \\
+\multicolumn{5}{r}{\meat{meat} $\;=\;$} & \meat{$\mathbf{4.00}$} \\
 \bottomrule
 \end{tabular}
 \end{center}
 \vspace{0.4em}
 
-With $n=6$, $k=2$, and $S_{xx} = \sum_i \tilde x_i^2 = (-2)^2{+}(-2)^2{+}0{+}0{+}2^2{+}2^2 = 16$:
+With $n=6$, $k=2$, and $S_{xx} = \sum_i \tilde x_i^2 = (-2)^2{+}(-2)^2{+}0{+}0{+}2^2{+}2^2 = \bread{16}$:
 \[
-\widehat{\text{Var}}_{\text{HC1}}(\hat\beta_1) \;=\; \frac{n}{n-k}\cdot \underbrace{\frac{1}{S_{xx}}}_{\textstyle\text{bread}}\cdot \underbrace{\text{meat}}_{\textstyle 4.00} \cdot \underbrace{\frac{1}{S_{xx}}}_{\textstyle\text{bread}} \;=\; \frac{6}{4}\cdot \frac{4.00}{16 \cdot 16} \;=\; \frac{6}{4}\cdot \frac{4.00}{256} \;=\; 0.02344
+\widehat{\text{Var}}_{\text{HC1}}(\hat\beta_1) \;=\; \tfrac{n}{n-k}\cdot \underbrace{\bread{\tfrac{1}{S_{xx}}}}_{\textstyle\bread{\text{bread}}}\cdot \underbrace{\meat{\text{meat}}}_{\textstyle \meat{4.00}} \cdot \underbrace{\bread{\tfrac{1}{S_{xx}}}}_{\textstyle\bread{\text{bread}}} \;=\; \tfrac{6}{4}\cdot \tfrac{\meat{4.00}}{\bread{16} \cdot \bread{16}} \;=\; \tfrac{6}{4}\cdot \tfrac{\meat{4.00}}{\bread{256}} \;=\; 0.02344
 \]
 \vspace{-0.4em}
 \[
@@ -2134,26 +2140,26 @@ $i$ & $g$ & $\tilde x_i$ & $\hat e_i$ & $\tilde x_i \hat e_i$ \\
 \hspace{1.0em}
 \begin{tabular}{@{}crr@{}}
 \toprule
-$g$ & $s_g$ & $s_g^2$ \\
+$g$ & $s_g$ & $\meat{s_g^2}$ \\
 \midrule
-\textcolor{accent}{1}  & \textcolor{accent}{$-2$}  & \textcolor{accent}{$4$} \\
-\textcolor{ocean}{2}   & $0$  & $0$ \\
-\textcolor{forest}{3}  & \textcolor{forest}{$+2$} & \textcolor{forest}{$4$} \\
+\textcolor{accent}{1}  & \textcolor{accent}{$-2$}  & \meat{$4$} \\
+\textcolor{ocean}{2}   & $0$  & \meat{$0$} \\
+\textcolor{forest}{3}  & \textcolor{forest}{$+2$} & \meat{$4$} \\
 \midrule
-\multicolumn{2}{r}{meat $=$} & $\mathbf{8}$ \\
+\multicolumn{2}{r}{\meat{meat} $=$} & \meat{$\mathbf{8}$} \\
 \bottomrule
 \end{tabular}
 \end{center}
 \vspace{0.4em}
 
-With $G=3$, $n=6$, $k=2$, and $S_{xx} = \sum_i \tilde x_i^2 = (-2)^2{+}(-2)^2{+}0{+}0{+}2^2{+}2^2 = 16$, so $S_{xx}^2 = 256$:
+With $G=3$, $n=6$, $k=2$, and $S_{xx} = \sum_i \tilde x_i^2 = (-2)^2{+}(-2)^2{+}0{+}0{+}2^2{+}2^2 = \bread{16}$, so $\bread{S_{xx}^2 = 256}$:
 \[
-\widehat{\text{Var}}_{\text{CRVE}}(\hat\beta_1) \;=\; \tfrac{G}{G-1}\cdot \tfrac{n-1}{n-k}\cdot \tfrac{\text{meat}}{S_{xx}^2} \;=\; \tfrac{3}{2}\cdot \tfrac{5}{4}\cdot \tfrac{8}{256} \;=\; 0.05859
+\widehat{\text{Var}}_{\text{CRVE}}(\hat\beta_1) \;=\; \tfrac{G}{G-1}\cdot \tfrac{n-1}{n-k}\cdot \tfrac{\meat{\text{meat}}}{\bread{S_{xx}^2}} \;=\; \tfrac{3}{2}\cdot \tfrac{5}{4}\cdot \tfrac{\meat{8}}{\bread{256}} \;=\; 0.05859
 \;\;\Rightarrow\;\; \highlight{$\text{SE}_{\text{CRVE}} \approx 0.242$}
 \]
 \begin{center}
 \small\color{warmgray}\itshape
-\textbf{HC1}: 0.153 \quad vs.\quad \textbf{CRVE}: 0.242 \quad (\highlight{58\% larger}). \;Same data. The cluster cross-terms changed the meat from 4 to 8.
+\textbf{HC1}: 0.153 \quad vs.\quad \textbf{CRVE}: 0.242 \quad (\highlight{58\% larger}). \;Same data. The cluster cross-terms changed the \meat{meat} from \meat{4} to \meat{8}.
 \end{center}
 \end{frame}
 
@@ -2165,9 +2171,9 @@ With $G=3$, $n=6$, $k=2$, and $S_{xx} = \sum_i \tilde x_i^2 = (-2)^2{+}(-2)^2{+}
 \footnotesize
 \begin{tabular}{@{}c | c@{}}
 \textbf{HC1 (obs independent)} & \textbf{CRVE (cluster-robust)} \\[0.5em]
-$\dfrac{n}{n-k}\cdot \dfrac{\sum_i \tilde x_i^2 \hat e_i^2}{\big(\sum_i \tilde x_i^2\big)^2}$
+$\dfrac{n}{n-k}\cdot \dfrac{\meat{\sum_i \tilde x_i^2 \hat e_i^2}}{\bread{\big(\sum_i \tilde x_i^2\big)^2}}$
 &
-$\dfrac{G}{G-1}\cdot \dfrac{n-1}{n-k}\cdot \dfrac{\sum_g s_g^2}{\big(\sum_i \tilde x_i^2\big)^2}$ \\[1.4em]
+$\dfrac{G}{G-1}\cdot \dfrac{n-1}{n-k}\cdot \dfrac{\meat{\sum_g s_g^2}}{\bread{\big(\sum_i \tilde x_i^2\big)^2}}$ \\[1.4em]
 sum each $\hat e_i^2 \tilde x_i^2$ separately
 &
 $s_g = \sum_{i \in g} \tilde x_i \hat e_i$, \;\;\text{then sum } $s_g^2$ \\
@@ -2177,10 +2183,10 @@ $s_g = \sum_{i \in g} \tilde x_i \hat e_i$, \;\;\text{then sum } $s_g^2$ \\
 \begin{itemize}\small
   \item HC1 sums squared per-obs contributions: cross-terms within a cluster are \textit{ignored}.
   \item CRVE sums within a cluster \textit{before} squaring: cross-terms are \textit{captured}.
-  \item Matrix form: same sandwich $(X'X)^{-1}\big(\text{meat}\big)(X'X)^{-1}$, but meat differs.
+  \item Matrix form: same sandwich $\bread{(X'X)^{-1}}\big(\meat{\text{meat}}\big)\bread{(X'X)^{-1}}$, but the \meat{meat} differs.
 \end{itemize}
 \vspace{0.2em}
-\meta{Same shape --- bread, meat, bread. Difference: whether the meat sums over obs or over clusters.}
+\meta{Same shape --- \bread{bread}, \meat{meat}, \bread{bread}. \;Difference: whether the \meat{meat} sums over obs or over clusters.}
 \end{frame}
 
 %% ---------- Slide G: simulation setup ----------
