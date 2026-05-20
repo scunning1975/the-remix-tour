@@ -158,20 +158,29 @@ $\mathbb{E}[\Delta Y(0) \mid D{=}1, X] = \mathbb{E}[\Delta Y(0) \mid D{=}0, X]$.
 \begin{frame}{The TWFE-with-controls regression --- and the three assumptions it hides}
 \vspace{0.4em}
 \[
-Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, (T_t \times D_i) \;+\; \beta\, X_{it} \;+\; \varepsilon_{it}
+Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, (D_i {\times} \text{post}_t) \;+\; \beta\, X_{it} \;+\; \varepsilon_{it}
 \]
-\vspace{0.1em}
-\begin{itemize}\small
-  \item Standard move: add $X_{it}$ to the TWFE. \;\; \textit{``Sure! If you're willing to impose three more assumptions.''}
-  \item \textbf{(1) Additive functional form} in $X$ (linear, no $D \times X$ interaction).
-  \item \textbf{(2) Homogeneous treatment effects} in $X$ (the slope $\beta$ doesn't depend on $D$).
-  \item \textbf{(3) No $X$-specific trends differing across treated and control.}
-\end{itemize}
-\vspace{0.4em}
+\vspace{0.2em}
 \begin{center}
-\small\color{warmgray}\itshape
-Next slide: the proof of (2). Where does the homogeneity-in-$X$ assumption come from? Trace it through the conditional expectations.
+\textbf{``Sure! If you're willing to impose three more assumptions.''}
 \end{center}
+
+\vspace{0.8em}
+\begin{center}
+\footnotesize
+$\underbrace{\;\;\tau \text{ doesn't depend on } X\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias A}}
+\;\;\;
+\underbrace{\;\;X \text{ is balanced across groups}\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias B}}
+\;\;\;
+\underbrace{\;\;X \text{ varies within unit}\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias C}}$
+\end{center}
+
+\vspace{0.7em}
+\begin{itemize}\footnotesize
+  \item \textbf{Bias A.} \;If $\tau(X)$ is heterogeneous, TWFE fits one $\delta$ --- the wrong weighted average.
+  \item \textbf{Bias B.} \;If $X$ is imbalanced across groups and matters for $Y(0)$, the gap shows up in DiD as fake treatment.
+  \item \textbf{Bias C.} \;If $X$ is time-invariant, the FE transformation eats it. \;Time-invariant $Z$ needs $\text{Post}\times Z$.
+\end{itemize}
 \end{frame}
 
 %% ---------- L2-F0z: One more setup assumption — X doesn't respond to treatment ----------
