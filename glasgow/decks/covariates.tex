@@ -154,22 +154,43 @@ $\mathbb{E}[\Delta Y(0) \mid D{=}1, X] = \mathbb{E}[\Delta Y(0) \mid D{=}0, X]$.
 \meta{The first PTA written down was the conditional one. \;The unconditional one is what the textbook taught next.}
 \end{frame}
 
-%% ---------- L2-F0a: Lead with the bias decomposition ----------
-\begin{frame}{Before any fix: what does OLS-with-controls actually identify?}
-\vspace{0.4em}
-The workhorse: $Y_{it} = \alpha_i + \gamma_t + \alpha\, D_{it} + \beta\, X_{it} + \varepsilon_{it}$. Estimate $\widehat\alpha$ by TWFE-OLS.
+%% ---------- L2-F0z: One more setup assumption — X doesn't respond to treatment ----------
+\begin{frame}{One more setup: $X$ doesn't respond to treatment}
+\footnotesize
+\textbf{When we condition on $X$, we treat $X$ as a fixed characteristic of unit $i$.}
+
+\vspace{0.6em}
+\begin{center}
+\Large
+$X_i(1) \;=\; X_i(0) \;=\; X_i.$
+\end{center}
+
+\vspace{0.6em}
+The value of $X$ is the same whether unit $i$ is treated or not. \;Equivalently: \;\textit{the treatment does not change the covariate.}
+
 \vspace{0.5em}
-\begin{block}{The Caetano-Callaway (2024) decomposition}
-\vspace{-0.2em}
-\centering
-$\widehat{\alpha}_{\text{TWFE+}X} \;\;\xrightarrow{p}\;\; \underbrace{\overline{\text{ATT}}_w}_{\text{weighted ATT}} \;\;+\;\; \mathrm{Bias}_A \;\;+\;\; \mathrm{Bias}_B \;\;+\;\; \mathrm{Bias}_C$
-\end{block}
-\vspace{0.5em}
-\begin{itemize}\small
-  \item It is \textit{not} the ATT.\;\; It is a \textit{weighted average} of conditional ATTs --- possibly with perverse weights --- \textbf{plus} three bias terms.
-  \item Each bias is a different assumption silently being made.
-  \item \highlight{The bias is what creates the demand for OR, IPW, and DR.} They are each fixes for a piece of this expression.
+\begin{itemize}\setlength\itemsep{3pt}
+  \item If treatment changes $X$ (e.g., training raises motivation, which we measured as $X$), then $X$ is a \highlight{bad control}. \;Conditioning introduces post-treatment bias (Angrist--Pischke).
+  \item Safe move: use the \textit{pre-period} value $X_{i,0}$. \;Treatment hasn't happened yet, so $X_{i,0}(1) = X_{i,0}(0)$ by construction.
 \end{itemize}
+
+\vspace{0.4em}
+\meta{Implicit in everything that follows --- OR, IPW, DR all condition on $X$ and need this to hold.}
+\end{frame}
+
+%% ---------- L2-F0a: Lead with three biases (C-C decomp slide removed — redundant with the PO slides) ----------
+\begin{frame}{TWFE-with-controls doesn't identify the ATT --- three biases}
+\vspace{0.6em}
+The workhorse: \;$Y_{it} = \alpha_i + \gamma_t + \delta\,(D_i {\times} \text{post}_t) + \beta\,X_{it} + \varepsilon_{it}$.
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item Even under conditional PT, $\widehat{\delta}$ is \textit{not} the ATT in general.
+  \item Three different biases can creep in. Each comes from a separate assumption you didn't realize you were making.
+  \item Each gets its own slide next: \;\textbf{A} (heterogeneous $\tau$), \;\textbf{B} ($X$-trends differ), \;\textbf{C} (FE eats time-invariant $X$).
+\end{itemize}
+
+\vspace{0.4em}
+\meta{All three are formalized in Caetano \& Callaway (2024); we'll cite back to them at the synthesis.}
 \end{frame}
 
 %% ---------- L2-F0b1: Bias A in potential outcomes ----------
@@ -438,6 +459,28 @@ The realized-$X$ version (``$X$-trends equal'') is a \textit{consequence}, not t
 \footnotesize
 \highlight{Without these six (1--3 baseline DiD plus 4, 5, 6), TWFE-with-$X$ does not identify the ATT.}
 \end{center}
+\end{frame}
+
+%% ---------- L2-F2i2: PROOF closer — connect model to observed data via the switching equation ----------
+\begin{frame}{Closer: from the model to the data via the switching equation}
+\footnotesize
+The proof worked entirely in $Y(0)$ --- a counterfactual we don't directly observe.
+
+\vspace{0.5em}
+\textbf{The switching equation tells us when $Y$ \textit{is} $Y(0)$:}
+\[
+Y_{it} \;=\; D_i\,\text{post}_t \cdot Y_{it}(1) \;+\; (1 - D_i\,\text{post}_t) \cdot Y_{it}(0).
+\]
+
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item In three of the four 2$\times$2 cells, $Y = Y(0)$. \;The TWFE-with-$X$ model fits those directly.
+  \item In the treated-post cell, $Y = Y(1)$. \;The model gives us $E[Y(0) \mid D{=}1, \text{post}, X]$ via Assumptions 5--6 --- the imputed counterfactual.
+  \item Subtract the imputed $Y(0)$ from the observed $Y(1)$. \;That difference, averaged over the treated $X$-distribution, is the ATT.
+\end{itemize}
+
+\vspace{0.3em}
+\meta{The algebra is in $Y(0)$. The switching equation is what makes the algebra a statement about \textit{observable data}.}
 \end{frame}
 
 %% =====================================================================
