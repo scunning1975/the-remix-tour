@@ -1,19 +1,22 @@
-%% lalonde.tex — Glasgow Day 1 walkthrough: LaLonde (1986), Dehejia-Wahba (2002), the homework
-%% Scott Cunningham, University of Glasgow, May 19, 2026
+%% lalonde.tex — Glasgow LaLonde walkthrough: history + four estimators
+%% Scott Cunningham, University of Glasgow, May 2026
+%% Adapted from the Zurich Day 1 LaLonde deck.
 
 \documentclass[11pt,aspectratio=169]{beamer}
 \usepackage{remix}
 \usepackage{booktabs}
-\renewcommand{\remixfooter}{University of Glasgow\,\textperiodcentered\,Adam Smith Business School\,\textperiodcentered\,May 2026}
+\usepackage{listings}
+\usepackage{colortbl}
+\renewcommand{\remixfooter}{University of Glasgow\,\textperiodcentered\,May 2026}
 
 \begin{document}
 
 %% ---------- Title ----------
 \remixtitleframe
   {LaLonde, Dehejia--Wahba, and Why the 2$\times$2 Still Matters}
-  {The story behind yesterday's homework}
+  {Selection on observables, in the case that built the literature}
   {Scott Cunningham \textperiodcentered\ Baylor University}
-  {University of Glasgow \textperiodcentered\ May 19, 2026}
+  {University of Glasgow \textperiodcentered\ May 2026}
 
 %% =====================================================================
 %%                                LESSON 1
@@ -212,155 +215,7 @@ A constructive answer to LaLonde: \;design plus matching \textit{can} work.
 %% =====================================================================
 %%                                LESSON 3
 %% =====================================================================
-\remixsection{3.\ What you did yesterday}
-
-\begin{frame}{Yesterday's lab was on D\&W's experimental subsample}
-\vspace{1em}
-\begin{center}
-\large
-\texttt{lalonde\_exp\_panel.dta} \;--- a panel of NSW men, \\[0.2em] years 74, 75, 78.
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\large
-\textbf{The benchmark (post-period diff): $\$1{,}794$.}
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-You had \textit{no covariates}. \;Just \texttt{re}, \texttt{ever\_treated}, \texttt{year}. \;\;$n_T = 185, \;n_C = 260$.
-\end{center}
-\end{frame}
-
-\begin{frame}{Step 1: four averages, by hand}
-\vspace{0.4em}
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}lcc@{}}
-\toprule
- & \textbf{Pre (75)} & \textbf{Post (78)} \\
-\midrule
-Treated   & $\bar Y^T_{75}$ & $\bar Y^T_{78}$ \\
-Control   & $\bar Y^C_{75}$ & $\bar Y^C_{78}$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-\vspace{0.8em}
-\begin{center}
-\small\color{warmgray}\itshape
-Four averages. Three subtractions. \;One DiD.
-\end{center}
-\end{frame}
-
-\begin{frame}{Step 2: the DiD}
-\vspace{1em}
-\begin{center}
-$\widehat{\delta}_{\text{DiD}} \;=\; (\,\bar Y^T_{78} - \bar Y^T_{75}\,) \;-\; (\,\bar Y^C_{78} - \bar Y^C_{75}\,)$
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\small
-$=\; (\$6{,}349 - \$1{,}532) \;-\; (\$4{,}555 - \$1{,}267) \;=\; \$4{,}817 - \$3{,}288$
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\Large
-$\widehat{\delta}_{\text{DiD}} \;=\; \$1{,}529$
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-Post-period diff-in-means alone: \;$\$6{,}349 - \$4{,}555 = \$1{,}794$.
-\end{center}
-\end{frame}
-
-\begin{frame}{Two valid estimators, two different numbers}
-\vspace{0.8em}
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{@{}lr@{}}
-\toprule
-Post-period diff-in-means \;(78 only)        & \$1{,}794 \\
-DiD \;(78 vs.\ 75)                            & \$1{,}529 \\
-\midrule
-Difference                                    & \$\phantom{1{,}}265 \\
-\bottomrule
-\end{tabular}
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\large
-The pre-period gap was \;$\bar Y^T_{75} - \bar Y^C_{75} = +\$265$.
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\large
-DiD subtracts it. \;Post-period diff doesn't.
-\end{center}
-\end{frame}
-
-\begin{frame}{Unbiasedness is a repeated-sampling concept}
-\vspace{1em}
-\begin{center}
-\large
-Random assignment makes \;$\mathbb{E}[\widehat\delta] \;=\; \text{ATT}$
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\large
-across hypothetical re-randomizations of the experiment.
-\end{center}
-\vspace{1em}
-\begin{center}
-\large
-It does \textit{not} make \;$\widehat\delta \;=\; \text{ATT}$ \;in any one sample.
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-Our pre-period happened to have $+\$265$ of random imbalance. \;Different draw, different imbalance, different DiD.
-\end{center}
-\end{frame}
-
-\begin{frame}{Step 3: three regressions, same number}
-\vspace{0.6em}
-\begin{itemize}
-  \item \textbf{OLS with interactions}: \;\texttt{re \textasciitilde\ ever\_treated * post}
-  \item \textbf{TWFE}: \;\texttt{feols(re \textasciitilde\ ever\_treated:post | id + year)}
-  \item \textbf{Long differences}: \;\texttt{lm(re78 $-$ re75 \textasciitilde\ ever\_treated)}
-\end{itemize}
-\vspace{0.6em}
-\begin{center}
-\large
-All three return \;\highlight{$\widehat\delta = \$1{,}529$}, to machine precision.
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-The equivalence breaks once we add staggered timing, covariates, or weights. \;Tomorrow.
-\end{center}
-\end{frame}
-
-\begin{frame}{Step 4: the event study tells the same story}
-\vspace{0.4em}
-\begin{itemize}
-  \item $\beta_{74} = -\$277$ \;--- small, close to zero. \;\highlight{Pre-trend check passes.}
-  \item $\beta_{75}$ is the omitted baseline (zero by construction).
-  \item $\beta_{78} = +\$1{,}529$ \;--- same as the DiD.
-\end{itemize}
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-Each event-study coefficient is a 2$\times$2 DiD with 75 as baseline. \;Same arithmetic, three points.
-\end{center}
-\end{frame}
-
-%% =====================================================================
-%%                                LESSON 4
-%% =====================================================================
-\remixsection{4.\ Why the ATT didn't move}
+\remixsection{3.\ Why the ATT didn't move}
 
 \begin{frame}{A puzzle}
 \vspace{1em}
@@ -470,28 +325,28 @@ Did it?
 \end{center}
 \end{frame}
 
-\begin{frame}{In yesterday's experimental lab: yes (in expectation)}
+\begin{frame}{The benchmark and the challenge}
 \vspace{1em}
 \begin{center}
 \Large
-$\widehat{\delta}_{\text{DiD}} \;=\; \$1{,}529$ \;\;vs.\;\; benchmark \;$\$1{,}794$
+RCT benchmark: \;\highlight{$\$1{,}794$}
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\Large
+Naive DiD on the non-experimental panel: \;\highlight{$\$3{,}621$}
 \end{center}
 \vspace{0.8em}
 \begin{center}
 \large
-Within sampling variation. \;Pre-trend was flat. \\[0.3em] Design did its job.
-\end{center}
-\vspace{1em}
-\begin{center}
-\small\color{warmgray}\itshape
-This afternoon, with covariates and non-experimental controls --- a harder test.
+We can do better than additive controls. \;Let's go to the code.
 \end{center}
 \end{frame}
 
 %% =====================================================================
 %%                                LESSON 5
 %% =====================================================================
-\remixsection{5.\ Now make it harder}
+\remixsection{4.\ Now make it harder}
 
 \begin{frame}{Throw away the experimental controls}
 \vspace{1em}
@@ -539,6 +394,45 @@ The level gap is huge --- and so is the \textit{growth-rate} gap. \;DiD doesn't 
 \end{center}
 \end{frame}
 
+%% ---------- Animated 2x2: show DiD arithmetic on the same table ----------
+\begin{frame}{The 2$\times$2: where \$3{,}621 comes from}
+\vspace{0.5em}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+        & \textbf{1974}    & \textbf{1975 (pre)}    & \textbf{1978 (post)}    \\
+\midrule
+NSW (treated, $n=185$)   & \$2{,}096   & \cellcolor{accent!25}\$1{,}532    & \cellcolor{accent!25}\$6{,}349 \\
+CPS (control, $n=15{,}992$) & \$14{,}017 & \cellcolor{ocean!25}\$13{,}651 & \cellcolor{ocean!25}\$14{,}847 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.6em}
+\begin{center}
+\small
+\begin{tabular}{@{}r@{\,\,}c@{\,\,}r@{\,\,}c@{\,\,}r@{}}
+\textcolor{accent}{\textbf{NSW change:}}   & & \textcolor{accent}{\$6{,}349 $-$ \$1{,}532}       & $=$ & \textcolor{accent}{\$4{,}817} \\
+\textcolor{ocean}{\textbf{CPS change:}}    & & \textcolor{ocean}{\$14{,}847 $-$ \$13{,}651}      & $=$ & \textcolor{ocean}{\$1{,}196} \\
+\midrule
+\textbf{DiD}                                & & \textcolor{accent}{\$4{,}817} $-$ \textcolor{ocean}{\$1{,}196} & $=$ & $\boxed{\$3{,}621}$ \\
+\end{tabular}
+\end{center}
+
+\vspace{0.6em}
+\begin{center}
+\Large
+\highlight{$\$3{,}621 \;\neq\; \$1{,}794$}
+\end{center}
+\vspace{0.2em}
+\begin{center}
+\small\color{warmgray}\itshape
+NSW men bounce back fast from a deep dip. \;CPS men don't. \;DiD attributes the entire gap in growth rates to the program.
+\end{center}
+\end{frame}
+
 \begin{frame}{Naive DiD on this sample}
 \vspace{1.2em}
 \begin{center}
@@ -561,150 +455,183 @@ CPS controls didn't. \;DiD attributes the gap in growth rates entirely to treatm
 %% =====================================================================
 %%                                LESSON 6
 %% =====================================================================
-\remixsection{6.\ Four estimators to rescue the ATT}
+\remixsection{5.\ Run the specs}
 
-\begin{frame}{The roster}
-\vspace{0.5em}
-\begin{itemize}
-  \item \textbf{DiD with additive $X$} (your published spec) --- one slope per covariate
-  \item \textbf{Outcome Regression} (Heckman, Ichimura \& Todd 1997) --- model the trend on controls; impute the treated counterfactual
-  \item \textbf{Inverse Propensity Weighting} (Abadie 2005) --- reweight controls to look like the treated
-  \item \textbf{Doubly Robust DiD} (Sant'Anna \& Zhao 2020) --- OR + IPW combined
-\end{itemize}
+%% ---------- Spec 0 ----------
+\begin{frame}[fragile]{Spec 0: Unconditional parallel trends, no covariates}
+\textbf{Assumption.} \;Naive parallel trends: $E[\Delta Y(0) \mid D{=}1] = E[\Delta Y(0) \mid D{=}0]$ unconditionally.
+\vspace{0.6em}
+
+\textbf{Run:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\small]
+reg re i.post##i.ever_treated, robust
+\end{lstlisting}
+
 \vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-Each lives or dies on a different assumption. \;Compare to the \$1{,}794 benchmark.
-\end{center}
+\textbf{Compare to \$1,794.}
 \end{frame}
 
-\begin{frame}[fragile]{DiD with additive $X$}
+%% ---------- Spec A ----------
+\begin{frame}[fragile]{Spec A: Conditional PT, additive $X$}
+\textbf{Assumption.} \;Conditional parallel trends with one slope per covariate (pre = post).
 \vspace{0.6em}
-\begin{center}
-\small
-\verb|reg re ever_treated##post X1 X2 ... Xk, robust|
-\end{center}
-\vspace{0.6em}
-\begin{itemize}\small
-  \item Pooled OLS on all years. \;No fixed effects.
-  \item Covariates enter \textit{linearly} with one slope --- same pre and post.
-  \item Identifies the ATT only if Assumptions 1--6 hold (parallel trends, no anticipation, SUTVA, homogeneous $\tau$ in $X$, parallel $X$-trends for treated and control).
-\end{itemize}
+
+\textbf{Run:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\small]
+global X "age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75"
+
+reg re i.post##i.ever_treated $X, robust
+\end{lstlisting}
+
 \vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-This is what \texttt{lalonde-did-stata.do} actually computes on the non-experimental panel.
-\end{center}
+\textbf{Compare to \$1,794.}
 \end{frame}
 
-\begin{frame}{Outcome Regression --- impute the counterfactual}
-\vspace{0.6em}
-Use the \textit{controls only} to model the trend:
-\vspace{0.2em}
-\begin{center}
-\small
-$\widehat\mu_0(X) \;=\; \widehat{\mathbb{E}}[\Delta Y \mid D{=}0,\, X]$
-\end{center}
-\vspace{0.6em}
-Then impute the counterfactual change for each treated unit, and average:
-\vspace{0.2em}
-\begin{center}
-\small
-$\widehat\delta_{\text{OR}} \;=\; \dfrac{1}{N_1}\displaystyle\sum_{i:\, D_i=1}\big(\Delta Y_i - \widehat\mu_0(X_i)\big)$
-\end{center}
+%% ---------- Spec B ----------
+\begin{frame}[fragile]{Spec B: Conditional PT, $\text{Post}\times X$}
+\textbf{Assumption.} \;Conditional parallel trends, allowing $X$-effects to differ pre vs post. \;Use \texttt{\#\#} so the spec includes \textit{both} the pre-period $X$ effect and its post-period change.
 \vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-Identification rests on $\widehat\mu_0(X)$ being correctly specified.
-\end{center}
+
+\textbf{Run:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\footnotesize]
+reg re i.post##i.ever_treated ///
+    i.post##c.age i.post##c.agesq i.post##c.educ i.post##c.educsq ///
+    i.post##i.marr i.post##i.nodegree i.post##i.black i.post##i.hisp ///
+    i.post##c.re74 i.post##c.re75 i.post##i.u74 i.post##i.u75, robust
+\end{lstlisting}
+
+\vspace{0.3em}
+\textbf{Compare to \$1,794.} \;\meta{Single-\texttt{\#} forces pre-period $X$ effect to zero --- not what we want.}
 \end{frame}
 
-\begin{frame}{Inverse Propensity Weighting}
-\vspace{0.8em}
-Estimate $\widehat p(X) = \Pr(D{=}1 \mid X)$ by logit. Weight controls by:
-\vspace{0.2em}
-\begin{center}
-$w_i \;=\; \dfrac{\widehat p(X_i)}{1 - \widehat p(X_i)}$
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\small
-$\widehat\delta_{\text{IPW}} \;=\; \mathbb{E}[\Delta Y \mid D{=}1] \;-\; \mathbb{E}_w[\Delta Y \mid D{=}0]$
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-Identification rests on $\widehat p(X)$ being correctly specified.
-\end{center}
+%% ---------- Spec C ----------
+\begin{frame}[fragile]{Spec C: Saturated TWFE / OR (HIT 1997)}
+\textbf{Assumption.} \;Conditional parallel trends; impute $Y(0)$'s trend on controls only and average over treated.
+\vspace{0.4em}
+
+\textbf{Run --- by hand:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\footnotesize]
+reshape wide re, i(id) j(post)
+gen dy = re1 - re0
+
+reg dy $X if ever_treated == 0
+predict dy_hat
+gen delta_hat = dy - dy_hat if ever_treated == 1
+summarize delta_hat if ever_treated == 1
+\end{lstlisting}
+
+\textbf{Cross-check with \texttt{drdid}:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\footnotesize]
+drdid re $X, time(year) ivar(id) tr(ever_treated) reg
+\end{lstlisting}
+
+\textbf{Compare to \$1,794.} \;\meta{Two numbers should agree to the dollar.}
 \end{frame}
 
-\begin{frame}{Doubly Robust DiD}
-\vspace{1.2em}
-\begin{center}
-\large
-If \textit{either} $\widehat\mu_0(X)$ \textit{or} $\widehat p(X)$ is correct, DR is consistent.
-\end{center}
-\vspace{1em}
-\begin{center}
-\large
-Use the pscore as a \textbf{weight,} not as a \textbf{regressor.}
-\end{center}
-\vspace{0.8em}
-\begin{center}
-\small\color{warmgray}\itshape
-Sant'Anna \& Zhao (2020). \;Implemented in \texttt{drdid} (Stata, R).
-\end{center}
+%% ---------- Spec D ----------
+\begin{frame}[fragile]{Spec D: IPW (Abadie 2005)}
+\textbf{Assumption.} \;Conditional PT; correct propensity score. \;Treated weighted by 1; controls weighted by $\hat p(X)/(1-\hat p(X))$.
+\vspace{0.3em}
+
+\textbf{Run --- by hand:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+logit ever_treated $X
+predict phat, pr
+quietly sum ever_treated
+local pr_treat = r(mean)
+gen w_ipw = (ever_treated - phat) / (1 - phat) / `pr_treat'
+gen ipw_dy = w_ipw * dy
+summarize ipw_dy
+\end{lstlisting}
+
+\textbf{Cross-check with \texttt{drdid}:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\footnotesize]
+drdid re $X, time(year) ivar(id) tr(ever_treated) ipw
+\end{lstlisting}
+
+\textbf{Compare to \$1,794.}
+\end{frame}
+
+%% ---------- Spec E ----------
+\begin{frame}[fragile]{Spec E: DR-DiD (Sant'Anna \& Zhao 2020)}
+\textbf{Assumption.} \;Conditional PT, AND \textit{either} $\hat\mu_0$ or $\hat p(X)$ is correct (not both required).
+\vspace{0.3em}
+
+\textbf{Run --- by hand (in wide-FD form, \texttt{phat}/\texttt{dy\_hat} already computed):}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+gen dr_t = ever_treated * (dy - dy_hat) / `pr_treat'
+gen dr_c = (1 - ever_treated) * (phat/(1-phat)) * (dy - dy_hat) / `pr_treat'
+quietly sum dr_t
+local mt = r(mean)
+quietly sum dr_c
+display "DR ATT = " %9.0fc `mt' - r(mean)
+\end{lstlisting}
+
+\textbf{Cross-check with \texttt{drdid}:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\footnotesize]
+drdid re $X, time(year) ivar(id) tr(ever_treated) dripw
+\end{lstlisting}
+
+\textbf{Compare to \$1,794.}
 \end{frame}
 
 %% =====================================================================
 %%                                LESSON 7
 %% =====================================================================
-\remixsection{7.\ How close did each one get?}
+\remixsection{6.\ How close did each one get?}
 
 \begin{frame}{The comparison}
-\vspace{0.3em}
+\vspace{0.2em}
 \begin{center}
-\footnotesize
-\renewcommand{\arraystretch}{1.25}
+\scriptsize
+\renewcommand{\arraystretch}{1.15}
 \begin{tabular}{@{}lrr@{}}
 \toprule
-\textbf{Estimator (Scott's published \texttt{drdid all})} & \textbf{ATT} & \textbf{Distance from \$1{,}794} \\
+\textbf{Spec} & \textbf{ATT} & \textbf{Distance from \$1{,}794} \\
 \midrule
-Naive DiD (no $X$)                                & $+\$3{,}621$ & overshoots by \$1{,}827 \\
-DiD with additive $X$ (your \texttt{reg} spec)    & $+\$3{,}522$ & overshoots by \$1{,}728 \\
+0. Naive TWFE (no $X$)                              & $+\$3{,}621$ & $+\$1{,}827$ \\
+A. Additive $X$                                     & $+\$3{,}621$ & $+\$1{,}827$ \\
+B. Post${\times}X$ (\texttt{\#\#} syntax)            & $+\$1{,}184$ & $-\$610$ \\
+C. Saturated TWFE (FD)                              & $+\$1{,}263$ & $-\$531$ \\
+\;\;OR by hand $=$ \texttt{drdid reg}                & $+\$1{,}263$ & $-\$531$ \\
+D. IPW by hand $=$ \texttt{drdid ipw}                & $+\$1{,}361$ & $-\$433$ \\
+E. DR by hand                                       & $+\$1{,}496$ & $-\$298$ \\
+\;\;DR \texttt{drdid dripw}                          & $+\$1{,}485$ & $-\$309$ \\
 \midrule
-\multicolumn{3}{l}{\textit{Design-aware estimators (\texttt{drdid all}):}} \\
-\;\;OR --- Regression-adjusted (\texttt{reg})         & $+\$1{,}770$ & $-\$24$ \\
-\;\;IPW --- Abadie (\texttt{ipw})                     & $+\$1{,}861$ & $+\$67$ \\
-\;\;DR-IPW (\texttt{dripw})                            & $+\$1{,}979$ & $+\$185$ \\
-\;\;DR-improved (\texttt{drimp})                       & $+\$2{,}033$ & $+\$239$ \\
-\midrule
-\textbf{RCT benchmark (post-period diff)}        & \textbf{$+\$1{,}794$} & --- \\
+\textbf{RCT benchmark}                              & \textbf{$+\$1{,}794$} & --- \\
 \bottomrule
 \end{tabular}
 \end{center}
 \vspace{0.3em}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-Naive DiD and additive-$X$ DiD both overshoot by $\sim\$1{,}800$ --- additive controls barely help. \\[0.2em]
-The \texttt{drdid} design-aware estimators all land within $\$240$ of the benchmark; OR is closest at \$24 below.
+Naive $=$ Additive-$X$: the linear $X$ control is absorbed. \;DR closest at \$298 below. \;By-hand $=$ \texttt{drdid} to the dollar for OR and IPW; DR within \$11.
 \end{center}
 \end{frame}
 
-\begin{frame}{OR lands closest; all four design-aware estimators are within \$240}
+\begin{frame}{Seven specs, one benchmark}
+\begin{center}
+\includegraphics[height=0.70\textheight]{figures/lalonde_forest.png}
+\end{center}
+\begin{center}
+\scriptsize\color{warmgray}\itshape
+Naive and Additive-$X$ CIs sit entirely above \$1{,}794. \;Every design-aware spec contains it.
+\end{center}
+\end{frame}
+
+\begin{frame}{DR lands closest; the others bracket it}
 \vspace{0.5em}
 \begin{itemize}
-  \item \textbf{OR} (\texttt{reg}, \$1{,}770) sits \textbf{\$24 below} --- closest of all.
-  \item \textbf{IPW} (Abadie, \$1{,}861) sits \$67 above.
-  \item \textbf{DR-IPW} (\$1{,}979) sits \$185 above.
-  \item \textbf{DR-improved} (\$2{,}033) sits \$239 above --- furthest of the design-aware row.
-  \item Additive-$X$ DiD (\$3{,}522) barely moves off naive DiD (\$3{,}621).
+  \item \textbf{DR} (\$1{,}496) sits \textbf{\$298 below} --- closest observational estimator.
+  \item \textbf{IPW} (\$1{,}361) sits \$433 below.
+  \item \textbf{OR / Saturated TWFE} (\$1{,}263) sits \$531 below --- two paths, same number.
+  \item \textbf{Post${\times}X$} (\$1{,}184) sits \$610 below --- still misses Bias$_\text{HTE}$.
+  \item \textbf{Additive $X$} (\$3{,}621) doesn't move off Naive (\$3{,}621) --- the FE absorbed the linear $X$.
 \end{itemize}
 \vspace{0.4em}
 \begin{center}
 \small\color{warmgray}\itshape
-``Doubly robust'' means \textit{robust to one misspecification,} not magically best in every sample. \\
-With $n_T = 185$ and $n_C \approx 16{,}000$, sampling variation alone explains the spread among design-aware estimators.
+``Doubly robust'' = robust to one misspecification, not best in every sample. \;DR's $298$ below is selection on unobservables --- the residual no observational $X$ can close.
 \end{center}
 \end{frame}
 
@@ -712,11 +639,69 @@ With $n_T = 185$ and $n_C \approx 16{,}000$, sampling variation alone explains t
 \vspace{0.8em}
 \begin{itemize}
   \item The \textbf{ATT is fixed} ($\approx +\$1{,}794$). \;The controls only change the bias.
-  \item \textbf{Additive $X$ barely helps:} \$3{,}522 vs naive \$3{,}621. \;You need a design-aware estimator.
-  \item OR, IPW, DR-IPW, DR-improved offer four different uses of the same $X$ --- all land within \$240 of the benchmark.
-  \item On this dataset, \textbf{OR (regression-adjusted) lands closest} at \$24 below.
+  \item \textbf{Additive $X$ barely helps:} \$3{,}621 vs naive \$3{,}621. \;You need a design-aware estimator.
+  \item Post${\times}X$, OR, IPW, DR offer four different uses of the same $X$, all closer to truth.
+  \item On this dataset, \textbf{DR-DiD lands closest} at \$298 below \$1{,}794.
   \item No method is magic. Each rests on an assumption you can name.
 \end{itemize}
+\end{frame}
+
+%% =====================================================================
+%%   Closing synthesis: it was a TWFE specification problem all along
+%% =====================================================================
+
+\begin{frame}{What additive $X$ actually assumed}
+\vspace{0.4em}
+The additive-$X$ spec\, $Y_{it} = \alpha + \delta(D_i{\cdot}\text{post}_t) + X_i'\beta + \varepsilon$\, was a \textbf{TWFE specification choice}. \;Two restrictions came along free of charge:
+\vspace{0.6em}
+\begin{enumerate}\setlength\itemsep{4pt}
+  \item \textbf{Homogeneous treatment effect in $X$.} \;One scalar $\delta$. \;No room for $\delta(X)$.
+  \item \textbf{No time-varying $X$ effect.} \;One $\beta$, used in both pre and post. \;If $X$'s relationship with $Y(0)$ shifts between periods, the spec can't see it.
+\end{enumerate}
+\vspace{0.6em}
+\highlight{Neither restriction is identification. \;Both are specification.}
+\end{frame}
+
+\begin{frame}{Two TWFE relaxations}
+\vspace{0.4em}
+We saw both in the synthetic simulation. \;Both are still TWFE --- just less restrictive parameterizations.
+\vspace{0.6em}
+
+\textbf{Post $\times X$.} \;Let $\beta$ differ pre vs post:
+\[
+Y = \alpha_1 + \alpha_2 T + \alpha_3 D + \delta(DT) + \beta_1 X + \beta_2 XT + \varepsilon
+\]
+Relaxes restriction (2). \;Still imposes (1): one scalar $\delta$.
+
+\vspace{0.5em}
+\textbf{Fully saturated.} \;Let $\beta$ differ pre/post \textit{and} let $\delta$ depend on $X$:
+\[
+Y = \alpha_1 + \alpha_2 T + \alpha_3 D + \delta(DT) + \beta_1 X + \beta_2 XT + \beta_3 XD + \beta_4 DTX + \varepsilon
+\]
+Relaxes both. \;The ATT is now $\delta + \beta_4\,\mathbb{E}[X \mid D{=}1]$ --- average the $X$-specific effect over the treated.
+\end{frame}
+
+\begin{frame}{The punchline}
+\vspace{0.8em}
+\begin{center}
+\large
+Additive $X$ failed on LaLonde \\[0.3em]
+not because the data are weird, \\[0.3em]
+but because the \highlight{TWFE specification} was too restrictive.
+\end{center}
+
+\vspace{0.8em}
+\begin{center}
+\large
+\textbf{Fully saturated TWFE} = the regression form of HIT 1997 outcome regression. \\[0.3em]
+Same estimator. \;Same ATT. \;Different machinery.
+\end{center}
+
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+Spec C (FD with $D \times X$ interactions) and OR-by-hand returned \textit{the same dollar:} \$1{,}263.
+\end{center}
 \end{frame}
 
 %% =====================================================================

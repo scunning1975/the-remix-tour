@@ -101,7 +101,6 @@ $\mathbb{E}[\Delta Y(0) \mid D=1, X] \;=\; \mathbb{E}[\Delta Y(0) \mid D=0, X]$
   \item Inverse propensity weighting (Abadie 2005)
   \item Doubly robust DiD (Sant'Anna \& Zhao 2020)
   \item Hidden linearity bias --- TWFE-with-controls fully exposed (Caetano \& Callaway 2024)
-  \item Compositional change (Sant'Anna \& Xu)
   \item Choosing \& checking $X$ --- the practical close
 \end{enumerate}
 \vspace{0.4em}
@@ -168,43 +167,47 @@ Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, (D_i {\times} \text{post}_t)
 \vspace{0.8em}
 \begin{center}
 \footnotesize
-$\underbrace{\;\;\tau \text{ doesn't depend on } X\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias}_{\text{HTE}}}
+$\underbrace{\;\;\delta \text{ doesn't depend on } X\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias}_{\text{HTE}}}
 \;\;\;
 \underbrace{\;\;X \text{ has parallel trends across groups}\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias}_{\Delta X}}
 \;\;\;
-\underbrace{\;\;X \text{ varies within unit}\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias}_{\text{FE}}}$
+\underbrace{\;\;X \text{ is time-invariant}\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias}_{\text{FE}}}$
 \end{center}
 
 \vspace{0.6em}
 \begin{itemize}\setlength\itemsep{1pt}\footnotesize
-  \item $\textbf{Bias}_{\textbf{HTE}}$. \;If $\tau(X)$ varies with $X$, TWFE fits one $\delta$. \;\textit{Y(1) problem.}
+  \item $\textbf{Bias}_{\textbf{HTE}}$. \;If $\delta(X)$ varies with $X$, TWFE fits one $\delta$. \;\textit{Y(1) problem.}
   \item $\textbf{Bias}_{\boldsymbol{\Delta X}}$. \;If $X$ is imbalanced and drives $Y(0)$'s trend, PTA fails. \;\textit{Y(0) problem.}
-  \item $\textbf{Bias}_{\textbf{FE}}$. \;Time-invariant $X$ gets eaten by within-unit demeaning. \;Needs $\text{Post}\times X$.
+  \item $\textbf{Bias}_{\textbf{FE}}$. \;You needed $X$ to defend \textit{conditional} PT --- but $\alpha_i$ demeans time-invariant $X$ to zero, silently restoring \textit{unconditional} PT. \;Fix: $\text{Post}\times X_{i,0}$ (pre-period $X$; \textit{next slide}).
 \end{itemize}
 \end{frame}
 
-%% ---------- L2-F0z: One more setup assumption — X doesn't respond to treatment ----------
-\begin{frame}{One more setup: $X$ doesn't respond to treatment}
-\footnotesize
-\textbf{When we condition on $X$, we treat $X$ as a fixed characteristic of unit $i$.}
+%% ---------- L2-F0z: Why we need X(1) = X(0) — derivation showing the residual ----------
+\begin{frame}{Why we need $X(1) = X(0)$: the cross-term decomposition}
+\scriptsize
+\textbf{TWFE cell means} (CPT + no anticipation), with $X_{Dt}\equiv E[X\mid D, t]$:
+\[
+\begin{array}{rl@{\qquad}rl}
+E[Y_1\mid D{=}1] &= \alpha_1 + \alpha_2 + \alpha_3 + \delta + \beta X_{11} &
+E[Y_0\mid D{=}1] &= \alpha_1 + \alpha_3 + \beta X_{10} \\[2pt]
+E[Y_1\mid D{=}0] &= \alpha_1 + \alpha_2 + \beta X_{01} &
+E[Y_0\mid D{=}0] &= \alpha_1 + \beta X_{00}
+\end{array}
+\]
 
-\vspace{0.6em}
-\begin{center}
-\Large
-$X_i(1) \;=\; X_i(0) \;=\; X_i.$
-\end{center}
+\textbf{Take the DiD.} \;The $\alpha$'s cancel; what's left is:
+\[
+\delta^{DD} \;=\; \delta \;+\; \beta\,\big[\,(X_{11} - X_{10}) \;-\; (X_{01} - X_{00})\,\big]
+\]
 
-\vspace{0.6em}
-The value of $X$ is the same whether unit $i$ is treated or not. \;Equivalently: \;\textit{the treatment does not change the covariate.}
+\textbf{Switching equation for $X$:} \;controls are never treated, so $X_{00} = X_{01}$ (diff $=0$); for treated, $X_{10} = E[X(0)|D{=}1]$ and $X_{11} = E[X(1)|D{=}1]$. \;Substitute:
+\[
+\delta^{DD} \;=\; \delta \;+\; \beta\,\underbrace{E\big[X(1) - X(0)\mid D{=}1\big]}_{\text{treatment effect of }D\text{ on }X}
+\]
 
-\vspace{0.5em}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item If treatment changes $X$ (e.g., training raises motivation, which we measured as $X$), then $X$ is a \highlight{bad control}. \;Conditioning introduces post-treatment bias (Angrist--Pischke).
-  \item Safe move: use the \textit{pre-period} value $X_{i,0}$. \;Treatment hasn't happened yet, so $X_{i,0}(1) = X_{i,0}(0)$ by construction.
-\end{itemize}
+\textbf{The cross-term cancels iff $X(1) = X(0)$.} \;Otherwise the residual is $\beta$ times the \highlight{treatment effect on $X$} (Angrist--Pischke bad control).
 
-\vspace{0.4em}
-\meta{Implicit in everything that follows --- OR, IPW, DR all condition on $X$ and need this to hold.}
+\textbf{Two fixes:} \;assume $X_i(1) = X_i(0) = X_i$ (demographics); or use $X_{i,0}$ everywhere (pre-period $X$ is mechanically $X(0)$ by no-anticipation).
 \end{frame}
 
 %% =========================================================================
@@ -219,14 +222,14 @@ The value of $X$ is the same whether unit $i$ is treated or not. \;Equivalently:
 \vspace{0.5em}
 \textbf{In potential outcomes:}
 \[
-\tau(X) \;\equiv\; \mathbb{E}[Y(1) - Y(0) \mid X,\,D{=}1] \;\;\text{is a \textit{function} of } X.
+\delta(X) \;\equiv\; \mathbb{E}[Y(1) - Y(0) \mid X,\,D{=}1] \;\;\text{is a \textit{function} of } X.
 \]
-The true ATT averages $\tau(X)$ over the treated $X$-distribution:
+The true ATT averages $\delta(X)$ over the treated $X$-distribution:
 \[
-\text{ATT} \;=\; \mathbb{E}\big[\tau(X) \mid D{=}1\big].
+\text{ATT} \;=\; \mathbb{E}\big[\delta(X) \mid D{=}1\big].
 \]
 
-\textbf{What TWFE-additive-$X$ fits:} \;one scalar $\hat{\delta}$. \;A weighted average of $\tau(X)$ whose weights are determined by OLS mechanics, \textit{not} the treated $X$-distribution.
+\textbf{What TWFE-additive-$X$ fits:} \;one scalar $\hat{\delta}$. \;A weighted average of $\delta(X)$ whose weights are determined by OLS mechanics, \textit{not} the treated $X$-distribution.
 
 \vspace{0.4em}
 \highlight{Note: PTA on $Y(0)$ can hold perfectly --- $\text{Bias}_{\text{HTE}}$ is a $Y(1)$ problem, not a $Y(0)$ problem.}
@@ -239,18 +242,18 @@ The true ATT averages $\tau(X)$ over the treated $X$-distribution:
 * Y(0): same for everyone of a given age
 gen y0 = 1000 + 5*age + rnormal(0, 10)
 
-* Y(1) = Y(0) + tau(X). Treatment effect grows with age.
-gen y1 = y0 + 200 + 50*age           // tau(age) = 200 + 50*age
-gen tau = y1 - y0                    // varies by age
+* Y(1) = Y(0) + delta(X). Treatment effect grows with age.
+gen y1 = y0 + 200 + 50*age           // delta(age) = 200 + 50*age
+gen delta = y1 - y0                  // varies by age
 
 * True ATT (over treated X-distribution)
-summarize tau if treat == 1
+summarize delta if treat == 1
 \end{lstlisting}
 
 \vspace{0.4em}
 \begin{itemize}\setlength\itemsep{2pt}
-  \item Look at $\tau$: \;\;$\tau_i = 200 + 50\,\text{age}_i$. \;Not a constant.
-  \item TWFE-additive-$X$ on the panel returns one $\hat{\delta}$. \;That number is a weighted average of $\tau$ that doesn't match $\mathbb{E}[\tau \mid D=1]$.
+  \item Look at $\delta$: \;\;$\delta_i = 200 + 50\,\text{age}_i$. \;Not a constant.
+  \item TWFE-additive-$X$ on the panel returns one $\hat{\delta}$. \;That number is a weighted average of $\delta$ that doesn't match $\mathbb{E}[\delta \mid D=1]$.
 \end{itemize}
 \end{frame}
 
@@ -358,7 +361,7 @@ What you wrote as a control isn't what the regression conditioned on.
 \textbf{The fix:} \;enter $X$ as $\text{Post} \times X$. \;Post varies within unit, so the FE cannot eat the interaction.
 
 \vspace{0.5em}
-\highlight{In plain English.} \;You thought you controlled for race in LaLonde. \;The regression didn't see race. \;That's why additive-$X$ on LaLonde gives the same answer as no covariates at all.
+\highlight{In plain English.} \;You wrote \texttt{race} on the right-hand side and thought you controlled for it. \;After within-unit demeaning, the regression saw $\tilde{\texttt{race}} = 0$ for every observation. \;Additive-$X$ delivers the same point estimate as no covariates at all.
 \end{frame}
 
 %% ---------- L2-FE-2: Bias_FE in Stata ----------
@@ -455,7 +458,7 @@ Both potential outcomes carry the \textit{same} $\beta$ in $X$. \;Subtract: ATT 
 \end{frame}
 
 %% ---------- L2-F2d2: Stata simulation showing heterogeneous tau in X ----------
-\begin{frame}[fragile]{Heterogeneous $\tau(X)$ in code: build $Y(0)$ and $Y(1)$ by hand}
+\begin{frame}[fragile]{Heterogeneous $\delta(X)$ in code: build $Y(0)$ and $Y(1)$ by hand}
 \footnotesize
 \begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
 * Y(0) as a function of two covariates (age and gpa)
@@ -475,13 +478,13 @@ summarize delta if treat==1  // ATT
 \textbf{Look at the construction.}
 \begin{itemize}\setlength\itemsep{1pt}
   \item Look at $Y(0)$. \;Look at $Y(1)$. \;\highlight{Look how $Y(1)$ varies with $X$.}
-  \item $\tau_i = 2500 + 100\,\text{age}_i + 1000\,\text{gpa}_i$ --- a 1-year-older worker gets \$100 more from training; a 1-GPA-point higher worker gets \$1{,}000 more.
+  \item $\delta_i = 2500 + 100\,\text{age}_i + 1000\,\text{gpa}_i$ --- a 1-year-older worker gets \$100 more from training; a 1-GPA-point higher worker gets \$1{,}000 more.
   \item ATE $\neq$ ATT whenever treated and control $X$-distributions differ. \;\;\meta{$\to$ balancing tables next.}
 \end{itemize}
 \end{frame}
 
 %% ---------- L2-F2e: PROOF step 4 — the named assumption ----------
-\begin{frame}{Proof, step 4 --- \textbf{Assumption 4}: homogeneous $\tau$ in $X$}
+\begin{frame}{Proof, step 4 --- \textbf{Assumption 4}: homogeneous $\delta$ in $X$}
 \vspace{0.5em}
 \begin{block}{Assumption 4 (Homogeneous treatment effects in $X$)}
 \centering
@@ -622,11 +625,11 @@ Generate $Y(0)$ \textit{directly}, cell-by-cell --- so the true DGP isn't $\alph
 \begin{itemize}\setlength\itemsep{4pt}
   \item \textbf{DGP 0 — clean linear.} \;$Y(0) = \alpha_i + \gamma_t + \beta X + \varepsilon$. \;No violation. Sanity check.
   \item \textbf{DGP 1 --- time-varying $\beta$.} \;$\beta_{\text{pre}} = 1,\ \beta_{\text{post}} = 3$. \;$X$'s effect on $Y$ shifts at the policy break.
-  \item \textbf{DGP 2 --- heterogeneous $\tau$ in $X$.} \;$\tau_i = 2 + 4(X_i - \tfrac{1}{2})$. \;Treatment effect grows with $X$.
+  \item \textbf{DGP 2 --- heterogeneous $\delta$ in $X$.} \;$\delta_i = 2 + 4(X_i - \tfrac{1}{2})$. \;Treatment effect grows with $X$.
   \item \textbf{DGP 3 --- time-invariant $Z$.} \;$Y(0)$ depends on a baseline $Z$ only in post. \;FE within-unit transformation \textit{eats} $Z$.
 \end{itemize}
 \vspace{0.5em}
-\highlight{True $\tau = 2$ in every DGP.} \;Selection: treated units' $X$ shifts up by $0.3$ in post (the typical empirical pattern).
+\highlight{True $\delta = 2$ in every DGP.} \;Selection: treated units' $X$ shifts up by $0.3$ in post (the typical empirical pattern).
 \end{frame}
 
 %% ---------- L2-Sim2: The DGP in R ----------
@@ -654,7 +657,7 @@ panel$Y <- panel$Y0 + panel$D * panel$post * panel$tau
 \end{frame}
 
 %% ---------- L2-Sim3: Results table ----------
-\begin{frame}{Results: which spec fixes which bias? \;\;(true $\tau = 2$)}
+\begin{frame}{Results: which spec fixes which bias? \;\;(true $\delta = 2$)}
 \definecolor{biasedred}{HTML}{FED7D7}
 \vspace{0.4em}
 \begin{center}
@@ -666,7 +669,7 @@ panel$Y <- panel$Y0 + panel$D * panel$post * panel$tau
 \midrule
 \textbf{DGP 0} clean              & \cellcolor{biasedred}$2.30$ & \cellcolor{remixgreenlight}$2.02$ & \cellcolor{remixgreenlight}$2.01$ & \cellcolor{remixgreenlight}$2.01$ \\
 \textbf{DGP 1} time-varying $\beta$ & \cellcolor{biasedred}$2.91$ & \cellcolor{biasedred}$2.30$ & \cellcolor{remixgreenlight}$1.99$ & \cellcolor{remixgreenlight}$1.99$ \\
-\textbf{DGP 2} het $\tau$ in $X$    & \cellcolor{biasedred}$3.51$ & \cellcolor{biasedred}$2.91$ & \cellcolor{biasedred}$2.64$ & \cellcolor{biasedred}$2.64$ \\
+\textbf{DGP 2} het $\delta$ in $X$    & \cellcolor{biasedred}$3.51$ & \cellcolor{biasedred}$2.91$ & \cellcolor{biasedred}$2.64$ & \cellcolor{biasedred}$2.64$ \\
 \textbf{DGP 3} time-inv $Z$         & \cellcolor{biasedred}$2.15$ & \cellcolor{biasedred}$1.85$ & \cellcolor{biasedred}$1.83$ & \cellcolor{remixgreenlight}$1.98$ \\
 \bottomrule
 \end{tabular}
@@ -674,7 +677,7 @@ panel$Y <- panel$Y0 + panel$D * panel$post * panel$tau
 \vspace{0.5em}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-\colorbox{remixgreenlight}{\strut\,green\,}: spec recovers $\tau \approx 2$. \quad \colorbox{biasedred}{\strut\,red\,}: spec is biased.
+\colorbox{remixgreenlight}{\strut\,green\,}: spec recovers $\delta \approx 2$. \quad \colorbox{biasedred}{\strut\,red\,}: spec is biased.
 \end{center}
 \end{frame}
 
@@ -683,7 +686,7 @@ panel$Y <- panel$Y0 + panel$D * panel$post * panel$tau
 \footnotesize
 \begin{itemize}\setlength\itemsep{4pt}
   \item \textbf{Time-varying $\beta$} \;$\to$ \;the fix is Post${\times}X$. \;Let $X$'s effect move with the policy break.
-  \item \textbf{Heterogeneous $\tau$ in $X$} \;$\to$ \;Post${\times}X$ \textit{still misses it.} \;You need a saturated $D{\times}X$ interaction, or DR-DiD (Lesson 4), or matching.
+  \item \textbf{Heterogeneous $\delta$ in $X$} \;$\to$ \;Post${\times}X$ \textit{still misses it.} \;You need a saturated $D{\times}X$ interaction, or DR-DiD (Lesson 4), or matching.
   \item \textbf{Time-invariant $Z$} \;$\to$ \;the fix is Post${\times}Z$. \;Additive $Z$ does nothing because FE absorbs it.
 \end{itemize}
 
@@ -722,31 +725,30 @@ Y_{it} \;=\; \alpha_i + \gamma_t + \delta\,(D_i{\times}\text{post}_t) \;+\; X_{i
 \highlight{Note the subscript $i,0$.} \;Use the \textit{pre-period} value of $X$ throughout. \;If you interact $D$ or post with the contemporaneous $X_{it}$, you're conditioning on a post-treatment variable --- bad control (Angrist--Pischke). \;Baseline $X_{i,0}$ satisfies $X_{i,0}(1) = X_{i,0}(0)$ by construction.
 
 \vspace{0.4em}
-\textbf{What this spec \textit{cannot} fix:} \;$\text{Bias}_{\text{HTE}}$. \;If $\tau$ depends on $X$, no single $\hat\delta$ recovers the ATT.
+\textbf{What this spec \textit{cannot} fix:} \;$\text{Bias}_{\text{HTE}}$. \;If $\delta$ depends on $X$, no single $\hat\delta$ recovers the ATT.
 \end{frame}
 
-%% ---------- L2-F2o2: Fully saturated TWFE = OR/IPW/DR semiparametrically ----------
-\begin{frame}{Fully saturated TWFE \textit{is} what OR/IPW/DR do}
+%% ---------- L2-F2o2: Saturated TWFE on baseline X mirrors OR/IPW/DR ----------
+\begin{frame}{Saturated TWFE \textit{on $X_{i,0}$} mirrors what OR/IPW/DR do}
 \footnotesize
-\textbf{To handle $\text{Bias}_{\text{HTE}}$ inside TWFE, you'd saturate:}
+\textbf{OR, IPW, and DR condition on \textit{baseline} $X_{i,0}$ only} --- never $X_{it}$. \;A deliberate choice to avoid post-treatment bad control. \;An honest TWFE comparison has to make the same commitment.
 
-\vspace{-0.2em}
+\vspace{0.4em}
+\textbf{Saturated TWFE on $X_{i,0}$:}
 \[
 Y \;=\; \alpha_i + \gamma_t + (D{\times}\text{post})\big[\delta_0 + X_{i,0}'\delta_X\big] + X_{i,0}'\gamma + (\text{post}{\cdot} X_{i,0})'\gamma_p + \cdots
 \]
-
-Every (pre-period) covariate gets $D{\times}X_{i,0}$, $\text{post}{\times}X_{i,0}$, and $D{\times}\text{post}{\times}X_{i,0}$ interactions. \;Then average the fitted $\tau(X_{i,0})$ over the treated $X$-distribution.
-
-\vspace{0.5em}
-\textbf{In principle this works. In practice it's a minefield:}
-\begin{itemize}\setlength\itemsep{2pt}
-  \item \textbf{True saturation discretizes $X$.} \;Continuous $X$ has to be binned. \;Rare cells $\to$ sparseness $\to$ same support failures IPW warns about.
-  \item \textbf{Post-period $X$ is a bad control.} \;Use $X_{i,0}$, not $X_{it}$.
-  \item \textbf{You still have to compute the ATT.} \;The headline coefficient at $X=0$ isn't it. \;Average $\hat\tau(X_{i,0})$ over the treated $X_{i,0}$-distribution.
-\end{itemize}
+Every baseline covariate gets $D{\times}X_{i,0}$, $\text{post}{\times}X_{i,0}$, and $D{\times}\text{post}{\times}X_{i,0}$ interactions. \;Then average $\hat\delta(X_{i,0})$ over the treated $X_{i,0}$-distribution.
 
 \vspace{0.4em}
-\highlight{OR, IPW, and DR do this semiparametrically.} \;Model $\widehat{\mu}_0(X)$ or $\widehat{p}(X)$ once; let the estimator do the saturation work and the ATT average for you.
+\textbf{In principle it works; in practice it's a minefield:}
+\begin{itemize}\setlength\itemsep{0pt}
+  \item \textbf{True saturation discretizes $X$.} \;Continuous $X$ has to be binned. \;Rare cells $\to$ sparseness.
+  \item \textbf{Swap $X_{i,0}$ for $X_{it}$ and the equivalence breaks} --- post-treatment bad control.
+  \item \textbf{Headline coefficient at $X=0$ isn't the ATT.} \;Average $\hat\delta(X_{i,0})$ over the treated.
+\end{itemize}
+
+\highlight{OR, IPW, DR commit to baseline $X$ structurally.} \;The estimator does saturation \textit{and} the ATT average for you. \;\meta{(Time-varying $X$ is a separate problem they don't claim to solve.)}
 \end{frame}
 
 %% ---------- L2-F2o3: Practical pitfalls ----------
@@ -771,7 +773,7 @@ Every (pre-period) covariate gets $D{\times}X_{i,0}$, $\text{post}{\times}X_{i,0
 %% ---------- L2-F2p: Three doors to the same fix ----------
 \begin{frame}{Three doors to the same fix}
 \footnotesize
-Three estimators that handle heterogeneous $\tau(X)$ --- each does it differently:
+Three estimators that handle heterogeneous $\delta(X)$ --- each does it differently:
 
 \vspace{0.6em}
 \begin{itemize}\setlength\itemsep{4pt}
@@ -1278,8 +1280,8 @@ A common misdescription you'll hear:
 \vspace{0.6em}
 \begin{itemize}\small
   \item It sounds right. Rosenbaum-Rubin says \textit{one scalar suffices}. Regression handles scalars.
-  \item So: $\;\; Y_i \;=\; \alpha \;+\; \tau D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilon_i$
-  \item Surely this recovers $\tau$ as the ATT? \highlight{No.} And the reason matters.
+  \item So: $\;\; Y_i \;=\; \alpha \;+\; \delta D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilon_i$
+  \item Surely this recovers $\delta$ as the ATT? \highlight{No.} And the reason matters.
 \end{itemize}
 \end{frame}
 
@@ -1287,7 +1289,7 @@ A common misdescription you'll hear:
 \begin{frame}{What that regression actually assumes}
 \vspace{0.4em}
 \[
-Y_i \;=\; \alpha \;+\; \tau D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilon_i
+Y_i \;=\; \alpha \;+\; \delta D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilon_i
 \]
 \vspace{0.1em}
 \begin{itemize}\small
@@ -1308,7 +1310,7 @@ Y_i \;=\; \alpha \;+\; \tau D_i \;+\; \gamma\, \widehat{p}(X_i) \;+\; \varepsilo
 \vspace{-0.4em}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-500 reps. Heterogeneous $\tau(X) = 1 + 0.5\, X_1$.\;
+500 reps. Heterogeneous $\delta(X) = 1 + 0.5\, X_1$.\;
 Method A (IPW reweighting): bias $\approx 0$. \;
 Method B (regression with $\widehat{p}$): \highlight{bias $\approx -10\%$}.
 \end{center}
@@ -1349,7 +1351,7 @@ B  <- coef(lm(Y ~ D + phat))["D"]          # <-- the trap
     \item[--] a \textbf{regressor} (Method B: add as control) --- imposes homogeneous effects
   \end{itemize}
   \item Same number. Different uses. \textit{Different identifying assumptions.}
-  \item Method B's bias is not noise. It is the heterogeneity in $\tau(X)$ that the regression cannot see.
+  \item Method B's bias is not noise. It is the heterogeneity in $\delta(X)$ that the regression cannot see.
 \end{itemize}
 \vspace{0.5em}
 \begin{block}{The lesson before DR}
@@ -1366,14 +1368,14 @@ But it does NOT use the pscore as a regressor.
 Whenever you put a covariate on the right-hand side of an outcome regression \textit{additively} (no $D \times X$ interaction), you force:
 \vspace{-0.2em}
 \[
-\tau \;\;\text{is constant across all values of that covariate.}
+\delta \;\;\text{is constant across all values of that covariate.}
 \]
 \vspace{-0.4em}
 \begin{itemize}\small
   \item Method B (Lesson 4): the covariate is $\widehat{p}(X)$ --- a scalar summary of $X$. \\
-        Force constant $\tau$ across $\widehat{p}(X)$. Heterogeneity in $\tau(X)$ is invisible.
+        Force constant $\delta$ across $\widehat{p}(X)$. Heterogeneity in $\delta(X)$ is invisible.
   \item TWFE-with-controls (Lesson 2): the covariate is $X$ itself. \\
-        Force constant $\tau$ across $X$. Heterogeneity in $\tau(X)$ is invisible.
+        Force constant $\delta$ across $X$. Heterogeneity in $\delta(X)$ is invisible.
   \item \highlight{Same disease, different costume.} Caetano \& Callaway (2024) name the TWFE version \textit{hidden linearity bias}. It's the same root.
 \end{itemize}
 \vspace{0.3em}
@@ -1392,12 +1394,12 @@ DR's escape: use $X$ and $\widehat{p}(X)$ as \textit{weights} and to model the \
 %% ---------- L6-F0: TWFE-with-controls has TWO distinct problems ----------
 \begin{frame}{TWFE-with-controls has two distinct problems}
 \vspace{0.4em}
-The workhorse specification $Y_{it} = \alpha_i + \gamma_t + \tau D_{it} + X_{it}'\beta + \varepsilon_{it}$ is biased for two \textit{separate} reasons:
+The workhorse specification $Y_{it} = \alpha_i + \gamma_t + \delta D_{it} + X_{it}'\beta + \varepsilon_{it}$ is biased for two \textit{separate} reasons:
 \vspace{0.5em}
 \begin{enumerate}
   \item \highlight{The FE transformation throws away what you wanted to control for.} \\[0.2em]
   First-differencing $X_{it}$ leaves only $\Delta X$. The \textit{level} of $X$ is gone. Time-invariant $Z$ is gone entirely. \;\; (Caetano-Callaway 2024 --- this lesson.)
-  \item \highlight{What's left enters additively, forcing constant $\tau$.} \\[0.2em]
+  \item \highlight{What's left enters additively, forcing constant $\delta$.} \\[0.2em]
   Whatever covariate survives the FE transformation sits on the RHS as an additive regressor with no $D{\times}X$ interaction. Same disease as Method B (Lesson 4).
 \end{enumerate}
 \vspace{0.5em}
@@ -1447,13 +1449,13 @@ AIPW with the right covariates: \;$\widehat{\text{ATT}} \approx 0$, insignifican
 You wrote down this model:
 \vspace{-0.1em}
 \[
-Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \tau D_{it} \;+\; X_{it}'\beta \;+\; Z_i'\delta \;+\; \varepsilon_{it}
+Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta D_{it} \;+\; X_{it}'\beta \;+\; Z_i'\eta \;+\; \varepsilon_{it}
 \]
 \vspace{0.1em}
 First-difference (or within-transform) to kill $\alpha_i$:
 \vspace{-0.2em}
 \[
-\Delta Y_{it} \;=\; \widetilde{\gamma}_t \;+\; \tau\, \Delta D_{it} \;+\; \Delta X_{it}'\beta \;+\; \Delta \varepsilon_{it}
+\Delta Y_{it} \;=\; \widetilde{\gamma}_t \;+\; \delta\, \Delta D_{it} \;+\; \Delta X_{it}'\beta \;+\; \Delta \varepsilon_{it}
 \]
 \vspace{0.1em}
 \begin{itemize}\small
@@ -1497,11 +1499,11 @@ Problem (2) is the L4 disease, present in TWFE-with-controls too.
 \textbf{Estimator} & \textbf{What goes on RHS additively} & \textbf{What gets forced constant} \\
 \midrule
 \rowcolor{remixgreenlight}
-Method B (L4)             & $\widehat{p}(X)$ as control          & $\tau$ across $\widehat{p}(X)$ \\
+Method B (L4)             & $\widehat{p}(X)$ as control          & $\delta$ across $\widehat{p}(X)$ \\
 \rowcolor{remixgreenlight}
-TWFE-with-controls (L2, L6) & $\Delta X$ as control              & $\tau$ across $\Delta X$       \\
+TWFE-with-controls (L2, L6) & $\Delta X$ as control              & $\delta$ across $\Delta X$       \\
 \rowcolor{remixgreenlight}
-General formulation       & $W = f(X)$ as additive RHS regressor & $\tau$ across $W$              \\
+General formulation       & $W = f(X)$ as additive RHS regressor & $\delta$ across $W$              \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -1573,262 +1575,11 @@ Reg.\ adj.\ with $\Delta X + X_{t-1} + Z$              & $+0.078$               
 \end{itemize}
 \end{frame}
 
+
 %% =====================================================================
 %%                                LESSON 5
 %% =====================================================================
-\remixsection{5.\ Compositional Change}
-
-%% ---------- L7-F0: why this lesson exists (dev-econ motivation) ----------
-\begin{frame}{Most applied work doesn't have a panel}
-\vspace{0.6em}
-\pullquote{Panels are expensive. \;Repeated cross-sections are how a lot of applied work actually gets done.}{Anyone who's ever priced a long household-survey panel}
-\vspace{0.8em}
-\begin{itemize}
-  \item \textbf{US workhorses:} CPS, NLSY, ACS, CEX --- repeated cross-sections, not panels.
-  \item \textbf{Development workhorses:} LSMS (World Bank), DHS (USAID), MICS (UNICEF), IFLS (Indonesia), IHDS (India) --- repeated rounds, mostly different households each wave.
-  \item Same DiD recipe runs on all of them. \highlight{Same compositional-change problem too.}
-\end{itemize}
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-Hong (2013) found it in the CEX. \;Sant'Anna \& Xu's own application is shipments through the South Africa--Mozambique trade corridor. \;The disease travels.
-\end{center}
-\end{frame}
-
-%% ---------- L7-F1: a different X-moves problem ----------
-\begin{frame}{Two flavors of ``$X$ moves''}
-\vspace{0.4em}
-\begin{center}
-\renewcommand{\arraystretch}{1.4}
-\footnotesize
-\begin{tabular}{@{}lll@{}}
-\toprule
-\textbf{Flavor} & \textbf{What's moving} & \textbf{Estimator} \\
-\midrule
-\textbf{Lesson 6} & Same units, $X_{it}$ moves over time & Caetano-Callaway AIPW \\[0.1em]
-\textbf{Lesson 7} & New units each period, $X$ distribution moves & Hong / Sant'Anna-Xu \\
-\bottomrule
-\end{tabular}
-\end{center}
-\vspace{0.6em}
-\begin{itemize}\small
-  \item Both break unconditional PT \textit{in finite samples} even when it holds in the population.
-  \item L6 (panel): the FE transformation loses the $X$ level. \;\; L7 (repeated cross-sections): the sample composition shifts.
-  \item Different fixes. Same family of concerns: \highlight{$X$ is moving, and your estimator pretends it isn't.}
-\end{itemize}
-\end{frame}
-
-%% ---------- L7-F2: Hong Napster — narrative ----------
-\begin{frame}{Hong (2013): Napster, internet users, and music expenditure}
-\vspace{0.4em}
-\begin{itemize}\small
-  \item Repeated cross-sections from the CEX, 1996--2001.
-  \item In 1996--97, internet users were a small, atypical slice --- younger, higher-income, more urban, more educated.
-  \item By 2000--01, internet users looked much more like the general population.
-  \item Compare ``internet users'' to ``non-users,'' 1996 vs.\ 2001. \\ \highlight{Did Napster reduce music spending --- or did the composition of internet users change?}
-  \item Hong's answer: the naive DiD confounds the two. The compositional shift accounts for much of the apparent ``Napster effect.''
-\end{itemize}
-\vspace{0.3em}
-\meta{Hong (2013), \textit{Journal of Applied Econometrics} 28(2): 297--324.}
-\end{frame}
-
-%% ---------- L7-F2b: Hong — the table ----------
-\begin{frame}{Hong's Table I --- the internet-user composition shifts}
-\vspace{0.4em}
-\begin{center}
-\includegraphics[width=0.86\textwidth]{figures/hong_table.png}
-\end{center}
-\vspace{0.2em}
-\begin{center}
-\small\color{warmgray}\itshape
-1997 $\rightarrow$ 2000: mean age 40 $\rightarrow$ 44, income \$53k $\rightarrow$ \$48k, college share 43\% $\rightarrow$ 37\%. \;That gap is what naive DiD attributes to ``Napster.''
-\end{center}
-\end{frame}
-
-%% ---------- L7-F2c: Hong — the figures ----------
-\begin{frame}{Hong's Figures 1 \& 3 --- diffusion and absorption of zero-spenders}
-\vspace{0.2em}
-\begin{center}
-\includegraphics[width=0.46\textwidth]{figures/Hong_1.pdf}\hspace{0.4em}
-\includegraphics[width=0.46\textwidth]{figures/Hong_2.pdf}
-\end{center}
-\vspace{0.1em}
-\begin{center}
-\small\color{warmgray}\itshape
-Left: internet diffusion (top axis) and average quarterly music expenditure (bottom). \\[0.1em]
-Right: stacked share of households by Internet adoption $\times$ music-spending status --- the user pool absorbs more zero-spenders as it grows.
-\end{center}
-\end{frame}
-
-%% ---------- L7-F3: bridge — what's left for SX ----------
-\begin{frame}{So why do we need Sant'Anna \& Xu given Hong showed it?}
-\vspace{0.4em}
-Hong (2013) gave us the intuition --- and a single empirical example. To use this in your own work you need three things Hong didn't formalize:
-\vspace{0.4em}
-\begin{enumerate}\small
-  \item \textbf{A target estimand.} What \textit{is} ``the'' ATT under compositional shift? Is it the average over the post-period sample (your data) or the pre-period sample? These are different parameters.
-  \item \textbf{A test.} Hong showed his data had the problem. How do \textit{you} know yours does, without the benefit of a second empirical paper?
-  \item \textbf{A correction.} If your test rejects, what estimator should you report? Hong didn't give you one --- he flagged the problem.
-\end{enumerate}
-\end{frame}
-
-%% ---------- L7-F3b: the one-line punchline ----------
-\begin{frame}[plain]
-\begin{tikzpicture}[remember picture,overlay]
-\fill[cream] (current page.south west) rectangle (current page.north east);
-\node[anchor=center, text width=0.82\paperwidth, align=center, text=charcoal] at (current page.center) {%
-  \fontsize{22pt}{30pt}\selectfont
-  The story stays {\color{accent}\bfseries Hong's.}\\[0.4em]
-  The toolkit is {\color{accent}\bfseries new.}
-};
-\end{tikzpicture}
-\end{frame}
-
-%% ---------- L7-F4a: SX — the estimand ----------
-\begin{frame}{Sant'Anna \& Xu name the target: the ATT for the post-period treated}
-\vspace{0.3em}
-\pullquote{What \textit{is} ``the'' ATT when the sample composition is moving?}{Anyone trying to use Hong in their own paper}
-\vspace{0.4em}
-\begin{block}{The SX target}
-\centering
-\small $\tau \;=\; \mathbb{E}\big[\,\tau(X) \,\big|\, D{=}1,\, T{=}1\,\big]$ --- ATT averaged over the \highlight{post-period treated} $X$-distribution.
-\end{block}
-\vspace{0.2em}
-\begin{itemize}\small
-  \item \highlight{Why this target?} \;It's the population that actually got treated --- the policy-relevant parameter.
-  \item Naive DiD targets a \textit{moving} mixture --- whoever happened to be in each period's sample.
-  \item SX pin the target to a single population so you know what number you're trying to estimate.
-\end{itemize}
-\end{frame}
-
-%% ---------- L7-F4a-bis: A student asks — why this estimand? ----------
-\begin{frame}{The post-period treated is the population the policy is for}
-\vspace{0.4em}
-\pullquote{Why average $\tau(X)$ over the post-period treated? Why not the pre-period treated, or both?}{A student, raising a hand}
-\vspace{0.4em}
-\begin{itemize}\small
-  \item The post-period treated is \highlight{who actually got the policy}. Whatever number you report is implicitly about them.
-  \item Sant'Anna--Zhao's $\tau_{sz}$ averages over the \textit{pooled} (pre $+$ post) treated --- a population that doesn't correspond to any policy decision.
-  \item If $\tau(X)$ is heterogeneous and the post-period treated are a different mix from the pre-period treated, $\tau_{sz}$ answers a question \highlight{nobody asked}.
-\end{itemize}
-\vspace{0.3em}
-\begin{center}
-\small\color{warmgray}\itshape
-Pick the estimand that matches the counterfactual you actually want to compare.
-\end{center}
-\meta{Sant'Anna \& Xu (2023), \S 2; bias decomposition Eq.\ 2.4.}
-\end{frame}
-
-%% ---------- L7-F4b: SX — the test ----------
-\begin{frame}{SX's Hausman test: compare two doubly-robust estimators}
-\vspace{0.5em}
-\begin{block}{The test}
-\small
-Compute the standard DR-DiD estimator $\widehat\tau_{\text{dr}}$. \;Compute the SX composition-corrected DR estimator $\widehat\tau_{\text{sx}}$. \;Compare.
-\end{block}
-\vspace{0.5em}
-\begin{itemize}\small
-  \item Under the null (no compositional shift), the two DR estimators agree --- both consistent for the same $\tau$.
-  \item Under the alternative, they diverge --- and the gap quantifies how much your point estimate is doing compositional vs.\ behavioral work.
-  \item Standard $\chi^2$ inference on $\widehat\tau_{\text{dr}} - \widehat\tau_{\text{sx}}$.
-\end{itemize}
-\vspace{0.3em}
-\begin{center}
-\small\color{warmgray}\itshape
-This is the move Hong didn't have. \;He showed \textit{his} data had the problem. \;The Hausman test lets \textit{you} check yours.
-\end{center}
-\end{frame}
-
-%% ---------- L7-F4c: SX — the estimator ----------
-\begin{frame}{The SX estimator: reweight to the post-period treated, then DR-DiD}
-\vspace{0.5em}
-\begin{block}{Mechanics}
-\small
-For each period $t$, reweight observations so the within-period $X$-distribution matches the \textbf{post-period treated} distribution. \;Then run DR-DiD on the reweighted panel.
-\end{block}
-\vspace{0.5em}
-\begin{itemize}\small
-  \item Weights come from a 4-cell generalized propensity score: $\Pr(D, T \mid X)$, not the simple $f_{\text{ref}}/f_t$ density ratio.
-  \item \highlight{Doubly robust} --- consistent if either the PS or the outcome model is right.
-  \item Built on the IPW machinery from Lesson 3 $+$ the DR machinery from Lesson 5.
-\end{itemize}
-\end{frame}
-
-%% ---------- L7-F4d: SX — empirical application (SADC trade corridor) ----------
-\begin{frame}{SX in the wild: tariff reductions and \textit{bribery} at the SADC border}
-\vspace{0.3em}
-\begin{itemize}\small
-  \item \textbf{Setting:} Sequeira (2016) studied SADC tariff reductions (2008, $\sim$5\% cut on selected products) at the South Africa--Mozambique border. \;Some products were treated; others weren't.
-  \item \textbf{Outcome:} \textit{bribery} at customs (probability, amount, amount/value, amount/tonne).
-  \item \textbf{Data:} repeated cross-sections of shipment records, 2007--2013. \;$\sim$80\% of pre-treatment shipments involved bribery.
-  \item \textbf{SX's question:} does compositional change in \textit{which shipments get observed} contaminate Sequeira's DiD?
-\end{itemize}
-\vspace{0.2em}
-\begin{block}{Hausman test result}
-\centering
-\small \highlight{$p = 0.338$ --- fail to reject.} \;Composition is not biting here.
-\end{block}
-\vspace{0.1em}
-\begin{center}
-\small\color{warmgray}\itshape
-DR-DiD and SX composition-corrected DR agree. \;Sequeira's finding holds: tariff reductions reduce bribery.
-\end{center}
-\end{frame}
-
-%% ---------- L7-F4d-bis: A student asks — was SX even useful? ----------
-\begin{frame}{Failing to reject \textit{is} the validation --- that's the point}
-\vspace{0.4em}
-\pullquote{The Hausman test failed to reject. So SX wasn't really doing anything here, right?}{A student, raising a hand}
-\vspace{0.4em}
-\begin{itemize}\small
-  \item Wrong frame. The test isn't a switch that turns SX ``on'' when it rejects. \highlight{It's a diagnostic that tells you whether composition mattered for your ATT.}
-  \item In Sequeira: $p = 0.338$ \textit{is} the result. It says ``the composition correction would have moved the number, but didn't move it enough to matter.''
-  \item In Hong's Napster setting --- richer adopters in 1996, mass-market by 2001 --- it would have rejected. \highlight{Same test. Different application. Different verdict.}
-\end{itemize}
-\vspace{0.3em}
-\begin{center}
-\small\color{warmgray}\itshape
-You don't get to know which world you're in until you run the test. \;That's why you run it.
-\end{center}
-\meta{Sant'Anna \& Xu (2023), Theorem 4.1; Sequeira (2016) for the application.}
-\end{frame}
-
-%% ---------- L7-F4e: SX — the right way to use the Hausman test ----------
-\begin{frame}{Use the SX test to \textit{validate}, not to \textit{select}}
-\vspace{0.4em}
-\begin{itemize}\small
-  \item \textbf{Wrong:} run Hausman as a pre-test; pick $\widehat\tau_{\text{sx}}$ if it rejects, $\widehat\tau_{\text{dr}}$ if not.
-  \item \textbf{Why wrong:} pre-test-then-select distorts inference (Roth 2022; Guggenberger 2010). Standard errors lose coverage.
-  \item \textbf{Right:} if you're worried about composition, \textit{just report $\widehat\tau_{\text{sx}}$}. Use the test to communicate whether composition was a concern, not to choose which estimate to print.
-\end{itemize}
-\vspace{0.3em}
-\begin{center}
-\small\color{warmgray}\itshape
-The robust estimator costs efficiency. \;Worth paying when composition might shift.
-\end{center}
-\end{frame}
-
-%% ---------- L7-F5: when this matters ----------
-\begin{frame}{When compositional change matters --- and it's almost always}
-\vspace{0.4em}
-\begin{itemize}\small
-  \item \textbf{Long-horizon US survey data.} CPS, NLSY, ACS, CEX --- sample composition drifts as response rates, demographics, frame definitions change.
-  \item \textbf{Developing-country household surveys.} LSMS, DHS, MICS, IFLS, IHDS --- rotating cross-sections, expanding sampling frames between rounds.
-  \item \textbf{Administrative outcomes with selective coverage.} Who enters the data may itself respond to policy (Medicaid take-up, charter-school enrollment, customs declarations).
-  \item \textbf{Policy-diffusion settings.} New technology, new programs, new tariff regimes --- the adopter pool shifts.
-  \item \textbf{Long pre-periods in event studies.} The further back you go, the more likely the comparison population has shifted.
-\end{itemize}
-\vspace{0.2em}
-\begin{center}
-\small\color{warmgray}\itshape
-First defense: check whether $X$ moved across time. \;Then run the Hausman test. \;Then report both estimates.
-\end{center}
-\end{frame}
-
-%% =====================================================================
-%%                                LESSON 6
-%% =====================================================================
-\remixsection{6.\ Choosing \& checking $X$ \\[0.3em] {\normalsize\normalfont The practical close --- picking, balance, and when controls are unnecessary}}
+\remixsection{5.\ Choosing \& checking $X$ \\[0.3em] {\normalsize\normalfont The practical close --- picking, balance, and when controls are unnecessary}}
 
 %% ---------- L8-F1: picking covariates ----------
 \begin{frame}{Picking $X$: theory or LASSO on $\Delta Y(0)$}
@@ -1965,558 +1716,6 @@ Every variable, its treated mean, its control mean, the normalized difference. \
 \end{center}
 \end{frame}
 
-%% =====================================================================
-%%                                ACT III
-%% =====================================================================
-
-%% =====================================================================
-%%  CLOSING EXAMPLE — LaLonde: history, then the four specs, then synthesis
-%% =====================================================================
-
-%% ---------- LL-Hist-1: The empirical crisis of the 1970s ----------
-\begin{frame}{The empirical crisis of the 1970s}
-\vspace{0.5em}
-Empirical economics in the 1970s did not have a strong reputation.
-\vspace{0.5em}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item Most empirical work was a postscript to a theory paper. \;Sargent on rational expectations is a representative case --- the regression was an afterthought.
-  \item IV in the 1970s could be done without even \textit{reporting} the instrument. \;\meta{Orley Ashenfelter and Janet Currie, in conversation.}
-  \item Outlandish estimates were routine and rarely interrogated.
-\end{itemize}
-\vspace{0.5em}
-\highlight{There was a sense that econometric methods couldn't quite be trusted} --- and no shared standard for adjudicating that.
-\end{frame}
-
-%% ---------- LL-Hist-2: The Lewis smell test ----------
-\begin{frame}{The Lewis smell test}
-\vspace{0.5em}
-\textbf{H. Gregg Lewis} (Chicago) studied union wage differentials. \;In his book reviewing the literature, he simply \textit{ignored} estimates he couldn't justify --- particularly when they came from IV or Heckman selection corrections.
-
-\vspace{0.5em}
-He preferred OLS with controls and a story you could defend.
-
-\vspace{0.7em}
-\textbf{Card called this the ``Lewis smell test.''}
-
-\vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-If you could get a result past Lewis's skepticism, that was worth noting. \;Otherwise --- skip it.
-\end{center}
-\end{frame}
-
-%% ---------- LL-Hist-3: The other world — program evaluation ----------
-\begin{frame}{The other world: program evaluation}
-\vspace{0.5em}
-\textbf{There was one corner of empirical work that took the question seriously.}
-
-\vspace{0.5em}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item Federal job-training programs in the 1970s --- evaluations commissioned by the Department of Labor.
-  \item Princeton's \highlight{Industrial Relations Section} --- older than the Econ department --- ran the empirical agenda.
-  \item Job training was a \textit{totem} in the Section. \;Heckman used it as a recurring metaphor (including the 1997 ReStud with Ichimura, Todd, and the later Smith papers).
-\end{itemize}
-
-\vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-Two worlds: empirics-as-afterthought, and program evaluation. \;The credibility gap was huge.
-\end{center}
-\end{frame}
-
-%% ---------- LL-Hist-4: Orley (and Card) and their students ----------
-\begin{frame}{Orley and Card's students}
-\vspace{0.6em}
-Orley was at the center of Princeton's IRS. \;David Card --- newly arrived as junior faculty in the early 1980s --- slid onto LaLonde's and Angrist's dissertation committees. \;He gave students problems.
-
-\vspace{0.6em}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item \textbf{Ron Oaxaca} \;$\to$\; the wage decomposition (1973). \;\meta{Orley.}
-  \item \textbf{Bob LaLonde} \;$\to$\; the job-training paper (1986). \;\meta{Orley and Card.}
-  \item \textbf{Josh Angrist} \;$\to$\; Vietnam draft-lottery IV (1990). \;\meta{Orley and Card.}
-\end{itemize}
-
-\vspace{0.6em}
-\highlight{Angrist once said: ``I wish I had written LaLonde.''}
-
-\vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-Foundational papers from one office.
-\end{center}
-\end{frame}
-
-%% ---------- LL-Hist-5: NSW + Orley's suggestion ----------
-\begin{frame}{The NSW experiment, and Orley's suggestion}
-\vspace{0.5em}
-\textbf{The National Supported Work Demonstration (NSW).} \;Late-1970s federal job-training program run by MDRC. \;Hard-to-employ adults. \;\highlight{Randomly assigned} treatment and control.
-
-\vspace{0.6em}
-\textbf{Orley to LaLonde:}
-\vspace{-0.2em}
-\begin{center}
-\textit{``Estimate the ATT from the experiment --- that's the truth. \\Then drop the experimental control. Replace it with survey data. \\Re-run the contemporary econometric methods. See what you get.''}
-\end{center}
-
-\vspace{0.5em}
-\begin{center}
-\small\color{warmgray}\itshape
-A placebo-style design \textit{before} placebo designs were a thing. \;A direct honesty test.
-\end{center}
-\end{frame}
-
-%% ---------- LL-Hist-6: What LaLonde found ----------
-\begin{frame}{What LaLonde found (1986)}
-\vspace{0.6em}
-\textbf{The truth from the RCT:} \;ATT $\approx +\$800$.
-
-\vspace{0.6em}
-\textbf{What observational methods gave:} \;all over the map. \;Wrong magnitudes. \;Often \textit{wrong signs}.
-
-\vspace{0.8em}
-\begin{center}
-\highlight{The conclusion --- and it cratered the credibility of observational program evaluation:}
-\end{center}
-
-\vspace{0.4em}
-\begin{center}
-\textit{The standard econometric methods of the day could not be trusted to recover known causal effects.}
-\end{center}
-\end{frame}
-
-%% ---------- LL-Hist-7: Dehejia-Wahba revisit ----------
-\begin{frame}{Dehejia \& Wahba (1999, 2002): the rescue}
-\vspace{0.4em}
-Mid-1990s. \;Harvard. \;\textbf{Imbens and Rubin's causal-inference class.} \;Students include Rajeev Dehejia, Sadek Wahba, Bruce Sacerdote, (later) David Autor.
-
-\vspace{0.5em}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item Rosenbaum--Rubin (1983) introduced the propensity score. \;\textit{LaLonde didn't use it.}
-  \item Dehejia \& Wahba revisit the same data with \highlight{propensity-score matching}. \;They restrict to a sample with \textit{two years} of pre-treatment earnings.
-  \item On that sample they recover \highlight{$\$1{,}794$} --- very close to the experimental ATT.
-\end{itemize}
-
-\vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-Smith \& Todd (2005) later debated the sample-selection choice. \;The DW result held up enough for the literature to take ``conditional PT'' seriously.
-\end{center}
-\end{frame}
-
-%% ---------- LL-Hist-8: Bridge to the walkthrough ----------
-\begin{frame}{A closing example: what does conditional PT actually buy you?}
-\vspace{0.5em}
-We've spent the afternoon \textit{assuming} conditional PT is more credible than unconditional PT.
-\vspace{0.5em}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item Is it?
-  \item Is there \textit{empirical} evidence that conditioning on $X$ recovers a known truth?
-\end{itemize}
-\vspace{0.6em}
-\highlight{Yes. The canonical case is LaLonde.} \;We'll now run four observational specifications on the non-experimental panel and see which ones recover $\$1{,}794$.
-\end{frame}
-
-%% ---------- LL-2 (old name kept): LaLonde data, the panel ----------
-\begin{frame}{The LaLonde panel}
-\vspace{0.5em}
-\textbf{Data structure} (Dehejia \& Wahba's two-year-pre version):
-\vspace{0.5em}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item Random assignment to NSW job training. Outcome: real 1978 earnings.
-  \item Years on record: \texttt{74}, \texttt{75}, \texttt{78}.
-\end{itemize}
-\vspace{0.5em}
-\meta{The experimental panel gives the truth. \;The non-experimental panel (NSW treated + CPS controls) is our test case.}
-\end{frame}
-
-%% ---------- LL-3: The benchmark ----------
-\begin{frame}{The benchmark: \$1,794}
-\vspace{1em}
-\begin{center}
-\Large
-$\widehat{\text{ATT}}^{\text{RCT}} \;=\; \overline{Y}^{T}_{78} - \overline{Y}^{C}_{78} \;=\; 6{,}349 - 4{,}555 \;=\; \$1{,}794$
-\end{center}
-\vspace{1em}
-\begin{center}
-\small\color{warmgray}\itshape
-Post-period difference in means on the experimental sample. \;Random assignment makes this the truth.
-\end{center}
-\end{frame}
-
-%% ---------- LL-4: The challenge ----------
-\begin{frame}{The challenge: swap the experimental controls for CPS}
-\vspace{0.4em}
-\textbf{Build a non-experimental panel.}
-\vspace{0.4em}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item Keep the NSW \textit{treated} group.
-  \item Replace the experimental controls with a random sample of CPS households.
-  \item Selection into NSW is sharply negative --- trainees had lower pre-earnings than the CPS pool.
-\end{itemize}
-\vspace{0.6em}
-\highlight{Can observational DiD recover \$1,794 on this panel?}
-\end{frame}
-
-%% ---------- LL-5: Spec 0 — the equation ----------
-\begin{frame}{Spec 0: naive DiD, no covariates}
-\vspace{1.2em}
-\begin{center}
-\Large
-$Y_{it} \;=\; \alpha \;+\; \beta_1\,\text{treat}_i \;+\; \beta_2\,\text{post}_t \;+\; \textcolor{accent}{\tau}\,(\text{treat}_i \times \text{post}_t) \;+\; \varepsilon_{it}$
-\end{center}
-\vspace{1em}
-\begin{center}
-\small\color{warmgray}\itshape
-No $X$ anywhere. \;$\widehat{\tau}$ is the DiD coefficient on the interaction.
-\end{center}
-\end{frame}
-
-%% ---------- LL-6: Spec 0 — Stata ----------
-\begin{frame}[fragile]{Spec 0 in Stata}
-\vspace{0.8em}
-\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\small]
-use lalonde_nonexp_panel.dta, clear
-gen post  = (year == 78)
-gen treat = (ever_treated == 1)
-
-reg re i.treat##i.post
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-7: Spec 0 result ----------
-\begin{frame}{Spec 0 result: \$3,522 --- way off}
-\vspace{1em}
-\begin{center}
-\renewcommand{\arraystretch}{1.45}
-\begin{tabular}{@{}lr@{}}
-\toprule
-\textbf{Estimate} & \\
-\midrule
-RCT benchmark         & $\$1{,}794$ \\
-\textbf{Spec 0} (no covariates) & \highlight{$\$3{,}522$} \\
-\midrule
-Gap                    & $+\$1{,}728$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-\vspace{1em}
-\begin{center}
-\small\color{warmgray}\itshape
-Doubles the truth. \;The non-experimental selection is doing real damage.
-\end{center}
-\end{frame}
-
-%% ---------- LL-8: Spec A — the equation ----------
-\begin{frame}{Spec A: add the $X$s as additive controls}
-\vspace{0.6em}
-\begin{center}
-$Y_{it} \;=\; \alpha + \beta_1\,\text{treat}_i + \beta_2\,\text{post}_t + \textcolor{accent}{\tau}\,(\text{treat}_i {\times} \text{post}_t) \;+\; X_i'\,\gamma \;+\; \varepsilon_{it}$
-\end{center}
-
-\vspace{0.6em}
-\textbf{Twelve covariates}, the standard LaLonde set:
-\begin{center}
-\small\ttfamily age, agesq, educ, educsq, marr, nodegree, black, hisp, re74, re75, u74, u75
-\end{center}
-
-\vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-The natural thing to try. \;Surely conditioning on age, education, race, and pre-earnings fixes it?
-\end{center}
-\end{frame}
-
-%% ---------- LL-9: Spec A in Stata ----------
-\begin{frame}[fragile]{Spec A in Stata}
-\vspace{0.6em}
-\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
-global X "age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75"
-
-reg re i.treat##i.post $X
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-10: Spec A in R ----------
-\begin{frame}[fragile]{Spec A in R}
-\vspace{0.6em}
-\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
-library(fixest)
-
-feols(re ~ treat*post + age + agesq + educ + educsq
-                     + marr + nodegree + black + hisp
-                     + re74 + re75 + u74 + u75,
-      data = d)
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-11: Spec A in Python ----------
-\begin{frame}[fragile]{Spec A in Python}
-\vspace{0.6em}
-\begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize]
-import statsmodels.formula.api as smf
-
-X = ("age + agesq + educ + educsq + marr + nodegree "
-     "+ black + hisp + re74 + re75 + u74 + u75")
-
-mod = smf.ols(f"re ~ treat*post + {X}", data=d).fit()
-print(mod.params["treat:post"])
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-12: Spec A result ----------
-\begin{frame}{Spec A result: \$3,522 --- \textit{identical} to Spec 0?!}
-\vspace{0.6em}
-\begin{center}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}lr@{}}
-\toprule
-RCT benchmark               & $\$1{,}794$ \\
-Spec 0 (no covariates)      & $\$3{,}522$ \\
-\textbf{Spec A} (additive $X$) & \highlight{$\$3{,}522$} \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\vspace{0.8em}
-\textbf{Why?} \;Most of these $X$s are \textit{time-invariant} within a person --- age (within a window), education, race, pre-earnings.
-
-\vspace{0.4em}
-\highlight{Additive $X$ on a panel with time-invariant covariates does nothing} for the DiD coefficient. \;You need to let $X$'s effect \textit{move} in the post period.
-\end{frame}
-
-%% ---------- LL-13: Spec B — the equation ----------
-\begin{frame}{Spec B: let $X$'s effect interact with post}
-\vspace{0.7em}
-\begin{center}
-$Y_{it} = \alpha + \beta_1\,\text{treat}_i + \beta_2\,\text{post}_t + \textcolor{accent}{\tau}\,(\text{treat}_i{\times}\text{post}_t) \;+\; X_i'\gamma_1 \;+\; (\text{post}_t \cdot X_i)'\gamma_2 \;+\; \varepsilon_{it}$
-\end{center}
-
-\vspace{0.7em}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item The $\gamma_1$ vector: $X$'s baseline effect (pre period).
-  \item The $\gamma_2$ vector: how $X$'s effect \textit{shifts} in post.
-\end{itemize}
-
-\vspace{0.5em}
-\begin{center}
-\small\color{warmgray}\itshape
-This is what saturating $X$ with the time index actually means. \;The post-period gets its own $X$-coefficient.
-\end{center}
-\end{frame}
-
-%% ---------- LL-14: Spec B in Stata ----------
-\begin{frame}[fragile]{Spec B in Stata}
-\vspace{0.6em}
-\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
-global X "age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75"
-
-reg re i.treat##i.post i.post##(c.($X))
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-15: Spec B in R ----------
-\begin{frame}[fragile]{Spec B in R}
-\vspace{0.6em}
-\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
-library(fixest)
-
-feols(re ~ treat*post
-        + post*(age + agesq + educ + educsq
-                + marr + nodegree + black + hisp
-                + re74 + re75 + u74 + u75),
-      data = d)
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-16: Spec B in Python ----------
-\begin{frame}[fragile]{Spec B in Python}
-\vspace{0.6em}
-\begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize]
-import statsmodels.formula.api as smf
-
-X = ("age + agesq + educ + educsq + marr + nodegree "
-     "+ black + hisp + re74 + re75 + u74 + u75")
-
-mod = smf.ols(f"re ~ treat*post + post*({X})", data=d).fit()
-print(mod.params["treat:post"])
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-17: Spec B result ----------
-\begin{frame}{Spec B result: \$1,184 --- much closer to \$1,794}
-\vspace{0.5em}
-\begin{center}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}lr@{}}
-\toprule
-RCT benchmark             & $\$1{,}794$ \\
-Spec 0 (no covariates)    & $\$3{,}522$ \\
-Spec A (additive $X$)     & $\$3{,}522$ \\
-\textbf{Spec B} ($\text{post} {\times} X$) & \highlight{$\$1{,}184$} \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-Not exact. \;But the movement is \textit{toward} the truth, not away from it. \;From \$1,728 above to \$610 below.
-\end{center}
-\end{frame}
-
-%% ---------- LL-Spec-C-1: Spec C — equation ----------
-\begin{frame}{Spec C: heterogeneous $\tau$ in $X$ --- the saturated approach}
-\footnotesize
-\textbf{The motivation.} \;If the treatment effect itself depends on $X$ (e.g., training works better for younger workers), then \textit{no} single $\hat{\tau}$ coefficient is the ATT. \;You need to model the heterogeneity and average correctly.
-
-\vspace{0.6em}
-\textbf{The two-step regression-adjustment / OR estimator} (Heckman, Ichimura \& Todd, 1997):
-\vspace{0.2em}
-\begin{enumerate}\setlength\itemsep{2pt}
-  \item Fit $\Delta Y \;=\; \alpha + X'\gamma + \nu$ on \textit{controls only}. \;(Models how $Y(0)$ trends as a function of $X$.)
-  \item Predict the counterfactual $\widehat{\Delta Y_i}$ for each treated unit. \;Compute $\hat\tau_i = \Delta Y_i - \widehat{\Delta Y_i}$.
-  \item $\widehat{\text{ATT}} = \tfrac{1}{N_{tr}}\sum_{i:D_i=1} \hat\tau_i$.
-\end{enumerate}
-
-\vspace{0.5em}
-\begin{center}
-\small\color{warmgray}\itshape
-Equivalent (but slower): run a fully saturated regression $Y \sim \text{treat}{\cdot}\text{post}{\cdot}X$, predict counterfactual, average over the treated $X$ distribution.
-\end{center}
-\end{frame}
-
-%% ---------- LL-Spec-C-2: Spec C in Stata ----------
-\begin{frame}[fragile]{Spec C in Stata}
-\vspace{0.4em}
-\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
-* Reshape to wide. dy = re_78 - re_75
-reshape wide re, i(id) j(year)
-gen dy = re78 - re75
-
-global X "age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75"
-
-* Step 1: regress dy on X using CONTROLS only
-reg dy $X if ever_treated == 0
-
-* Step 2: predict counterfactual dY_hat for treated
-predict dy_hat
-gen tau_hat = dy - dy_hat if ever_treated == 1
-
-* Step 3: ATT = mean of tau_hat over treated
-summarize tau_hat if ever_treated == 1
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-Spec-C-3: Spec C in R ----------
-\begin{frame}[fragile]{Spec C in R}
-\vspace{0.4em}
-\begin{lstlisting}[language=R,basicstyle=\ttfamily\scriptsize]
-library(dplyr); library(tidyr)
-
-wide <- d |>
-  pivot_wider(names_from = year, values_from = re,
-              names_prefix = "re_") |>
-  mutate(dy = re_78 - re_75)
-
-# Step 1: OR model on controls only
-or_model <- lm(dy ~ age + agesq + educ + educsq + marr + nodegree
-                  + black + hisp + re74 + re75 + u74 + u75,
-               data = wide |> filter(ever_treated == 0))
-
-# Step 2: predict counterfactual for treated
-treated <- wide |> filter(ever_treated == 1)
-treated$tau_hat <- treated$dy - predict(or_model, treated)
-
-# Step 3: ATT
-mean(treated$tau_hat)
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-Spec-C-4: Spec C in Python ----------
-\begin{frame}[fragile]{Spec C in Python}
-\vspace{0.4em}
-\begin{lstlisting}[language=Python,basicstyle=\ttfamily\scriptsize]
-import statsmodels.formula.api as smf
-
-wide = d.pivot(index="id", columns="year", values="re").reset_index()
-wide["dy"] = wide[78] - wide[75]
-# (merge ever_treated and the X's back in)
-
-X = ("age + agesq + educ + educsq + marr + nodegree "
-     "+ black + hisp + re74 + re75 + u74 + u75")
-
-# Step 1: OR model on controls
-or_model = smf.ols(f"dy ~ {X}",
-                   data=wide.query("ever_treated == 0")).fit()
-
-# Step 2: predict counterfactual for treated
-treated = wide.query("ever_treated == 1").copy()
-treated["tau_hat"] = treated["dy"] - or_model.predict(treated)
-
-# Step 3: ATT
-print(treated["tau_hat"].mean())
-\end{lstlisting}
-\end{frame}
-
-%% ---------- LL-Spec-C-5: Spec C result ----------
-\begin{frame}{Spec C result: \$1,263 --- closer still}
-\vspace{0.5em}
-\begin{center}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}lr@{}}
-\toprule
-RCT benchmark                                          & $\$1{,}794$ \\
-Spec 0 (no covariates)                                 & $\$3{,}522$ \\
-Spec A (additive $X$)                                  & $\$3{,}522$ \\
-Spec B ($\text{post}{\times}X$)                        & $\$1{,}184$ \\
-\textbf{Spec C} (saturated OR / regression adjustment) & \highlight{$\$1{,}263$} \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\vspace{0.6em}
-\begin{center}
-\small\color{warmgray}\itshape
-Allowing $\tau$ to depend on $X$ moves the estimate further toward the truth --- but no regression estimator gets all the way. \;That's why propensity-score matching (Dehejia--Wahba) and DR-DiD (Sant'Anna--Zhao) exist: \\they put $\widehat{p}(X)$ in the right place.
-\end{center}
-\end{frame}
-
-%% ---------- LL-18: Synthesis ----------
-\begin{frame}{What this buys you: conditional PT is credible}
-\vspace{0.5em}
-\textbf{LaLonde's lesson, three decades on:}
-\begin{itemize}\setlength\itemsep{3pt}
-  \item Without covariates, observational DiD on the non-experimental sample is \highlight{wrong}.
-  \item With covariates entered \textit{correctly} (interacted with post, or via matching / IPW / DR), it moves toward the truth.
-  \item Dehejia \& Wahba (2002) and S\l{}oczy\'{n}ski (recent) recover \$1,794 closely on this same data using propensity-score methods.
-\end{itemize}
-
-\vspace{0.6em}
-\highlight{Conditional PT is a real, defensible identifying assumption.} \;The empirical evidence is exactly this exercise --- and it's why the rest of the afternoon was worth the time.
-
-\vspace{0.4em}
-\meta{The lab: run the four covariate-aware estimators (TWFE-$X$, OR, IPW, DR-DiD) on the same data and see which one gets closest.}
-\end{frame}
-
-%% ---------- Lab: LaLonde with covariates ----------
-\begin{frame}{Lab: LaLonde under selection (\textit{the four estimators, one truth})}
-\vspace{0.3em}
-\begin{itemize}\small
-  \item \textbf{The benchmark.} The experimental NSW sample identifies the ATT by random assignment: \;\highlight{$\widehat{\text{ATT}}^{\text{RCT}} \approx \$1{,}700$ (1978 dollars)}. Compute it first.
-  \item \textbf{The non-experimental panel.} NSW treated $+$ a random CPS sample as the control. Selection bias is large and \textit{negative} --- naive DiD gives the wrong sign.
-  \item \textbf{Run all four estimators}, get an ATT, compare to \$1{,}700:
-  \begin{itemize}\footnotesize
-    \item[--] \textbf{TWFE-with-X} (interact Post $\times\;X$ --- without the interaction, FE sweeps them out)
-    \item[--] \textbf{OR} (Heckman--Ichimura--Todd 1997)
-    \item[--] \textbf{IPW} (Abadie 2005)
-    \item[--] \textbf{DR-DiD} (Sant'Anna--Zhao 2020): \texttt{drdid} with the \texttt{all} option
-  \end{itemize}
-  \item \textbf{Then answer:} which estimators move the ATT in the right direction? Which get closest? When does DR \textit{not} dominate? What does the propensity-score overlap plot show?
-\end{itemize}
-\vspace{0.3em}
-\meta{Walkthrough: \texttt{glasgow/labs/Lalonde-Covariates/README.md}. \;Data: \texttt{lalonde\_exp\_panel.dta} \& \texttt{lalonde\_nonexp\_panel.dta} on Mixtape-Sessions GitHub.}
-\end{frame}
-
 %% ---------- Recap ----------
 \begin{frame}{What we've done this afternoon}
 \vspace{0.3em}
@@ -2526,12 +1725,11 @@ Allowing $\tau$ to depend on $X$ moves the estimate further toward the truth ---
   \item IPW: reweight controls to look like the treated
   \item Doubly robust: pscore as a \textit{weight} (not regressor) + outcome model --- and why \textit{controlling for} the pscore is the trap
   \item Hidden linearity bias (Caetano-Callaway): \textit{same disease}, costume = TWFE-with-controls
-  \item Compositional change (Hong; Sant'Anna-Xu): when the \textit{units} shift, not $X$
 \end{enumerate}
 \vspace{0.5em}
 \begin{center}
 \small\color{warmgray}\itshape
-The unifying lesson: covariates on the additive RHS of an outcome regression impose constraints on $\tau$. \\
+The unifying lesson: covariates on the additive RHS of an outcome regression impose constraints on $\delta$. \\
 DR's escape is to use them as \highlight{weights}, not regressors.
 \end{center}
 \end{frame}

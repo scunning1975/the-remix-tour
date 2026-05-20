@@ -1,17 +1,20 @@
-\frametitle{DiD with additive $X$}
-\vspace{0.6em}
-\begin{center}
-\small
-\verb|reg re ever_treated##post X1 X2 ... Xk, robust|
-\end{center}
-\vspace{0.6em}
-\begin{itemize}\small
-  \item Pooled OLS on all years. \;No fixed effects.
-  \item Covariates enter \textit{linearly} with one slope --- same pre and post.
-  \item Identifies the ATT only if Assumptions 1--6 hold (parallel trends, no anticipation, SUTVA, homogeneous $\tau$ in $X$, parallel $X$-trends for treated and control).
-\end{itemize}
-\vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-This is what \texttt{lalonde-did-stata.do} actually computes on the non-experimental panel.
-\end{center}
+\frametitle{Spec E: DR-DiD (Sant'Anna \& Zhao 2020)}
+\textbf{Assumption.} \;Conditional PT, AND \textit{either} $\hat\mu_0$ or $\hat p(X)$ is correct (not both required).
+\vspace{0.3em}
+
+\textbf{Run --- by hand (in wide-FD form, \texttt{phat}/\texttt{dy\_hat} already computed):}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+gen dr_t = ever_treated * (dy - dy_hat) / `pr_treat'
+gen dr_c = (1 - ever_treated) * (phat/(1-phat)) * (dy - dy_hat) / `pr_treat'
+quietly sum dr_t
+local mt = r(mean)
+quietly sum dr_c
+display "DR ATT = " %9.0fc `mt' - r(mean)
+\end{lstlisting}
+
+\textbf{Cross-check with \texttt{drdid}:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\footnotesize]
+drdid re $X, time(year) ivar(id) tr(ever_treated) dripw
+\end{lstlisting}
+
+\textbf{Compare to \$1,794.}
