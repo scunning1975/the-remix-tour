@@ -168,18 +168,18 @@ Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, (D_i {\times} \text{post}_t)
 \vspace{0.8em}
 \begin{center}
 \footnotesize
-$\underbrace{\;\;\tau \text{ doesn't depend on } X\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias A}}
+$\underbrace{\;\;\tau \text{ doesn't depend on } X\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias}_{\text{HTE}}}
 \;\;\;
-\underbrace{\;\;X \text{ is balanced across groups}\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias B}}
+\underbrace{\;\;X \text{ has parallel trends across groups}\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias}_{\Delta X}}
 \;\;\;
-\underbrace{\;\;X \text{ varies within unit}\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias C}}$
+\underbrace{\;\;X \text{ varies within unit}\;\;}_{\textstyle\color{accent}\downarrow\;\;\textbf{Bias}_{\text{FE}}}$
 \end{center}
 
-\vspace{0.7em}
-\begin{itemize}\footnotesize
-  \item \textbf{Bias A.} \;If $\tau(X)$ is heterogeneous, TWFE fits one $\delta$ --- the wrong weighted average.
-  \item \textbf{Bias B.} \;If $X$ is imbalanced across groups and matters for $Y(0)$, the gap shows up in DiD as fake treatment.
-  \item \textbf{Bias C.} \;If $X$ is time-invariant, the FE transformation eats it. \;Time-invariant $Z$ needs $\text{Post}\times Z$.
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{1pt}\footnotesize
+  \item $\textbf{Bias}_{\textbf{HTE}}$. \;If $\tau(X)$ varies with $X$, TWFE fits one $\delta$. \;\textit{Y(1) problem.}
+  \item $\textbf{Bias}_{\boldsymbol{\Delta X}}$. \;If $X$ is imbalanced and drives $Y(0)$'s trend, PTA fails. \;\textit{Y(0) problem.}
+  \item $\textbf{Bias}_{\textbf{FE}}$. \;Time-invariant $X$ gets eaten by within-unit demeaning. \;Needs $\text{Post}\times X$.
 \end{itemize}
 \end{frame}
 
@@ -207,9 +207,16 @@ The value of $X$ is the same whether unit $i$ is treated or not. \;Equivalently:
 \meta{Implicit in everything that follows --- OR, IPW, DR all condition on $X$ and need this to hold.}
 \end{frame}
 
-%% ---------- L2-F0b1: Bias A in potential outcomes ----------
-\begin{frame}{Bias A: heterogeneous $\tau$ in $X$}
+%% =========================================================================
+%%   Bias_HTE — heterogeneous treatment effects in X. About Y(1).
+%% =========================================================================
+
+%% ---------- L2-HTE-1: Bias_HTE — intuition and PO ----------
+\begin{frame}{$\text{Bias}_{\text{HTE}}$: when treatment effects depend on $X$}
 \footnotesize
+\textbf{In plain English.} \;Treatment doesn't work the same for everyone. \;Younger workers gain more from training than older ones; men gain more than women. \;That heterogeneity lives in $Y(1)$.
+
+\vspace{0.5em}
 \textbf{In potential outcomes:}
 \[
 \tau(X) \;\equiv\; \mathbb{E}[Y(1) - Y(0) \mid X,\,D{=}1] \;\;\text{is a \textit{function} of } X.
@@ -219,45 +226,164 @@ The true ATT averages $\tau(X)$ over the treated $X$-distribution:
 \text{ATT} \;=\; \mathbb{E}\big[\tau(X) \mid D{=}1\big].
 \]
 
-\textbf{What TWFE-additive-$X$ fits:} \;one scalar $\hat{\delta}$ --- a weighted average of $\tau(X)$ whose weights depend on OLS mechanics (the variance of $D$ given $X$), \textit{not} the treated $X$-distribution.
+\textbf{What TWFE-additive-$X$ fits:} \;one scalar $\hat{\delta}$. \;A weighted average of $\tau(X)$ whose weights are determined by OLS mechanics, \textit{not} the treated $X$-distribution.
 
-\vspace{0.5em}
-\highlight{In plain English.} \;Treatment works better for some types of people than others (e.g., training helps younger workers more). \;TWFE fits one number for everyone --- a different weighted average than the one you wanted.
+\vspace{0.4em}
+\highlight{Note: PTA on $Y(0)$ can hold perfectly --- $\text{Bias}_{\text{HTE}}$ is a $Y(1)$ problem, not a $Y(0)$ problem.}
 \end{frame}
 
-%% ---------- L2-F0b2: Bias B in potential outcomes ----------
-\begin{frame}{Bias B: $X$ moves differently over time across groups}
+%% ---------- L2-HTE-2: Bias_HTE — Stata, building Y(0) and Y(1) by hand ----------
+\begin{frame}[fragile]{$\text{Bias}_{\text{HTE}}$ in Stata}
 \footnotesize
-\textbf{For PT-on-$Y$ to hold under the TWFE-additive-$X$ model:}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+* Y(0): same for everyone of a given age
+gen y0 = 1000 + 5*age + rnormal(0, 10)
+
+* Y(1) = Y(0) + tau(X). Treatment effect grows with age.
+gen y1 = y0 + 200 + 50*age           // tau(age) = 200 + 50*age
+gen tau = y1 - y0                    // varies by age
+
+* True ATT (over treated X-distribution)
+summarize tau if treat == 1
+\end{lstlisting}
+
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item Look at $\tau$: \;\;$\tau_i = 200 + 50\,\text{age}_i$. \;Not a constant.
+  \item TWFE-additive-$X$ on the panel returns one $\hat{\delta}$. \;That number is a weighted average of $\tau$ that doesn't match $\mathbb{E}[\tau \mid D=1]$.
+\end{itemize}
+\end{frame}
+
+%% =========================================================================
+%%   Bias_DeltaX — Y(0) trend depends on X with X imbalance. About Y(0).
+%% =========================================================================
+
+%% ---------- L2-DX-1: Bias_DeltaX — lead with the RCT intuition ----------
+\begin{frame}{$\text{Bias}_{\Delta X}$: imbalance in $X$ that drives $Y(0)$}
+\footnotesize
+\textbf{The RCT analogy.} \;Earnings $Y$ depends on a million $X$s (gender, age, education, neighborhood, ...). \;Randomization \textit{balances} those $X$s across treatment and control, so the $X \to Y$ channels cancel.
+
+\vspace{0.5em}
+\textbf{DiD without randomization.} \;If treated and control look different on $X$, and those $X$s drive $Y(0)$'s trend, then the group-level $Y(0)$ trends differ --- and PTA on $Y(0)$ fails.
+
+\vspace{0.5em}
+\textbf{A simple example.} \;Earnings change: \;men $+\$2$, women $+\$1$. \;Same for everyone (no treatment effect).
+\begin{itemize}\setlength\itemsep{2pt}
+  \item Treated 75\% male, control 25\% male:
+  \item $\;\;\mathbb{E}[\Delta Y(0) \mid D{=}1] = 0.75(2) + 0.25(1) = 1.75$
+  \item $\;\;\mathbb{E}[\Delta Y(0) \mid D{=}0] = 0.25(2) + 0.75(1) = 1.25$
+  \item Naive DiD: \;\highlight{$+0.50$ --- pure imbalance bias.}
+\end{itemize}
+\end{frame}
+
+%% ---------- L2-DX-2: Bias_DeltaX — the PO formalization ----------
+\begin{frame}{$\text{Bias}_{\Delta X}$: the formal statement}
+\footnotesize
+\textbf{PTA on $Y(0)$:}
 \[
 \mathbb{E}[\Delta Y(0) \mid D{=}1] \;=\; \mathbb{E}[\Delta Y(0) \mid D{=}0].
 \]
-Under the model $Y(0)_{it} = \alpha_i + \gamma_t + \beta X_{it} + \varepsilon$, this requires:
+
+\vspace{0.3em}
+\textbf{Under TWFE-additive-$X$} $\big(Y(0)_{it} = \alpha_i + \gamma_t + \beta X_{it} + \varepsilon\big)$:
 \[
 \beta \cdot \big(\mathbb{E}[\Delta X \mid D{=}1] - \mathbb{E}[\Delta X \mid D{=}0]\big) \;=\; 0.
 \]
-Two ways for this to hold: \;$\beta = 0$ (the covariate is irrelevant), or $\Delta X^T = \Delta X^C$ ($X$ trends the same way across groups). \;Otherwise: bias.
+
+\vspace{0.3em}
+For this to hold: \;either $\beta = 0$ ($X$ doesn't matter for $Y(0)$), or $\Delta X^T = \Delta X^C$ \;($X$ trends are \textit{parallel} across groups).
 
 \vspace{0.5em}
-\highlight{In plain English.} \;The covariate trends differently for treated and control --- say, the policy nudged $X$ for one group but not the other --- and because $Y$ depends on $X$, that group difference shows up in the DiD as a fake treatment effect.
+\highlight{The imbalance is the engine.} \;If $X$ matters for $Y(0)$ and $X$ is distributed differently across groups, PTA fails. \;Whether $\beta$ is constant or changes over time is second-order --- the cross-group $X$-gap is what bites.
 \end{frame}
 
-%% ---------- L2-F0b3: Bias C in potential outcomes ----------
-\begin{frame}{Bias C: the FE transformation eats time-invariant covariates}
+%% ---------- L2-DX-3: Bias_DeltaX — Stata, gender example ----------
+\begin{frame}[fragile]{$\text{Bias}_{\Delta X}$ in Stata}
 \footnotesize
-\textbf{Within-unit demeaning:} \;$\tilde{X}_{it} = X_{it} - \bar{X}_i$. \;If $X$ is time-invariant for unit $i$ (race, education at baseline, pre-program earnings), then $\tilde{X}_{it} = 0$ in every period.
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+* Gender is time-invariant. Treatment composition: 75% male treated,
+* 25% male control. Y(0) trend depends on gender.
+*   delta Y(0) = +2 for men, +1 for women   (no treatment effect)
+
+gen y0_pre  = 1000 + 100*male + rnormal(0, 5)
+gen y0_post = y0_pre + 2*male + 1*(1 - male)
+
+* What naive DiD picks up on the non-experimental sample
+mean y0_post if treat == 1                 // 1.75 in expectation
+mean y0_post if treat == 0                 // 1.25 in expectation
+\end{lstlisting}
+
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item Look at $\Delta Y(0)$: \;different for men and women, but no treatment effect anywhere.
+  \item Cross-group DiD: $1.75 - 1.25 = 0.50$. \;Pure imbalance.
+\end{itemize}
+\end{frame}
+
+%% ---------- L2-DX-4: Balance tables — heuristic check, NOT identification ----------
+\begin{frame}{Heuristic check: balance tables on $X$}
+\footnotesize
+You can't test PTA on $Y(0)$ directly --- it's counterfactual.
+
+\vspace{0.4em}
+\textbf{What you CAN check:} \;is $X$ balanced across treated and control?
+\begin{itemize}\setlength\itemsep{2pt}
+  \item \textbf{Levels} ($\mathbb{E}[X \mid D{=}1] = \mathbb{E}[X \mid D{=}0]$?) --- matters when $X$'s effect varies over time.
+  \item \textbf{Trends} ($\mathbb{E}[\Delta X \mid D{=}1] = \mathbb{E}[\Delta X \mid D{=}0]$?) --- matters under constant $\beta$.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{Baker et al.\ (2025, \textit{Journal of Economic Literature}) Table 2} reports both: a panel of pre-period $X$ levels and a panel of $X$ differences across years. \;Both panels matter because both are channels through which imbalance creates $\text{Bias}_{\Delta X}$.
+
+\vspace{0.5em}
+\highlight{Identification vs.\ heuristic.} \;PTA on $Y(0)$ is the identifying assumption. \;Balance on $X$ is a heuristic check. \;Same epistemic status as the pre-period parallel-trends test: it's evidence, not proof.
+\end{frame}
+
+%% =========================================================================
+%%   Bias_FE — time-invariant X eaten by the FE transformation.
+%% =========================================================================
+
+%% ---------- L2-FE-1: Bias_FE — intuition ----------
+\begin{frame}{$\text{Bias}_{\text{FE}}$: the FE transformation eats time-invariant $X$}
+\footnotesize
+\textbf{Within-unit demeaning:} \;$\tilde{X}_{it} = X_{it} - \bar{X}_i$. \;If $X$ is time-invariant within unit (race, education at baseline, pre-program earnings), then $\tilde{X}_{it} = 0$ in every period.
 
 \vspace{0.5em}
 \[
 \text{TWFE-additive-}X \;\;\text{ estimates as if those covariates were} \;\; 0.
 \]
-The same goes for any time-invariant $Z$. \;\;\textit{What you wrote as a control isn't what the regression conditioned on.}
+What you wrote as a control isn't what the regression conditioned on.
 
 \vspace{0.5em}
-\textbf{The fix:} \;$Z$ has to enter as $(\text{Post}\times Z)$ --- which the FE cannot eat, because post varies within unit.
+\textbf{The fix:} \;enter $X$ as $\text{Post} \times X$. \;Post varies within unit, so the FE cannot eat the interaction.
 
 \vspace{0.5em}
-\highlight{In plain English.} \;You thought you controlled for race in LaLonde. The regression didn't see race --- it demeaned it to zero. That's why additive-$X$ on LaLonde gives the same answer as no covariates at all.
+\highlight{In plain English.} \;You thought you controlled for race in LaLonde. \;The regression didn't see race. \;That's why additive-$X$ on LaLonde gives the same answer as no covariates at all.
+\end{frame}
+
+%% ---------- L2-FE-2: Bias_FE in Stata ----------
+\begin{frame}[fragile]{$\text{Bias}_{\text{FE}}$ in Stata}
+\footnotesize
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+* Z is time-invariant: race, sex, education at baseline.
+* Z's effect on Y appears only in the post period.
+
+gen z       = (race == 1)            // time-invariant baseline
+gen y0_pre  = 1000 + alpha_i + rnormal(0, 5)
+gen y0_post = y0_pre + 100 + 500*z   // Z bites in post
+
+* Additive-X (without Post*Z):
+reghdfe y z, absorb(id year) cluster(id)   // Z is collinear with FE, dropped
+
+* The fix:
+reghdfe y c.z##i.post, absorb(id year) cluster(id)   // Post*Z survives
+\end{lstlisting}
+
+\vspace{0.3em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item Top regression: $Z$ has no effect because the FE absorbs it.
+  \item Bottom regression: $\text{Post}\times Z$ survives the FE transformation.
+\end{itemize}
 \end{frame}
 
 %% ---------- L2-F2b: PROOF step 1 — TWFE-with-X and the conditional-PT identity ----------
@@ -581,22 +707,44 @@ Additive-$X$ TWFE is one regression that silently assumes \textit{all three} of 
 %% ---------- L2-F2o: The proper TWFE spec for Biases B and C ----------
 \begin{frame}{The proper TWFE spec --- and what it still can't handle}
 \footnotesize
-\textbf{To kill Bias B and Bias C inside TWFE, you need:}
+\textbf{To kill $\text{Bias}_{\Delta X}$ and $\text{Bias}_{\text{FE}}$ inside TWFE, you need:}
 \[
 Y_{it} \;=\; \alpha_i + \gamma_t + \delta\,(D_i{\times}\text{post}_t) \;+\; X_{it}'\gamma_X \;+\; (\text{post}_t \cdot X_{it})'\gamma_{pX} \;+\; (\text{post}_t \cdot Z_i)'\gamma_{pZ} \;+\; \varepsilon_{it}
 \]
 
 \vspace{0.4em}
 \begin{itemize}\setlength\itemsep{2pt}
-  \item $(\text{post}\times X)$ handles Bias B: lets $X$'s effect shift at the policy break.
-  \item $(\text{post}\times Z)$ handles Bias C: rescues time-invariant baseline characteristics from the FE.
+  \item $(\text{post}\times X)$ handles $\text{Bias}_{\Delta X}$: lets $X$'s effect shift at the policy break.
+  \item $(\text{post}\times Z)$ handles $\text{Bias}_{\text{FE}}$: rescues time-invariant baseline characteristics from the FE.
 \end{itemize}
 
 \vspace{0.5em}
-\textbf{What this spec \textit{cannot} fix:} \;Bias A. \;If $\tau$ depends on $X$, no single $\hat\delta$ recovers the ATT.
+\textbf{What this spec \textit{cannot} fix:} \;$\text{Bias}_{\text{HTE}}$. \;If $\tau$ depends on $X$, no single $\hat\delta$ recovers the ATT.
 
 \vspace{0.4em}
-\highlight{The next move: estimators that handle Bias A by averaging over the treated $X$-distribution explicitly.}
+\highlight{The next move: estimators that handle $\text{Bias}_{\text{HTE}}$ by averaging $\tau(X)$ over the treated $X$-distribution explicitly.}
+\end{frame}
+
+%% ---------- L2-F2o2: Fully saturated TWFE = OR/IPW/DR semiparametrically ----------
+\begin{frame}{Fully saturated TWFE \textit{is} what OR/IPW/DR do}
+\footnotesize
+\textbf{To handle $\text{Bias}_{\text{HTE}}$ inside TWFE, you'd saturate:}
+
+\vspace{-0.2em}
+\[
+Y \;=\; \alpha_i + \gamma_t + (D{\times}\text{post})\,\big[\,\delta_0 + X'\delta_X\,\big] + X'\gamma + (\text{post}{\cdot} X)'\gamma_p + (D {\cdot}X)'\gamma_D + \cdots
+\]
+
+Every covariate gets $D{\times}X$, $\text{post}{\times}X$, and $D{\times}\text{post}{\times}X$ interactions. \;Then average the fitted $\tau(X)$ over the treated $X$-distribution to get the ATT.
+
+\vspace{0.5em}
+\textbf{This works.} \;It's also unwieldy --- 100 interaction terms for 25 covariates, and you have to compute the ATT yourself.
+
+\vspace{0.5em}
+\highlight{OR, IPW, and DR are doing exactly this --- semiparametrically.} \;Each models $\widehat{\mu}_0(X)$ or $\widehat{p}(X)$ once and uses it where the saturation would have gone.
+
+\vspace{0.3em}
+\meta{OR/IPW/DR aren't magic. They're efficient implementations of saturated TWFE.}
 \end{frame}
 
 %% ---------- L2-F2p: Three doors to the same fix ----------
