@@ -709,20 +709,20 @@ Additive-$X$ TWFE is one regression that silently assumes \textit{all three} of 
 \footnotesize
 \textbf{To kill $\text{Bias}_{\Delta X}$ and $\text{Bias}_{\text{FE}}$ inside TWFE, you need:}
 \[
-Y_{it} \;=\; \alpha_i + \gamma_t + \delta\,(D_i{\times}\text{post}_t) \;+\; X_{it}'\gamma_X \;+\; (\text{post}_t \cdot X_{it})'\gamma_{pX} \;+\; (\text{post}_t \cdot Z_i)'\gamma_{pZ} \;+\; \varepsilon_{it}
+Y_{it} \;=\; \alpha_i + \gamma_t + \delta\,(D_i{\times}\text{post}_t) \;+\; X_{i,0}'\gamma_X \;+\; (\text{post}_t \cdot X_{i,0})'\gamma_{pX} \;+\; (\text{post}_t \cdot Z_i)'\gamma_{pZ} \;+\; \varepsilon_{it}
 \]
 
 \vspace{0.4em}
 \begin{itemize}\setlength\itemsep{2pt}
-  \item $(\text{post}\times X)$ handles $\text{Bias}_{\Delta X}$: lets $X$'s effect shift at the policy break.
+  \item $(\text{post}\times X_{i,0})$ handles $\text{Bias}_{\Delta X}$: lets the \textit{pre-period} value of $X$ get a different slope in post.
   \item $(\text{post}\times Z)$ handles $\text{Bias}_{\text{FE}}$: rescues time-invariant baseline characteristics from the FE.
 \end{itemize}
 
-\vspace{0.5em}
-\textbf{What this spec \textit{cannot} fix:} \;$\text{Bias}_{\text{HTE}}$. \;If $\tau$ depends on $X$, no single $\hat\delta$ recovers the ATT.
+\vspace{0.4em}
+\highlight{Note the subscript $i,0$.} \;Use the \textit{pre-period} value of $X$ throughout. \;If you interact $D$ or post with the contemporaneous $X_{it}$, you're conditioning on a post-treatment variable --- bad control (Angrist--Pischke). \;Baseline $X_{i,0}$ satisfies $X_{i,0}(1) = X_{i,0}(0)$ by construction.
 
 \vspace{0.4em}
-\highlight{The next move: estimators that handle $\text{Bias}_{\text{HTE}}$ by averaging $\tau(X)$ over the treated $X$-distribution explicitly.}
+\textbf{What this spec \textit{cannot} fix:} \;$\text{Bias}_{\text{HTE}}$. \;If $\tau$ depends on $X$, no single $\hat\delta$ recovers the ATT.
 \end{frame}
 
 %% ---------- L2-F2o2: Fully saturated TWFE = OR/IPW/DR semiparametrically ----------
@@ -732,19 +732,40 @@ Y_{it} \;=\; \alpha_i + \gamma_t + \delta\,(D_i{\times}\text{post}_t) \;+\; X_{i
 
 \vspace{-0.2em}
 \[
-Y \;=\; \alpha_i + \gamma_t + (D{\times}\text{post})\,\big[\,\delta_0 + X'\delta_X\,\big] + X'\gamma + (\text{post}{\cdot} X)'\gamma_p + (D {\cdot}X)'\gamma_D + \cdots
+Y \;=\; \alpha_i + \gamma_t + (D{\times}\text{post})\big[\delta_0 + X_{i,0}'\delta_X\big] + X_{i,0}'\gamma + (\text{post}{\cdot} X_{i,0})'\gamma_p + \cdots
 \]
 
-Every covariate gets $D{\times}X$, $\text{post}{\times}X$, and $D{\times}\text{post}{\times}X$ interactions. \;Then average the fitted $\tau(X)$ over the treated $X$-distribution to get the ATT.
+Every (pre-period) covariate gets $D{\times}X_{i,0}$, $\text{post}{\times}X_{i,0}$, and $D{\times}\text{post}{\times}X_{i,0}$ interactions. \;Then average the fitted $\tau(X_{i,0})$ over the treated $X$-distribution.
 
 \vspace{0.5em}
-\textbf{This works.} \;It's also unwieldy --- 100 interaction terms for 25 covariates, and you have to compute the ATT yourself.
+\textbf{In principle this works. In practice it's a minefield:}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item \textbf{True saturation discretizes $X$.} \;Continuous $X$ has to be binned. \;Rare cells $\to$ sparseness $\to$ same support failures IPW warns about.
+  \item \textbf{Post-period $X$ is a bad control.} \;Use $X_{i,0}$, not $X_{it}$.
+  \item \textbf{You still have to compute the ATT.} \;The headline coefficient at $X=0$ isn't it. \;Average $\hat\tau(X_{i,0})$ over the treated $X_{i,0}$-distribution.
+\end{itemize}
+
+\vspace{0.4em}
+\highlight{OR, IPW, and DR do this semiparametrically.} \;Model $\widehat{\mu}_0(X)$ or $\widehat{p}(X)$ once; let the estimator do the saturation work and the ATT average for you.
+\end{frame}
+
+%% ---------- L2-F2o3: Practical pitfalls ----------
+\begin{frame}{Why this matters in practice}
+\footnotesize
+\textbf{The methodology isn't just elegance --- it's protection.} \;Three traps researchers actually fall into:
 
 \vspace{0.5em}
-\highlight{OR, IPW, and DR are doing exactly this --- semiparametrically.} \;Each models $\widehat{\mu}_0(X)$ or $\widehat{p}(X)$ once and uses it where the saturation would have gone.
+\begin{itemize}\setlength\itemsep{4pt}
+  \item \textbf{Post-treatment $X$ used as a control.} \;Bad control. \;Almost no one explicitly defends pre-period $X$, but the choice changes the answer.
+  \item \textbf{Software defaults.} \;\texttt{xtreg}, \texttt{reghdfe} silently drop a base category. \;The dropped category is the implicit reference point; coefficient interpretation depends on which one was dropped. \;A misread of the printed table can flip a sign.
+  \item \textbf{Reporting the coefficient as ``the ATT''} when it's the effect \textit{at} $X=0$ --- not the ATT averaged over the treated $X$-distribution.
+\end{itemize}
 
-\vspace{0.3em}
-\meta{OR/IPW/DR aren't magic. They're efficient implementations of saturated TWFE.}
+\vspace{0.5em}
+\highlight{OR / IPW / DR don't make these mistakes available.} \;The saturation lives inside the estimator. \;Defaults are sensible. \;The output is the ATT.
+
+\vspace{0.4em}
+\meta{The point isn't that saturated TWFE is wrong. It's that it's a knife held the wrong way. \;OR/IPW/DR are the same knife, sheathed.}
 \end{frame}
 
 %% ---------- L2-F2p: Three doors to the same fix ----------
