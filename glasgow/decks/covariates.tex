@@ -154,6 +154,26 @@ $\mathbb{E}[\Delta Y(0) \mid D{=}1, X] = \mathbb{E}[\Delta Y(0) \mid D{=}0, X]$.
 \meta{The first PTA written down was the conditional one. \;The unconditional one is what the textbook taught next.}
 \end{frame}
 
+%% ---------- L2-F2: TWFE with controls ----------
+\begin{frame}{The TWFE-with-controls regression --- and the three assumptions it hides}
+\vspace{0.4em}
+\[
+Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, (T_t \times D_i) \;+\; \beta\, X_{it} \;+\; \varepsilon_{it}
+\]
+\vspace{0.1em}
+\begin{itemize}\small
+  \item Standard move: add $X_{it}$ to the TWFE. \;\; \textit{``Sure! If you're willing to impose three more assumptions.''}
+  \item \textbf{(1) Additive functional form} in $X$ (linear, no $D \times X$ interaction).
+  \item \textbf{(2) Homogeneous treatment effects} in $X$ (the slope $\beta$ doesn't depend on $D$).
+  \item \textbf{(3) No $X$-specific trends differing across treated and control.}
+\end{itemize}
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+Next slide: the proof of (2). Where does the homogeneity-in-$X$ assumption come from? Trace it through the conditional expectations.
+\end{center}
+\end{frame}
+
 %% ---------- L2-F0z: One more setup assumption — X doesn't respond to treatment ----------
 \begin{frame}{One more setup: $X$ doesn't respond to treatment}
 \footnotesize
@@ -176,21 +196,6 @@ The value of $X$ is the same whether unit $i$ is treated or not. \;Equivalently:
 
 \vspace{0.4em}
 \meta{Implicit in everything that follows --- OR, IPW, DR all condition on $X$ and need this to hold.}
-\end{frame}
-
-%% ---------- L2-F0a: Lead with three biases (C-C decomp slide removed — redundant with the PO slides) ----------
-\begin{frame}{TWFE-with-controls doesn't identify the ATT --- three biases}
-\vspace{0.6em}
-The workhorse: \;$Y_{it} = \alpha_i + \gamma_t + \delta\,(D_i {\times} \text{post}_t) + \beta\,X_{it} + \varepsilon_{it}$.
-\vspace{0.6em}
-\begin{itemize}\setlength\itemsep{4pt}
-  \item Even under conditional PT, $\widehat{\delta}$ is \textit{not} the ATT in general.
-  \item Three different biases can creep in. Each comes from a separate assumption you didn't realize you were making.
-  \item Each gets its own slide next: \;\textbf{A} (heterogeneous $\tau$), \;\textbf{B} ($X$-trends differ), \;\textbf{C} (FE eats time-invariant $X$).
-\end{itemize}
-
-\vspace{0.4em}
-\meta{All three are formalized in Caetano \& Callaway (2024); we'll cite back to them at the synthesis.}
 \end{frame}
 
 %% ---------- L2-F0b1: Bias A in potential outcomes ----------
@@ -244,45 +249,6 @@ The same goes for any time-invariant $Z$. \;\;\textit{What you wrote as a contro
 
 \vspace{0.5em}
 \highlight{In plain English.} \;You thought you controlled for race in LaLonde. The regression didn't see race --- it demeaned it to zero. That's why additive-$X$ on LaLonde gives the same answer as no covariates at all.
-\end{frame}
-
-%% ---------- L2-F1: OR narrative ----------
-\begin{frame}{Outcome regression: model the trend, impute the counterfactual}
-\vspace{0.5em}
-\textbf{Heckman, Ichimura \& Todd (1997).}
-\vspace{0.4em}
-\begin{enumerate}
-  \item Use \textit{only the control group} to fit a model of $\Delta Y$ on $X$:
-  \begin{center}\small $\widehat{\mu}_0(X) \;=\; \widehat{\mathbb{E}}[\Delta Y \mid D{=}0, X]$ \end{center}
-  \item For each treated unit, predict the counterfactual trend $\widehat{\mu}_0(X_i)$.
-  \item The OR-DiD estimator:
-  \begin{center}
-  \small
-  $\widehat{\delta}_{\text{OR}} \;=\; \dfrac{1}{N_1}\displaystyle\sum_{i:\, D_i=1}\big(\Delta Y_i \;-\; \widehat{\mu}_0(X_i)\big)$
-  \end{center}
-\end{enumerate}
-\vspace{0.4em}
-\highlight{Interpretation:} OR \textit{imputes} what the treated would have done if untreated --- using only the control group's $X$-to-trend mapping.
-\end{frame}
-
-%% ---------- L2-F2: TWFE with controls ----------
-\begin{frame}{The TWFE-with-controls regression --- and the three assumptions it hides}
-\vspace{0.4em}
-\[
-Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, (T_t \times D_i) \;+\; \beta\, X_{it} \;+\; \varepsilon_{it}
-\]
-\vspace{0.1em}
-\begin{itemize}\small
-  \item Standard move: add $X_{it}$ to the TWFE. \;\; \textit{``Sure! If you're willing to impose three more assumptions.''}
-  \item \textbf{(1) Additive functional form} in $X$ (linear, no $D \times X$ interaction).
-  \item \textbf{(2) Homogeneous treatment effects} in $X$ (the slope $\beta$ doesn't depend on $D$).
-  \item \textbf{(3) No $X$-specific trends differing across treated and control.}
-\end{itemize}
-\vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-Next slide: the proof of (2). Where does the homogeneity-in-$X$ assumption come from? Trace it through the conditional expectations.
-\end{center}
 \end{frame}
 
 %% ---------- L2-F2b: PROOF step 1 — TWFE-with-X and the conditional-PT identity ----------
@@ -350,6 +316,32 @@ Both potential outcomes carry the \textit{same} $\beta$ in $X$. \;Subtract: ATT 
   \item If $\beta_1 \neq \beta_2$, the treatment effect \textit{depends on $X$}.
   \item TWFE fits \highlight{one} $\beta$, not two.
   \item So $\widehat{\delta}$ recovers the ATT only when $\beta_1 = \beta_2$.
+\end{itemize}
+\end{frame}
+
+%% ---------- L2-F2d2: Stata simulation showing heterogeneous tau in X ----------
+\begin{frame}[fragile]{Heterogeneous $\tau(X)$ in code: build $Y(0)$ and $Y(1)$ by hand}
+\footnotesize
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+* Y(0) as a function of two covariates (age and gpa)
+gen y0 = 15000 + 10.25*age - 10.5*age_sq                ///
+              + 1000*gpa  - 10.5*gpa_sq                 ///
+              + 500*age*gpa + rnormal(0, 5)
+
+* Y(1) is Y(0) PLUS a treatment effect that varies with X
+gen y1    = y0 + 2500 + 100*age + 1000*gpa
+gen delta = y1 - y0      // tau(X) = 2500 + 100*age + 1000*gpa
+
+summarize delta              // ATE
+summarize delta if treat==1  // ATT
+\end{lstlisting}
+
+\vspace{0.4em}
+\textbf{Look at the construction.}
+\begin{itemize}\setlength\itemsep{1pt}
+  \item Look at $Y(0)$. \;Look at $Y(1)$. \;\highlight{Look how $Y(1)$ varies with $X$.}
+  \item $\tau_i = 2500 + 100\,\text{age}_i + 1000\,\text{gpa}_i$ --- a 1-year-older worker gets \$100 more from training; a 1-GPA-point higher worker gets \$1{,}000 more.
+  \item ATE $\neq$ ATT whenever treated and control $X$-distributions differ. \;\;\meta{$\to$ balancing tables next.}
 \end{itemize}
 \end{frame}
 
@@ -618,6 +610,25 @@ Three estimators that handle heterogeneous $\tau(X)$ --- each does it differentl
 \small\color{warmgray}\itshape
 Three doors, same room. \;The choice between them is mostly a choice about which model you'd rather defend.
 \end{center}
+\end{frame}
+
+%% ---------- L2-F1: OR narrative ----------
+\begin{frame}{Outcome regression: model the trend, impute the counterfactual}
+\vspace{0.5em}
+\textbf{Heckman, Ichimura \& Todd (1997).}
+\vspace{0.4em}
+\begin{enumerate}
+  \item Use \textit{only the control group} to fit a model of $\Delta Y$ on $X$:
+  \begin{center}\small $\widehat{\mu}_0(X) \;=\; \widehat{\mathbb{E}}[\Delta Y \mid D{=}0, X]$ \end{center}
+  \item For each treated unit, predict the counterfactual trend $\widehat{\mu}_0(X_i)$.
+  \item The OR-DiD estimator:
+  \begin{center}
+  \small
+  $\widehat{\delta}_{\text{OR}} \;=\; \dfrac{1}{N_1}\displaystyle\sum_{i:\, D_i=1}\big(\Delta Y_i \;-\; \widehat{\mu}_0(X_i)\big)$
+  \end{center}
+\end{enumerate}
+\vspace{0.4em}
+\highlight{Interpretation:} OR \textit{imputes} what the treated would have done if untreated --- using only the control group's $X$-to-trend mapping.
 \end{frame}
 
 %% ---------- L2-F3: OR caution ----------
