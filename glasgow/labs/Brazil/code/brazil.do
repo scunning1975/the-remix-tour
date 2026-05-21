@@ -127,7 +127,7 @@ restore
 
 
 * Step 3. Plot the treatment rollout using grayscale colors
-panelview homicide_rate ca, prepost bytiming i(cod) t(ano) type(treat) xtitle("Year") ylabel(none) ytitle("Brazil municipalities") mycolor("#f0f0f0" "#a0a0a0" "#505050") title("Rollout of CAPS Centers") legend(label(1 "Never Treated") label(2 "Treated (Pre)") label(3 "Treated (Post)"))
+panelview homicide_rate ca, prepost bytiming i(cod) t(ano) type(treat) xtitle("Year") ylabel(none) ytitle("Brazil municipalities")  title("Rollout of CAPS Centers") legend(position(6) label(1 "Never Treated") label(2 "Treated (Pre)") label(3 "Treated (Post)"))
 graph export "./brazil_rollout.png", as(png) name("Graph") replace width(2000)
 
 * Step 4. Plot evolution of homicide_rate by cohort
@@ -347,7 +347,7 @@ drop if pscore>0.995 & treat==0 & ano==2002
 
 global controls pop20a29anoslino pop40a49anoslino pop50a59anoslino pop60a69anoslino pop70a79anoslino pop10a19anosnino pop20a29anosnino pop50a59anosnino pop60a69anosnino pop70a79anosnino rural theil2000trend lnsaudepctrend poptotaltrend 
 
-csdid homicide_rate $controls, gvar(g) ivar(cod) time(ano) long2 method(drimp) wboot reps(1000) notyet rseed(1)
+csdid homicide_rate $controls, gvar(g) ivar(cod) time(ano) long2 method(dripw) wboot reps(1000) notyet rseed(1)
 csdid_estat simple
 csdid_estat group
 csdid_estat event
