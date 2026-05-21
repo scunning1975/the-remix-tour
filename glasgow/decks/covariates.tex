@@ -792,8 +792,90 @@ Three doors, same room. \;The choice between them is mostly a choice about which
 \end{center}
 \end{frame}
 
-%% ---------- L2-F1: OR narrative ----------
-\begin{frame}{Outcome regression: model the trend, impute the counterfactual}
+%% ---------- L2-OR-history: Oaxaca-Blinder lineage ----------
+\begin{frame}{A long lineage: Oaxaca, Blinder, and what's coming}
+\footnotesize
+\textbf{The wage-gap question (1973).} \;Two groups have different average wages. \;How much of the gap is differences in $X$ (education, experience)? \;How much is differences in \textit{returns} to $X$?
+
+\vspace{0.5em}
+Oaxaca (\textit{IER} 1973) and Blinder (\textit{JHR} 1973) fit a separate regression in each group and asked:
+
+\vspace{0.3em}
+\begin{center}
+\highlight{What would Group A's wages look like under Group B's coefficients?}
+\end{center}
+
+\vspace{0.6em}
+\textbf{The same idea travels:}
+\begin{itemize}\setlength\itemsep{1pt}\footnotesize
+  \item \textbf{Heckman--Ichimura--Todd (1997).} \;Import into DiD as \textit{outcome regression}.
+  \item \textbf{Wooldridge \& Słoczyński (recent).} \;TWFE with rich $D \times X$ interactions \textit{is} regression adjustment.
+  \item \textbf{Borusyak--Jaravel--Spiess (2024).} \;``Imputation estimator'' --- numerically identical to TWFE-RA in staggered DiD.
+\end{itemize}
+
+\vspace{0.4em}
+\meta{Different vocabularies. \;Same machinery for fifty years. \;HIT 1997 is the DiD form. \;Here's how it works.}
+\end{frame}
+
+%% ---------- L2-OR-bridge: FD turns DiD into cross-sectional OB ----------
+\begin{frame}{First-difference: DiD becomes cross-sectional Oaxaca-Blinder}
+\footnotesize
+\textbf{The step that does the heavy lifting.} \;Take $\Delta Y_i = Y_{i,\text{post}} - Y_{i,\text{pre}}$. \;Each unit's two-period panel collapses to \textit{one number}.
+
+\vspace{0.5em}
+The DiD problem becomes a cross-section:
+\begin{center}
+\highlight{compare $\Delta Y$ across $D=0$ and $D=1$, conditional on $X$.}
+\end{center}
+
+\vspace{0.5em}
+\textbf{This is Oaxaca-Blinder's home turf.} \;Two groups, one outcome (now $\Delta Y$), a covariate vector, the same counterfactual question --- evaluate one group's data at the other group's regression coefficients.
+
+\vspace{0.6em}
+\textbf{Bonus, structural.} \;The $X$ in the cross-section is mechanically the \textit{baseline} $X$ --- measured at $t = 0$, before treatment. \;Post-treatment $X$ never enters the regression.
+
+\vspace{0.3em}
+\begin{center}
+\highlight{OR has no bad-control problem by construction.} \;FD solved it before we asked.
+\end{center}
+\end{frame}
+
+%% ---------- L2-OR-three-targets: same machine, three estimands ----------
+\begin{frame}{Same machine, three targets: ATE, ATT, ATU}
+\footnotesize
+The cross-sectional regressions on $\Delta Y$ give you a conditional treatment effect at each $X$:
+\vspace{-0.1em}
+\[
+\delta(X) \;=\; \widehat\mu_1(X) - \widehat\mu_0(X)
+\;=\; \widehat{\mathbb{E}}[\Delta Y \mid D{=}1, X] - \widehat{\mathbb{E}}[\Delta Y \mid D{=}0, X]
+\]
+
+\vspace{0.3em}
+\textbf{What you average $\delta(X)$ over determines the estimand:}
+\vspace{0.2em}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Average over} & \textbf{Estimand} & \textbf{Question it answers} \\
+\midrule
+all units, full $X$ distribution             & ATE  & ``population-average effect'' \\
+treated units, $X \mid D{=}1$                  & \highlight{ATT} & ``effect on those who took it'' \\
+control units, $X \mid D{=}0$                  & ATU  & ``effect on those who didn't'' \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+\textbf{DiD's natural target is the ATT.} \;Random assignment is broken; treatment is selected; the policy question is the effect on the population that actually took it.
+
+\vspace{0.4em}
+\highlight{So OR averages $\delta(X)$ over the \textit{treated} $X$-distribution.} \;Same model. \;Choose the average. \;Get the estimand.
+\end{frame}
+
+%% ---------- L2-F1: OR narrative — Recipe A ----------
+\begin{frame}{Recipe A: impute the counterfactual}
 \vspace{0.5em}
 \textbf{Heckman, Ichimura \& Todd (1997).}
 \vspace{0.4em}
@@ -809,6 +891,197 @@ Three doors, same room. \;The choice between them is mostly a choice about which
 \end{enumerate}
 \vspace{0.4em}
 \highlight{Interpretation:} OR \textit{imputes} what the treated would have done if untreated --- using only the control group's $X$-to-trend mapping.
+\end{frame}
+
+%% ---------- L2-OR-recipe-B: saturated regression ----------
+\begin{frame}{Recipe B: the same OR, written as one regression}
+\footnotesize
+Instead of fitting on controls and predicting, write \textit{one} saturated regression on the full sample:
+\vspace{0.2em}
+\[
+\Delta Y_i \;=\; \alpha \;+\; \beta\, X_i \;+\; \gamma\, D_i \;+\; \delta\, (D_i \cdot X_i) \;+\; \varepsilon_i
+\]
+\vspace{0.1em}
+
+\textbf{Then read off the ATT:}
+\begin{itemize}\setlength\itemsep{1pt}\footnotesize
+  \item Marginal effect of $D$ at $X = X_i$: \quad $\gamma + \delta\, X_i$
+  \item Average over the treated $X$-distribution: \quad $\widehat\delta_{\text{sat}} \;=\; \gamma + \delta \cdot \overline{X}_{D=1}$
+\end{itemize}
+
+\vspace{0.6em}
+\highlight{Both recipes ask the same question:} \;what would treated units' $\Delta Y$ look like if they had controls' $X$-to-trend mapping?
+
+\vspace{0.4em}
+\meta{Recipe A imputes the answer one unit at a time. \;Recipe B fits everyone jointly and reads it off. \;Same answer either way --- but only if the regression is properly saturated.}
+\end{frame}
+
+%% ---------- L2-OR-eq-1: the puzzle ----------
+\begin{frame}{Same answer, different machinery?}
+\footnotesize
+\textbf{Recipe A} (HIT 1997) uses \textit{observed} $\Delta Y$ on the treated:
+\[
+\widehat\delta_A \;=\; \frac{1}{N_1}\sum_{D=1} \Big[\Delta Y_i \;-\; \widehat\mu_0(X_i)\Big]
+\]
+
+\vspace{0.4em}
+\textbf{Recipe B} (saturated regression) uses \textit{fitted} $\widehat\mu_1(X)$ on the treated:
+\[
+\widehat\delta_B \;=\; \frac{1}{N_1}\sum_{D=1} \Big[\widehat\mu_1(X_i) \;-\; \widehat\mu_0(X_i)\Big]
+\]
+
+\vspace{0.6em}
+\highlight{The first term is different.} \;One is raw data, the other is a model prediction.
+
+\vspace{0.4em}
+\meta{And yet, on LaLonde, both gave \$1{,}770 to the dollar. \;Let's see why.}
+\end{frame}
+
+%% ---------- L2-OR-eq-2: the FOC on gamma ----------
+\begin{frame}{One OLS condition does the work}
+\footnotesize
+The saturated regression chooses $(\widehat\alpha, \widehat\beta, \widehat\gamma, \widehat\delta)$ to minimize the sum of squared residuals.
+
+\vspace{0.5em}
+Each coefficient gets a first-order condition. \;The one we need is for $\widehat\gamma$ (the coefficient on $D$):
+\vspace{0.2em}
+\[
+\sum_i D_i \cdot \varepsilon_i \;=\; 0
+\]
+
+\vspace{0.5em}
+\textbf{In words.} \;Sum the residuals from treated observations only. \;OLS forces that sum to zero.
+
+\vspace{0.5em}
+\highlight{The treated residuals net out to zero. \;Exactly, by construction.}
+\end{frame}
+
+%% ---------- L2-OR-eq-3: plug in the residual ----------
+\begin{frame}{Plug in what a residual is}
+\footnotesize
+For a treated unit $i$, the fitted value is
+\[
+\widehat\mu_1(X_i) \;=\; \widehat\alpha + \widehat\beta X_i + \widehat\gamma + \widehat\delta X_i
+\]
+
+\vspace{0.4em}
+And the residual is \textit{observed minus fitted:}
+\[
+\varepsilon_i \;=\; \Delta Y_i \;-\; \widehat\mu_1(X_i)
+\]
+
+\vspace{0.5em}
+Substitute into the FOC:
+\[
+\sum_{D=1} \Big[\Delta Y_i \;-\; \widehat\mu_1(X_i)\Big] \;=\; 0
+\]
+\end{frame}
+
+%% ---------- L2-OR-eq-4: rearrange to mean equality ----------
+\begin{frame}{Rearrange}
+\footnotesize
+\[
+\sum_{D=1} \Delta Y_i \;=\; \sum_{D=1} \widehat\mu_1(X_i)
+\]
+
+\vspace{0.6em}
+Divide both sides by $N_1$, the number of treated units:
+\vspace{0.2em}
+\[
+\boxed{\;\;\frac{1}{N_1}\sum_{D=1} \Delta Y_i \;\;=\;\; \frac{1}{N_1}\sum_{D=1} \widehat\mu_1(X_i)\;\;}
+\]
+
+\vspace{0.7em}
+\textbf{Mean of observed $\Delta Y$ on the treated} \;\;=\;\; \textbf{mean of fitted $\widehat\mu_1$ on the treated.}
+
+\vspace{0.4em}
+\highlight{Unit-by-unit they differ. \;In the mean they're equal.}
+\end{frame}
+
+%% ---------- L2-OR-eq-5: intuition ----------
+\begin{frame}{The intuition}
+\footnotesize
+OLS regression \textit{passes through} the group means.
+
+\vspace{0.6em}
+Whenever the regression includes a $D$ dummy, OLS guarantees the fitted-value mean on the treated subsample matches the observed mean on the treated subsample.
+
+\vspace{0.8em}
+\begin{center}
+\highlight{Fitting smooths the variation \textit{around} the mean.} \\[0.4em]
+\highlight{It cannot change the mean itself.}
+\end{center}
+
+\vspace{0.6em}
+\meta{Fitted values and observed values dance around the same average. \;Average them and you get the same number.}
+\end{frame}
+
+%% ---------- L2-OR-eq-6: the recipes collapse ----------
+\begin{frame}{Both recipes give the same number}
+\footnotesize
+\textbf{Recipe B (saturated):}
+\[
+\widehat\delta_B \;=\; \underbrace{\overline{\widehat\mu_1}_{D=1}}_{\;=\;\overline{\Delta Y}_{D=1}\text{ by FOC}} \;-\; \overline{\widehat\mu_0}_{D=1}
+\]
+
+\vspace{0.5em}
+\textbf{Recipe A (HIT 1997):}
+\[
+\widehat\delta_A \;=\; \overline{\Delta Y}_{D=1} \;-\; \overline{\widehat\mu_0}_{D=1}
+\]
+
+\vspace{0.5em}
+First terms equal by the FOC. \;Second terms equal because the saturated $D \times X$ interactions pin $\widehat\mu_0$ to the same controls-only fit Recipe A uses.
+
+\vspace{0.5em}
+\begin{center}
+\highlight{$\widehat\delta_A \;=\; \widehat\delta_B$. \quad LaLonde: \$1{,}770 \;=\; \$1{,}770.}
+\end{center}
+\end{frame}
+
+%% ---------- L2-OR-eq-7: where it breaks ----------
+\begin{frame}{Where this equivalence falls apart}
+\footnotesize
+The whole argument rests on \textit{one} property of OLS --- the FOC that forces treated residuals to sum to zero.
+
+\vspace{0.6em}
+\textbf{For nonlinear estimators} (logit, probit, GLM, ML):
+\begin{itemize}\setlength\itemsep{1pt}\footnotesize
+  \item The treated fitted values do \textit{not} have to average back to the observed treated mean.
+  \item Recipe A (use observed $\Delta Y$) and Recipe B (use fitted $\widehat\mu_1$) genuinely diverge.
+  \item The two-regression KOB form becomes the principled choice.
+\end{itemize}
+
+\vspace{0.6em}
+\meta{Linear OR-DiD is the lucky special case where the choice doesn't matter. \;That's why HIT 1997's one-sided imputation and saturated TWFE give the same number on LaLonde --- and why the equivalence shouldn't be taken for granted in general.}
+\end{frame}
+
+%% ---------- L2-OR-payoff: this thread runs through the workshop ----------
+\begin{frame}{The same estimator, four names}
+\vspace{0.4em}
+\footnotesize
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Tradition} & \textbf{Name} \\
+\midrule
+Labor economics, 1973            & Oaxaca-Blinder decomposition \\
+DiD, 1997                        & Heckman-Ichimura-Todd outcome regression \\
+TWFE with $D{\times}X$ interactions & Wooldridge / Słoczyński regression adjustment \\
+Staggered DiD, 2024              & Borusyak-Jaravel-Spiess imputation \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.7em}
+\begin{center}
+\Large
+\highlight{Four names. \;One estimator.}
+\end{center}
+
+\vspace{0.5em}
+\meta{When you hear ``imputation'' on Day 4 (staggered DiD), you'll already know what it is. \;You've been doing it since this morning.}
 \end{frame}
 
 %% ---------- L2-F3: OR caution ----------

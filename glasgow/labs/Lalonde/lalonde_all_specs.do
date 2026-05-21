@@ -34,7 +34,8 @@ gen post = (year == 78)
 display _n "===== Sanity check: cell counts ====="
 tab ever_treated post
 
-global X "age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75"
+* X set matches Scott's canonical LaLonde spec (has agecube; no re75/u75)
+global X "age agesq agecube educ educsq marr nodegree black hisp re74 u74"
 
 display _n "================================================================"
 display    "  LaLonde DiD specs — non-experimental panel (NSW + CPS controls)"
@@ -64,10 +65,10 @@ display "Spec A estimate = " %9.0fc `specA' " (SE " %6.0fc `specA_se' ")"
 ********************************************************************************
 display _n "===== Spec B: Post × X ====="
 reg re i.post##i.ever_treated ///
-    i.post##c.age i.post##c.agesq ///
+    i.post##c.age i.post##c.agesq i.post##c.agecube ///
     i.post##c.educ i.post##c.educsq ///
     i.post##i.marr i.post##i.nodegree i.post##i.black i.post##i.hisp ///
-    i.post##c.re74 i.post##c.re75 i.post##i.u74 i.post##i.u75, robust
+    i.post##c.re74 i.post##i.u74, robust
 local specB    = _b[1.post#1.ever_treated]
 local specB_se = _se[1.post#1.ever_treated]
 display "Spec B estimate = " %9.0fc `specB' " (SE " %6.0fc `specB_se' ")"
@@ -79,18 +80,17 @@ display "Spec B estimate = " %9.0fc `specB' " (SE " %6.0fc `specB_se' ")"
 ********************************************************************************
 display _n "===== Spec C: Fully Saturated TWFE (FD) ====="
 preserve
-  keep id ever_treated re age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75 post
+  keep id ever_treated re age agesq agecube educ educsq marr nodegree black hisp re74 u74 post
   reshape wide re, i(id) j(post)
   gen dy = re1 - re0
 
   * Saturated regression on FULL sample with D × X interactions
   reg dy $X ///
-      i.ever_treated#c.age i.ever_treated#c.agesq ///
+      i.ever_treated#c.age i.ever_treated#c.agesq i.ever_treated#c.agecube ///
       i.ever_treated#c.educ i.ever_treated#c.educsq ///
       i.ever_treated#i.marr i.ever_treated#i.nodegree ///
       i.ever_treated#i.black i.ever_treated#i.hisp ///
-      i.ever_treated#c.re74 i.ever_treated#c.re75 ///
-      i.ever_treated#i.u74 i.ever_treated#i.u75 ///
+      i.ever_treated#c.re74 i.ever_treated#i.u74 ///
       i.ever_treated, robust
 
   * ATT: predict dy under ever_treated=1 minus dy under ever_treated=0
@@ -113,7 +113,7 @@ restore
 ********************************************************************************
 display _n "===== OR by hand (HIT 1997, FD on controls only) ====="
 preserve
-  keep id ever_treated re age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75 post
+  keep id ever_treated re age agesq agecube educ educsq marr nodegree black hisp re74 u74 post
   reshape wide re, i(id) j(post)
   gen dy = re1 - re0
   reg dy $X if ever_treated == 0, robust
@@ -145,7 +145,7 @@ else {
 ********************************************************************************
 display _n "===== IPW by hand (Abadie 2005) ====="
 preserve
-  keep id ever_treated re age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75 post
+  keep id ever_treated re age agesq agecube educ educsq marr nodegree black hisp re74 u74 post
   reshape wide re, i(id) j(post)
   gen dy = re1 - re0
 
