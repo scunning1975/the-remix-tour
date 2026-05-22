@@ -201,6 +201,204 @@ $W^{*} \;=\; \displaystyle\arg\min_W \, \|X_1 - X_0 W\|_V \;=\; \arg\min_W \sqrt
 \end{itemize}
 \end{frame}
 
+%% =====================================================================
+%% INTUITION: the minimization, illustrated through nearest neighbor
+%% =====================================================================
+
+\begin{frame}{The intuition: start with a much simpler version of the problem}
+\vspace{0.5cm}
+
+Before the convex hull and the constraints, forget weights for a moment.
+
+\vspace{0.4cm}
+
+\textbf{Suppose} you had a single treated unit, and you got to pick \textit{one} control from a pool. \;Which one would you pick?
+
+\vspace{0.4cm}
+
+\highlight{The one whose pre-period covariates are closest to the treated unit's.} \;Nearest neighbor. \;The same idea as synth --- just with a discrete choice instead of a weighted blend.
+
+\vspace{0.4em}
+\meta{Next: a toy example with 10 trainees and 20 candidate controls.}
+\end{frame}
+
+\begin{frame}{A toy example: 10 trainees, 20 candidate controls}
+\vspace{0.5cm}
+
+\textbf{Setup.}
+\begin{itemize}\small\setlength\itemsep{1pt}
+  \item 10 trainees (treated): \;known age and GPA.
+  \item 20 candidates (controls): \;known age and GPA.
+  \item Procedure: \;for each trainee, pick \textit{one} control. \;Compute the gap.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Distance measure.} \;The Euclidean distance between the trainee sample and the picked controls:
+\[
+\text{discrepancy} \;=\; \sqrt{\,\sum_{i=1}^{10} \big[(\text{age}_i - \text{age}_{j(i)})^2 + (\text{gpa}_i - \text{gpa}_{j(i)})^2\big]\,}
+\]
+
+\vspace{0.3em}
+\meta{The smaller this number, the better the match.}
+\end{frame}
+
+\begin{frame}{Pick one set of controls at random: discrepancy $=$ 45.76}
+\vspace{0.6cm}
+\begin{center}
+\begin{tikzpicture}[every node/.style={font=\small}]
+  \node[draw, rounded corners, fill=cream, minimum width=6cm, minimum height=2.4cm,
+        text width=5.5cm, align=center, text=charcoal] at (0,0)
+    {\textbf{Random pick \#1} \\[0.4em]
+     \fontsize{34}{40}\selectfont\bfseries\color{accent}45.76 \\[0.3em]
+     \footnotesize\color{warmgray}\itshape units of pre-period discrepancy};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.7cm}
+
+\textbf{What this number means.} \;The trainee sample and the chosen controls differ by 45.76 ``units'' in joint (age, GPA) space. \;\textit{Not} 45.76 years of age and \textit{not} 45.76 GPA points --- just 45.76 in the rescaled Euclidean metric.
+
+\vspace{0.3em}
+\meta{Can we do better with a different draw? \;Let's try.}
+\end{frame}
+
+\begin{frame}{Pick a different set: discrepancy $=$ 32.53}
+\vspace{0.6cm}
+\begin{center}
+\begin{tikzpicture}[every node/.style={font=\small}]
+  \node[draw, rounded corners, fill=cream, minimum width=11.5cm, minimum height=2.4cm,
+        text width=11cm, align=center, text=charcoal] at (0,0)
+    {\begin{tabular}{c@{\hspace{1.6cm}}c}
+       \textbf{Random pick \#1} & \textbf{Random pick \#2} \\[0.3em]
+       {\fontsize{30}{36}\selectfont\bfseries\color{warmgray} 45.76} &
+       {\fontsize{30}{36}\selectfont\bfseries\color{accent} 32.53} \\[0.2em]
+     \end{tabular}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.6cm}
+
+The second random pick is closer. \;Two random picks, two different gaps. \;\highlight{The discrepancy depends on \textit{which controls you choose}.}
+
+\vspace{0.3em}
+\meta{If random sampling gives different gaps, there must be a \textit{best} pick. \;Can we find it?}
+\end{frame}
+
+\begin{frame}{The optimal nearest-neighbor pick: discrepancy $\approx$ 2.99}
+\vspace{0.6cm}
+\begin{center}
+\begin{tikzpicture}[every node/.style={font=\small}]
+  \node[draw, rounded corners, fill=cream, minimum width=13cm, minimum height=2.4cm,
+        text width=12.5cm, align=center, text=charcoal] at (0,0)
+    {\begin{tabular}{c@{\hspace{0.8cm}}c@{\hspace{0.8cm}}c}
+       \textbf{Pick \#1} & \textbf{Pick \#2} & \textbf{Optimal} \\[0.3em]
+       {\fontsize{24}{30}\selectfont\bfseries\color{warmgray} 45.76} &
+       {\fontsize{24}{30}\selectfont\bfseries\color{warmgray} 32.53} &
+       {\fontsize{32}{38}\selectfont\bfseries\color{accent} 2.99} \\[0.2em]
+     \end{tabular}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.5cm}
+
+\highlight{Searching over picks dramatically reduces the gap.} \;The optimum is a thousand-fold improvement over random.
+
+\vspace{0.4em}
+\meta{This \textit{is} the minimization. \;The next slide shows why it works.}
+\end{frame}
+
+\begin{frame}{Why optimization works: the gap is U-shaped in the weight}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  % Axes
+  \draw[->, thick, warmgray] (-4.3, 0) -- (4.5, 0) node[right, font=\small] {weight $w$};
+  \draw[->, thick, warmgray] (0, -0.4) -- (0, 4.5) node[above, font=\small, text width=3cm, align=center] {discrepancy};
+
+  % U-curve: y = 0.4 x^2 + 0.3
+  \draw[thick, accent, smooth, samples=100, domain=-3.5:3.5]
+       plot (\x, {0.4*\x*\x + 0.3});
+
+  % Minimum point
+  \filldraw[accent] (0, 0.3) circle (3pt);
+  \node[below right=2pt, font=\small\bfseries, text=accent] at (0, 0.3) {optimal $w^*$};
+
+  % Another point (worse)
+  \filldraw[warmgray] (2.2, {0.4*2.2*2.2 + 0.3}) circle (3pt);
+  \draw[dashed, warmgray!70] (2.2, 0) -- (2.2, {0.4*2.2*2.2 + 0.3});
+  \node[right=3pt, font=\small, text=warmgray] at (2.2, {0.4*2.2*2.2 + 0.3 + 0.2}) {any other $w$};
+
+  % Horizontal lines showing gap difference
+  \draw[dashed, warmgray!70] (0, 0.3) -- (-3.8, 0.3);
+  \draw[dashed, warmgray!70] (2.2, {0.4*2.2*2.2 + 0.3}) -- (-3.8, {0.4*2.2*2.2 + 0.3});
+  \node[left, font=\scriptsize, text=accent] at (-3.8, 0.3) {min gap};
+  \node[left, font=\scriptsize, text=warmgray] at (-3.8, {0.4*2.2*2.2 + 0.3}) {bigger gap};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.1cm}
+\begin{center}
+\meta{The discrepancy is convex in the weight. \;One minimum. \;Any other choice is strictly worse.}
+\end{center}
+\end{frame}
+
+\begin{frame}{From discrete picks to continuous weights}
+\vspace{0.5cm}
+
+\textbf{Nearest neighbor.} \;You picked one control per trainee. \;Discrete choice. \;The best you could do was 2.99.
+
+\vspace{0.5cm}
+
+\textbf{Synthetic control.} \;Don't pick one. \;Build a \textit{weighted blend} of all 20 candidates: \;$w_1$ on candidate 1, $w_2$ on candidate 2, $\ldots$, $w_{20}$ on candidate 20. \;Weights sum to 1; none negative.
+
+\vspace{0.5cm}
+
+\highlight{Same minimization problem.} \;The discrepancy is a function of the weight vector $W$, and we find the $W$ that brings it as close to zero as possible.
+
+\vspace{0.4em}
+\meta{Continuous weights give you a strictly richer set of possible ``matches'' than discrete picks --- and the optimum is often much closer to zero.}
+\end{frame}
+
+\begin{frame}{The convex hull: what the weights can --- and cannot --- do}
+\vspace{0.2cm}
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  % Axes
+  \draw[->, thick, warmgray] (-0.4, 0) -- (5.6, 0) node[right, font=\small] {covariate 1};
+  \draw[->, thick, warmgray] (0, -0.4) -- (0, 4.5) node[above, font=\small] {covariate 2};
+
+  % Donor points
+  \filldraw[ocean] (1.0, 1.0) circle (3pt);
+  \filldraw[ocean] (1.5, 3.2) circle (3pt);
+  \filldraw[ocean] (3.0, 3.6) circle (3pt);
+  \filldraw[ocean] (4.3, 2.5) circle (3pt);
+  \filldraw[ocean] (4.0, 0.8) circle (3pt);
+  \filldraw[ocean] (2.2, 0.4) circle (3pt);
+  \filldraw[ocean] (2.4, 2.0) circle (3pt);   % interior donor
+  \filldraw[ocean] (3.2, 1.6) circle (3pt);   % interior donor
+
+  % Convex hull polygon (outline)
+  \draw[ocean!70, thick, dashed]
+        (1.0, 1.0) -- (2.2, 0.4) -- (4.0, 0.8) -- (4.3, 2.5)
+        -- (3.0, 3.6) -- (1.5, 3.2) -- cycle;
+
+  % Treated unit INSIDE the hull
+  \filldraw[accent] (2.6, 2.2) circle (4pt);
+  \node[right=3pt, font=\small\bfseries, text=accent] at (2.6, 2.2) {treated};
+
+  % Labels
+  \node[font=\scriptsize, text=ocean] at (5.0, 0.6) {donors};
+  \node[font=\scriptsize, text=ocean!90, anchor=west] at (4.6, 3.4) {convex hull};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.05cm}
+\begin{center}
+\meta{Weights $w_j \geq 0$ with $\sum w_j = 1$ produce a point \textit{inside} the polygon. \;If the treated unit is inside, the gap can in principle go to zero. \;If outside, the best match sits on the boundary.}
+\end{center}
+\end{frame}
+
 %% ---------- L1-F5: V matrix ----------
 \begin{frame}{Choosing $V$: which covariates matter most?}
 \vspace{0.5em}
