@@ -1,7 +1,7 @@
 \frametitle{The \texttt {contdid} package}
 \vspace{0.2cm}
 
-Kyle Butts's R package \texttt{contdid} implements all three options.
+Brantly Callaway's R package \texttt{contdid} implements all three options.
 
 \begin{lstlisting}[language=Rcode]
 library(contdid)

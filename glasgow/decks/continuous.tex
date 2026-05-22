@@ -210,26 +210,45 @@ Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \beta^{\text{twfe}}\,(D_i \cdot \text
 \highlight{$\widehat\beta^{\text{twfe}}$ is supposed to answer all three at once. \;It cannot.}
 \end{frame}
 
-\begin{frame}{Imagine $\widehat\beta^{\text{twfe}}$ as a weighted average of dose-level effects}
+\begin{frame}{$\widehat\beta^{\text{twfe}}$ is a weighted average of dose-level effects}
 \vspace{0.2cm}
 
-CBS show that, under heterogeneous dose effects:
+CBS show that the OLS coefficient can be written as:
 \[
-\widehat\beta^{\text{twfe}} \;=\; \int_0^{\bar d} w(l)\,\cdot\,\text{ATT}(l \mid l)\,\,dl
+\widehat\beta^{\text{twfe}} \;=\; \int_0^{\bar d} w(l)\,\cdot\,\big(\text{effect at dose } l\big)\,\,dl
 \]
 
 \vspace{0.4cm}
 
-\textbf{Four different weights} $w(l)$ can be motivated:
-\begin{itemize}\small\setlength\itemsep{1pt}
-  \item $w^{\text{lev}}(l)$ \;--- the ``level'' weight implicit in OLS
-  \item $w^{s}(l) = l \cdot w^{\text{lev}}(l)$ \;--- the scaled level
-  \item $w^{\text{acrt}}(l)$ \;--- the weight on ATT($l \mid l$) you'd want for an ACRT interpretation
-  \item $w^{2\times 2}(l, h)$ \;--- the weight on $(l, h)$ pairs of doses
-\end{itemize}
+\textbf{This is pure algebra.} \;No potential outcomes yet, no assumptions about identification --- just what the regression \textit{is}, mechanically, as a weighted sum.
+
+\vspace{0.4cm}
+
+\textbf{Four different weights} $w(l)$ can be motivated. \;Each is a real, derivable answer to ``what is $\widehat\beta^{\text{twfe}}$?''
 
 \vspace{0.3em}
-\highlight{Four real, different answers to ``what is $\beta^{\text{twfe}}$?''}
+\meta{Next: write down the four weight formulas. \;Potential outcomes show up in Part 2.}
+\end{frame}
+
+\begin{frame}{The four weight formulas, all at once}
+\vspace{0.15cm}
+\small
+\begin{center}
+\begin{tabular}{rl}
+\textbf{Level weight:} &
+$w^{\text{lev}}(l) \;=\; \dfrac{(l - E[D]) \cdot f_D(l)}{\text{Var}(D)}$ \\[0.7em]
+\textbf{Scaled level:} &
+$w^{s}(l) \;=\; l \cdot \dfrac{(l - E[D]) \cdot f_D(l)}{\text{Var}(D)}$ \\[0.7em]
+\textbf{ACRT weight:} &
+$w^{\text{acrt}}(l) \;=\; \dfrac{(E[D \mid D \geq l] - E[D]) \cdot P(D \geq l)}{\text{Var}(D)}$ \\[0.7em]
+\textbf{2$\times$2 weight:} &
+$w^{2\times 2}(l, h) \;=\; \dfrac{(h - l)^2 \cdot f_D(l) \cdot f_D(h)}{\text{Var}(D)}$ \\
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+\normalsize
+\highlight{Same six features of the dose distribution; four ways to recombine them.}
 \end{frame}
 
 \begin{frame}{Six ingredients combine into the four weight formulas}
@@ -302,12 +321,12 @@ The survival probability counts industries with dose $\geq l$. \;It enters the A
 \begin{frame}{Ingredient 5: $E[D \mid D \geq l]$ tracks the upper tail}
 \vspace{0.1cm}
 \begin{center}
-\includegraphics[width=0.78\textwidth,height=0.70\textheight,keepaspectratio]{figures/dxt/06_conditional_mean.pdf}
+\includegraphics[width=0.78\textwidth,height=0.68\textheight,keepaspectratio]{figures/dxt/06_conditional_mean.pdf}
 \end{center}
 \vspace{-0.05cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-``If an industry's dose is at least $l$, what is its expected dose?'' \;This conditional mean shows up in the ACRT weight.
+The conditional mean of dose above cutoff $l$. \;Shows up in the ACRT weight.
 \end{center}
 \end{frame}
 
@@ -325,50 +344,66 @@ The smallest non-zero dose in the data. \;In WTO it is roughly $0.5$\%. \;Doses 
 \end{frame}
 
 \begin{frame}{Weight \#1: the level weight $w^{\text{lev}}(l)$}
-\vspace{0.1cm}
+\vspace{0.05cm}
+\[
+w^{\text{lev}}(l) \;=\; \frac{(l - E[D]) \cdot f_D(l)}{\text{Var}(D)}
+\]
+\vspace{-0.25cm}
 \begin{center}
-\includegraphics[width=0.78\textwidth,height=0.70\textheight,keepaspectratio]{figures/dxt/07_weight_level.pdf}
+\includegraphics[width=0.72\textwidth,height=0.48\textheight,keepaspectratio]{figures/dxt/07_weight_level.pdf}
 \end{center}
-\vspace{-0.05cm}
+\vspace{-0.1cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-The level weight \textit{flips sign at $l = E[D]$}. \;Below-mean doses get negative weight; above-mean doses get positive weight.
+Below-mean doses get negative weight; above-mean doses get positive.
 \end{center}
 \end{frame}
 
-\begin{frame}{Weight \#2: the scaled-level weight $w^{s}(l) = l \cdot w^{\text{lev}}(l)$}
-\vspace{0.1cm}
+\begin{frame}{Weight \#2: the scaled-level weight $w^{s}(l)$}
+\vspace{0.05cm}
+\[
+w^{s}(l) \;=\; l \cdot \frac{(l - E[D]) \cdot f_D(l)}{\text{Var}(D)}
+\]
+\vspace{-0.25cm}
 \begin{center}
-\includegraphics[width=0.78\textwidth,height=0.70\textheight,keepaspectratio]{figures/dxt/08_weight_scaled_level.pdf}
+\includegraphics[width=0.72\textwidth,height=0.48\textheight,keepaspectratio]{figures/dxt/08_weight_scaled_level.pdf}
 \end{center}
-\vspace{-0.05cm}
+\vspace{-0.1cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-Multiplying by $l$ pulls more weight to high doses --- but the sign flip remains. \;It integrates to 1.
+Mass pulled to high doses; sign flip remains. \;Integrates to 1.
 \end{center}
 \end{frame}
 
 \begin{frame}{Weight \#3: the ACRT weight $w^{\text{acrt}}(l)$}
-\vspace{0.1cm}
+\vspace{0.05cm}
+\[
+w^{\text{acrt}}(l) \;=\; \frac{(E[D \mid D \geq l] - E[D]) \cdot P(D \geq l)}{\text{Var}(D)}
+\]
+\vspace{-0.25cm}
 \begin{center}
-\includegraphics[width=0.78\textwidth,height=0.70\textheight,keepaspectratio]{figures/dxt/09_weight_acrt.pdf}
+\includegraphics[width=0.72\textwidth,height=0.48\textheight,keepaspectratio]{figures/dxt/09_weight_acrt.pdf}
 \end{center}
-\vspace{-0.05cm}
+\vspace{-0.1cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-Non-negative, integrates to 1 --- the only weight you'd want if you were after an average causal response. \;But shape differs from the density $f_D$.
+Non-negative, integrates to 1. \;Shape differs from the density $f_D$.
 \end{center}
 \end{frame}
 
 \begin{frame}{Weight \#4: the 2$\times$2 weight $w^{2\times 2}(l, h)$}
-\vspace{0.1cm}
+\vspace{0.05cm}
+\[
+w^{2\times 2}(l, h) \;=\; \frac{(h - l)^2 \cdot f_D(l) \cdot f_D(h)}{\text{Var}(D)}
+\]
+\vspace{-0.25cm}
 \begin{center}
-\includegraphics[width=0.78\textwidth,height=0.70\textheight,keepaspectratio]{figures/dxt/10_weight_2x2_heatmap.pdf}
+\includegraphics[width=0.62\textwidth,height=0.48\textheight,keepaspectratio]{figures/dxt/10_weight_2x2_heatmap.pdf}
 \end{center}
-\vspace{-0.05cm}
+\vspace{-0.1cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-Heatmap over \textit{pairs} of doses $(l, h)$. \;Far-apart pairs get the most weight --- $(h - l)^2$ shows up visually.
+Far-apart pairs get the most weight; $(h - l)^2$ shows up visually.
 \end{center}
 \end{frame}
 
@@ -403,6 +438,27 @@ Four overlaid weights, same distribution. \;$\widehat\beta^{\text{twfe}}$ is all
 
 \vspace{0.4em}
 \meta{Part 2 defines those target parameters. \;Part 3 estimates them.}
+\end{frame}
+
+\begin{frame}{Play with the decomposition: the \texttt{baconplus} Shiny app}
+\vspace{0.2cm}
+
+\textbf{Interactive companion} to everything we just did:
+\begin{center}
+\href{https://scunning1975.github.io/baconplus/}{\color{ocean}\underline{\texttt{https://scunning1975.github.io/baconplus/}}}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{What it does.} \;Slider-based exploration of the TWFE decomposition on 155 simulated industries with a tariff-cut dose mimicking Lu \& Yu (2015):
+\begin{itemize}\small\setlength\itemsep{1pt}
+  \item Move the kernel bandwidth and watch $f_D(l)$ re-shape.
+  \item See the level weight $w^{\text{lev}}(l)$, the scaled-level $w^s(l)$, and the ACRT weight $w^{\text{acrt}}(l)$ rebuild in real time.
+  \item Reassemble $\widehat\beta^{\text{twfe}}$ from any of the four weight formulas.
+\end{itemize}
+
+\vspace{0.3em}
+\meta{Source: \;\href{https://github.com/scunning1975/baconplus}{github.com/scunning1975/baconplus} --- CBS continuous-DiD TWFE decomposition implementation.}
 \end{frame}
 
 % =============================================================================
@@ -505,7 +561,7 @@ The \textit{difference between} $\text{ATT}(100)$ and $\text{ATT}(50)$ is \;a sl
 
 \vspace{0.4cm}
 
-\textbf{A slope, not a level.} \;A dose-response curve: mg per mg of aspirin, km per km of distance, percentage point per percentage point of tariff cut.
+\textbf{A slope, not a level.} \;A marginal effect: mg per mg, km per km, point per point.
 
 \vspace{0.2em}
 \meta{Angrist \& Imbens (1995) defined the IV analog, ACR.}
@@ -529,7 +585,7 @@ ACRT($d$) is the slope of the ATT-dose curve at dose $d$ --- the marginal effect
 \vspace{-0.1cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-$\text{ATT}(d \mid d)$: \;level effect of being at dose $d$. \;\;ACRT($d$): \;marginal effect of one more unit at dose $d$. \;Different objects, often confused.
+$\text{ATT}(d \mid d)$ is a level; ACRT($d$) is a slope. \;Different objects, often confused.
 \end{center}
 \end{frame}
 
@@ -594,21 +650,18 @@ Suppose two industries: \;A chose a 10\% tariff cut; \;B chose a 30\% cut. \;Dos
 \highlight{Strong PT rules out selection on dose-response gains.}
 \end{frame}
 
-\begin{frame}{Kyle's running example: the discrete multi-valued case}
+\begin{frame}{A discrete multi-valued example: pills, groups, DiD}
 \vspace{0.2cm}
 
-To build intuition, drop continuous for a moment and consider a \textit{multi-valued} discrete dose: $D \in \{0, 1, 2\}$.
+To see how DiD operates on dose groups, drop continuous and consider a \textit{multi-valued} discrete dose: $D \in \{0, 1, 2\}$.
 
 \vspace{0.4cm}
 
-\textbf{Setting.} \;A doctor has patients, some untreated ($D = 0$), some receiving one pill ($D = 1$), some two pills ($D = 2$). \;The discrete case is the bridge between binary and continuous --- all the same ideas, with finite groups.
+\textbf{Setting.} \;Three groups of patients: untreated ($D = 0$), one pill ($D = 1$), two pills ($D = 2$). \;The discrete case bridges binary and continuous --- same ideas, finite groups.
 
 \vspace{0.4cm}
 
-\textbf{Next slides.} \;What dose-by-dose ATTs look like; first-differences; the DiD; what's actually identified.
-
-\vspace{0.4em}
-\meta{From Kyle Butts' continuous DiD slides.}
+\textbf{Next slides.} \;Dose-by-dose ATTs, first-differences, the DiD, what's actually identified.
 \end{frame}
 
 \begin{frame}{Discrete: raw outcomes by dose group}
@@ -683,11 +736,11 @@ Each treated dose-group's DiD versus the never-treated: $\widehat{\text{ATT}}(1 
 
 \vspace{0.5cm}
 
-\highlight{Part 3 estimates these objects, using Kyle's three options: overall ATT, bins, and non-parametric smoothing.}
+\highlight{Part 3 estimates these objects, with three options: overall ATT, bins, and non-parametric smoothing.}
 \end{frame}
 
 % =============================================================================
-% PART IV — Estimation (Kyle Butts material)
+% PART IV — Estimation
 % =============================================================================
 
 \remixsection{Part 3: \\ Estimation}
@@ -779,7 +832,7 @@ Replace the bins with a kernel or spline. \;A continuous $\widehat{\text{ATT}}(\
 \begin{frame}[fragile]{The \texttt{contdid} package}
 \vspace{0.2cm}
 
-Kyle Butts's R package \texttt{contdid} implements all three options.
+Brantly Callaway's R package \texttt{contdid} implements all three options.
 
 \begin{lstlisting}[language=Rcode]
 library(contdid)
