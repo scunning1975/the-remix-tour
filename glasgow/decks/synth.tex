@@ -220,6 +220,9 @@ Before the convex hull and the constraints, forget weights for a moment.
 
 \vspace{0.4em}
 \meta{Next: a toy example with 10 trainees and 20 candidate controls.}
+
+\vspace{0.2em}
+\meta{Worksheet: \href{https://docs.google.com/spreadsheets/d/1iro1Qzrr1eLDY_LJVzOYvnQZWmxY8JyTcDf6YcdhkwQ/edit?usp=sharing}{\color{ocean}\underline{Google Sheet}}}
 \end{frame}
 
 \begin{frame}{A toy example: 10 trainees, 20 candidate controls}
@@ -550,38 +553,85 @@ $\text{RMSPE post}/\text{RMSPE pre} \;=\; \dfrac{\sqrt{\frac{1}{T - T_0}\sum_{t 
 %% =====================================================================
 \remixsection{4.\ When SC works (and when it doesn't) \\[0.3em] {\normalsize\normalfont The conditions, and the bridge to synthetic DiD}}
 
+%% ---------- L4-F0: Identification assumption (factor model) ----------
+\begin{frame}{What SC actually assumes: a factor model}
+\vspace{0.2cm}
+
+The untreated potential outcome follows:
+\[
+  Y_{jt}(0) \;=\; \alpha_j \;+\; \tau_t \;+\; \beta_t X_j \;+\; \gamma_t Z_j \;+\; \varepsilon_{jt}
+\]
+
+\vspace{0.3em}
+\begin{itemize}\small\setlength\itemsep{1pt}
+  \item $\alpha_j$ --- unit fixed effect; \;$\tau_t$ --- common time trend.
+  \item $X_j$ --- \textit{observed} covariates; \;$\beta_t$ time-varying loading.
+  \item $\textcolor{remixgreendark}{Z_j}$ --- \textit{unobserved} heterogeneity; \;$\textcolor{remixgreendark}{\gamma_t}$ time-varying return.
+  \item $\varepsilon_{jt}$ --- idiosyncratic noise.
+\end{itemize}
+
+\vspace{0.3em}
+\highlight{DiD assumes $\gamma_t$ is constant (parallel trends). \;SC lets $\gamma_t$ move.}
+\end{frame}
+
+%% ---------- L4-F0b: Structure vs noise — why pre-period length matters ----------
+\begin{frame}{Why a long pre-period: structure vs.\ noise}
+\vspace{0.2cm}
+
+Two terms in $Y_{jt}(0)$ vary across $j$ and $t$:
+\begin{itemize}\small\setlength\itemsep{1pt}
+  \item $\gamma_t Z_j$ --- \textbf{structure.} \;Persistent. \;The same $Z_j$ shows up year after year, just with a different return $\gamma_t$.
+  \item $\varepsilon_{jt}$ --- \textbf{noise.} \;Independent across periods.
+\end{itemize}
+
+\vspace{0.4em}
+SC fits weights on the \textit{pre-period} data. We want those weights to track $\gamma_t Z_j$, not the noise.
+
+\vspace{0.4em}
+\textbf{Short $T_0$:} \;the noise looks like signal. \;The fit overfits $\varepsilon$.
+
+\vspace{0.2em}
+\textbf{Long $T_0$:} \;noise averages out across periods. \;The fit picks up the persistent $Z_j$ loading.
+
+\vspace{0.4em}
+\highlight{Long pre-period $\Rightarrow$ match the structure, not the noise.}
+
+\vspace{0.2em}
+\meta{Abadie's bias bound (2021 JEL, Sec.\ 3.3) makes this precise: bias is decreasing in $T_0$, increasing in $\text{Var}(\varepsilon)$ and in the number of unobserved factors in $Z_j$.}
+\end{frame}
+
 %% ---------- L4-F1: Conditions ----------
 \begin{frame}{Conditions for SC to do its job}
-\vspace{0.5em}
-\begin{enumerate}
-  \item \textbf{Convex-hull condition.} \;The treated unit's covariates must lie within the convex hull of the donors. \;If California is extreme on all dimensions, no weighted combination of donors can match it.
-  \vspace{0.3em}
-  \item \textbf{Long pre-period.} \;Many $T_0$ to discipline the weights. \;Short pre-period $\Rightarrow$ overfit to noise.
-  \vspace{0.3em}
-  \item \textbf{Large donor pool.} \;More donors $\Rightarrow$ richer convex hull $\Rightarrow$ better match.
-  \vspace{0.3em}
-  \item \textbf{Good pre-period fit.} \;The pre-period RMSPE should be small relative to the post-period gap. \;If the synthetic doesn't track the actual unit before treatment, no inference is credible.
+\vspace{0.2cm}
+\begin{enumerate}\small\setlength\itemsep{1pt}
+  \item \textbf{Convex-hull condition.} \;The treated unit's pre-period covariates lie within the convex hull of the donors. \;If California is extreme on every dimension, no weighted combination of donors can match it.
+  \vspace{0.2em}
+  \item \textbf{Long pre-period.} \;Enough $T_0$ to separate $\gamma_t Z_j$ from $\varepsilon_{jt}$. \;Short pre-period $\Rightarrow$ overfit the noise.
+  \vspace{0.2em}
+  \item \textbf{Similar donor pool.} \;Donors should look like the treated unit on $X_j$ \textit{and} plausibly on $Z_j$. \;A bigger pool of dissimilar units inflates the bias bound, not shrinks it.
+  \vspace{0.2em}
+  \item \textbf{Good pre-period fit.} \;Pre-period RMSPE small relative to the post-period gap. \;If the synthetic doesn't track the unit \textit{before} treatment, nothing after is credible.
 \end{enumerate}
 \end{frame}
 
 %% ---------- L4-F2: When SC struggles ----------
 \begin{frame}{What if the conditions fail?}
-\vspace{0.5em}
+\vspace{0.2cm}
 \textbf{Three real failure modes:}
-\vspace{0.5em}
-\begin{itemize}
-  \item \textbf{The treated unit is extreme.} \;California's smoking rate may sit at the bottom of the donor distribution. \;The convex hull doesn't include it. \;The synthetic underfits.
+\vspace{0.3em}
+\begin{itemize}\small\setlength\itemsep{1pt}
+  \item \textbf{The treated unit is extreme.} \;California's pre-period values may sit at the edge of the donor distribution. \;The convex hull doesn't reach it. \;The synthetic can only approximate.
   \vspace{0.2em}
-  \item \textbf{The pre-period is short.} \;Not enough data to discipline the weights. \;Overfitting to noise.
+  \item \textbf{The pre-period is short.} \;Not enough periods to average out $\varepsilon$. \;The weights chase noise.
   \vspace{0.2em}
-  \item \textbf{Many treated units.} \;The original method is built for $N_1 = 1$. \;If you have 10 treated states, do you run 10 separate SC fits? Combine them how?
+  \item \textbf{Many treated units.} \;The original method is built for $N_1 = 1$. \;If you have 10 treated states, do you run 10 separate fits? \;Combine them how?
 \end{itemize}
 
-\vspace{0.6em}
-\highlight{Each of these is what synthetic DiD addresses --- the second act this afternoon.}
+\vspace{0.4em}
+\highlight{Synthetic DiD relaxes (1) via a DiD-style level shift and gains efficiency from time weights.}
 
-\vspace{0.5em}
-\meta{There are also extensions for staggered adoption (Ben-Michael et al.\ 2022), bias correction (augmented SC), and matrix completion (Athey et al.\ 2021).}
+\vspace{0.2em}
+\meta{For (3): penalized synth (Abadie--L'Hour 2021), microsynth (Robbins et al.\ 2017), augmented SC (Ben-Michael et al.\ 2021).}
 \end{frame}
 
 %% =====================================================================

@@ -63,7 +63,7 @@
 % =============================================================================
 
 \begin{frame}{Continuous treatments are everywhere}
-\vspace{0.4cm}
+\vspace{0.2cm}
 
 When we say ``DiD,'' we usually mean a \textit{binary} treatment: $D_i \in \{0,1\}$. \;But empirical work routinely uses DiD with a \textit{continuous} dose:
 
@@ -81,7 +81,7 @@ When we say ``DiD,'' we usually mean a \textit{binary} treatment: $D_i \in \{0,1
 \end{frame}
 
 \begin{frame}{The classic praise for OLS with a continuous dose}
-\vspace{0.6cm}
+\vspace{0.2cm}
 
 \pullquote{The two-period regression estimator can be easily modified to allow for continuous, or at least non-binary, treatments.}{Wooldridge (2005)}
 
@@ -94,7 +94,7 @@ When we say ``DiD,'' we usually mean a \textit{binary} treatment: $D_i \in \{0,1
 \end{frame}
 
 \begin{frame}{The TWFE specification, with a continuous dose}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 The standard move is to write the same TWFE model, but let the treatment intensity vary:
 \[
@@ -116,7 +116,7 @@ Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \beta\, D_i \cdot \text{Post}_t \;+\;
 \end{frame}
 
 \begin{frame}{New work says: $\beta^{\text{twfe}}$ does not have a clean causal reading}
-\vspace{0.4cm}
+\vspace{0.2cm}
 
 \textbf{Callaway, Goodman-Bacon, and Sant'Anna (2025),} \;\textit{``Difference-in-Differences with a Continuous Treatment''} (\textbf{CBS}).
 
@@ -130,11 +130,11 @@ Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \beta\, D_i \cdot \text{Post}_t \;+\;
 \end{itemize}
 
 \vspace{0.3cm}
-\highlight{We will spend the first part of this lecture unpacking these weights, on the WTO/Lu-Yu (2015) data.}
+\highlight{We unpack these weights on Lu \& Yu (2015) next.}
 \end{frame}
 
 \begin{frame}{Plan for the lecture}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \textbf{Part 1.} \;The TWFE continuous-dose specification, and its decomposition. \;(Lu \& Yu 2015 / China WTO accession as our running example.)
 
@@ -157,7 +157,7 @@ Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \beta\, D_i \cdot \text{Post}_t \;+\;
 \remixsection{Part 1: \\ The TWFE decomposition}
 
 \begin{frame}{Lu \& Yu (2015) reported $\widehat{\beta}^{\text{twfe}} = -0.322$}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \textbf{Lu \& Yu (2015),} \;\textit{``Trade liberalization and markup dispersion: Evidence from China's WTO accession,''} \;\textit{AEJ: Applied Economics} 7(4): 221--253.
 
@@ -181,12 +181,12 @@ Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \beta\, D_i \cdot \text{Post}_t \;+\;
 \vspace{-0.1cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-Distribution of $D_i$ = tariff reduction (in percentage points) across 155 Chinese manufacturing industries. \;\textbf{Mean dose} $\approx 7\%$. \;Min positive dose just above 0; max around 50\%.
+Tariff cut across 155 Chinese industries. \;\textbf{Mean} $\approx 7\%$; \;range $0$ to $\sim 50\%$.
 \end{center}
 \end{frame}
 
 \begin{frame}{One coefficient $\widehat\beta^{\text{twfe}}$ carries the entire dose response}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 The Lu \& Yu specification is the canonical continuous DiD:
 \[
@@ -211,7 +211,7 @@ Y_{it} \;=\; \alpha_i \;+\; \gamma_t \;+\; \beta^{\text{twfe}}\,(D_i \cdot \text
 \end{frame}
 
 \begin{frame}{Imagine $\widehat\beta^{\text{twfe}}$ as a weighted average of dose-level effects}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 CBS show that, under heterogeneous dose effects:
 \[
@@ -229,11 +229,11 @@ CBS show that, under heterogeneous dose effects:
 \end{itemize}
 
 \vspace{0.3em}
-\highlight{Each one is a real, derivable answer to ``what is $\beta^{\text{twfe}}$?''} \;They give different numbers and different shapes.
+\highlight{Four real, different answers to ``what is $\beta^{\text{twfe}}$?''}
 \end{frame}
 
 \begin{frame}{Six ingredients combine into the four weight formulas}
-\vspace{0.4cm}
+\vspace{0.2cm}
 
 Every weight formula is built from the same six features of the dose distribution:
 
@@ -312,7 +312,7 @@ The survival probability counts industries with dose $\geq l$. \;It enters the A
 \end{frame}
 
 \begin{frame}{Ingredient 6: $d_L$, the minimum positive dose}
-\vspace{0.6cm}
+\vspace{0.2cm}
 
 The smallest non-zero dose in the data. \;In WTO it is roughly $0.5$\%. \;Doses $l < d_L$ have weight zero (no industry experiences that small a cut).
 
@@ -380,12 +380,12 @@ Heatmap over \textit{pairs} of doses $(l, h)$. \;Far-apart pairs get the most we
 \vspace{-0.05cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-Four overlaid weights, same distribution. \;$\widehat\beta^{\text{twfe}}$ doesn't pick one --- it is each of them simultaneously, depending on which decomposition you write down.
+Four overlaid weights, same distribution. \;$\widehat\beta^{\text{twfe}}$ is all of them at once.
 \end{center}
 \end{frame}
 
 \begin{frame}{The takeaway from the decomposition}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \textbf{$\widehat\beta^{\text{twfe}}$ is well-defined.} \;It is a sample statistic. \;But:
 
@@ -412,7 +412,7 @@ Four overlaid weights, same distribution. \;$\widehat\beta^{\text{twfe}}$ doesn'
 \remixsection{Part 2: \\ Potential outcomes and \\ building blocks}
 
 \begin{frame}{ATT, but for a continuous dose}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \textbf{Recall the binary ATT:}
 \[
@@ -436,7 +436,7 @@ Four overlaid weights, same distribution. \;$\widehat\beta^{\text{twfe}}$ doesn'
 \end{frame}
 
 \begin{frame}{Dosage parameters give us a multitude of ATTs}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \begin{block}{ATT for a given dose}
 \[
@@ -453,7 +453,7 @@ Four overlaid weights, same distribution. \;$\widehat\beta^{\text{twfe}}$ doesn'
 \textbf{Example.} \;What is the effect of being 100 km from a hospital, compared to being 0 km? \;Comparison is no-dose; population is the units actually 100 km away.
 
 \vspace{0.3em}
-\meta{This is a function of $d$ --- one ATT per dose level. \;The full set $\{\text{ATT}(d \mid d)\}$ is the dose-response curve.}
+\meta{One ATT per dose; the full set is the dose-response curve.}
 \end{frame}
 
 \begin{frame}{ATT for a given dose: the aspirin example (1)}
@@ -479,7 +479,7 @@ $\text{ATT}(50 \mid 50)$ vs $\text{ATT}(100 \mid 100)$: \;two separate ATT numbe
 \end{frame}
 
 \begin{frame}{Moving along the dosage is \emph{not} the ATT}
-\vspace{0.4cm}
+\vspace{0.2cm}
 \begin{center}
 \includegraphics[width=0.6\textwidth,height=0.70\textheight,keepaspectratio]{figures/dxt/acrt_fig2b.png}
 \end{center}
@@ -491,7 +491,7 @@ The \textit{difference between} $\text{ATT}(100)$ and $\text{ATT}(50)$ is \;a sl
 \end{frame}
 
 \begin{frame}{The Average Causal Response on the Treated --- ACRT}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \begin{block}{ACRT}
 \[
@@ -508,7 +508,7 @@ The \textit{difference between} $\text{ATT}(100)$ and $\text{ATT}(50)$ is \;a sl
 \textbf{A slope, not a level.} \;A dose-response curve: mg per mg of aspirin, km per km of distance, percentage point per percentage point of tariff cut.
 
 \vspace{0.2em}
-\meta{Angrist \& Imbens (1995) defined the analog for IV: the Average Causal Response (ACR).}
+\meta{Angrist \& Imbens (1995) defined the IV analog, ACR.}
 \end{frame}
 
 \begin{frame}{ACRT as a derivative}
@@ -534,7 +534,7 @@ $\text{ATT}(d \mid d)$: \;level effect of being at dose $d$. \;\;ACRT($d$): \;ma
 \end{frame}
 
 \begin{frame}{Identification: assumptions for ATT($d \mid d$)}
-\vspace{0.4cm}
+\vspace{0.2cm}
 
 \textbf{A1. No Anticipation.} \;Treatment doesn't move outcomes before it begins.
 \[
@@ -557,7 +557,7 @@ Y_{it}(d) \;=\; Y_{it}(0) \quad \text{for all } t < g_i
 \end{frame}
 
 \begin{frame}{Identification: ACRT requires more --- ``Strong PT''}
-\vspace{0.4cm}
+\vspace{0.2cm}
 
 \textbf{A2$'$. Strong Parallel Trends.} \;The \textit{counterfactual} trend at \textit{every} dose is the same across treatment groups:
 \[
@@ -577,28 +577,25 @@ Y_{it}(d) \;=\; Y_{it}(0) \quad \text{for all } t < g_i
 \end{frame}
 
 \begin{frame}{Why strong PT is stronger: a thought experiment}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
-Suppose two industries: \;industry A chose a 10\% tariff cut; \;industry B chose a 30\% cut. \;Their dose was not assigned at random --- there was a reason each chose its dose.
+Suppose two industries: \;A chose a 10\% tariff cut; \;B chose a 30\% cut. \;Dose was not random.
 
-\vspace{0.4cm}
+\vspace{0.3cm}
 
 \textbf{Standard PT} says: \;A and B would have had the same \textit{baseline} trend, absent any cut.
 
-\vspace{0.4cm}
+\vspace{0.3cm}
 
 \textbf{Strong PT} says, in addition: \;\textit{if A and B both faced a 20\% cut}, they'd respond identically.
 
-\vspace{0.4cm}
+\vspace{0.3cm}
 
-\highlight{Strong PT rules out selection on dose-response gains.} \;Exactly what an empiricist usually worries about.
-
-\vspace{0.2em}
-\meta{Randomization of dose gives strong PT automatically; selection on the dose-response curve violates it.}
+\highlight{Strong PT rules out selection on dose-response gains.}
 \end{frame}
 
 \begin{frame}{Kyle's running example: the discrete multi-valued case}
-\vspace{0.6cm}
+\vspace{0.2cm}
 
 To build intuition, drop continuous for a moment and consider a \textit{multi-valued} discrete dose: $D \in \{0, 1, 2\}$.
 
@@ -675,7 +672,7 @@ Each treated dose-group's DiD versus the never-treated: $\widehat{\text{ATT}}(1 
 \end{frame}
 
 \begin{frame}{Recap of Part 2}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \begin{itemize}\setlength\itemsep{4pt}
   \item Two target parameters: \;\textbf{ATT($d \mid d$)} (level) and \;\textbf{ACRT($d$)} (slope).
@@ -696,7 +693,7 @@ Each treated dose-group's DiD versus the never-treated: $\widehat{\text{ATT}}(1 
 \remixsection{Part 3: \\ Estimation}
 
 \begin{frame}{Three estimation options for ATT($d \mid d$)}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 Given continuous $D$, three practical strategies:
 
@@ -713,7 +710,7 @@ Given continuous $D$, three practical strategies:
 \end{frame}
 
 \begin{frame}{Option 1: Overall ATT --- one number summary}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \textbf{Definition.}
 \[
@@ -745,7 +742,7 @@ Partition dose into intervals (e.g., $[0, 5)$, $[5, 10)$, $\ldots$). \;Estimate 
 \end{frame}
 
 \begin{frame}{Pros and cons of bins}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \textbf{Pros.}
 \begin{itemize}\small\setlength\itemsep{1pt}
@@ -803,7 +800,7 @@ ggcont_did(result, type = "att")
 \end{frame}
 
 \begin{frame}{Pros and cons of non-parametric smoothing}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \textbf{Pros.}
 \begin{itemize}\small\setlength\itemsep{1pt}
@@ -833,7 +830,7 @@ ggcont_did(result, type = "att")
 \vspace{-0.05cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-Raw outcome trajectories by tariff-cut group, before any DiD machinery. \;The setup we'd estimate on.
+Raw outcome trajectories by tariff-cut group; the setup before any DiD.
 \end{center}
 \end{frame}
 
@@ -857,12 +854,12 @@ $\widehat{\text{ATT}}(d \mid d)$ across the dose distribution. \;A real curve, n
 \vspace{-0.05cm}
 \begin{center}
 \footnotesize\color{warmgray}\itshape
-Pre-period placebo estimates. \;Each should be near zero under standard PT. \;Doses where the placebo is large are doses we shouldn't trust the post-period number on.
+Pre-period placebos: should be near zero under standard PT.
 \end{center}
 \end{frame}
 
 \begin{frame}{Closing: what to do tomorrow}
-\vspace{0.5cm}
+\vspace{0.2cm}
 
 \textbf{Don't run TWFE with a continuous dose and report $\widehat\beta$ as ``the dose effect.''} \;Under heterogeneity, $\widehat\beta^{\text{twfe}}$ is a weighted average with sign-flipping weights, scaled by features of the dose distribution that have nothing to do with the causal question.
 
