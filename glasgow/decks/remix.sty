@@ -120,6 +120,10 @@
 %%   \renewcommand{\remixfooter}{The Remix \textperiodcentered\ Glasgow \textperiodcentered\ May 2026}
 \providecommand{\remixfooter}{The Remix\,\textperiodcentered\,Glasgow\,\textperiodcentered\,May 2026}
 
+%% Section-divider top-right venue text — override per deck via
+%%   \renewcommand{\remixsectionvenue}{Codechella Madrid \textperiodcentered\ May 2026}
+\providecommand{\remixsectionvenue}{Glasgow \textperiodcentered\ May 2026}
+
 %% ---------- Hyperref ----------
 %% beamer loads hyperref itself; we only customize colors.
 \AtBeginDocument{\hypersetup{colorlinks=true,linkcolor=ocean,urlcolor=ocean,citecolor=ocean}}
@@ -178,7 +182,7 @@
         \fontsize{10pt}{12pt}\selectfont\bfseries\textsc{The Remix}%
       };
       \node[anchor=east,text=cream] at ([xshift=-1em,yshift=-0.8cm]current page.north east) {%
-        \fontsize{10pt}{12pt}\selectfont \textit{Glasgow \textperiodcentered\ May 2026}%
+        \fontsize{10pt}{12pt}\selectfont \textit{\remixsectionvenue}%
       };
       %% Section title, centered, charcoal
       \node[anchor=center,text width=0.85\paperwidth,align=center] at (current page.center) {%
