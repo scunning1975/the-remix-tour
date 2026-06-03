@@ -57,3 +57,9 @@ readings/pdfs_build/
 # Local working notes (not for the repo)
 **/_TODO_*.md
 **/_notes_*.md
+
+# Ispra: archived prior-year material, reference library, synth intermediates
+# (kept locally, not pushed — bloat the repo and aren't workshop deliverables)
+ispra/Slides/archived_2025/
+ispra/Readings/
+ispra/labs/Texas/Data/synth/
