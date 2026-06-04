@@ -222,6 +222,61 @@ $c$ vs.\ $U$ & $b$ vs.\ $c$ \;(later) & $c$ vs.\ $b$ \;(earlier) \\
 \end{itemize}
 \end{frame}
 
+%% ---------- Bacon 2x2 image slides — all five ----------
+\begin{frame}{The Bacon decomposition: all the 2$\times$2 comparisons}
+\begin{center}
+\includegraphics[width=0.82\textwidth,height=0.75\textheight,keepaspectratio]{figures/bacon_goodman_2.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{2$\times$2 \#1: early group $k$ vs.\ never-treated $U$}
+\vspace{0.2em}
+\begin{center}
+\small
+$\widehat{\delta}^{2\times 2}_{kU} \;=\; \bigl(\bar y_k^{\,\text{post}(k)} - \bar y_k^{\,\text{pre}(k)}\bigr) \;-\; \bigl(\bar y_U^{\,\text{post}(k)} - \bar y_U^{\,\text{pre}(k)}\bigr)$
+\end{center}
+\vspace{0.1em}
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.65\textheight,keepaspectratio]{figures/bacon_goodman_3.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{2$\times$2 \#2: late group $\ell$ vs.\ never-treated $U$}
+\vspace{0.2em}
+\begin{center}
+\small
+$\widehat{\delta}^{2\times 2}_{\ell U} \;=\; \bigl(\bar y_\ell^{\,\text{post}(\ell)} - \bar y_\ell^{\,\text{pre}(\ell)}\bigr) \;-\; \bigl(\bar y_U^{\,\text{post}(\ell)} - \bar y_U^{\,\text{pre}(\ell)}\bigr)$
+\end{center}
+\vspace{0.1em}
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.65\textheight,keepaspectratio]{figures/bacon_goodman_4.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{2$\times$2 \#3: $k$ vs.\ $\ell$ (not-yet-treated control --- clean)}
+\vspace{0.2em}
+\begin{center}
+\small
+$\widehat{\delta}^{2\times 2,\,k}_{k\ell} \;=\; \bigl(\bar y_k^{\textsc{Mid}} - \bar y_k^{\textsc{Pre}}\bigr) \;-\; \bigl(\bar y_\ell^{\textsc{Mid}} - \bar y_\ell^{\textsc{Pre}}\bigr)$
+\end{center}
+\vspace{0.1em}
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.65\textheight,keepaspectratio]{figures/bacon_goodman_6.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{2$\times$2 \#4: $\ell$ vs.\ $k$ (already-treated control --- \highlight{forbidden})}
+\vspace{0.2em}
+\begin{center}
+\small
+$\widehat{\delta}^{2\times 2,\,\ell}_{\ell k} \;=\; \bigl(\bar y_\ell^{\textsc{Post}} - \bar y_\ell^{\textsc{Mid}}\bigr) \;-\; \bigl(\bar y_k^{\textsc{Post}} - \bar y_k^{\textsc{Mid}}\bigr)$
+\end{center}
+\vspace{0.1em}
+\begin{center}
+\includegraphics[width=0.76\textwidth,height=0.62\textheight,keepaspectratio]{figures/bacon_goodman_7.png}
+\end{center}
+\end{frame}
+
 %% ---------- L1-F3: The two flavors of 2x2 between timing groups ----------
 \begin{frame}{Two timing groups: $k$ (early) and $\ell$ (late)}
 \vspace{0.4em}
