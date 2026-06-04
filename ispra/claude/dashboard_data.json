@@ -1,0 +1,698 @@
+{
+  "summary": {
+    "hypothesis_counts": {
+      "complicated": 1,
+      "confirmed": 1,
+      "rejected": 2
+    },
+    "total_hypotheses": 4,
+    "total_insights": 5,
+    "pipeline_stale": 1,
+    "pipeline_total": 7,
+    "generated_at": "2026-06-04 17:27:35"
+  },
+  "hypotheses": [
+    {
+      "id": "H01",
+      "title": "National strategies reduced suicide",
+      "status": "complicated",
+      "parent": null,
+      "children": [
+        "H01a",
+        "H01b",
+        "H01c"
+      ],
+      "claim": "Adopting a national suicide-prevention strategy lowered a country's suicide rate relative to its counterfactual.",
+      "kills_it": "A confirmed protective effect would require a negative ATT that survives Rambachan-Roth and the placebo. We find a POSITIVE point estimate that does not survive either \u2014 so the protective claim is not earned, and neither is a harm claim. Verdict: cannot identify.",
+      "file": "hypotheses/H01_main.md"
+    },
+    {
+      "id": "H01a",
+      "title": "Parallel trends hold (long-difference baseline)",
+      "status": "confirmed",
+      "parent": "H01",
+      "children": [],
+      "claim": "Under the correct universal (g-1) baseline, treated and control suicide rates were on parallel paths before adoption.",
+      "kills_it": "A jointly significant pre-trend (e.g., sum z^2 far exceeding the chi-square(8) critical value).",
+      "file": "hypotheses/H01a_pretrends.md"
+    },
+    {
+      "id": "H01b",
+      "title": "The positive association is causal",
+      "status": "rejected",
+      "parent": "H01",
+      "children": [],
+      "claim": "The +2.7/100k post-adoption association reflects a causal effect of the policy.",
+      "kills_it": "A robust CI that includes zero (R&R), a placebo p > 0.10, or magnitude that halves with control choice.",
+      "file": "hypotheses/H01b_effect.md"
+    },
+    {
+      "id": "H01c",
+      "title": "TWFE is badly biased here",
+      "status": "rejected",
+      "parent": "H01",
+      "children": [],
+      "claim": "The two-way fixed-effects estimate is distorted by negative weighting / forbidden comparisons.",
+      "kills_it": "Forbidden comparisons carrying trivial weight, so TWFE approximates the heterogeneity-robust estimate.",
+      "file": "hypotheses/H01c_twfe.md"
+    }
+  ],
+  "insights": [
+    {
+      "date": "2026-06-04",
+      "title": "Goodman-Bacon \u2014 TWFE is not the problem here",
+      "updates": "H01c",
+      "result": "rejected",
+      "script": "code/R/bacon.R",
+      "output": "output/figures/fig_bacon.pdf",
+      "finding": "The static TWFE coefficient (3.11) decomposes into 2x2 comparisons whose weighted average",
+      "file": "insights/2026-06-04_bacon.md"
+    },
+    {
+      "date": "2026-06-04",
+      "title": "Unemployment is imbalanced (Imbens-Rubin 0.33)",
+      "updates": "H01",
+      "result": "confirmed",
+      "script": "code/R/analysis.R",
+      "output": "output/tables/tab2_balance.csv",
+      "finding": "At baseline, the standardized difference in means between treated and control is **0.33 for",
+      "file": "insights/2026-06-04_balance.md"
+    },
+    {
+      "date": "2026-06-04",
+      "title": "The positive estimate is not causal",
+      "updates": "H01b",
+      "result": "rejected",
+      "script": "code/R/analysis.R",
+      "output": "output/figures/fig9_honestdid.pdf",
+      "finding": "The +2.7 estimate fails every credibility check: Rambachan-Roth cannot sign it under modest trend",
+      "file": "insights/2026-06-04_not-causal.md"
+    },
+    {
+      "date": "2026-06-04",
+      "title": "Adoption is followed by MORE suicide (+2.7/100k)",
+      "updates": "H01",
+      "result": "complicated",
+      "script": "code/R/analysis.R",
+      "output": "output/figures/fig8_event_study.pdf",
+      "finding": "The group-size-weighted ATT of strategy adoption is **+2.73 suicides per 100,000** (s.e. 1.05) \u2014",
+      "file": "insights/2026-06-04_positive-att.md"
+    },
+    {
+      "date": "2026-06-04",
+      "title": "Pre-trends flat under the long-difference baseline",
+      "updates": "H01a",
+      "result": "confirmed",
+      "script": "code/R/analysis.R",
+      "output": "output/figures/fig8_event_study.pdf",
+      "finding": "With the **universal (g-1) baseline** \u2014 long differences, consistent with the parallel-trends",
+      "file": "insights/2026-06-04_pretrends-flat.md"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D01",
+      "decision": "Real data only \u2014 Eurostat suicide SDR + World Bank unemployment; no simulation",
+      "date": "2026-06-04",
+      "rationale": "Findings will be shown to the European Commission; fabrication is disqualifying"
+    },
+    {
+      "id": "D02",
+      "decision": "Drop Finland (adopted 1992, pre-window) and France (suicide series starts 2001, no pre-period)",
+      "date": "2026-06-04",
+      "rationale": "Neither can contribute a pre-treatment baseline for CS estimation"
+    },
+    {
+      "id": "D03",
+      "decision": "Balanced panel: 16 countries with complete suicide + unemployment over 1994-2010",
+      "date": "2026-06-04",
+      "rationale": "The `did` engine segfaults on the unbalanced panel; balancing avoids degenerate 2x2 cells"
+    },
+    {
+      "id": "D04",
+      "decision": "Regression adjustment (est_method=\"reg\"), NOT inverse-propensity weighting",
+      "date": "2026-06-04",
+      "rationale": "The country-level propensity score perfectly separates treated from control; no common support"
+    },
+    {
+      "id": "D05",
+      "decision": "Condition on unemployment as the single covariate",
+      "date": "2026-06-04",
+      "rationale": "Imbens-Rubin std. diff = 0.33 (imbalanced); the dominant time-varying suicide confound (Ruhm; Reeves)"
+    },
+    {
+      "id": "D06",
+      "decision": "Universal (long-difference) base period for the event study",
+      "date": "2026-06-04",
+      "rationale": "Pre-period coefficients must be long differences from g-1, consistent with parallel trends and post-period coefficients; the short (varying) base manufactured a spurious pre-trend"
+    },
+    {
+      "id": "D07",
+      "decision": "Target parameter = group-size-weighted ATT",
+      "date": "2026-06-04",
+      "rationale": "Weights cohorts by number of treated countries (2:1:1); the requested estimand"
+    }
+  ],
+  "pipeline": [
+    {
+      "script": "code/python/eurostat_fetch.py",
+      "name": "Acquire Eurostat (cleaning)",
+      "level": 1,
+      "exists": true,
+      "script_mtime": "2026-06-04 10:25",
+      "outputs": [
+        {
+          "path": "data/raw/gdp_real_pc.json",
+          "exists": true,
+          "mtime": "2026-06-04 10:26",
+          "fresh": true
+        }
+      ],
+      "all_fresh": true
+    },
+    {
+      "script": "code/python/build_panel.py",
+      "name": "Build country-year panel (derived)",
+      "level": 2,
+      "exists": true,
+      "script_mtime": "2026-06-04 10:27",
+      "outputs": [
+        {
+          "path": "data/clean/panel.csv",
+          "exists": true,
+          "mtime": "2026-06-04 10:28",
+          "fresh": true
+        }
+      ],
+      "all_fresh": true
+    },
+    {
+      "script": "code/R/analysis.R",
+      "name": "CS DiD + event study + falsification",
+      "level": 5,
+      "exists": true,
+      "script_mtime": "2026-06-04 17:15",
+      "outputs": [
+        {
+          "path": "output/estimates.json",
+          "exists": true,
+          "mtime": "2026-06-04 17:15",
+          "fresh": true
+        },
+        {
+          "path": "output/figures/fig8_event_study.png",
+          "exists": true,
+          "mtime": "2026-06-04 17:27",
+          "fresh": true
+        },
+        {
+          "path": "output/tables/tab2_balance.csv",
+          "exists": true,
+          "mtime": "2026-06-04 17:12",
+          "fresh": false
+        }
+      ],
+      "all_fresh": false
+    },
+    {
+      "script": "code/R/synth.R",
+      "name": "Augmented synthetic control (UK, IE)",
+      "level": 5,
+      "exists": true,
+      "script_mtime": "2026-06-04 10:43",
+      "outputs": [
+        {
+          "path": "output/figures/fig_synth_fit_IE.png",
+          "exists": true,
+          "mtime": "2026-06-04 17:16",
+          "fresh": true
+        }
+      ],
+      "all_fresh": true
+    },
+    {
+      "script": "code/R/bacon.R",
+      "name": "Goodman-Bacon decomposition",
+      "level": 5,
+      "exists": true,
+      "script_mtime": "2026-06-04 17:11",
+      "outputs": [
+        {
+          "path": "output/tables/tab_bacon.csv",
+          "exists": true,
+          "mtime": "2026-06-04 17:11",
+          "fresh": true
+        },
+        {
+          "path": "output/figures/fig_bacon.png",
+          "exists": true,
+          "mtime": "2026-06-04 17:27",
+          "fresh": true
+        }
+      ],
+      "all_fresh": true
+    },
+    {
+      "script": "code/python/replicate.py",
+      "name": "Python replication (differences)",
+      "level": 5,
+      "exists": true,
+      "script_mtime": "2026-06-04 10:46",
+      "outputs": [
+        {
+          "path": "output/estimates_python.json",
+          "exists": true,
+          "mtime": "2026-06-04 10:47",
+          "fresh": true
+        }
+      ],
+      "all_fresh": true
+    },
+    {
+      "script": "code/stata/replicate.do",
+      "name": "Stata replication (csdid)",
+      "level": 5,
+      "exists": true,
+      "script_mtime": "2026-06-04 10:48",
+      "outputs": [
+        {
+          "path": "code/stata/replicate.log",
+          "exists": true,
+          "mtime": "2026-06-04 10:48",
+          "fresh": true
+        }
+      ],
+      "all_fresh": true
+    }
+  ],
+  "figures": [
+    {
+      "name": "fig3_pscore_overlap",
+      "path": "output/figures/fig3_pscore_overlap.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "Propensity score perfectly separates -> regression adjustment",
+      "script": "code/R/analysis.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig4_panelview",
+      "path": "output/figures/fig4_panelview.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "Staggered adoption (4 treated, 12 never-treated)",
+      "script": "code/R/analysis.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig5_cohort_counts",
+      "path": "output/figures/fig5_cohort_counts.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "Cohort composition \u2014 the design is thin",
+      "script": "code/R/analysis.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig6_outcome_by_cohort",
+      "path": "output/figures/fig6_outcome_by_cohort.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "Suicide by cohort; all bend up in the recession",
+      "script": "code/R/analysis.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig8_event_study",
+      "path": "output/figures/fig8_event_study.png",
+      "mtime": "2026-06-04 17:27",
+      "caption": "Event study (universal base): pre-trends flat, post positive",
+      "script": "code/R/analysis.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig8c_calendar",
+      "path": "output/figures/fig8c_calendar.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "Calendar-time ATT loads on 2008-2010",
+      "script": "code/R/analysis.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig9_honestdid",
+      "path": "output/figures/fig9_honestdid.png",
+      "mtime": "2026-06-04 17:27",
+      "caption": "Rambachan-Roth: effect cannot be signed",
+      "script": "code/R/analysis.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_bacon",
+      "path": "output/figures/fig_bacon.png",
+      "mtime": "2026-06-04 17:27",
+      "caption": "Goodman-Bacon: TWFE = weighted 2x2s; forbidden weight ~3%",
+      "script": "code/R/bacon.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_falsification_placebo",
+      "path": "output/figures/fig_falsification_placebo.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "In-space placebo: observed is ordinary (p=0.25)",
+      "script": "code/R/analysis.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_robust_overlay",
+      "path": "output/figures/fig_robust_overlay.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "CS, BJS, Sun-Abraham agree (+2.7 to +3.2)",
+      "script": "code/R/analysis.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_synth_fit_IE",
+      "path": "output/figures/fig_synth_fit_IE.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "Ireland: observed vs synthetic",
+      "script": "code/R/synth.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_synth_fit_UK",
+      "path": "output/figures/fig_synth_fit_UK.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "UK: observed vs synthetic",
+      "script": "code/R/synth.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_synth_gap_IE",
+      "path": "output/figures/fig_synth_gap_IE.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "",
+      "script": "code/R/synth.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_synth_gap_UK",
+      "path": "output/figures/fig_synth_gap_UK.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "",
+      "script": "code/R/synth.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_synth_rmspe_IE",
+      "path": "output/figures/fig_synth_rmspe_IE.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "Ireland placebo RMSPE (p=0.69)",
+      "script": "code/R/synth.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_synth_rmspe_UK",
+      "path": "output/figures/fig_synth_rmspe_UK.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "UK placebo RMSPE (p=0.46)",
+      "script": "code/R/synth.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_synth_spaghetti_IE",
+      "path": "output/figures/fig_synth_spaghetti_IE.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "",
+      "script": "code/R/synth.R",
+      "fresh": true,
+      "orphaned": false
+    },
+    {
+      "name": "fig_synth_spaghetti_UK",
+      "path": "output/figures/fig_synth_spaghetti_UK.png",
+      "mtime": "2026-06-04 17:16",
+      "caption": "",
+      "script": "code/R/synth.R",
+      "fresh": true,
+      "orphaned": false
+    }
+  ],
+  "tables": [
+    {
+      "name": "tab2_balance",
+      "caption": "Baseline balance (Imbens-Rubin std. diff; |d|>0.25 = imbalanced)",
+      "headers": [
+        "variable",
+        "treated_mean",
+        "control_mean",
+        "std_diff",
+        "imbalanced"
+      ],
+      "rows": [
+        [
+          "suicide_sdr",
+          "12.125",
+          "21.5333333333333",
+          "-0.985152905616483",
+          "yes"
+        ],
+        [
+          "gdp_real_pc",
+          "39540",
+          "26350",
+          "",
+          ""
+        ],
+        [
+          "unemp",
+          "9.78025",
+          "8.17816666666667",
+          "0.334051812976818",
+          "yes"
+        ],
+        [
+          "share65",
+          "15.225",
+          "13.95",
+          "0.626155850111041",
+          "yes"
+        ],
+        [
+          "medage",
+          "35.2",
+          "36.2416666666667",
+          "-0.417880281784815",
+          "yes"
+        ]
+      ]
+    },
+    {
+      "name": "tab_bacon",
+      "caption": "Goodman-Bacon decomposition of TWFE",
+      "headers": [
+        "type",
+        "weight",
+        "avg_estimate",
+        "contribution"
+      ],
+      "rows": [
+        [
+          "Treated vs Untreated",
+          "0.863674851820491",
+          "3.57225490196082",
+          "3.08526672311603"
+        ],
+        [
+          "Earlier vs Later Treated",
+          "0.0245554614733277",
+          "-0.222413793103447",
+          "-0.00546147332768838"
+        ],
+        [
+          "Later vs Earlier Treated",
+          "0.111769686706181",
+          "0.285606060606062",
+          "0.0319220999153262"
+        ],
+        [
+          "--- Reconstructed TWFE (sum) ---",
+          "1",
+          "",
+          "3.11172734970367"
+        ],
+        [
+          "Actual TWFE coefficient",
+          "",
+          "",
+          "3.11172734970364"
+        ]
+      ]
+    },
+    {
+      "name": "tab5_cohort_counts",
+      "caption": "Cohort composition",
+      "headers": [
+        "cohort",
+        "n_country",
+        "share"
+      ],
+      "rows": [
+        [
+          "Never treated",
+          "12",
+          "75"
+        ],
+        [
+          "Adopted 1995",
+          "2",
+          "12.5"
+        ],
+        [
+          "Adopted 2005",
+          "1",
+          "6.2"
+        ],
+        [
+          "Adopted 2002",
+          "1",
+          "6.2"
+        ]
+      ]
+    },
+    {
+      "name": "tab_referee_robustness",
+      "caption": "Referee-requested robustness",
+      "headers": [
+        "spec",
+        "att",
+        "se"
+      ],
+      "rows": [
+        [
+          "drop post-communist controls",
+          "1.24052066648044",
+          "0.705422173534527"
+        ],
+        [
+          "Sweden recoded 2008",
+          "2.40464626395033",
+          "0.925157387413182"
+        ],
+        [
+          "anticipation = 1 year",
+          "1.68125865650078",
+          "0.786939138730229"
+        ]
+      ]
+    },
+    {
+      "name": "tab_leaveoneout",
+      "caption": "Leave-one-treated-country-out",
+      "headers": [
+        "dropped",
+        "att",
+        "se"
+      ],
+      "rows": [
+        [
+          "IE",
+          "3.08115600814165",
+          "1.25891643813769"
+        ],
+        [
+          "NO",
+          "2.09262912975941",
+          "0.690882148633379"
+        ],
+        [
+          "SE",
+          "2.79012817792414",
+          "1.07100146531396"
+        ],
+        [
+          "UK",
+          "2.95100093974898",
+          "1.21330122666684"
+        ]
+      ]
+    }
+  ],
+  "courtroom": {
+    "stages": [
+      {
+        "id": 1,
+        "name": "Setup: real treatment, imbalanced covariate",
+        "status": "confirmed",
+        "summary": "Staggered adoption is real (4 treated, 12 documented never-adopters). Unemployment is imbalanced (Imbens-Rubin std. diff 0.33).",
+        "evidence": [
+          "fig4_panelview.png",
+          "tab2_balance.csv",
+          "D04: pscore separates -> regression adjustment"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Event studies: pre-trends flat (long-difference base)",
+        "status": "confirmed",
+        "summary": "Under the universal g-1 baseline the pre-trend test does not reject (sum z^2 = 9.8, df 8). The short-difference 'violation' (59.4) was an artifact.",
+        "evidence": [
+          "fig8_event_study.png",
+          "D06: universal base period"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Falsification: placebo finds nothing",
+        "status": "confirmed",
+        "summary": "In-space placebo p = 0.25; synthetic-control placebo p = 0.46 (UK), 0.69 (IE). The effect is indistinguishable from chance.",
+        "evidence": [
+          "fig_falsification_placebo.png",
+          "fig_synth_rmspe_IE.png"
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Main result: positive but unsignable",
+        "status": "complicated",
+        "summary": "Group-weighted ATT = +2.73/100k (more suicide), robust across CS/BJS/SA \u2014 but Rambachan-Roth cannot sign it and it halves when post-communist controls are dropped.",
+        "evidence": [
+          "fig_robust_overlay.png",
+          "fig9_honestdid.png",
+          "fig8c_calendar.png"
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Mechanism: selection + recession; TWFE not the culprit",
+        "status": "confirmed",
+        "summary": "The positive sign reflects selection (adoption when suicide is high) and the 2008 recession. Goodman-Bacon: TWFE (3.11) ~ CS (2.7); forbidden comparisons carry ~3% weight.",
+        "evidence": [
+          "fig_bacon.png",
+          "tab_bacon.csv"
+        ]
+      }
+    ]
+  },
+  "manuscript": {
+    "earned": [
+      "Pre-trends are flat under the correct long-difference baseline (sum z^2 = 9.85, df 8).",
+      "Unemployment is imbalanced (Imbens-Rubin 0.33), justifying conditional parallel trends.",
+      "The naive staggered-DiD estimate is POSITIVE: +2.7/100k, agreed by CS, BJS, Sun-Abraham.",
+      "Goodman-Bacon: TWFE reconstructs to 3.11; forbidden comparisons get ~3% weight.",
+      "The estimate cannot be signed (Rambachan-Roth), is placebo-indistinguishable (p=0.25), and is fragile to the control pool."
+    ],
+    "thesis": "The cross-national record cannot identify whether national suicide-prevention strategies reduced suicide. The positive association is selection plus the recession, not a measured effect \u2014 and that inseparability is the finding."
+  }
+}

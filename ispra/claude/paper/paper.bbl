@@ -1,0 +1,134 @@
+\begin{thebibliography}{21}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abadie et~al.(2010)Abadie, Diamond, and Hainmueller]{abadie2010synthetic}
+Alberto Abadie, Alexis Diamond, and Jens Hainmueller.
+\newblock Synthetic control methods for comparative case studies: Estimating the effect of california's tobacco control program.
+\newblock \emph{Journal of the American Statistical Association}, 105\penalty0 (490):\penalty0 493--505, 2010.
+\newblock \doi{10.1198/jasa.2009.ap08746}.
+
+\bibitem[Ben-Michael et~al.(2021)Ben-Michael, Feller, and Rothstein]{benmichael2021augmented}
+Eli Ben-Michael, Avi Feller, and Jesse Rothstein.
+\newblock The augmented synthetic control method.
+\newblock \emph{Journal of the American Statistical Association}, 116\penalty0 (536):\penalty0 1789--1803, 2021.
+\newblock \doi{10.1080/01621459.2021.1929245}.
+
+\bibitem[Borusyak et~al.(2024)Borusyak, Jaravel, and Spiess]{borusyak2024revisiting}
+Kirill Borusyak, Xavier Jaravel, and Jann Spiess.
+\newblock Revisiting event-study designs: Robust and efficient estimation.
+\newblock \emph{The Review of Economic Studies}, 91\penalty0 (6):\penalty0 3253--3285, 2024.
+\newblock \doi{10.1093/restud/rdae007}.
+
+\bibitem[Callaway and Sant'Anna(2021)]{callaway2021did}
+Brantly Callaway and Pedro H.~C. Sant'Anna.
+\newblock Difference-in-differences with multiple time periods.
+\newblock \emph{Journal of Econometrics}, 225\penalty0 (2):\penalty0 200--230, 2021.
+\newblock \doi{10.1016/j.jeconom.2020.12.001}.
+
+\bibitem[de~Chaisemartin and D'Haultf{\oe}uille(2020)]{dechaisemartin2020twoway}
+Cl{\'e}ment de~Chaisemartin and Xavier D'Haultf{\oe}uille.
+\newblock Two-way fixed effects estimators with heterogeneous treatment effects.
+\newblock \emph{American Economic Review}, 110\penalty0 (9):\penalty0 2964--2996, 2020.
+\newblock \doi{10.1257/aer.20181169}.
+
+\bibitem[{Eurostat}(2026)]{eurostat_cod}
+{Eurostat}.
+\newblock Causes of death --- standardised death rate by nuts 2 region of residence (hlth\_cd\_asdr, hlth\_cd\_asdr2).
+\newblock European Commission, Eurostat database, 2026.
+\newblock Accessed 2026-06-04.
+
+\bibitem[Goodman-Bacon(2021)]{goodmanbacon2021did}
+Andrew Goodman-Bacon.
+\newblock Difference-in-differences with variation in treatment timing.
+\newblock \emph{Journal of Econometrics}, 225\penalty0 (2):\penalty0 254--277, 2021.
+\newblock \doi{10.1016/j.jeconom.2021.03.014}.
+
+\bibitem[Imbens and Rubin(2015)]{imbens2015causal}
+Guido~W. Imbens and Donald~B. Rubin.
+\newblock \emph{Causal Inference for Statistics, Social, and Biomedical Sciences: An Introduction}.
+\newblock Cambridge University Press, New York, 2015.
+\newblock \doi{10.1017/CBO9781139025751}.
+
+\bibitem[Lewitzka et~al.(2019)Lewitzka, Sauer, Bauer, and Felber]{lewitzka2019national}
+Ute Lewitzka, Cathrin Sauer, Michael Bauer, and Werner Felber.
+\newblock Are national suicide prevention programs effective? a comparison of 4 verum and 4 control countries over 30 years.
+\newblock \emph{BMC Psychiatry}, 19:\penalty0 158, 2019.
+\newblock \doi{10.1186/s12888-019-2147-y}.
+
+\bibitem[Matsubayashi and Ueda(2011)]{matsubayashi2011effect}
+Tetsuya Matsubayashi and Michiko Ueda.
+\newblock The effect of national suicide prevention programs on suicide rates in 21 oecd nations.
+\newblock \emph{Social Science \& Medicine}, 73\penalty0 (9):\penalty0 1395--1400, 2011.
+\newblock \doi{10.1016/j.socscimed.2011.08.022}.
+
+\bibitem[Rambachan and Roth(2023)]{rambachan2023credible}
+Ashesh Rambachan and Jonathan Roth.
+\newblock A more credible approach to parallel trends.
+\newblock \emph{The Review of Economic Studies}, 90\penalty0 (5):\penalty0 2555--2591, 2023.
+\newblock \doi{10.1093/restud/rdad018}.
+
+\bibitem[Reeves et~al.(2012)Reeves, Stuckler, McKee, Gunnell, Chang, and Basu]{reeves2012increase}
+Aaron Reeves, David Stuckler, Martin McKee, David Gunnell, Shu-Sen Chang, and Sanjay Basu.
+\newblock Increase in state suicide rates in the usa during economic recession.
+\newblock \emph{The Lancet}, 380\penalty0 (9856):\penalty0 1813--1814, 2012.
+\newblock \doi{10.1016/S0140-6736(12)61910-2}.
+\newblock Correspondence.
+
+\bibitem[Roth et~al.(2023)Roth, Sant'Anna, Bilinski, and Poe]{roth2023trending}
+Jonathan Roth, Pedro H.~C. Sant'Anna, Alyssa Bilinski, and John Poe.
+\newblock What's trending in difference-in-differences? a synthesis of the recent econometrics literature.
+\newblock \emph{Journal of Econometrics}, 235\penalty0 (2):\penalty0 2218--2244, 2023.
+\newblock \doi{10.1016/j.jeconom.2023.03.008}.
+
+\bibitem[Ruhm(2000)]{ruhm2000recessions}
+Christopher~J. Ruhm.
+\newblock Are recessions good for your health?
+\newblock \emph{The Quarterly Journal of Economics}, 115\penalty0 (2):\penalty0 617--650, 2000.
+\newblock \doi{10.1162/003355300554872}.
+
+\bibitem[Sant'Anna and Zhao(2020)]{santanna2020doubly}
+Pedro H.~C. Sant'Anna and Jun Zhao.
+\newblock Doubly robust difference-in-differences estimators.
+\newblock \emph{Journal of Econometrics}, 219\penalty0 (1):\penalty0 101--122, 2020.
+\newblock \doi{10.1016/j.jeconom.2020.06.003}.
+
+\bibitem[Stuckler and Basu(2013)]{stuckler2013body}
+David Stuckler and Sanjay Basu.
+\newblock \emph{The Body Economic: Why Austerity Kills}.
+\newblock Basic Books, New York, 2013.
+
+\bibitem[Stuckler et~al.(2009)Stuckler, Basu, Suhrcke, Coutts, and McKee]{stuckler2009publichealth}
+David Stuckler, Sanjay Basu, Marc Suhrcke, Adam Coutts, and Martin McKee.
+\newblock The public health effect of economic crises and alternative policy responses in europe: An empirical analysis.
+\newblock \emph{The Lancet}, 374\penalty0 (9686):\penalty0 315--323, 2009.
+\newblock \doi{10.1016/S0140-6736(09)61124-7}.
+
+\bibitem[Sun and Abraham(2021)]{sun2021estimating}
+Liyang Sun and Sarah Abraham.
+\newblock Estimating dynamic treatment effects in event studies with heterogeneous treatment effects.
+\newblock \emph{Journal of Econometrics}, 225\penalty0 (2):\penalty0 175--199, 2021.
+\newblock \doi{10.1016/j.jeconom.2020.09.006}.
+
+\bibitem[{World Bank}(2026)]{worldbank_unemp}
+{World Bank}.
+\newblock Unemployment, total (\% of total labor force), modeled ilo estimate (sl.uem.totl.zs).
+\newblock World Development Indicators, 2026.
+\newblock Accessed 2026-06-04.
+
+\bibitem[{World Health Organization}(2014)]{who2014preventing}
+{World Health Organization}.
+\newblock Preventing suicide: A global imperative.
+\newblock Technical report, World Health Organization, Geneva, 2014.
+\newblock ISBN 978-92-4-156477-9.
+
+\bibitem[{World Health Organization}(2018)]{who2018strategies}
+{World Health Organization}.
+\newblock National suicide prevention strategies: Progress, examples and indicators.
+\newblock Technical report, World Health Organization, Geneva, 2018.
+\newblock ISBN 978-92-4-151501-6.
+
+\end{thebibliography}
