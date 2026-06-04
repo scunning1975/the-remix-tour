@@ -39,17 +39,17 @@ gen post = (year >= 6)
 * Step 2: Generate potential outcomes (Revised to shrink pre-trends)
 
 * Smaller urban decline, nearly flat rural increase
-bys county_id: gen trend = .
-replace trend = -0.15*urban + 0.1*(1-urban) if year==1
+bys 	county_id: gen trend = .
+replace trend = -0.15*urban + 0.1*(1-urban) if year==1 
 replace trend = -0.25*urban + 0.1*(1-urban) if year==2
 replace trend = -0.15*urban + 0.1*(1-urban) if year==3
-replace trend = -0.1*urban + 0.1*(1-urban) if year==4
-replace trend = -0.1*urban + 0.1*(1-urban) if year==5
-replace trend = -0.5*urban + 0.1*(1-urban) if year==6
-replace trend = -1*urban + 0.1*(1-urban) if year==7
-replace trend = -1.5*urban + 0.1*(1-urban) if year==8
-replace trend = -2*urban + 0.1*(1-urban) if year==9
-replace trend = -2.5*urban + 0.1*(1-urban) if year==10
+replace trend = -0.1*urban  + 0.1*(1-urban) if year==4
+replace trend = -0.1*urban  + 0.1*(1-urban) if year==5
+replace trend = -0.5*urban  + 0.1*(1-urban) if year==6
+replace trend = -1*urban    + 0.1*(1-urban) if year==7
+replace trend = -1.5*urban  + 0.1*(1-urban) if year==8
+replace trend = -2*urban    + 0.1*(1-urban) if year==9
+replace trend = -2.5*urban  + 0.1*(1-urban) if year==10
 
 * Generate county-level fixed effects (increasing cross-sectional variance)
 bys county_id: gen county_fe = rnormal(0, 2)

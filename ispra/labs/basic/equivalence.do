@@ -39,6 +39,8 @@ gen did = (y11 - y10) - (y01 - y00)
 sum did
 
 
+
+
 * Regression Example 1: OLS regression with interactions (interactioned OLS)
 reg l_homicide post##treat, cluster(sid)
 
@@ -47,10 +49,18 @@ xtreg l_homicide c.treat#c.post i.year, fe vce(cluster sid)
 
 * Regression Example 3: Regress "long difference" onto treatment dummy
 preserve
-    keep sid year l_homicide treat
-    reshape wide l_homicide, i(sid) j(year)
+    keep sid year l_homicide treat police
+    reshape wide l_homicide police, i(sid) j(year)
     gen diff = l_homicide2006 - l_homicide2005
     reg diff treat, vce(cluster sid)
+restore
+
+* Regression Example 4: Regress "group difference" onto post dummy
+preserve
+    collapse (mean) l_homicide, by(treat post)
+    reshape wide l_homicide, i(post) j(treat)
+    gen gdiff = l_homicide1 - l_homicide0   // treatment minus control, each period
+    reg gdiff post
 restore
 
 * Now calculate the same thing using population weights as below
@@ -89,6 +99,16 @@ preserve
     gen diff = l_homicide2006 - l_homicide2005
     reg diff treat [aw=popwt2005], vce(cluster sid)
 restore
+
+
+* Regression Example 4: Regress "group difference" onto post dummy (weighted)
+preserve
+    collapse (mean) l_homicide [aw=popwt], by(treat post)
+    reshape wide l_homicide, i(post) j(treat)
+    gen gdiff = l_homicide1 - l_homicide0
+    reg gdiff post
+restore
+
 
 capture log close
 exit

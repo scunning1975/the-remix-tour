@@ -18,6 +18,7 @@
 *       Covariates: time-invariant baseline characteristics.
 ********************************************************************************
 
+cd "/Users/scunning/the-remix-tour/glasgow/labs/Lalonde"
 clear all
 capture log close
 set more off
