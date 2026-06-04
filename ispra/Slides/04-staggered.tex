@@ -78,7 +78,42 @@
   {Scott Cunningham \textperiodcentered\ Baylor University}
   {European Commission \textperiodcentered\ June 3--4, 2026}
 
-%% ---------- Slide 2: SW story ----------
+%% ---------- Slide 2: TWFE intro ----------
+\begin{frame}{The dominant estimator for staggered DiD}
+\vspace{0.6em}
+\begin{center}
+\large
+$Y_{ist} \;=\; \alpha_i \;+\; \gamma_t \;+\; \delta\, D_{ist} \;+\; \varepsilon_{ist}$
+\end{center}
+\vspace{0.8em}
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item Unit fixed effects $\alpha_i$ absorb time-invariant confounders
+  \item Time fixed effects $\gamma_t$ absorb common shocks
+  \item $\hat\delta$ was assumed to recover a ``reasonably weighted average'' ATT
+\end{itemize}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+For 30+ years: the workhorse for panel DiD with differential timing.
+\end{center}
+\end{frame}
+
+%% ---------- Slide 3: The two papers ----------
+\begin{frame}{Two papers changed everything}
+\vspace{0.8em}
+\begin{itemize}\setlength\itemsep{0.7em}
+  \item \textbf{Goodman-Bacon (2021)} \textperiodcentered\ \textit{Journal of Econometrics}\\
+        {\small\color{warmgray} TWFE $\hat\delta$ is a weighted average of \textit{all} underlying 2$\times$2 DiDs --- including comparisons that use already-treated units as controls.}
+
+  \item \textbf{de Chaisemartin \& D'Haultf\oe{}uille (2020)} \textperiodcentered\ \textit{AER}\\
+        {\small\color{warmgray} Under treatment effect heterogeneity, those weights can be negative --- wiping out the causal interpretation of $\hat\delta$.}
+\end{itemize}
+\vspace{0.7em}
+\begin{center}
+\highlight{Today: understand why, and learn what to do instead.}
+\end{center}
+\end{frame}
+
+%% ---------- Slide 4: SW story ----------
 \begin{frame}{Stevenson \&\ Wolfers (2006): can law reduce intimate violence?}
 \vspace{0.4em}
 Before 1969, divorce in the U.S.\ required showing fault --- adultery, abandonment, cruelty --- and either spouse could veto. \;Starting with California in 1969, states began adopting \highlight{unilateral divorce} laws: either spouse can dissolve the marriage, no fault required, no veto. \;By 1985 most states had moved.
