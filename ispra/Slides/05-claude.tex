@@ -95,6 +95,34 @@ Today: agents. Claude Code is an agent.
 \end{center}
 \end{frame}
 
+%% ----------
+\begin{frame}{Research output is multiplicative --- Shockley (1957)}
+\vspace{0.5em}
+\begin{center}
+\large
+$P \;=\; F_1 \times F_2 \times F_3 \times F_4 \times F_5 \times F_6 \times F_7 \times F_8$
+\end{center}
+\vspace{0.5em}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{enumerate}\small\setlength\itemsep{0.2em}
+  \item Pose a good problem
+  \item Work effectively on it
+  \item Recognize a worthwhile result
+  \item Know when to stop
+\end{enumerate}
+\column{0.48\textwidth}
+\begin{enumerate}\small\setlength\itemsep{0.2em}\setcounter{enumi}{4}
+  \item Write it up clearly
+  \item Profit from criticism
+  \item Submit the work
+  \item Persist through revision
+\end{enumerate}
+\end{columns}
+\vspace{0.5em}
+\emphbox{Multiplicative: any factor at zero kills output. \;Small gains across several factors compound dramatically.}
+\end{frame}
+
 %% ====================================================================
 %% PART 2 — THE ECONOMICS OF AI
 %% ====================================================================
@@ -396,6 +424,80 @@ We'll come back at the end and see where it is.
 \vspace{0.6em}
 \begin{center}\color{warmgray}\small
 The agent does the work. You verify the design and the findings.
+\end{center}
+\end{frame}
+
+%% ====================================================================
+%% CONCLUSION — VERIFICATION AND DESKILLING
+%% ====================================================================
+
+\begin{frame}{The traditional path from time to output}
+\vspace{0.8em}
+\begin{center}
+\begin{tikzpicture}[
+  box/.style={rectangle, rounded corners=4pt, draw=warmgray!60,
+              fill=lightbg, minimum width=2.0cm, minimum height=0.75cm,
+              align=center, font=\small},
+  arr/.style={-{Stealth[length=6pt]}, thick, color=slate},
+]
+\node[box] (T)  at (0,0)   {Time};
+\node[box] (A)  at (3,0)   {Attention};
+\node[box] (S)  at (6,0)   {Skill};
+\node[box] (O)  at (9,0)   {Output};
+\draw[arr] (T.east) -- (A.west);
+\draw[arr] (A.east) -- (S.west);
+\draw[arr] (S.east) -- (O.west);
+\draw[arr, color=accent, dashed, very thick]
+  (T.south) .. controls (4.5,-1.4) .. (O.south)
+  node[midway, below, font=\small, color=accent] {AI route};
+\end{tikzpicture}
+\end{center}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+The AI route shortcircuits Attention and Skill.\\
+Output arrives faster --- but the pathway that builds the researcher is skipped.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{Production costs have fallen}
+\vspace{1.0em}
+\begin{center}
+\large
+\highlight{AER is already seeing a 20--50\% inflow of AI-written submissions.}\\[0.8em]
+\color{warmgray}\normalsize
+12 editors. Each handling 200 papers. Right now.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{Submissions are rising --- verification is not}
+\vspace{0.8em}
+\begin{itemize}\setlength\itemsep{0.6em}
+  \item Agents reliably produce output (1): code ran, estimates exist
+  \item They do not guarantee correct output (2): right estimator, right design
+  \item They do not guarantee interpretable output (3): can you reconstruct every step?
+\end{itemize}
+\vspace{0.5em}
+\emphbox{Production was hard; verification was implicit. \\Now production is cheap; verification is hard.}
+\end{frame}
+
+%% ----------
+\begin{frame}{You will need to build a verification workflow}
+\vspace{0.8em}
+\begin{center}
+\large
+\highlight{Verification is the new bottleneck.}
+\end{center}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item \texttt{/referee2} --- replicate results in a second language or framework
+  \item \texttt{/blindspot} --- surface what the analysis missed
+  \item \texttt{/beautiful\_deck} --- force the agent to present its own findings
+\end{itemize}
+\vspace{0.4em}
+\begin{center}\color{warmgray}\small
+The workflow doesn't exist yet. You will probably need to develop one for yourself.
 \end{center}
 \end{frame}
 
