@@ -377,6 +377,254 @@ You still have to answer it.
 \end{center}
 \end{frame}
 
+%% ====================================================================
+%% PART 7 — LALONDE APPLICATION
+%% ====================================================================
+
+\begin{frame}{Now let's see it with real data}
+\vspace{1.2em}
+\begin{center}
+\Large
+LaLonde (1986) \textperiodcentered\ Dehejia \& Wahba (2002)
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\color{warmgray}
+A famous dataset where we \highlight{know the true effect.}\\[0.4em]
+The benchmark: \highlight{\$1,794}.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{LaLonde (1986): the RCT found $\approx$\$800}
+\vspace{0.8em}
+\begin{itemize}\setlength\itemsep{0.6em}
+  \item Job training program (National Supported Work Demonstration)
+  \item Randomized --- treated and control groups assigned by lottery
+  \item RCT estimate: earnings effect $\approx$ \textbf{\$800}
+\end{itemize}
+\vspace{0.6em}
+\begin{center}\color{warmgray}\small
+A clean causal estimate. The benchmark exists.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{LaLonde: dropped the RCT controls, used CPS instead}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.55em}
+  \item Replaced the randomized controls with observational data (CPS, PSID)
+  \item Re-ran every evaluator method from the literature
+  \item Results ranged from \textbf{$-$\$16,000 to $+$\$3,000}
+\end{itemize}
+\vspace{0.5em}
+\emphbox{The true effect was \$800. Not one method recovered it. \\
+\textit{``The available evidence calls into serious question the ability of nonexperimental evaluators\ldots''}}
+\vspace{0.3em}
+\begin{center}\color{warmgray}\small
+Empirical labor economics faces an evaluation problem.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{Dehejia \& Wahba (2002): propensity scores get close}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.55em}
+  \item Need \textbf{two pre-treatment years} for all datasets --- uses a shorter sample
+  \item RCT benchmark on this shorter sample: \highlight{\$1,794}
+  \item Applied propensity score matching on the non-experimental sample
+  \item Result: estimates close to \$1,794
+\end{itemize}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+Selective use of the data $+$ right method $=$ nearly recovered the truth.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{Our exercise: DiD with and without covariates}
+\vspace{0.8em}
+\begin{center}
+NSW treated $+$ CPS controls \textperiodcentered\
+Pre = 1975 \textperiodcentered\ Post = 1978\\[0.6em]
+\large We know the effect: \highlight{\$1,794}\\[0.6em]
+\normalsize\color{warmgray}
+Let's see which specs recover it --- and which don't.
+\end{center}
+\end{frame}
+
+%% ---------- Spec 0 ----------
+\begin{frame}[fragile]{Naive TWFE: \$3,621 --- almost double the truth}
+\vspace{0.4em}
+\begin{lstlisting}[language=]
+reg re i.post##i.ever_treated, robust
+\end{lstlisting}
+\vspace{0.5em}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Estimator & ATT & vs benchmark \\
+\midrule
+Naive TWFE & \textbf{\$3,621} & \textcolor{red}{$+$\$1,827} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4em}
+\begin{center}\color{warmgray}\small
+No covariates --- the CPS controls trend very differently from NSW treated.
+\end{center}
+\end{frame}
+
+%% ---------- Spec A ----------
+\begin{frame}[fragile]{Additive $X$: still \$3,621}
+\vspace{0.4em}
+\begin{lstlisting}[language=]
+reg re i.post##i.ever_treated $X, robust
+\end{lstlisting}
+\vspace{0.5em}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Estimator & ATT & vs benchmark \\
+\midrule
+Additive $X$ & \textbf{\$3,621} & \textcolor{red}{$+$\$1,827} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4em}
+\emphbox{Adding $X$ as time-invariant regressors does nothing here. The unit FE absorbs the level differences. The trend bias remains.}
+\end{frame}
+
+%% ---------- Spec B ----------
+\begin{frame}[fragile]{Post$\,\times\,X$: \$1,711 --- now in the right range}
+\vspace{0.4em}
+\begin{lstlisting}[language=]
+reg re i.post##i.ever_treated ///
+    i.post##c.age i.post##c.agesq i.post##c.agecube ///
+    i.post##c.educ i.post##c.educsq ///
+    i.post##i.marr i.post##i.nodegree ///
+    i.post##i.black i.post##i.hisp ///
+    i.post##c.re74 i.post##i.u74, robust
+\end{lstlisting}
+\vspace{0.4em}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Estimator & ATT & vs benchmark \\
+\midrule
+Post$\,\times\,X$ & \textbf{\$1,711} & $-$\$83 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+%% ---------- Spec C ----------
+\begin{frame}[fragile]{Saturated TWFE: \$1,770}
+\vspace{0.3em}
+\begin{lstlisting}[language=]
+* First-difference, then regress dy on X + D x X interactions
+reg dy $X ///
+    i.ever_treated#c.age i.ever_treated#c.agesq ///
+    i.ever_treated#c.educ i.ever_treated#c.re74 ///
+    i.ever_treated, robust
+* Predict counterfactuals; ATT = mean(tau_sat) for treated
+\end{lstlisting}
+\vspace{0.3em}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Estimator & ATT & vs benchmark \\
+\midrule
+Saturated TWFE & \textbf{\$1,770} & $-$\$24 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+%% ---------- OR ----------
+\begin{frame}[fragile]{OR (HIT 1997): same answer as saturated TWFE}
+\vspace{0.3em}
+\begin{lstlisting}[language=]
+* Fit trend model on controls only
+reg dy $X if ever_treated == 0, robust
+predict dy_hat
+* ATT = mean gap for treated
+gen delta_hat = dy - dy_hat if ever_treated == 1
+\end{lstlisting}
+\vspace{0.4em}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Estimator & ATT & vs benchmark \\
+\midrule
+OR by hand / \texttt{drdid reg} & \textbf{\$1,770} & $-$\$24 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.2em}
+\begin{center}\color{warmgray}\small
+Saturated TWFE and OR are algebraically equivalent in the 2-period case.
+\end{center}
+\end{frame}
+
+%% ---------- IPW ----------
+\begin{frame}[fragile]{IPW (Abadie 2005): \$1,861}
+\vspace{0.3em}
+\begin{lstlisting}[language=]
+drdid re $X, time(year) ivar(id) tr(ever_treated) ipw
+\end{lstlisting}
+\vspace{0.5em}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Estimator & ATT & vs benchmark \\
+\midrule
+IPW & \textbf{\$1,861} & $+$\$67 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+%% ---------- DR ----------
+\begin{frame}[fragile]{DR (Sant'Anna--Zhao 2020): \$1,979}
+\vspace{0.3em}
+\begin{lstlisting}[language=]
+drdid re $X, time(year) ivar(id) tr(ever_treated) dripw
+\end{lstlisting}
+\vspace{0.5em}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Estimator & ATT & vs benchmark \\
+\midrule
+DR & \textbf{\$1,979} & $+$\$185 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+%% ---------- Forest plot ----------
+\begin{frame}{All seven estimators vs the \$1,794 benchmark}
+\vspace{0.2em}
+\begin{center}
+\includegraphics[width=0.82\textwidth]{figures/lalonde_forest.png}
+\end{center}
+\end{frame}
+
+%% ---------- Conclusion ----------
+\begin{frame}{Covariates are not robustness checks --- they are design}
+\vspace{0.8em}
+\begin{itemize}\setlength\itemsep{0.6em}
+  \item People say: \textit{``if adding covariates changes results, be suspicious.''}
+  \item That gets it backwards.
+  \item We \highlight{know} the effect is \$1,794.
+  \item Without covariates, or with additive covariates, we get \$3,621 --- \textit{wrong}.
+  \item The correct specs recover \$1,770--\$1,979 --- \textit{right}.
+\end{itemize}
+\vspace{0.4em}
+\emphbox{Covariates fix broken parallel trends. Changing your result is not a bug. It is the design working.}
+\end{frame}
+
 %% ---------- Closing linger ----------
 \begin{frame}[plain]
 \begin{tikzpicture}[remember picture,overlay]
