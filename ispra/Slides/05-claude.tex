@@ -380,14 +380,13 @@ This conversation happened\\this week.
 \end{frame}
 
 %% ----------
-\begin{frame}{Zurich Social Catalyst Lab: papers from the workshop}
-\vspace{0.8em}
+\begin{frame}{APE: 1,000 AI-written papers vs 43 human papers}
 \begin{center}
-\large
-After the Zurich workshop (May 2026):\\[0.6em]
-\color{warmgray}\normalsize
-Participants built working papers using Claude Code and the methods from the course.\\[0.6em]
-\highlight{Zero-shot papers are not the ceiling. They are the floor.}
+\includegraphics[width=0.80\textwidth,height=0.68\textheight,keepaspectratio]{figures/elo-histogram.png}
+\end{center}
+\vspace{-0.2em}
+\begin{center}\small\color{warmgray}\itshape
+Social Catalyst Lab (Stanford). AI papers cluster around human median. \highlight{Zero-shot is not the ceiling.}
 \end{center}
 \end{frame}
 
@@ -424,18 +423,48 @@ We'll come back at the end and see where it is.
 \end{frame}
 
 %% ----------
-\begin{frame}{Verification: the human stays in the loop}
-\vspace{0.8em}
+\begin{frame}{\texttt{/referee2} --- replicate in a second language}
+\vspace{1.0em}
 \begin{center}
-\begin{tabular}{ll}
-  \texttt{/referee2}        & Results in a second language / framework \\[0.5em]
-  GTD harness               & Organize and track multi-step pipelines \\[0.5em]
-  \texttt{/beautiful\_deck} & Compile results into a presentation \\
-\end{tabular}
+\large\texttt{/referee2}
 \end{center}
 \vspace{0.6em}
-\begin{center}\color{warmgray}\small
-The agent does the work. You verify the design and the findings.
+\begin{center}\normalsize\color{warmgray}
+Spawns a skeptical reviewer.\\[0.4em]
+Runs your estimation pipeline in R if you wrote it in Stata.\\[0.4em]
+Flags every discrepancy.\\[0.6em]
+\highlight{If the numbers don't match, something is wrong.}
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{\texttt{/beautiful\_deck} --- turn results into a presentation}
+\vspace{1.0em}
+\begin{center}
+\large\texttt{/beautiful\_deck}
+\end{center}
+\vspace{0.6em}
+\begin{center}\normalsize\color{warmgray}
+Generates a full Beamer deck from your results folder.\\[0.4em]
+Applies assertion titles, one idea per slide, clean figures.\\[0.6em]
+\highlight{Forces the agent to present its own findings to an audience.}\\[0.4em]
+\small If it can't explain the result on a slide, it didn't understand it.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{GTD harness --- track the pipeline}
+\vspace{1.0em}
+\begin{center}
+\large GTD (Getting Things Done) harness
+\end{center}
+\vspace{0.6em}
+\begin{center}\normalsize\color{warmgray}
+A workflow file that tracks every step:\\[0.4em]
+what ran, what verified, what's pending, what failed.\\[0.6em]
+\highlight{Multi-step pipelines need a memory.}\\[0.4em]
+\small The agent touches 50 files over 4 hours.\\
+Without a log, you can't audit what it did.
 \end{center}
 \end{frame}
 
