@@ -43,11 +43,26 @@
   {Scott Cunningham \textperiodcentered\ Baylor University}
   {European Commission \textperiodcentered\ June 3--4, 2026}
 
+%% ---------- RECAP ----------
+\begin{frame}{Yesterday: three problems with additive covariates}
+\vspace{0.4em}
+\begin{enumerate}\setlength\itemsep{0.5em}
+  \item \textbf{Heterogeneous treatment effects in $X$} \hfill \highlight{Fix: interact $D \times X$}
+  \item \textbf{Imbalance + differential trends} \hfill \highlight{Fix: interact $\text{Post} \times X$}\\
+        {\small\color{warmgray}(including time-invariant $X$ --- but \textbf{never} post-treatment $X$)}
+  \item \textbf{Time-invariant $X$ absorbed by unit FE} \hfill \highlight{Drops out entirely}
+\end{enumerate}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+Today: a brisk review of OR, IPW, and DR; simulation; LaLonde application.
+\end{center}
+\end{frame}
+
 %% ---------- SCHEDULE ----------
 \begin{frame}{Thursday: we are behind, so we accelerate}
 \vspace{0.5em}
 \begin{enumerate}\setlength\itemsep{0.5em}
-  \item \highlight{Covariates (now):} IPW, OR, DR --- and the LaLonde lab
+  \item \highlight{Covariates (now):} OR, IPW, DR --- and the LaLonde lab
   \item \highlight{Continuous DiD:} TWFE decomposition, causal parameters, estimation + exercise
   \item \highlight{Staggered adoption:} TWFE problems, Callaway--Sant'Anna
   \item \highlight{Claude Code:} live demo, zero-shot pipeline, verification
