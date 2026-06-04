@@ -45,7 +45,58 @@
   {European Commission \textperiodcentered\ June 3--4, 2026}
 
 %% ====================================================================
-%% PART 1 — THE ECONOMICS OF AI
+%% PART 1 — INTRODUCTION
+%% ====================================================================
+
+\begin{frame}{Automating empirical research is no longer hypothetical}
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{0.6em}
+  \item \textbf{Natural sciences:} AlphaFold predicted protein structure at scale. Nobel Prize in Chemistry, 2024.
+  \item \textbf{Social sciences:} Stanford's \textit{Social Catalyst Lab} is automating end-to-end empirical pipelines --- data, design, estimation, write-up.
+  \item \textbf{The question is not whether.} \highlight{It's how much $H$ you intentionally keep.}
+\end{itemize}
+\end{frame}
+
+%% ----------
+\begin{frame}{An agent is an LLM wrapped in a loop}
+\vspace{0.6em}
+\begin{center}
+\begin{tabular}{lp{8cm}}
+  \textbf{LLM alone} & One prompt. One reply. Done. \\[0.6em]
+  \textbf{Agent}     & Same LLM, but it can use tools, observe results, and decide what to do next --- repeatedly. \\
+\end{tabular}
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\color{warmgray}\small
+Every small decision inside that loop is recorded in the session log.\\
+We can read them.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{Chatbot vs.\ Copilot vs.\ Agent}
+\vspace{0.5em}
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{lll}
+\toprule
+              & \textbf{What it does} & \textbf{Who steers} \\
+\midrule
+\textbf{Chatbot}  & Answers your question & You, every turn \\
+\textbf{Copilot}  & Completes what you're typing & You, inline \\
+\textbf{Agent}    & Plans, acts, iterates, and verifies & You set the goal \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+Today: agents. Claude Code is an agent.
+\end{center}
+\end{frame}
+
+%% ====================================================================
+%% PART 2 — THE ECONOMICS OF AI
 %% ====================================================================
 
 \begin{frame}{AI flattens the isoquants of cognitive production}
@@ -162,27 +213,6 @@
     \node[left,font=\footnotesize,harvardcrimson] at (0,2.50) {$Q_d$};
     \node[harvardcrimson,font=\footnotesize\bfseries] at (0.78,0.9) {Danger};
 \end{tikzpicture}
-\end{frame}
-
-%% ====================================================================
-%% PART 2 — WHAT KIND OF AI?
-%% ====================================================================
-
-\begin{frame}{Three kinds of AI assistance}
-\vspace{1.0em}
-\begin{center}
-\renewcommand{\arraystretch}{1.6}
-\begin{tabular}{ll}
-  \textbf{Chatbot}  & You ask. It answers. Conversation ends. \\[0.2em]
-  \textbf{Copilot}  & Sits alongside your work. Suggests completions. \\[0.2em]
-  \textbf{Agent}    & Wrapped in a loop. Uses tools. Iterates. Plans. \\
-\end{tabular}
-\end{center}
-\vspace{0.6em}
-\begin{center}
-\color{warmgray}\small
-Today: agents.
-\end{center}
 \end{frame}
 
 %% ====================================================================
