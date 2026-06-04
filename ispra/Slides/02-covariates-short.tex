@@ -1,5 +1,6 @@
 %% 02-covariates-short.tex — JRC Ispra 2026: Covariates in DiD (shortened)
 %% Scott Cunningham, European Commission, June 3--4, 2026
+%% Principle: one idea per slide. No walls of text.
 
 \documentclass[aspectratio=169,11pt]{beamer}
 \usepackage{remix}
@@ -19,20 +20,17 @@
   commentstyle=\color{warmgray}\itshape,
   stringstyle=\color{ocean},
   backgroundcolor=\color{lightbg},
-  frame=single,
-  framesep=4pt,
+  frame=single, framesep=4pt,
   rulecolor=\color{warmgray!40},
   columns=fullflexible,
   showstringspaces=false,
   breaklines=true,
   numbers=none,
-  xleftmargin=0.4em,
-  xrightmargin=0.4em,
+  xleftmargin=0.4em, xrightmargin=0.4em,
 }
 
-% --- emphbox: pale block for key-message callouts ---
 \newcommand{\emphbox}[1]{%
-  \begin{beamercolorbox}[rounded=true, sep=7pt, wd=\linewidth]{block body}%
+  \begin{beamercolorbox}[rounded=true,sep=7pt,wd=\linewidth]{block body}%
     \small\color{slate} #1%
   \end{beamercolorbox}}
 
@@ -41,7 +39,7 @@
 %% ---------- TITLE ----------
 \codechellatitle
   {Covariates in DiD}
-  {OLS specs, IPW, OR, DR, and why the spec matters}
+  {OLS specs, IPW, OR, DR}
   {Scott Cunningham \textperiodcentered\ Baylor University}
   {European Commission \textperiodcentered\ June 3--4, 2026}
 
@@ -49,361 +47,346 @@
 %% PART 1 — OLS SPECIFICATIONS
 %% ====================================================================
 
-%% ---------- Slide: The baseline problem ----------
-\begin{frame}{Covariates fix broken parallel trends --- but the spec has to be right}
-\vspace{0.4em}
-The standard TWFE with additive $X$:
-\[
-  Y_{it} \;=\; \alpha_i + \lambda_t + \delta\,(D_i \times \text{Post}_t) + \boldsymbol{\beta} X_i + \varepsilon_{it}
-\]
-This imposes \highlight{two strong hidden assumptions}:
-\vspace{0.3em}
-\begin{enumerate}\setlength\itemsep{0.35em}
-  \item The slope of $X$ on $Y(0)$ is the \textbf{same in pre and post}. (No time-varying returns.)
-  \item The treatment effect $\delta$ is \textbf{the same for every value of $X$}. (Homogeneous TE in $X$.)
+\begin{frame}{The standard TWFE with additive $X$}
+\vspace{1.2em}
+\begin{center}
+\large
+$Y_{it} \;=\; \alpha_i + \lambda_t
+      + \delta\,(D_i \times \mathrm{Post}_t)
+      + \boldsymbol{\beta}\,X_i
+      + \varepsilon_{it}$
+\end{center}
+\vspace{1.0em}
+\begin{center}
+Two hidden assumptions:
+\begin{enumerate}
+  \item Returns to $X$ are \textbf{constant over time}
+  \item Treatment effect is \textbf{the same for all $X$}
 \end{enumerate}
-\vspace{0.4em}
-\meta{If either assumption fails, adding $X$ additively gives you the wrong answer. Specification is not a cosmetic choice.}
+\end{center}
 \end{frame}
 
-%% ---------- Slide: Worry 1 — time-varying returns ----------
-\begin{frame}{Worry 1: the effect of $X$ on $Y(0)$ changes over time}
-\vspace{0.3em}
-\textbf{Problem.} \;$\beta$ in the additive model is a single number. But returns to education, age, race gap etc.\ can shift at the same moment as your policy. That shift looks exactly like a treatment effect.
-
-\vspace{0.4em}
-\textbf{Fix: interact $\text{Post}$ with $X$.}
-\[
-  Y_{it} \;=\; \alpha_i + \lambda_t
-        \;+\; \delta\,(D_i \times \text{Post}_t)
-        \;+\; \boldsymbol{\beta}\,X_i
-        \;+\; \boldsymbol{\gamma}\,(\text{Post}_t \times X_i)
-        \;+\; \varepsilon_{it}
-\]
-$\boldsymbol{\gamma}$ picks up the \textit{change} in the slope of $X$ between pre and post. \\[0.3em]
-The ATT estimate $\hat\delta$ is now protected against returns-to-$X$ shifting at the policy break.
-
-\vspace{0.3em}
-\meta{This is equivalent to interacting every covariate with a time dummy. Cost: $(k+1)$ extra parameters for $k$ covariates.}
+%% ----------
+\begin{frame}{Worry 1: $\beta$ changes at the policy break}
+\vspace{1.0em}
+\begin{center}
+\large
+$Y_{it} \;=\; \alpha_i + \lambda_t
+      + \delta\,(D_i \times \mathrm{Post}_t)
+      + \boldsymbol{\beta}\,X_i
+      + {\color{accent}\boldsymbol{\gamma}\,(\mathrm{Post}_t \times X_i)}
+      + \varepsilon_{it}$
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\color{warmgray}\small
+$\boldsymbol{\gamma}$ absorbs any shift in returns to $X$ between pre and post.
+\end{center}
 \end{frame}
 
-%% ---------- Slide: Worry 2 — heterogeneous TE in X ----------
-\begin{frame}{Worry 2: the treatment effect itself varies with $X$}
-\vspace{0.3em}
-\textbf{Problem.} \;If $\delta_i = \delta(X_i)$, the additive spec estimates a \textit{variance-weighted} average of $\delta(X)$ --- not the ATT. The weights depend on $X$'s variation across the sample, not on the share treated.
-
-\vspace{0.4em}
-\textbf{Fix: interact $D$ (the treatment indicator) with $X$.}
-\[
-  Y_{it} \;=\; \alpha_i + \lambda_t
-        \;+\; \delta_0\,(D_i \times \text{Post}_t)
-        \;+\; \boldsymbol{\tau}\,(D_i \times \text{Post}_t \times X_i)
-        \;+\; \boldsymbol{\beta}\,X_i
-        \;+\; \varepsilon_{it}
-\]
-Now $\delta_0 + \boldsymbol{\tau}\,X_i$ is the treatment effect for a unit with covariate value $X_i$.\\[0.3em]
-The ATT is recovered by averaging $\hat\delta_0 + \hat{\boldsymbol{\tau}}\,X_i$ over the \textit{treated} sample.
-
-\vspace{0.3em}
-\meta{Standard in heterogeneous-TE DiD (e.g.\ Callaway-Sant'Anna with covariates). In practice, use \texttt{drdid} or \texttt{csdid} rather than hand-coding this.}
+%% ----------
+\begin{frame}{Worry 2: treatment effect varies with $X$}
+\vspace{1.0em}
+\begin{center}
+\large
+$Y_{it} \;=\; \alpha_i + \lambda_t
+      + \delta_0\,(D_i \times \mathrm{Post}_t)
+      + {\color{accent}\boldsymbol{\tau}\,(D_i \times \mathrm{Post}_t \times X_i)}
+      + \boldsymbol{\beta}\,X_i
+      + \varepsilon_{it}$
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\color{warmgray}\small
+ATT $= \frac{1}{n_T}\displaystyle\sum_{D_i=1} \bigl(\hat\delta_0 + \hat{\boldsymbol{\tau}}\,X_i\bigr)$
+\end{center}
 \end{frame}
 
-%% ---------- Slide: Both worries ----------
-\begin{frame}{Both worries at once: the fully saturated spec}
-\vspace{0.2em}
-Include \textit{all three} interaction blocks:
-\[
-  Y_{it} \;=\; \alpha_i + \lambda_t
-        \;+\; \underbrace{\delta_0\,(D_i \times \text{Post}_t)}_{\text{avg TE}}
-        \;+\; \underbrace{\boldsymbol{\tau}\,(D_i \times \text{Post}_t \times X_i)}_{\text{TE varies in }X}
-        \;+\; \underbrace{\boldsymbol{\gamma}\,(\text{Post}_t \times X_i)}_{\text{returns vary over time}}
-        \;+\; \boldsymbol{\beta}\,X_i + \varepsilon_{it}
-\]
-\vspace{0.1em}
-\textbf{Recovery of the ATT:}
-\[
-  \widehat{\text{ATT}} \;=\; \frac{1}{n_T}\sum_{i:\,D_i=1}
-      \left(\hat\delta_0 + \hat{\boldsymbol{\tau}}\,X_i\right)
-\]
-\vspace{0.1em}
-\highlight{This is Spec C in the lab do-file} (``Fully Saturated TWFE'').\\[0.2em]
-\meta{Worries 1 and 2 together exhaust the ways an additive OLS spec can fail. The non-parametric fix is to leave OLS entirely and use OR, IPW, or DR.}
+%% ----------
+\begin{frame}{Both worries: the fully saturated spec}
+\vspace{0.6em}
+\begin{center}
+\large
+$Y_{it} = \alpha_i + \lambda_t
+      + \delta_0\,(D_i \times \mathrm{Post}_t)
+      + \boldsymbol{\tau}\,(D_i \times \mathrm{Post}_t \times X_i)
+      + \boldsymbol{\gamma}\,(\mathrm{Post}_t \times X_i)
+      + \boldsymbol{\beta}\,X_i
+      + \varepsilon_{it}$
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\color{warmgray}\small
+ATT $= \frac{1}{n_T}\displaystyle\sum_{D_i=1} \bigl(\hat\delta_0 + \hat{\boldsymbol{\tau}}\,X_i\bigr)$
+\quad\textperiodcentered\quad
+This is \textbf{Spec C} in the lab.
+\end{center}
 \end{frame}
 
 %% ====================================================================
-%% PART 2 — SEMIPARAMETRIC ESTIMATORS
+%% PART 2 — IPW
 %% ====================================================================
 
-%% ---------- Slide: IPW (Abadie 2005) ----------
-\begin{frame}{IPW --- Abadie (2005): reweight the controls}
-\vspace{0.2em}
-\textbf{Intuition.} Weight the control group so it \textit{looks like the treated group} in $X$. Then the reweighted control trend is a valid counterfactual.
+\begin{frame}{IPW: reweight the controls to look like the treated}
+\vspace{1.0em}
+\begin{center}
+\large
+$\widehat{\mathrm{ATT}}_{\mathrm{IPW}}
+  \;=\; \dfrac{1}{\bar{D}}\,\dfrac{1}{n}
+        \displaystyle\sum_{i=1}^{n}
+        \frac{D_i - \hat{p}(X_i)}{1 - \hat{p}(X_i)}
+        \;\Delta Y_i$
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\color{warmgray}\small
+$\hat{p}(X_i) = \widehat{\Pr}(D_i=1\mid X_i)$ \quad (propensity score)
+\qquad
+$\Delta Y_i = Y_{i,\mathrm{post}} - Y_{i,\mathrm{pre}}$
+\end{center}
+\end{frame}
 
-\vspace{0.3em}
-\textbf{Estimator.}
-\[
-  \widehat{\text{ATT}}_{\text{IPW}}
-  \;=\; \frac{1}{n}\sum_{i=1}^n
-        \underbrace{\frac{D_i - \hat p(X_i)}{1 - \hat p(X_i)}}_{\text{IPW weight}} \cdot \Delta Y_i
-        \;\Bigg/\; \bar{D}
-\]
-where $\hat p(X_i) = \widehat{\Pr}(D_i=1\mid X_i)$ is the \textbf{propensity score} and $\Delta Y_i = Y_{i,\text{post}} - Y_{i,\text{pre}}$.
-
-\vspace{0.3em}
-\textbf{Five steps.}
-\begin{enumerate}\setlength\itemsep{0.15em}\small
-  \item \highlight{Specify and estimate the propensity score.} Regress $D_i$ on $X_i$ (logit or probit).
-  \item \highlight{Check overlap.} Plot $\hat p(X)$ by treatment status. Trim if needed.
-  \item \highlight{Construct weights.} $w_i = (D_i - \hat p(X_i)) / (1-\hat p(X_i))$.
-  \item \highlight{Take the weighted average.} $\widehat{\text{ATT}}_{\text{IPW}} = (\sum w_i \Delta Y_i) / n_T$.
-  \item \highlight{Standard error.} Bootstrap or influence-function SE.
+%% ----------
+\begin{frame}{IPW: five steps}
+\vspace{0.8em}
+\begin{enumerate}\setlength\itemsep{0.5em}
+  \item \highlight{Estimate $\hat{p}(X)$.} \;Logit of $D_i$ on $X_i$.
+  \item \highlight{Check overlap.} \;Plot $\hat{p}$ by treatment status. Trim if needed.
+  \item \highlight{Construct weights.} \;$w_i = (D_i - \hat{p}(X_i)) / (1 - \hat{p}(X_i))$.
+  \item \highlight{Weighted average.} \;$\widehat{\mathrm{ATT}} = \sum w_i\,\Delta Y_i \;/\; n_T$.
+  \item \highlight{Standard error.} \;Bootstrap or influence function.
 \end{enumerate}
 \end{frame}
 
-%% ---------- Slide: Overlap ----------
-\begin{frame}{Step 2 is non-negotiable: check overlap}
-\vspace{0.4em}
-IPW weights blow up when $\hat p(X_i) \to 1$ for control units. \\[0.4em]
-
-\begin{itemize}\setlength\itemsep{0.4em}
-  \item \textbf{Common support:} $\hat p(X_i) \in [\epsilon,\, 1-\epsilon]$ for all $i$. If some treated units have $\hat p \approx 1$, no control unit resembles them --- you have no counterfactual.
-  \item \textbf{Diagnosis:} histogram of $\hat p$ separately for $D=0$ and $D=1$. They should substantially overlap.
-  \item \textbf{Fix:} trim units outside support (Crump et al.\ 2009: keep $\hat p \in [0.1, 0.9]$) or use a trimmed ATT.
-\end{itemize}
-
-\vspace{0.5em}
-\emphbox{If the propensity score separates treated from controls perfectly, IPW is undefined. No method fixes lack of overlap --- it is a \textit{data} problem, not an estimation problem.}
+%% ----------
+\begin{frame}{Overlap is non-negotiable}
+\vspace{1.2em}
+\begin{center}
+\large
+If $\hat{p}(X_i) \to 1$ for a control unit, its weight $\to \infty$.\\[0.8em]
+\highlight{No overlap = no valid counterfactual.}\\[0.8em]
+\color{warmgray}\normalsize
+This is a data problem. No estimator fixes it.
+\end{center}
 \end{frame}
 
-%% ---------- Slide: OR (HIT 1997) ----------
-\begin{frame}{OR --- Heckman, Ichimura \& Todd (1997): impute the counterfactual}
-\vspace{0.2em}
-\textbf{Intuition.} Model the \textit{trend} of untreated potential outcomes conditional on $X$. Use that model to predict what the treated group \textit{would have done} absent treatment.
+%% ====================================================================
+%% PART 3 — OR
+%% ====================================================================
 
-\vspace{0.3em}
-\textbf{Estimator.}
-\[
-  \widehat{\text{ATT}}_{\text{OR}}
-  \;=\; \frac{1}{n_T}\sum_{i:\,D_i=1}
-        \Bigl[\Delta Y_i \;-\; \hat\mu_0(X_i)\Bigr]
-\]
-where $\hat\mu_0(X_i) = \widehat{E}[\Delta Y \mid D=0,\, X]$ is the \textbf{outcome model} --- the predicted trend for a control unit with characteristics $X_i$.
+\begin{frame}{OR: model the trend, impute the counterfactual}
+\vspace{1.0em}
+\begin{center}
+\large
+$\widehat{\mathrm{ATT}}_{\mathrm{OR}}
+  \;=\; \dfrac{1}{n_T}
+        \displaystyle\sum_{D_i=1}
+        \Bigl[\Delta Y_i \;-\; \hat\mu_0(X_i)\Bigr]$
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\color{warmgray}\small
+$\hat\mu_0(X_i) = \widehat{E}[\Delta Y \mid D=0,\,X]$ \quad estimated on controls only
+\end{center}
+\end{frame}
 
-\vspace{0.3em}
-\textbf{Steps.}
-\begin{enumerate}\setlength\itemsep{0.15em}\small
-  \item \highlight{First-difference.} Compute $\Delta Y_i = Y_{i,\text{post}} - Y_{i,\text{pre}}$ for all units.
-  \item \highlight{Fit the outcome model.} Regress $\Delta Y$ on $X$ \textit{using controls only} ($D_i=0$).
-  \item \highlight{Predict counterfactuals.} Evaluate $\hat\mu_0(X_i)$ for every treated unit.
-  \item \highlight{Take the mean gap.} ATT $= \overline{\Delta Y}^T - \overline{\hat\mu_0(X)}^T$.
-  \item \highlight{Standard error.} Bootstrap.
+%% ----------
+\begin{frame}{OR: five steps}
+\vspace{0.8em}
+\begin{enumerate}\setlength\itemsep{0.5em}
+  \item \highlight{First-difference.} \;$\Delta Y_i = Y_{i,\mathrm{post}} - Y_{i,\mathrm{pre}}$.
+  \item \highlight{Fit outcome model.} \;Regress $\Delta Y$ on $X$ \textit{using controls only}.
+  \item \highlight{Predict counterfactual.} \;Evaluate $\hat\mu_0(X_i)$ for each treated unit.
+  \item \highlight{Mean gap.} \;ATT $= \overline{\Delta Y}^T - \overline{\hat\mu_0(X)}^T$.
+  \item \highlight{Standard error.} \;Bootstrap.
 \end{enumerate}
 \end{frame}
 
-%% ---------- Slide: DR ----------
-\begin{frame}{Doubly robust --- Sant'Anna \& Zhao (2020)}
-\vspace{0.2em}
-\textbf{Intuition.} Combine OR and IPW. One model can be misspecified and the estimator is still consistent --- but not both.
+%% ====================================================================
+%% PART 4 — DR
+%% ====================================================================
 
-\vspace{0.3em}
-\textbf{Estimator.}
-\[
-  \widehat{\text{ATT}}_{\text{DR}}
-  \;=\; \frac{1}{\bar D}\,\frac{1}{n}\sum_{i=1}^n
-        \underbrace{\frac{D_i - \hat p(X_i)}{1 - \hat p(X_i)}}_{\text{IPW correction}}
+\begin{frame}{DR: two chances to be right}
+\vspace{0.8em}
+\begin{center}
+\large
+$\widehat{\mathrm{ATT}}_{\mathrm{DR}}
+  \;=\; \dfrac{1}{\bar{D}}\,\dfrac{1}{n}
+        \displaystyle\sum_{i=1}^{n}
+        \underbrace{\frac{D_i - \hat{p}(X_i)}{1 - \hat{p}(X_i)}}_{\text{IPW correction}}
         \;\cdot\;
-        \underbrace{\bigl[\Delta Y_i - \hat\mu_0(X_i)\bigr]}_{\text{OR residual}}
-\]
-\vspace{0.1em}
-\begin{itemize}\setlength\itemsep{0.3em}
-  \item If $\hat\mu_0$ is correct but $\hat p$ is wrong $\;\Rightarrow\;$ consistent. The OR residuals are mean-zero for the controls, so misweighting doesn't matter.
-  \item If $\hat p$ is correct but $\hat\mu_0$ is wrong $\;\Rightarrow\;$ consistent. IPW balances $X$, so the misspecified trend washes out.
-  \item If \textit{both} are wrong $\;\Rightarrow\;$ biased. ``Doubly robust'' $\neq$ doubly unbeatable.
-\end{itemize}
+        \underbrace{\bigl[\Delta Y_i - \hat\mu_0(X_i)\bigr]}_{\text{OR residual}}$
+\end{center}
+\end{frame}
 
-\vspace{0.2em}
-\meta{Implementation: \texttt{drdid re \$X, time(year) ivar(id) tr(ever\_treated) dripw} in Stata.}
+%% ----------
+\begin{frame}{DR is consistent if \textit{either} model is right --- not both}
+\vspace{0.8em}
+\begin{center}
+\begin{tabular}{lll}
+  \toprule
+  $\hat\mu_0$ correct & $\hat{p}$ correct & Consistent? \\
+  \midrule
+  \checkmark & \checkmark & \checkmark \\
+  \checkmark & $\times$   & \checkmark \\
+  $\times$   & \checkmark & \checkmark \\
+  \rowcolor{remixgreenlight}
+  $\times$   & $\times$   & \textbf{No} \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\color{warmgray}\small
+``Doubly robust'' $\neq$ doubly unbeatable.
+\end{center}
 \end{frame}
 
 %% ====================================================================
-%% PART 3 — LAB
+%% PART 5 — LAB
 %% ====================================================================
 
-%% ---------- Slide: Lab ----------
-\begin{frame}{Lab: run all estimators on the LaLonde data}
-\vspace{0.4em}
-Open the do-file:
+\begin{frame}{Lab: ten estimators, one benchmark}
+\vspace{0.6em}
 \begin{center}
 \texttt{Labs/Lalonde-Covariates/lalonde\_all\_specs.do}
 \end{center}
+\vspace{0.6em}
+\begin{center}
+\color{warmgray}\small
+NSW treated $+$ CPS controls \textperiodcentered\
+Pre = 1975, Post = 1978\\[0.4em]
+RCT benchmark: \highlight{\$1,794}
+\end{center}
 \vspace{0.4em}
-The script runs \textbf{ten estimators} on the LaLonde--Dehejia-Wahba non-experimental panel (NSW treated + CPS controls) and compares each to the RCT benchmark of \highlight{\$1,794}:
-
-\vspace{0.2em}
-\begin{columns}[T]
-\column{0.48\textwidth}
-\begin{itemize}\small\setlength\itemsep{0.2em}
-  \item Spec 0: Naive TWFE (no $X$)
-  \item Spec A: Additive $X$
-  \item Spec B: Post $\times$ $X$
-  \item Spec C: Saturated TWFE (FD)
-  \item OR by hand (HIT 1997)
-\end{itemize}
-\column{0.48\textwidth}
-\begin{itemize}\small\setlength\itemsep{0.2em}
-  \item OR via \texttt{drdid regadjust}
-  \item IPW by hand (Abadie 2005)
-  \item IPW via \texttt{drdid ipw}
-  \item DR by hand (Sant'Anna-Zhao)
-  \item DR via \texttt{drdid dripw}
-\end{itemize}
-\end{columns}
-
-\vspace{0.4em}
-\meta{Data: \texttt{lalonde\_nonexp\_panel.dta}. Pre = 1975, Post = 1978. Covariates: age, education, marital status, race, re74, u74.}
+\begin{center}
+Spec 0 (Naive) \textperiodcentered\ Spec A (Additive $X$) \textperiodcentered\ Spec B (Post$\times X$) \textperiodcentered\ Spec C (Saturated)\\[0.3em]
+OR by hand \textperiodcentered\ OR \texttt{drdid} \textperiodcentered\
+IPW by hand \textperiodcentered\ IPW \texttt{drdid} \textperiodcentered\
+DR by hand \textperiodcentered\ DR \texttt{drdid}
+\end{center}
 \end{frame}
 
 %% ====================================================================
-%% PART 4 — MONTE CARLO
+%% PART 6 — MONTE CARLO
 %% ====================================================================
 
-%% ---------- Slide: MC setup ----------
-\begin{frame}{A Monte Carlo to settle the rankings}
+\begin{frame}{A Monte Carlo to rank the estimators}
 \vspace{0.6em}
-\begin{itemize}
-  \item Compare four estimators on the same data: \textbf{TWFE} (with $X$ as additive controls), \textbf{OR}, \textbf{IPW}, \textbf{DR}.
-  \item \textbf{4 DGPs} (Sant'Anna's design): vary whether the OR model and the pscore model are correctly specified.
-  \item \textbf{Sample size:} 1{,}000 units. \;\textbf{Replications:} 10{,}000.
-  \item \textbf{Report:} bias, RMSE, SE, 95\% coverage, CI length.
-\end{itemize}
+\begin{center}
+\begin{tabular}{ll}
+  Estimators: & TWFE, OR, IPW, DR \\[0.4em]
+  DGPs:       & 4 (vary whether OR model and pscore are correct) \\[0.4em]
+  $n$:        & 1{,}000 \quad Replications: 10{,}000 \\[0.4em]
+  Report:     & Bias, RMSE, SE, coverage, CI length \\
+\end{tabular}
+\end{center}
 \vspace{0.5em}
 \begin{center}
-\small\color{warmgray}\itshape
-The question we want answered: \;when does DR pay off, and when does it break?
+\color{warmgray}\small
+When does DR pay off? When does it break?
 \end{center}
-\meta{Driver code: \texttt{simulations/covariates/covariates\_monte\_carlo.\{do,R\}}}
 \end{frame}
 
-%% ---------- Slide: DGP1 table ----------
-\begin{frame}{DGP 1 --- both models correct}
+%% ----------
+\begin{frame}{DGP 1: both models correct}
 \vspace{0.4em}
 \begin{center}
-\small
-\renewcommand{\arraystretch}{1.3}
+\small\renewcommand{\arraystretch}{1.3}
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
-            & \textbf{Bias} & \textbf{RMSE} & \textbf{SE} & \textbf{Coverage} & \textbf{CI length} \\
+      & \textbf{Bias} & \textbf{RMSE} & \textbf{SE} & \textbf{Coverage} & \textbf{CI length} \\
 \midrule
-TWFE        & $-20.95$ & $21.12$ & $2.53$ & $0.000$ & $9.91$ \\
-OR          & $-0.001$ & $0.10$  & $0.10$ & $0.950$ & $0.40$ \\
-IPW         & $+0.026$ & $2.77$  & $2.66$ & $0.952$ & $10.44$ \\
+TWFE  & $-20.95$ & $21.12$ & $2.53$ & $0.000$ & $9.91$  \\
+OR    & $-0.001$ & $0.10$  & $0.10$ & $0.950$ & $0.40$  \\
+IPW   & $+0.026$ & $2.77$  & $2.66$ & $0.952$ & $10.44$ \\
 \rowcolor{remixgreenlight}
-DR          & $-0.001$ & $0.11$  & $0.11$ & $0.947$ & $0.41$ \\
+DR    & $-0.001$ & $0.11$  & $0.11$ & $0.947$ & $0.41$  \\
 \bottomrule
 \end{tabular}
 \end{center}
 \vspace{0.3em}
-\begin{center}
-\small\color{warmgray}\itshape
-TWFE catastrophic (Bias $\approx -21$; coverage zero). \;OR \& DR both efficient (Bias $\approx 0$, coverage 95\%). \;IPW unbiased but \textbf{wide CIs}.
+\begin{center}\small\color{warmgray}\itshape
+TWFE: coverage zero. \;OR and DR: tight on truth. \;IPW: unbiased but wide.
 \end{center}
 \end{frame}
 
-%% ---------- Slide: DGP1 plot ----------
-\begin{frame}{DGP 1 --- visualizing the sampling distribution}
+%% ----------
+\begin{frame}{DGP 1: the sampling distribution}
 \vspace{0.3em}
 \begin{center}
 \includegraphics[width=0.68\textwidth]{figures/mc_dr_1.pdf}
 \end{center}
-\vspace{-0.2em}
-\begin{center}
-\small\color{warmgray}\itshape
-When both models are correct, OR and DR concentrate tightly on the truth. IPW is unbiased but noisy. TWFE is off the map.
-\end{center}
 \end{frame}
 
-%% ---------- Slide: DGP4 table ----------
-\begin{frame}{DGP 4 --- both models \textit{wrong}}
+%% ----------
+\begin{frame}{DGP 4: both models wrong}
 \vspace{0.4em}
 \begin{center}
-\small
-\renewcommand{\arraystretch}{1.3}
+\small\renewcommand{\arraystretch}{1.3}
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
-            & \textbf{Bias} & \textbf{RMSE} & \textbf{SE} & \textbf{Coverage} & \textbf{CI length} \\
+      & \textbf{Bias} & \textbf{RMSE} & \textbf{SE} & \textbf{Coverage} & \textbf{CI length} \\
 \midrule
-TWFE        & $-16.38$ & $16.54$ & $3.63$ & $0.000$ & $14.22$ \\
-OR          & $-5.20$  & $5.36$  & $1.29$ & $0.015$ & $5.05$  \\
+TWFE  & $-16.38$ & $16.54$ & $3.63$ & $0.000$ & $14.22$ \\
+OR    & $-5.20$  & $5.36$  & $1.29$ & $0.015$ & $5.05$  \\
 \rowcolor{remixgreenlight}
-IPW         & $-1.08$  & $2.66$  & $2.37$ & $0.949$ & $9.31$  \\
-DR          & $-3.19$  & $3.45$  & $1.29$ & $0.308$ & $5.07$  \\
+IPW   & $-1.08$  & $2.66$  & $2.37$ & $0.949$ & $9.31$  \\
+DR    & $-3.19$  & $3.45$  & $1.29$ & $0.308$ & $5.07$  \\
 \bottomrule
 \end{tabular}
 \end{center}
 \vspace{0.3em}
-\begin{center}
-\small\color{warmgray}\itshape
-DR is \textit{not} magic. When both models fail, DR is biased and undercovers (0.31 vs.\ nominal 0.95). \;IPW alone now wins on coverage --- it doesn't rely on the outcome model.
+\begin{center}\small\color{warmgray}\itshape
+DR undercovers at 0.31. IPW wins. Doubly robust $\neq$ doubly unbeatable.
 \end{center}
 \end{frame}
 
-%% ---------- Slide: DGP4 plot ----------
-\begin{frame}{DGP 4 --- the sampling distribution tells the same story}
+%% ----------
+\begin{frame}{DGP 4: the sampling distribution}
 \vspace{0.3em}
 \begin{center}
 \includegraphics[width=0.68\textwidth]{figures/mc_dr_2.pdf}
 \end{center}
-\vspace{-0.2em}
-\begin{center}
-\small\color{warmgray}\itshape
-DR no longer hugs the truth. IPW is wider but \textit{centered}. \;Doubly robust $\neq$ doubly unbeatable.
-\end{center}
 \end{frame}
 
-%% ---------- Slide: MC takeaway ----------
+%% ----------
 \begin{frame}{What the Monte Carlo teaches}
-\vspace{0.4em}
-\begin{itemize}\small
-  \item \textbf{TWFE with additive $X$:} never wins. \;Coverage is zero in every DGP. \highlight{Stop using it as a default.}
-  \item \textbf{OR:} efficient when the outcome model is right. Disaster when it's wrong (Bias $-5$, coverage $1.5\%$).
-  \item \textbf{IPW:} less efficient but \textit{robust to outcome misspecification}. The unsexy workhorse.
-  \item \textbf{DR:} best of both \textit{when at least one is right}. \;Not better than IPW when \textit{both} are wrong.
+\vspace{0.8em}
+\begin{itemize}\setlength\itemsep{0.55em}
+  \item \textbf{TWFE + additive $X$:} coverage zero in every DGP. \highlight{Stop using it as a default.}
+  \item \textbf{OR:} efficient when right. Coverage 1.5\% when wrong.
+  \item \textbf{IPW:} less efficient, but robust to outcome misspecification.
+  \item \textbf{DR:} best when one model is right. No better than IPW when both are wrong.
 \end{itemize}
-\vspace{0.4em}
-\begin{center}
-\small\color{warmgray}\itshape
-``Doubly robust'' means \textit{robust to one misspecification.} \;Not two. \;Not magic.
-\end{center}
 \end{frame}
 
 %% ====================================================================
-%% PART 5 — CONCLUSION
+%% CONCLUSION
 %% ====================================================================
 
-%% ---------- Slide: Conclusion ----------
-\begin{frame}{The lesson: specification is not cosmetic}
-\vspace{0.3em}
-All five estimators today require you to \textit{correctly specify something}:
-\vspace{0.3em}
-\begin{itemize}\setlength\itemsep{0.35em}
-  \item \textbf{OLS specs (A, B, C):} you must commit to how $X$ enters $Y(0)$ \textit{and} whether $\delta$ is homogeneous in $X$. Wrong choice $\Rightarrow$ wrong ATT.
-  \item \textbf{OR:} the outcome model $\hat\mu_0(X)$ must be correctly specified.
-  \item \textbf{IPW:} the propensity score $\hat p(X)$ must be correctly specified, and overlap must hold.
-  \item \textbf{DR:} \textit{at least one} of the two must be right.
-\end{itemize}
-\vspace{0.4em}
-\emphbox{Adding covariates does not make your DiD credible. \;It transfers the credibility question from ``does PT hold?'' to ``is my model of $Y(0)$ or $p(X)$ correctly specified?'' \;You still have to answer it.}
+\begin{frame}{Adding $X$ doesn't make your DiD credible}
+\vspace{1.0em}
+\begin{center}
+\large
+Adding $X$ shifts the credibility question---\\[0.6em]
+from \highlight{``does PT hold?''}\\[0.5em]
+to \highlight{``is my model of $Y(0)$ or $p(X)$ correct?''}\\[0.8em]
+\color{warmgray}\normalsize
+You still have to answer it.
+\end{center}
 \end{frame}
 
 %% ---------- Closing linger ----------
 \begin{frame}[plain]
 \begin{tikzpicture}[remember picture,overlay]
 \fill[cream] (current page.south west) rectangle (current page.north east);
-\node[anchor=center, text width=0.84\paperwidth, align=center, text=charcoal] at (current page.center) {%
+\node[anchor=center, text width=0.84\paperwidth, align=center, text=charcoal]
+  at (current page.center) {%
   \fontsize{18pt}{26pt}\selectfont
-  The question is never \\[0.3em]
+  The question is never\\[0.3em]
   {\color{accent}\bfseries ``did I control for $X$?''}\\[0.6em]
-  The question is always \\[0.3em]
+  The question is always\\[0.3em]
   {\color{accent}\bfseries ``did I get the model right?''}
 };
 \draw[accent, line width=1pt]
