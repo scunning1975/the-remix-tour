@@ -397,7 +397,7 @@ The level gap is huge --- and so is the \textit{growth-rate} gap. \;DiD doesn't 
 
 %% ---------- Animated 2x2: show DiD arithmetic on the same table ----------
 \begin{frame}{The 2$\times$2: where \$3{,}621 comes from}
-\vspace{0.5em}
+\vspace{0.0em}
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.5}
@@ -478,9 +478,9 @@ reg re i.post##i.ever_treated, robust
 \vspace{0.6em}
 
 \textbf{Run:}
-\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\small]
-global X "age agesq educ educsq marr nodegree black hisp re74 re75 u74 u75"
-
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+global X "age agesq educ educsq marr nodegree ///
+         black hisp re74 re75 u74 u75"
 reg re i.post##i.ever_treated $X, robust
 \end{lstlisting}
 
@@ -494,11 +494,14 @@ reg re i.post##i.ever_treated $X, robust
 \vspace{0.4em}
 
 \textbf{Run:}
-\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\footnotesize]
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
 reg re i.post##i.ever_treated ///
-    i.post##c.age i.post##c.agesq i.post##c.educ i.post##c.educsq ///
-    i.post##i.marr i.post##i.nodegree i.post##i.black i.post##i.hisp ///
-    i.post##c.re74 i.post##c.re75 i.post##i.u74 i.post##i.u75, robust
+    i.post##c.age i.post##c.agesq ///
+    i.post##c.educ i.post##c.educsq ///
+    i.post##i.marr i.post##i.nodegree ///
+    i.post##i.black i.post##i.hisp ///
+    i.post##c.re74 i.post##c.re75 ///
+    i.post##i.u74 i.post##i.u75, robust
 \end{lstlisting}
 
 \vspace{0.3em}
@@ -559,9 +562,10 @@ drdid re $X, time(year) ivar(id) tr(ever_treated) ipw
 \vspace{0.3em}
 
 \textbf{Run --- by hand (in wide-FD form, \texttt{phat}/\texttt{dy\_hat} already computed):}
-\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
-gen dr_t = ever_treated * (dy - dy_hat) / `pr_treat'
-gen dr_c = (1 - ever_treated) * (phat/(1-phat)) * (dy - dy_hat) / `pr_treat'
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\tiny]
+gen dr_t = ever_treated*(dy - dy_hat)/`pr_treat'
+gen dr_c = (1-ever_treated)*(phat/(1-phat)) ///
+           *(dy - dy_hat)/`pr_treat'
 quietly sum dr_t
 local mt = r(mean)
 quietly sum dr_c
