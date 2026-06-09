@@ -267,6 +267,59 @@ trends if the covariate is absorbed before it can do any work.}
 \end{frame}
 
 %% ----------
+%%
+\begin{frame}{What if returns to $X$ change over time?}
+\vspace{0.3em}
+\begin{center}\color{warmgray}\small
+Example: discrimination against women is not constant --- $\beta_{\text{post}} \neq \beta_{\text{pre}}$.
+\end{center}
+\vspace{0.4em}
+
+Allow time-varying returns in the DGP:
+\[
+Y_{it}(0) = \alpha_i + \gamma_t + \beta_t\, X_i
+\]
+
+Write out the \textbf{post} and \textbf{pre} equations for unit $i$:
+
+\begin{align*}
+Y_{i,\text{post}}(0) &= \alpha_i + \gamma_{\text{post}} + \beta_{\text{post}}\, X_i \\[4pt]
+Y_{i,\text{pre}}(0)  &= \alpha_i + \gamma_{\text{pre}}  + \beta_{\text{pre}}\,  X_i
+\end{align*}
+
+Subtract (post $-$ pre):
+\[
+\Delta Y_i(0)
+  = \underbrace{(\gamma_{\text{post}} - \gamma_{\text{pre}})}_{\Delta\gamma}
+  + \underbrace{(\beta_{\text{post}}  - \beta_{\text{pre}})}_{\Delta\beta}
+    \cdot X_i
+\]
+\end{frame}
+
+%%
+\begin{frame}{Now take expectations by group}
+\vspace{0.4em}
+
+Starting from $\;\Delta Y_i(0) = \Delta\gamma + \Delta\beta\cdot X_i$, condition on treatment status:
+
+\begin{align*}
+E[\Delta Y(0)\mid D{=}1] &= \Delta\gamma + \Delta\beta\cdot E[X\mid D{=}1] \\[4pt]
+E[\Delta Y(0)\mid D{=}0] &= \Delta\gamma + \Delta\beta\cdot E[X\mid D{=}0]
+\end{align*}
+
+\vspace{0.3em}
+Parallel trends bias:
+\[
+\underbrace{E[\Delta Y(0)\mid D{=}1] - E[\Delta Y(0)\mid D{=}0]}_{\text{PT bias}}
+  \;=\;
+  \Delta\beta\;\cdot\;
+  \bigl(\,E[X\mid D{=}1] - E[X\mid D{=}0]\,\bigr)
+\]
+
+\vspace{0.4em}
+\emphbox{PT fails whenever \textbf{both}: returns shift ($\Delta\beta \neq 0$) \textbf{and} groups are imbalanced on $X$.}
+\end{frame}
+
 \begin{frame}{Worry 1: $\beta$ changes at the policy break}
 \vspace{1.0em}
 \begin{center}
