@@ -199,13 +199,25 @@ will \textbf{mechanically} break parallel trends.}
 
 %%
 \begin{frame}{Fix: control for sex}
-\vspace{0.8em}
+\vspace{0.6em}
 \begin{center}
 If sex is the only covariate driving differential trends,\\
-then \emph{conditioning on sex} removes the PT bias.\\[0.8em]
-\color{warmgray}\small
-Several ways to do this:\\[0.3em]
-\textbf{Outcome regression} (OR) \quad \textbf{IPW} \quad \textbf{Doubly robust} (DR)
+then \emph{conditioning on sex} removes the PT bias.
+\end{center}
+\vspace{0.6em}
+\begin{center}
+Several ways to do this:
+\end{center}
+\vspace{0.3em}
+\begin{enumerate}\setlength\itemsep{0.4em}
+  \item TWFE saturated regressions
+  \item Inverse probability weighting (IPW)
+  \item Outcome regression (OR)
+  \item Doubly robust (DR)
+\end{enumerate}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+We will discuss all four.
 \end{center}
 \end{frame}
 
