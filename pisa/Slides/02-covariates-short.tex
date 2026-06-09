@@ -320,60 +320,211 @@ Parallel trends bias:
 \emphbox{PT fails whenever \textbf{both}: returns shift ($\Delta\beta \neq 0$) \textbf{and} groups are imbalanced on $X$.}
 \end{frame}
 
-\begin{frame}{Worry 1: $\beta$ changes at the policy break}
-\vspace{1.0em}
+%%
+\begin{frame}[fragile]{Fix for Bias \#1: interact $\mathrm{Post} \times X$}
+\vspace{0.4em}
 \begin{center}
-\large
 $Y_{it} \;=\; \alpha_i + \lambda_t
       + \delta\,(D_i \times \mathrm{Post}_t)
       + \boldsymbol{\beta}\,X_i
       + {\color{accent}\boldsymbol{\gamma}\,(\mathrm{Post}_t \times X_i)}
       + \varepsilon_{it}$
 \end{center}
-\vspace{0.8em}
+\vspace{0.3em}
+\begin{center}\color{warmgray}\small
+$\boldsymbol{\gamma}$ absorbs any shift in returns to $X$ between pre and post (Spec B in the lab).
+\end{center}
+\vspace{0.3em}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\scriptsize]
+reg re i.post##i.ever_treated ///
+    i.post##c.age i.post##c.agesq i.post##c.agecube ///
+    i.post##c.educ i.post##c.educsq ///
+    i.post##i.marr i.post##i.nodegree i.post##i.black i.post##i.hisp ///
+    i.post##c.re74 i.post##i.u74, robust
+\end{lstlisting}
+\end{frame}
+
+%% ====================================================================
+%% BIAS #2 — HETEROGENEOUS TREATMENT EFFECTS
+%% ====================================================================
+\remixsection{Bias \#2: Heterogeneous Treatment Effects}{}
+
+%%
+\begin{frame}{What if the effect of college differs by sex?}
+\vspace{0.5em}
 \begin{center}
-\color{warmgray}\small
-$\boldsymbol{\gamma}$ absorbs any shift in returns to $X$ between pre and post.
+Previously we worried about \textbf{trends in $Y(0)$} being unequal across groups.\\[0.5em]
+Now the concern is different:
+\[
+\mathbb{E}[Y(1) - Y(0)\mid \text{Male}] \;\neq\; \mathbb{E}[Y(1) - Y(0)\mid \text{Female}]
+\]
+\end{center}
+\vspace{0.4em}
+\begin{center}\color{warmgray}\small
+Do the rich and the poor get the same return to college?\\
+Do workers in cities and towns get the same return?\\[0.4em]
+If not, \textbf{and} the treatment group is imbalanced on these covariates,\\
+the 2$\times$2 DiD will not recover the ATT.
 \end{center}
 \end{frame}
 
-%% ----------
-\begin{frame}{Worry 2: treatment effect varies with $X$}
-\vspace{1.0em}
-\begin{center}
-\large
-$Y_{it} \;=\; \alpha_i + \lambda_t
-      + \delta_0\,(D_i \times \mathrm{Post}_t)
-      + {\color{accent}\boldsymbol{\tau}\,(D_i \times \mathrm{Post}_t \times X_i)}
-      + \boldsymbol{\beta}\,X_i
-      + \varepsilon_{it}$
-\end{center}
-\vspace{0.8em}
-\begin{center}
-\color{warmgray}\small
-ATT $= \frac{1}{n_T}\displaystyle\sum_{D_i=1} \bigl(\hat\delta_0 + \hat{\boldsymbol{\tau}}\,X_i\bigr)$
+%%
+\begin{frame}{Proof, step 1 --- the TWFE model and conditional PT}
+\vspace{0.3em}
+\textbf{The TWFE model with one covariate $X$:}
+\[
+Y_{it} \;=\; \alpha_i + \gamma_t + \delta\,(T_t \times D_i) + \beta\, X_i + \varepsilon_{it}
+\]
+\textbf{Conditional parallel trends} says, for each value of $X$:
+\[
+\mathbb{E}[Y(0)_{\text{post}} - Y(0)_{\text{pre}} \mid D{=}1,\, X]
+\;=\;
+\mathbb{E}[Y(0)_{\text{post}} - Y(0)_{\text{pre}} \mid D{=}0,\, X]
+\]
+Rearranged --- the missing counterfactual for the treated is identified:
+\[
+\mathbb{E}[Y(0)_{\text{post}} \mid D{=}1, X]
+\;=\;
+\mathbb{E}[Y_{\text{pre}} \mid D{=}1, X]
++ \mathbb{E}[Y_{\text{post}} \mid D{=}0, X]
+- \mathbb{E}[Y_{\text{pre}} \mid D{=}0, X]
+\]
+\end{frame}
+
+%%
+\begin{frame}{Proof, step 2 --- plug TWFE in: the slopes look the same}
+\vspace{0.3em}
+\textbf{From the TWFE model, observed conditional means:}
+\begin{align*}
+\mathbb{E}[Y_{\text{pre}}  \mid D{=}1, X] &= \alpha_1 + \alpha_3 + \beta\, X \\[3pt]
+\mathbb{E}[Y_{\text{post}} \mid D{=}0, X] &= \alpha_1 + \alpha_2 + \beta\, X \\[3pt]
+\mathbb{E}[Y_{\text{pre}}  \mid D{=}0, X] &= \alpha_1 + \beta\, X
+\end{align*}
+\textbf{Counterfactual for treated (step 1 identity):}
+\[
+\mathbb{E}[Y(0)_{\text{post}} \mid D{=}1, X] \;=\; \alpha_1 + \alpha_2 + \alpha_3 + \beta\, X
+\]
+\textbf{Treated outcome, post:} $\;\mathbb{E}[Y(1)_{\text{post}} \mid D{=}1, X] = \alpha_1 + \alpha_2 + \alpha_3 + \delta + \beta\, X$\\[0.4em]
+\begin{center}\color{warmgray}\small
+Both potential outcomes carry the \textit{same} $\beta$. Subtract: ATT $= \delta$. \textit{Suspiciously clean.}
 \end{center}
 \end{frame}
 
-%% ----------
-\begin{frame}{Both worries: the fully saturated spec}
+%%
+\begin{frame}{Proof, step 3 --- what if $Y(1)$ and $Y(0)$ have different slopes in $X$?}
+\vspace{0.3em}
+\textbf{Let the slopes differ:} write $\beta_1$ for the $Y(1)$ slope, $\beta_2$ for $Y(0)$:
+\begin{align*}
+\mathbb{E}[Y(1)_{\text{post}} \mid D{=}1, X] &= \alpha_1 + \alpha_2 + \alpha_3 + \delta + \beta_1\, X \\[3pt]
+\mathbb{E}[Y(0)_{\text{post}} \mid D{=}1, X] &= \alpha_1 + \alpha_2 + \alpha_3 \phantom{\;+\;\delta} + \beta_2\, X
+\end{align*}
+\textbf{True ATT given $X$:}
+\[
+\text{ATT}(X) \;=\; \delta + (\beta_1 - \beta_2)\, X
+\]
+\begin{itemize}\setlength\itemsep{0.3em}\small
+  \item If $\beta_1 \neq \beta_2$, the treatment effect \textit{depends on} $X$
+  \item TWFE fits one $\beta$, not two --- so $\hat\delta$ recovers ATT only if $\beta_1 = \beta_2$
+\end{itemize}
+\end{frame}
+
+%%
+\begin{frame}{Proof, step 4 --- TWFE imposes homogeneous $\delta$ in $X$}
+\vspace{0.3em}
+\emphbox{\textbf{Assumption:} TWFE-with-$X$ requires the treatment effect to be the same
+at every value of $X$.}
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item If $X$ is \textbf{sex}: effect must be equal for men and women
+  \item If $X$ is \textbf{income}: effect must be equal at \$1 and at \$1{,}000{,}000
+  \item If $X$ is \textbf{age}: effect must be equal at 25 and at 65
+\end{itemize}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+OLS doesn't warn you that you're making this assumption. The math does.\\
+If effects actually vary with $X$, TWFE averages across the variation\\
+and returns a weighted parameter you didn't ask for.
+\end{center}
+\end{frame}
+
+%%
+\begin{frame}[fragile]{Fix for Bias \#2: saturate treatment with $X$}
+\vspace{0.2em}
+\begin{enumerate}\setlength\itemsep{0.4em}\small
+  \item \textbf{Run a saturated regression on first differences} --- interact treatment with every $X$
+  \item \textbf{Predict $\Delta Y(1)$ and $\Delta Y(0)$ for each unit} --- average the gap in the treated group
+\end{enumerate}
+\vspace{0.3em}
+\begin{lstlisting}[language={[ANSI]C},basicstyle=\ttfamily\tiny]
+* 1. Saturated regression on first differences
+reg dy i.ever_treated ///
+    i.ever_treated#c.age i.ever_treated#c.agesq ///
+    i.ever_treated#c.educ i.ever_treated#c.educsq ///
+    i.ever_treated#i.marr i.ever_treated#i.nodegree ///
+    i.ever_treated#i.black i.ever_treated#i.hisp ///
+    i.ever_treated#c.re74 i.ever_treated#i.u74 ///
+    $X, robust
+
+* 2. Predict potential outcomes; average the gap in the treated group
+replace ever_treated = 1
+quietly predict dy_hat_1, xb
+replace ever_treated = 0
+quietly predict dy_hat_0, xb
+replace ever_treated = evt_orig          // restore
+gen tau_sat = dy_hat_1 - dy_hat_0
+quietly sum tau_sat if ever_treated == 1 // ATT = r(mean)
+\end{lstlisting}
+\end{frame}
+
+%% ====================================================================
+%% BIAS #3 — TIME-INVARIANT COVARIATES
+%% ====================================================================
+
+%%
+\begin{frame}{Bias \#3: time-invariant covariates get absorbed}
 \vspace{0.6em}
 \begin{center}
-\large
-$Y_{it} = \alpha_i + \lambda_t
-      + \delta_0\,(D_i \times \mathrm{Post}_t)
-      + \boldsymbol{\tau}\,(D_i \times \mathrm{Post}_t \times X_i)
-      + \boldsymbol{\gamma}\,(\mathrm{Post}_t \times X_i)
-      + \boldsymbol{\beta}\,X_i
-      + \varepsilon_{it}$
+If you need $X_i$ for conditional PT, but $X_i$ doesn't change over time,\\
+TWFE will \textbf{delete it}.
 \end{center}
-\vspace{0.8em}
-\begin{center}
-\color{warmgray}\small
-ATT $= \frac{1}{n_T}\displaystyle\sum_{D_i=1} \bigl(\hat\delta_0 + \hat{\boldsymbol{\tau}}\,X_i\bigr)$
-\quad\textperiodcentered\quad
-This is \textbf{Spec C} in the lab.
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+TWFE ``demeans'' the data. The mean of a constant is itself.\\
+So $X_i - \bar{X}_i \equiv 0$ --- it drops out of the regression entirely.
 \end{center}
+\vspace{0.5em}
+\emphbox{\textbf{Fix:} include $X_i \times \mathrm{Post}_t$ instead. \;The Post interaction is time-varying,\\
+so it survives demeaning and can do the work of conditioning on $X$.}
+\end{frame}
+
+%% ====================================================================
+%% SUMMARY
+%% ====================================================================
+
+%%
+\begin{frame}{Three biases --- one family of fixes}
+\vspace{0.3em}
+{\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Bias} & \textbf{What TWFE imposes} & \textbf{Fix} \\
+\midrule
+\#1 Trend imbalance
+  & $\beta$ constant pre and post
+  & $\mathrm{Post}\times X$ \\[4pt]
+\#2 Heterogeneous TE
+  & $\delta$ same at every $X$
+  & $D\times X$ (saturate treatment) \\[4pt]
+\#3 Time-invariant $X$
+  & $X_i$ survives demeaning
+  & $\mathrm{Post}\times X$ (same fix as \#1) \\
+\bottomrule
+\end{tabular}
+}
+\vspace{0.5em}
+\emphbox{Most researchers include additive $X$ and call it a day. That is the wrong spec.
+To fix all three you need both $\mathrm{Post}\times X$ and $D\times X$.
+It is rare to see this in published work.}
 \end{frame}
 
 %% ====================================================================
