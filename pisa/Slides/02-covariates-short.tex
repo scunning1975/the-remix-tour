@@ -243,7 +243,7 @@ $\mathbb{E}[\Delta Y(0)\mid D{=}1,\,X] = \mathbb{E}[\Delta Y(0)\mid D{=}0,\,X]$
 %% ====================================================================
 
 \begin{frame}{The standard TWFE with additive $X$}
-\vspace{1.2em}
+\vspace{0.6em}
 \begin{center}
 \large
 $Y_{it} \;=\; \alpha_i + \lambda_t
@@ -251,7 +251,7 @@ $Y_{it} \;=\; \alpha_i + \lambda_t
       + \boldsymbol{\beta}\,X_i
       + \varepsilon_{it}$
 \end{center}
-\vspace{1.0em}
+\vspace{0.5em}
 \begin{center}
 Two hidden assumptions:
 \begin{enumerate}
@@ -259,6 +259,11 @@ Two hidden assumptions:
   \item Treatment effect is \textbf{the same for all $X$}
 \end{enumerate}
 \end{center}
+\vspace{0.4em}
+\emphbox{\textbf{Fatal problem:} if $X_i$ is time-invariant, it is collinear with $\alpha_i$
+and drops out --- whether you use unit fixed effects \emph{or} a saturated dummy
+specification. An additive, separable $X$ cannot deliver conditional parallel
+trends if the covariate is absorbed before it can do any work.}
 \end{frame}
 
 %% ----------
