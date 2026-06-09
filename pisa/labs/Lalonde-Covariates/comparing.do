@@ -10,8 +10,8 @@
 	* Poor pre-treatment fit (imbalance on covariates which will introduce matching bias)
 	gen 	age = rnormal(27,3.5) 		if treat==1
 	replace age = rnormal(30,4) 		if treat==0
-	gen 	gpa = rnormal(2.5,1) 	if treat==0
-	replace gpa = rnormal(2.2,0.5) 	if treat==1
+	gen 	gpa = rnormal(2.5,1) 		if treat==0
+	replace gpa = rnormal(2.2,0.5) 		if treat==1
 
 	* Visualize the imbalance
 	twoway (histogram age if treat==1,  color(green)) ///
