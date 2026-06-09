@@ -540,8 +540,24 @@ then return here for OR, IPW, and DR.
 \end{frame}
 
 %% ====================================================================
-%% PART 2 — IPW
+%% ALTERNATIVE ESTIMATORS
 %% ====================================================================
+\remixsection{Alternative Estimators}{}
+
+%%
+\begin{frame}{Three more estimators}
+\vspace{0.8em}
+\begin{center}
+Now we will look at three more estimators.\\[0.5em]
+These are alternatives to the regression-based specs we just covered.
+\end{center}
+\vspace{0.6em}
+\begin{enumerate}\setlength\itemsep{0.5em}
+  \item \highlight{IPW} --- reweight controls to look like treated
+  \item \highlight{Outcome regression (OR)} --- model the control trend, impute the counterfactual
+  \item \highlight{Doubly robust (DR)} --- combine both; consistent if \textit{either} is right
+\end{enumerate}
+\end{frame}
 
 \begin{frame}{IPW: reweight the controls to look like the treated}
 \vspace{1.0em}
@@ -616,6 +632,26 @@ $\hat\mu_0(X_i) = \widehat{E}[\Delta Y \mid D=0,\,X]$ \quad estimated on control
   \item \highlight{Mean gap.} \;ATT $= \overline{\Delta Y}^T - \overline{\hat\mu_0(X)}^T$.
   \item \highlight{Standard error.} \;Bootstrap.
 \end{enumerate}
+\end{frame}
+
+%%
+\begin{frame}{Surprise --- you already know OR}
+\vspace{0.5em}
+\begin{center}
+OR step 2: \emph{regress $\Delta Y$ on $X$ using controls only.}\\[0.5em]
+That is exactly what the saturated TWFE (Spec C) does.
+\end{center}
+\vspace{0.4em}
+\emphbox{In a fully saturated model with all $D \times X$ interactions, FWL
+guarantees the $X$ coefficient is estimated from the control group only.
+The saturated TWFE prediction for $\Delta Y(0)$ of treated units \textbf{is}
+the OR imputation --- numerically identical.}
+\vspace{0.4em}
+\begin{center}\color{warmgray}\small
+Same logic as the six ways to compute the 2$\times$2.\\
+Different formulas, same number.\\[0.3em]
+We will confirm this in the do file.
+\end{center}
 \end{frame}
 
 %% ====================================================================
