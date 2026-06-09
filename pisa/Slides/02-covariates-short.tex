@@ -43,34 +43,149 @@
   {Scott Cunningham \textperiodcentered\ Baylor University}
   {Sant'Anna Workshop on Causal Inference \textperiodcentered\ Pisa}
 
-%% ---------- RECAP ----------
-\begin{frame}{Yesterday: three problems with additive covariates}
-\vspace{0.4em}
-\begin{enumerate}\setlength\itemsep{0.5em}
-  \item \textbf{Heterogeneous treatment effects in $X$} \hfill \highlight{Fix: interact $D \times X$}
-  \item \textbf{Imbalance + differential trends} \hfill \highlight{Fix: interact $\text{Post} \times X$}\\
-        {\small\color{warmgray}(including time-invariant $X$ --- but \textbf{never} post-treatment $X$)}
-  \item \textbf{Time-invariant $X$ absorbed by unit FE} \hfill \highlight{Drops out entirely}
-\end{enumerate}
-\vspace{0.5em}
+%% ====================================================================
+%% OPENING MOTIVATION — why covariates matter
+%% ====================================================================
+
+\begin{frame}{The 2$\times$2 DiD estimand}
+\vspace{0.8em}
+\begin{center}
+\large
+$\underbrace{\widehat{\delta}_{\text{DiD}}}_{\text{what we estimate}}
+ \;=\;
+ \underbrace{\text{ATT}}_{\text{what we want}}
+ \;+\;
+ \underbrace{\bigl[\,\mathbb{E}[\Delta Y(0)\mid D{=}1]
+              - \mathbb{E}[\Delta Y(0)\mid D{=}0]\,\bigr]}_{\text{PT bias}}$
+\end{center}
+\vspace{0.8em}
 \begin{center}\color{warmgray}\small
-Today: a brisk review of OR, IPW, and DR; simulation; LaLonde application.
+Treatment $=$ college education. \quad Outcome $=$ wages.\\
+Parallel trends requires the PT bias term to equal zero.
 \end{center}
 \end{frame}
 
-%% ---------- SCHEDULE ----------
-\begin{frame}{Thursday: we are behind, so we accelerate}
+%%
+\begin{frame}{A thought experiment}
 \vspace{0.5em}
-\begin{enumerate}\setlength\itemsep{0.5em}
-  \item \highlight{Covariates (now):} OR, IPW, DR --- and the LaLonde lab
-  \item \highlight{Continuous DiD:} TWFE decomposition, causal parameters, estimation + exercise
-  \item \highlight{Staggered adoption:} TWFE problems, Callaway--Sant'Anna
-  \item \highlight{Claude Code:} live demo, zero-shot pipeline, verification
-\end{enumerate}
-\vspace{0.5em}
-\begin{center}\color{warmgray}\small
-Synthetic control: probably not today.
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Group} & \textbf{Untreated wage trend $\Delta Y(0)$} \\
+\midrule
+Male workers   & $+10$ per year \\
+Female workers & $+8$\phantom{0} per year \\
+\bottomrule
+\end{tabular}
 \end{center}
+\vspace{0.8em}
+\begin{center}
+\textbf{Case 1:} $D{=}1$ is 75\% male. \quad $D{=}0$ is 75\% male.\\[0.4em]
+\color{warmgray}\small Will parallel trends hold?
+\end{center}
+\end{frame}
+
+%%
+\begin{frame}{Case 1: show the work}
+\vspace{0.6em}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+& \textbf{Calculation} & \textbf{Result} \\
+\midrule
+$\mathbb{E}[\Delta Y(0)\mid D{=}1]$ & $0.75\times10 + 0.25\times8$ & $9.5$ \\[0.3em]
+$\mathbb{E}[\Delta Y(0)\mid D{=}0]$ & $0.75\times10 + 0.25\times8$ & $9.5$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.8em}
+\begin{center}
+Parallel trends holds? \quad \textcolor{forest}{\textbf{Yes.}}\\[0.3em]
+\color{warmgray}\small $\widehat{\delta}_{\text{DiD}} = \text{ATT}$ \;\checkmark
+\end{center}
+\end{frame}
+
+%%
+\begin{frame}{Case 2: unequal composition}
+\vspace{0.5em}
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+& \textbf{\% male} \\
+\midrule
+$D{=}1$ (college educated) & 75\% \\
+$D{=}0$ (no college)       & 25\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\color{warmgray}\small
+Same wage trends as before ($+10$ male, $+8$ female).\\
+Will parallel trends hold now?
+\end{center}
+\end{frame}
+
+%%
+\begin{frame}{Case 2: show the work}
+\vspace{0.6em}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+& \textbf{Calculation} & \textbf{Result} \\
+\midrule
+$\mathbb{E}[\Delta Y(0)\mid D{=}1]$ & $0.75\times10 + 0.25\times8$ & $9.5$ \\[0.3em]
+$\mathbb{E}[\Delta Y(0)\mid D{=}0]$ & $0.25\times10 + 0.75\times8$ & $8.5$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.8em}
+\begin{center}
+Parallel trends holds? \quad \textcolor{red}{\textbf{No.}}\\[0.3em]
+\color{warmgray}\small
+$\widehat{\delta}_{\text{DiD}} \;\neq\; \text{ATT}$
+\quad because PT bias $= 9.5 - 8.5 = 1.0 \neq 0$
+\end{center}
+\end{frame}
+
+%%
+\begin{frame}{Why? Imbalance on a trend-causing covariate}
+\vspace{0.8em}
+\begin{center}
+DiD does \textbf{not} require the two groups to look the same on \emph{levels}.\\[0.6em]
+DiD \textbf{does} require the same $Y(0)$ \emph{trends}.\\[0.8em]
+\end{center}
+\emphbox{Imbalance in a covariate that \emph{causes} $Y(0)$ trends\\
+will \textbf{mechanically} break parallel trends.}
+\end{frame}
+
+%%
+\begin{frame}{Fix: control for sex}
+\vspace{0.8em}
+\begin{center}
+If sex is the only covariate driving differential trends,\\
+then \emph{conditioning on sex} removes the PT bias.\\[0.8em]
+\color{warmgray}\small
+Several ways to do this:\\[0.3em]
+\textbf{Outcome regression} (OR) \quad \textbf{IPW} \quad \textbf{Doubly robust} (DR)
+\end{center}
+\end{frame}
+
+%%
+\begin{frame}{For conditioning to work: conditional PT}
+\vspace{0.6em}
+\begin{center}
+We need parallel trends \emph{within} each group:
+\end{center}
+\vspace{0.4em}
+\begin{enumerate}\setlength\itemsep{0.5em}
+  \item Male treated workers have the \emph{same} $Y(0)$ trend as male control workers
+  \item Female treated workers have the \emph{same} $Y(0)$ trend as female control workers
+\end{enumerate}
+\vspace{0.6em}
+\emphbox{Conditional PTA: \;\;
+$\mathbb{E}[\Delta Y(0)\mid D{=}1,\,X] = \mathbb{E}[\Delta Y(0)\mid D{=}0,\,X]$
+\quad for all $X$}
 \end{frame}
 
 %% ====================================================================
