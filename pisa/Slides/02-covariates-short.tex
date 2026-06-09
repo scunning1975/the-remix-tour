@@ -47,6 +47,44 @@
 %% OPENING MOTIVATION — why covariates matter
 %% ====================================================================
 
+%%
+\begin{frame}{Recall: the 2$\times$2 is DiD --- six equivalent forms}
+\vspace{0.2em}
+{\footnotesize
+\begin{enumerate}\setlength\itemsep{0.25em}
+
+  \item $\underbrace{\bigl[\,\mathbb{E}[Y|D{=}1,t]
+         - \mathbb{E}[Y|D{=}1,t{-}1]\,\bigr]}_{\text{first difference}}
+        -\;
+        \underbrace{\bigl[\,\mathbb{E}[Y|D{=}0,t]
+         - \mathbb{E}[Y|D{=}0,t{-}1]\,\bigr]}_{\text{first difference}}$
+
+  \item $\underbrace{\bigl[\,\mathbb{E}[Y|D{=}1,t]
+         - \mathbb{E}[Y|D{=}0,t]\,\bigr]}_{\text{group difference}}
+        -\;
+        \underbrace{\bigl[\,\mathbb{E}[Y|D{=}1,t{-}1]
+         - \mathbb{E}[Y|D{=}0,t{-}1]\,\bigr]}_{\text{group difference}}$
+
+  \item $Y = \alpha_1 + \alpha_2\,\mathrm{Post} + \alpha_3\,D
+         + \delta\,(\mathrm{Post}\times D) + \varepsilon$
+        \hfill{\color{warmgray}\itshape saturated regression}
+
+  \item $Y = \alpha_1 + \tau_t + \sigma_i
+         + \delta\,(\mathrm{Post}\times D) + \varepsilon$
+        \hfill{\color{warmgray}\itshape two-way fixed effects}
+
+  \item $\Delta Y_i = \alpha_1 + \delta\,D_i + \varepsilon_i$
+        \hfill{\color{warmgray}\itshape first-difference / horizontal regression}
+
+  \item $\Delta\bar{Y}_G = \alpha_1 + \delta\,\mathrm{Post}_G + \varepsilon_G$
+        \hfill{\color{warmgray}\itshape group / vertical regression}
+
+\end{enumerate}
+}
+\vspace{0.3em}
+\emphbox{All six are \textbf{numerically identical}.}
+\end{frame}
+
 \begin{frame}{The 2$\times$2 DiD estimand}
 \vspace{0.8em}
 \begin{center}
