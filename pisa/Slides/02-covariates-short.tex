@@ -606,8 +606,8 @@ This is a data problem. No estimator fixes it.
 %% PART 3 — OR
 %% ====================================================================
 
-\begin{frame}{OR: model the trend, impute the counterfactual}
-\vspace{1.0em}
+\begin{frame}{OR --- or ``regression adjustment''}
+\vspace{0.6em}
 \begin{center}
 \large
 $\widehat{\mathrm{ATT}}_{\mathrm{OR}}
@@ -615,10 +615,16 @@ $\widehat{\mathrm{ATT}}_{\mathrm{OR}}
         \displaystyle\sum_{D_i=1}
         \Bigl[\Delta Y_i \;-\; \hat\mu_0(X_i)\Bigr]$
 \end{center}
-\vspace{0.8em}
+\vspace{0.6em}
 \begin{center}
 \color{warmgray}\small
-$\hat\mu_0(X_i) = \widehat{E}[\Delta Y \mid D=0,\,X]$ \quad estimated on controls only
+$\hat\mu_0(X_i) = \widehat{E}[\Delta Y \mid D{=}0,\,X]$ \quad estimated on controls only
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\small
+The estimator is increasingly called \textbf{regression adjustment} (RA)\\
+in the modern applied literature. Same idea, newer name.
 \end{center}
 \end{frame}
 
@@ -636,22 +642,104 @@ $\hat\mu_0(X_i) = \widehat{E}[\Delta Y \mid D=0,\,X]$ \quad estimated on control
 
 %%
 \begin{frame}{Surprise --- you already know OR}
-\vspace{0.5em}
+\vspace{0.8em}
 \begin{center}
-OR step 2: \emph{regress $\Delta Y$ on $X$ using controls only.}\\[0.5em]
-That is exactly what the saturated TWFE (Spec C) does.
+\large
+OR step 2: \emph{``Regress $\Delta Y$ on $X$ using controls only.''}\\[0.8em]
+\color{warmgray}\normalsize
+That is exactly what the saturated TWFE does.\\[0.4em]
+Let's prove it slowly.
 \end{center}
-\vspace{0.4em}
-\emphbox{In a fully saturated model with all $D \times X$ interactions, FWL
-guarantees the $X$ coefficient is estimated from the control group only.
-The saturated TWFE prediction for $\Delta Y(0)$ of treated units \textbf{is}
-the OR imputation --- numerically identical.}
+\end{frame}
+
+%%
+\begin{frame}{Proof, step 1 --- the saturated model}
 \vspace{0.4em}
 \begin{center}\color{warmgray}\small
-Same logic as the six ways to compute the 2$\times$2.\\
-Different formulas, same number.\\[0.3em]
-We will confirm this in the do file.
+Spec C runs this regression on first differences:\end{center}
+\vspace{0.3em}
+\[
+\Delta Y_i \;=\; \underbrace{\alpha}_{\text{intercept}}
+            \;+\; \underbrace{\delta\, D_i}_{\text{treatment}}
+            \;+\; \underbrace{\beta'\, X_i}_{\text{covariates}}
+            \;+\; \underbrace{\tau'\,(D_i \times X_i)}_{\text{treatment interactions}}
+            \;+\; \varepsilon_i
+\]
+\vspace{0.4em}
+\begin{center}
+$D_i \in \{0, 1\}$ \quad and \quad \textbf{every} element of $X_i$ is interacted with $D_i$.
 \end{center}
+\end{frame}
+
+%%
+\begin{frame}{Proof, step 2 --- separate by group}
+\vspace{0.3em}
+\begin{center}\color{warmgray}\small Plug $D_i = 0$ and $D_i = 1$ into the model:\end{center}
+\vspace{0.4em}
+\begin{align*}
+D_i = 0: \quad \Delta Y_i &= \alpha + \beta'\, X_i + \varepsilon_i \\[6pt]
+D_i = 1: \quad \Delta Y_i &= (\alpha + \delta) + (\beta + \tau)'\, X_i + \varepsilon_i
+\end{align*}
+\vspace{0.4em}
+\begin{center}
+The two groups have \textbf{entirely different} parameters.\\[0.4em]
+\color{warmgray}\small
+Controls contribute to $(\alpha,\,\beta)$.\quad
+Treated contribute to $(\alpha+\delta,\,\beta+\tau)$.
+\end{center}
+\end{frame}
+
+%%
+\begin{frame}{Proof, step 3 --- OLS separates completely}
+\vspace{0.4em}
+\begin{center}\color{warmgray}\small
+Re-label: \;$a_0 = \alpha$, \;$b_0 = \beta$, \;$a_1 = \alpha+\delta$, \;$b_1 = \beta+\tau$.
+\end{center}
+\vspace{0.3em}
+The OLS objective is:
+\[
+\min_{a_0,b_0,a_1,b_1}
+  \underbrace{\sum_{D_i=0}\!\bigl(\Delta Y_i - a_0 - b_0'\,X_i\bigr)^{\!2}}_{\text{only controls}}
+  \;+\;
+  \underbrace{\sum_{D_i=1}\!\bigl(\Delta Y_i - a_1 - b_1'\,X_i\bigr)^{\!2}}_{\text{only treated}}
+\]
+\vspace{0.3em}
+\begin{center}
+The two sums share \textbf{no parameters}.\\[0.4em]
+\emphbox{$(\hat a_0,\,\hat b_0)$ \;=\; OLS of $\Delta Y$ on $X$ \textbf{using controls only.}}
+\end{center}
+\end{frame}
+
+%%
+\begin{frame}{Proof, step 4 --- Spec C and OR make the same imputation}
+\vspace{0.4em}
+\begin{center}\color{warmgray}\small
+For a treated unit $i$, what does each estimator predict as $\Delta Y_i(0)$?
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Spec C (saturated TWFE)} & set $D_i{=}0$: \quad $\hat a_0 + \hat b_0'\,X_i$ \\[6pt]
+\textbf{OR / regression adjustment} & control OLS: \quad $\hat a_0 + \hat b_0'\,X_i$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.6em}
+\emphbox{Identical prediction $\;\Rightarrow\;$ identical ATT.\quad
+\textbf{Spec C is OR.}}
+\end{frame}
+
+%%
+\begin{frame}{One estimator, two names --- just like the 2$\times$2}
+\vspace{0.6em}
+\begin{center}
+Recall: six formulas for the 2$\times$2, all giving the same number.\\[0.6em]
+Same principle here.\\[0.8em]
+\end{center}
+\emphbox{Saturated TWFE (Spec C) and outcome regression (OR / RA)\\
+are \textbf{the same estimator} expressed two different ways.\\[0.3em]
+We will confirm this in the do file: both print \$1{,}770.}
 \end{frame}
 
 %% ====================================================================
