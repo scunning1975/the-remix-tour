@@ -1,0 +1,3996 @@
+iso3,country,year,unemp_rate
+AFE,Africa Eastern and Southern,2010,7.33948885318777
+AFE,Africa Eastern and Southern,2009,7.02933493362019
+AFE,Africa Eastern and Southern,2008,6.95926232871186
+AFE,Africa Eastern and Southern,2007,6.98058891496815
+AFE,Africa Eastern and Southern,2006,7.03560059961336
+AFE,Africa Eastern and Southern,2005,7.10041371887931
+AFE,Africa Eastern and Southern,2004,7.27852246959678
+AFE,Africa Eastern and Southern,2003,7.4720424200925
+AFE,Africa Eastern and Southern,2002,7.51149338877195
+AFE,Africa Eastern and Southern,2001,7.55388452430262
+AFE,Africa Eastern and Southern,2000,7.66876829683374
+AFE,Africa Eastern and Southern,1999,7.72993010885893
+AFE,Africa Eastern and Southern,1998,7.68263780767572
+AFE,Africa Eastern and Southern,1997,7.64190636706094
+AFE,Africa Eastern and Southern,1996,7.6816226939442
+AFE,Africa Eastern and Southern,1995,7.77389399169686
+AFE,Africa Eastern and Southern,1994,8.02210049864685
+AFW,Africa Western and Central,2010,3.98952016701337
+AFW,Africa Western and Central,2009,4.00285567701831
+AFW,Africa Western and Central,2008,3.96722459921357
+AFW,Africa Western and Central,2007,3.9480584197936
+AFW,Africa Western and Central,2006,3.96927941109318
+AFW,Africa Western and Central,2005,4.09646467682858
+AFW,Africa Western and Central,2004,4.08689146118398
+AFW,Africa Western and Central,2003,4.1679789387801
+AFW,Africa Western and Central,2002,4.27370648574837
+AFW,Africa Western and Central,2001,4.46519556174692
+AFW,Africa Western and Central,2000,4.53084348194886
+AFW,Africa Western and Central,1999,4.48967729134782
+AFW,Africa Western and Central,1998,4.30420099773995
+AFW,Africa Western and Central,1997,4.29611784310687
+AFW,Africa Western and Central,1996,4.32613401613888
+AFW,Africa Western and Central,1995,4.39276887843604
+AFW,Africa Western and Central,1994,4.39009720211516
+ARB,Arab World,2010,9.57178825247491
+ARB,Arab World,2009,9.46079216862091
+ARB,Arab World,2008,9.87515901443002
+ARB,Arab World,2007,10.1456780757217
+ARB,Arab World,2006,10.5176425576734
+ARB,Arab World,2005,11.2344112966755
+ARB,Arab World,2004,11.4271164700074
+ARB,Arab World,2003,12.4496966444039
+ARB,Arab World,2002,12.5062276655765
+ARB,Arab World,2001,12.49820212983
+ARB,Arab World,2000,12.6227231888262
+ARB,Arab World,1999,12.1410531058538
+ARB,Arab World,1998,11.9519989476751
+ARB,Arab World,1997,11.9963600041588
+ARB,Arab World,1996,12.4585943877988
+ARB,Arab World,1995,13.5049205239265
+ARB,Arab World,1994,13.012183394794
+CSS,Caribbean small states,2010,8.80934904598808
+CSS,Caribbean small states,2009,9.18808540593253
+CSS,Caribbean small states,2008,7.8711908829552
+CSS,Caribbean small states,2007,8.1976990614565
+CSS,Caribbean small states,2006,8.69394120180955
+CSS,Caribbean small states,2005,9.98480572264988
+CSS,Caribbean small states,2004,10.2916036767948
+CSS,Caribbean small states,2003,11.5380632882928
+CSS,Caribbean small states,2002,11.3083250951395
+CSS,Caribbean small states,2001,11.1794403357232
+CSS,Caribbean small states,2000,11.7427630641232
+CSS,Caribbean small states,1999,12.5019625854356
+CSS,Caribbean small states,1998,13.0418053985954
+CSS,Caribbean small states,1997,13.6119469585577
+CSS,Caribbean small states,1996,14.1980943997497
+CSS,Caribbean small states,1995,14.6507674227641
+CSS,Caribbean small states,1994,16.1154342863252
+CEB,Central Europe and the Baltics,2010,9.92718738959062
+CEB,Central Europe and the Baltics,2009,8.51650875155537
+CEB,Central Europe and the Baltics,2008,6.60116715977237
+CEB,Central Europe and the Baltics,2007,7.80912922603523
+CEB,Central Europe and the Baltics,2006,10.1249144944981
+CEB,Central Europe and the Baltics,2005,12.0311529429654
+CEB,Central Europe and the Baltics,2004,12.8914606604503
+CEB,Central Europe and the Baltics,2003,13.2764246828022
+CEB,Central Europe and the Baltics,2002,13.9609765303477
+CEB,Central Europe and the Baltics,2001,13.4981128132324
+CEB,Central Europe and the Baltics,2000,12.1493697321005
+CEB,Central Europe and the Baltics,1999,10.6183180697798
+CEB,Central Europe and the Baltics,1998,9.18697418361695
+CEB,Central Europe and the Baltics,1997,9.39172805883786
+CEB,Central Europe and the Baltics,1996,10.3630367762026
+CEB,Central Europe and the Baltics,1995,11.0167295576433
+CEB,Central Europe and the Baltics,1994,11.5568158799985
+EAR,Early-demographic dividend,2010,6.69836499671353
+EAR,Early-demographic dividend,2009,6.88223725605258
+EAR,Early-demographic dividend,2008,6.76572719306619
+EAR,Early-demographic dividend,2007,6.8238682430718
+EAR,Early-demographic dividend,2006,6.88954096317128
+EAR,Early-demographic dividend,2005,7.11332854467778
+EAR,Early-demographic dividend,2004,7.18946151700737
+EAR,Early-demographic dividend,2003,7.29621887458035
+EAR,Early-demographic dividend,2002,7.39006412287729
+EAR,Early-demographic dividend,2001,7.1563905809364
+EAR,Early-demographic dividend,2000,7.07281148454185
+EAR,Early-demographic dividend,1999,7.06616766110044
+EAR,Early-demographic dividend,1998,6.86942892859097
+EAR,Early-demographic dividend,1997,6.76187367957394
+EAR,Early-demographic dividend,1996,6.88342868446174
+EAR,Early-demographic dividend,1995,7.03393456293223
+EAR,Early-demographic dividend,1994,6.75830009709217
+EAS,East Asia & Pacific,2010,4.22455076502669
+EAS,East Asia & Pacific,2009,4.47420796985744
+EAS,East Asia & Pacific,2008,4.38194930101755
+EAS,East Asia & Pacific,2007,4.30429852915007
+EAS,East Asia & Pacific,2006,4.351012904116
+EAS,East Asia & Pacific,2005,4.47463469156014
+EAS,East Asia & Pacific,2004,4.42980737625595
+EAS,East Asia & Pacific,2003,4.47961803252938
+EAS,East Asia & Pacific,2002,4.26557821608325
+EAS,East Asia & Pacific,2001,3.96606605575514
+EAS,East Asia & Pacific,2000,3.56333033432491
+EAS,East Asia & Pacific,1999,3.65945976901506
+EAS,East Asia & Pacific,1998,3.54773877147608
+EAS,East Asia & Pacific,1997,3.25632597864275
+EAS,East Asia & Pacific,1996,3.16713936232141
+EAS,East Asia & Pacific,1995,3.05225354598453
+EAS,East Asia & Pacific,1994,2.97684115736109
+EAP,East Asia & Pacific (excluding high income),2010,4.16370037437203
+EAP,East Asia & Pacific (excluding high income),2009,4.42509624520043
+EAP,East Asia & Pacific (excluding high income),2008,4.44442036989862
+EAP,East Asia & Pacific (excluding high income),2007,4.36462589942474
+EAP,East Asia & Pacific (excluding high income),2006,4.3836448453094
+EAP,East Asia & Pacific (excluding high income),2005,4.49019174546575
+EAP,East Asia & Pacific (excluding high income),2004,4.41127089940087
+EAP,East Asia & Pacific (excluding high income),2003,4.41684389931735
+EAP,East Asia & Pacific (excluding high income),2002,4.16950098114092
+EAP,East Asia & Pacific (excluding high income),2001,3.85578728070638
+EAP,East Asia & Pacific (excluding high income),2000,3.43334970499077
+EAP,East Asia & Pacific (excluding high income),1999,3.47870712039455
+EAP,East Asia & Pacific (excluding high income),1998,3.38360539136196
+EAP,East Asia & Pacific (excluding high income),1997,3.2129923203788
+EAP,East Asia & Pacific (excluding high income),1996,3.12119458500169
+EAP,East Asia & Pacific (excluding high income),1995,3.01646156806726
+EAP,East Asia & Pacific (excluding high income),1994,2.93314445248657
+TEA,East Asia & Pacific (IDA & IBRD countries),2010,4.17487787059342
+TEA,East Asia & Pacific (IDA & IBRD countries),2009,4.43923742826889
+TEA,East Asia & Pacific (IDA & IBRD countries),2008,4.45880440548548
+TEA,East Asia & Pacific (IDA & IBRD countries),2007,4.37680263860099
+TEA,East Asia & Pacific (IDA & IBRD countries),2006,4.3960838573092
+TEA,East Asia & Pacific (IDA & IBRD countries),2005,4.50383702137591
+TEA,East Asia & Pacific (IDA & IBRD countries),2004,4.42310310906886
+TEA,East Asia & Pacific (IDA & IBRD countries),2003,4.428076738741
+TEA,East Asia & Pacific (IDA & IBRD countries),2002,4.17741336740834
+TEA,East Asia & Pacific (IDA & IBRD countries),2001,3.85850449672084
+TEA,East Asia & Pacific (IDA & IBRD countries),2000,3.43001128152857
+TEA,East Asia & Pacific (IDA & IBRD countries),1999,3.47579200535286
+TEA,East Asia & Pacific (IDA & IBRD countries),1998,3.38242232824111
+TEA,East Asia & Pacific (IDA & IBRD countries),1997,3.21237864407138
+TEA,East Asia & Pacific (IDA & IBRD countries),1996,3.12070620503968
+TEA,East Asia & Pacific (IDA & IBRD countries),1995,3.01496053849378
+TEA,East Asia & Pacific (IDA & IBRD countries),1994,2.93069940629993
+EMU,Euro area,2010,10.1740194070287
+EMU,Euro area,2009,9.63334626391305
+EMU,Euro area,2008,7.54425138527358
+EMU,Euro area,2007,7.53715996964668
+EMU,Euro area,2006,8.42956606287314
+EMU,Euro area,2005,9.15007509419852
+EMU,Euro area,2004,9.2907687105215
+EMU,Euro area,2003,9.0218414865169
+EMU,Euro area,2002,8.68085523881314
+EMU,Euro area,2001,8.41956121583543
+EMU,Euro area,2000,9.47321124385057
+EMU,Euro area,1999,10.4542821601684
+EMU,Euro area,1998,11.205669738695
+EMU,Euro area,1997,11.6224406312296
+EMU,Euro area,1996,11.6258748533766
+EMU,Euro area,1995,11.4189986140193
+EMU,Euro area,1994,11.7377677754957
+ECS,Europe & Central Asia,2010,9.11732766770857
+ECS,Europe & Central Asia,2009,9.05895187341577
+ECS,Europe & Central Asia,2008,7.16897078667497
+ECS,Europe & Central Asia,2007,7.24696438985174
+ECS,Europe & Central Asia,2006,8.17297527475334
+ECS,Europe & Central Asia,2005,8.7318165816003
+ECS,Europe & Central Asia,2004,9.05651425282142
+ECS,Europe & Central Asia,2003,9.11346744115473
+ECS,Europe & Central Asia,2002,9.07870920871455
+ECS,Europe & Central Asia,2001,9.0564200675213
+ECS,Europe & Central Asia,2000,9.68483091902418
+ECS,Europe & Central Asia,1999,10.5851773676979
+ECS,Europe & Central Asia,1998,10.6928774380072
+ECS,Europe & Central Asia,1997,10.5181612217563
+ECS,Europe & Central Asia,1996,10.2686228030506
+ECS,Europe & Central Asia,1995,9.9311190228704
+ECS,Europe & Central Asia,1994,9.65148359317699
+ECA,Europe & Central Asia (excluding high income),2010,9.54059516043394
+ECA,Europe & Central Asia (excluding high income),2009,10.1856136243961
+ECA,Europe & Central Asia (excluding high income),2008,8.58123430648126
+ECA,Europe & Central Asia (excluding high income),2007,8.61312246579108
+ECA,Europe & Central Asia (excluding high income),2006,9.15632666629247
+ECA,Europe & Central Asia (excluding high income),2005,9.62072328847468
+ECA,Europe & Central Asia (excluding high income),2004,10.1363077374344
+ECA,Europe & Central Asia (excluding high income),2003,10.290974644155
+ECA,Europe & Central Asia (excluding high income),2002,10.702874375174
+ECA,Europe & Central Asia (excluding high income),2001,10.6408534193536
+ECA,Europe & Central Asia (excluding high income),2000,10.7462183942089
+ECA,Europe & Central Asia (excluding high income),1999,11.3939211887159
+ECA,Europe & Central Asia (excluding high income),1998,11.0176037980024
+ECA,Europe & Central Asia (excluding high income),1997,10.123820205318
+ECA,Europe & Central Asia (excluding high income),1996,9.94996550467078
+ECA,Europe & Central Asia (excluding high income),1995,8.5598066611286
+ECA,Europe & Central Asia (excluding high income),1994,7.15598913122265
+TEC,Europe & Central Asia (IDA & IBRD countries),2010,8.67633640799942
+TEC,Europe & Central Asia (IDA & IBRD countries),2009,9.09793178837198
+TEC,Europe & Central Asia (IDA & IBRD countries),2008,7.37988688857846
+TEC,Europe & Central Asia (IDA & IBRD countries),2007,7.59407523011705
+TEC,Europe & Central Asia (IDA & IBRD countries),2006,8.7030435256555
+TEC,Europe & Central Asia (IDA & IBRD countries),2005,9.31364245463686
+TEC,Europe & Central Asia (IDA & IBRD countries),2004,9.96727145258182
+TEC,Europe & Central Asia (IDA & IBRD countries),2003,10.3043605492778
+TEC,Europe & Central Asia (IDA & IBRD countries),2002,10.5396612637819
+TEC,Europe & Central Asia (IDA & IBRD countries),2001,10.7447066639553
+TEC,Europe & Central Asia (IDA & IBRD countries),2000,11.0183192610913
+TEC,Europe & Central Asia (IDA & IBRD countries),1999,11.9116471065413
+TEC,Europe & Central Asia (IDA & IBRD countries),1998,11.4943269237354
+TEC,Europe & Central Asia (IDA & IBRD countries),1997,10.6542403206707
+TEC,Europe & Central Asia (IDA & IBRD countries),1996,9.9834256885538
+TEC,Europe & Central Asia (IDA & IBRD countries),1995,9.38897907204676
+TEC,Europe & Central Asia (IDA & IBRD countries),1994,8.4016596302501
+EUU,European Union,2010,9.87327234610775
+EUU,European Union,2009,9.21120412957521
+EUU,European Union,2008,7.24163431745465
+EUU,European Union,2007,7.5031053820411
+EUU,European Union,2006,8.68896256105534
+EUU,European Union,2005,9.63100586720302
+EUU,European Union,2004,9.86057517861666
+EUU,European Union,2003,9.70782702151942
+EUU,European Union,2002,9.5656358156472
+EUU,European Union,2001,9.20662418982846
+EUU,European Union,2000,9.6992067646065
+EUU,European Union,1999,10.2140715975986
+EUU,European Union,1998,10.5276376311465
+EUU,European Union,1997,10.9465383712559
+EUU,European Union,1996,11.1438232362614
+EUU,European Union,1995,11.109236245509
+EUU,European Union,1994,11.5479115718762
+FCS,Fragile and conflict affected situations,2010,5.13136973093564
+FCS,Fragile and conflict affected situations,2009,5.05847183686227
+FCS,Fragile and conflict affected situations,2008,5.00225362970178
+FCS,Fragile and conflict affected situations,2007,4.96588170785721
+FCS,Fragile and conflict affected situations,2006,5.03911118703589
+FCS,Fragile and conflict affected situations,2005,5.17767975776894
+FCS,Fragile and conflict affected situations,2004,5.48623094719852
+FCS,Fragile and conflict affected situations,2003,5.64312921777869
+FCS,Fragile and conflict affected situations,2002,5.77114189513379
+FCS,Fragile and conflict affected situations,2001,5.80674802618769
+FCS,Fragile and conflict affected situations,2000,5.89463669839926
+FCS,Fragile and conflict affected situations,1999,5.91106797509165
+FCS,Fragile and conflict affected situations,1998,5.67463210572767
+FCS,Fragile and conflict affected situations,1997,5.42867756634261
+FCS,Fragile and conflict affected situations,1996,5.33010913621677
+FCS,Fragile and conflict affected situations,1995,5.06716615448784
+FCS,Fragile and conflict affected situations,1994,4.58781916448892
+HPC,Heavily indebted poor countries (HIPC),2010,4.78364031173157
+HPC,Heavily indebted poor countries (HIPC),2009,4.57265134354586
+HPC,Heavily indebted poor countries (HIPC),2008,4.52527614628092
+HPC,Heavily indebted poor countries (HIPC),2007,4.54454519553662
+HPC,Heavily indebted poor countries (HIPC),2006,4.59618717389945
+HPC,Heavily indebted poor countries (HIPC),2005,4.68888744539656
+HPC,Heavily indebted poor countries (HIPC),2004,4.85081989248064
+HPC,Heavily indebted poor countries (HIPC),2003,4.99109102200802
+HPC,Heavily indebted poor countries (HIPC),2002,5.03835833800164
+HPC,Heavily indebted poor countries (HIPC),2001,5.07037722965317
+HPC,Heavily indebted poor countries (HIPC),2000,5.14077341492919
+HPC,Heavily indebted poor countries (HIPC),1999,5.09699241426821
+HPC,Heavily indebted poor countries (HIPC),1998,4.95227177541551
+HPC,Heavily indebted poor countries (HIPC),1997,4.88640547366322
+HPC,Heavily indebted poor countries (HIPC),1996,4.95209843066913
+HPC,Heavily indebted poor countries (HIPC),1995,4.98342281731573
+HPC,Heavily indebted poor countries (HIPC),1994,5.16730035156024
+,High income,2010,8.18131945166259
+,High income,2009,8.04050429042724
+,High income,2008,5.93249084408943
+,High income,2007,5.69663126724595
+,High income,2006,6.3039356566465
+,High income,2005,6.78167259931937
+,High income,2004,7.09580038296239
+,High income,2003,7.31975182069287
+,High income,2002,7.19400136875408
+,High income,2001,6.87071224329616
+,High income,2000,7.02330313623047
+,High income,1999,7.69993896665627
+,High income,1998,7.8136083000035
+,High income,1997,7.73809408031265
+,High income,1996,7.73545491106261
+,High income,1995,7.72020926863037
+,High income,1994,7.91329164341291
+IBD,IBRD only,2010,6.38041154792517
+IBD,IBRD only,2009,6.61644359608536
+IBD,IBRD only,2008,6.30181703865489
+IBD,IBRD only,2007,6.33250535472638
+IBD,IBRD only,2006,6.51847415278713
+IBD,IBRD only,2005,6.7433312220245
+IBD,IBRD only,2004,6.81767500872433
+IBD,IBRD only,2003,6.97665523180592
+IBD,IBRD only,2002,6.90119517399481
+IBD,IBRD only,2001,6.68806846107529
+IBD,IBRD only,2000,6.5378671665525
+IBD,IBRD only,1999,6.62456222247388
+IBD,IBRD only,1998,6.37504928029892
+IBD,IBRD only,1997,6.14475484858296
+IBD,IBRD only,1996,6.03438037229408
+IBD,IBRD only,1995,5.93858823293217
+IBD,IBRD only,1994,5.61775478445955
+IBT,IDA & IBRD total,2010,5.89329023432406
+IBT,IDA & IBRD total,2009,6.10324262948273
+IBT,IDA & IBRD total,2008,5.84623449176225
+IBT,IDA & IBRD total,2007,5.86200448265076
+IBT,IDA & IBRD total,2006,6.01932254782821
+IBT,IDA & IBRD total,2005,6.23533050464378
+IBT,IDA & IBRD total,2004,6.31905124067439
+IBT,IDA & IBRD total,2003,6.47132589686559
+IBT,IDA & IBRD total,2002,6.41990741313757
+IBT,IDA & IBRD total,2001,6.25497510538627
+IBT,IDA & IBRD total,2000,6.13803612006999
+IBT,IDA & IBRD total,1999,6.21162704876033
+IBT,IDA & IBRD total,1998,5.99439926601113
+IBT,IDA & IBRD total,1997,5.79469409397703
+IBT,IDA & IBRD total,1996,5.71138107997951
+IBT,IDA & IBRD total,1995,5.63084309726097
+IBT,IDA & IBRD total,1994,5.379343555189
+IDB,IDA blend,2010,3.14320402026914
+IDB,IDA blend,2009,3.09853098089253
+IDB,IDA blend,2008,3.04378002820466
+IDB,IDA blend,2007,3.01249783655869
+IDB,IDA blend,2006,3.13594252329219
+IDB,IDA blend,2005,3.2286448044491
+IDB,IDA blend,2004,3.27695586964825
+IDB,IDA blend,2003,3.42217572676054
+IDB,IDA blend,2002,3.53946096491474
+IDB,IDA blend,2001,3.72882194919706
+IDB,IDA blend,2000,3.82333592364451
+IDB,IDA blend,1999,3.91434730814139
+IDB,IDA blend,1998,3.89184762940828
+IDB,IDA blend,1997,3.77455453239581
+IDB,IDA blend,1996,3.79689239249562
+IDB,IDA blend,1995,3.69403538353833
+IDB,IDA blend,1994,3.65543950397293
+IDX,IDA only,2010,4.54192222128241
+IDX,IDA only,2009,4.67961700626147
+IDX,IDA only,2008,4.60368834910733
+IDX,IDA only,2007,4.50718786849523
+IDX,IDA only,2006,4.46399684953156
+IDX,IDA only,2005,4.65145396689018
+IDX,IDA only,2004,4.7856089666451
+IDX,IDA only,2003,4.8684254959882
+IDX,IDA only,2002,4.84896984068503
+IDX,IDA only,2001,4.77495105971428
+IDX,IDA only,2000,4.73257287195726
+IDX,IDA only,1999,4.68037611473745
+IDX,IDA only,1998,4.55267354368707
+IDX,IDA only,1997,4.48776059178245
+IDX,IDA only,1996,4.50426040576814
+IDX,IDA only,1995,4.50759315235961
+IDX,IDA only,1994,4.60808408673192
+IDA,IDA total,2010,4.04765745305091
+IDA,IDA total,2009,4.12260393901142
+IDA,IDA total,2008,4.05660136215322
+IDA,IDA total,2007,3.98484462603312
+IDA,IDA total,2006,4.00149808563909
+IDA,IDA total,2005,4.15643714559074
+IDA,IDA total,2004,4.26087719864505
+IDA,IDA total,2003,4.36667743397795
+IDA,IDA total,2002,4.39528597726998
+IDA,IDA total,2001,4.41290639290413
+IDA,IDA total,2000,4.41870677984127
+IDA,IDA total,1999,4.4166504871621
+IDA,IDA total,1998,4.32570851831212
+IDA,IDA total,1997,4.24264746039582
+IDA,IDA total,1996,4.26250990852824
+IDA,IDA total,1995,4.23074966396405
+IDA,IDA total,1994,4.28328749855898
+LTE,Late-demographic dividend,2010,5.25181815855478
+LTE,Late-demographic dividend,2009,5.57785428299668
+LTE,Late-demographic dividend,2008,5.14867990448763
+LTE,Late-demographic dividend,2007,5.11709007503548
+LTE,Late-demographic dividend,2006,5.38097826380605
+LTE,Late-demographic dividend,2005,5.63125210477498
+LTE,Late-demographic dividend,2004,5.70845578270121
+LTE,Late-demographic dividend,2003,5.90243541524635
+LTE,Late-demographic dividend,2002,5.66563235164984
+LTE,Late-demographic dividend,2001,5.47907914783063
+LTE,Late-demographic dividend,2000,5.29485034456226
+LTE,Late-demographic dividend,1999,5.4707305770275
+LTE,Late-demographic dividend,1998,5.21710249367688
+LTE,Late-demographic dividend,1997,4.94668708418151
+LTE,Late-demographic dividend,1996,4.67637018700231
+LTE,Late-demographic dividend,1995,4.47531718027036
+LTE,Late-demographic dividend,1994,4.30063275796875
+LCN,Latin America & Caribbean,2010,7.21826756521545
+LCN,Latin America & Caribbean,2009,7.81478715032184
+LCN,Latin America & Caribbean,2008,6.83921032197309
+LCN,Latin America & Caribbean,2007,7.22630490484512
+LCN,Latin America & Caribbean,2006,7.61413600233204
+LCN,Latin America & Caribbean,2005,8.23739951394743
+LCN,Latin America & Caribbean,2004,8.75018243421292
+LCN,Latin America & Caribbean,2003,9.25661869657505
+LCN,Latin America & Caribbean,2002,9.38790662648606
+LCN,Latin America & Caribbean,2001,9.04975653454107
+LCN,Latin America & Caribbean,2000,9.4445224692252
+LCN,Latin America & Caribbean,1999,9.42701702915778
+LCN,Latin America & Caribbean,1998,8.48626182410088
+LCN,Latin America & Caribbean,1997,8.14011323257484
+LCN,Latin America & Caribbean,1996,8.29119463249977
+LCN,Latin America & Caribbean,1995,7.90486804676992
+LCN,Latin America & Caribbean,1994,6.67780065279213
+LAC,Latin America & Caribbean (excluding high income),2010,7.13816479765139
+LAC,Latin America & Caribbean (excluding high income),2009,7.76325904485299
+LAC,Latin America & Caribbean (excluding high income),2008,6.78002884731258
+LAC,Latin America & Caribbean (excluding high income),2007,7.18066576953914
+LAC,Latin America & Caribbean (excluding high income),2006,7.49927013814271
+LAC,Latin America & Caribbean (excluding high income),2005,8.05335882665772
+LAC,Latin America & Caribbean (excluding high income),2004,8.37144323116109
+LAC,Latin America & Caribbean (excluding high income),2003,8.82029806556972
+LAC,Latin America & Caribbean (excluding high income),2002,8.98258667227847
+LAC,Latin America & Caribbean (excluding high income),2001,8.77343392903867
+LAC,Latin America & Caribbean (excluding high income),2000,9.19337642576302
+LAC,Latin America & Caribbean (excluding high income),1999,9.11886164441249
+LAC,Latin America & Caribbean (excluding high income),1998,8.35774200401712
+LAC,Latin America & Caribbean (excluding high income),1997,7.94453922455541
+LAC,Latin America & Caribbean (excluding high income),1996,8.05810647447753
+LAC,Latin America & Caribbean (excluding high income),1995,7.81147543178073
+LAC,Latin America & Caribbean (excluding high income),1994,6.48651570394148
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2010,7.26042689855492
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2009,7.89406164784247
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2008,6.9157446304206
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2007,7.31214733545694
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2006,7.7076777430645
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2005,8.34365571129642
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2004,8.88029213614675
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2003,9.38382565258049
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2002,9.50084872810719
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2001,9.1432735656305
+TLA,Latin America & the Caribbean (IDA & IBRD countries),2000,9.52894893986909
+TLA,Latin America & the Caribbean (IDA & IBRD countries),1999,9.48237924552907
+TLA,Latin America & the Caribbean (IDA & IBRD countries),1998,8.50383489490465
+TLA,Latin America & the Caribbean (IDA & IBRD countries),1997,8.12385222071719
+TLA,Latin America & the Caribbean (IDA & IBRD countries),1996,8.26787405014723
+TLA,Latin America & the Caribbean (IDA & IBRD countries),1995,7.85357644180886
+TLA,Latin America & the Caribbean (IDA & IBRD countries),1994,6.56680800344838
+LDC,Least developed countries: UN classification,2010,4.75657307667184
+LDC,Least developed countries: UN classification,2009,4.88165129097702
+LDC,Least developed countries: UN classification,2008,4.78615582186984
+LDC,Least developed countries: UN classification,2007,4.72846171671699
+LDC,Least developed countries: UN classification,2006,4.66743315924375
+LDC,Least developed countries: UN classification,2005,4.78617235413845
+LDC,Least developed countries: UN classification,2004,4.8461040020584
+LDC,Least developed countries: UN classification,2003,4.88891565223902
+LDC,Least developed countries: UN classification,2002,4.81370443469752
+LDC,Least developed countries: UN classification,2001,4.72346641947108
+LDC,Least developed countries: UN classification,2000,4.69028330186409
+LDC,Least developed countries: UN classification,1999,4.64027270266917
+LDC,Least developed countries: UN classification,1998,4.54294047396138
+LDC,Least developed countries: UN classification,1997,4.46140795668622
+LDC,Least developed countries: UN classification,1996,4.46802538631446
+LDC,Least developed countries: UN classification,1995,4.49940287771995
+LDC,Least developed countries: UN classification,1994,4.600990950454
+LMY,Low & middle income,2010,5.82874130267436
+LMY,Low & middle income,2009,6.03268599783015
+LMY,Low & middle income,2008,5.84635579413637
+LMY,Low & middle income,2007,5.84061607071867
+LMY,Low & middle income,2006,5.92329736043004
+LMY,Low & middle income,2005,6.10189134627543
+LMY,Low & middle income,2004,6.12436721134229
+LMY,Low & middle income,2003,6.24862006224706
+LMY,Low & middle income,2002,6.18899642896501
+LMY,Low & middle income,2001,6.00285447710927
+LMY,Low & middle income,2000,5.84310963310359
+LMY,Low & middle income,1999,5.85505753745311
+LMY,Low & middle income,1998,5.68185852139688
+LMY,Low & middle income,1997,5.50368537005251
+LMY,Low & middle income,1996,5.46096569968567
+LMY,Low & middle income,1995,5.38296480095666
+LMY,Low & middle income,1994,5.14887709339877
+,Low income,2010,5.51303315496083
+,Low income,2009,5.31468315669829
+,Low income,2008,5.45345736405232
+,Low income,2007,5.29597392001894
+,Low income,2006,5.24784805048287
+,Low income,2005,5.21172201002053
+,Low income,2004,5.33921871439931
+,Low income,2003,5.47129504433362
+,Low income,2002,5.53336922354344
+,Low income,2001,5.55598855497135
+,Low income,2000,5.48654284201766
+,Low income,1999,5.35385408088145
+,Low income,1998,5.26330892444806
+,Low income,1997,5.17968333181897
+,Low income,1996,5.16835452443534
+,Low income,1995,5.15200919763904
+,Low income,1994,5.25912461379538
+,Lower middle income,2010,5.80458752508872
+,Lower middle income,2009,5.93971655647129
+,Lower middle income,2008,5.88430004621886
+,Lower middle income,2007,5.85533844238372
+,Lower middle income,2006,5.95283730781201
+,Lower middle income,2005,6.06885202300761
+,Lower middle income,2004,6.09528555436404
+,Lower middle income,2003,6.17363315398744
+,Lower middle income,2002,6.17289484307925
+,Lower middle income,2001,6.16655764233771
+,Lower middle income,2000,6.14071333292926
+,Lower middle income,1999,6.12473732089138
+,Lower middle income,1998,6.08678031959539
+,Lower middle income,1997,6.09135753529065
+,Lower middle income,1996,6.04814472592865
+,Lower middle income,1995,6.13053331635795
+,Lower middle income,1994,6.15117205700555
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2010,6.85675050559872
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2009,6.71404844364157
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2008,6.58386551452509
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2007,6.82070410411982
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2006,7.22108801251314
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2005,7.65760282606948
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2004,7.54776306570901
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2003,8.30300037305323
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2002,8.48914200309222
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2001,8.42943669202
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",2000,8.4169385368672
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",1999,8.10473132845309
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",1998,7.86215125968508
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",1997,7.77681950155754
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",1996,7.96657131190278
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",1995,8.74623216428901
+MEA,"Middle East, North Africa, Afghanistan & Pakistan",1994,8.52159746477789
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2010,7.123332390198
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2009,6.94800177686091
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2008,6.84334845869645
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2007,7.0181698985801
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2006,7.39019405991603
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2005,7.84838151626538
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2004,7.69407412818457
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2003,8.52231485976773
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2002,8.74924905373015
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2001,8.72286096614539
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",2000,8.71870374230222
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",1999,8.37484954351616
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",1998,8.10371343099382
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",1997,8.00919483294535
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",1996,8.22167447864503
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",1995,9.04197057012473
+MNA,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",1994,8.75493973614969
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2010,7.05144257493513
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2009,6.88122796682575
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2008,6.76464093439402
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2007,6.96341976204585
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2006,7.33599436897474
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2005,7.79217578193013
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2004,7.62342664414024
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2003,8.45544746199598
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2002,8.66928035849804
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2001,8.66782939884288
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",2000,8.70973223936551
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",1999,8.36545993025764
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",1998,8.09262446768442
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",1997,7.99731851319209
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",1996,8.20998075616308
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",1995,9.03428655097015
+TMN,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",1994,8.74589375449375
+MIC,Middle income,2010,5.85017441431265
+MIC,Middle income,2009,6.08071155164535
+MIC,Middle income,2008,5.87229754868276
+MIC,Middle income,2007,5.87608645057118
+MIC,Middle income,2006,5.96679299894577
+MIC,Middle income,2005,6.15853119262441
+MIC,Middle income,2004,6.17385389686565
+MIC,Middle income,2003,6.29719027444246
+MIC,Middle income,2002,6.22958469299709
+MIC,Middle income,2001,6.03024850732525
+MIC,Middle income,2000,5.86482215984168
+MIC,Middle income,1999,5.88534588737734
+MIC,Middle income,1998,5.70694502615219
+MIC,Middle income,1997,5.52299509996656
+MIC,Middle income,1996,5.47835305534338
+MIC,Middle income,1995,5.39659604636452
+MIC,Middle income,1994,5.14242714622036
+NAC,North America,2010,9.47758645184374
+NAC,North America,2009,9.16994852137916
+NAC,North America,2008,5.83652846325955
+NAC,North America,2007,4.78243165759455
+NAC,North America,2006,4.81614136114576
+NAC,North America,2005,5.25750859640354
+NAC,North America,2004,5.70124819512877
+NAC,North America,2003,6.15326151532504
+NAC,North America,2002,5.97486412366027
+NAC,North America,2001,4.97961964201139
+NAC,North America,2000,4.27316817166147
+NAC,North America,1999,4.55171801715172
+NAC,North America,1998,4.88226202925985
+NAC,North America,1997,5.40301547573426
+NAC,North America,1996,5.86183271562099
+NAC,North America,1995,6.03024492508477
+NAC,North America,1994,6.54555954314501
+OED,OECD members,2010,8.5207939102318
+OED,OECD members,2009,8.38089327283664
+OED,OECD members,2008,6.20560204861274
+OED,OECD members,2007,5.88940261869547
+OED,OECD members,2006,6.34618116260618
+OED,OECD members,2005,6.8314671013283
+OED,OECD members,2004,7.17441119702139
+OED,OECD members,2003,7.27483771000377
+OED,OECD members,2002,7.13987676171849
+OED,OECD members,2001,6.61732244402855
+OED,OECD members,2000,6.71100200632985
+OED,OECD members,1999,7.16498343192011
+OED,OECD members,1998,7.2199536786199
+OED,OECD members,1997,7.2525797614352
+OED,OECD members,1996,7.54860880642088
+OED,OECD members,1995,7.60351506136332
+OED,OECD members,1994,7.8347445928305
+OSS,Other small states,2010,11.1281009935269
+OSS,Other small states,2009,10.7283220301547
+OSS,Other small states,2008,8.87238702238271
+OSS,Other small states,2007,9.04975553505642
+OSS,Other small states,2006,9.68343911516973
+OSS,Other small states,2005,10.5021202220473
+OSS,Other small states,2004,10.6266524019735
+OSS,Other small states,2003,10.6409211857421
+OSS,Other small states,2002,10.2407776645491
+OSS,Other small states,2001,10.9398104204621
+OSS,Other small states,2000,11.0177711399269
+OSS,Other small states,1999,10.6854506886027
+OSS,Other small states,1998,9.95866567854553
+OSS,Other small states,1997,10.1294672610186
+OSS,Other small states,1996,9.99515701713923
+OSS,Other small states,1995,9.94793817545676
+OSS,Other small states,1994,9.57430196742702
+PSS,Pacific island small states,2010,3.50675202326758
+PSS,Pacific island small states,2009,3.60850865304197
+PSS,Pacific island small states,2008,3.66517406587763
+PSS,Pacific island small states,2007,3.76264674833736
+PSS,Pacific island small states,2006,3.81456389998427
+PSS,Pacific island small states,2005,3.8404573462192
+PSS,Pacific island small states,2004,4.3406725276094
+PSS,Pacific island small states,2003,4.51420593104194
+PSS,Pacific island small states,2002,4.61174676237171
+PSS,Pacific island small states,2001,4.51782547170457
+PSS,Pacific island small states,2000,4.40485764939109
+PSS,Pacific island small states,1999,4.30498832186484
+PSS,Pacific island small states,1998,4.26267963599519
+PSS,Pacific island small states,1997,4.1590180797063
+PSS,Pacific island small states,1996,4.01560097752488
+PSS,Pacific island small states,1995,3.98085442407908
+PSS,Pacific island small states,1994,3.90359689716017
+PST,Post-demographic dividend,2010,8.34726962592943
+PST,Post-demographic dividend,2009,8.07274225977277
+PST,Post-demographic dividend,2008,5.90228542517582
+PST,Post-demographic dividend,2007,5.57196004328002
+PST,Post-demographic dividend,2006,5.994063325313
+PST,Post-demographic dividend,2005,6.4091008362879
+PST,Post-demographic dividend,2004,6.67204910657906
+PST,Post-demographic dividend,2003,6.86199228387437
+PST,Post-demographic dividend,2002,6.77664467622594
+PST,Post-demographic dividend,2001,6.38359327702813
+PST,Post-demographic dividend,2000,6.53699120304108
+PST,Post-demographic dividend,1999,7.1145514900882
+PST,Post-demographic dividend,1998,7.39692261448223
+PST,Post-demographic dividend,1997,7.36478723006136
+PST,Post-demographic dividend,1996,7.55967472307922
+PST,Post-demographic dividend,1995,7.38445233898678
+PST,Post-demographic dividend,1994,7.50942275337142
+PRE,Pre-demographic dividend,2010,5.09326441616899
+PRE,Pre-demographic dividend,2009,4.90006867902661
+PRE,Pre-demographic dividend,2008,4.86733284827807
+PRE,Pre-demographic dividend,2007,4.8712810896709
+PRE,Pre-demographic dividend,2006,4.90961115720825
+PRE,Pre-demographic dividend,2005,4.93346734324225
+PRE,Pre-demographic dividend,2004,4.96161227317846
+PRE,Pre-demographic dividend,2003,5.04526193299681
+PRE,Pre-demographic dividend,2002,5.07187215308205
+PRE,Pre-demographic dividend,2001,5.12089443897368
+PRE,Pre-demographic dividend,2000,5.13327710280851
+PRE,Pre-demographic dividend,1999,5.10236443756839
+PRE,Pre-demographic dividend,1998,5.05916301228677
+PRE,Pre-demographic dividend,1997,5.08008777711002
+PRE,Pre-demographic dividend,1996,5.18058208461804
+PRE,Pre-demographic dividend,1995,5.30300529201383
+PRE,Pre-demographic dividend,1994,5.42250534841091
+SST,Small states,2010,9.64092506344516
+SST,Small states,2009,9.49383006346728
+SST,Small states,2008,8.00243712798649
+SST,Small states,2007,8.20829015972595
+SST,Small states,2006,8.74041678886564
+SST,Small states,2005,9.58922696945574
+SST,Small states,2004,9.79947038236949
+SST,Small states,2003,10.1507838382451
+SST,Small states,2002,9.84688576834024
+SST,Small states,2001,10.2393243248864
+SST,Small states,2000,10.4220070497304
+SST,Small states,1999,10.4073769208229
+SST,Small states,1998,10.0913118732191
+SST,Small states,1997,10.3378370859039
+SST,Small states,1996,10.3911667521844
+SST,Small states,1995,10.4710896476613
+SST,Small states,1994,10.5872265992528
+SAS,South Asia,2010,7.16328861819797
+SAS,South Asia,2009,7.3628078548039
+SAS,South Asia,2008,7.29504082041586
+SAS,South Asia,2007,7.2019977638481
+SAS,South Asia,2006,7.16089355787342
+SAS,South Asia,2005,7.24801932806737
+SAS,South Asia,2004,7.30632128284372
+SAS,South Asia,2003,7.33330344756806
+SAS,South Asia,2002,7.34580672778149
+SAS,South Asia,2001,7.23245898235974
+SAS,South Asia,2000,7.17647475389305
+SAS,South Asia,1999,7.17195172652658
+SAS,South Asia,1998,7.16874708180548
+SAS,South Asia,1997,7.15153632180334
+SAS,South Asia,1996,7.11279594729808
+SAS,South Asia,1995,7.15013674904188
+SAS,South Asia,1994,7.18007906379825
+TSA,South Asia (IDA & IBRD),2010,7.16328861819797
+TSA,South Asia (IDA & IBRD),2009,7.3628078548039
+TSA,South Asia (IDA & IBRD),2008,7.29504082041586
+TSA,South Asia (IDA & IBRD),2007,7.2019977638481
+TSA,South Asia (IDA & IBRD),2006,7.16089355787342
+TSA,South Asia (IDA & IBRD),2005,7.24801932806737
+TSA,South Asia (IDA & IBRD),2004,7.30632128284372
+TSA,South Asia (IDA & IBRD),2003,7.33330344756806
+TSA,South Asia (IDA & IBRD),2002,7.34580672778149
+TSA,South Asia (IDA & IBRD),2001,7.23245898235974
+TSA,South Asia (IDA & IBRD),2000,7.17647475389305
+TSA,South Asia (IDA & IBRD),1999,7.17195172652658
+TSA,South Asia (IDA & IBRD),1998,7.16874708180548
+TSA,South Asia (IDA & IBRD),1997,7.15153632180334
+TSA,South Asia (IDA & IBRD),1996,7.11279594729808
+TSA,South Asia (IDA & IBRD),1995,7.15013674904188
+TSA,South Asia (IDA & IBRD),1994,7.18007906379825
+SSF,Sub-Saharan Africa,2010,5.9384663035217
+SSF,Sub-Saharan Africa,2009,5.7640684373361
+SSF,Sub-Saharan Africa,2008,5.70991877342324
+SSF,Sub-Saharan Africa,2007,5.71366247607083
+SSF,Sub-Saharan Africa,2006,5.75470274955599
+SSF,Sub-Saharan Africa,2005,5.84542677033048
+SSF,Sub-Saharan Africa,2004,5.94349195717333
+SSF,Sub-Saharan Africa,2003,6.08906292747373
+SSF,Sub-Saharan Africa,2002,6.1544562626131
+SSF,Sub-Saharan Africa,2001,6.25801553911127
+SSF,Sub-Saharan Africa,2000,6.35178469623133
+SSF,Sub-Saharan Africa,1999,6.36947715632251
+SSF,Sub-Saharan Africa,1998,6.26493513613641
+SSF,Sub-Saharan Africa,1997,6.23960940520436
+SSF,Sub-Saharan Africa,1996,6.27896875583569
+SSF,Sub-Saharan Africa,1995,6.36295420429711
+SSF,Sub-Saharan Africa,1994,6.50793947568754
+SSA,Sub-Saharan Africa (excluding high income),2010,6.39448531562492
+SSA,Sub-Saharan Africa (excluding high income),2009,6.18870705590335
+SSA,Sub-Saharan Africa (excluding high income),2008,6.12296934031664
+SSA,Sub-Saharan Africa (excluding high income),2007,6.12183243649404
+SSA,Sub-Saharan Africa (excluding high income),2006,6.1642911884134
+SSA,Sub-Saharan Africa (excluding high income),2005,6.24398512478568
+SSA,Sub-Saharan Africa (excluding high income),2004,6.31841198764216
+SSA,Sub-Saharan Africa (excluding high income),2003,6.45196283840583
+SSA,Sub-Saharan Africa (excluding high income),2002,6.51804018847795
+SSA,Sub-Saharan Africa (excluding high income),2001,6.62013398054274
+SSA,Sub-Saharan Africa (excluding high income),2000,6.68468915771202
+SSA,Sub-Saharan Africa (excluding high income),1999,6.67921055559192
+SSA,Sub-Saharan Africa (excluding high income),1998,6.5899532501301
+SSA,Sub-Saharan Africa (excluding high income),1997,6.59151019312812
+SSA,Sub-Saharan Africa (excluding high income),1996,6.64686445371628
+SSA,Sub-Saharan Africa (excluding high income),1995,6.75253628250272
+SSA,Sub-Saharan Africa (excluding high income),1994,6.90238281783516
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2010,5.9384663035217
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2009,5.7640684373361
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2008,5.70991877342324
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2007,5.71366247607083
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2006,5.75470274955599
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2005,5.84542677033048
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2004,5.94349195717333
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2003,6.08906292747373
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2002,6.1544562626131
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2001,6.25801553911127
+TSS,Sub-Saharan Africa (IDA & IBRD countries),2000,6.35178469623133
+TSS,Sub-Saharan Africa (IDA & IBRD countries),1999,6.36947715632251
+TSS,Sub-Saharan Africa (IDA & IBRD countries),1998,6.26493513613641
+TSS,Sub-Saharan Africa (IDA & IBRD countries),1997,6.23960940520436
+TSS,Sub-Saharan Africa (IDA & IBRD countries),1996,6.27896875583569
+TSS,Sub-Saharan Africa (IDA & IBRD countries),1995,6.36295420429711
+TSS,Sub-Saharan Africa (IDA & IBRD countries),1994,6.50793947568754
+,Upper middle income,2010,5.88407295714127
+,Upper middle income,2009,6.18449230113664
+,Upper middle income,2008,5.86352487156284
+,Upper middle income,2007,5.89115862866688
+,Upper middle income,2006,5.97689067501387
+,Upper middle income,2005,6.2232261928625
+,Upper middle income,2004,6.2300670099496
+,Upper middle income,2003,6.384868439041
+,Upper middle income,2002,6.269505683582
+,Upper middle income,2001,5.93494431084754
+,Upper middle income,2000,5.67377905154935
+,Upper middle income,1999,5.72194953572873
+,Upper middle income,1998,5.45186399133889
+,Upper middle income,1997,5.14660489432285
+,Upper middle income,1996,5.10610976897462
+,Upper middle income,1995,4.92531058225282
+,Upper middle income,1994,4.50343964827748
+WLD,World,2010,6.28092769649237
+WLD,World,2009,6.40934094809211
+WLD,World,2008,5.82404352868675
+WLD,World,2007,5.77480901338889
+WLD,World,2006,5.97374019654838
+WLD,World,2005,6.22389912094209
+WLD,World,2004,6.32969211241359
+WLD,World,2003,6.48390882464603
+WLD,World,2002,6.41180854857461
+WLD,World,2001,6.18980812535966
+WLD,World,2000,6.11126625149596
+WLD,World,1999,6.27834886767265
+WLD,World,1998,6.15906586247165
+WLD,World,1997,6.01013695494246
+WLD,World,1996,5.98370073084904
+WLD,World,1995,5.91942696026279
+WLD,World,1994,5.78918170693904
+AFG,Afghanistan,2010,7.809
+AFG,Afghanistan,2009,7.808
+AFG,Afghanistan,2008,7.879
+AFG,Afghanistan,2007,7.841
+AFG,Afghanistan,2006,7.897
+AFG,Afghanistan,2005,7.878
+AFG,Afghanistan,2004,7.794
+AFG,Afghanistan,2003,7.844
+AFG,Afghanistan,2002,7.867
+AFG,Afghanistan,2001,7.973
+AFG,Afghanistan,2000,7.897
+AFG,Afghanistan,1999,7.877
+AFG,Afghanistan,1998,7.869
+AFG,Afghanistan,1997,7.863
+AFG,Afghanistan,1996,7.878
+AFG,Afghanistan,1995,7.868
+AFG,Afghanistan,1994,7.883
+ALB,Albania,2010,14.086
+ALB,Albania,2009,13.674
+ALB,Albania,2008,13.06
+ALB,Albania,2007,15.966
+ALB,Albania,2006,15.626
+ALB,Albania,2005,15.966
+ALB,Albania,2004,16.306
+ALB,Albania,2003,16.985
+ALB,Albania,2002,17.891
+ALB,Albania,2001,18.57
+ALB,Albania,2000,19.023
+ALB,Albania,1999,20.835
+ALB,Albania,1998,20.042
+ALB,Albania,1997,16.872
+ALB,Albania,1996,13.928
+ALB,Albania,1995,14.607
+ALB,Albania,1994,20.835
+DZA,Algeria,2010,9.96
+DZA,Algeria,2009,10.16
+DZA,Algeria,2008,11.33
+DZA,Algeria,2007,13.79
+DZA,Algeria,2006,12.27
+DZA,Algeria,2005,15.27
+DZA,Algeria,2004,17.65
+DZA,Algeria,2003,23.72
+DZA,Algeria,2002,25.9
+DZA,Algeria,2001,27.3
+DZA,Algeria,2000,29.77
+DZA,Algeria,1999,28.575
+DZA,Algeria,1998,26.85
+DZA,Algeria,1997,25.43
+DZA,Algeria,1996,28.268
+DZA,Algeria,1995,31.84
+DZA,Algeria,1994,27.74
+AGO,Angola,2010,16.595
+AGO,Angola,2009,16.383
+AGO,Angola,2008,16.152
+AGO,Angola,2007,16.066
+AGO,Angola,2006,16.123
+AGO,Angola,2005,16.295
+AGO,Angola,2004,16.313
+AGO,Angola,2003,16.445
+AGO,Angola,2002,16.432
+AGO,Angola,2001,16.668
+AGO,Angola,2000,16.646
+AGO,Angola,1999,16.543
+AGO,Angola,1998,16.29
+AGO,Angola,1997,16.064
+AGO,Angola,1996,16.177
+AGO,Angola,1995,16.978
+AGO,Angola,1994,17.444
+ARG,Argentina,2010,7.714
+ARG,Argentina,2009,8.645
+ARG,Argentina,2008,7.837
+ARG,Argentina,2007,8.47
+ARG,Argentina,2006,10.078
+ARG,Argentina,2005,11.506
+ARG,Argentina,2004,13.522
+ARG,Argentina,2003,15.36
+ARG,Argentina,2002,19.59
+ARG,Argentina,2001,17.32
+ARG,Argentina,2000,15
+ARG,Argentina,1999,14.05
+ARG,Argentina,1998,12.65
+ARG,Argentina,1997,14.82
+ARG,Argentina,1996,17.11
+ARG,Argentina,1995,18.8
+ARG,Argentina,1994,11.76
+ARM,Armenia,2010,19.523
+ARM,Armenia,2009,19.295
+ARM,Armenia,2008,17.1
+ARM,Armenia,2007,10.394
+ARM,Armenia,2006,10.497
+ARM,Armenia,2005,10.584
+ARM,Armenia,2004,10.676
+ARM,Armenia,2003,10.769
+ARM,Armenia,2002,10.888
+ARM,Armenia,2001,11.012
+ARM,Armenia,2000,11.107
+ARM,Armenia,1999,11.2
+ARM,Armenia,1998,9.4
+ARM,Armenia,1997,10.8
+ARM,Armenia,1996,9.3
+ARM,Armenia,1995,6.7
+ARM,Armenia,1994,6.6
+AUS,Australia,2010,5.214
+AUS,Australia,2009,5.565
+AUS,Australia,2008,4.242
+AUS,Australia,2007,4.381
+AUS,Australia,2006,4.785
+AUS,Australia,2005,5.036
+AUS,Australia,2004,5.399
+AUS,Australia,2003,5.933
+AUS,Australia,2002,6.375
+AUS,Australia,2001,6.747
+AUS,Australia,2000,6.288
+AUS,Australia,1999,6.876
+AUS,Australia,1998,7.684
+AUS,Australia,1997,8.367
+AUS,Australia,1996,8.509
+AUS,Australia,1995,8.473
+AUS,Australia,1994,9.724
+AUT,Austria,2010,4.883
+AUT,Austria,2009,5.371
+AUT,Austria,2008,4.198
+AUT,Austria,2007,4.909
+AUT,Austria,2006,5.32
+AUT,Austria,2005,5.682
+AUT,Austria,2004,5.969
+AUT,Austria,2003,4.779
+AUT,Austria,2002,4.852
+AUT,Austria,2001,4.007
+AUT,Austria,2000,4.687
+AUT,Austria,1999,4.699
+AUT,Austria,1998,5.483
+AUT,Austria,1997,5.15
+AUT,Austria,1996,5.282
+AUT,Austria,1995,4.345
+AUT,Austria,1994,3.535
+AZE,Azerbaijan,2010,5.63
+AZE,Azerbaijan,2009,5.74
+AZE,Azerbaijan,2008,5.86
+AZE,Azerbaijan,2007,6.33
+AZE,Azerbaijan,2006,6.62
+AZE,Azerbaijan,2005,7.26
+AZE,Azerbaijan,2004,7.99
+AZE,Azerbaijan,2003,9.17
+AZE,Azerbaijan,2002,10.04
+AZE,Azerbaijan,2001,10.91
+AZE,Azerbaijan,2000,11.78
+AZE,Azerbaijan,1999,10.9
+AZE,Azerbaijan,1998,10
+AZE,Azerbaijan,1997,9.1
+AZE,Azerbaijan,1996,8.1
+AZE,Azerbaijan,1995,7.2
+AZE,Azerbaijan,1994,6.3
+BHS,"Bahamas, The",2010,14.435
+BHS,"Bahamas, The",2009,14.25
+BHS,"Bahamas, The",2008,8.18
+BHS,"Bahamas, The",2007,7.88
+BHS,"Bahamas, The",2006,7.54
+BHS,"Bahamas, The",2005,10.2
+BHS,"Bahamas, The",2004,10.2
+BHS,"Bahamas, The",2003,10.84
+BHS,"Bahamas, The",2002,9.05
+BHS,"Bahamas, The",2001,6.87
+BHS,"Bahamas, The",2000,7.118
+BHS,"Bahamas, The",1999,7.45
+BHS,"Bahamas, The",1998,7.65
+BHS,"Bahamas, The",1997,9.76
+BHS,"Bahamas, The",1996,11.46
+BHS,"Bahamas, The",1995,10.83
+BHS,"Bahamas, The",1994,13.83
+BHR,Bahrain,2010,1.13
+BHR,Bahrain,2009,1.07
+BHR,Bahrain,2008,1.015
+BHR,Bahrain,2007,1.006
+BHR,Bahrain,2006,1.021
+BHR,Bahrain,2005,1.021
+BHR,Bahrain,2004,1.064
+BHR,Bahrain,2003,1.126
+BHR,Bahrain,2002,1.137
+BHR,Bahrain,2001,1.118
+BHR,Bahrain,2000,1.081
+BHR,Bahrain,1999,1.112
+BHR,Bahrain,1998,1.114
+BHR,Bahrain,1997,1.125
+BHR,Bahrain,1996,1.177
+BHR,Bahrain,1995,1.044
+BHR,Bahrain,1994,1.007
+BGD,Bangladesh,2010,3.379
+BGD,Bangladesh,2009,5
+BGD,Bangladesh,2008,4.49
+BGD,Bangladesh,2007,4.015
+BGD,Bangladesh,2006,3.591
+BGD,Bangladesh,2005,4.25
+BGD,Bangladesh,2004,4.316
+BGD,Bangladesh,2003,4.32
+BGD,Bangladesh,2002,3.966
+BGD,Bangladesh,2001,3.609
+BGD,Bangladesh,2000,3.27
+BGD,Bangladesh,1999,3.088
+BGD,Bangladesh,1998,2.893
+BGD,Bangladesh,1997,2.698
+BGD,Bangladesh,1996,2.51
+BGD,Bangladesh,1995,2.441
+BGD,Bangladesh,1994,2.37
+BRB,Barbados,2010,10.69
+BRB,Barbados,2009,10.02
+BRB,Barbados,2008,8.12
+BRB,Barbados,2007,7.41
+BRB,Barbados,2006,8.73
+BRB,Barbados,2005,9.08
+BRB,Barbados,2004,9.57
+BRB,Barbados,2003,11
+BRB,Barbados,2002,10.32
+BRB,Barbados,2001,9.85
+BRB,Barbados,2000,9.35
+BRB,Barbados,1999,10.61
+BRB,Barbados,1998,12.4
+BRB,Barbados,1997,14.61
+BRB,Barbados,1996,14.71
+BRB,Barbados,1995,19.66
+BRB,Barbados,1994,22.98
+BLR,Belarus,2010,6.052
+BLR,Belarus,2009,6.1
+BLR,Belarus,2008,6.728
+BLR,Belarus,2007,7.41
+BLR,Belarus,2006,8.066
+BLR,Belarus,2005,8.759
+BLR,Belarus,2004,9.463
+BLR,Belarus,2003,10.191
+BLR,Belarus,2002,10.874
+BLR,Belarus,2001,11.561
+BLR,Belarus,2000,12.193
+BLR,Belarus,1999,12.8
+BLR,Belarus,1998,14
+BLR,Belarus,1997,17.1
+BLR,Belarus,1996,24.4
+BLR,Belarus,1995,17.7
+BLR,Belarus,1994,12.8
+BEL,Belgium,2010,8.293
+BEL,Belgium,2009,7.908
+BEL,Belgium,2008,6.976
+BEL,Belgium,2007,7.459
+BEL,Belgium,2006,8.246
+BEL,Belgium,2005,8.44
+BEL,Belgium,2004,7.363
+BEL,Belgium,2003,7.68
+BEL,Belgium,2002,6.91
+BEL,Belgium,2001,6.178
+BEL,Belgium,2000,6.586
+BEL,Belgium,1999,8.649
+BEL,Belgium,1998,9.322
+BEL,Belgium,1997,8.95
+BEL,Belgium,1996,9.483
+BEL,Belgium,1995,9.337
+BEL,Belgium,1994,9.645
+BLZ,Belize,2010,8.412
+BLZ,Belize,2009,8.323
+BLZ,Belize,2008,8.18
+BLZ,Belize,2007,8.51
+BLZ,Belize,2006,9.39
+BLZ,Belize,2005,10.91
+BLZ,Belize,2004,10.586
+BLZ,Belize,2003,10.342
+BLZ,Belize,2002,10.04
+BLZ,Belize,2001,9.07
+BLZ,Belize,2000,10.841
+BLZ,Belize,1999,12.84
+BLZ,Belize,1998,14.31
+BLZ,Belize,1997,12.68
+BLZ,Belize,1996,13.82
+BLZ,Belize,1995,12.48
+BLZ,Belize,1994,11.1
+BEN,Benin,2010,1.04
+BEN,Benin,2009,0.95
+BEN,Benin,2008,0.895
+BEN,Benin,2007,0.902
+BEN,Benin,2006,0.888
+BEN,Benin,2005,0.859
+BEN,Benin,2004,0.79
+BEN,Benin,2003,0.747
+BEN,Benin,2002,0.69
+BEN,Benin,2001,0.766
+BEN,Benin,2000,0.864
+BEN,Benin,1999,0.949
+BEN,Benin,1998,1.048
+BEN,Benin,1997,1.1
+BEN,Benin,1996,1.246
+BEN,Benin,1995,1.305
+BEN,Benin,1994,1.453
+BTN,Bhutan,2010,3.32
+BTN,Bhutan,2009,3.96
+BTN,Bhutan,2008,3.848
+BTN,Bhutan,2007,3.7
+BTN,Bhutan,2006,3.13
+BTN,Bhutan,2005,3.1
+BTN,Bhutan,2004,2.49
+BTN,Bhutan,2003,1.8
+BTN,Bhutan,2002,1.854
+BTN,Bhutan,2001,1.9
+BTN,Bhutan,2000,1.655
+BTN,Bhutan,1999,1.4
+BTN,Bhutan,1998,1.4
+BTN,Bhutan,1997,1.393
+BTN,Bhutan,1996,1.392
+BTN,Bhutan,1995,1.4
+BTN,Bhutan,1994,1.405
+BOL,Bolivia,2010,2.609
+BOL,Bolivia,2009,2.973
+BOL,Bolivia,2008,2.603
+BOL,Bolivia,2007,2.614
+BOL,Bolivia,2006,2.575
+BOL,Bolivia,2005,2.598
+BOL,Bolivia,2004,2.615
+BOL,Bolivia,2003,2.654
+BOL,Bolivia,2002,2.603
+BOL,Bolivia,2001,2.623
+BOL,Bolivia,2000,2.439
+BOL,Bolivia,1999,2.299
+BOL,Bolivia,1998,2.121
+BOL,Bolivia,1997,2.08
+BOL,Bolivia,1996,2.375
+BOL,Bolivia,1995,2.664
+BOL,Bolivia,1994,3.08
+BIH,Bosnia and Herzegovina,2010,27.312
+BIH,Bosnia and Herzegovina,2009,24.068
+BIH,Bosnia and Herzegovina,2008,23.405
+BIH,Bosnia and Herzegovina,2007,28.984
+BIH,Bosnia and Herzegovina,2006,31.11
+BIH,Bosnia and Herzegovina,2005,30.218
+BIH,Bosnia and Herzegovina,2004,29.279
+BIH,Bosnia and Herzegovina,2003,28.424
+BIH,Bosnia and Herzegovina,2002,27.477
+BIH,Bosnia and Herzegovina,2001,26.485
+BIH,Bosnia and Herzegovina,2000,25.446
+BIH,Bosnia and Herzegovina,1999,24.441
+BIH,Bosnia and Herzegovina,1998,23.494
+BIH,Bosnia and Herzegovina,1997,22.586
+BIH,Bosnia and Herzegovina,1996,21.682
+BIH,Bosnia and Herzegovina,1995,20.944
+BIH,Bosnia and Herzegovina,1994,20.17
+BWA,Botswana,2010,17.86
+BWA,Botswana,2009,16.169
+BWA,Botswana,2008,16.293
+BWA,Botswana,2007,16.976
+BWA,Botswana,2006,17.782
+BWA,Botswana,2005,19.852
+BWA,Botswana,2004,21.755
+BWA,Botswana,2003,23.8
+BWA,Botswana,2002,21.277
+BWA,Botswana,2001,18.54
+BWA,Botswana,2000,15.88
+BWA,Botswana,1999,18.224
+BWA,Botswana,1998,20.86
+BWA,Botswana,1997,21.031
+BWA,Botswana,1996,21.593
+BWA,Botswana,1995,21.394
+BWA,Botswana,1994,21.2
+BRA,Brazil,2010,8.42
+BRA,Brazil,2009,9.419
+BRA,Brazil,2008,8.268
+BRA,Brazil,2007,9.28
+BRA,Brazil,2006,9.692
+BRA,Brazil,2005,10.551
+BRA,Brazil,2004,10.072
+BRA,Brazil,2003,11.168
+BRA,Brazil,2002,10.641
+BRA,Brazil,2001,10.649
+BRA,Brazil,2000,10.889
+BRA,Brazil,1999,11.125
+BRA,Brazil,1998,10.15
+BRA,Brazil,1997,9.003
+BRA,Brazil,1996,8.035
+BRA,Brazil,1995,7.092
+BRA,Brazil,1994,6.579
+BRN,Brunei Darussalam,2010,6.487
+BRN,Brunei Darussalam,2009,6.457
+BRN,Brunei Darussalam,2008,6.312
+BRN,Brunei Darussalam,2007,6.187
+BRN,Brunei Darussalam,2006,6.061
+BRN,Brunei Darussalam,2005,5.973
+BRN,Brunei Darussalam,2004,5.847
+BRN,Brunei Darussalam,2003,5.743
+BRN,Brunei Darussalam,2002,5.652
+BRN,Brunei Darussalam,2001,5.558
+BRN,Brunei Darussalam,2000,5.53
+BRN,Brunei Darussalam,1999,5.415
+BRN,Brunei Darussalam,1998,5.356
+BRN,Brunei Darussalam,1997,5.204
+BRN,Brunei Darussalam,1996,5.153
+BRN,Brunei Darussalam,1995,5.066
+BRN,Brunei Darussalam,1994,5.007
+BGR,Bulgaria,2010,10.279
+BGR,Bulgaria,2009,6.817
+BGR,Bulgaria,2008,5.609
+BGR,Bulgaria,2007,6.878
+BGR,Bulgaria,2006,8.951
+BGR,Bulgaria,2005,10.083
+BGR,Bulgaria,2004,12.037
+BGR,Bulgaria,2003,13.733
+BGR,Bulgaria,2002,18.11
+BGR,Bulgaria,2001,19.921
+BGR,Bulgaria,2000,16.218
+BGR,Bulgaria,1999,14.1
+BGR,Bulgaria,1998,12.2
+BGR,Bulgaria,1997,13.7
+BGR,Bulgaria,1996,12.5
+BGR,Bulgaria,1995,11.1
+BGR,Bulgaria,1994,12.8
+BFA,Burkina Faso,2010,3.725
+BFA,Burkina Faso,2009,3.723
+BFA,Burkina Faso,2008,3.501
+BFA,Burkina Faso,2007,3.3
+BFA,Burkina Faso,2006,3.67
+BFA,Burkina Faso,2005,4
+BFA,Burkina Faso,2004,3.48
+BFA,Burkina Faso,2003,2.78
+BFA,Burkina Faso,2002,2.862
+BFA,Burkina Faso,2001,2.748
+BFA,Burkina Faso,2000,2.687
+BFA,Burkina Faso,1999,2.552
+BFA,Burkina Faso,1998,2.44
+BFA,Burkina Faso,1997,2.412
+BFA,Burkina Faso,1996,2.446
+BFA,Burkina Faso,1995,2.532
+BFA,Burkina Faso,1994,2.58
+BDI,Burundi,2010,1.615
+BDI,Burundi,2009,1.622
+BDI,Burundi,2008,1.634
+BDI,Burundi,2007,2.404
+BDI,Burundi,2006,3.185
+BDI,Burundi,2005,3.162
+BDI,Burundi,2004,3.177
+BDI,Burundi,2003,3.145
+BDI,Burundi,2002,3.168
+BDI,Burundi,2001,3.154
+BDI,Burundi,2000,3.137
+BDI,Burundi,1999,3.133
+BDI,Burundi,1998,3.156
+BDI,Burundi,1997,3.124
+BDI,Burundi,1996,3.095
+BDI,Burundi,1995,3.095
+BDI,Burundi,1994,3.106
+CPV,Cabo Verde,2010,10.67
+CPV,Cabo Verde,2009,13.517
+CPV,Cabo Verde,2008,13.307
+CPV,Cabo Verde,2007,13.294
+CPV,Cabo Verde,2006,13.378
+CPV,Cabo Verde,2005,13.439
+CPV,Cabo Verde,2004,13.456
+CPV,Cabo Verde,2003,13.604
+CPV,Cabo Verde,2002,13.379
+CPV,Cabo Verde,2001,13.242
+CPV,Cabo Verde,2000,13.024
+CPV,Cabo Verde,1999,13.071
+CPV,Cabo Verde,1998,13.055
+CPV,Cabo Verde,1997,13.01
+CPV,Cabo Verde,1996,12.844
+CPV,Cabo Verde,1995,12.883
+CPV,Cabo Verde,1994,12.936
+KHM,Cambodia,2010,0.771
+KHM,Cambodia,2009,0.579
+KHM,Cambodia,2008,0.825
+KHM,Cambodia,2007,1.257
+KHM,Cambodia,2006,1.16
+KHM,Cambodia,2005,1.061
+KHM,Cambodia,2004,1.004
+KHM,Cambodia,2003,0.909
+KHM,Cambodia,2002,0.862
+KHM,Cambodia,2001,0.778
+KHM,Cambodia,2000,0.745
+KHM,Cambodia,1999,0.727
+KHM,Cambodia,1998,0.712
+KHM,Cambodia,1997,0.638
+KHM,Cambodia,1996,0.963
+KHM,Cambodia,1995,0.973
+KHM,Cambodia,1994,0.996
+CMR,Cameroon,2010,4.11
+CMR,Cameroon,2009,3.743
+CMR,Cameroon,2008,3.386
+CMR,Cameroon,2007,3.063
+CMR,Cameroon,2006,3.729
+CMR,Cameroon,2005,4.4
+CMR,Cameroon,2004,5.087
+CMR,Cameroon,2003,5.908
+CMR,Cameroon,2002,6.711
+CMR,Cameroon,2001,7.46
+CMR,Cameroon,2000,7.533
+CMR,Cameroon,1999,7.595
+CMR,Cameroon,1998,7.695
+CMR,Cameroon,1997,7.859
+CMR,Cameroon,1996,8.06
+CMR,Cameroon,1995,8.598
+CMR,Cameroon,1994,8.878
+CAN,Canada,2010,8.178
+CAN,Canada,2009,8.46
+CAN,Canada,2008,6.284
+CAN,Canada,2007,6.156
+CAN,Canada,2006,6.484
+CAN,Canada,2005,6.758
+CAN,Canada,2004,7.185
+CAN,Canada,2003,7.574
+CAN,Canada,2002,7.665
+CAN,Canada,2001,7.219
+CAN,Canada,2000,6.829
+CAN,Canada,1999,7.583
+CAN,Canada,1998,8.278
+CAN,Canada,1997,9.1
+CAN,Canada,1996,9.62
+CAN,Canada,1995,9.489
+CAN,Canada,1994,10.395
+CAF,Central African Republic,2010,5.658
+CAF,Central African Republic,2009,5.575
+CAF,Central African Republic,2008,5.51
+CAF,Central African Republic,2007,5.562
+CAF,Central African Republic,2006,5.61
+CAF,Central African Republic,2005,5.691
+CAF,Central African Republic,2004,5.729
+CAF,Central African Republic,2003,5.809
+CAF,Central African Republic,2002,5.809
+CAF,Central African Republic,2001,5.77
+CAF,Central African Republic,2000,5.722
+CAF,Central African Republic,1999,5.767
+CAF,Central African Republic,1998,5.773
+CAF,Central African Republic,1997,5.797
+CAF,Central African Republic,1996,5.84
+CAF,Central African Republic,1995,5.871
+CAF,Central African Republic,1994,5.924
+TCD,Chad,2010,0.911
+TCD,Chad,2009,0.943
+TCD,Chad,2008,0.922
+TCD,Chad,2007,0.839
+TCD,Chad,2006,0.716
+TCD,Chad,2005,0.663
+TCD,Chad,2004,0.672
+TCD,Chad,2003,0.725
+TCD,Chad,2002,0.769
+TCD,Chad,2001,0.792
+TCD,Chad,2000,0.796
+TCD,Chad,1999,0.753
+TCD,Chad,1998,0.725
+TCD,Chad,1997,0.732
+TCD,Chad,1996,0.7
+TCD,Chad,1995,0.755
+TCD,Chad,1994,0.709
+CHI,Channel Islands,2010,7.024
+CHI,Channel Islands,2009,6.674
+CHI,Channel Islands,2008,5.295
+CHI,Channel Islands,2007,5.23
+CHI,Channel Islands,2006,5.571
+CHI,Channel Islands,2005,5.833
+CHI,Channel Islands,2004,5.848
+CHI,Channel Islands,2003,5.644
+CHI,Channel Islands,2002,5.313
+CHI,Channel Islands,2001,5.041
+CHI,Channel Islands,2000,5.351
+CHI,Channel Islands,1999,5.91
+CHI,Channel Islands,1998,6.278
+CHI,Channel Islands,1997,6.685
+CHI,Channel Islands,1996,6.897
+CHI,Channel Islands,1995,6.974
+CHI,Channel Islands,1994,7.235
+CHL,Chile,2010,8.547
+CHL,Chile,2009,11.313
+CHL,Chile,2008,9.285
+CHL,Chile,2007,8.427
+CHL,Chile,2006,9.024
+CHL,Chile,2005,9.34
+CHL,Chile,2004,10.162
+CHL,Chile,2003,9.765
+CHL,Chile,2002,10.168
+CHL,Chile,2001,10.39
+CHL,Chile,2000,10.491
+CHL,Chile,1999,11.158
+CHL,Chile,1998,7.307
+CHL,Chile,1997,7.136
+CHL,Chile,1996,7.414
+CHL,Chile,1995,4.7
+CHL,Chile,1994,5.87
+CHN,China,2010,4.53
+CHN,China,2009,4.72
+CHN,China,2008,4.59
+CHN,China,2007,4.35
+CHN,China,2006,4.43
+CHN,China,2005,4.52
+CHN,China,2004,4.49
+CHN,China,2003,4.58
+CHN,China,2002,4.24
+CHN,China,2001,3.8
+CHN,China,2000,3.26
+CHN,China,1999,3.25
+CHN,China,1998,3.24
+CHN,China,1997,3.23
+CHN,China,1996,3.12
+CHN,China,1995,3
+CHN,China,1994,2.9
+COL,Colombia,2010,11.153
+COL,Colombia,2009,12.066
+COL,Colombia,2008,11.273
+COL,Colombia,2007,11.204
+COL,Colombia,2006,11.088
+COL,Colombia,2005,11.062
+COL,Colombia,2004,13.717
+COL,Colombia,2003,13.221
+COL,Colombia,2002,14.481
+COL,Colombia,2001,15.04
+COL,Colombia,2000,20.52
+COL,Colombia,1999,20.06
+COL,Colombia,1998,15
+COL,Colombia,1997,12.14
+COL,Colombia,1996,11.81
+COL,Colombia,1995,8.72
+COL,Colombia,1994,8.25
+COM,Comoros,2010,4.19
+COM,Comoros,2009,4.303
+COM,Comoros,2008,4.416
+COM,Comoros,2007,4.474
+COM,Comoros,2006,4.482
+COM,Comoros,2005,4.527
+COM,Comoros,2004,4.571
+COM,Comoros,2003,4.559
+COM,Comoros,2002,4.372
+COM,Comoros,2001,4.379
+COM,Comoros,2000,4.4
+COM,Comoros,1999,4.544
+COM,Comoros,1998,4.614
+COM,Comoros,1997,4.561
+COM,Comoros,1996,4.774
+COM,Comoros,1995,4.675
+COM,Comoros,1994,4.566
+COD,"Congo, Dem. Rep.",2010,4.098
+COD,"Congo, Dem. Rep.",2009,3.882
+COD,"Congo, Dem. Rep.",2008,3.627
+COD,"Congo, Dem. Rep.",2007,3.404
+COD,"Congo, Dem. Rep.",2006,3.174
+COD,"Congo, Dem. Rep.",2005,2.948
+COD,"Congo, Dem. Rep.",2004,2.976
+COD,"Congo, Dem. Rep.",2003,3.057
+COD,"Congo, Dem. Rep.",2002,3.179
+COD,"Congo, Dem. Rep.",2001,3.251
+COD,"Congo, Dem. Rep.",2000,3.245
+COD,"Congo, Dem. Rep.",1999,3.23
+COD,"Congo, Dem. Rep.",1998,3.195
+COD,"Congo, Dem. Rep.",1997,3.171
+COD,"Congo, Dem. Rep.",1996,3.156
+COD,"Congo, Dem. Rep.",1995,3.285
+COD,"Congo, Dem. Rep.",1994,3.403
+COG,"Congo, Rep.",2010,19.3
+COG,"Congo, Rep.",2009,19.844
+COG,"Congo, Rep.",2008,19.962
+COG,"Congo, Rep.",2007,19.909
+COG,"Congo, Rep.",2006,19.563
+COG,"Congo, Rep.",2005,19.796
+COG,"Congo, Rep.",2004,19.896
+COG,"Congo, Rep.",2003,19.877
+COG,"Congo, Rep.",2002,19.644
+COG,"Congo, Rep.",2001,19.88
+COG,"Congo, Rep.",2000,19.872
+COG,"Congo, Rep.",1999,20.141
+COG,"Congo, Rep.",1998,19.898
+COG,"Congo, Rep.",1997,19.886
+COG,"Congo, Rep.",1996,20.049
+COG,"Congo, Rep.",1995,20.226
+COG,"Congo, Rep.",1994,20.269
+CRI,Costa Rica,2010,7.171
+CRI,Costa Rica,2009,7.824
+CRI,Costa Rica,2008,4.934
+CRI,Costa Rica,2007,4.557
+CRI,Costa Rica,2006,5.926
+CRI,Costa Rica,2005,6.749
+CRI,Costa Rica,2004,6.445
+CRI,Costa Rica,2003,6.654
+CRI,Costa Rica,2002,6.396
+CRI,Costa Rica,2001,6.051
+CRI,Costa Rica,2000,5.08
+CRI,Costa Rica,1999,5.9
+CRI,Costa Rica,1998,5.33
+CRI,Costa Rica,1997,5.68
+CRI,Costa Rica,1996,6.16
+CRI,Costa Rica,1995,5.18
+CRI,Costa Rica,1994,4.05
+CIV,Cote d'Ivoire,2010,6.607
+CIV,Cote d'Ivoire,2009,6.573
+CIV,Cote d'Ivoire,2008,6.382
+CIV,Cote d'Ivoire,2007,6.284
+CIV,Cote d'Ivoire,2006,6.017
+CIV,Cote d'Ivoire,2005,6.023
+CIV,Cote d'Ivoire,2004,5.915
+CIV,Cote d'Ivoire,2003,5.847
+CIV,Cote d'Ivoire,2002,5.508
+CIV,Cote d'Ivoire,2001,5.195
+CIV,Cote d'Ivoire,2000,4.835
+CIV,Cote d'Ivoire,1999,4.421
+CIV,Cote d'Ivoire,1998,4.1
+CIV,Cote d'Ivoire,1997,3.964
+CIV,Cote d'Ivoire,1996,4.039
+CIV,Cote d'Ivoire,1995,4.1
+CIV,Cote d'Ivoire,1994,5.046
+HRV,Croatia,2010,11.62
+HRV,Croatia,2009,9.202
+HRV,Croatia,2008,8.53
+HRV,Croatia,2007,9.909
+HRV,Croatia,2006,11.13
+HRV,Croatia,2005,12.598
+HRV,Croatia,2004,13.664
+HRV,Croatia,2003,13.924
+HRV,Croatia,2002,15.053
+HRV,Croatia,2001,15.822
+HRV,Croatia,2000,16.064
+HRV,Croatia,1999,13.559
+HRV,Croatia,1998,11.392
+HRV,Croatia,1997,9.71
+HRV,Croatia,1996,9.68
+HRV,Croatia,1995,10.007
+HRV,Croatia,1994,10.364
+CUB,Cuba,2010,2.5
+CUB,Cuba,2009,1.67
+CUB,Cuba,2008,1.583
+CUB,Cuba,2007,1.788
+CUB,Cuba,2006,1.913
+CUB,Cuba,2005,1.95
+CUB,Cuba,2004,1.854
+CUB,Cuba,2003,2.33
+CUB,Cuba,2002,3.31
+CUB,Cuba,2001,4.08
+CUB,Cuba,2000,5.45
+CUB,Cuba,1999,6.26
+CUB,Cuba,1998,6.23
+CUB,Cuba,1997,7.1
+CUB,Cuba,1996,7.61
+CUB,Cuba,1995,8.27
+CUB,Cuba,1994,8.806
+CYP,Cyprus,2010,6.359
+CYP,Cyprus,2009,5.594
+CYP,Cyprus,2008,3.756
+CYP,Cyprus,2007,3.946
+CYP,Cyprus,2006,4.593
+CYP,Cyprus,2005,5.481
+CYP,Cyprus,2004,4.77
+CYP,Cyprus,2003,4.153
+CYP,Cyprus,2002,3.336
+CYP,Cyprus,2001,4.043
+CYP,Cyprus,2000,4.766
+CYP,Cyprus,1999,5.532
+CYP,Cyprus,1998,3.3
+CYP,Cyprus,1997,3.4
+CYP,Cyprus,1996,3.1
+CYP,Cyprus,1995,2.6
+CYP,Cyprus,1994,2.7
+CZE,Czechia,2010,7.281
+CZE,Czechia,2009,6.662
+CZE,Czechia,2008,4.392
+CZE,Czechia,2007,5.316
+CZE,Czechia,2006,7.141
+CZE,Czechia,2005,7.927
+CZE,Czechia,2004,8.298
+CZE,Czechia,2003,7.777
+CZE,Czechia,2002,7.28
+CZE,Czechia,2001,8.128
+CZE,Czechia,2000,8.764
+CZE,Czechia,1999,8.702
+CZE,Czechia,1998,6.455
+CZE,Czechia,1997,4.674
+CZE,Czechia,1996,3.852
+CZE,Czechia,1995,4.082
+CZE,Czechia,1994,4.284
+DNK,Denmark,2010,7.746
+DNK,Denmark,2009,6.409
+DNK,Denmark,2008,3.683
+DNK,Denmark,2007,3.801
+DNK,Denmark,2006,3.897
+DNK,Denmark,2005,4.83
+DNK,Denmark,2004,5.204
+DNK,Denmark,2003,5.398
+DNK,Denmark,2002,4.274
+DNK,Denmark,2001,4.164
+DNK,Denmark,2000,4.476
+DNK,Denmark,1999,5.141
+DNK,Denmark,1998,5.039
+DNK,Denmark,1997,5.4
+DNK,Denmark,1996,6.844
+DNK,Denmark,1995,6.992
+DNK,Denmark,1994,8.036
+DJI,Djibouti,2010,26.368
+DJI,Djibouti,2009,26.325
+DJI,Djibouti,2008,26.183
+DJI,Djibouti,2007,26.292
+DJI,Djibouti,2006,26.382
+DJI,Djibouti,2005,26.448
+DJI,Djibouti,2004,26.441
+DJI,Djibouti,2003,26.484
+DJI,Djibouti,2002,26.589
+DJI,Djibouti,2001,26.597
+DJI,Djibouti,2000,26.664
+DJI,Djibouti,1999,26.742
+DJI,Djibouti,1998,27.027
+DJI,Djibouti,1997,27.176
+DJI,Djibouti,1996,27.172
+DJI,Djibouti,1995,27.303
+DJI,Djibouti,1994,27.118
+DOM,Dominican Republic,2010,5.212
+DOM,Dominican Republic,2009,5.467
+DOM,Dominican Republic,2008,4.764
+DOM,Dominican Republic,2007,5.158
+DOM,Dominican Republic,2006,5.654
+DOM,Dominican Republic,2005,6.587
+DOM,Dominican Republic,2004,6.303
+DOM,Dominican Republic,2003,6.938
+DOM,Dominican Republic,2002,6.779
+DOM,Dominican Republic,2001,7.262
+DOM,Dominican Republic,2000,6.432
+DOM,Dominican Republic,1999,6.312
+DOM,Dominican Republic,1998,6.304
+DOM,Dominican Republic,1997,6.323
+DOM,Dominican Republic,1996,6.485
+DOM,Dominican Republic,1995,6.439
+DOM,Dominican Republic,1994,6.285
+ECU,Ecuador,2010,4.088
+ECU,Ecuador,2009,4.608
+ECU,Ecuador,2008,3.917
+ECU,Ecuador,2007,3.142
+ECU,Ecuador,2006,3.55
+ECU,Ecuador,2005,3.779
+ECU,Ecuador,2004,5.002
+ECU,Ecuador,2003,5.662
+ECU,Ecuador,2002,4.825
+ECU,Ecuador,2001,4.252
+ECU,Ecuador,2000,4.8
+ECU,Ecuador,1999,4.656
+ECU,Ecuador,1998,4.389
+ECU,Ecuador,1997,4.424
+ECU,Ecuador,1996,4.422
+ECU,Ecuador,1995,4.408
+ECU,Ecuador,1994,4.409
+EGY,"Egypt, Arab Rep.",2010,8.757
+EGY,"Egypt, Arab Rep.",2009,9.087
+EGY,"Egypt, Arab Rep.",2008,8.517
+EGY,"Egypt, Arab Rep.",2007,8.8
+EGY,"Egypt, Arab Rep.",2006,10.49
+EGY,"Egypt, Arab Rep.",2005,11.049
+EGY,"Egypt, Arab Rep.",2004,10.32
+EGY,"Egypt, Arab Rep.",2003,10.91
+EGY,"Egypt, Arab Rep.",2002,10.01
+EGY,"Egypt, Arab Rep.",2001,9.26
+EGY,"Egypt, Arab Rep.",2000,8.98
+EGY,"Egypt, Arab Rep.",1999,7.95
+EGY,"Egypt, Arab Rep.",1998,8.03
+EGY,"Egypt, Arab Rep.",1997,8.37
+EGY,"Egypt, Arab Rep.",1996,9
+EGY,"Egypt, Arab Rep.",1995,11.04
+EGY,"Egypt, Arab Rep.",1994,10.93
+SLV,El Salvador,2010,4.893
+SLV,El Salvador,2009,7.33
+SLV,El Salvador,2008,5.88
+SLV,El Salvador,2007,6.41
+SLV,El Salvador,2006,6.57
+SLV,El Salvador,2005,7.22
+SLV,El Salvador,2004,6.8
+SLV,El Salvador,2003,6.9
+SLV,El Salvador,2002,6.2
+SLV,El Salvador,2001,6.96
+SLV,El Salvador,2000,6.96
+SLV,El Salvador,1999,7.3
+SLV,El Salvador,1998,7.1
+SLV,El Salvador,1997,7.98
+SLV,El Salvador,1996,7.68
+SLV,El Salvador,1995,7.65
+SLV,El Salvador,1994,7.68
+GNQ,Equatorial Guinea,2010,7.847
+GNQ,Equatorial Guinea,2009,7.702
+GNQ,Equatorial Guinea,2008,7.571
+GNQ,Equatorial Guinea,2007,7.592
+GNQ,Equatorial Guinea,2006,7.612
+GNQ,Equatorial Guinea,2005,7.667
+GNQ,Equatorial Guinea,2004,7.658
+GNQ,Equatorial Guinea,2003,7.701
+GNQ,Equatorial Guinea,2002,7.646
+GNQ,Equatorial Guinea,2001,7.551
+GNQ,Equatorial Guinea,2000,7.444
+GNQ,Equatorial Guinea,1999,7.417
+GNQ,Equatorial Guinea,1998,7.332
+GNQ,Equatorial Guinea,1997,7.263
+GNQ,Equatorial Guinea,1996,7.215
+GNQ,Equatorial Guinea,1995,7.16
+GNQ,Equatorial Guinea,1994,7.123
+ERI,Eritrea,2010,5.854
+ERI,Eritrea,2009,5.757
+ERI,Eritrea,2008,5.683
+ERI,Eritrea,2007,5.719
+ERI,Eritrea,2006,5.707
+ERI,Eritrea,2005,5.721
+ERI,Eritrea,2004,5.704
+ERI,Eritrea,2003,5.79
+ERI,Eritrea,2002,5.794
+ERI,Eritrea,2001,5.74
+ERI,Eritrea,2000,5.656
+ERI,Eritrea,1999,5.604
+ERI,Eritrea,1998,5.501
+ERI,Eritrea,1997,5.4
+ERI,Eritrea,1996,5.31
+ERI,Eritrea,1995,5.349
+ERI,Eritrea,1994,5.446
+EST,Estonia,2010,16.707
+EST,Estonia,2009,13.548
+EST,Estonia,2008,5.455
+EST,Estonia,2007,4.592
+EST,Estonia,2006,5.915
+EST,Estonia,2005,8.033
+EST,Estonia,2004,10.248
+EST,Estonia,2003,11.288
+EST,Estonia,2002,10.026
+EST,Estonia,2001,13.134
+EST,Estonia,2000,13.36
+EST,Estonia,1999,11.573
+EST,Estonia,1998,9.51
+EST,Estonia,1997,10.369
+EST,Estonia,1996,9.915
+EST,Estonia,1995,9.659
+EST,Estonia,1994,7.561
+SWZ,Eswatini,2010,26.856
+SWZ,Eswatini,2009,27.488
+SWZ,Eswatini,2008,27.891
+SWZ,Eswatini,2007,28.24
+SWZ,Eswatini,2006,27.693
+SWZ,Eswatini,2005,27.221
+SWZ,Eswatini,2004,26.716
+SWZ,Eswatini,2003,26.259
+SWZ,Eswatini,2002,25.771
+SWZ,Eswatini,2001,25.24
+SWZ,Eswatini,2000,24.547
+SWZ,Eswatini,1999,23.868
+SWZ,Eswatini,1998,23.214
+SWZ,Eswatini,1997,22.5
+SWZ,Eswatini,1996,22.074
+SWZ,Eswatini,1995,21.65
+SWZ,Eswatini,1994,21.726
+ETH,Ethiopia,2010,2.295
+ETH,Ethiopia,2009,2.326
+ETH,Ethiopia,2008,2.326
+ETH,Ethiopia,2007,2.337
+ETH,Ethiopia,2006,2.337
+ETH,Ethiopia,2005,2.497
+ETH,Ethiopia,2004,2.776
+ETH,Ethiopia,2003,3.008
+ETH,Ethiopia,2002,3.054
+ETH,Ethiopia,2001,3.16
+ETH,Ethiopia,2000,3.499
+ETH,Ethiopia,1999,3.714
+ETH,Ethiopia,1998,3.481
+ETH,Ethiopia,1997,3.227
+ETH,Ethiopia,1996,3.121
+ETH,Ethiopia,1995,3.005
+ETH,Ethiopia,1994,3.1
+FJI,Fiji,2010,4.345
+FJI,Fiji,2009,4.309
+FJI,Fiji,2008,4.187
+FJI,Fiji,2007,4.109
+FJI,Fiji,2006,3.957
+FJI,Fiji,2005,3.886
+FJI,Fiji,2004,4.7
+FJI,Fiji,2003,4.74
+FJI,Fiji,2002,4.772
+FJI,Fiji,2001,4.692
+FJI,Fiji,2000,4.697
+FJI,Fiji,1999,4.698
+FJI,Fiji,1998,4.746
+FJI,Fiji,1997,4.725
+FJI,Fiji,1996,4.623
+FJI,Fiji,1995,4.651
+FJI,Fiji,1994,4.598
+FIN,Finland,2010,8.394
+FIN,Finland,2009,8.249
+FIN,Finland,2008,6.369
+FIN,Finland,2007,6.854
+FIN,Finland,2006,8.935
+FIN,Finland,2005,9.602
+FIN,Finland,2004,10.358
+FIN,Finland,2003,10.469
+FIN,Finland,2002,10.423
+FIN,Finland,2001,10.29
+FIN,Finland,2000,11.134
+FIN,Finland,1999,11.693
+FIN,Finland,1998,13.214
+FIN,Finland,1997,14.967
+FIN,Finland,1996,15.572
+FIN,Finland,1995,17.005
+FIN,Finland,1994,16.426
+FRA,France,2010,9.279
+FRA,France,2009,9.122
+FRA,France,2008,7.386
+FRA,France,2007,8.008
+FRA,France,2006,8.832
+FRA,France,2005,8.882
+FRA,France,2004,8.914
+FRA,France,2003,8.306
+FRA,France,2002,8.702
+FRA,France,2001,8.61
+FRA,France,2000,10.218
+FRA,France,1999,11.981
+FRA,France,1998,12.074
+FRA,France,1997,12.566
+FRA,France,1996,12.367
+FRA,France,1995,11.834
+FRA,France,1994,12.593
+PYF,French Polynesia,2010,12.133
+PYF,French Polynesia,2009,11.963
+PYF,French Polynesia,2008,11.76
+PYF,French Polynesia,2007,11.74
+PYF,French Polynesia,2006,11.768
+PYF,French Polynesia,2005,11.722
+PYF,French Polynesia,2004,11.702
+PYF,French Polynesia,2003,11.751
+PYF,French Polynesia,2002,11.71
+PYF,French Polynesia,2001,11.665
+PYF,French Polynesia,2000,11.583
+PYF,French Polynesia,1999,11.701
+PYF,French Polynesia,1998,11.791
+PYF,French Polynesia,1997,11.866
+PYF,French Polynesia,1996,11.92
+PYF,French Polynesia,1995,11.941
+PYF,French Polynesia,1994,11.98
+GAB,Gabon,2010,20.39
+GAB,Gabon,2009,19.76
+GAB,Gabon,2008,19.212
+GAB,Gabon,2007,18.257
+GAB,Gabon,2006,17.805
+GAB,Gabon,2005,16.91
+GAB,Gabon,2004,17.108
+GAB,Gabon,2003,17.126
+GAB,Gabon,2002,17.376
+GAB,Gabon,2001,17.827
+GAB,Gabon,2000,17.848
+GAB,Gabon,1999,17.599
+GAB,Gabon,1998,17.152
+GAB,Gabon,1997,17.166
+GAB,Gabon,1996,17.325
+GAB,Gabon,1995,17.388
+GAB,Gabon,1994,17.804
+GMB,"Gambia, The",2010,9.673
+GMB,"Gambia, The",2009,9.778
+GMB,"Gambia, The",2008,10.065
+GMB,"Gambia, The",2007,10.425
+GMB,"Gambia, The",2006,10.241
+GMB,"Gambia, The",2005,9.92
+GMB,"Gambia, The",2004,9.948
+GMB,"Gambia, The",2003,9.991
+GMB,"Gambia, The",2002,10.039
+GMB,"Gambia, The",2001,9.64
+GMB,"Gambia, The",2000,9.722
+GMB,"Gambia, The",1999,9.737
+GMB,"Gambia, The",1998,9.898
+GMB,"Gambia, The",1997,9.999
+GMB,"Gambia, The",1996,10.192
+GMB,"Gambia, The",1995,10.153
+GMB,"Gambia, The",1994,10.044
+GEO,Georgia,2010,20.203
+GEO,Georgia,2009,20.71
+GEO,Georgia,2008,17.87
+GEO,Georgia,2007,13.28
+GEO,Georgia,2006,13.57
+GEO,Georgia,2005,13.81
+GEO,Georgia,2004,12.62
+GEO,Georgia,2003,11.51
+GEO,Georgia,2002,12.59
+GEO,Georgia,2001,11.16
+GEO,Georgia,2000,10.82
+GEO,Georgia,1999,13.8
+GEO,Georgia,1998,14.53
+GEO,Georgia,1997,11.5
+GEO,Georgia,1996,11.5
+GEO,Georgia,1995,7.6
+GEO,Georgia,1994,8.4
+DEU,Germany,2010,7.043
+DEU,Germany,2009,7.88
+DEU,Germany,2008,7.508
+DEU,Germany,2007,8.732
+DEU,Germany,2006,10.277
+DEU,Germany,2005,11.193
+DEU,Germany,2004,10.727
+DEU,Germany,2003,9.779
+DEU,Germany,2002,8.482
+DEU,Germany,2001,7.773
+DEU,Germany,2000,7.917
+DEU,Germany,1999,8.854
+DEU,Germany,1998,9.787
+DEU,Germany,1997,9.861
+DEU,Germany,1996,8.822
+DEU,Germany,1995,8.158
+DEU,Germany,1994,8.727
+GHA,Ghana,2010,5.384
+GHA,Ghana,2009,5.362
+GHA,Ghana,2008,5.144
+GHA,Ghana,2007,5.104
+GHA,Ghana,2006,4.897
+GHA,Ghana,2005,5.816
+GHA,Ghana,2004,6.758
+GHA,Ghana,2003,7.728
+GHA,Ghana,2002,8.711
+GHA,Ghana,2001,9.615
+GHA,Ghana,2000,10.456
+GHA,Ghana,1999,10.1
+GHA,Ghana,1998,8.2
+GHA,Ghana,1997,7.639
+GHA,Ghana,1996,7.091
+GHA,Ghana,1995,6.484
+GHA,Ghana,1994,5.9
+GRC,Greece,2010,12.719
+GRC,Greece,2009,9.546
+GRC,Greece,2008,7.664
+GRC,Greece,2007,8.351
+GRC,Greece,2006,8.906
+GRC,Greece,2005,10.074
+GRC,Greece,2004,10.628
+GRC,Greece,2003,9.839
+GRC,Greece,2002,10.346
+GRC,Greece,2001,10.764
+GRC,Greece,2000,11.345
+GRC,Greece,1999,12.138
+GRC,Greece,1998,12.227
+GRC,Greece,1997,10.472
+GRC,Greece,1996,10.402
+GRC,Greece,1995,10.116
+GRC,Greece,1994,9.808
+GUM,Guam,2010,8.2
+GUM,Guam,2009,9.3
+GUM,Guam,2008,8.892
+GUM,Guam,2007,8.3
+GUM,Guam,2006,7.4
+GUM,Guam,2005,7
+GUM,Guam,2004,7.7
+GUM,Guam,2003,9.693
+GUM,Guam,2002,11.39
+GUM,Guam,2001,13.213
+GUM,Guam,2000,15.32
+GUM,Guam,1999,13.95
+GUM,Guam,1998,7.74
+GUM,Guam,1997,9.67
+GUM,Guam,1996,8.283
+GUM,Guam,1995,7.9
+GUM,Guam,1994,7.6
+GTM,Guatemala,2010,3.497
+GTM,Guatemala,2009,3.22
+GTM,Guatemala,2008,2.898
+GTM,Guatemala,2007,2.847
+GTM,Guatemala,2006,2.96
+GTM,Guatemala,2005,3.059
+GTM,Guatemala,2004,2.971
+GTM,Guatemala,2003,2.807
+GTM,Guatemala,2002,2.254
+GTM,Guatemala,2001,2.251
+GTM,Guatemala,2000,2.143
+GTM,Guatemala,1999,2.113
+GTM,Guatemala,1998,2.145
+GTM,Guatemala,1997,2.145
+GTM,Guatemala,1996,2.156
+GTM,Guatemala,1995,2.117
+GTM,Guatemala,1994,2.12
+GIN,Guinea,2010,5.018
+GIN,Guinea,2009,4.914
+GIN,Guinea,2008,4.803
+GIN,Guinea,2007,4.787
+GIN,Guinea,2006,4.863
+GIN,Guinea,2005,4.814
+GIN,Guinea,2004,4.709
+GIN,Guinea,2003,4.628
+GIN,Guinea,2002,4.549
+GIN,Guinea,2001,4.584
+GIN,Guinea,2000,4.586
+GIN,Guinea,1999,4.517
+GIN,Guinea,1998,4.501
+GIN,Guinea,1997,4.477
+GIN,Guinea,1996,4.509
+GIN,Guinea,1995,4.494
+GIN,Guinea,1994,4.527
+GNB,Guinea-Bissau,2010,3.121
+GNB,Guinea-Bissau,2009,3.163
+GNB,Guinea-Bissau,2008,3.157
+GNB,Guinea-Bissau,2007,3.125
+GNB,Guinea-Bissau,2006,3.143
+GNB,Guinea-Bissau,2005,3.184
+GNB,Guinea-Bissau,2004,3.226
+GNB,Guinea-Bissau,2003,3.169
+GNB,Guinea-Bissau,2002,3.146
+GNB,Guinea-Bissau,2001,2.958
+GNB,Guinea-Bissau,2000,3.358
+GNB,Guinea-Bissau,1999,3.269
+GNB,Guinea-Bissau,1998,3.349
+GNB,Guinea-Bissau,1997,2.951
+GNB,Guinea-Bissau,1996,2.994
+GNB,Guinea-Bissau,1995,3.126
+GNB,Guinea-Bissau,1994,3.173
+GUY,Guyana,2010,11.632
+GUY,Guyana,2009,11.307
+GUY,Guyana,2008,11.018
+GUY,Guyana,2007,10.84
+GUY,Guyana,2006,10.7
+GUY,Guyana,2005,11.085
+GUY,Guyana,2004,11.281
+GUY,Guyana,2003,11.529
+GUY,Guyana,2002,11.81
+GUY,Guyana,2001,11.796
+GUY,Guyana,2000,11.917
+GUY,Guyana,1999,11.771
+GUY,Guyana,1998,11.687
+GUY,Guyana,1997,11.565
+GUY,Guyana,1996,11.542
+GUY,Guyana,1995,11.566
+GUY,Guyana,1994,11.534
+HTI,Haiti,2010,15.244
+HTI,Haiti,2009,15.398
+HTI,Haiti,2008,16.204
+HTI,Haiti,2007,16.8
+HTI,Haiti,2006,15.866
+HTI,Haiti,2005,14.559
+HTI,Haiti,2004,13.415
+HTI,Haiti,2003,12.151
+HTI,Haiti,2002,11.008
+HTI,Haiti,2001,9.728
+HTI,Haiti,2000,8.443
+HTI,Haiti,1999,7.2
+HTI,Haiti,1998,7.165
+HTI,Haiti,1997,7.003
+HTI,Haiti,1996,7.304
+HTI,Haiti,1995,7.51
+HTI,Haiti,1994,7.858
+HND,Honduras,2010,4.119
+HND,Honduras,2009,3.292
+HND,Honduras,2008,3.156
+HND,Honduras,2007,3.211
+HND,Honduras,2006,3.574
+HND,Honduras,2005,4.909
+HND,Honduras,2004,5.99
+HND,Honduras,2003,5.3
+HND,Honduras,2002,4.02
+HND,Honduras,2001,4
+HND,Honduras,2000,3.883
+HND,Honduras,1999,3.85
+HND,Honduras,1998,4.02
+HND,Honduras,1997,3.32
+HND,Honduras,1996,4.37
+HND,Honduras,1995,3.24
+HND,Honduras,1994,3.138
+HKG,"Hong Kong SAR, China",2010,4.329
+HKG,"Hong Kong SAR, China",2009,5.26
+HKG,"Hong Kong SAR, China",2008,3.56
+HKG,"Hong Kong SAR, China",2007,4.01
+HKG,"Hong Kong SAR, China",2006,4.77
+HKG,"Hong Kong SAR, China",2005,5.58
+HKG,"Hong Kong SAR, China",2004,6.74
+HKG,"Hong Kong SAR, China",2003,7.86
+HKG,"Hong Kong SAR, China",2002,7.28
+HKG,"Hong Kong SAR, China",2001,5.09
+HKG,"Hong Kong SAR, China",2000,4.92
+HKG,"Hong Kong SAR, China",1999,6.25
+HKG,"Hong Kong SAR, China",1998,4.58
+HKG,"Hong Kong SAR, China",1997,2.22
+HKG,"Hong Kong SAR, China",1996,2.83
+HKG,"Hong Kong SAR, China",1995,3.22
+HKG,"Hong Kong SAR, China",1994,1.9
+HUN,Hungary,2010,11.172
+HUN,Hungary,2009,10.03
+HUN,Hungary,2008,7.817
+HUN,Hungary,2007,7.406
+HUN,Hungary,2006,7.494
+HUN,Hungary,2005,7.189
+HUN,Hungary,2004,5.832
+HUN,Hungary,2003,5.79
+HUN,Hungary,2002,5.608
+HUN,Hungary,2001,5.671
+HUN,Hungary,2000,6.563
+HUN,Hungary,1999,6.929
+HUN,Hungary,1998,8.925
+HUN,Hungary,1997,8.991
+HUN,Hungary,1996,10.022
+HUN,Hungary,1995,10.168
+HUN,Hungary,1994,10.847
+ISL,Iceland,2010,7.564
+ISL,Iceland,2009,7.22
+ISL,Iceland,2008,2.946
+ISL,Iceland,2007,2.251
+ISL,Iceland,2006,2.83
+ISL,Iceland,2005,2.547
+ISL,Iceland,2004,4.031
+ISL,Iceland,2003,3.997
+ISL,Iceland,2002,2.988
+ISL,Iceland,2001,1.874
+ISL,Iceland,2000,1.936
+ISL,Iceland,1999,2.178
+ISL,Iceland,1998,3.069
+ISL,Iceland,1997,3.72
+ISL,Iceland,1996,3.6
+ISL,Iceland,1995,5.196
+ISL,Iceland,1994,5.326
+IND,India,2010,7.631
+IND,India,2009,7.636
+IND,India,2008,7.629
+IND,India,2007,7.562
+IND,India,2006,7.553
+IND,India,2005,7.551
+IND,India,2004,7.598
+IND,India,2003,7.633
+IND,India,2002,7.681
+IND,India,2001,7.611
+IND,India,2000,7.589
+IND,India,1999,7.583
+IND,India,1998,7.596
+IND,India,1997,7.574
+IND,India,1996,7.537
+IND,India,1995,7.57
+IND,India,1994,7.593
+IDN,Indonesia,2010,5.614
+IDN,Indonesia,2009,6.106
+IDN,Indonesia,2008,7.208
+IDN,Indonesia,2007,8.06
+IDN,Indonesia,2006,7.551
+IDN,Indonesia,2005,7.945
+IDN,Indonesia,2004,7.303
+IDN,Indonesia,2003,6.657
+IDN,Indonesia,2002,6.604
+IDN,Indonesia,2001,6.082
+IDN,Indonesia,2000,6.077
+IDN,Indonesia,1999,6.358
+IDN,Indonesia,1998,5.459
+IDN,Indonesia,1997,4.684
+IDN,Indonesia,1996,4.861
+IDN,Indonesia,1995,4.611
+IDN,Indonesia,1994,4.366
+IRN,"Iran, Islamic Rep.",2010,13.679
+IRN,"Iran, Islamic Rep.",2009,12.113
+IRN,"Iran, Islamic Rep.",2008,10.63
+IRN,"Iran, Islamic Rep.",2007,10.772
+IRN,"Iran, Islamic Rep.",2006,11.519
+IRN,"Iran, Islamic Rep.",2005,11.813
+IRN,"Iran, Islamic Rep.",2004,10.3
+IRN,"Iran, Islamic Rep.",2003,11.529
+IRN,"Iran, Islamic Rep.",2002,12.8
+IRN,"Iran, Islamic Rep.",2001,12.362
+IRN,"Iran, Islamic Rep.",2000,11.698
+IRN,"Iran, Islamic Rep.",1999,11.176
+IRN,"Iran, Islamic Rep.",1998,10.358
+IRN,"Iran, Islamic Rep.",1997,9.68
+IRN,"Iran, Islamic Rep.",1996,9.1
+IRN,"Iran, Islamic Rep.",1995,9.904
+IRN,"Iran, Islamic Rep.",1994,10.458
+IRQ,Iraq,2010,8.267
+IRQ,Iraq,2009,8.415
+IRQ,Iraq,2008,8.466
+IRQ,Iraq,2007,8.646
+IRQ,Iraq,2006,8.411
+IRQ,Iraq,2005,8.57
+IRQ,Iraq,2004,8.715
+IRQ,Iraq,2003,8.959
+IRQ,Iraq,2002,8.619
+IRQ,Iraq,2001,8.249
+IRQ,Iraq,2000,8.038
+IRQ,Iraq,1999,7.979
+IRQ,Iraq,1998,8.064
+IRQ,Iraq,1997,8.269
+IRQ,Iraq,1996,8.516
+IRQ,Iraq,1995,8.431
+IRQ,Iraq,1994,8.221
+IRL,Ireland,2010,14.534
+IRL,Ireland,2009,12.609
+IRL,Ireland,2008,6.774
+IRL,Ireland,2007,4.98
+IRL,Ireland,2006,4.355
+IRL,Ireland,2005,4.237
+IRL,Ireland,2004,4.491
+IRL,Ireland,2003,4.478
+IRL,Ireland,2002,4.216
+IRL,Ireland,2001,3.684
+IRL,Ireland,2000,4.318
+IRL,Ireland,1999,5.804
+IRL,Ireland,1998,7.699
+IRL,Ireland,1997,10.191
+IRL,Ireland,1996,11.692
+IRL,Ireland,1995,11.97
+IRL,Ireland,1994,14.544
+ISR,Israel,2010,8.48
+ISR,Israel,2009,9.534
+ISR,Israel,2008,7.704
+ISR,Israel,2007,9.379
+ISR,Israel,2006,10.707
+ISR,Israel,2005,11.342
+ISR,Israel,2004,13.029
+ISR,Israel,2003,13.505
+ISR,Israel,2002,12.888
+ISR,Israel,2001,11.812
+ISR,Israel,2000,11.102
+ISR,Israel,1999,11.183
+ISR,Israel,1998,10.749
+ISR,Israel,1997,9.751
+ISR,Israel,1996,8.455
+ISR,Israel,1995,8.782
+ISR,Israel,1994,9.934
+ITA,Italy,2010,8.363
+ITA,Italy,2009,7.749
+ITA,Italy,2008,6.723
+ITA,Italy,2007,6.076
+ITA,Italy,2006,6.777
+ITA,Italy,2005,7.73
+ITA,Italy,2004,7.866
+ITA,Italy,2003,8.869
+ITA,Italy,2002,9.211
+ITA,Italy,2001,9.599
+ITA,Italy,2000,10.834
+ITA,Italy,1999,11.681
+ITA,Italy,1998,12.117
+ITA,Italy,1997,11.985
+ITA,Italy,1996,11.864
+ITA,Italy,1995,11.661
+ITA,Italy,1994,11.086
+JAM,Jamaica,2010,7.63
+JAM,Jamaica,2009,7.314
+JAM,Jamaica,2008,6.666
+JAM,Jamaica,2007,6.607
+JAM,Jamaica,2006,6.605
+JAM,Jamaica,2005,6.577
+JAM,Jamaica,2004,6.539
+JAM,Jamaica,2003,6.534
+JAM,Jamaica,2002,6.616
+JAM,Jamaica,2001,6.641
+JAM,Jamaica,2000,6.752
+JAM,Jamaica,1999,6.813
+JAM,Jamaica,1998,6.846
+JAM,Jamaica,1997,6.693
+JAM,Jamaica,1996,6.611
+JAM,Jamaica,1995,6.325
+JAM,Jamaica,1994,6.335
+JPN,Japan,2010,5.102
+JPN,Japan,2009,5.068
+JPN,Japan,2008,4.002
+JPN,Japan,2007,3.888
+JPN,Japan,2006,4.192
+JPN,Japan,2005,4.446
+JPN,Japan,2004,4.734
+JPN,Japan,2003,5.251
+JPN,Japan,2002,5.386
+JPN,Japan,2001,5.02
+JPN,Japan,2000,4.748
+JPN,Japan,1999,4.677
+JPN,Japan,1998,4.078
+JPN,Japan,1997,3.374
+JPN,Japan,1996,3.383
+JPN,Japan,1995,3.15
+JPN,Japan,1994,2.89
+JOR,Jordan,2010,12.5
+JOR,Jordan,2009,12.9
+JOR,Jordan,2008,12.7
+JOR,Jordan,2007,13.1
+JOR,Jordan,2006,14
+JOR,Jordan,2005,14.8
+JOR,Jordan,2004,14.626
+JOR,Jordan,2003,14.5
+JOR,Jordan,2002,15.3
+JOR,Jordan,2001,14.7
+JOR,Jordan,2000,13.7
+JOR,Jordan,1999,13.763
+JOR,Jordan,1998,13.841
+JOR,Jordan,1997,13.74
+JOR,Jordan,1996,13.7
+JOR,Jordan,1995,14.6
+JOR,Jordan,1994,16.894
+KAZ,Kazakhstan,2010,5.77
+KAZ,Kazakhstan,2009,6.55
+KAZ,Kazakhstan,2008,6.63
+KAZ,Kazakhstan,2007,7.26
+KAZ,Kazakhstan,2006,7.79
+KAZ,Kazakhstan,2005,8.13
+KAZ,Kazakhstan,2004,8.4
+KAZ,Kazakhstan,2003,8.78
+KAZ,Kazakhstan,2002,9.33
+KAZ,Kazakhstan,2001,10.43
+KAZ,Kazakhstan,2000,12.75
+KAZ,Kazakhstan,1999,13.46
+KAZ,Kazakhstan,1998,13.13
+KAZ,Kazakhstan,1997,13.01
+KAZ,Kazakhstan,1996,12.96
+KAZ,Kazakhstan,1995,10.98
+KAZ,Kazakhstan,1994,7.54
+KEN,Kenya,2010,2.793
+KEN,Kenya,2009,2.816
+KEN,Kenya,2008,2.751
+KEN,Kenya,2007,2.642
+KEN,Kenya,2006,2.673
+KEN,Kenya,2005,2.739
+KEN,Kenya,2004,2.844
+KEN,Kenya,2003,2.869
+KEN,Kenya,2002,2.916
+KEN,Kenya,2001,2.876
+KEN,Kenya,2000,2.884
+KEN,Kenya,1999,2.884
+KEN,Kenya,1998,2.843
+KEN,Kenya,1997,2.818
+KEN,Kenya,1996,2.773
+KEN,Kenya,1995,2.848
+KEN,Kenya,1994,2.955
+PRK,"Korea, Dem. People's Rep.",2010,3.419
+PRK,"Korea, Dem. People's Rep.",2009,3.48
+PRK,"Korea, Dem. People's Rep.",2008,3.48
+PRK,"Korea, Dem. People's Rep.",2007,3.547
+PRK,"Korea, Dem. People's Rep.",2006,3.55
+PRK,"Korea, Dem. People's Rep.",2005,3.576
+PRK,"Korea, Dem. People's Rep.",2004,3.62
+PRK,"Korea, Dem. People's Rep.",2003,3.668
+PRK,"Korea, Dem. People's Rep.",2002,3.644
+PRK,"Korea, Dem. People's Rep.",2001,3.676
+PRK,"Korea, Dem. People's Rep.",2000,3.653
+PRK,"Korea, Dem. People's Rep.",1999,3.67
+PRK,"Korea, Dem. People's Rep.",1998,3.461
+PRK,"Korea, Dem. People's Rep.",1997,3.253
+PRK,"Korea, Dem. People's Rep.",1996,3.153
+PRK,"Korea, Dem. People's Rep.",1995,3.114
+PRK,"Korea, Dem. People's Rep.",1994,3.092
+KOR,"Korea, Rep.",2010,3.324
+KOR,"Korea, Rep.",2009,3.363
+KOR,"Korea, Rep.",2008,2.959
+KOR,"Korea, Rep.",2007,3.013
+KOR,"Korea, Rep.",2006,3.254
+KOR,"Korea, Rep.",2005,3.482
+KOR,"Korea, Rep.",2004,3.42
+KOR,"Korea, Rep.",2003,3.348
+KOR,"Korea, Rep.",2002,3.046
+KOR,"Korea, Rep.",2001,3.699
+KOR,"Korea, Rep.",2000,4.063
+KOR,"Korea, Rep.",1999,6.342
+KOR,"Korea, Rep.",1998,6.963
+KOR,"Korea, Rep.",1997,2.608
+KOR,"Korea, Rep.",1996,2.048
+KOR,"Korea, Rep.",1995,2.063
+KOR,"Korea, Rep.",1994,2.476
+KWT,Kuwait,2010,1.82
+KWT,Kuwait,2009,1.64
+KWT,Kuwait,2008,1.75
+KWT,Kuwait,2007,1.5
+KWT,Kuwait,2006,1.3
+KWT,Kuwait,2005,1.455
+KWT,Kuwait,2004,1.7
+KWT,Kuwait,2003,1.3
+KWT,Kuwait,2002,1.1
+KWT,Kuwait,2001,0.8
+KWT,Kuwait,2000,0.8
+KWT,Kuwait,1999,0.7
+KWT,Kuwait,1998,0.7
+KWT,Kuwait,1997,0.7
+KWT,Kuwait,1996,0.7
+KWT,Kuwait,1995,0.694
+KWT,Kuwait,1994,0.7
+KGZ,Kyrgyz Republic,2010,3.503
+KGZ,Kyrgyz Republic,2009,3.343
+KGZ,Kyrgyz Republic,2008,3.207
+KGZ,Kyrgyz Republic,2007,3.094
+KGZ,Kyrgyz Republic,2006,2.962
+KGZ,Kyrgyz Republic,2005,2.816
+KGZ,Kyrgyz Republic,2004,2.68
+KGZ,Kyrgyz Republic,2003,2.548
+KGZ,Kyrgyz Republic,2002,2.416
+KGZ,Kyrgyz Republic,2001,2.273
+KGZ,Kyrgyz Republic,2000,2.143
+KGZ,Kyrgyz Republic,1999,2.001
+KGZ,Kyrgyz Republic,1998,1.861
+KGZ,Kyrgyz Republic,1997,1.739
+KGZ,Kyrgyz Republic,1996,1.647
+KGZ,Kyrgyz Republic,1995,1.539
+KGZ,Kyrgyz Republic,1994,1.41
+LAO,Lao PDR,2010,0.708
+LAO,Lao PDR,2009,0.835
+LAO,Lao PDR,2008,0.944
+LAO,Lao PDR,2007,1.068
+LAO,Lao PDR,2006,1.199
+LAO,Lao PDR,2005,1.35
+LAO,Lao PDR,2004,1.498
+LAO,Lao PDR,2003,1.639
+LAO,Lao PDR,2002,1.775
+LAO,Lao PDR,2001,1.881
+LAO,Lao PDR,2000,2.045
+LAO,Lao PDR,1999,2.154
+LAO,Lao PDR,1998,2.293
+LAO,Lao PDR,1997,2.354
+LAO,Lao PDR,1996,2.45
+LAO,Lao PDR,1995,2.6
+LAO,Lao PDR,1994,2.634
+LVA,Latvia,2010,19.482
+LVA,Latvia,2009,17.515
+LVA,Latvia,2008,7.739
+LVA,Latvia,2007,6.052
+LVA,Latvia,2006,7.03
+LVA,Latvia,2005,10.033
+LVA,Latvia,2004,11.708
+LVA,Latvia,2003,12.061
+LVA,Latvia,2002,13.829
+LVA,Latvia,2001,13.821
+LVA,Latvia,2000,14.211
+LVA,Latvia,1999,13.79
+LVA,Latvia,1998,14.454
+LVA,Latvia,1997,14.9
+LVA,Latvia,1996,20.7
+LVA,Latvia,1995,19
+LVA,Latvia,1994,18.7
+LBN,Lebanon,2010,6.768
+LBN,Lebanon,2009,6.355
+LBN,Lebanon,2008,7.666
+LBN,Lebanon,2007,8.98
+LBN,Lebanon,2006,8.679
+LBN,Lebanon,2005,8.249
+LBN,Lebanon,2004,7.85
+LBN,Lebanon,2003,8.061
+LBN,Lebanon,2002,8.248
+LBN,Lebanon,2001,8.499
+LBN,Lebanon,2000,8.641
+LBN,Lebanon,1999,8.787
+LBN,Lebanon,1998,8.571
+LBN,Lebanon,1997,8.62
+LBN,Lebanon,1996,8.413
+LBN,Lebanon,1995,8.421
+LBN,Lebanon,1994,8.321
+LSO,Lesotho,2010,16.068
+LSO,Lesotho,2009,16.115
+LSO,Lesotho,2008,15.851
+LSO,Lesotho,2007,15.942
+LSO,Lesotho,2006,16.054
+LSO,Lesotho,2005,16.031
+LSO,Lesotho,2004,16.154
+LSO,Lesotho,2003,16.056
+LSO,Lesotho,2002,16.079
+LSO,Lesotho,2001,16.081
+LSO,Lesotho,2000,16.169
+LSO,Lesotho,1999,16.167
+LSO,Lesotho,1998,15.913
+LSO,Lesotho,1997,15.822
+LSO,Lesotho,1996,15.709
+LSO,Lesotho,1995,15.797
+LSO,Lesotho,1994,15.62
+LBR,Liberia,2010,2.266
+LBR,Liberia,2009,2.241
+LBR,Liberia,2008,2.221
+LBR,Liberia,2007,2.232
+LBR,Liberia,2006,2.28
+LBR,Liberia,2005,2.413
+LBR,Liberia,2004,2.424
+LBR,Liberia,2003,2.42
+LBR,Liberia,2002,2.222
+LBR,Liberia,2001,2.104
+LBR,Liberia,2000,2.018
+LBR,Liberia,1999,2.006
+LBR,Liberia,1998,2.061
+LBR,Liberia,1997,2.195
+LBR,Liberia,1996,2.397
+LBR,Liberia,1995,2.588
+LBR,Liberia,1994,2.652
+LBY,Libya,2010,19.321
+LBY,Libya,2009,19.29
+LBY,Libya,2008,19.041
+LBY,Libya,2007,18.771
+LBY,Libya,2006,18.805
+LBY,Libya,2005,18.66
+LBY,Libya,2004,18.938
+LBY,Libya,2003,19.074
+LBY,Libya,2002,19.281
+LBY,Libya,2001,19.239
+LBY,Libya,2000,19.275
+LBY,Libya,1999,19.233
+LBY,Libya,1998,19.192
+LBY,Libya,1997,19.151
+LBY,Libya,1996,19.212
+LBY,Libya,1995,19.331
+LBY,Libya,1994,19.328
+LTU,Lithuania,2010,17.814
+LTU,Lithuania,2009,13.785
+LTU,Lithuania,2008,5.826
+LTU,Lithuania,2007,4.25
+LTU,Lithuania,2006,5.78
+LTU,Lithuania,2005,8.325
+LTU,Lithuania,2004,10.684
+LTU,Lithuania,2003,12.874
+LTU,Lithuania,2002,13.008
+LTU,Lithuania,2001,16.84
+LTU,Lithuania,2000,15.931
+LTU,Lithuania,1999,13.388
+LTU,Lithuania,1998,13.711
+LTU,Lithuania,1997,14.13
+LTU,Lithuania,1996,16.4
+LTU,Lithuania,1995,17.54
+LTU,Lithuania,1994,13.8
+LUX,Luxembourg,2010,4.423
+LUX,Luxembourg,2009,5.194
+LUX,Luxembourg,2008,5.06
+LUX,Luxembourg,2007,4.065
+LUX,Luxembourg,2006,4.731
+LUX,Luxembourg,2005,4.488
+LUX,Luxembourg,2004,5.113
+LUX,Luxembourg,2003,3.675
+LUX,Luxembourg,2002,2.621
+LUX,Luxembourg,2001,1.805
+LUX,Luxembourg,2000,2.345
+LUX,Luxembourg,1999,2.39
+LUX,Luxembourg,1998,2.763
+LUX,Luxembourg,1997,2.527
+LUX,Luxembourg,1996,3.286
+LUX,Luxembourg,1995,2.918
+LUX,Luxembourg,1994,3.479
+MAC,"Macao SAR, China",2010,2.84
+MAC,"Macao SAR, China",2009,3.58
+MAC,"Macao SAR, China",2008,2.999
+MAC,"Macao SAR, China",2007,3.269
+MAC,"Macao SAR, China",2006,3.822
+MAC,"Macao SAR, China",2005,4.158
+MAC,"Macao SAR, China",2004,4.904
+MAC,"Macao SAR, China",2003,5.995
+MAC,"Macao SAR, China",2002,6.278
+MAC,"Macao SAR, China",2001,6.371
+MAC,"Macao SAR, China",2000,6.874
+MAC,"Macao SAR, China",1999,6.34
+MAC,"Macao SAR, China",1998,4.607
+MAC,"Macao SAR, China",1997,3.225
+MAC,"Macao SAR, China",1996,4.261
+MAC,"Macao SAR, China",1995,3.581
+MAC,"Macao SAR, China",1994,2.48
+MDG,Madagascar,2010,4.28
+MDG,Madagascar,2009,3.885
+MDG,Madagascar,2008,3.431
+MDG,Madagascar,2007,3.202
+MDG,Madagascar,2006,2.945
+MDG,Madagascar,2005,2.62
+MDG,Madagascar,2004,3.951
+MDG,Madagascar,2003,5.01
+MDG,Madagascar,2002,5.515
+MDG,Madagascar,2001,5.35
+MDG,Madagascar,2000,5.8
+MDG,Madagascar,1999,5.822
+MDG,Madagascar,1998,5.901
+MDG,Madagascar,1997,5.971
+MDG,Madagascar,1996,6.092
+MDG,Madagascar,1995,6.092
+MDG,Madagascar,1994,6.106
+MWI,Malawi,2010,4.78
+MWI,Malawi,2009,4.732
+MWI,Malawi,2008,4.796
+MWI,Malawi,2007,4.876
+MWI,Malawi,2006,4.954
+MWI,Malawi,2005,4.935
+MWI,Malawi,2004,4.964
+MWI,Malawi,2003,5.165
+MWI,Malawi,2002,5.248
+MWI,Malawi,2001,5.221
+MWI,Malawi,2000,5.045
+MWI,Malawi,1999,5.002
+MWI,Malawi,1998,4.921
+MWI,Malawi,1997,4.69
+MWI,Malawi,1996,4.94
+MWI,Malawi,1995,4.895
+MWI,Malawi,1994,5.368
+MYS,Malaysia,2010,3.32
+MYS,Malaysia,2009,3.62
+MYS,Malaysia,2008,3.34
+MYS,Malaysia,2007,3.31
+MYS,Malaysia,2006,3.32
+MYS,Malaysia,2005,3.53
+MYS,Malaysia,2004,3.54
+MYS,Malaysia,2003,3.61
+MYS,Malaysia,2002,3.48
+MYS,Malaysia,2001,3.53
+MYS,Malaysia,2000,3
+MYS,Malaysia,1999,3.43
+MYS,Malaysia,1998,3.2
+MYS,Malaysia,1997,2.45
+MYS,Malaysia,1996,2.52
+MYS,Malaysia,1995,3.15
+MYS,Malaysia,1994,3.64
+MDV,Maldives,2010,10.875
+MDV,Maldives,2009,11.697
+MDV,Maldives,2008,10.361
+MDV,Maldives,2007,9.421
+MDV,Maldives,2006,8.345
+MDV,Maldives,2005,7.313
+MDV,Maldives,2004,6.151
+MDV,Maldives,2003,5.126
+MDV,Maldives,2002,4.094
+MDV,Maldives,2001,3.038
+MDV,Maldives,2000,1.97
+MDV,Maldives,1999,1.726
+MDV,Maldives,1998,1.489
+MDV,Maldives,1997,1.25
+MDV,Maldives,1996,1.019
+MDV,Maldives,1995,0.79
+MDV,Maldives,1994,0.793
+MLI,Mali,2010,1.375
+MLI,Mali,2009,1.406
+MLI,Mali,2008,1.383
+MLI,Mali,2007,1.372
+MLI,Mali,2006,1.395
+MLI,Mali,2005,1.367
+MLI,Mali,2004,1.413
+MLI,Mali,2003,1.272
+MLI,Mali,2002,1.36
+MLI,Mali,2001,1.332
+MLI,Mali,2000,1.412
+MLI,Mali,1999,1.358
+MLI,Mali,1998,1.342
+MLI,Mali,1997,1.411
+MLI,Mali,1996,1.421
+MLI,Mali,1995,1.464
+MLI,Mali,1994,1.512
+MLT,Malta,2010,6.861
+MLT,Malta,2009,6.896
+MLT,Malta,2008,5.977
+MLT,Malta,2007,6.472
+MLT,Malta,2006,6.798
+MLT,Malta,2005,6.923
+MLT,Malta,2004,7.317
+MLT,Malta,2003,7.488
+MLT,Malta,2002,6.902
+MLT,Malta,2001,7.107
+MLT,Malta,2000,6.324
+MLT,Malta,1999,6.325
+MLT,Malta,1998,6.326
+MLT,Malta,1997,6.328
+MLT,Malta,1996,6.329
+MLT,Malta,1995,6.33
+MLT,Malta,1994,6.331
+MRT,Mauritania,2010,10.093
+MRT,Mauritania,2009,10.214
+MRT,Mauritania,2008,9.715
+MRT,Mauritania,2007,9.482
+MRT,Mauritania,2006,9.313
+MRT,Mauritania,2005,9.59
+MRT,Mauritania,2004,9.77
+MRT,Mauritania,2003,9.911
+MRT,Mauritania,2002,10.201
+MRT,Mauritania,2001,10.132
+MRT,Mauritania,2000,10.03
+MRT,Mauritania,1999,10.033
+MRT,Mauritania,1998,9.975
+MRT,Mauritania,1997,9.788
+MRT,Mauritania,1996,9.764
+MRT,Mauritania,1995,9.766
+MRT,Mauritania,1994,9.979
+MUS,Mauritius,2010,7.654
+MUS,Mauritius,2009,7.257
+MUS,Mauritius,2008,7.17
+MUS,Mauritius,2007,8.475
+MUS,Mauritius,2006,9.04
+MUS,Mauritius,2005,9.524
+MUS,Mauritius,2004,8.337
+MUS,Mauritius,2003,8.318
+MUS,Mauritius,2002,8.205
+MUS,Mauritius,2001,9.14
+MUS,Mauritius,2000,9.125
+MUS,Mauritius,1999,9.278
+MUS,Mauritius,1998,9.253
+MUS,Mauritius,1997,9.381
+MUS,Mauritius,1996,9.503
+MUS,Mauritius,1995,9.59
+MUS,Mauritius,1994,9.513
+MEX,Mexico,2010,5.303
+MEX,Mexico,2009,5.356
+MEX,Mexico,2008,3.874
+MEX,Mexico,2007,3.628
+MEX,Mexico,2006,3.566
+MEX,Mexico,2005,3.558
+MEX,Mexico,2004,3.937
+MEX,Mexico,2003,3.455
+MEX,Mexico,2002,3.003
+MEX,Mexico,2001,2.627
+MEX,Mexico,2000,2.646
+MEX,Mexico,1999,2.598
+MEX,Mexico,1998,3.733
+MEX,Mexico,1997,4.235
+MEX,Mexico,1996,5.465
+MEX,Mexico,1995,7.095
+MEX,Mexico,1994,4.436
+MDA,Moldova,2010,2.972
+MDA,Moldova,2009,3.024
+MDA,Moldova,2008,2.097
+MDA,Moldova,2007,2.749
+MDA,Moldova,2006,4.26
+MDA,Moldova,2005,5.633
+MDA,Moldova,2004,6.374
+MDA,Moldova,2003,6.378
+MDA,Moldova,2002,6.845
+MDA,Moldova,2001,7.366
+MDA,Moldova,2000,8.539
+MDA,Moldova,1999,11.14
+MDA,Moldova,1998,10
+MDA,Moldova,1997,7.9
+MDA,Moldova,1996,7.9
+MDA,Moldova,1995,5.3
+MDA,Moldova,1994,5.8
+MNG,Mongolia,2010,6.549
+MNG,Mongolia,2009,5.86
+MNG,Mongolia,2008,5.565
+MNG,Mongolia,2007,7.2
+MNG,Mongolia,2006,7.193
+MNG,Mongolia,2005,7.015
+MNG,Mongolia,2004,6.851
+MNG,Mongolia,2003,6.768
+MNG,Mongolia,2002,6.2
+MNG,Mongolia,2001,6.111
+MNG,Mongolia,2000,5.992
+MNG,Mongolia,1999,5.844
+MNG,Mongolia,1998,5.752
+MNG,Mongolia,1997,5.608
+MNG,Mongolia,1996,5.53
+MNG,Mongolia,1995,5.5
+MNG,Mongolia,1994,5.709
+MNE,Montenegro,2010,19.649
+MNE,Montenegro,2009,19.09
+MNE,Montenegro,2008,17.15
+MNE,Montenegro,2007,19.4
+MNE,Montenegro,2006,24.815
+MNE,Montenegro,2005,30.31
+MNE,Montenegro,2004,30.342
+MNE,Montenegro,2003,30.39
+MNE,Montenegro,2002,30.356
+MNE,Montenegro,2001,30.542
+MNE,Montenegro,2000,30.447
+MNE,Montenegro,1999,30.471
+MNE,Montenegro,1998,30.21
+MNE,Montenegro,1997,30.219
+MNE,Montenegro,1996,30.173
+MNE,Montenegro,1995,30.196
+MNE,Montenegro,1994,30.226
+MAR,Morocco,2010,9.09
+MAR,Morocco,2009,8.96
+MAR,Morocco,2008,9.57
+MAR,Morocco,2007,9.56
+MAR,Morocco,2006,9.67
+MAR,Morocco,2005,11.01
+MAR,Morocco,2004,10.83
+MAR,Morocco,2003,11.92
+MAR,Morocco,2002,11.59
+MAR,Morocco,2001,12.46
+MAR,Morocco,2000,13.58
+MAR,Morocco,1999,13.94
+MAR,Morocco,1998,13.359
+MAR,Morocco,1997,14.025
+MAR,Morocco,1996,13.362
+MAR,Morocco,1995,14.054
+MAR,Morocco,1994,13.858
+MOZ,Mozambique,2010,3.259
+MOZ,Mozambique,2009,3.207
+MOZ,Mozambique,2008,3.112
+MOZ,Mozambique,2007,3.082
+MOZ,Mozambique,2006,3.037
+MOZ,Mozambique,2005,3.035
+MOZ,Mozambique,2004,2.953
+MOZ,Mozambique,2003,2.857
+MOZ,Mozambique,2002,2.902
+MOZ,Mozambique,2001,2.838
+MOZ,Mozambique,2000,2.832
+MOZ,Mozambique,1999,2.663
+MOZ,Mozambique,1998,2.64
+MOZ,Mozambique,1997,2.7
+MOZ,Mozambique,1996,2.763
+MOZ,Mozambique,1995,2.758
+MOZ,Mozambique,1994,2.879
+MMR,Myanmar,2010,0.725
+MMR,Myanmar,2009,0.712
+MMR,Myanmar,2008,0.7
+MMR,Myanmar,2007,0.684
+MMR,Myanmar,2006,0.676
+MMR,Myanmar,2005,0.672
+MMR,Myanmar,2004,0.677
+MMR,Myanmar,2003,0.686
+MMR,Myanmar,2002,0.685
+MMR,Myanmar,2001,0.689
+MMR,Myanmar,2000,0.712
+MMR,Myanmar,1999,0.75
+MMR,Myanmar,1998,0.772
+MMR,Myanmar,1997,0.764
+MMR,Myanmar,1996,0.753
+MMR,Myanmar,1995,0.754
+MMR,Myanmar,1994,0.739
+NAM,Namibia,2010,22.12
+NAM,Namibia,2009,22.271
+NAM,Namibia,2008,22.005
+NAM,Namibia,2007,22.12
+NAM,Namibia,2006,21.848
+NAM,Namibia,2005,22.108
+NAM,Namibia,2004,22.09
+NAM,Namibia,2003,22.104
+NAM,Namibia,2002,21.538
+NAM,Namibia,2001,21.009
+NAM,Namibia,2000,20.3
+NAM,Namibia,1999,21.668
+NAM,Namibia,1998,23.083
+NAM,Namibia,1997,24.45
+NAM,Namibia,1996,22.844
+NAM,Namibia,1995,21.34
+NAM,Namibia,1994,19.4
+NPL,Nepal,2010,10.563
+NPL,Nepal,2009,10.582
+NPL,Nepal,2008,10.597
+NPL,Nepal,2007,10.642
+NPL,Nepal,2006,10.609
+NPL,Nepal,2005,10.59
+NPL,Nepal,2004,10.652
+NPL,Nepal,2003,10.644
+NPL,Nepal,2002,10.593
+NPL,Nepal,2001,10.502
+NPL,Nepal,2000,10.531
+NPL,Nepal,1999,10.549
+NPL,Nepal,1998,10.526
+NPL,Nepal,1997,10.512
+NPL,Nepal,1996,10.446
+NPL,Nepal,1995,10.473
+NPL,Nepal,1994,10.458
+NLD,Netherlands,2010,4.991
+NLD,Netherlands,2009,4.352
+NLD,Netherlands,2008,3.658
+NLD,Netherlands,2007,4.153
+NLD,Netherlands,2006,5.007
+NLD,Netherlands,2005,5.872
+NLD,Netherlands,2004,4.646
+NLD,Netherlands,2003,3.593
+NLD,Netherlands,2002,2.554
+NLD,Netherlands,2001,2.119
+NLD,Netherlands,2000,2.725
+NLD,Netherlands,1999,3.622
+NLD,Netherlands,1998,4.394
+NLD,Netherlands,1997,5.511
+NLD,Netherlands,1996,6.421
+NLD,Netherlands,1995,7.157
+NLD,Netherlands,1994,7.159
+NCL,New Caledonia,2010,13.998
+NCL,New Caledonia,2009,13.97
+NCL,New Caledonia,2008,14.36
+NCL,New Caledonia,2007,14.754
+NCL,New Caledonia,2006,15.256
+NCL,New Caledonia,2005,15.778
+NCL,New Caledonia,2004,16.31
+NCL,New Caledonia,2003,16.665
+NCL,New Caledonia,2002,17.045
+NCL,New Caledonia,2001,17.391
+NCL,New Caledonia,2000,17.907
+NCL,New Caledonia,1999,18.205
+NCL,New Caledonia,1998,18.519
+NCL,New Caledonia,1997,18.382
+NCL,New Caledonia,1996,18.64
+NCL,New Caledonia,1995,18.629
+NCL,New Caledonia,1994,18.878
+NZL,New Zealand,2010,6.557
+NZL,New Zealand,2009,6.121
+NZL,New Zealand,2008,4.167
+NZL,New Zealand,2007,3.661
+NZL,New Zealand,2006,3.857
+NZL,New Zealand,2005,3.807
+NZL,New Zealand,2004,4.005
+NZL,New Zealand,2003,4.745
+NZL,New Zealand,2002,5.282
+NZL,New Zealand,2001,5.433
+NZL,New Zealand,2000,6.13
+NZL,New Zealand,1999,7.023
+NZL,New Zealand,1998,7.718
+NZL,New Zealand,1997,6.857
+NZL,New Zealand,1996,6.29
+NZL,New Zealand,1995,6.461
+NZL,New Zealand,1994,8.354
+NIC,Nicaragua,2010,7.83
+NIC,Nicaragua,2009,8.16
+NIC,Nicaragua,2008,6.2
+NIC,Nicaragua,2007,4.89
+NIC,Nicaragua,2006,5.31
+NIC,Nicaragua,2005,5.37
+NIC,Nicaragua,2004,6.41
+NIC,Nicaragua,2003,7.6
+NIC,Nicaragua,2002,7.517
+NIC,Nicaragua,2001,7.222
+NIC,Nicaragua,2000,7.181
+NIC,Nicaragua,1999,7.18
+NIC,Nicaragua,1998,7.203
+NIC,Nicaragua,1997,7.1
+NIC,Nicaragua,1996,7.12
+NIC,Nicaragua,1995,7.414
+NIC,Nicaragua,1994,7.668
+NER,Niger,2010,0.718
+NER,Niger,2009,1.208
+NER,Niger,2008,1.584
+NER,Niger,2007,2.021
+NER,Niger,2006,2.528
+NER,Niger,2005,3.1
+NER,Niger,2004,2.751
+NER,Niger,2003,2.145
+NER,Niger,2002,1.808
+NER,Niger,2001,1.47
+NER,Niger,2000,1.427
+NER,Niger,1999,1.385
+NER,Niger,1998,1.381
+NER,Niger,1997,1.503
+NER,Niger,1996,1.498
+NER,Niger,1995,1.494
+NER,Niger,1994,1.502
+NGA,Nigeria,2010,3.744
+NGA,Nigeria,2009,3.763
+NGA,Nigeria,2008,3.792
+NGA,Nigeria,2007,3.794
+NGA,Nigeria,2006,3.749
+NGA,Nigeria,2005,3.727
+NGA,Nigeria,2004,3.59
+NGA,Nigeria,2003,3.637
+NGA,Nigeria,2002,3.669
+NGA,Nigeria,2001,3.9
+NGA,Nigeria,2000,3.953
+NGA,Nigeria,1999,3.986
+NGA,Nigeria,1998,3.922
+NGA,Nigeria,1997,3.964
+NGA,Nigeria,1996,4.043
+NGA,Nigeria,1995,4.152
+NGA,Nigeria,1994,4.064
+MKD,North Macedonia,2010,33.135
+MKD,North Macedonia,2009,32.351
+MKD,North Macedonia,2008,33.93
+MKD,North Macedonia,2007,35.231
+MKD,North Macedonia,2006,36.392
+MKD,North Macedonia,2005,37.32
+MKD,North Macedonia,2004,37.161
+MKD,North Macedonia,2003,36.69
+MKD,North Macedonia,2002,31.94
+MKD,North Macedonia,2001,30.52
+MKD,North Macedonia,2000,32.2
+MKD,North Macedonia,1999,32.4
+MKD,North Macedonia,1998,34.5
+MKD,North Macedonia,1997,36
+MKD,North Macedonia,1996,38.8
+MKD,North Macedonia,1995,35.6
+MKD,North Macedonia,1994,30
+NOR,Norway,2010,3.527
+NOR,Norway,2009,3.1
+NOR,Norway,2008,2.521
+NOR,Norway,2007,2.493
+NOR,Norway,2006,3.397
+NOR,Norway,2005,4.381
+NOR,Norway,2004,4.256
+NOR,Norway,2003,4.221
+NOR,Norway,2002,4.022
+NOR,Norway,2001,3.738
+NOR,Norway,2000,3.458
+NOR,Norway,1999,3.247
+NOR,Norway,1998,3.737
+NOR,Norway,1997,4.687
+NOR,Norway,1996,5.036
+NOR,Norway,1995,6.307
+NOR,Norway,1994,5.349
+OMN,Oman,2010,3.911
+OMN,Oman,2009,3.977
+OMN,Oman,2008,4.142
+OMN,Oman,2007,4.309
+OMN,Oman,2006,4.387
+OMN,Oman,2005,4.589
+OMN,Oman,2004,4.693
+OMN,Oman,2003,4.599
+OMN,Oman,2002,4.335
+OMN,Oman,2001,4.298
+OMN,Oman,2000,4.433
+OMN,Oman,1999,4.433
+OMN,Oman,1998,4.346
+OMN,Oman,1997,4.196
+OMN,Oman,1996,4.254
+OMN,Oman,1995,4.167
+OMN,Oman,1994,4.073
+PAK,Pakistan,2010,0.653
+PAK,Pakistan,2009,0.535
+PAK,Pakistan,2008,0.423
+PAK,Pakistan,2007,0.398
+PAK,Pakistan,2006,0.582
+PAK,Pakistan,2005,0.583
+PAK,Pakistan,2004,0.598
+PAK,Pakistan,2003,0.612
+PAK,Pakistan,2002,0.615
+PAK,Pakistan,2001,0.611
+PAK,Pakistan,2000,0.614
+PAK,Pakistan,1999,0.625
+PAK,Pakistan,1998,0.62
+PAK,Pakistan,1997,0.611
+PAK,Pakistan,1996,0.6
+PAK,Pakistan,1995,0.611
+PAK,Pakistan,1994,0.601
+PAN,Panama,2010,5.845
+PAN,Panama,2009,5.857
+PAN,Panama,2008,5.639
+PAN,Panama,2007,5.665
+PAN,Panama,2006,5.792
+PAN,Panama,2005,5.967
+PAN,Panama,2004,6.097
+PAN,Panama,2003,6.303
+PAN,Panama,2002,6.302
+PAN,Panama,2001,6.293
+PAN,Panama,2000,6.188
+PAN,Panama,1999,6.168
+PAN,Panama,1998,6.397
+PAN,Panama,1997,6.588
+PAN,Panama,1996,6.728
+PAN,Panama,1995,6.512
+PAN,Panama,1994,6.428
+PNG,Papua New Guinea,2010,2.002
+PNG,Papua New Guinea,2009,2.089
+PNG,Papua New Guinea,2008,2.168
+PNG,Papua New Guinea,2007,2.169
+PNG,Papua New Guinea,2006,2.285
+PNG,Papua New Guinea,2005,2.385
+PNG,Papua New Guinea,2004,2.526
+PNG,Papua New Guinea,2003,2.628
+PNG,Papua New Guinea,2002,2.756
+PNG,Papua New Guinea,2001,2.801
+PNG,Papua New Guinea,2000,2.92
+PNG,Papua New Guinea,1999,2.939
+PNG,Papua New Guinea,1998,2.86
+PNG,Papua New Guinea,1997,2.854
+PNG,Papua New Guinea,1996,2.728
+PNG,Papua New Guinea,1995,2.603
+PNG,Papua New Guinea,1994,2.418
+PRY,Paraguay,2010,4.569
+PRY,Paraguay,2009,5.46
+PRY,Paraguay,2008,4.415
+PRY,Paraguay,2007,4.713
+PRY,Paraguay,2006,5.277
+PRY,Paraguay,2005,4.825
+PRY,Paraguay,2004,6.513
+PRY,Paraguay,2003,6.814
+PRY,Paraguay,2002,9.393
+PRY,Paraguay,2001,6.206
+PRY,Paraguay,2000,7.61
+PRY,Paraguay,1999,5.343
+PRY,Paraguay,1998,4.417
+PRY,Paraguay,1997,5.36
+PRY,Paraguay,1996,8.15
+PRY,Paraguay,1995,3.4
+PRY,Paraguay,1994,4.41
+PER,Peru,2010,3.6
+PER,Peru,2009,3.96
+PER,Peru,2008,4.03
+PER,Peru,2007,4.08
+PER,Peru,2006,4.17
+PER,Peru,2005,4.87
+PER,Peru,2004,4.71
+PER,Peru,2003,4.15
+PER,Peru,2002,4.84
+PER,Peru,2001,5.068
+PER,Peru,2000,4.959
+PER,Peru,1999,5.011
+PER,Peru,1998,5.099
+PER,Peru,1997,4.762
+PER,Peru,1996,4.929
+PER,Peru,1995,4.708
+PER,Peru,1994,4.491
+PHL,Philippines,2010,3.605
+PHL,Philippines,2009,3.858
+PHL,Philippines,2008,3.72
+PHL,Philippines,2007,3.434
+PHL,Philippines,2006,4.052
+PHL,Philippines,2005,3.795
+PHL,Philippines,2004,3.554
+PHL,Philippines,2003,3.527
+PHL,Philippines,2002,3.616
+PHL,Philippines,2001,3.698
+PHL,Philippines,2000,3.77
+PHL,Philippines,1999,3.751
+PHL,Philippines,1998,3.697
+PHL,Philippines,1997,3.592
+PHL,Philippines,1996,3.607
+PHL,Philippines,1995,3.68
+PHL,Philippines,1994,3.767
+POL,Poland,2010,9.578
+POL,Poland,2009,8.131
+POL,Poland,2008,7.069
+POL,Poland,2007,9.551
+POL,Poland,2006,13.794
+POL,Poland,2005,17.592
+POL,Poland,2004,18.822
+POL,Poland,2003,19.899
+POL,Poland,2002,20.211
+POL,Poland,2001,18.435
+POL,Poland,2000,14.928
+POL,Poland,1999,12.29
+POL,Poland,1998,9.935
+POL,Poland,1997,10.964
+POL,Poland,1996,12.684
+POL,Poland,1995,13.695
+POL,Poland,1994,14.825
+PRT,Portugal,2010,10.771
+PRT,Portugal,2009,9.432
+PRT,Portugal,2008,7.553
+PRT,Portugal,2007,7.965
+PRT,Portugal,2006,7.649
+PRT,Portugal,2005,7.582
+PRT,Portugal,2004,6.319
+PRT,Portugal,2003,6.132
+PRT,Portugal,2002,4.497
+PRT,Portugal,2001,3.829
+PRT,Portugal,2000,3.806
+PRT,Portugal,1999,4.579
+PRT,Portugal,1998,4.64
+PRT,Portugal,1997,6.571
+PRT,Portugal,1996,7.298
+PRT,Portugal,1995,7.064
+PRT,Portugal,1994,6.709
+PRI,Puerto Rico (US),2010,16.1
+PRI,Puerto Rico (US),2009,15
+PRI,Puerto Rico (US),2008,11.48
+PRI,Puerto Rico (US),2007,10.93
+PRI,Puerto Rico (US),2006,11.01
+PRI,Puerto Rico (US),2005,11.35
+PRI,Puerto Rico (US),2004,10.31
+PRI,Puerto Rico (US),2003,11.78
+PRI,Puerto Rico (US),2002,11.94
+PRI,Puerto Rico (US),2001,11.4
+PRI,Puerto Rico (US),2000,10.08
+PRI,Puerto Rico (US),1999,11.81
+PRI,Puerto Rico (US),1998,13.46
+PRI,Puerto Rico (US),1997,13.8
+PRI,Puerto Rico (US),1996,13.64
+PRI,Puerto Rico (US),1995,13.93
+PRI,Puerto Rico (US),1994,14.6
+QAT,Qatar,2010,0.45
+QAT,Qatar,2009,0.31
+QAT,Qatar,2008,0.31
+QAT,Qatar,2007,0.52
+QAT,Qatar,2006,0.87
+QAT,Qatar,2005,0.87
+QAT,Qatar,2004,0.87
+QAT,Qatar,2003,0.87
+QAT,Qatar,2002,0.87
+QAT,Qatar,2001,0.87
+QAT,Qatar,2000,0.87
+QAT,Qatar,1999,0.87
+QAT,Qatar,1998,0.87
+QAT,Qatar,1997,0.87
+QAT,Qatar,1996,0.87
+QAT,Qatar,1995,0.87
+QAT,Qatar,1994,0.87
+ROU,Romania,2010,6.959
+ROU,Romania,2009,6.859
+ROU,Romania,2008,5.787
+ROU,Romania,2007,6.413
+ROU,Romania,2006,7.27
+ROU,Romania,2005,7.174
+ROU,Romania,2004,7.719
+ROU,Romania,2003,6.95
+ROU,Romania,2002,8.112
+ROU,Romania,2001,6.561
+ROU,Romania,2000,6.969
+ROU,Romania,1999,6.239
+ROU,Romania,1998,5.63
+ROU,Romania,1997,5.515
+ROU,Romania,1996,6.74
+ROU,Romania,1995,8.01
+ROU,Romania,1994,8.17
+RUS,Russian Federation,2010,7.407
+RUS,Russian Federation,2009,8.301
+RUS,Russian Federation,2008,6.205
+RUS,Russian Federation,2007,6.002
+RUS,Russian Federation,2006,7.055
+RUS,Russian Federation,2005,7.124
+RUS,Russian Federation,2004,7.763
+RUS,Russian Federation,2003,8.21
+RUS,Russian Federation,2002,7.875
+RUS,Russian Federation,2001,8.978
+RUS,Russian Federation,2000,10.581
+RUS,Russian Federation,1999,13.036
+RUS,Russian Federation,1998,13.261
+RUS,Russian Federation,1997,11.813
+RUS,Russian Federation,1996,9.665
+RUS,Russian Federation,1995,9.449
+RUS,Russian Federation,1994,8.131
+RWA,Rwanda,2010,11.637
+RWA,Rwanda,2009,11.625
+RWA,Rwanda,2008,11.517
+RWA,Rwanda,2007,11.58
+RWA,Rwanda,2006,11.586
+RWA,Rwanda,2005,11.842
+RWA,Rwanda,2004,11.699
+RWA,Rwanda,2003,11.658
+RWA,Rwanda,2002,11.432
+RWA,Rwanda,2001,11.732
+RWA,Rwanda,2000,11.699
+RWA,Rwanda,1999,11.569
+RWA,Rwanda,1998,11.255
+RWA,Rwanda,1997,11.087
+RWA,Rwanda,1996,11.507
+RWA,Rwanda,1995,11.938
+RWA,Rwanda,1994,12.236
+WSM,Samoa,2010,5.621
+WSM,Samoa,2009,5.646
+WSM,Samoa,2008,5.538
+WSM,Samoa,2007,5.425
+WSM,Samoa,2006,5.321
+WSM,Samoa,2005,5.212
+WSM,Samoa,2004,5.162
+WSM,Samoa,2003,5.038
+WSM,Samoa,2002,4.975
+WSM,Samoa,2001,4.96
+WSM,Samoa,2000,4.733
+WSM,Samoa,1999,4.489
+WSM,Samoa,1998,4.127
+WSM,Samoa,1997,3.78
+WSM,Samoa,1996,3.515
+WSM,Samoa,1995,3.244
+WSM,Samoa,1994,2.999
+STP,Sao Tome and Principe,2010,14.628
+STP,Sao Tome and Principe,2009,15.136
+STP,Sao Tome and Principe,2008,15.421
+STP,Sao Tome and Principe,2007,16.021
+STP,Sao Tome and Principe,2006,16.65
+STP,Sao Tome and Principe,2005,16.47
+STP,Sao Tome and Principe,2004,16.12
+STP,Sao Tome and Principe,2003,16.36
+STP,Sao Tome and Principe,2002,17.63
+STP,Sao Tome and Principe,2001,15.73
+STP,Sao Tome and Principe,2000,14.4
+STP,Sao Tome and Principe,1999,14.352
+STP,Sao Tome and Principe,1998,14.398
+STP,Sao Tome and Principe,1997,14.414
+STP,Sao Tome and Principe,1996,14.33
+STP,Sao Tome and Principe,1995,14.342
+STP,Sao Tome and Principe,1994,14.41
+SAU,Saudi Arabia,2010,5.55
+SAU,Saudi Arabia,2009,5.377
+SAU,Saudi Arabia,2008,5.085
+SAU,Saudi Arabia,2007,5.734
+SAU,Saudi Arabia,2006,6.254
+SAU,Saudi Arabia,2005,6.051
+SAU,Saudi Arabia,2004,5.822
+SAU,Saudi Arabia,2003,5.563
+SAU,Saudi Arabia,2002,5.265
+SAU,Saudi Arabia,2001,4.618
+SAU,Saudi Arabia,2000,4.57
+SAU,Saudi Arabia,1999,4.346
+SAU,Saudi Arabia,1998,4.752
+SAU,Saudi Arabia,1997,5.283
+SAU,Saudi Arabia,1996,5.804
+SAU,Saudi Arabia,1995,6.365
+SAU,Saudi Arabia,1994,6.733
+SEN,Senegal,2010,2.795
+SEN,Senegal,2009,2.807
+SEN,Senegal,2008,2.816
+SEN,Senegal,2007,2.8
+SEN,Senegal,2006,2.755
+SEN,Senegal,2005,2.679
+SEN,Senegal,2004,2.775
+SEN,Senegal,2003,2.781
+SEN,Senegal,2002,2.82
+SEN,Senegal,2001,2.674
+SEN,Senegal,2000,2.638
+SEN,Senegal,1999,2.655
+SEN,Senegal,1998,2.751
+SEN,Senegal,1997,2.759
+SEN,Senegal,1996,2.831
+SEN,Senegal,1995,2.846
+SEN,Senegal,1994,2.947
+SRB,Serbia,2010,19.204
+SRB,Serbia,2009,16.116
+SRB,Serbia,2008,13.67
+SRB,Serbia,2007,18.06
+SRB,Serbia,2006,20.85
+SRB,Serbia,2005,20.85
+SRB,Serbia,2004,18.5
+SRB,Serbia,2003,15.2
+SRB,Serbia,2002,13.8
+SRB,Serbia,2001,12.8
+SRB,Serbia,2000,12.6
+SRB,Serbia,1999,13.7
+SRB,Serbia,1998,13.7
+SRB,Serbia,1997,13.8
+SRB,Serbia,1996,13.2
+SRB,Serbia,1995,13.4
+SRB,Serbia,1994,13.405
+SLE,Sierra Leone,2010,4.34
+SLE,Sierra Leone,2009,4.268
+SLE,Sierra Leone,2008,4.132
+SLE,Sierra Leone,2007,4.022
+SLE,Sierra Leone,2006,3.89
+SLE,Sierra Leone,2005,3.734
+SLE,Sierra Leone,2004,3.42
+SLE,Sierra Leone,2003,3.879
+SLE,Sierra Leone,2002,3.909
+SLE,Sierra Leone,2001,4.235
+SLE,Sierra Leone,2000,4.137
+SLE,Sierra Leone,1999,4.288
+SLE,Sierra Leone,1998,4.242
+SLE,Sierra Leone,1997,4.363
+SLE,Sierra Leone,1996,4.313
+SLE,Sierra Leone,1995,4.317
+SLE,Sierra Leone,1994,4.457
+SGP,Singapore,2010,4.12
+SGP,Singapore,2009,5.86
+SGP,Singapore,2008,3.96
+SGP,Singapore,2007,3.9
+SGP,Singapore,2006,4.48
+SGP,Singapore,2005,5.59
+SGP,Singapore,2004,5.84
+SGP,Singapore,2003,5.93
+SGP,Singapore,2002,5.65
+SGP,Singapore,2001,3.76
+SGP,Singapore,2000,3.7
+SGP,Singapore,1999,4.85
+SGP,Singapore,1998,3.41
+SGP,Singapore,1997,2.5
+SGP,Singapore,1996,3.57
+SGP,Singapore,1995,3.3
+SGP,Singapore,1994,3.03
+SVK,Slovak Republic,2010,14.387
+SVK,Slovak Republic,2009,12.023
+SVK,Slovak Republic,2008,9.514
+SVK,Slovak Republic,2007,11.16
+SVK,Slovak Republic,2006,13.395
+SVK,Slovak Republic,2005,16.276
+SVK,Slovak Republic,2004,18.206
+SVK,Slovak Republic,2003,17.549
+SVK,Slovak Republic,2002,18.541
+SVK,Slovak Republic,2001,19.148
+SVK,Slovak Republic,2000,18.546
+SVK,Slovak Republic,1999,16.099
+SVK,Slovak Republic,1998,12.421
+SVK,Slovak Republic,1997,11.894
+SVK,Slovak Republic,1996,11.341
+SVK,Slovak Republic,1995,13.109
+SVK,Slovak Republic,1994,13.654
+SVN,Slovenia,2010,7.236
+SVN,Slovenia,2009,5.858
+SVN,Slovenia,2008,4.371
+SVN,Slovenia,2007,4.818
+SVN,Slovenia,2006,5.95
+SVN,Slovenia,2005,6.506
+SVN,Slovenia,2004,6.012
+SVN,Slovenia,2003,6.479
+SVN,Slovenia,2002,5.922
+SVN,Slovenia,2001,5.682
+SVN,Slovenia,2000,6.918
+SVN,Slovenia,1999,7.324
+SVN,Slovenia,1998,7.39
+SVN,Slovenia,1997,6.648
+SVN,Slovenia,1996,6.879
+SVN,Slovenia,1995,7.15
+SVN,Slovenia,1994,8.24
+SLB,Solomon Islands,2010,1.617
+SLB,Solomon Islands,2009,2.02
+SLB,Solomon Islands,2008,1.998
+SLB,Solomon Islands,2007,1.978
+SLB,Solomon Islands,2006,1.916
+SLB,Solomon Islands,2005,1.879
+SLB,Solomon Islands,2004,2.026
+SLB,Solomon Islands,2003,2.286
+SLB,Solomon Islands,2002,2.698
+SLB,Solomon Islands,2001,2.642
+SLB,Solomon Islands,2000,2.446
+SLB,Solomon Islands,1999,2.194
+SLB,Solomon Islands,1998,2.155
+SLB,Solomon Islands,1997,2.009
+SLB,Solomon Islands,1996,1.875
+SLB,Solomon Islands,1995,1.841
+SLB,Solomon Islands,1994,1.804
+SOM,"Somalia, Fed. Rep.",2010,18.741
+SOM,"Somalia, Fed. Rep.",2009,18.724
+SOM,"Somalia, Fed. Rep.",2008,18.714
+SOM,"Somalia, Fed. Rep.",2007,18.687
+SOM,"Somalia, Fed. Rep.",2006,18.705
+SOM,"Somalia, Fed. Rep.",2005,18.671
+SOM,"Somalia, Fed. Rep.",2004,18.653
+SOM,"Somalia, Fed. Rep.",2003,18.648
+SOM,"Somalia, Fed. Rep.",2002,18.658
+SOM,"Somalia, Fed. Rep.",2001,18.665
+SOM,"Somalia, Fed. Rep.",2000,18.678
+SOM,"Somalia, Fed. Rep.",1999,18.847
+SOM,"Somalia, Fed. Rep.",1998,18.825
+SOM,"Somalia, Fed. Rep.",1997,18.899
+SOM,"Somalia, Fed. Rep.",1996,19.463
+SOM,"Somalia, Fed. Rep.",1995,19.585
+SOM,"Somalia, Fed. Rep.",1994,19.971
+ZAF,South Africa,2010,24.683
+ZAF,South Africa,2009,23.523
+ZAF,South Africa,2008,22.407
+ZAF,South Africa,2007,22.26
+ZAF,South Africa,2006,22.304
+ZAF,South Africa,2005,22.472
+ZAF,South Africa,2004,22.567
+ZAF,South Africa,2003,22.679
+ZAF,South Africa,2002,22.579
+ZAF,South Africa,2001,22.652
+ZAF,South Africa,2000,22.788
+ZAF,South Africa,1999,22.884
+ZAF,South Africa,1998,22.739
+ZAF,South Africa,1997,22.549
+ZAF,South Africa,1996,22.5
+ZAF,South Africa,1995,22.705
+ZAF,South Africa,1994,23.067
+SSD,South Sudan,2010,12.473
+SSD,South Sudan,2009,12.438
+SSD,South Sudan,2008,12.298
+SSD,South Sudan,2007,12.266
+SSD,South Sudan,2006,12.268
+SSD,South Sudan,2005,12.266
+SSD,South Sudan,2004,12.256
+SSD,South Sudan,2003,12.234
+SSD,South Sudan,2002,12.235
+SSD,South Sudan,2001,12.278
+SSD,South Sudan,2000,12.309
+SSD,South Sudan,1999,12.138
+SSD,South Sudan,1998,12.095
+SSD,South Sudan,1997,12.068
+SSD,South Sudan,1996,12.314
+SSD,South Sudan,1995,12.334
+SSD,South Sudan,1994,12.326
+ESP,Spain,2010,19.86
+ESP,Spain,2009,17.857
+ESP,Spain,2008,11.254
+ESP,Spain,2007,8.232
+ESP,Spain,2006,8.452
+ESP,Spain,2005,9.146
+ESP,Spain,2004,11.09
+ESP,Spain,2003,11.283
+ESP,Spain,2002,11.146
+ESP,Spain,2001,10.348
+ESP,Spain,2000,13.785
+ESP,Spain,1999,15.475
+ESP,Spain,1998,18.673
+ESP,Spain,1997,20.698
+ESP,Spain,1996,22.142
+ESP,Spain,1995,22.675
+ESP,Spain,1994,24.209
+LKA,Sri Lanka,2010,4.784
+LKA,Sri Lanka,2009,5.85
+LKA,Sri Lanka,2008,5.22
+LKA,Sri Lanka,2007,5.97
+LKA,Sri Lanka,2006,6.5
+LKA,Sri Lanka,2005,7.67
+LKA,Sri Lanka,2004,8.38
+LKA,Sri Lanka,2003,8.22
+LKA,Sri Lanka,2002,8.76
+LKA,Sri Lanka,2001,7.9
+LKA,Sri Lanka,2000,7.74
+LKA,Sri Lanka,1999,8.88
+LKA,Sri Lanka,1998,9.17
+LKA,Sri Lanka,1997,10.6
+LKA,Sri Lanka,1996,11.35
+LKA,Sri Lanka,1995,12.27
+LKA,Sri Lanka,1994,13.03
+LCA,St. Lucia,2010,17.118
+LCA,St. Lucia,2009,15.37
+LCA,St. Lucia,2008,12.72
+LCA,St. Lucia,2007,14
+LCA,St. Lucia,2006,16
+LCA,St. Lucia,2005,18.7
+LCA,St. Lucia,2004,20.97
+LCA,St. Lucia,2003,22.18
+LCA,St. Lucia,2002,20.39
+LCA,St. Lucia,2001,18.538
+LCA,St. Lucia,2000,16.49
+LCA,St. Lucia,1999,18.09
+LCA,St. Lucia,1998,21.6
+LCA,St. Lucia,1997,20.47
+LCA,St. Lucia,1996,16.33
+LCA,St. Lucia,1995,15.83
+LCA,St. Lucia,1994,17
+VCT,St. Vincent and the Grenadines,2010,19.924
+VCT,St. Vincent and the Grenadines,2009,19.365
+VCT,St. Vincent and the Grenadines,2008,18.79
+VCT,St. Vincent and the Grenadines,2007,18.934
+VCT,St. Vincent and the Grenadines,2006,19.162
+VCT,St. Vincent and the Grenadines,2005,19.461
+VCT,St. Vincent and the Grenadines,2004,19.545
+VCT,St. Vincent and the Grenadines,2003,19.985
+VCT,St. Vincent and the Grenadines,2002,20.623
+VCT,St. Vincent and the Grenadines,2001,21.1
+VCT,St. Vincent and the Grenadines,2000,20.8
+VCT,St. Vincent and the Grenadines,1999,20.542
+VCT,St. Vincent and the Grenadines,1998,20.521
+VCT,St. Vincent and the Grenadines,1997,20.133
+VCT,St. Vincent and the Grenadines,1996,20.343
+VCT,St. Vincent and the Grenadines,1995,20.005
+VCT,St. Vincent and the Grenadines,1994,19.974
+SDN,Sudan,2010,15.168
+SDN,Sudan,2009,13
+SDN,Sudan,2008,15.566
+SDN,Sudan,2007,15.534
+SDN,Sudan,2006,15.542
+SDN,Sudan,2005,15.545
+SDN,Sudan,2004,15.538
+SDN,Sudan,2003,15.515
+SDN,Sudan,2002,15.514
+SDN,Sudan,2001,15.56
+SDN,Sudan,2000,15.595
+SDN,Sudan,1999,15.399
+SDN,Sudan,1998,15.352
+SDN,Sudan,1997,15.324
+SDN,Sudan,1996,15.605
+SDN,Sudan,1995,15.627
+SDN,Sudan,1994,15.617
+SUR,Suriname,2010,7.15
+SUR,Suriname,2009,8.72
+SUR,Suriname,2008,8.854
+SUR,Suriname,2007,9.017
+SUR,Suriname,2006,9.142
+SUR,Suriname,2005,9.302
+SUR,Suriname,2004,9.49
+SUR,Suriname,2003,10.336
+SUR,Suriname,2002,11.187
+SUR,Suriname,2001,12.047
+SUR,Suriname,2000,12.873
+SUR,Suriname,1999,13.6
+SUR,Suriname,1998,10.63
+SUR,Suriname,1997,10.56
+SUR,Suriname,1996,10.88
+SUR,Suriname,1995,8.39
+SUR,Suriname,1994,12.7
+SWE,Sweden,2010,8.61
+SWE,Sweden,2009,8.351
+SWE,Sweden,2008,6.235
+SWE,Sweden,2007,6.161
+SWE,Sweden,2006,7.066
+SWE,Sweden,2005,7.81
+SWE,Sweden,2004,6.693
+SWE,Sweden,2003,5.555
+SWE,Sweden,2002,4.965
+SWE,Sweden,2001,4.73
+SWE,Sweden,2000,5.466
+SWE,Sweden,1999,7.607
+SWE,Sweden,1998,8.941
+SWE,Sweden,1997,10.359
+SWE,Sweden,1996,9.547
+SWE,Sweden,1995,8.897
+SWE,Sweden,1994,9.58
+CHE,Switzerland,2010,4.808
+CHE,Switzerland,2009,4.109
+CHE,Switzerland,2008,3.35
+CHE,Switzerland,2007,3.641
+CHE,Switzerland,2006,3.995
+CHE,Switzerland,2005,4.437
+CHE,Switzerland,2004,4.316
+CHE,Switzerland,2003,4.117
+CHE,Switzerland,2002,2.924
+CHE,Switzerland,2001,2.49
+CHE,Switzerland,2000,2.658
+CHE,Switzerland,1999,3.053
+CHE,Switzerland,1998,3.568
+CHE,Switzerland,1997,4.127
+CHE,Switzerland,1996,3.684
+CHE,Switzerland,1995,3.094
+CHE,Switzerland,1994,3.58
+SYR,Syrian Arab Republic,2010,8.61
+SYR,Syrian Arab Republic,2009,8.14
+SYR,Syrian Arab Republic,2008,10.94
+SYR,Syrian Arab Republic,2007,8.42
+SYR,Syrian Arab Republic,2006,8.17
+SYR,Syrian Arab Republic,2005,8.81
+SYR,Syrian Arab Republic,2004,9.513
+SYR,Syrian Arab Republic,2003,10.28
+SYR,Syrian Arab Republic,2002,10.94
+SYR,Syrian Arab Republic,2001,11.63
+SYR,Syrian Arab Republic,2000,9.587
+SYR,Syrian Arab Republic,1999,7.6
+SYR,Syrian Arab Republic,1998,7.376
+SYR,Syrian Arab Republic,1997,7.31
+SYR,Syrian Arab Republic,1996,7.221
+SYR,Syrian Arab Republic,1995,7.2
+SYR,Syrian Arab Republic,1994,7.5
+TJK,Tajikistan,2010,7.037
+TJK,Tajikistan,2009,7.028
+TJK,Tajikistan,2008,4.942
+TJK,Tajikistan,2007,2.874
+TJK,Tajikistan,2006,3.65
+TJK,Tajikistan,2005,3.45
+TJK,Tajikistan,2004,3.45
+TJK,Tajikistan,2003,3.85
+TJK,Tajikistan,2002,3.95
+TJK,Tajikistan,2001,3.75
+TJK,Tajikistan,2000,4.15
+TJK,Tajikistan,1999,4.45
+TJK,Tajikistan,1998,4.65
+TJK,Tajikistan,1997,4.15
+TJK,Tajikistan,1996,4.05
+TJK,Tajikistan,1995,3.45
+TJK,Tajikistan,1994,3.15
+TZA,Tanzania,2010,3.03
+TZA,Tanzania,2009,2.5
+TZA,Tanzania,2008,2.775
+TZA,Tanzania,2007,3.023
+TZA,Tanzania,2006,3.299
+TZA,Tanzania,2005,3.193
+TZA,Tanzania,2004,3.105
+TZA,Tanzania,2003,3.053
+TZA,Tanzania,2002,3.023
+TZA,Tanzania,2001,2.994
+TZA,Tanzania,2000,3.129
+TZA,Tanzania,1999,3.219
+TZA,Tanzania,1998,3.283
+TZA,Tanzania,1997,3.342
+TZA,Tanzania,1996,3.475
+TZA,Tanzania,1995,3.672
+TZA,Tanzania,1994,3.861
+THA,Thailand,2010,0.622
+THA,Thailand,2009,1.49
+THA,Thailand,2008,1.18
+THA,Thailand,2007,1.18
+THA,Thailand,2006,1.22
+THA,Thailand,2005,1.35
+THA,Thailand,2004,1.51
+THA,Thailand,2003,1.54
+THA,Thailand,2002,1.82
+THA,Thailand,2001,2.6
+THA,Thailand,2000,2.389
+THA,Thailand,1999,2.968
+THA,Thailand,1998,3.404
+THA,Thailand,1997,0.873
+THA,Thailand,1996,1.071
+THA,Thailand,1995,1.1
+THA,Thailand,1994,1.347
+TLS,Timor-Leste,2010,3.301
+TLS,Timor-Leste,2009,3.289
+TLS,Timor-Leste,2008,3.434
+TLS,Timor-Leste,2007,3.523
+TLS,Timor-Leste,2006,3.634
+TLS,Timor-Leste,2005,3.611
+TLS,Timor-Leste,2004,3.668
+TLS,Timor-Leste,2003,3.54
+TLS,Timor-Leste,2002,3.371
+TLS,Timor-Leste,2001,3.386
+TLS,Timor-Leste,2000,3.529
+TLS,Timor-Leste,1999,3.633
+TLS,Timor-Leste,1998,3.5
+TLS,Timor-Leste,1997,3.406
+TLS,Timor-Leste,1996,3.372
+TLS,Timor-Leste,1995,3.348
+TLS,Timor-Leste,1994,3.309
+TGO,Togo,2010,2.379
+TGO,Togo,2009,2.847
+TGO,Togo,2008,3.279
+TGO,Togo,2007,3.822
+TGO,Togo,2006,4.229
+TGO,Togo,2005,4.149
+TGO,Togo,2004,3.992
+TGO,Togo,2003,3.957
+TGO,Togo,2002,4.087
+TGO,Togo,2001,4.108
+TGO,Togo,2000,4.162
+TGO,Togo,1999,3.889
+TGO,Togo,1998,3.78
+TGO,Togo,1997,3.618
+TGO,Togo,1996,3.606
+TGO,Togo,1995,3.99
+TGO,Togo,1994,4.201
+TON,Tonga,2010,1.501
+TON,Tonga,2009,1.419
+TON,Tonga,2008,1.279
+TON,Tonga,2007,1.21
+TON,Tonga,2006,1.09
+TON,Tonga,2005,2.542
+TON,Tonga,2004,3.878
+TON,Tonga,2003,5.18
+TON,Tonga,2002,4.683
+TON,Tonga,2001,4.368
+TON,Tonga,2000,3.966
+TON,Tonga,1999,3.69
+TON,Tonga,1998,3.348
+TON,Tonga,1997,2.877
+TON,Tonga,1996,2.404
+TON,Tonga,1995,1.987
+TON,Tonga,1994,1.688
+TTO,Trinidad and Tobago,2010,4.033
+TTO,Trinidad and Tobago,2009,5.28
+TTO,Trinidad and Tobago,2008,4.63
+TTO,Trinidad and Tobago,2007,5.54
+TTO,Trinidad and Tobago,2006,6.27
+TTO,Trinidad and Tobago,2005,7.95
+TTO,Trinidad and Tobago,2004,8.33
+TTO,Trinidad and Tobago,2003,10.48
+TTO,Trinidad and Tobago,2002,10.39
+TTO,Trinidad and Tobago,2001,10.88
+TTO,Trinidad and Tobago,2000,12.1
+TTO,Trinidad and Tobago,1999,13.12
+TTO,Trinidad and Tobago,1998,14.21
+TTO,Trinidad and Tobago,1997,15.01
+TTO,Trinidad and Tobago,1996,16.25
+TTO,Trinidad and Tobago,1995,17.22
+TTO,Trinidad and Tobago,1994,18.44
+TUN,Tunisia,2010,13.049
+TUN,Tunisia,2009,13.29
+TUN,Tunisia,2008,12.444
+TUN,Tunisia,2007,12.365
+TUN,Tunisia,2006,12.51
+TUN,Tunisia,2005,12.872
+TUN,Tunisia,2004,14.23
+TUN,Tunisia,2003,14.51
+TUN,Tunisia,2002,14.55
+TUN,Tunisia,2001,14.4
+TUN,Tunisia,2000,14.94
+TUN,Tunisia,1999,15.21
+TUN,Tunisia,1998,15.473
+TUN,Tunisia,1997,15.94
+TUN,Tunisia,1996,16.061
+TUN,Tunisia,1995,16.348
+TUN,Tunisia,1994,16.006
+TUR,Turkiye,2010,11.879
+TUR,Turkiye,2009,14.026
+TUR,Turkiye,2008,10.965
+TUR,Turkiye,2007,10.285
+TUR,Turkiye,2006,10.227
+TUR,Turkiye,2005,10.636
+TUR,Turkiye,2004,10.838
+TUR,Turkiye,2003,10.542
+TUR,Turkiye,2002,10.358
+TUR,Turkiye,2001,8.381
+TUR,Turkiye,2000,6.495
+TUR,Turkiye,1999,7.687
+TUR,Turkiye,1998,6.888
+TUR,Turkiye,1997,6.841
+TUR,Turkiye,1996,6.629
+TUR,Turkiye,1995,7.644
+TUR,Turkiye,1994,8.577
+TKM,Turkmenistan,2010,4
+TKM,Turkmenistan,2009,4
+TKM,Turkmenistan,2008,4.852
+TKM,Turkmenistan,2007,5.719
+TKM,Turkmenistan,2006,6.601
+TKM,Turkmenistan,2005,7.495
+TKM,Turkmenistan,2004,8.419
+TKM,Turkmenistan,2003,9.289
+TKM,Turkmenistan,2002,10.141
+TKM,Turkmenistan,2001,10.898
+TKM,Turkmenistan,2000,11.73
+TKM,Turkmenistan,1999,12.7
+TKM,Turkmenistan,1998,12.2
+TKM,Turkmenistan,1997,11
+TKM,Turkmenistan,1996,10.3
+TKM,Turkmenistan,1995,8.3
+TKM,Turkmenistan,1994,4.7
+UGA,Uganda,2010,3.623
+UGA,Uganda,2009,3.6
+UGA,Uganda,2008,3.035
+UGA,Uganda,2007,2.667
+UGA,Uganda,2006,2.264
+UGA,Uganda,2005,1.9
+UGA,Uganda,2004,2.699
+UGA,Uganda,2003,3.6
+UGA,Uganda,2002,3.5
+UGA,Uganda,2001,3.522
+UGA,Uganda,2000,3.531
+UGA,Uganda,1999,3.46
+UGA,Uganda,1998,3.424
+UGA,Uganda,1997,3.209
+UGA,Uganda,1996,3.169
+UGA,Uganda,1995,3.193
+UGA,Uganda,1994,3.458
+UKR,Ukraine,2010,8.1
+UKR,Ukraine,2009,8.84
+UKR,Ukraine,2008,6.363
+UKR,Ukraine,2007,6.351
+UKR,Ukraine,2006,6.81
+UKR,Ukraine,2005,7.18
+UKR,Ukraine,2004,8.59
+UKR,Ukraine,2003,9.057
+UKR,Ukraine,2002,10.136
+UKR,Ukraine,2001,11.061
+UKR,Ukraine,2000,11.707
+UKR,Ukraine,1999,11.864
+UKR,Ukraine,1998,11.32
+UKR,Ukraine,1997,8.93
+UKR,Ukraine,1996,7.65
+UKR,Ukraine,1995,5.62
+UKR,Ukraine,1994,2
+ARE,United Arab Emirates,2010,2.798
+ARE,United Arab Emirates,2009,2.932
+ARE,United Arab Emirates,2008,2.818
+ARE,United Arab Emirates,2007,2.934
+ARE,United Arab Emirates,2006,2.964
+ARE,United Arab Emirates,2005,3.12
+ARE,United Arab Emirates,2004,2.965
+ARE,United Arab Emirates,2003,2.903
+ARE,United Arab Emirates,2002,2.659
+ARE,United Arab Emirates,2001,2.443
+ARE,United Arab Emirates,2000,2.25
+ARE,United Arab Emirates,1999,2.195
+ARE,United Arab Emirates,1998,2.068
+ARE,United Arab Emirates,1997,1.906
+ARE,United Arab Emirates,1996,1.836
+ARE,United Arab Emirates,1995,1.8
+ARE,United Arab Emirates,1994,1.834
+GBR,United Kingdom,2010,7.973
+GBR,United Kingdom,2009,7.683
+GBR,United Kingdom,2008,5.748
+GBR,United Kingdom,2007,5.399
+GBR,United Kingdom,2006,5.472
+GBR,United Kingdom,2005,4.884
+GBR,United Kingdom,2004,4.594
+GBR,United Kingdom,2003,4.807
+GBR,United Kingdom,2002,5.037
+GBR,United Kingdom,2001,4.696
+GBR,United Kingdom,2000,5.558
+GBR,United Kingdom,1999,6.042
+GBR,United Kingdom,1998,6.198
+GBR,United Kingdom,1997,7.072
+GBR,United Kingdom,1996,8.189
+GBR,United Kingdom,1995,8.694
+GBR,United Kingdom,1994,9.648
+USA,United States,2010,9.633
+USA,United States,2009,9.254
+USA,United States,2008,5.784
+USA,United States,2007,4.622
+USA,United States,2006,4.623
+USA,United States,2005,5.084
+USA,United States,2004,5.529
+USA,United States,2003,5.989
+USA,United States,2002,5.783
+USA,United States,2001,4.731
+USA,United States,2000,3.992
+USA,United States,1999,4.219
+USA,United States,1998,4.511
+USA,United States,1997,5
+USA,United States,1996,5.451
+USA,United States,1995,5.65
+USA,United States,1994,6.119
+URY,Uruguay,2010,7.158
+URY,Uruguay,2009,7.74
+URY,Uruguay,2008,8.025
+URY,Uruguay,2007,9.403
+URY,Uruguay,2006,10.844
+URY,Uruguay,2005,12.009
+URY,Uruguay,2004,12.98
+URY,Uruguay,2003,16.661
+URY,Uruguay,2002,16.648
+URY,Uruguay,2001,15.052
+URY,Uruguay,2000,12.627
+URY,Uruguay,1999,10.466
+URY,Uruguay,1998,9.362
+URY,Uruguay,1997,11.44
+URY,Uruguay,1996,11.93
+URY,Uruguay,1995,10.02
+URY,Uruguay,1994,9.04
+UZB,Uzbekistan,2010,5.36
+UZB,Uzbekistan,2009,5.04
+UZB,Uzbekistan,2008,4.89
+UZB,Uzbekistan,2007,4.99
+UZB,Uzbekistan,2006,6.035
+UZB,Uzbekistan,2005,7.092
+UZB,Uzbekistan,2004,8.152
+UZB,Uzbekistan,2003,9.22
+UZB,Uzbekistan,2002,10.256
+UZB,Uzbekistan,2001,11.279
+UZB,Uzbekistan,2000,12.301
+UZB,Uzbekistan,1999,13.3
+UZB,Uzbekistan,1998,13.3
+UZB,Uzbekistan,1997,10.9
+UZB,Uzbekistan,1996,10.7
+UZB,Uzbekistan,1995,7.8
+UZB,Uzbekistan,1994,7.3
+VUT,Vanuatu,2010,4.681
+VUT,Vanuatu,2009,4.565
+VUT,Vanuatu,2008,5.663
+VUT,Vanuatu,2007,6.855
+VUT,Vanuatu,2006,8.006
+VUT,Vanuatu,2005,8.121
+VUT,Vanuatu,2004,8.432
+VUT,Vanuatu,2003,8.659
+VUT,Vanuatu,2002,8.598
+VUT,Vanuatu,2001,8.415
+VUT,Vanuatu,2000,8.266
+VUT,Vanuatu,1999,8.29
+VUT,Vanuatu,1998,8.223
+VUT,Vanuatu,1997,8.221
+VUT,Vanuatu,1996,8.091
+VUT,Vanuatu,1995,8.134
+VUT,Vanuatu,1994,8.083
+VEN,"Venezuela, RB",2010,7.112
+VEN,"Venezuela, RB",2009,6.097
+VEN,"Venezuela, RB",2008,6.245
+VEN,"Venezuela, RB",2007,7.279
+VEN,"Venezuela, RB",2006,8.606
+VEN,"Venezuela, RB",2005,10.663
+VEN,"Venezuela, RB",2004,15.07
+VEN,"Venezuela, RB",2003,16.78
+VEN,"Venezuela, RB",2002,16.17
+VEN,"Venezuela, RB",2001,13.04
+VEN,"Venezuela, RB",2000,13.99
+VEN,"Venezuela, RB",1999,14.53
+VEN,"Venezuela, RB",1998,11.15
+VEN,"Venezuela, RB",1997,11.16
+VEN,"Venezuela, RB",1996,11.77
+VEN,"Venezuela, RB",1995,10.24
+VEN,"Venezuela, RB",1994,8.56
+VNM,Viet Nam,2010,1.114
+VNM,Viet Nam,2009,1.737
+VNM,Viet Nam,2008,1.889
+VNM,Viet Nam,2007,2.026
+VNM,Viet Nam,2006,2.046
+VNM,Viet Nam,2005,2.078
+VNM,Viet Nam,2004,2.14
+VNM,Viet Nam,2003,2.25
+VNM,Viet Nam,2002,2.12
+VNM,Viet Nam,2001,2.76
+VNM,Viet Nam,2000,2.26
+VNM,Viet Nam,1999,2.33
+VNM,Viet Nam,1998,2.29
+VNM,Viet Nam,1997,2.87
+VNM,Viet Nam,1996,1.93
+VNM,Viet Nam,1995,1.955
+VNM,Viet Nam,1994,1.972
+VIR,Virgin Islands (U.S.),2010,11.059
+VIR,Virgin Islands (U.S.),2009,10.864
+VIR,Virgin Islands (U.S.),2008,9.605
+VIR,Virgin Islands (U.S.),2007,9.523
+VIR,Virgin Islands (U.S.),2006,9.734
+VIR,Virgin Islands (U.S.),2005,10.228
+VIR,Virgin Islands (U.S.),2004,10.266
+VIR,Virgin Islands (U.S.),2003,10.574
+VIR,Virgin Islands (U.S.),2002,10.227
+VIR,Virgin Islands (U.S.),2001,9.969
+VIR,Virgin Islands (U.S.),2000,9.834
+VIR,Virgin Islands (U.S.),1999,10.172
+VIR,Virgin Islands (U.S.),1998,10.446
+VIR,Virgin Islands (U.S.),1997,10.547
+VIR,Virgin Islands (U.S.),1996,10.647
+VIR,Virgin Islands (U.S.),1995,10.611
+VIR,Virgin Islands (U.S.),1994,10.959
+PSE,West Bank and Gaza,2010,21.416
+PSE,West Bank and Gaza,2009,20.452
+PSE,West Bank and Gaza,2008,22.913
+PSE,West Bank and Gaza,2007,18.282
+PSE,West Bank and Gaza,2006,19.014
+PSE,West Bank and Gaza,2005,20.016
+PSE,West Bank and Gaza,2004,23.215
+PSE,West Bank and Gaza,2003,23.004
+PSE,West Bank and Gaza,2002,27.465
+PSE,West Bank and Gaza,2001,21.493
+PSE,West Bank and Gaza,2000,10.625
+PSE,West Bank and Gaza,1999,10.382
+PSE,West Bank and Gaza,1998,10.451
+PSE,West Bank and Gaza,1997,10.522
+PSE,West Bank and Gaza,1996,10.726
+PSE,West Bank and Gaza,1995,10.714
+PSE,West Bank and Gaza,1994,10.778
+YEM,"Yemen, Rep.",2010,12.777
+YEM,"Yemen, Rep.",2009,12.762
+YEM,"Yemen, Rep.",2008,12.656
+YEM,"Yemen, Rep.",2007,12.486
+YEM,"Yemen, Rep.",2006,12.349
+YEM,"Yemen, Rep.",2005,12.213
+YEM,"Yemen, Rep.",2004,12.131
+YEM,"Yemen, Rep.",2003,12.014
+YEM,"Yemen, Rep.",2002,11.839
+YEM,"Yemen, Rep.",2001,11.724
+YEM,"Yemen, Rep.",2000,11.557
+YEM,"Yemen, Rep.",1999,11.46
+YEM,"Yemen, Rep.",1998,10.828
+YEM,"Yemen, Rep.",1997,10.223
+YEM,"Yemen, Rep.",1996,9.585
+YEM,"Yemen, Rep.",1995,8.988
+YEM,"Yemen, Rep.",1994,8.34
+ZMB,Zambia,2010,13.19
+ZMB,Zambia,2009,10.583
+ZMB,Zambia,2008,7.93
+ZMB,Zambia,2007,10.559
+ZMB,Zambia,2006,13.229
+ZMB,Zambia,2005,15.9
+ZMB,Zambia,2004,15.332
+ZMB,Zambia,2003,14.704
+ZMB,Zambia,2002,14.131
+ZMB,Zambia,2001,13.404
+ZMB,Zambia,2000,12.93
+ZMB,Zambia,1999,12.498
+ZMB,Zambia,1998,12
+ZMB,Zambia,1997,13.273
+ZMB,Zambia,1996,15.3
+ZMB,Zambia,1995,16.834
+ZMB,Zambia,1994,18.689
+ZWE,Zimbabwe,2010,5.469
+ZWE,Zimbabwe,2009,5.476
+ZWE,Zimbabwe,2008,5.401
+ZWE,Zimbabwe,2007,5.008
+ZWE,Zimbabwe,2006,4.767
+ZWE,Zimbabwe,2005,4.632
+ZWE,Zimbabwe,2004,4.39
+ZWE,Zimbabwe,2003,4.738
+ZWE,Zimbabwe,2002,5.005
+ZWE,Zimbabwe,2001,5.313
+ZWE,Zimbabwe,2000,5.685
+ZWE,Zimbabwe,1999,6
+ZWE,Zimbabwe,1998,6.381
+ZWE,Zimbabwe,1997,6.93
+ZWE,Zimbabwe,1996,6.151
+ZWE,Zimbabwe,1995,5.566
+ZWE,Zimbabwe,1994,4.96

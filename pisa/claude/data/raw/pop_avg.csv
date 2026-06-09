@@ -1,0 +1,3158 @@
+geo,country,year,pop_avg
+AD,Andorra,1986,45785
+AD,Andorra,1987,47714
+AD,Andorra,1988,49490
+AD,Andorra,1989,50708
+AD,Andorra,1990,52697
+AD,Andorra,1991,56778
+AD,Andorra,1992,60324
+AD,Andorra,1993,63413
+AD,Andorra,1994,64769
+AD,Andorra,1995,64085
+AD,Andorra,1996,64169
+AD,Andorra,1997,64893
+AD,Andorra,1998,65592
+AD,Andorra,1999,65924
+AD,Andorra,2000,65908
+AD,Andorra,2001,66089
+AD,Andorra,2002,66747
+AD,Andorra,2003,69740
+AD,Andorra,2004,74598
+AD,Andorra,2005,77712
+AD,Andorra,2006,79886
+AD,Andorra,2007,82180
+AD,Andorra,2008,83811
+AD,Andorra,2009,84283
+AD,Andorra,2010,84549
+AD,Andorra,2011,78115
+AD,Andorra,2012,77181
+AD,Andorra,2016,72419
+AD,Andorra,2018,75486
+AD,Andorra,2019,76860
+AD,Andorra,2022,80562
+AD,Andorra,2023,83345
+AL,Albania,1960,1608800
+AL,Albania,1961,1659800
+AL,Albania,1962,1711319
+AL,Albania,1963,1762621
+AL,Albania,1964,1814135
+AL,Albania,1965,1864791
+AL,Albania,1966,1914573
+AL,Albania,1967,1965598
+AL,Albania,1968,2022272
+AL,Albania,1969,2081695
+AL,Albania,1970,2135479
+AL,Albania,1971,2187853
+AL,Albania,1972,2243126
+AL,Albania,1973,2296752
+AL,Albania,1974,2350124
+AL,Albania,1975,2404831
+AL,Albania,1976,2458526
+AL,Albania,1977,2513546
+AL,Albania,1978,2566266
+AL,Albania,1979,2617832
+AL,Albania,1980,2671997
+AL,Albania,1981,2726056
+AL,Albania,1982,2784278
+AL,Albania,1983,2843960
+AL,Albania,1984,2904429
+AL,Albania,1985,2964762
+AL,Albania,1986,3022635
+AL,Albania,1987,3083605
+AL,Albania,1988,3142336
+AL,Albania,1989,3211964
+AL,Albania,1990,3266790
+AL,Albania,1991,3247039
+AL,Albania,1992,3227287
+AL,Albania,1993,3207536
+AL,Albania,1994,3187784
+AL,Albania,1995,3168033
+AL,Albania,1996,3148281
+AL,Albania,1997,3128530
+AL,Albania,1998,3108778
+AL,Albania,1999,3089027
+AL,Albania,2000,3060173
+AL,Albania,2001,3060169
+AL,Albania,2002,3051006
+AL,Albania,2003,3039612
+AL,Albania,2004,3026933
+AL,Albania,2005,3011482
+AL,Albania,2006,2992542
+AL,Albania,2007,2970011
+AL,Albania,2008,2947311
+AL,Albania,2009,2927515
+AL,Albania,2010,2913018
+AL,Albania,2011,2905185
+AL,Albania,2012,2900389
+AL,Albania,2013,2895082
+AL,Albania,2014,2889095
+AL,Albania,2015,2880694
+AL,Albania,2016,2876092
+AL,Albania,2017,2873458
+AL,Albania,2018,2866376
+AL,Albania,2019,2854191
+AL,Albania,2020,2837848
+AL,Albania,2021,2811667
+AL,Albania,2022,2777689
+AL,Albania,2023,2576364
+AL,Albania,2024,2377128
+AM,Armenia,1996,3247400
+AM,Armenia,1997,3242100
+AM,Armenia,1998,3235150
+AM,Armenia,1999,3229500
+AM,Armenia,2000,3221100
+AM,Armenia,2001,3214100
+AM,Armenia,2002,3211600
+AM,Armenia,2003,3211250
+AM,Armenia,2004,3214000
+AM,Armenia,2005,3217517
+AM,Armenia,2006,3221094
+AM,Armenia,2007,3226520
+AM,Armenia,2008,3234031
+AM,Armenia,2009,3243729
+AM,Armenia,2010,3256066
+AM,Armenia,2011,3268468
+AM,Armenia,2015,3004588
+AM,Armenia,2016,2992364
+AM,Armenia,2017,2979442
+AM,Armenia,2018,2969001
+AM,Armenia,2019,2962482
+AM,Armenia,2020,2961473
+AM,Armenia,2023,2984166
+AM,Armenia,2024,3033727
+AT,Austria,1960,7047539
+AT,Austria,1961,7086299
+AT,Austria,1962,7129864
+AT,Austria,1963,7175811
+AT,Austria,1964,7223801
+AT,Austria,1965,7270889
+AT,Austria,1966,7322066
+AT,Austria,1967,7376998
+AT,Austria,1968,7415403
+AT,Austria,1969,7441055
+AT,Austria,1970,7467086
+AT,Austria,1971,7500482
+AT,Austria,1972,7544201
+AT,Austria,1973,7586115
+AT,Austria,1974,7599038
+AT,Austria,1975,7578903
+AT,Austria,1976,7565525
+AT,Austria,1977,7568430
+AT,Austria,1978,7562305
+AT,Austria,1979,7549425
+AT,Austria,1980,7549433
+AT,Austria,1981,7568710
+AT,Austria,1982,7574140
+AT,Austria,1983,7561910
+AT,Austria,1984,7561434
+AT,Austria,1985,7564985
+AT,Austria,1986,7569794
+AT,Austria,1987,7574586
+AT,Austria,1988,7585317
+AT,Austria,1989,7619567
+AT,Austria,1990,7677850
+AT,Austria,1991,7754891
+AT,Austria,1992,7840709
+AT,Austria,1993,7905633
+AT,Austria,1994,7936118
+AT,Austria,1995,7948278
+AT,Austria,1996,7959017
+AT,Austria,1997,7968041
+AT,Austria,1998,7976789
+AT,Austria,1999,7992324
+AT,Austria,2000,8011566
+AT,Austria,2001,8042293
+AT,Austria,2002,8081957
+AT,Austria,2003,8121423
+AT,Austria,2004,8171966
+AT,Austria,2005,8227829
+AT,Austria,2006,8268641
+AT,Austria,2007,8295487
+AT,Austria,2008,8321496
+AT,Austria,2009,8343323
+AT,Austria,2010,8363404
+AT,Austria,2011,8391643
+AT,Austria,2012,8429991
+AT,Austria,2013,8479823
+AT,Austria,2014,8546356
+AT,Austria,2015,8642699
+AT,Austria,2016,8736668
+AT,Austria,2017,8797566
+AT,Austria,2018,8840521
+AT,Austria,2019,8879920
+AT,Austria,2020,8916864
+AT,Austria,2021,8955797
+AT,Austria,2022,9041851
+AT,Austria,2023,9131761
+AT,Austria,2024,9177982
+AZ,Azerbaijan,1996,7763000
+AZ,Azerbaijan,1997,7838250
+AZ,Azerbaijan,1998,7913000
+AZ,Azerbaijan,1999,7982750
+AZ,Azerbaijan,2000,8048600
+AZ,Azerbaijan,2001,8111200
+AZ,Azerbaijan,2002,8171950
+AZ,Azerbaijan,2003,8234100
+AZ,Azerbaijan,2004,8306500
+AZ,Azerbaijan,2005,8391850
+AZ,Azerbaijan,2006,8484550
+AZ,Azerbaijan,2007,8581300
+AZ,Azerbaijan,2008,8763400
+AZ,Azerbaijan,2009,8947243
+AZ,Azerbaijan,2010,9054332
+AZ,Azerbaijan,2011,9173082
+AZ,Azerbaijan,2012,9295784
+AZ,Azerbaijan,2013,9416801
+AZ,Azerbaijan,2014,9535079
+AZ,Azerbaijan,2015,9649341
+AZ,Azerbaijan,2016,9757812
+AZ,Azerbaijan,2017,9854033
+AZ,Azerbaijan,2018,9939771
+AZ,Azerbaijan,2019,10024283
+AZ,Azerbaijan,2020,10093121
+AZ,Azerbaijan,2021,10137750
+AZ,Azerbaijan,2022,10141756
+AZ,Azerbaijan,2023,10153958
+AZ,Azerbaijan,2024,10202830
+BA,Bosnia and Herzegovina,1960,3238989
+BA,Bosnia and Herzegovina,1961,3297769
+BA,Bosnia and Herzegovina,1962,3368020
+BA,Bosnia and Herzegovina,1963,3443289
+BA,Bosnia and Herzegovina,1964,3516751
+BA,Bosnia and Herzegovina,1965,3590488
+BA,Bosnia and Herzegovina,1966,3664419
+BA,Bosnia and Herzegovina,1967,3734051
+BA,Bosnia and Herzegovina,1968,3750866
+BA,Bosnia and Herzegovina,1969,3710120
+BA,Bosnia and Herzegovina,1970,3708455
+BA,Bosnia and Herzegovina,1971,3760174
+BA,Bosnia and Herzegovina,1972,3817090
+BA,Bosnia and Herzegovina,1973,3871556
+BA,Bosnia and Herzegovina,1974,3924346
+BA,Bosnia and Herzegovina,1975,3977729
+BA,Bosnia and Herzegovina,1976,4032039
+BA,Bosnia and Herzegovina,1977,4084725
+BA,Bosnia and Herzegovina,1978,4133975
+BA,Bosnia and Herzegovina,1979,4147344
+BA,Bosnia and Herzegovina,1980,4125486
+BA,Bosnia and Herzegovina,1981,4136196
+BA,Bosnia and Herzegovina,1982,4180785
+BA,Bosnia and Herzegovina,1983,4225977
+BA,Bosnia and Herzegovina,1984,4271305
+BA,Bosnia and Herzegovina,1985,4315607
+BA,Bosnia and Herzegovina,1986,4358448
+BA,Bosnia and Herzegovina,1987,4400459
+BA,Bosnia and Herzegovina,1988,4441436
+BA,Bosnia and Herzegovina,1989,4480351
+BA,Bosnia and Herzegovina,1990,4508562
+BA,Bosnia and Herzegovina,1991,4452061
+BA,Bosnia and Herzegovina,1992,4320300
+BA,Bosnia and Herzegovina,1993,4188550
+BA,Bosnia and Herzegovina,1994,4056800
+BA,Bosnia and Herzegovina,1995,3925050
+BA,Bosnia and Herzegovina,1996,3793320
+BA,Bosnia and Herzegovina,1997,3638588
+BA,Bosnia and Herzegovina,1998,3619377
+BA,Bosnia and Herzegovina,1999,3721051
+BA,Bosnia and Herzegovina,2000,3771401
+BA,Bosnia and Herzegovina,2001,3801442
+BA,Bosnia and Herzegovina,2002,3821758
+BA,Bosnia and Herzegovina,2003,3833882
+BA,Bosnia and Herzegovina,2004,3839973
+BA,Bosnia and Herzegovina,2005,3842591
+BA,Bosnia and Herzegovina,2006,3843334
+BA,Bosnia and Herzegovina,2007,3843932
+BA,Bosnia and Herzegovina,2008,3843922
+BA,Bosnia and Herzegovina,2009,3844022
+BA,Bosnia and Herzegovina,2010,3843615
+BA,Bosnia and Herzegovina,2011,3841224
+BA,Bosnia and Herzegovina,2012,3837455
+BA,Bosnia and Herzegovina,2013,3833278
+BA,Bosnia and Herzegovina,2014,3828123
+BA,Bosnia and Herzegovina,2015,3670658
+BA,Bosnia and Herzegovina,2016,3512855
+BA,Bosnia and Herzegovina,2017,3505012
+BA,Bosnia and Herzegovina,2018,3496157
+BA,Bosnia and Herzegovina,2022,3452789
+BA,Bosnia and Herzegovina,2023,3429142
+BA,Bosnia and Herzegovina,2024,3411829
+BE,Belgium,1960,9153489
+BE,Belgium,1961,9183948
+BE,Belgium,1962,9220578
+BE,Belgium,1963,9289770
+BE,Belgium,1964,9378113
+BE,Belgium,1965,9463667
+BE,Belgium,1966,9527807
+BE,Belgium,1967,9580991
+BE,Belgium,1968,9618756
+BE,Belgium,1969,9646032
+BE,Belgium,1970,9655549
+BE,Belgium,1971,9673162
+BE,Belgium,1972,9711115
+BE,Belgium,1973,9741720
+BE,Belgium,1974,9772419
+BE,Belgium,1975,9800700
+BE,Belgium,1976,9818227
+BE,Belgium,1977,9830358
+BE,Belgium,1978,9839534
+BE,Belgium,1979,9848382
+BE,Belgium,1980,9859242
+BE,Belgium,1981,9858982
+BE,Belgium,1982,9856303
+BE,Belgium,1983,9855520
+BE,Belgium,1984,9855372
+BE,Belgium,1985,9858308
+BE,Belgium,1986,9861823
+BE,Belgium,1987,9870234
+BE,Belgium,1988,9901664
+BE,Belgium,1989,9937697
+BE,Belgium,1990,9967379
+BE,Belgium,1991,10004486
+BE,Belgium,1992,10045158
+BE,Belgium,1993,10084475
+BE,Belgium,1994,10115603
+BE,Belgium,1995,10136811
+BE,Belgium,1996,10156637
+BE,Belgium,1997,10181245
+BE,Belgium,1998,10203008
+BE,Belgium,1999,10226419
+BE,Belgium,2000,10251250
+BE,Belgium,2001,10286570
+BE,Belgium,2002,10332785
+BE,Belgium,2003,10376133
+BE,Belgium,2004,10421137
+BE,Belgium,2005,10478617
+BE,Belgium,2006,10547958
+BE,Belgium,2007,10625700
+BE,Belgium,2008,10709973
+BE,Belgium,2009,10796493
+BE,Belgium,2010,10895586
+BE,Belgium,2011,11038264
+BE,Belgium,2012,11106932
+BE,Belgium,2013,11170983
+BE,Belgium,2014,11209057
+BE,Belgium,2015,11274196
+BE,Belgium,2016,11331422
+BE,Belgium,2017,11375158
+BE,Belgium,2018,11427054
+BE,Belgium,2019,11488980
+BE,Belgium,2020,11538604
+BE,Belgium,2021,11586195
+BE,Belgium,2022,11680210
+BE,Belgium,2023,11779946
+BE,Belgium,2024,11850296
+BG,Bulgaria,1960,7867374
+BG,Bulgaria,1961,7943118
+BG,Bulgaria,1962,8012946
+BG,Bulgaria,1963,8078145
+BG,Bulgaria,1964,8144340
+BG,Bulgaria,1965,8204168
+BG,Bulgaria,1966,8258057
+BG,Bulgaria,1967,8310226
+BG,Bulgaria,1968,8369603
+BG,Bulgaria,1969,8434172
+BG,Bulgaria,1970,8489574
+BG,Bulgaria,1971,8536395
+BG,Bulgaria,1972,8576200
+BG,Bulgaria,1973,8620967
+BG,Bulgaria,1974,8678745
+BG,Bulgaria,1975,8720742
+BG,Bulgaria,1976,8758599
+BG,Bulgaria,1977,8804183
+BG,Bulgaria,1978,8814032
+BG,Bulgaria,1979,8825940
+BG,Bulgaria,1980,8861535
+BG,Bulgaria,1981,8891117
+BG,Bulgaria,1982,8917457
+BG,Bulgaria,1983,8939738
+BG,Bulgaria,1984,8960679
+BG,Bulgaria,1985,8960547
+BG,Bulgaria,1986,8958171
+BG,Bulgaria,1987,8971359
+BG,Bulgaria,1988,8981446
+BG,Bulgaria,1989,8876972
+BG,Bulgaria,1990,8718289
+BG,Bulgaria,1991,8632367
+BG,Bulgaria,1992,8540164
+BG,Bulgaria,1993,8472313
+BG,Bulgaria,1994,8443591
+BG,Bulgaria,1995,8406067
+BG,Bulgaria,1996,8362826
+BG,Bulgaria,1997,8312068
+BG,Bulgaria,1998,8256786
+BG,Bulgaria,1999,8210624
+BG,Bulgaria,2000,8170172
+BG,Bulgaria,2001,8009142
+BG,Bulgaria,2002,7837161
+BG,Bulgaria,2003,7775327
+BG,Bulgaria,2004,7716860
+BG,Bulgaria,2005,7658972
+BG,Bulgaria,2006,7601022
+BG,Bulgaria,2007,7545338
+BG,Bulgaria,2008,7492561
+BG,Bulgaria,2009,7444443
+BG,Bulgaria,2010,7395599
+BG,Bulgaria,2011,7348328
+BG,Bulgaria,2012,7305888
+BG,Bulgaria,2013,7160005
+BG,Bulgaria,2014,7073572
+BG,Bulgaria,2015,6984225
+BG,Bulgaria,2016,6894139
+BG,Bulgaria,2017,6803468
+BG,Bulgaria,2018,6710798
+BG,Bulgaria,2019,6616726
+BG,Bulgaria,2020,6550696
+BG,Bulgaria,2021,6507301
+BG,Bulgaria,2022,6465097
+BG,Bulgaria,2023,6446596
+BG,Bulgaria,2024,6441421
+BY,Belarus,1996,10159569
+BY,Belarus,1997,10117433
+BY,Belarus,1998,10069112
+BY,Belarus,1999,10032359
+BY,Belarus,2000,10004958
+BY,Belarus,2001,9970688
+BY,Belarus,2002,9924766
+BY,Belarus,2003,9873826
+BY,Belarus,2004,9824568
+BY,Belarus,2005,9775307
+BY,Belarus,2006,9732501
+BY,Belarus,2007,9702116
+BY,Belarus,2008,9680841
+BY,Belarus,2009,9576045
+BY,Belarus,2010,9480686
+BY,Belarus,2011,9473172
+BY,Belarus,2012,9464495
+BY,Belarus,2013,9465997
+BY,Belarus,2014,9474511
+BY,Belarus,2015,9489616
+BY,Belarus,2016,9501534
+BY,Belarus,2017,9498264
+BY,Belarus,2018,9483499
+BY,Belarus,2019,9441762
+CH,Switzerland,1960,5327827
+CH,Switzerland,1961,5434294
+CH,Switzerland,1962,5573815
+CH,Switzerland,1963,5694247
+CH,Switzerland,1964,5789228
+CH,Switzerland,1965,5856472
+CH,Switzerland,1966,5918002
+CH,Switzerland,1967,5991785
+CH,Switzerland,1968,6067714
+CH,Switzerland,1969,6136387
+CH,Switzerland,1970,6180877
+CH,Switzerland,1971,6213399
+CH,Switzerland,1972,6260956
+CH,Switzerland,1973,6307347
+CH,Switzerland,1974,6341405
+CH,Switzerland,1975,6338632
+CH,Switzerland,1976,6302504
+CH,Switzerland,1977,6281174
+CH,Switzerland,1978,6281738
+CH,Switzerland,1979,6294365
+CH,Switzerland,1980,6319408
+CH,Switzerland,1981,6354074
+CH,Switzerland,1982,6391309
+CH,Switzerland,1983,6418773
+CH,Switzerland,1984,6441865
+CH,Switzerland,1985,6470365
+CH,Switzerland,1986,6504124
+CH,Switzerland,1987,6545106
+CH,Switzerland,1988,6593386
+CH,Switzerland,1989,6646912
+CH,Switzerland,1990,6715519
+CH,Switzerland,1991,6799978
+CH,Switzerland,1992,6875364
+CH,Switzerland,1993,6938265
+CH,Switzerland,1994,6993795
+CH,Switzerland,1995,7040687
+CH,Switzerland,1996,7071850
+CH,Switzerland,1997,7088906
+CH,Switzerland,1998,7110001
+CH,Switzerland,1999,7143991
+CH,Switzerland,2000,7184250
+CH,Switzerland,2001,7229854
+CH,Switzerland,2002,7284753
+CH,Switzerland,2003,7339001
+CH,Switzerland,2004,7389625
+CH,Switzerland,2005,7437115
+CH,Switzerland,2006,7483934
+CH,Switzerland,2007,7551117
+CH,Switzerland,2008,7647675
+CH,Switzerland,2009,7743831
+CH,Switzerland,2010,7824909
+CH,Switzerland,2011,7912398
+CH,Switzerland,2012,7996861
+CH,Switzerland,2013,8089346
+CH,Switzerland,2014,8188649
+CH,Switzerland,2015,8282396
+CH,Switzerland,2016,8373338
+CH,Switzerland,2017,8451840
+CH,Switzerland,2018,8514329
+CH,Switzerland,2019,8575280
+CH,Switzerland,2020,8638167
+CH,Switzerland,2021,8704546
+CH,Switzerland,2022,8777088
+CH,Switzerland,2023,8888822
+CH,Switzerland,2024,9006644
+CY,Cyprus,1960,572783
+CY,Cyprus,1961,574733
+CY,Cyprus,1962,577400
+CY,Cyprus,1963,582200
+CY,Cyprus,1964,586950
+CY,Cyprus,1965,590800
+CY,Cyprus,1966,595150
+CY,Cyprus,1967,599450
+CY,Cyprus,1968,604300
+CY,Cyprus,1969,609400
+CY,Cyprus,1970,614450
+CY,Cyprus,1971,620000
+CY,Cyprus,1972,627439
+CY,Cyprus,1973,634789
+CY,Cyprus,1974,629700
+CY,Cyprus,1975,501790
+CY,Cyprus,1976,497740
+CY,Cyprus,1977,497800
+CY,Cyprus,1978,499650
+CY,Cyprus,1979,503550
+CY,Cyprus,1980,509050
+CY,Cyprus,1981,517573
+CY,Cyprus,1982,523734
+CY,Cyprus,1983,528071
+CY,Cyprus,1984,534958
+CY,Cyprus,1985,541501
+CY,Cyprus,1986,547747
+CY,Cyprus,1987,553736
+CY,Cyprus,1988,559639
+CY,Cyprus,1989,567674
+CY,Cyprus,1990,579898
+CY,Cyprus,1991,595105
+CY,Cyprus,1992,611150
+CY,Cyprus,1993,626088
+CY,Cyprus,1994,639172
+CY,Cyprus,1995,650866
+CY,Cyprus,1996,661323
+CY,Cyprus,1997,670764
+CY,Cyprus,1998,679039
+CY,Cyprus,1999,686680
+CY,Cyprus,2000,694023
+CY,Cyprus,2001,701544
+CY,Cyprus,2002,709630
+CY,Cyprus,2003,718307
+CY,Cyprus,2004,727980
+CY,Cyprus,2005,738540
+CY,Cyprus,2006,750965
+CY,Cyprus,2007,767125
+CY,Cyprus,2008,786632
+CY,Cyprus,2009,808035
+CY,Cyprus,2010,829446
+CY,Cyprus,2011,850881
+CY,Cyprus,2012,863945
+CY,Cyprus,2013,861443
+CY,Cyprus,2014,860439
+CY,Cyprus,2015,862305
+CY,Cyprus,2016,866821
+CY,Cyprus,2017,874240
+CY,Cyprus,2018,884398
+CY,Cyprus,2019,896312
+CY,Cyprus,2020,908453
+CY,Cyprus,2021,922120
+CY,Cyprus,2022,939424
+CY,Cyprus,2023,957725
+CY,Cyprus,2024,974666
+CZ,Czechia,1960,9602006
+CZ,Czechia,1961,9586651
+CZ,Czechia,1962,9624660
+CZ,Czechia,1963,9670685
+CZ,Czechia,1964,9727804
+CZ,Czechia,1965,9779358
+CZ,Czechia,1966,9821040
+CZ,Czechia,1967,9852899
+CZ,Czechia,1968,9876346
+CZ,Czechia,1969,9896580
+CZ,Czechia,1970,9858071
+CZ,Czechia,1971,9826815
+CZ,Czechia,1972,9867632
+CZ,Czechia,1973,9922266
+CZ,Czechia,1974,9988459
+CZ,Czechia,1975,10058620
+CZ,Czechia,1976,10125939
+CZ,Czechia,1977,10186755
+CZ,Czechia,1978,10242098
+CZ,Czechia,1979,10292341
+CZ,Czechia,1980,10304193
+CZ,Czechia,1981,10300591
+CZ,Czechia,1982,10314826
+CZ,Czechia,1983,10323856
+CZ,Czechia,1984,10330213
+CZ,Czechia,1985,10337118
+CZ,Czechia,1986,10342227
+CZ,Czechia,1987,10347318
+CZ,Czechia,1988,10355276
+CZ,Czechia,1989,10361068
+CZ,Czechia,1990,10333355
+CZ,Czechia,1991,10308578
+CZ,Czechia,1992,10319123
+CZ,Czechia,1993,10329855
+CZ,Czechia,1994,10333587
+CZ,Czechia,1995,10327253
+CZ,Czechia,1996,10315241
+CZ,Czechia,1997,10304131
+CZ,Czechia,1998,10294373
+CZ,Czechia,1999,10283860
+CZ,Czechia,2000,10255063
+CZ,Czechia,2001,10216605
+CZ,Czechia,2002,10196916
+CZ,Czechia,2003,10193998
+CZ,Czechia,2004,10197101
+CZ,Czechia,2005,10211216
+CZ,Czechia,2006,10238905
+CZ,Czechia,2007,10298828
+CZ,Czechia,2008,10384603
+CZ,Czechia,2009,10443936
+CZ,Czechia,2010,10474410
+CZ,Czechia,2011,10496088
+CZ,Czechia,2012,10510785
+CZ,Czechia,2013,10514272
+CZ,Czechia,2014,10525347
+CZ,Czechia,2015,10546059
+CZ,Czechia,2016,10566332
+CZ,Czechia,2017,10594438
+CZ,Czechia,2018,10629928
+CZ,Czechia,2019,10671870
+CZ,Czechia,2020,10697858
+CZ,Czechia,2021,10505772
+CZ,Czechia,2022,10672118
+CZ,Czechia,2023,10864042
+CZ,Czechia,2024,10905028
+DE,Germany,1960,55607705
+DE,Germany,1961,56273735
+DE,Germany,1962,56918197
+DE,Germany,1963,57555878
+DE,Germany,1964,58225980
+DE,Germany,1965,58942021
+DE,Germany,1966,59544763
+DE,Germany,1967,59870704
+DE,Germany,1968,60205754
+DE,Germany,1969,60828812
+DE,Germany,1970,61097878
+DE,Germany,1971,61251834
+DE,Germany,1972,61655931
+DE,Germany,1973,61955369
+DE,Germany,1974,62046427
+DE,Germany,1975,61818050
+DE,Germany,1976,61543310
+DE,Germany,1977,61397371
+DE,Germany,1978,61337204
+DE,Germany,1979,61380501
+DE,Germany,1980,61548645
+DE,Germany,1981,61685321
+DE,Germany,1982,61629395
+DE,Germany,1983,61426385
+DE,Germany,1984,61177963
+DE,Germany,1985,61034865
+DE,Germany,1986,61080468
+DE,Germany,1987,61189270
+DE,Germany,1988,61476591
+DE,Germany,1989,62197069
+DE,Germany,1990,63202344
+DE,Germany,1991,80013896
+DE,Germany,1992,80624598
+DE,Germany,1993,81156363
+DE,Germany,1994,81438348
+DE,Germany,1995,81678051
+DE,Germany,1996,81914831
+DE,Germany,1997,82034771
+DE,Germany,1998,82047195
+DE,Germany,1999,82100243
+DE,Germany,2000,82211508
+DE,Germany,2001,82349925
+DE,Germany,2002,82488495
+DE,Germany,2003,82534176
+DE,Germany,2004,82516260
+DE,Germany,2005,82469422
+DE,Germany,2006,82376451
+DE,Germany,2007,82266372
+DE,Germany,2008,82110097
+DE,Germany,2009,81902307
+DE,Germany,2010,81776930
+DE,Germany,2011,80274983
+DE,Germany,2012,80425823
+DE,Germany,2013,80645605
+DE,Germany,2014,80982500
+DE,Germany,2015,81686611
+DE,Germany,2016,82348669
+DE,Germany,2017,82657002
+DE,Germany,2018,82905782
+DE,Germany,2019,83092962
+DE,Germany,2020,83160871
+DE,Germany,2021,83196078
+DE,Germany,2022,83177813
+DE,Germany,2023,83287273
+DE,Germany,2024,83516593
+DE_TOT,Germany including former GDR,1960,72814900
+DE_TOT,Germany including former GDR,1961,73377632
+DE_TOT,Germany including former GDR,1962,74025784
+DE_TOT,Germany including former GDR,1963,74714353
+DE_TOT,Germany including former GDR,1964,75318337
+DE_TOT,Germany including former GDR,1965,75963695
+DE_TOT,Germany including former GDR,1966,76600311
+DE_TOT,Germany including former GDR,1967,76951336
+DE_TOT,Germany including former GDR,1968,77294314
+DE_TOT,Germany including former GDR,1969,77909682
+DE_TOT,Germany including former GDR,1970,78169289
+DE_TOT,Germany including former GDR,1971,78312842
+DE_TOT,Germany including former GDR,1972,78688452
+DE_TOT,Germany including former GDR,1973,78936666
+DE_TOT,Germany including former GDR,1974,78967433
+DE_TOT,Germany including former GDR,1975,78673554
+DE_TOT,Germany including former GDR,1976,78336950
+DE_TOT,Germany including former GDR,1977,78159814
+DE_TOT,Germany including former GDR,1978,78091820
+DE_TOT,Germany including former GDR,1979,78126350
+DE_TOT,Germany including former GDR,1980,78288576
+DE_TOT,Germany including former GDR,1981,78407907
+DE_TOT,Germany including former GDR,1982,78333366
+DE_TOT,Germany including former GDR,1983,78128282
+DE_TOT,Germany including former GDR,1984,77858685
+DE_TOT,Germany including former GDR,1985,77684873
+DE_TOT,Germany including former GDR,1986,77720436
+DE_TOT,Germany including former GDR,1987,77839920
+DE_TOT,Germany including former GDR,1988,78144619
+DE_TOT,Germany including former GDR,1989,78751283
+DE_TOT,Germany including former GDR,1990,79433029
+DE_TOT,Germany including former GDR,1991,80013896
+DE_TOT,Germany including former GDR,1992,80624598
+DE_TOT,Germany including former GDR,1993,81156363
+DE_TOT,Germany including former GDR,1994,81438348
+DE_TOT,Germany including former GDR,1995,81678051
+DE_TOT,Germany including former GDR,1996,81914831
+DE_TOT,Germany including former GDR,1997,82034771
+DE_TOT,Germany including former GDR,1998,82047195
+DE_TOT,Germany including former GDR,1999,82100243
+DE_TOT,Germany including former GDR,2000,82211508
+DE_TOT,Germany including former GDR,2001,82349925
+DE_TOT,Germany including former GDR,2002,82488495
+DE_TOT,Germany including former GDR,2003,82534176
+DE_TOT,Germany including former GDR,2004,82516260
+DE_TOT,Germany including former GDR,2005,82469422
+DE_TOT,Germany including former GDR,2006,82376451
+DE_TOT,Germany including former GDR,2007,82266372
+DE_TOT,Germany including former GDR,2008,82110097
+DE_TOT,Germany including former GDR,2009,81902307
+DE_TOT,Germany including former GDR,2010,81776930
+DE_TOT,Germany including former GDR,2011,80274983
+DE_TOT,Germany including former GDR,2012,80425823
+DE_TOT,Germany including former GDR,2013,80645605
+DE_TOT,Germany including former GDR,2014,80982500
+DE_TOT,Germany including former GDR,2015,81686611
+DE_TOT,Germany including former GDR,2016,82348669
+DE_TOT,Germany including former GDR,2017,82657002
+DE_TOT,Germany including former GDR,2018,82905782
+DE_TOT,Germany including former GDR,2019,83092962
+DE_TOT,Germany including former GDR,2020,83160871
+DE_TOT,Germany including former GDR,2021,83196078
+DE_TOT,Germany including former GDR,2022,83177813
+DE_TOT,Germany including former GDR,2023,83287273
+DE_TOT,Germany including former GDR,2024,83516593
+DK,Denmark,1960,4579603
+DK,Denmark,1961,4611687
+DK,Denmark,1962,4647727
+DK,Denmark,1963,4684483
+DK,Denmark,1964,4722072
+DK,Denmark,1965,4759012
+DK,Denmark,1966,4797381
+DK,Denmark,1967,4835354
+DK,Denmark,1968,4864883
+DK,Denmark,1969,4891860
+DK,Denmark,1970,4928757
+DK,Denmark,1971,4963126
+DK,Denmark,1972,4991596
+DK,Denmark,1973,5021861
+DK,Denmark,1974,5045297
+DK,Denmark,1975,5059862
+DK,Denmark,1976,5072596
+DK,Denmark,1977,5088419
+DK,Denmark,1978,5104248
+DK,Denmark,1979,5116801
+DK,Denmark,1980,5123027
+DK,Denmark,1981,5121572
+DK,Denmark,1982,5117810
+DK,Denmark,1983,5114297
+DK,Denmark,1984,5111619
+DK,Denmark,1985,5113691
+DK,Denmark,1986,5120534
+DK,Denmark,1987,5127024
+DK,Denmark,1988,5129516
+DK,Denmark,1989,5132594
+DK,Denmark,1990,5140939
+DK,Denmark,1991,5154298
+DK,Denmark,1992,5171370
+DK,Denmark,1993,5188628
+DK,Denmark,1994,5206180
+DK,Denmark,1995,5233373
+DK,Denmark,1996,5263074
+DK,Denmark,1997,5284991
+DK,Denmark,1998,5304219
+DK,Denmark,1999,5321799
+DK,Denmark,2000,5339616
+DK,Denmark,2001,5358783
+DK,Denmark,2002,5375931
+DK,Denmark,2003,5390574
+DK,Denmark,2004,5404523
+DK,Denmark,2005,5419432
+DK,Denmark,2006,5437272
+DK,Denmark,2007,5461438
+DK,Denmark,2008,5493621
+DK,Denmark,2009,5523095
+DK,Denmark,2010,5547683
+DK,Denmark,2011,5570572
+DK,Denmark,2012,5591572
+DK,Denmark,2013,5614932
+DK,Denmark,2014,5643475
+DK,Denmark,2015,5683483
+DK,Denmark,2016,5728010
+DK,Denmark,2017,5764980
+DK,Denmark,2018,5793636
+DK,Denmark,2019,5814422
+DK,Denmark,2020,5831404
+DK,Denmark,2021,5856733
+DK,Denmark,2022,5903037
+DK,Denmark,2023,5946952
+DK,Denmark,2024,5976992
+EA19,Euro area - 19 countries  (2015-2022),1960,264266345
+EA19,Euro area - 19 countries  (2015-2022),1961,266541724
+EA19,Euro area - 19 countries  (2015-2022),1962,269202591
+EA19,Euro area - 19 countries  (2015-2022),1963,271893272
+EA19,Euro area - 19 countries  (2015-2022),1964,274251532
+EA19,Euro area - 19 countries  (2015-2022),1965,276600559
+EA19,Euro area - 19 countries  (2015-2022),1966,278812284
+EA19,Euro area - 19 countries  (2015-2022),1967,280755536
+EA19,Euro area - 19 countries  (2015-2022),1968,282612110
+EA19,Euro area - 19 countries  (2015-2022),1969,284538066
+EA19,Euro area - 19 countries  (2015-2022),1970,286153764
+EA19,Euro area - 19 countries  (2015-2022),1971,287802313
+EA19,Euro area - 19 countries  (2015-2022),1972,289781811
+EA19,Euro area - 19 countries  (2015-2022),1973,291638481
+EA19,Euro area - 19 countries  (2015-2022),1974,293254723
+EA19,Euro area - 19 countries  (2015-2022),1975,294543345
+EA19,Euro area - 19 countries  (2015-2022),1976,295780387
+EA19,Euro area - 19 countries  (2015-2022),1977,296951704
+EA19,Euro area - 19 countries  (2015-2022),1978,298163692
+EA19,Euro area - 19 countries  (2015-2022),1979,299399147
+EA19,Euro area - 19 countries  (2015-2022),1980,300726357
+EA19,Euro area - 19 countries  (2015-2022),1981,301923054
+EA19,Euro area - 19 countries  (2015-2022),1982,302779831
+EA19,Euro area - 19 countries  (2015-2022),1983,303370136
+EA19,Euro area - 19 countries  (2015-2022),1984,303824791
+EA19,Euro area - 19 countries  (2015-2022),1985,304345118
+EA19,Euro area - 19 countries  (2015-2022),1986,305046431
+EA19,Euro area - 19 countries  (2015-2022),1987,305840048
+EA19,Euro area - 19 countries  (2015-2022),1988,306830509
+EA19,Euro area - 19 countries  (2015-2022),1989,308137412
+EA19,Euro area - 19 countries  (2015-2022),1990,309549004
+EA19,Euro area - 19 countries  (2015-2022),1991,310936404
+EA19,Euro area - 19 countries  (2015-2022),1992,312361226
+EA19,Euro area - 19 countries  (2015-2022),1993,313616757
+EA19,Euro area - 19 countries  (2015-2022),1994,314500421
+EA19,Euro area - 19 countries  (2015-2022),1995,315279278
+EA19,Euro area - 19 countries  (2015-2022),1996,316063802
+EA19,Euro area - 19 countries  (2015-2022),1997,316783974
+EA19,Euro area - 19 countries  (2015-2022),1998,319064738
+EA19,Euro area - 19 countries  (2015-2022),1999,319874591
+EA19,Euro area - 19 countries  (2015-2022),2000,320911189
+EA19,Euro area - 19 countries  (2015-2022),2001,322136265
+EA19,Euro area - 19 countries  (2015-2022),2002,323727610
+EA19,Euro area - 19 countries  (2015-2022),2003,325529964
+EA19,Euro area - 19 countries  (2015-2022),2004,327370586
+EA19,Euro area - 19 countries  (2015-2022),2005,329110392
+EA19,Euro area - 19 countries  (2015-2022),2006,330700640
+EA19,Euro area - 19 countries  (2015-2022),2007,332468615
+EA19,Euro area - 19 countries  (2015-2022),2008,334167965
+EA19,Euro area - 19 countries  (2015-2022),2009,335328429
+EA19,Euro area - 19 countries  (2015-2022),2010,336201579
+EA19,Euro area - 19 countries  (2015-2022),2011,335586425
+EA19,Euro area - 19 countries  (2015-2022),2012,336328275
+EA19,Euro area - 19 countries  (2015-2022),2013,336884801
+EA19,Euro area - 19 countries  (2015-2022),2014,337704144
+EA19,Euro area - 19 countries  (2015-2022),2015,338695317
+EA19,Euro area - 19 countries  (2015-2022),2016,339686877
+EA19,Euro area - 19 countries  (2015-2022),2017,340428557
+EA19,Euro area - 19 countries  (2015-2022),2018,341268885
+EA19,Euro area - 19 countries  (2015-2022),2019,342225029
+EA19,Euro area - 19 countries  (2015-2022),2020,342765904
+EA19,Euro area - 19 countries  (2015-2022),2021,343047140
+EA19,Euro area - 19 countries  (2015-2022),2022,343988023
+EA19,Euro area - 19 countries  (2015-2022),2023,345515780
+EA19,Euro area - 19 countries  (2015-2022),2024,346910562
+EA20,Euro area – 20 countries (2023-2025),2000,325379491
+EA20,Euro area – 20 countries (2023-2025),2001,326436715
+EA20,Euro area – 20 countries (2023-2025),2002,328033049
+EA20,Euro area – 20 countries (2023-2025),2003,329835519
+EA20,Euro area – 20 countries (2023-2025),2004,331678879
+EA20,Euro area – 20 countries (2023-2025),2005,333422066
+EA20,Euro area – 20 countries (2023-2025),2006,335013649
+EA20,Euro area – 20 countries (2023-2025),2007,336781363
+EA20,Euro area – 20 countries (2023-2025),2008,338478847
+EA20,Euro area – 20 countries (2023-2025),2009,339634751
+EA20,Euro area – 20 countries (2023-2025),2010,340497931
+EA20,Euro area – 20 countries (2023-2025),2011,339869346
+EA20,Euro area – 20 countries (2023-2025),2012,340590168
+EA20,Euro area – 20 countries (2023-2025),2013,341089457
+EA20,Euro area – 20 countries (2023-2025),2014,341867173
+EA20,Euro area – 20 countries (2023-2025),2015,342806377
+EA20,Euro area – 20 countries (2023-2025),2016,343737320
+EA20,Euro area – 20 countries (2023-2025),2017,344407864
+EA20,Euro area – 20 countries (2023-2025),2018,345178786
+EA20,Euro area – 20 countries (2023-2025),2019,346078399
+EA20,Euro area – 20 countries (2023-2025),2020,346553159
+EA20,Euro area – 20 countries (2023-2025),2021,346863161
+EA20,Euro area – 20 countries (2023-2025),2022,347897882
+EA20,Euro area – 20 countries (2023-2025),2023,349512613
+EA20,Euro area – 20 countries (2023-2025),2024,350998608
+EA21,Euro area – 21 countries (from 2026),2013,348249462
+EA21,Euro area – 21 countries (from 2026),2014,348940744
+EA21,Euro area – 21 countries (from 2026),2015,349790602
+EA21,Euro area – 21 countries (from 2026),2016,350631458
+EA21,Euro area – 21 countries (from 2026),2017,351211332
+EA21,Euro area – 21 countries (from 2026),2018,351889584
+EA21,Euro area – 21 countries (from 2026),2019,352695125
+EA21,Euro area – 21 countries (from 2026),2020,353103855
+EA21,Euro area – 21 countries (from 2026),2021,353370462
+EA21,Euro area – 21 countries (from 2026),2022,354362979
+EA21,Euro area – 21 countries (from 2026),2023,355959208
+EA21,Euro area – 21 countries (from 2026),2024,357440029
+EE,Estonia,1960,1211537
+EE,Estonia,1961,1225077
+EE,Estonia,1962,1241623
+EE,Estonia,1963,1258857
+EE,Estonia,1964,1277086
+EE,Estonia,1965,1294566
+EE,Estonia,1966,1308597
+EE,Estonia,1967,1318946
+EE,Estonia,1968,1331214
+EE,Estonia,1969,1345249
+EE,Estonia,1970,1360076
+EE,Estonia,1971,1376955
+EE,Estonia,1972,1392518
+EE,Estonia,1973,1405951
+EE,Estonia,1974,1418169
+EE,Estonia,1975,1429352
+EE,Estonia,1976,1439576
+EE,Estonia,1977,1450211
+EE,Estonia,1978,1460188
+EE,Estonia,1979,1468333
+EE,Estonia,1980,1477219
+EE,Estonia,1981,1487666
+EE,Estonia,1982,1498414
+EE,Estonia,1983,1508745
+EE,Estonia,1984,1518617
+EE,Estonia,1985,1528781
+EE,Estonia,1986,1540190
+EE,Estonia,1987,1552221
+EE,Estonia,1988,1561900
+EE,Estonia,1989,1568131
+EE,Estonia,1990,1569174
+EE,Estonia,1991,1561314
+EE,Estonia,1992,1533091
+EE,Estonia,1993,1494128
+EE,Estonia,1994,1462514
+EE,Estonia,1995,1436634
+EE,Estonia,1996,1415594
+EE,Estonia,1997,1399535
+EE,Estonia,1998,1386156
+EE,Estonia,1999,1390244
+EE,Estonia,2000,1396985
+EE,Estonia,2001,1388115
+EE,Estonia,2002,1379350
+EE,Estonia,2003,1370720
+EE,Estonia,2004,1362550
+EE,Estonia,2005,1354775
+EE,Estonia,2006,1346810
+EE,Estonia,2007,1340680
+EE,Estonia,2008,1337090
+EE,Estonia,2009,1334515
+EE,Estonia,2010,1331475
+EE,Estonia,2011,1327439
+EE,Estonia,2012,1322696
+EE,Estonia,2013,1317997
+EE,Estonia,2014,1314545
+EE,Estonia,2015,1314608
+EE,Estonia,2016,1315790
+EE,Estonia,2017,1317384
+EE,Estonia,2018,1321977
+EE,Estonia,2019,1326855
+EE,Estonia,2020,1329479
+EE,Estonia,2021,1330932
+EE,Estonia,2022,1348840
+EE,Estonia,2023,1370286
+EE,Estonia,2024,1372341
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2000,488158049
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2001,489135961
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2002,490411897
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2003,492292568
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2004,494330050
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2005,496357762
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2006,498311054
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2007,500360073
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2008,502388300
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2009,504039391
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2010,505296763
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2011,505200357
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2012,506325842
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2013,507240690
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1960,412141296
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1961,415523383
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1962,419380838
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1963,423274668
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1964,426840466
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1965,430265033
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1966,433499055
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1967,436645695
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1968,439601653
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1969,442490314
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1970,444902418
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1971,447297822
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1972,450152537
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1973,452825225
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1974,455258779
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1975,457411333
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1976,459484683
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1977,461418287
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1978,463286380
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1979,465135319
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1980,467071465
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1981,468821809
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1982,470189721
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1983,471281766
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1984,472285246
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1985,473362941
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1986,474601330
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1987,475915885
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1988,477382582
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1989,478957757
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1990,480537022
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1991,481932427
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1992,483320547
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1993,484833207
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1994,486031615
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1995,486977631
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1996,487805885
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1997,488584741
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1998,490964941
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",1999,491885167
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2000,492626351
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2001,493436411
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2002,494717336
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2003,496598123
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2004,498638343
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2005,500669436
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2006,502624062
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2007,504672822
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2008,506699182
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2009,508345712
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2010,509593115
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2011,509483278
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2012,510587735
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2013,511472912
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2014,512700032
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2015,514138487
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2016,515556391
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2017,516703179
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2018,517888876
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2019,519173322
+EFTA,European Free Trade Association,1960,9101091
+EFTA,European Free Trade Association,1961,9240000
+EFTA,European Free Trade Association,1962,9412554
+EFTA,European Free Trade Association,1963,9564530
+EFTA,European Free Trade Association,1964,9691305
+EFTA,European Free Trade Association,1965,9791121
+EFTA,European Free Trade Association,1966,9886194
+EFTA,European Free Trade Association,1967,9995250
+EFTA,European Free Trade Association,1968,10106523
+EFTA,European Free Trade Association,1969,10208547
+EFTA,European Free Trade Association,1970,10282218
+EFTA,European Free Trade Association,1971,10344136
+EFTA,European Free Trade Association,1972,10425229
+EFTA,European Free Trade Association,1973,10503061
+EFTA,European Free Trade Association,1974,10565323
+EFTA,European Free Trade Association,1975,10587770
+EFTA,European Free Trade Association,1976,10572868
+EFTA,European Free Trade Association,1977,10570620
+EFTA,European Free Trade Association,1978,10588974
+EFTA,European Free Trade Association,1979,10618192
+EFTA,European Free Trade Association,1980,10658678
+EFTA,European Free Trade Association,1981,10710204
+EFTA,European Free Trade Association,1982,10766211
+EFTA,European Free Trade Association,1983,10810628
+EFTA,European Free Trade Association,1984,10848071
+EFTA,European Free Trade Association,1985,10891164
+EFTA,European Free Trade Association,1986,10941896
+EFTA,European Free Trade Association,1987,11005427
+EFTA,European Free Trade Association,1988,11080562
+EFTA,European Free Trade Association,1989,11154982
+EFTA,European Free Trade Association,1990,11240560
+EFTA,European Free Trade Association,1991,11348716
+EFTA,European Free Trade Association,1992,11452449
+EFTA,European Free Trade Association,1993,11544070
+EFTA,European Free Trade Association,1994,11626899
+EFTA,European Free Trade Association,1995,11698115
+EFTA,European Free Trade Association,1996,11753135
+EFTA,European Free Trade Association,1997,11796423
+EFTA,European Free Trade Association,1998,11847180
+EFTA,European Free Trade Association,1999,11915506
+EFTA,European Free Trade Association,2000,11989066
+EFTA,European Free Trade Association,2001,12061767
+EFTA,European Free Trade Association,2002,12144129
+EFTA,European Free Trade Association,2003,12227454
+EFTA,European Free Trade Association,2004,12308056
+EFTA,European Free Trade Association,2005,12391893
+EFTA,European Free Trade Association,2006,12483428
+EFTA,European Free Trade Association,2007,12607097
+EFTA,European Free Trade Association,2008,12768773
+EFTA,European Free Trade Association,2009,12926797
+EFTA,European Free Trade Association,2010,13068224
+EFTA,European Free Trade Association,2011,13220811
+EFTA,European Free Trade Association,2012,13372806
+EFTA,European Free Trade Association,2013,13530259
+EFTA,European Free Trade Association,2014,13690711
+EFTA,European Free Trade Association,2015,13840598
+EFTA,European Free Trade Association,2016,13982644
+EFTA,European Free Trade Association,2017,14110170
+EFTA,European Free Trade Association,2018,14217211
+EFTA,European Free Trade Association,2019,14322301
+EFTA,European Free Trade Association,2020,14423005
+EFTA,European Free Trade Association,2021,14524567
+EFTA,European Free Trade Association,2022,14655711
+EFTA,European Free Trade Association,2023,14833924
+EFTA,European Free Trade Association,2024,15005871
+EL,Greece,1960,8331725
+EL,Greece,1961,8398050
+EL,Greece,1962,8448233
+EL,Greece,1963,8479625
+EL,Greece,1964,8510429
+EL,Greece,1965,8550333
+EL,Greece,1966,8613651
+EL,Greece,1967,8684088
+EL,Greece,1968,8740765
+EL,Greece,1969,8772764
+EL,Greece,1970,8792806
+EL,Greece,1971,8831036
+EL,Greece,1972,8888628
+EL,Greece,1973,8929086
+EL,Greece,1974,8962022
+EL,Greece,1975,9046541
+EL,Greece,1976,9188150
+EL,Greece,1977,9308479
+EL,Greece,1978,9429959
+EL,Greece,1979,9548258
+EL,Greece,1980,9642505
+EL,Greece,1981,9729350
+EL,Greece,1982,9789513
+EL,Greece,1983,9846627
+EL,Greece,1984,9895801
+EL,Greece,1985,9934300
+EL,Greece,1986,9967213
+EL,Greece,1987,10000595
+EL,Greece,1988,10036983
+EL,Greece,1989,10089498
+EL,Greece,1990,10196792
+EL,Greece,1991,10319927
+EL,Greece,1992,10399061
+EL,Greece,1993,10460415
+EL,Greece,1994,10512922
+EL,Greece,1995,10562153
+EL,Greece,1996,10608800
+EL,Greece,1997,10661259
+EL,Greece,1998,10720509
+EL,Greece,1999,10761698
+EL,Greece,2000,10805808
+EL,Greece,2001,10862132
+EL,Greece,2002,10902022
+EL,Greece,2003,10928070
+EL,Greece,2004,10955141
+EL,Greece,2005,10987314
+EL,Greece,2006,11020362
+EL,Greece,2007,11048473
+EL,Greece,2008,11077841
+EL,Greece,2009,11107017
+EL,Greece,2010,11121341
+EL,Greece,2011,11104899
+EL,Greece,2012,11045011
+EL,Greece,2013,10937150
+EL,Greece,2014,10856168
+EL,Greece,2015,10776728
+EL,Greece,2016,10721471
+EL,Greece,2017,10687432
+EL,Greece,2018,10651275
+EL,Greece,2019,10623902
+EL,Greece,2020,10583968
+EL,Greece,2021,10508486
+EL,Greece,2022,10431748
+EL,Greece,2023,10388816
+EL,Greece,2024,10374050
+ES,Spain,1960,30455000
+ES,Spain,1961,30739250
+ES,Spain,1962,31023366
+ES,Spain,1963,31296651
+ES,Spain,1964,31609195
+ES,Spain,1965,31954292
+ES,Spain,1966,32283194
+ES,Spain,1967,32682947
+ES,Spain,1968,33113134
+ES,Spain,1969,33441054
+ES,Spain,1970,33814126
+ES,Spain,1971,34224490
+ES,Spain,1972,34604469
+ES,Spain,1973,34988947
+ES,Spain,1974,35373335
+ES,Spain,1975,35757900
+ES,Spain,1976,36137812
+ES,Spain,1977,36511638
+ES,Spain,1978,36864898
+ES,Spain,1979,37191330
+ES,Spain,1980,37491165
+ES,Spain,1981,37758631
+ES,Spain,1982,37986012
+ES,Spain,1983,38171525
+ES,Spain,1984,38330364
+ES,Spain,1985,38469512
+ES,Spain,1986,38584624
+ES,Spain,1987,38684815
+ES,Spain,1988,38766939
+ES,Spain,1989,38827764
+ES,Spain,1990,38867322
+ES,Spain,1991,38966376
+ES,Spain,1992,39157685
+ES,Spain,1993,39361262
+ES,Spain,1994,39549108
+ES,Spain,1995,39724050
+ES,Spain,1996,39889852
+ES,Spain,1997,40057389
+ES,Spain,1998,40223509
+ES,Spain,1999,40386875
+ES,Spain,2000,40567864
+ES,Spain,2001,40850412
+ES,Spain,2002,41431558
+ES,Spain,2003,42187645
+ES,Spain,2004,42921895
+ES,Spain,2005,43653155
+ES,Spain,2006,44397319
+ES,Spain,2007,45226803
+ES,Spain,2008,45954106
+ES,Spain,2009,46362946
+ES,Spain,2010,46576897
+ES,Spain,2011,46742697
+ES,Spain,2012,46773055
+ES,Spain,2013,46604197
+ES,Spain,2014,46460733
+ES,Spain,2015,46422303
+ES,Spain,2016,46458139
+ES,Spain,2017,46571232
+ES,Spain,2018,46782011
+ES,Spain,2019,47118501
+ES,Spain,2020,47359424
+ES,Spain,2021,47443821
+ES,Spain,2022,47786102
+ES,Spain,2023,48352528
+ES,Spain,2024,48873996
+EU27_2007,European Union - 27 countries (2007-2013),2000,483353233
+EU27_2007,European Union - 27 countries (2007-2013),2001,484304048
+EU27_2007,European Union - 27 countries (2007-2013),2002,485552521
+EU27_2007,European Union - 27 countries (2007-2013),2003,487404115
+EU27_2007,European Union - 27 countries (2007-2013),2004,489411620
+EU27_2007,European Union - 27 countries (2007-2013),2005,491402984
+EU27_2007,European Union - 27 countries (2007-2013),2006,493311559
+EU27_2007,European Union - 27 countries (2007-2013),2007,495304093
+EU27_2007,European Union - 27 countries (2007-2013),2008,497267203
+EU27_2007,European Union - 27 countries (2007-2013),2009,498856425
+EU27_2007,European Union - 27 countries (2007-2013),2010,500053448
+EU27_2007,European Union - 27 countries (2007-2013),2011,499891944
+EU27_2007,European Union - 27 countries (2007-2013),2012,500949897
+EU27_2007,European Union - 27 countries (2007-2013),2013,501799281
+EU27_2007,European Union - 27 countries (2007-2013),2014,502998697
+EU27_2007,European Union - 27 countries (2007-2013),2015,504424270
+EU27_2007,European Union - 27 countries (2007-2013),2016,505842143
+EU27_2007,European Union - 27 countries (2007-2013),2017,506998295
+EU27_2007,European Union - 27 countries (2007-2013),2018,508194486
+EU27_2007,European Union - 27 countries (2007-2013),2019,509475208
+EU27_2020,European Union - 27 countries (from 2020),1960,355968032
+EU27_2020,European Union - 27 countries (from 2020),1961,358917677
+EU27_2020,European Union - 27 countries (from 2020),1962,362292099
+EU27_2020,European Union - 27 countries (from 2020),1963,365754385
+EU27_2020,European Union - 27 countries (from 2020),1964,368938389
+EU27_2020,European Union - 27 countries (from 2020),1965,371982334
+EU27_2020,European Union - 27 countries (from 2020),1966,374882363
+EU27_2020,European Union - 27 countries (from 2020),1967,377698630
+EU27_2020,European Union - 27 countries (from 2020),1968,380351144
+EU27_2020,European Union - 27 countries (from 2020),1969,382976404
+EU27_2020,European Union - 27 countries (from 2020),1970,385137827
+EU27_2020,European Union - 27 countries (from 2020),1971,387270862
+EU27_2020,European Union - 27 countries (from 2020),1972,389902199
+EU27_2020,European Union - 27 countries (from 2020),1973,392434984
+EU27_2020,European Union - 27 countries (from 2020),1974,394804887
+EU27_2020,European Union - 27 countries (from 2020),1975,396936395
+EU27_2020,European Union - 27 countries (from 2020),1976,399002351
+EU27_2020,European Union - 27 countries (from 2020),1977,400935349
+EU27_2020,European Union - 27 countries (from 2020),1978,402782640
+EU27_2020,European Union - 27 countries (from 2020),1979,404564541
+EU27_2020,European Union - 27 countries (from 2020),1980,406417979
+EU27_2020,European Union - 27 countries (from 2020),1981,408131851
+EU27_2020,European Union - 27 countries (from 2020),1982,409501178
+EU27_2020,European Union - 27 countries (from 2020),1983,410557063
+EU27_2020,European Union - 27 countries (from 2020),1984,411456968
+EU27_2020,European Union - 27 countries (from 2020),1985,412391874
+EU27_2020,European Union - 27 countries (from 2020),1986,413482162
+EU27_2020,European Union - 27 countries (from 2020),1987,414653514
+EU27_2020,European Union - 27 countries (from 2020),1988,415967079
+EU27_2020,European Union - 27 countries (from 2020),1989,417372976
+EU27_2020,European Union - 27 countries (from 2020),1990,418764395
+EU27_2020,European Union - 27 countries (from 2020),1991,419958792
+EU27_2020,European Union - 27 countries (from 2020),1992,421163060
+EU27_2020,European Union - 27 countries (from 2020),1993,422508788
+EU27_2020,European Union - 27 countries (from 2020),1994,423532766
+EU27_2020,European Union - 27 countries (from 2020),1995,424301173
+EU27_2020,European Union - 27 countries (from 2020),1996,424957650
+EU27_2020,European Union - 27 countries (from 2020),1997,425560270
+EU27_2020,European Union - 27 countries (from 2020),1998,427740621
+EU27_2020,European Union - 27 countries (from 2020),1999,428431186
+EU27_2020,European Union - 27 countries (from 2020),2000,428929021
+EU27_2020,European Union - 27 countries (from 2020),2001,429484826
+EU27_2020,European Union - 27 countries (from 2020),2002,430487481
+EU27_2020,European Union - 27 countries (from 2020),2003,432062093
+EU27_2020,European Union - 27 countries (from 2020),2004,433732008
+EU27_2020,European Union - 27 countries (from 2020),2005,435313453
+EU27_2020,European Union - 27 countries (from 2020),2006,436777748
+EU27_2020,European Union - 27 countries (from 2020),2007,438294379
+EU27_2020,European Union - 27 countries (from 2020),2008,439771089
+EU27_2020,European Union - 27 countries (from 2020),2009,440886476
+EU27_2020,European Union - 27 countries (from 2020),2010,441583436
+EU27_2020,European Union - 27 countries (from 2020),2011,440916055
+EU27_2020,European Union - 27 countries (from 2020),2012,441511575
+EU27_2020,European Union - 27 countries (from 2020),2013,441875665
+EU27_2020,European Union - 27 countries (from 2020),2014,442559427
+EU27_2020,European Union - 27 countries (from 2020),2015,443419112
+EU27_2020,European Union - 27 countries (from 2020),2016,444280993
+EU27_2020,European Union - 27 countries (from 2020),2017,444918743
+EU27_2020,European Union - 27 countries (from 2020),2018,445644043
+EU27_2020,European Union - 27 countries (from 2020),2019,446492251
+EU27_2020,European Union - 27 countries (from 2020),2020,446437975
+EU27_2020,European Union - 27 countries (from 2020),2021,445883647
+EU27_2020,European Union - 27 countries (from 2020),2022,446940424
+EU27_2020,European Union - 27 countries (from 2020),2023,448647774
+EU27_2020,European Union - 27 countries (from 2020),2024,450068417
+EU28,European Union - 28 countries (2013-2020),1960,408368032
+EU28,European Union - 28 countries (2013-2020),1961,411717677
+EU28,European Union - 28 countries (2013-2020),1962,415542099
+EU28,European Union - 28 countries (2013-2020),1963,419404385
+EU28,European Union - 28 countries (2013-2020),1964,422938389
+EU28,European Union - 28 countries (2013-2020),1965,426330384
+EU28,European Union - 28 countries (2013-2020),1966,429530863
+EU28,European Union - 28 countries (2013-2020),1967,432642230
+EU28,European Union - 28 countries (2013-2020),1968,435562844
+EU28,European Union - 28 countries (2013-2020),1969,438418154
+EU28,European Union - 28 countries (2013-2020),1970,440801077
+EU28,European Union - 28 countries (2013-2020),1971,443167085
+EU28,European Union - 28 countries (2013-2020),1972,445988264
+EU28,European Union - 28 countries (2013-2020),1973,448629511
+EU28,European Union - 28 countries (2013-2020),1974,451034861
+EU28,European Union - 28 countries (2013-2020),1975,453162195
+EU28,European Union - 28 countries (2013-2020),1976,455214319
+EU28,European Union - 28 countries (2013-2020),1977,457128841
+EU28,European Union - 28 countries (2013-2020),1978,458979144
+EU28,European Union - 28 countries (2013-2020),1979,460811492
+EU28,European Union - 28 countries (2013-2020),1980,462732195
+EU28,European Union - 28 countries (2013-2020),1981,464465680
+EU28,European Union - 28 countries (2013-2020),1982,465814819
+EU28,European Union - 28 countries (2013-2020),1983,466889911
+EU28,European Union - 28 countries (2013-2020),1984,467879040
+EU28,European Union - 28 countries (2013-2020),1985,468942142
+EU28,European Union - 28 countries (2013-2020),1986,470163558
+EU28,European Union - 28 countries (2013-2020),1987,471455564
+EU28,European Union - 28 countries (2013-2020),1988,472895406
+EU28,European Union - 28 countries (2013-2020),1989,474449687
+EU28,European Union - 28 countries (2013-2020),1990,476011981
+EU28,European Union - 28 countries (2013-2020),1991,477383689
+EU28,European Union - 28 countries (2013-2020),1992,478743462
+EU28,European Union - 28 countries (2013-2020),1993,480227402
+EU28,European Union - 28 countries (2013-2020),1994,481398511
+EU28,European Union - 28 countries (2013-2020),1995,482320203
+EU28,European Union - 28 countries (2013-2020),1996,483124600
+EU28,European Union - 28 countries (2013-2020),1997,483877224
+EU28,European Union - 28 countries (2013-2020),1998,486227762
+EU28,European Union - 28 countries (2013-2020),1999,487113652
+EU28,European Union - 28 countries (2013-2020),2000,487821535
+EU28,European Union - 28 countries (2013-2020),2001,488604498
+EU28,European Union - 28 countries (2013-2020),2002,489857960
+EU28,European Union - 28 countries (2013-2020),2003,491709669
+EU28,European Union - 28 countries (2013-2020),2004,493719913
+EU28,European Union - 28 countries (2013-2020),2005,495714658
+EU28,European Union - 28 countries (2013-2020),2006,497624568
+EU28,European Union - 28 countries (2013-2020),2007,499616842
+EU28,European Union - 28 countries (2013-2020),2008,501578084
+EU28,European Union - 28 countries (2013-2020),2009,503162746
+EU28,European Union - 28 countries (2013-2020),2010,504349800
+EU28,European Union - 28 countries (2013-2020),2011,504174865
+EU28,European Union - 28 countries (2013-2020),2012,505211790
+EU28,European Union - 28 countries (2013-2020),2013,506031999
+EU28,European Union - 28 countries (2013-2020),2014,507197970
+EU28,European Union - 28 countries (2013-2020),2015,508580285
+EU28,European Union - 28 countries (2013-2020),2016,509947085
+EU28,European Union - 28 countries (2013-2020),2017,511044850
+EU28,European Union - 28 countries (2013-2020),2018,512185994
+EU28,European Union - 28 countries (2013-2020),2019,513426301
+FI,Finland,1960,4429634
+FI,Finland,1961,4461005
+FI,Finland,1962,4491443
+FI,Finland,1963,4523309
+FI,Finland,1964,4548543
+FI,Finland,1965,4563732
+FI,Finland,1966,4580869
+FI,Finland,1967,4605744
+FI,Finland,1968,4626469
+FI,Finland,1969,4623785
+FI,Finland,1970,4606307
+FI,Finland,1971,4612124
+FI,Finland,1972,4639657
+FI,Finland,1973,4666081
+FI,Finland,1974,4690574
+FI,Finland,1975,4711440
+FI,Finland,1976,4725664
+FI,Finland,1977,4738902
+FI,Finland,1978,4752528
+FI,Finland,1979,4764690
+FI,Finland,1980,4779535
+FI,Finland,1981,4799964
+FI,Finland,1982,4826933
+FI,Finland,1983,4855787
+FI,Finland,1984,4881803
+FI,Finland,1985,4902206
+FI,Finland,1986,4918154
+FI,Finland,1987,4932123
+FI,Finland,1988,4946481
+FI,Finland,1989,4964371
+FI,Finland,1990,4986431
+FI,Finland,1991,5013740
+FI,Finland,1992,5041992
+FI,Finland,1993,5066447
+FI,Finland,1994,5088333
+FI,Finland,1995,5107790
+FI,Finland,1996,5124573
+FI,Finland,1997,5139835
+FI,Finland,1998,5153498
+FI,Finland,1999,5165474
+FI,Finland,2000,5176209
+FI,Finland,2001,5188008
+FI,Finland,2002,5200598
+FI,Finland,2003,5213014
+FI,Finland,2004,5228172
+FI,Finland,2005,5246096
+FI,Finland,2006,5266268
+FI,Finland,2007,5288720
+FI,Finland,2008,5313399
+FI,Finland,2009,5338871
+FI,Finland,2010,5363352
+FI,Finland,2011,5388272
+FI,Finland,2012,5413971
+FI,Finland,2013,5438972
+FI,Finland,2014,5461512
+FI,Finland,2015,5479531
+FI,Finland,2016,5495303
+FI,Finland,2017,5508214
+FI,Finland,2018,5515525
+FI,Finland,2019,5521606
+FI,Finland,2020,5529543
+FI,Finland,2021,5541017
+FI,Finland,2022,5556106
+FI,Finland,2023,5583911
+FI,Finland,2024,5619911
+FR,France,1982,55750888
+FR,France,1983,56049335
+FR,France,1984,56320913
+FR,France,1985,56600031
+FR,France,1986,56886383
+FR,France,1987,57191948
+FR,France,1988,57519072
+FR,France,1989,57858794
+FR,France,1990,58171419
+FR,France,1991,58459145
+FR,France,1992,58745390
+FR,France,1993,58995125
+FR,France,1994,59209730
+FR,France,1995,59418718
+FR,France,1996,59624342
+FR,France,1997,59830635
+FR,France,1998,60046709
+FR,France,1999,60351778
+FR,France,2000,60762169
+FR,France,2001,61201676
+FR,France,2002,61644062
+FR,France,2003,62078165
+FR,France,2004,62532556
+FR,France,2005,63001253
+FR,France,2006,63437350
+FR,France,2007,63826129
+FR,France,2008,64178710
+FR,France,2009,64504541
+FR,France,2010,64818789
+FR,France,2011,65127852
+FR,France,2012,65438667
+FR,France,2013,65771309
+FR,France,2014,66312067
+FR,France,2015,66548272
+FR,France,2016,66724104
+FR,France,2017,66918020
+FR,France,2018,67158348
+FR,France,2019,67382061
+FR,France,2020,67601110
+FR,France,2021,67910136
+FR,France,2022,68263853
+FR,France,2023,68552653
+FR,France,2024,68775952
+FX,Metropolitan France,1960,45684227
+FX,Metropolitan France,1961,46162828
+FX,Metropolitan France,1962,46997703
+FX,Metropolitan France,1963,47816218
+FX,Metropolitan France,1964,48310415
+FX,Metropolitan France,1965,48757796
+FX,Metropolitan France,1966,49163665
+FX,Metropolitan France,1967,49548305
+FX,Metropolitan France,1968,49915404
+FX,Metropolitan France,1969,50317977
+FX,Metropolitan France,1970,50772227
+FX,Metropolitan France,1971,51251094
+FX,Metropolitan France,1972,51700913
+FX,Metropolitan France,1973,52118299
+FX,Metropolitan France,1974,52460363
+FX,Metropolitan France,1975,52699169
+FX,Metropolitan France,1976,52908672
+FX,Metropolitan France,1977,53145286
+FX,Metropolitan France,1978,53376320
+FX,Metropolitan France,1979,53606230
+FX,Metropolitan France,1980,53880009
+FX,Metropolitan France,1981,54181815
+FX,Metropolitan France,1982,54492492
+FX,Metropolitan France,1983,54772419
+FX,Metropolitan France,1984,55026079
+FX,Metropolitan France,1985,55284271
+FX,Metropolitan France,1986,55546509
+FX,Metropolitan France,1987,55823961
+FX,Metropolitan France,1988,56117976
+FX,Metropolitan France,1989,56423405
+FX,Metropolitan France,1990,56708831
+FX,Metropolitan France,1991,56975597
+FX,Metropolitan France,1992,57239847
+FX,Metropolitan France,1993,57467085
+FX,Metropolitan France,1994,57658772
+FX,Metropolitan France,1995,57844247
+FX,Metropolitan France,1996,58025989
+FX,Metropolitan France,1997,58207490
+FX,Metropolitan France,1998,58397788
+FX,Metropolitan France,1999,58677406
+FX,Metropolitan France,2000,59062385
+FX,Metropolitan France,2001,59476236
+FX,Metropolitan France,2002,59893870
+FX,Metropolitan France,2003,60303631
+FX,Metropolitan France,2004,60734343
+FX,Metropolitan France,2005,61181499
+FX,Metropolitan France,2006,61597486
+FX,Metropolitan France,2007,61965052
+FX,Metropolitan France,2008,62300288
+FX,Metropolitan France,2009,62615472
+FX,Metropolitan France,2010,62917790
+FX,Metropolitan France,2011,63223158
+FX,Metropolitan France,2012,63536918
+GE,Georgia,1996,4616450
+GE,Georgia,1997,4531650
+GE,Georgia,1998,4487350
+GE,Georgia,1999,4452500
+GE,Georgia,2000,4418300
+GE,Georgia,2001,4386450
+GE,Georgia,2002,4362050
+GE,Georgia,2003,4333900
+GE,Georgia,2004,4318350
+GE,Georgia,2005,4361396
+GE,Georgia,2006,4397997
+GE,Georgia,2007,4388386
+GE,Georgia,2008,4383750
+GE,Georgia,2009,4410910
+GE,Georgia,2010,4452821
+GE,Georgia,2011,4483434
+GE,Georgia,2014,4109999
+GE,Georgia,2015,3724950
+GE,Georgia,2016,3719300
+GE,Georgia,2017,3723917
+GE,Georgia,2018,3726549
+GE,Georgia,2019,3720161
+GE,Georgia,2020,3722716
+GE,Georgia,2021,3708610
+GE,Georgia,2022,3712502
+GE,Georgia,2023,3715483
+GE,Georgia,2024,3699557
+HR,Croatia,1960,4140181
+HR,Croatia,1961,4167292
+HR,Croatia,1962,4196712
+HR,Croatia,1963,4225675
+HR,Croatia,1964,4252876
+HR,Croatia,1965,4280923
+HR,Croatia,1966,4310701
+HR,Croatia,1967,4338683
+HR,Croatia,1968,4365628
+HR,Croatia,1969,4391490
+HR,Croatia,1970,4412252
+HR,Croatia,1971,4431275
+HR,Croatia,1972,4450564
+HR,Croatia,1973,4470161
+HR,Croatia,1974,4490660
+HR,Croatia,1975,4512082
+HR,Croatia,1976,4535934
+HR,Croatia,1977,4559571
+HR,Croatia,1978,4581085
+HR,Croatia,1979,4594778
+HR,Croatia,1980,4599782
+HR,Croatia,1981,4611509
+HR,Croatia,1982,4634234
+HR,Croatia,1983,4658254
+HR,Croatia,1984,4680285
+HR,Croatia,1985,4701417
+HR,Croatia,1986,4721446
+HR,Croatia,1987,4739745
+HR,Croatia,1988,4755207
+HR,Croatia,1989,4767260
+HR,Croatia,1990,4777368
+HR,Croatia,1991,4689022
+HR,Croatia,1992,4575818
+HR,Croatia,1993,4600463
+HR,Croatia,1994,4652024
+HR,Croatia,1995,4620030
+HR,Croatia,1996,4557097
+HR,Croatia,1997,4534920
+HR,Croatia,1998,4532136
+HR,Croatia,1999,4512598
+HR,Croatia,2000,4468302
+HR,Croatia,2001,4300450
+HR,Croatia,2002,4305439
+HR,Croatia,2003,4305555
+HR,Croatia,2004,4308293
+HR,Croatia,2005,4311674
+HR,Croatia,2006,4313009
+HR,Croatia,2007,4312749
+HR,Croatia,2008,4310882
+HR,Croatia,2009,4306322
+HR,Croatia,2010,4296352
+HR,Croatia,2011,4282921
+HR,Croatia,2012,4269062
+HR,Croatia,2013,4232718
+HR,Croatia,2014,4199274
+HR,Croatia,2015,4156015
+HR,Croatia,2016,4104942
+HR,Croatia,2017,4046555
+HR,Croatia,2018,3991509
+HR,Croatia,2019,3951094
+HR,Croatia,2020,3913269
+HR,Croatia,2021,3877666
+HR,Croatia,2022,3856600
+HR,Croatia,2023,3856431
+HR,Croatia,2024,3868159
+HU,Hungary,1960,9983512
+HU,Hungary,1961,10027958
+HU,Hungary,1962,10060825
+HU,Hungary,1963,10087947
+HU,Hungary,1964,10119835
+HU,Hungary,1965,10147935
+HU,Hungary,1966,10178653
+HU,Hungary,1967,10216604
+HU,Hungary,1968,10255815
+HU,Hungary,1969,10298723
+HU,Hungary,1970,10337910
+HU,Hungary,1971,10367537
+HU,Hungary,1972,10398489
+HU,Hungary,1973,10432055
+HU,Hungary,1974,10478720
+HU,Hungary,1975,10540525
+HU,Hungary,1976,10598677
+HU,Hungary,1977,10648031
+HU,Hungary,1978,10684822
+HU,Hungary,1979,10704152
+HU,Hungary,1980,10711122
+HU,Hungary,1981,10711848
+HU,Hungary,1982,10705535
+HU,Hungary,1983,10689463
+HU,Hungary,1984,10668095
+HU,Hungary,1985,10648713
+HU,Hungary,1986,10630564
+HU,Hungary,1987,10612741
+HU,Hungary,1988,10596487
+HU,Hungary,1989,10481719
+HU,Hungary,1990,10373988
+HU,Hungary,1991,10373400
+HU,Hungary,1992,10369341
+HU,Hungary,1993,10357523
+HU,Hungary,1994,10343355
+HU,Hungary,1995,10328965
+HU,Hungary,1996,10311238
+HU,Hungary,1997,10290486
+HU,Hungary,1998,10266570
+HU,Hungary,1999,10237530
+HU,Hungary,2000,10210971
+HU,Hungary,2001,10187576
+HU,Hungary,2002,10158608
+HU,Hungary,2003,10129552
+HU,Hungary,2004,10107146
+HU,Hungary,2005,10087065
+HU,Hungary,2006,10071370
+HU,Hungary,2007,10055780
+HU,Hungary,2008,10038188
+HU,Hungary,2009,10022650
+HU,Hungary,2010,10000023
+HU,Hungary,2011,9971727
+HU,Hungary,2012,9920362
+HU,Hungary,2013,9872734
+HU,Hungary,2014,9833038
+HU,Hungary,2015,9797755
+HU,Hungary,2016,9759755
+HU,Hungary,2017,9726756
+HU,Hungary,2018,9706964
+HU,Hungary,2019,9694824
+HU,Hungary,2020,9670419
+HU,Hungary,2021,9630932
+HU,Hungary,2022,9644437
+HU,Hungary,2023,9592186
+HU,Hungary,2024,9562065
+IE,Ireland,1960,2828600
+IE,Ireland,1961,2824400
+IE,Ireland,1962,2836050
+IE,Ireland,1963,2852650
+IE,Ireland,1964,2866550
+IE,Ireland,1965,2877300
+IE,Ireland,1966,2888800
+IE,Ireland,1967,2902450
+IE,Ireland,1968,2915550
+IE,Ireland,1969,2932650
+IE,Ireland,1970,2957250
+IE,Ireland,1971,2992050
+IE,Ireland,1972,3036850
+IE,Ireland,1973,3085950
+IE,Ireland,1974,3137500
+IE,Ireland,1975,3189550
+IE,Ireland,1976,3238050
+IE,Ireland,1977,3282200
+IE,Ireland,1978,3329100
+IE,Ireland,1979,3373750
+IE,Ireland,1980,3412800
+IE,Ireland,1981,3453000
+IE,Ireland,1982,3485800
+IE,Ireland,1983,3510600
+IE,Ireland,1984,3532423
+IE,Ireland,1985,3538082
+IE,Ireland,1986,3539690
+IE,Ireland,1987,3540057
+IE,Ireland,1988,3524949
+IE,Ireland,1989,3511009
+IE,Ireland,1990,3513974
+IE,Ireland,1991,3534235
+IE,Ireland,1992,3558430
+IE,Ireland,1993,3576261
+IE,Ireland,1994,3590386
+IE,Ireland,1995,3608841
+IE,Ireland,1996,3637510
+IE,Ireland,1997,3674171
+IE,Ireland,1998,3712696
+IE,Ireland,1999,3754786
+IE,Ireland,2000,3805174
+IE,Ireland,2001,3866243
+IE,Ireland,2002,3931947
+IE,Ireland,2003,3996521
+IE,Ireland,2004,4070262
+IE,Ireland,2005,4159914
+IE,Ireland,2006,4274137
+IE,Ireland,2007,4398942
+IE,Ireland,2008,4489544
+IE,Ireland,2009,4535375
+IE,Ireland,2010,4560155
+IE,Ireland,2011,4580084
+IE,Ireland,2012,4599533
+IE,Ireland,2013,4623816
+IE,Ireland,2014,4657740
+IE,Ireland,2015,4701957
+IE,Ireland,2016,4762722
+IE,Ireland,2017,4827445
+IE,Ireland,2018,4898022
+IE,Ireland,2019,4976456
+IE,Ireland,2020,5039747
+IE,Ireland,2021,5110585
+IE,Ireland,2022,5212836
+IE,Ireland,2023,5311538
+IE,Ireland,2024,5395980
+IS,Iceland,1960,175574
+IS,Iceland,1961,179029
+IS,Iceland,1962,182378
+IS,Iceland,1963,185653
+IS,Iceland,1964,188983
+IS,Iceland,1965,192286
+IS,Iceland,1966,195570
+IS,Iceland,1967,198751
+IS,Iceland,1968,201488
+IS,Iceland,1969,203369
+IS,Iceland,1970,204438
+IS,Iceland,1971,206098
+IS,Iceland,1972,209137
+IS,Iceland,1973,212317
+IS,Iceland,1974,215209
+IS,Iceland,1975,217979
+IS,Iceland,1976,220154
+IS,Iceland,1977,221799
+IS,Iceland,1978,223537
+IS,Iceland,1979,225735
+IS,Iceland,1980,228138
+IS,Iceland,1981,230755
+IS,Iceland,1982,233860
+IS,Iceland,1983,236977
+IS,Iceland,1984,239511
+IS,Iceland,1985,241405
+IS,Iceland,1986,243180
+IS,Iceland,1987,245859
+IS,Iceland,1988,249740
+IS,Iceland,1989,252852
+IS,Iceland,1990,254826
+IS,Iceland,1991,257797
+IS,Iceland,1992,261057
+IS,Iceland,1993,263725
+IS,Iceland,1994,266021
+IS,Iceland,1995,267468
+IS,Iceland,1996,268916
+IS,Iceland,1997,271128
+IS,Iceland,1998,274047
+IS,Iceland,1999,277381
+IS,Iceland,2000,281205
+IS,Iceland,2001,284968
+IS,Iceland,2002,287523
+IS,Iceland,2003,289521
+IS,Iceland,2004,292074
+IS,Iceland,2005,296734
+IS,Iceland,2006,303782
+IS,Iceland,2007,311566
+IS,Iceland,2008,317414
+IS,Iceland,2009,318499
+IS,Iceland,2010,318041
+IS,Iceland,2011,319014
+IS,Iceland,2012,320716
+IS,Iceland,2013,323764
+IS,Iceland,2014,327386
+IS,Iceland,2015,330815
+IS,Iceland,2016,335439
+IS,Iceland,2017,343400
+IS,Iceland,2018,352721
+IS,Iceland,2019,360563
+IS,Iceland,2020,366463
+IS,Iceland,2021,372520
+IS,Iceland,2022,382003
+IS,Iceland,2023,385663
+IS,Iceland,2024,386506
+IT,Italy,1960,50199700
+IT,Italy,1961,50536350
+IT,Italy,1962,50879450
+IT,Italy,1963,51252000
+IT,Italy,1964,51675350
+IT,Italy,1965,52112350
+IT,Italy,1966,52519000
+IT,Italy,1967,52900500
+IT,Italy,1968,53235750
+IT,Italy,1969,53537950
+IT,Italy,1970,53821850
+IT,Italy,1971,54073490
+IT,Italy,1972,54381345
+IT,Italy,1973,54751406
+IT,Italy,1974,55110868
+IT,Italy,1975,55441001
+IT,Italy,1976,55718260
+IT,Italy,1977,55955411
+IT,Italy,1978,56155143
+IT,Italy,1979,56317749
+IT,Italy,1980,56433883
+IT,Italy,1981,56501675
+IT,Italy,1982,56543548
+IT,Italy,1983,56564074
+IT,Italy,1984,56576718
+IT,Italy,1985,56593071
+IT,Italy,1986,56596155
+IT,Italy,1987,56601931
+IT,Italy,1988,56629288
+IT,Italy,1989,56671781
+IT,Italy,1990,56719240
+IT,Italy,1991,56758521
+IT,Italy,1992,56797087
+IT,Italy,1993,56831821
+IT,Italy,1994,56843400
+IT,Italy,1995,56844303
+IT,Italy,1996,56860281
+IT,Italy,1997,56890372
+IT,Italy,1998,56906744
+IT,Italy,1999,56916317
+IT,Italy,2000,56942108
+IT,Italy,2001,56976981
+IT,Italy,2002,57089824
+IT,Italy,2003,57399184
+IT,Italy,2004,57828179
+IT,Italy,2005,58166682
+IT,Italy,2006,58399861
+IT,Italy,2007,58756247
+IT,Italy,2008,59211181
+IT,Italy,2009,59555454
+IT,Italy,2010,59819407
+IT,Italy,2011,60026841
+IT,Italy,2012,60191247
+IT,Italy,2013,60311613
+IT,Italy,2014,60320707
+IT,Italy,2015,60229605
+IT,Italy,2016,60115223
+IT,Italy,2017,60002252
+IT,Italy,2018,59877221
+IT,Italy,2019,59729081
+IT,Italy,2020,59438851
+IT,Italy,2021,59133173
+IT,Italy,2022,59013667
+IT,Italy,2023,58984216
+IT,Italy,2024,58957347
+LI,Liechtenstein,1960,16451
+LI,Liechtenstein,1961,16877
+LI,Liechtenstein,1962,17443
+LI,Liechtenstein,1963,18093
+LI,Liechtenstein,1964,18755
+LI,Liechtenstein,1965,19195
+LI,Liechtenstein,1966,19610
+LI,Liechtenstein,1967,20175
+LI,Liechtenstein,1968,20835
+LI,Liechtenstein,1969,21084
+LI,Liechtenstein,1970,21140
+LI,Liechtenstein,1971,21600
+LI,Liechtenstein,1972,22132
+LI,Liechtenstein,1973,22785
+LI,Liechtenstein,1974,23451
+LI,Liechtenstein,1975,23846
+LI,Liechtenstein,1976,24058
+LI,Liechtenstein,1977,24442
+LI,Liechtenstein,1978,25028
+LI,Liechtenstein,1979,25575
+LI,Liechtenstein,1980,25512
+LI,Liechtenstein,1981,25673
+LI,Liechtenstein,1982,26255
+LI,Liechtenstein,1983,26446
+LI,Liechtenstein,1984,26596
+LI,Liechtenstein,1985,26878
+LI,Liechtenstein,1986,27238
+LI,Liechtenstein,1987,27557
+LI,Liechtenstein,1988,27948
+LI,Liechtenstein,1989,28317
+LI,Liechtenstein,1990,28742
+LI,Liechtenstein,1991,29209
+LI,Liechtenstein,1992,29627
+LI,Liechtenstein,1993,30089
+LI,Liechtenstein,1994,30470
+LI,Liechtenstein,1995,30776
+LI,Liechtenstein,1996,31033
+LI,Liechtenstein,1997,31232
+LI,Liechtenstein,1998,31668
+LI,Liechtenstein,1999,32221
+LI,Liechtenstein,2000,32645
+LI,Liechtenstein,2001,33194
+LI,Liechtenstein,2002,33694
+LI,Liechtenstein,2003,34079
+LI,Liechtenstein,2004,34447
+LI,Liechtenstein,2005,34753
+LI,Liechtenstein,2006,35037
+LI,Liechtenstein,2007,35262
+LI,Liechtenstein,2008,35473
+LI,Liechtenstein,2009,35742
+LI,Liechtenstein,2010,36022
+LI,Liechtenstein,2011,36312
+LI,Liechtenstein,2012,36657
+LI,Liechtenstein,2013,36984
+LI,Liechtenstein,2014,37248
+LI,Liechtenstein,2015,37494
+LI,Liechtenstein,2016,37716
+LI,Liechtenstein,2017,37962
+LI,Liechtenstein,2018,38246
+LI,Liechtenstein,2019,38563
+LI,Liechtenstein,2020,38901
+LI,Liechtenstein,2021,39182
+LI,Liechtenstein,2022,39493
+LI,Liechtenstein,2023,39846
+LI,Liechtenstein,2024,40451
+LT,Lithuania,1960,2778550
+LT,Lithuania,1961,2823550
+LT,Lithuania,1962,2863350
+LT,Lithuania,1963,2898950
+LT,Lithuania,1964,2935200
+LT,Lithuania,1965,2971450
+LT,Lithuania,1966,3008050
+LT,Lithuania,1967,3044400
+LT,Lithuania,1968,3078850
+LT,Lithuania,1969,3107321
+LT,Lithuania,1970,3139689
+LT,Lithuania,1971,3179041
+LT,Lithuania,1972,3213622
+LT,Lithuania,1973,3244438
+LT,Lithuania,1974,3273894
+LT,Lithuania,1975,3301652
+LT,Lithuania,1976,3328664
+LT,Lithuania,1977,3355036
+LT,Lithuania,1978,3379514
+LT,Lithuania,1979,3397842
+LT,Lithuania,1980,3413202
+LT,Lithuania,1981,3432947
+LT,Lithuania,1982,3457179
+LT,Lithuania,1983,3485192
+LT,Lithuania,1984,3514205
+LT,Lithuania,1985,3544543
+LT,Lithuania,1986,3578914
+LT,Lithuania,1987,3616367
+LT,Lithuania,1988,3655049
+LT,Lithuania,1989,3684255
+LT,Lithuania,1990,3697838
+LT,Lithuania,1991,3704134
+LT,Lithuania,1992,3700114
+LT,Lithuania,1993,3682613
+LT,Lithuania,1994,3657144
+LT,Lithuania,1995,3629102
+LT,Lithuania,1996,3601613
+LT,Lithuania,1997,3575137
+LT,Lithuania,1998,3549331
+LT,Lithuania,1999,3524238
+LT,Lithuania,2000,3499536
+LT,Lithuania,2001,3470818
+LT,Lithuania,2002,3443067
+LT,Lithuania,2003,3415213
+LT,Lithuania,2004,3377075
+LT,Lithuania,2005,3322528
+LT,Lithuania,2006,3269909
+LT,Lithuania,2007,3231294
+LT,Lithuania,2008,3198231
+LT,Lithuania,2009,3162916
+LT,Lithuania,2010,3097282
+LT,Lithuania,2011,3028115
+LT,Lithuania,2012,2989139
+LT,Lithuania,2013,2961250
+LT,Lithuania,2014,2937253
+LT,Lithuania,2015,2911109
+LT,Lithuania,2016,2877325
+LT,Lithuania,2017,2842639
+LT,Lithuania,2018,2819200
+LT,Lithuania,2019,2811089
+LT,Lithuania,2020,2810369
+LT,Lithuania,2021,2808380
+LT,Lithuania,2022,2831639
+LT,Lithuania,2023,2871585
+LT,Lithuania,2024,2888278
+LU,Luxembourg,1960,313970
+LU,Luxembourg,1961,316845
+LU,Luxembourg,1962,320750
+LU,Luxembourg,1963,324100
+LU,Luxembourg,1964,327750
+LU,Luxembourg,1965,331500
+LU,Luxembourg,1966,333895
+LU,Luxembourg,1967,334995
+LU,Luxembourg,1968,335850
+LU,Luxembourg,1969,337504
+LU,Luxembourg,1970,339174
+LU,Luxembourg,1971,342421
+LU,Luxembourg,1972,346600
+LU,Luxembourg,1973,350450
+LU,Luxembourg,1974,355050
+LU,Luxembourg,1975,358950
+LU,Luxembourg,1976,360731
+LU,Luxembourg,1977,361358
+LU,Luxembourg,1978,362007
+LU,Luxembourg,1979,362856
+LU,Luxembourg,1980,364150
+LU,Luxembourg,1981,365225
+LU,Luxembourg,1982,365525
+LU,Luxembourg,1983,365622
+LU,Luxembourg,1984,365998
+LU,Luxembourg,1985,366706
+LU,Luxembourg,1986,368355
+LU,Luxembourg,1987,370750
+LU,Luxembourg,1988,373450
+LU,Luxembourg,1989,377100
+LU,Luxembourg,1990,381850
+LU,Luxembourg,1991,387000
+LU,Luxembourg,1992,392175
+LU,Luxembourg,1993,397475
+LU,Luxembourg,1994,402925
+LU,Luxembourg,1995,408625
+LU,Luxembourg,1996,414225
+LU,Luxembourg,1997,419450
+LU,Luxembourg,1998,424700
+LU,Luxembourg,1999,430475
+LU,Luxembourg,2000,436300
+LU,Luxembourg,2001,441525
+LU,Luxembourg,2002,446175
+LU,Luxembourg,2003,451630
+LU,Luxembourg,2004,458095
+LU,Luxembourg,2005,465158
+LU,Luxembourg,2006,472637
+LU,Luxembourg,2007,479993
+LU,Luxembourg,2008,488650
+LU,Luxembourg,2009,497783
+LU,Luxembourg,2010,506953
+LU,Luxembourg,2011,518347
+LU,Luxembourg,2012,530946
+LU,Luxembourg,2013,543360
+LU,Luxembourg,2014,556319
+LU,Luxembourg,2015,569604
+LU,Luxembourg,2016,582014
+LU,Luxembourg,2017,596336
+LU,Luxembourg,2018,607950
+LU,Luxembourg,2019,620001
+LU,Luxembourg,2020,630419
+LU,Luxembourg,2021,640064
+LU,Luxembourg,2022,653103
+LU,Luxembourg,2023,666430
+LU,Luxembourg,2024,677012
+LV,Latvia,1960,2120979
+LV,Latvia,1961,2152681
+LV,Latvia,1962,2181586
+LV,Latvia,1963,2210919
+LV,Latvia,1964,2240623
+LV,Latvia,1965,2265919
+LV,Latvia,1966,2283217
+LV,Latvia,1967,2301220
+LV,Latvia,1968,2323619
+LV,Latvia,1969,2343173
+LV,Latvia,1970,2359164
+LV,Latvia,1971,2376389
+LV,Latvia,1972,2395674
+LV,Latvia,1973,2415819
+LV,Latvia,1974,2437186
+LV,Latvia,1975,2456130
+LV,Latvia,1976,2470989
+LV,Latvia,1977,2485073
+LV,Latvia,1978,2497921
+LV,Latvia,1979,2505953
+LV,Latvia,1980,2511701
+LV,Latvia,1981,2519421
+LV,Latvia,1982,2531080
+LV,Latvia,1983,2546011
+LV,Latvia,1984,2562047
+LV,Latvia,1985,2578873
+LV,Latvia,1986,2599892
+LV,Latvia,1987,2626583
+LV,Latvia,1988,2653434
+LV,Latvia,1989,2666955
+LV,Latvia,1990,2663151
+LV,Latvia,1991,2650581
+LV,Latvia,1992,2614338
+LV,Latvia,1993,2563290
+LV,Latvia,1994,2520742
+LV,Latvia,1995,2485056
+LV,Latvia,1996,2457222
+LV,Latvia,1997,2432851
+LV,Latvia,1998,2410019
+LV,Latvia,1999,2390482
+LV,Latvia,2000,2367550
+LV,Latvia,2001,2337170
+LV,Latvia,2002,2310173
+LV,Latvia,2003,2287955
+LV,Latvia,2004,2263122
+LV,Latvia,2005,2238799
+LV,Latvia,2006,2218357
+LV,Latvia,2007,2200325
+LV,Latvia,2008,2177322
+LV,Latvia,2009,2141669
+LV,Latvia,2010,2097555
+LV,Latvia,2011,2059709
+LV,Latvia,2012,2034319
+LV,Latvia,2013,2012647
+LV,Latvia,2014,1993782
+LV,Latvia,2015,1977527
+LV,Latvia,2016,1959537
+LV,Latvia,2017,1942248
+LV,Latvia,2018,1927174
+LV,Latvia,2019,1913822
+LV,Latvia,2020,1900449
+LV,Latvia,2021,1884490
+LV,Latvia,2022,1883930
+LV,Latvia,2023,1886907
+LV,Latvia,2024,1869570
+MC,Monaco,2004,32957
+MC,Monaco,2015,37950
+MC,Monaco,2016,37875
+MC,Monaco,2018,38300
+MC,Monaco,2024,38395
+MD,Moldova,1996,3994885
+MD,Moldova,1997,3656730
+MD,Moldova,1998,3652745
+MD,Moldova,1999,3647000
+MD,Moldova,2000,3639591
+MD,Moldova,2001,3631462
+MD,Moldova,2002,3623062
+MD,Moldova,2003,3612874
+MD,Moldova,2004,3603936
+MD,Moldova,2005,3595186
+MD,Moldova,2006,3585523
+MD,Moldova,2007,3576907
+MD,Moldova,2008,3570108
+MD,Moldova,2009,3565604
+MD,Moldova,2010,3562063
+MD,Moldova,2011,3559986
+MD,Moldova,2012,3559519
+MD,Moldova,2013,3558566
+MD,Moldova,2014,3556397
+MD,Moldova,2015,3200743
+MD,Moldova,2016,2835978
+MD,Moldova,2017,2803186
+MD,Moldova,2018,2755189
+MD,Moldova,2019,2707203
+MD,Moldova,2020,2664224
+MD,Moldova,2021,2604353
+MD,Moldova,2022,2538894
+MD,Moldova,2023,2468023
+MD,Moldova,2024,2402306
+ME,Montenegro,1995,618166
+ME,Montenegro,1996,604464
+ME,Montenegro,1997,606759
+ME,Montenegro,1998,609054
+ME,Montenegro,1999,606677
+ME,Montenegro,2000,604570
+ME,Montenegro,2001,607224
+ME,Montenegro,2002,609485
+ME,Montenegro,2003,611362
+ME,Montenegro,2004,612817
+ME,Montenegro,2005,613265
+ME,Montenegro,2006,613867
+ME,Montenegro,2007,615084
+ME,Montenegro,2008,616350
+ME,Montenegro,2009,618079
+ME,Montenegro,2010,619426
+ME,Montenegro,2011,620079
+ME,Montenegro,2012,620601
+ME,Montenegro,2013,621207
+ME,Montenegro,2014,621810
+ME,Montenegro,2015,622159
+ME,Montenegro,2016,622303
+ME,Montenegro,2017,622373
+ME,Montenegro,2018,622271
+ME,Montenegro,2019,622028
+ME,Montenegro,2020,621306
+ME,Montenegro,2021,619211
+ME,Montenegro,2022,617189
+ME,Montenegro,2023,620188
+ME,Montenegro,2024,623504
+MK,North Macedonia,1960,1391927
+MK,North Macedonia,1961,1408302
+MK,North Macedonia,1962,1427771
+MK,North Macedonia,1963,1449932
+MK,North Macedonia,1964,1473996
+MK,North Macedonia,1965,1499729
+MK,North Macedonia,1966,1525841
+MK,North Macedonia,1967,1550453
+MK,North Macedonia,1968,1575714
+MK,North Macedonia,1969,1602993
+MK,North Macedonia,1970,1629061
+MK,North Macedonia,1971,1654076
+MK,North Macedonia,1972,1679456
+MK,North Macedonia,1973,1704602
+MK,North Macedonia,1974,1729935
+MK,North Macedonia,1975,1756335
+MK,North Macedonia,1976,1783518
+MK,North Macedonia,1977,1810148
+MK,North Macedonia,1978,1836270
+MK,North Macedonia,1979,1863728
+MK,North Macedonia,1980,1891319
+MK,North Macedonia,1981,1916713
+MK,North Macedonia,1982,1941914
+MK,North Macedonia,1983,1967556
+MK,North Macedonia,1984,1992424
+MK,North Macedonia,1985,2016942
+MK,North Macedonia,1986,2041064
+MK,North Macedonia,1987,2065005
+MK,North Macedonia,1988,2088651
+MK,North Macedonia,1989,1986678
+MK,North Macedonia,1990,1881991
+MK,North Macedonia,1991,1899907
+MK,North Macedonia,1992,1984971
+MK,North Macedonia,1993,1998871
+MK,North Macedonia,1994,1947003
+MK,North Macedonia,1995,1964476
+MK,North Macedonia,1996,1981543
+MK,North Macedonia,1997,1996869
+MK,North Macedonia,1998,2007523
+MK,North Macedonia,1999,2017142
+MK,North Macedonia,2000,2026345
+MK,North Macedonia,2001,2034882
+MK,North Macedonia,2002,2031153
+MK,North Macedonia,2003,2026773
+MK,North Macedonia,2004,2032544
+MK,North Macedonia,2005,2036855
+MK,North Macedonia,2006,2040228
+MK,North Macedonia,2007,2043559
+MK,North Macedonia,2008,2046898
+MK,North Macedonia,2009,2050671
+MK,North Macedonia,2010,2055003
+MK,North Macedonia,2011,2058539
+MK,North Macedonia,2012,2061044
+MK,North Macedonia,2013,2064032
+MK,North Macedonia,2014,2067471
+MK,North Macedonia,2015,2070225
+MK,North Macedonia,2016,2072490
+MK,North Macedonia,2017,2074502
+MK,North Macedonia,2018,2076217
+MK,North Macedonia,2019,2076694
+MK,North Macedonia,2020,2072532
+MK,North Macedonia,2021,1952961
+MK,North Macedonia,2022,1833534
+MK,North Macedonia,2023,1828101
+MK,North Macedonia,2024,1824430
+MT,Malta,1960,326550
+MT,Malta,1961,325250
+MT,Malta,1962,323900
+MT,Malta,1963,322550
+MT,Malta,1964,321250
+MT,Malta,1965,318800
+MT,Malta,1966,315200
+MT,Malta,1967,311550
+MT,Malta,1968,307900
+MT,Malta,1969,304300
+MT,Malta,1970,302650
+MT,Malta,1971,302700
+MT,Malta,1972,302450
+MT,Malta,1973,302200
+MT,Malta,1974,301996
+MT,Malta,1975,304222
+MT,Malta,1976,305774
+MT,Malta,1977,306970
+MT,Malta,1978,310182
+MT,Malta,1979,313342
+MT,Malta,1980,316645
+MT,Malta,1981,318982
+MT,Malta,1982,325898
+MT,Malta,1983,330524
+MT,Malta,1984,330593
+MT,Malta,1985,336452
+MT,Malta,1986,342121
+MT,Malta,1987,344485
+MT,Malta,1988,347325
+MT,Malta,1989,350722
+MT,Malta,1990,354170
+MT,Malta,1991,363845
+MT,Malta,1992,367618
+MT,Malta,1993,371308
+MT,Malta,1994,374797
+MT,Malta,1995,377419
+MT,Malta,1996,379905
+MT,Malta,1997,382791
+MT,Malta,1998,385287
+MT,Malta,1999,387578
+MT,Malta,2000,390087
+MT,Malta,2001,393028
+MT,Malta,2002,395969
+MT,Malta,2003,398582
+MT,Malta,2004,401268
+MT,Malta,2005,403834
+MT,Malta,2006,405308
+MT,Malta,2007,406724
+MT,Malta,2008,409379
+MT,Malta,2009,412477
+MT,Malta,2010,414508
+MT,Malta,2011,416268
+MT,Malta,2012,420028
+MT,Malta,2013,424810
+MT,Malta,2014,433481
+MT,Malta,2015,444220
+MT,Malta,2016,454505
+MT,Malta,2017,467106
+MT,Malta,2018,483903
+MT,Malta,2019,503912
+MT,Malta,2020,515490
+MT,Malta,2021,518150
+MT,Malta,2022,531113
+MT,Malta,2023,552747
+MT,Malta,2024,568847
+NL,Netherlands,1960,11486631
+NL,Netherlands,1961,11638712
+NL,Netherlands,1962,11805689
+NL,Netherlands,1963,11965966
+NL,Netherlands,1964,12127120
+NL,Netherlands,1965,12294732
+NL,Netherlands,1966,12456251
+NL,Netherlands,1967,12598201
+NL,Netherlands,1968,12729721
+NL,Netherlands,1969,12877984
+NL,Netherlands,1970,13038526
+NL,Netherlands,1971,13194497
+NL,Netherlands,1972,13328593
+NL,Netherlands,1973,13439322
+NL,Netherlands,1974,13545056
+NL,Netherlands,1975,13666335
+NL,Netherlands,1976,13774037
+NL,Netherlands,1977,13856185
+NL,Netherlands,1978,13941700
+NL,Netherlands,1979,14038270
+NL,Netherlands,1980,14149800
+NL,Netherlands,1981,14247208
+NL,Netherlands,1982,14312690
+NL,Netherlands,1983,14367070
+NL,Netherlands,1984,14424211
+NL,Netherlands,1985,14491632
+NL,Netherlands,1986,14572278
+NL,Netherlands,1987,14665037
+NL,Netherlands,1988,14760094
+NL,Netherlands,1989,14848907
+NL,Netherlands,1990,14951510
+NL,Netherlands,1991,15069798
+NL,Netherlands,1992,15184166
+NL,Netherlands,1993,15290368
+NL,Netherlands,1994,15382838
+NL,Netherlands,1995,15459006
+NL,Netherlands,1996,15530498
+NL,Netherlands,1997,15610650
+NL,Netherlands,1998,15707209
+NL,Netherlands,1999,15812088
+NL,Netherlands,2000,15925513
+NL,Netherlands,2001,16046180
+NL,Netherlands,2002,16148929
+NL,Netherlands,2003,16225302
+NL,Netherlands,2004,16281779
+NL,Netherlands,2005,16319868
+NL,Netherlands,2006,16346101
+NL,Netherlands,2007,16381696
+NL,Netherlands,2008,16445593
+NL,Netherlands,2009,16530388
+NL,Netherlands,2010,16615394
+NL,Netherlands,2011,16693074
+NL,Netherlands,2012,16754962
+NL,Netherlands,2013,16804432
+NL,Netherlands,2014,16865008
+NL,Netherlands,2015,16939923
+NL,Netherlands,2016,17030314
+NL,Netherlands,2017,17131296
+NL,Netherlands,2018,17231624
+NL,Netherlands,2019,17344874
+NL,Netherlands,2020,17441500
+NL,Netherlands,2021,17533044
+NL,Netherlands,2022,17700982
+NL,Netherlands,2023,17877117
+NL,Netherlands,2024,17993485
+NO,Norway,1960,3581239
+NO,Norway,1961,3609800
+NO,Norway,1962,3638918
+NO,Norway,1963,3666537
+NO,Norway,1964,3694339
+NO,Norway,1965,3723168
+NO,Norway,1966,3753012
+NO,Norway,1967,3784539
+NO,Norway,1968,3816486
+NO,Norway,1969,3847707
+NO,Norway,1970,3875763
+NO,Norway,1971,3903039
+NO,Norway,1972,3933004
+NO,Norway,1973,3960612
+NO,Norway,1974,3985258
+NO,Norway,1975,4007313
+NO,Norway,1976,4026152
+NO,Norway,1977,4043205
+NO,Norway,1978,4058671
+NO,Norway,1979,4072517
+NO,Norway,1980,4085620
+NO,Norway,1981,4099702
+NO,Norway,1982,4114787
+NO,Norway,1983,4128432
+NO,Norway,1984,4140099
+NO,Norway,1985,4152516
+NO,Norway,1986,4167354
+NO,Norway,1987,4186905
+NO,Norway,1988,4209488
+NO,Norway,1989,4226901
+NO,Norway,1990,4241473
+NO,Norway,1991,4261732
+NO,Norway,1992,4286401
+NO,Norway,1993,4311991
+NO,Norway,1994,4336613
+NO,Norway,1995,4359184
+NO,Norway,1996,4381336
+NO,Norway,1997,4405157
+NO,Norway,1998,4431464
+NO,Norway,1999,4461913
+NO,Norway,2000,4490967
+NO,Norway,2001,4513751
+NO,Norway,2002,4538159
+NO,Norway,2003,4564855
+NO,Norway,2004,4591910
+NO,Norway,2005,4623291
+NO,Norway,2006,4660677
+NO,Norway,2007,4709153
+NO,Norway,2008,4768212
+NO,Norway,2009,4828726
+NO,Norway,2010,4889252
+NO,Norway,2011,4953088
+NO,Norway,2012,5018573
+NO,Norway,2013,5080166
+NO,Norway,2014,5137429
+NO,Norway,2015,5189894
+NO,Norway,2016,5236151
+NO,Norway,2017,5276968
+NO,Norway,2018,5311916
+NO,Norway,2019,5347896
+NO,Norway,2020,5379475
+NO,Norway,2021,5408320
+NO,Norway,2022,5457127
+NO,Norway,2023,5519594
+NO,Norway,2024,5572272
+PL,Poland,1960,29637450
+PL,Poland,1961,29964000
+PL,Poland,1962,30308500
+PL,Poland,1963,30712000
+PL,Poland,1964,31139450
+PL,Poland,1965,31444950
+PL,Poland,1966,31681000
+PL,Poland,1967,31987155
+PL,Poland,1968,32294655
+PL,Poland,1969,32548300
+PL,Poland,1970,32664300
+PL,Poland,1971,32783500
+PL,Poland,1972,33055650
+PL,Poland,1973,33357200
+PL,Poland,1974,33678899
+PL,Poland,1975,34015199
+PL,Poland,1976,34356300
+PL,Poland,1977,34689050
+PL,Poland,1978,34965600
+PL,Poland,1979,35247217
+PL,Poland,1980,35574150
+PL,Poland,1981,35898587
+PL,Poland,1982,36230481
+PL,Poland,1983,36571808
+PL,Poland,1984,36904134
+PL,Poland,1985,37201885
+PL,Poland,1986,37456119
+PL,Poland,1987,37668045
+PL,Poland,1988,37824487
+PL,Poland,1989,37961529
+PL,Poland,1990,38110782
+PL,Poland,1991,38246193
+PL,Poland,1992,38363667
+PL,Poland,1993,38461408
+PL,Poland,1994,38542652
+PL,Poland,1995,38594998
+PL,Poland,1996,38624370
+PL,Poland,1997,38649660
+PL,Poland,1998,38663481
+PL,Poland,1999,38660271
+PL,Poland,2000,38258629
+PL,Poland,2001,38248076
+PL,Poland,2002,38230364
+PL,Poland,2003,38204570
+PL,Poland,2004,38182222
+PL,Poland,2005,38165445
+PL,Poland,2006,38141267
+PL,Poland,2007,38120560
+PL,Poland,2008,38125759
+PL,Poland,2009,38151603
+PL,Poland,2010,38042794
+PL,Poland,2011,38063255
+PL,Poland,2012,38063164
+PL,Poland,2013,38040196
+PL,Poland,2014,38011735
+PL,Poland,2015,37986412
+PL,Poland,2016,37970087
+PL,Poland,2017,37974826
+PL,Poland,2018,37974750
+PL,Poland,2019,37965475
+PL,Poland,2020,37515748
+PL,Poland,2021,36981559
+PL,Poland,2022,36821749
+PL,Poland,2023,36687353
+PL,Poland,2024,36559233
+PT,Portugal,1960,8857716
+PT,Portugal,1961,8929316
+PT,Portugal,1962,8993985
+PT,Portugal,1963,9030355
+PT,Portugal,1964,9035365
+PT,Portugal,1965,8998595
+PT,Portugal,1966,8930990
+PT,Portugal,1967,8874520
+PT,Portugal,1968,8836650
+PT,Portugal,1969,8757705
+PT,Portugal,1970,8680431
+PT,Portugal,1971,8643756
+PT,Portugal,1972,8630430
+PT,Portugal,1973,8633100
+PT,Portugal,1974,8754365
+PT,Portugal,1975,9093470
+PT,Portugal,1976,9355810
+PT,Portugal,1977,9455675
+PT,Portugal,1978,9558250
+PT,Portugal,1979,9661265
+PT,Portugal,1980,9766312
+PT,Portugal,1981,9851362
+PT,Portugal,1982,9911771
+PT,Portugal,1983,9957865
+PT,Portugal,1984,9996232
+PT,Portugal,1985,10023613
+PT,Portugal,1986,10032734
+PT,Portugal,1987,10030031
+PT,Portugal,1988,10019610
+PT,Portugal,1989,10005000
+PT,Portugal,1990,9983218
+PT,Portugal,1991,9960235
+PT,Portugal,1992,9952494
+PT,Portugal,1993,9964675
+PT,Portugal,1994,9991525
+PT,Portugal,1995,10026176
+PT,Portugal,1996,10063945
+PT,Portugal,1997,10108977
+PT,Portugal,1998,10160196
+PT,Portugal,1999,10217828
+PT,Portugal,2000,10289898
+PT,Portugal,2001,10362722
+PT,Portugal,2002,10419631
+PT,Portugal,2003,10458821
+PT,Portugal,2004,10483861
+PT,Portugal,2005,10503330
+PT,Portugal,2006,10522288
+PT,Portugal,2007,10542964
+PT,Portugal,2008,10558177
+PT,Portugal,2009,10568247
+PT,Portugal,2010,10573100
+PT,Portugal,2011,10565836
+PT,Portugal,2012,10531420
+PT,Portugal,2013,10473991
+PT,Portugal,2014,10419607
+PT,Portugal,2015,10381838
+PT,Portugal,2016,10356516
+PT,Portugal,2017,10340124
+PT,Portugal,2018,10334633
+PT,Portugal,2019,10354446
+PT,Portugal,2020,10373508
+PT,Portugal,2021,10407707
+PT,Portugal,2022,10468869
+PT,Portugal,2023,10553546
+PT,Portugal,2024,10694681
+RO,Romania,1960,18406905
+RO,Romania,1961,18555250
+RO,Romania,1962,18676550
+RO,Romania,1963,18797850
+RO,Romania,1964,18919126
+RO,Romania,1965,19031576
+RO,Romania,1966,19215450
+RO,Romania,1967,19534242
+RO,Romania,1968,19799831
+RO,Romania,1969,20009141
+RO,Romania,1970,20250398
+RO,Romania,1971,20461567
+RO,Romania,1972,20657957
+RO,Romania,1973,20835681
+RO,Romania,1974,21029429
+RO,Romania,1975,21293583
+RO,Romania,1976,21551634
+RO,Romania,1977,21756096
+RO,Romania,1978,21951464
+RO,Romania,1979,22090488
+RO,Romania,1980,22207282
+RO,Romania,1981,22353070
+RO,Romania,1982,22475741
+RO,Romania,1983,22560478
+RO,Romania,1984,22640547
+RO,Romania,1985,22732999
+RO,Romania,1986,22836841
+RO,Romania,1987,22949430
+RO,Romania,1988,23057662
+RO,Romania,1989,23161458
+RO,Romania,1990,23201835
+RO,Romania,1991,23001155
+RO,Romania,1992,22794284
+RO,Romania,1993,22763280
+RO,Romania,1994,22730211
+RO,Romania,1995,22684270
+RO,Romania,1996,22619004
+RO,Romania,1997,22553978
+RO,Romania,1998,22507344
+RO,Romania,1999,22472040
+RO,Romania,2000,22442971
+RO,Romania,2001,22131970
+RO,Romania,2002,21730496
+RO,Romania,2003,21574326
+RO,Romania,2004,21451748
+RO,Romania,2005,21319685
+RO,Romania,2006,21193760
+RO,Romania,2007,20882982
+RO,Romania,2008,20537875
+RO,Romania,2009,20367487
+RO,Romania,2010,20246871
+RO,Romania,2011,20147528
+RO,Romania,2012,20058035
+RO,Romania,2013,19983693
+RO,Romania,2014,19908979
+RO,Romania,2015,19815616
+RO,Romania,2016,19702267
+RO,Romania,2017,19588715
+RO,Romania,2018,19473970
+RO,Romania,2019,19371648
+RO,Romania,2020,19265250
+RO,Romania,2021,19122380
+RO,Romania,2022,19049163
+RO,Romania,2023,19061402
+RO,Romania,2024,19055364
+RS,Serbia,1995,7625357
+RS,Serbia,1996,7617794
+RS,Serbia,1997,7596501
+RS,Serbia,1998,7567745
+RS,Serbia,1999,7540401
+RS,Serbia,2000,7516346
+RS,Serbia,2001,7503433
+RS,Serbia,2002,7496522
+RS,Serbia,2003,7480591
+RS,Serbia,2004,7463157
+RS,Serbia,2005,7440769
+RS,Serbia,2006,7411569
+RS,Serbia,2007,7381579
+RS,Serbia,2008,7350222
+RS,Serbia,2009,7320807
+RS,Serbia,2010,7291436
+RS,Serbia,2011,7234099
+RS,Serbia,2012,7199077
+RS,Serbia,2013,7164132
+RS,Serbia,2014,7130576
+RS,Serbia,2015,7095383
+RS,Serbia,2016,7058322
+RS,Serbia,2017,7020858
+RS,Serbia,2018,6982604
+RS,Serbia,2019,6945235
+RS,Serbia,2020,6899126
+RS,Serbia,2021,6834326
+RS,Serbia,2022,6719151
+RS,Serbia,2023,6623183
+RS,Serbia,2024,6586476
+RU,Russia,1996,148160126
+RU,Russia,1997,147915373
+RU,Russia,1998,147670780
+RU,Russia,1999,147214777
+RU,Russia,2000,146596870
+RU,Russia,2001,145976473
+RU,Russia,2002,145408033
+RU,Russia,2003,144667468
+RU,Russia,2004,143821212
+RU,Russia,2005,143113885
+RU,Russia,2006,142487260
+RU,Russia,2007,142114903
+RU,Russia,2008,141956409
+RU,Russia,2009,141909244
+RU,Russia,2010,142385523
+RU,Russia,2011,142956460
+SE,Sweden,1960,7484656
+SE,Sweden,1961,7519998
+SE,Sweden,1962,7561588
+SE,Sweden,1963,7604328
+SE,Sweden,1964,7661354
+SE,Sweden,1965,7733853
+SE,Sweden,1966,7807797
+SE,Sweden,1967,7867931
+SE,Sweden,1968,7912273
+SE,Sweden,1969,7968072
+SE,Sweden,1970,8042801
+SE,Sweden,1971,8098334
+SE,Sweden,1972,8122300
+SE,Sweden,1973,8136312
+SE,Sweden,1974,8159955
+SE,Sweden,1975,8192437
+SE,Sweden,1976,8222286
+SE,Sweden,1977,8251540
+SE,Sweden,1978,8275599
+SE,Sweden,1979,8293678
+SE,Sweden,1980,8310531
+SE,Sweden,1981,8320503
+SE,Sweden,1982,8325263
+SE,Sweden,1983,8329033
+SE,Sweden,1984,8336605
+SE,Sweden,1985,8350386
+SE,Sweden,1986,8369829
+SE,Sweden,1987,8397804
+SE,Sweden,1988,8436489
+SE,Sweden,1989,8492964
+SE,Sweden,1990,8558835
+SE,Sweden,1991,8617375
+SE,Sweden,1992,8668067
+SE,Sweden,1993,8718561
+SE,Sweden,1994,8780745
+SE,Sweden,1995,8826939
+SE,Sweden,1996,8840998
+SE,Sweden,1997,8846062
+SE,Sweden,1998,8850974
+SE,Sweden,1999,8857874
+SE,Sweden,2000,8872109
+SE,Sweden,2001,8895960
+SE,Sweden,2002,8924958
+SE,Sweden,2003,8958229
+SE,Sweden,2004,8993531
+SE,Sweden,2005,9029572
+SE,Sweden,2006,9080505
+SE,Sweden,2007,9148092
+SE,Sweden,2008,9219637
+SE,Sweden,2009,9298515
+SE,Sweden,2010,9378126
+SE,Sweden,2011,9449213
+SE,Sweden,2012,9519374
+SE,Sweden,2013,9600379
+SE,Sweden,2014,9696110
+SE,Sweden,2015,9799186
+SE,Sweden,2016,9923085
+SE,Sweden,2017,10057698
+SE,Sweden,2018,10175214
+SE,Sweden,2019,10278887
+SE,Sweden,2020,10353442
+SE,Sweden,2021,10415811
+SE,Sweden,2022,10486941
+SE,Sweden,2023,10536632
+SE,Sweden,2024,10569709
+SI,Slovenia,1960,1584720
+SI,Slovenia,1961,1594131
+SI,Slovenia,1962,1603649
+SI,Slovenia,1963,1616971
+SI,Slovenia,1964,1632114
+SI,Slovenia,1965,1649160
+SI,Slovenia,1966,1669905
+SI,Slovenia,1967,1689528
+SI,Slovenia,1968,1704546
+SI,Slovenia,1969,1713874
+SI,Slovenia,1970,1724891
+SI,Slovenia,1971,1738335
+SI,Slovenia,1972,1752233
+SI,Slovenia,1973,1766697
+SI,Slovenia,1974,1776132
+SI,Slovenia,1975,1793581
+SI,Slovenia,1976,1820249
+SI,Slovenia,1977,1842377
+SI,Slovenia,1978,1862548
+SI,Slovenia,1979,1882599
+SI,Slovenia,1980,1901315
+SI,Slovenia,1981,1906531
+SI,Slovenia,1982,1910334
+SI,Slovenia,1983,1922321
+SI,Slovenia,1984,1932154
+SI,Slovenia,1985,1941641
+SI,Slovenia,1986,1965964
+SI,Slovenia,1987,1989776
+SI,Slovenia,1988,1995196
+SI,Slovenia,1989,1996351
+SI,Slovenia,1990,1998161
+SI,Slovenia,1991,1999429
+SI,Slovenia,1992,1996498
+SI,Slovenia,1993,1991746
+SI,Slovenia,1994,1989443
+SI,Slovenia,1995,1989872
+SI,Slovenia,1996,1988628
+SI,Slovenia,1997,1985956
+SI,Slovenia,1998,1981629
+SI,Slovenia,1999,1983045
+SI,Slovenia,2000,1988925
+SI,Slovenia,2001,1992060
+SI,Slovenia,2002,1994530
+SI,Slovenia,2003,1995733
+SI,Slovenia,2004,1997012
+SI,Slovenia,2005,2000474
+SI,Slovenia,2006,2006868
+SI,Slovenia,2007,2018122
+SI,Slovenia,2008,2021316
+SI,Slovenia,2009,2039669
+SI,Slovenia,2010,2048583
+SI,Slovenia,2011,2052843
+SI,Slovenia,2012,2057159
+SI,Slovenia,2013,2059953
+SI,Slovenia,2014,2061980
+SI,Slovenia,2015,2063531
+SI,Slovenia,2016,2065042
+SI,Slovenia,2017,2066388
+SI,Slovenia,2018,2073894
+SI,Slovenia,2019,2088385
+SI,Slovenia,2020,2102419
+SI,Slovenia,2021,2108079
+SI,Slovenia,2022,2112076
+SI,Slovenia,2023,2120461
+SI,Slovenia,2024,2127400
+SK,Slovakia,1960,4068095
+SK,Slovakia,1961,4191667
+SK,Slovakia,1962,4238188
+SK,Slovakia,1963,4282017
+SK,Slovakia,1964,4327341
+SK,Slovakia,1965,4370983
+SK,Slovakia,1966,4411666
+SK,Slovakia,1967,4449367
+SK,Slovakia,1968,4483915
+SK,Slovakia,1969,4518607
+SK,Slovakia,1970,4538223
+SK,Slovakia,1971,4557449
+SK,Slovakia,1972,4596622
+SK,Slovakia,1973,4641445
+SK,Slovakia,1974,4689623
+SK,Slovakia,1975,4739105
+SK,Slovakia,1976,4789507
+SK,Slovakia,1977,4840501
+SK,Slovakia,1978,4890125
+SK,Slovakia,1979,4938973
+SK,Slovakia,1980,4979815
+SK,Slovakia,1981,5016105
+SK,Slovakia,1982,5055099
+SK,Slovakia,1983,5091971
+SK,Slovakia,1984,5127097
+SK,Slovakia,1985,5161768
+SK,Slovakia,1986,5193838
+SK,Slovakia,1987,5222840
+SK,Slovakia,1988,5250596
+SK,Slovakia,1989,5275942
+SK,Slovakia,1990,5299187
+SK,Slovakia,1991,5303294
+SK,Slovakia,1992,5305016
+SK,Slovakia,1993,5325305
+SK,Slovakia,1994,5346331
+SK,Slovakia,1995,5361999
+SK,Slovakia,1996,5373361
+SK,Slovakia,1997,5383291
+SK,Slovakia,1998,5390516
+SK,Slovakia,1999,5396020
+SK,Slovakia,2000,5388720
+SK,Slovakia,2001,5378867
+SK,Slovakia,2002,5376912
+SK,Slovakia,2003,5373374
+SK,Slovakia,2004,5372280
+SK,Slovakia,2005,5372807
+SK,Slovakia,2006,5373054
+SK,Slovakia,2007,5374622
+SK,Slovakia,2008,5379233
+SK,Slovakia,2009,5386406
+SK,Slovakia,2010,5391428
+SK,Slovakia,2011,5398384
+SK,Slovakia,2012,5407579
+SK,Slovakia,2013,5413393
+SK,Slovakia,2014,5418649
+SK,Slovakia,2015,5423801
+SK,Slovakia,2016,5430798
+SK,Slovakia,2017,5439232
+SK,Slovakia,2018,5446771
+SK,Slovakia,2019,5454147
+SK,Slovakia,2020,5458827
+SK,Slovakia,2021,5447247
+SK,Slovakia,2022,5431752
+SK,Slovakia,2023,5426740
+SK,Slovakia,2024,5422069
+SM,San Marino,2004,29457
+SM,San Marino,2005,29836
+SM,San Marino,2006,30184
+SM,San Marino,2007,31211
+SM,San Marino,2008,31662
+SM,San Marino,2011,32620
+SM,San Marino,2012,33469
+SM,San Marino,2013,33041
+SM,San Marino,2014,32655
+SM,San Marino,2015,32897
+SM,San Marino,2016,33101
+SM,San Marino,2017,33825
+SM,San Marino,2018,34522
+SM,San Marino,2019,34663
+SM,San Marino,2020,34770
+SM,San Marino,2021,34252
+SM,San Marino,2022,33755
+TR,Türkiye,1960,27437520
+TR,Türkiye,1961,28095138
+TR,Türkiye,1962,28798871
+TR,Türkiye,1963,29551064
+TR,Türkiye,1964,30354298
+TR,Türkiye,1965,31134215
+TR,Türkiye,1966,31886523
+TR,Türkiye,1967,32683665
+TR,Türkiye,1968,33527788
+TR,Türkiye,1969,34421243
+TR,Türkiye,1970,35293835
+TR,Türkiye,1971,36144637
+TR,Türkiye,1972,37045548
+TR,Türkiye,1973,37999493
+TR,Türkiye,1974,39009662
+TR,Türkiye,1975,39905363
+TR,Türkiye,1976,40691975
+TR,Türkiye,1977,41549286
+TR,Türkiye,1978,42481691
+TR,Türkiye,1979,43494200
+TR,Türkiye,1980,44522298
+TR,Türkiye,1981,45554479
+TR,Türkiye,1982,46647978
+TR,Türkiye,1983,47806069
+TR,Türkiye,1984,49032324
+TR,Türkiye,1985,50179253
+TR,Türkiye,1986,51243380
+TR,Türkiye,1987,52372399
+TR,Türkiye,1988,53570114
+TR,Türkiye,1989,54840677
+TR,Türkiye,1990,56104381
+TR,Türkiye,1991,57274564
+TR,Türkiye,1992,58396821
+TR,Türkiye,1993,59518813
+TR,Türkiye,1994,60641322
+TR,Türkiye,1995,61770601
+TR,Türkiye,1996,62911139
+TR,Türkiye,1997,64063168
+TR,Türkiye,1998,65214119
+TR,Türkiye,1999,66337994
+TR,Türkiye,2000,65809463
+TR,Türkiye,2001,65166331
+TR,Türkiye,2002,66002506
+TR,Türkiye,2003,66794551
+TR,Türkiye,2004,67598736
+TR,Türkiye,2005,68435380
+TR,Türkiye,2006,69295253
+TR,Türkiye,2007,70158112
+TR,Türkiye,2008,71051678
+TR,Türkiye,2009,72039206
+TR,Türkiye,2010,73142150
+TR,Türkiye,2011,74223629
+TR,Türkiye,2012,75175827
+TR,Türkiye,2013,76147624
+TR,Türkiye,2014,77181884
+TR,Türkiye,2015,78218479
+TR,Türkiye,2016,79277962
+TR,Türkiye,2017,80312698
+TR,Türkiye,2018,81407204
+TR,Türkiye,2019,82579440
+TR,Türkiye,2020,83384680
+TR,Türkiye,2021,84147318
+TR,Türkiye,2022,84979913
+TR,Türkiye,2023,85325965
+TR,Türkiye,2024,85518661
+UA,Ukraine,1996,50637073
+UA,Ukraine,1997,50186765
+UA,Ukraine,1998,49759148
+UA,Ukraine,1999,49329879
+UA,Ukraine,2000,48889280
+UA,Ukraine,2001,48452256
+UA,Ukraine,2002,48032005
+UA,Ukraine,2003,47632594
+UA,Ukraine,2004,47271271
+UA,Ukraine,2005,46924816
+UA,Ukraine,2006,46607431
+UA,Ukraine,2007,46329000
+UA,Ukraine,2008,46077834
+UA,Ukraine,2009,45872976
+UA,Ukraine,2010,45690386
+UA,Ukraine,2011,45525731
+UA,Ukraine,2012,45412987
+UA,Ukraine,2013,45309293
+UA,Ukraine,2015,42675270
+UA,Ukraine,2016,42502892
+UA,Ukraine,2017,42315836
+UA,Ukraine,2018,42100165
+UA,Ukraine,2019,41858172
+UA,Ukraine,2020,41575748
+UK,United Kingdom,1960,52400000
+UK,United Kingdom,1961,52800000
+UK,United Kingdom,1962,53250000
+UK,United Kingdom,1963,53650000
+UK,United Kingdom,1964,54000000
+UK,United Kingdom,1965,54348050
+UK,United Kingdom,1966,54648500
+UK,United Kingdom,1967,54943600
+UK,United Kingdom,1968,55211700
+UK,United Kingdom,1969,55441750
+UK,United Kingdom,1970,55663250
+UK,United Kingdom,1971,55896223
+UK,United Kingdom,1972,56086065
+UK,United Kingdom,1973,56194527
+UK,United Kingdom,1974,56229974
+UK,United Kingdom,1975,56225800
+UK,United Kingdom,1976,56211968
+UK,United Kingdom,1977,56193492
+UK,United Kingdom,1978,56196504
+UK,United Kingdom,1979,56246951
+UK,United Kingdom,1980,56314216
+UK,United Kingdom,1981,56333829
+UK,United Kingdom,1982,56313641
+UK,United Kingdom,1983,56332848
+UK,United Kingdom,1984,56422072
+UK,United Kingdom,1985,56550268
+UK,United Kingdom,1986,56681396
+UK,United Kingdom,1987,56802050
+UK,United Kingdom,1988,56928327
+UK,United Kingdom,1989,57076711
+UK,United Kingdom,1990,57247586
+UK,United Kingdom,1991,57424897
+UK,United Kingdom,1992,57580402
+UK,United Kingdom,1993,57718614
+UK,United Kingdom,1994,57865745
+UK,United Kingdom,1995,58019030
+UK,United Kingdom,1996,58166950
+UK,United Kingdom,1997,58316954
+UK,United Kingdom,1998,58487141
+UK,United Kingdom,1999,58682466
+UK,United Kingdom,2000,58892514
+UK,United Kingdom,2001,59119673
+UK,United Kingdom,2002,59370479
+UK,United Kingdom,2003,59647577
+UK,United Kingdom,2004,59987905
+UK,United Kingdom,2005,60401206
+UK,United Kingdom,2006,60846820
+UK,United Kingdom,2007,61322463
+UK,United Kingdom,2008,61806995
+UK,United Kingdom,2009,62276270
+UK,United Kingdom,2010,62766365
+UK,United Kingdom,2011,63258810
+UK,United Kingdom,2012,63700215
+UK,United Kingdom,2013,64128273
+UK,United Kingdom,2014,64602298
+UK,United Kingdom,2015,65116219
+UK,United Kingdom,2016,65611593
+UK,United Kingdom,2017,66058859
+UK,United Kingdom,2018,66460344
+UK,United Kingdom,2019,66836327
+XK,Kosovo*,1960,945250
+XK,Kosovo*,1961,971250
+XK,Kosovo*,1962,996750
+XK,Kosovo*,1963,1021250
+XK,Kosovo*,1964,1047000
+XK,Kosovo*,1965,1074250
+XK,Kosovo*,1966,1102000
+XK,Kosovo*,1967,1130500
+XK,Kosovo*,1968,1159500
+XK,Kosovo*,1969,1189250
+XK,Kosovo*,1970,1220750
+XK,Kosovo*,1971,1254750
+XK,Kosovo*,1972,1291250
+XK,Kosovo*,1973,1329000
+XK,Kosovo*,1974,1367250
+XK,Kosovo*,1975,1406250
+XK,Kosovo*,1976,1446250
+XK,Kosovo*,1977,1486500
+XK,Kosovo*,1978,1526250
+XK,Kosovo*,1979,1553250
+XK,Kosovo*,1980,1567750
+XK,Kosovo*,1981,1593500
+XK,Kosovo*,1982,1629250
+XK,Kosovo*,1983,1664000
+XK,Kosovo*,1984,1699250
+XK,Kosovo*,1985,1735500
+XK,Kosovo*,1986,1773000
+XK,Kosovo*,1987,1811250
+XK,Kosovo*,1988,1850000
+XK,Kosovo*,1989,1889500
+XK,Kosovo*,1990,1929000
+XK,Kosovo*,1991,1967500
+XK,Kosovo*,1992,2005500
+XK,Kosovo*,1993,2042250
+XK,Kosovo*,1994,2077500
+XK,Kosovo*,1995,2113500
+XK,Kosovo*,1996,2150250
+XK,Kosovo*,2003,2000500
+XK,Kosovo*,2004,2028500
+XK,Kosovo*,2005,2070500
+XK,Kosovo*,2006,2113354
+XK,Kosovo*,2007,2139924
+XK,Kosovo*,2008,2166913
+XK,Kosovo*,2009,2194397
+XK,Kosovo*,2010,2001144
+XK,Kosovo*,2011,1787101
+XK,Kosovo*,2012,1797814
+XK,Kosovo*,2013,1818119
+XK,Kosovo*,2014,1812788
+XK,Kosovo*,2015,1788274
+XK,Kosovo*,2016,1777568
+XK,Kosovo*,2017,1791019
+XK,Kosovo*,2018,1797086
+XK,Kosovo*,2019,1788891
+XK,Kosovo*,2020,1790151
+XK,Kosovo*,2021,1786079

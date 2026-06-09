@@ -1,0 +1,11 @@
+OLS estimation, Dep. Var.: suicide_sdr
+Observations: 272
+Fixed-effects: cid: 16,  year: 17
+Standard-errors: Clustered (cid) 
+       Estimate Std. Error   t value Pr(>|t|)    
+unemp -0.031148   0.198320 -0.157059 0.877293    
+ATT    3.033999   1.380226  2.198189 0.044048 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+RMSE: 2.57473     Adj. R2: 0.874534
+                Within R2: 0.111775

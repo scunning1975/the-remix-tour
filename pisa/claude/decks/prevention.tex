@@ -1,0 +1,325 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{azzurri}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\graphicspath{{../output/figures/}}
+
+\title{Prevention Without Proof}
+\subtitle{Did national suicide-prevention strategies reduce suicide?}
+\author{Scott Cunningham}
+\institute{Baylor University}
+\date{European Commission \,\textperiodcentered\, Joint Research Centre, Ispra \,\textperiodcentered\, June 2026}
+
+\begin{document}
+
+% ---------- Act I ----------
+\begin{frame}[plain]\titlepage\end{frame}
+
+\bignumber{40s}{Somewhere on earth, about every forty seconds, a person decides the rest of life is not worth the rest of life.}
+
+\begin{frame}{More than war, more than homicide}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\vspace{1.2em}
+{\Large More than \textbf{700{,}000} suicides a year.}\\[1.2em]
+{\large More than war.}\\[0.4em]
+{\large More than homicide.}\\[0.4em]
+{\large More than most diseases we built ministries to defeat.}
+\end{column}
+\begin{column}{0.42\textwidth}
+\vspace{0.6em}
+\begin{block}{The number is stubborn}
+It has barely moved in a generation.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The world answered with a document}
+\begin{columns}[T]
+\begin{column}{0.6\textwidth}
+\vspace{0.8em}
+\textbf{Finland}, 1986--92: investigate every suicide, build a national program.\\[0.8em]
+Then everyone copied it: Norway and Sweden 1995, France 2000, the UK 2002, Ireland 2005.\\[0.8em]
+By 2018 the WHO urges \emph{every} member state to adopt one.
+\end{column}
+\begin{column}{0.38\textwidth}
+\vspace{1.4em}
+\begin{alertblock}{The premise}
+We decided, collectively, that the \textbf{strategy document} is the cure.
+\end{alertblock}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The only question that matters}
+\vfill
+\begin{center}
+{\Large Does a country that adopts a national strategy}\\[0.5em]
+{\Large bury \textbf{fewer} of its citizens than it otherwise would have?}
+\end{center}
+\vfill
+\begin{center}\color{warmgray}Empirical. Answerable in principle. Almost entirely unanswered in practice.\end{center}
+\vfill
+\end{frame}
+
+\begin{frame}{My answer, stated up front}
+\vfill
+\begin{center}
+{\Large From the cross-national record, \textbf{we cannot tell}}\\[0.6em]
+{\Large whether these strategies have saved a single life.}
+\end{center}
+\vfill
+\begin{center}\color{tricrosso}\large That should frighten the skeptic and the believer alike.\end{center}
+\vfill
+\end{frame}
+
+% ---------- Act II ----------
+\divider{The famous answer}{And the method underneath it}
+
+\begin{frame}{The canonical finding looked protective}
+\begin{columns}[T]
+\begin{column}{0.6\textwidth}
+\vspace{1em}
+Matsubayashi \& Ueda (2011): across 21 OECD countries, those with national programs saw suicide \textbf{fall} relative to those without.\\[1em]
+It became the evidence base for a global policy.
+\end{column}
+\begin{column}{0.38\textwidth}
+\vspace{1.2em}
+\begin{block}{The engine}
+A two-way fixed-effects comparison of adopters vs.\ non-adopters.
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Two-way fixed effects misleads under staggered timing}
+\vspace{0.6em}
+When units adopt at different dates and effects are heterogeneous, TWFE uses \textbf{already-treated units as controls} for newly-treated ones.
+\begin{itemize}
+\item The weights can be negative.
+\item The estimate can fall outside the range of every true effect.
+\item It can return the \textbf{wrong sign} for mechanical reasons.
+\end{itemize}
+\vspace{0.4em}
+\begin{center}\color{warmgray}Goodman-Bacon (2021); de Chaisemartin \& D'Haultf\oe uille (2020).\end{center}
+\end{frame}
+
+\divider{The data}{All real --- nothing simulated}
+
+\begin{frame}{Three real sources, one country-year panel}
+\begin{itemize}
+\item \textbf{Outcome:} Eurostat age-standardised suicide rate (ICD-10 X60--X84, Y87.0), 1994--2010.
+\item \textbf{Treatment:} year a government adopted a stand-alone national strategy (WHO 2018; Lewitzka et al.\ 2019).
+\item \textbf{Covariate:} World Bank unemployment --- the business cycle.
+\end{itemize}
+\vspace{0.5em}
+\begin{center}\color{warmgray}Verified independently in R, Python, and Stata: identical samples and means.\end{center}
+\end{frame}
+
+\begin{frame}{The natural experiment is staggered --- and thin}
+\centering
+\includegraphics[height=0.73\textheight]{fig4_panelview.pdf}
+\end{frame}
+
+\begin{frame}{Four treated countries --- I will not pretend otherwise}
+\centering
+\includegraphics[height=0.74\textheight]{fig5_cohort_counts.pdf}
+\end{frame}
+
+\begin{frame}{Treated countries start lower; all bend up in the recession}
+\centering
+\includegraphics[height=0.73\textheight]{fig6_outcome_by_cohort.pdf}
+\end{frame}
+
+\divider{The design}{What we are trying to measure}
+
+\begin{frame}{The estimand: a weighted average effect on the treated}
+\vspace{0.8em}
+For each adoption cohort $g$ and year $t$, compare the change in suicide against not-yet- and never-treated countries; aggregate, weighting cohorts by size.
+\[
+\theta = \sum_g w_g\,\overline{ATT}(g), \qquad w_g \propto \#\text{treated countries in } g.
+\]
+\vspace{0.3em}
+\begin{center}\color{warmgray}Callaway \& Sant'Anna (2021), under \emph{conditional} parallel trends.\end{center}
+\end{frame}
+
+\begin{frame}{The covariate an expert would insist on}
+\vfill
+\begin{center}
+{\Large Recessions raise suicide. Recoveries lower it.}\\[0.6em]
+{\Large And Europe's recessions are not independent of its strategies.}
+\end{center}
+\vfill
+\begin{center}\color{warmgray}So we condition on \textbf{unemployment} --- the fast-moving confounder that can wear a policy's clothes (Ruhm 2000; Reeves et al.\ 2012).\end{center}
+\vfill
+\end{frame}
+
+\begin{frame}{And unemployment is genuinely imbalanced}
+\vspace{0.6em}
+\centering
+\begin{tabular}{lccc}
+\toprule
+Baseline (1994) & Treated & Control & Std.\ diff. \\
+\midrule
+Suicide rate (per 100k) & 12.1 & 21.5 & $-0.99$ \\
+\rowcolor{lightbg} Unemployment (\%) & 9.8 & 8.2 & $+0.33$ \\
+Share aged 65+ (\%) & 15.2 & 14.0 & $+0.63$ \\
+Median age (years) & 35.2 & 36.2 & $-0.42$ \\
+\bottomrule
+\end{tabular}
+\vspace{0.8em}
+\begin{center}\color{warmgray}Imbens \& Rubin (2015): $|\text{std.\ diff}| > 0.25$ is imbalanced. Unemployment clears it --- conditioning is necessary, not cosmetic.\end{center}
+\end{frame}
+
+\begin{frame}{There is no common support to weight on}
+\centering
+\includegraphics[height=0.66\textheight]{fig3_pscore_overlap.pdf}\\
+{\color{warmgray}\small Perfect separation $\Rightarrow$ regression adjustment, not inverse-propensity weighting.}
+\end{frame}
+
+\begin{frame}{Sixteen clusters: trust the placebo, not the $t$-statistic}
+\vspace{0.8em}
+Four treated countries, twelve controls $\approx$ sixteen clusters.\\[0.6em]
+Cluster-robust and bootstrap standard errors need many-cluster asymptotics this design does not have.
+\begin{alertblock}{So the inferential weight is carried by randomization inference}
+How often does \emph{fake} adoption, assigned at random among the never-treated, produce an estimate this large?
+\end{alertblock}
+\end{frame}
+
+\divider{The naive answer}{And why we must discard it}
+
+\begin{frame}{Differencing gives a positive, wrong-signed number}
+\vfill\begin{center}
+{\fontsize{44}{44}\selectfont\bfseries\color{tricrosso}$+2.7$ to $+3.2$}\\[0.6em]
+{\Large more suicides per 100{,}000 after adoption}
+\end{center}\vfill
+\begin{center}\color{warmgray}Callaway--Sant'Anna, Borusyak et al., Sun--Abraham --- they agree on the number. None of them is identified here.\end{center}\vfill
+\end{frame}
+
+\divider{Why difference-in-differences is the wrong tool}{The groups differ in levels \emph{and} trends}
+
+\begin{frame}{A trend runs straight through adoption}
+\centering
+\includegraphics[height=0.62\textheight]{fig_did_fails.pdf}\\
+{\color{warmgray}\small Pre-trend slope $+0.32$/yr ($t=3.4$, $p=.001$). The dashed extrapolation runs through the post-adoption points --- no break at treatment.}
+\end{frame}
+
+\begin{frame}{When groups differ in levels and trends, do not difference}
+\vspace{0.6em}
+\begin{itemize}
+\item \textbf{Levels} differ: every covariate is imbalanced (Imbens--Rubin $>0.25$).
+\item \textbf{Trends} differ: a significant upward slope predates \emph{and} survives adoption.
+\end{itemize}
+\vspace{0.5em}
+\begin{center}{\Large Differencing extrapolates the gap --- it does not remove it.}\end{center}
+\vspace{0.3em}
+\begin{center}\color{warmgray}Doudchenko \& Imbens (2016): match on the level \emph{path} instead. That is synthetic control.\end{center}
+\end{frame}
+
+\divider{Synthetic control}{Match on the level path --- for all four}
+
+\begin{frame}{Build each adopter a synthetic twin}
+\vspace{0.9em}
+For each treated country: a weighted average of the 13 never-adopters that reproduces its \textbf{pre-adoption suicide path} (Abadie 2010), bias-corrected by ridge augmentation (Ben-Michael et al.\ 2021).\\[0.8em]
+The WHO splice (from 1986) gives Norway \& Sweden 9 pre-years, the UK 16, Ireland 19.
+\end{frame}
+
+\begin{frame}{The synthetic twins track all four before adoption}
+\centering
+\includegraphics[height=0.33\textheight]{fig_scm_fit_NO.pdf}\hfill\includegraphics[height=0.33\textheight]{fig_scm_fit_SE.pdf}\\[1pt]
+\includegraphics[height=0.33\textheight]{fig_scm_fit_UK.pdf}\hfill\includegraphics[height=0.33\textheight]{fig_scm_fit_IE.pdf}
+\end{frame}
+
+\begin{frame}{Donor weights, before and after ridge augmentation}
+\centering
+\includegraphics[width=0.49\textwidth]{fig_scm_weights_IE.pdf}\hfill\includegraphics[width=0.49\textwidth]{fig_scm_weights_UK.pdf}\\
+{\color{warmgray}\small Pure SCM (simplex, non-negative) vs ridge-augmented (bias-corrected). Ireland's poorer raw fit pushes some weights negative; the UK's near-perfect fit barely moves.}
+\end{frame}
+
+\begin{frame}{Permutation inference: every adopter is ordinary}
+\centering
+\includegraphics[width=0.49\textwidth]{fig_scm_spaghetti_IE.pdf}\hfill\includegraphics[width=0.49\textwidth]{fig_scm_rmspe_IE.pdf}\\
+{\color{warmgray}\small Permutation $p$ --- Norway 0.71, Sweden 0.71, UK 0.79, Ireland 0.43 --- all in the body of the placebo distribution.}
+\end{frame}
+
+\begin{frame}{Synthetic difference-in-differences agrees, by cohort}
+\vspace{0.6em}\centering
+\begin{tabular}{lcc}
+\toprule
+Adoption cohort & SDID estimate & s.e. \\
+\midrule
+1995 (Norway, Sweden) & $+0.80$ & $4.20$ \\
+2002 (United Kingdom) & $+1.24$ & $3.96$ \\
+2005 (Ireland) & $+0.74$ & $1.44$ \\
+\bottomrule
+\end{tabular}
+\vspace{0.9em}
+\begin{center}\color{warmgray}Arkhangelsky et al.\ (2021). Every estimate smaller than its own standard error.\end{center}
+\end{frame}
+
+\begin{frame}{The appropriate method finds nothing}
+\vfill\begin{center}
+{\Large Four countries. Three methods. One verdict.}\\[0.7em]
+{\Large No detectable effect on suicide --- and no power to rule one out.}
+\end{center}\vfill
+\end{frame}
+
+\divider{Devil's advocate}{The strongest objection}
+
+\begin{frame}{``You are explaining away an inconvenient result''}
+\vspace{0.6em}
+\begin{block}{The skeptic}
+You got a positive estimate and then argued it away with pre-trends and a recession. Convenient.
+\end{block}
+\vspace{0.4em}
+\begin{alertblock}{The response}
+I am \emph{not} claiming the recession explains the result --- that would identify, from a panel I called uninformative, an effect I have no business identifying. The claim is weaker and more durable: these forces are present, the design cannot separate them, and a number that confounds all three measures none.
+\end{alertblock}
+\end{frame}
+
+\divider{What this means}{For the question, and for the Commission}
+
+\begin{frame}{Not that strategies fail --- that we cannot see}
+\vfill
+\begin{center}
+{\Large The finding is not that prevention is worthless.}\\[0.6em]
+{\Large It is that the observational cross-section is \textbf{structurally incapable} of revealing its worth.}
+\end{center}
+\vfill
+\begin{center}\color{warmgray}A policy can be both worth keeping and unproven. Honesty means holding both.\end{center}
+\vfill
+\end{frame}
+
+\begin{frame}{We built a continent of strategies with no evaluation inside}
+\vspace{0.8em}
+No staggered randomization. No phased regional rollout with administrative mortality data. No pre-registered evaluation attached to a single national plan.\\[0.8em]
+Every country switched at once, at the level where the confounders live, in response to the outcome itself.
+\end{frame}
+
+\begin{frame}{For the Commission: design the evaluation before the policy}
+\begin{itemize}
+\item Build the counterfactual \textbf{in}, not reconstruct it afterward.
+\item Evaluate \textbf{below the nation} --- regions, phased rollout.
+\item Pre-register the mortality outcome before deployment.
+\end{itemize}
+\vspace{0.5em}
+\begin{center}\color{warmgray}The alternative is to keep spending moral and fiscal capital on faith.\end{center}
+\end{frame}
+
+\begin{frame}{Italy never wrote the document}
+\vfill
+\begin{center}
+{\Large The country in which we sit is a documented \textbf{never-adopter}.}\\[0.6em]
+{\large A large European nation that never wrote the strategy ---}\\[0.2em]
+{\large the silent control against which the writers might have been judged,}\\[0.2em]
+{\large had the data let us judge them.}
+\end{center}
+\vfill
+\end{frame}
+
+% ---------- Act III: closing ----------
+\divider{We have been making life-and-death policy}{in a darkness we mistook for evidence.}
+
+\end{document}

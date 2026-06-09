@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Dashboard</title>
+<style>
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --border: #30363d;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --accent: #a371f7;
+  --accent-dim: #6e40c9;
+  --green: #3fb950;
+  --green-dim: #238636;
+  --yellow: #d29922;
+  --yellow-dim: #9e6a03;
+  --red: #f85149;
+  --red-dim: #da3633;
+  --blue: #58a6ff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+header .subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-left: 1rem;
+}
+
+.pulse {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse-anim 2s infinite;
+}
+
+.pulse-dot.green { background: var(--green); }
+.pulse-dot.yellow { background: var(--yellow); }
+.pulse-dot.red { background: var(--red); }
+
+@keyframes pulse-anim {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+nav {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+nav button:hover { color: var(--text-primary); }
+nav button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+}
+
+.stat-card .label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-card .value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge.confirmed { background: var(--green-dim); color: var(--green); }
+.badge.testing { background: var(--accent-dim); color: var(--accent); }
+.badge.conjecture { background: var(--bg-tertiary); color: var(--text-secondary); }
+.badge.complicated { background: var(--yellow-dim); color: var(--yellow); }
+.badge.rejected { background: var(--red-dim); color: var(--red); }
+.badge.missing { background: var(--bg-tertiary); color: var(--text-muted); }
+.badge.fresh { background: var(--green-dim); color: var(--green); }
+.badge.stale { background: var(--yellow-dim); color: var(--yellow); }
+.badge.orphaned { background: var(--red-dim); color: var(--red); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+th {
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg-tertiary); }
+
+.courtroom-stage {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.courtroom-stage-header {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.courtroom-stage-header:hover { background: var(--bg-secondary); }
+
+.courtroom-stage-header .stage-name {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.courtroom-stage-header .stage-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+.courtroom-stage-header .stage-num.confirmed { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+.courtroom-stage-header .stage-num.complicated { background: var(--yellow-dim); border-color: var(--yellow); color: var(--yellow); }
+.courtroom-stage-header .stage-num.missing { background: var(--bg-tertiary); border-color: var(--border); color: var(--text-muted); }
+
+.courtroom-stage-body {
+  display: none;
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.courtroom-stage-body.open { display: block; padding-top: 1rem; }
+
+.courtroom-stage-body .evidence-list {
+  margin-top: 0.75rem;
+  list-style: none;
+}
+
+.courtroom-stage-body .evidence-list li {
+  padding: 0.3rem 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.courtroom-stage-body .evidence-list li::before {
+  content: "→ ";
+  color: var(--accent);
+}
+
+.pipeline-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.pipeline-item:last-child { border-bottom: none; }
+
+.pipeline-item .script-name {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+.pipeline-item .script-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.pipeline-level {
+  margin-bottom: 1.5rem;
+}
+
+.pipeline-level-header {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 4px 4px 0 0;
+}
+
+.pipeline-level-body {
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.hypothesis-node {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hypothesis-node:last-child { border-bottom: none; }
+
+.hypothesis-node .h-id {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+.hypothesis-node .h-title {
+  font-weight: 500;
+}
+
+.hypothesis-node .h-claim {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.4rem;
+}
+
+.hypothesis-node .h-kills {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  font-style: italic;
+}
+
+.hypothesis-node.child { padding-left: 2.5rem; }
+
+.manuscript-section {
+  margin-bottom: 2rem;
+}
+
+.manuscript-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.manuscript-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.manuscript-item:last-child { border-bottom: none; }
+
+.manuscript-item .m-claim {
+  color: var(--text-primary);
+}
+
+.manuscript-item .m-evidence {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.figure-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.figure-card .fig-name {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.figure-card .fig-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.figure-card .fig-script {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-top: 0.3rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+/* flip cards: figure front, generating code back */
+.flip-card { perspective: 1400px; height: 360px; cursor: pointer; }
+.flip-inner { position: relative; width: 100%; height: 100%; transition: transform .6s; transform-style: preserve-3d; }
+.flip-inner.flipped { transform: rotateY(180deg); }
+.flip-front, .flip-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border: 1px solid var(--border); border-radius: 8px; padding: .6rem .7rem; background: var(--bg-secondary); box-sizing: border-box; }
+.flip-front { display: flex; flex-direction: column; }
+.flip-front img { width: 100%; flex: 1 1 auto; min-height: 0; object-fit: contain; background: #fff; border-radius: 4px; margin: .35rem 0; }
+.flip-back { transform: rotateY(180deg); overflow: auto; }
+.flip-back pre { font-size: .60rem; line-height: 1.25; white-space: pre-wrap; margin: .3rem 0 0; color: var(--text-secondary); }
+.flip-hint { font-size: .68rem; color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:baseline;">
+    <h1>Research Dashboard</h1>
+    <span class="subtitle">Warrant-First GTD</span>
+  </div>
+  <div class="pulse" id="header-pulse"></div>
+</header>
+
+<nav id="nav">
+  <button class="active" data-tab="status">Status</button>
+  <button data-tab="courtroom">Courtroom</button>
+  <button data-tab="pipeline">Pipeline</button>
+  <button data-tab="hypotheses">Hypotheses</button>
+  <button data-tab="decisions">Decisions</button>
+  <button data-tab="figures">Figures</button>
+  <button data-tab="tables">Tables</button>
+  <button data-tab="manuscript">Manuscript</button>
+</nav>
+
+<main>
+  <!-- STATUS TAB -->
+  <div class="tab-content active" id="tab-status">
+    <div class="stats-grid" id="stats-grid"></div>
+    <div class="card" id="latest-insight-card">
+      <h2>Latest Insight</h2>
+      <div id="latest-insight"></div>
+    </div>
+    <div class="card">
+      <h2>Next Actions</h2>
+      <div id="next-actions"></div>
+    </div>
+  </div>
+
+  <!-- COURTROOM TAB -->
+  <div class="tab-content" id="tab-courtroom">
+    <div class="card">
+      <h2>The Courtroom</h2>
+      <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:1.5rem;">
+        Five stages of evidence. A hypothesis is <em>earned</em> only when all stages are confirmed.
+      </p>
+      <div id="courtroom-stages"></div>
+    </div>
+  </div>
+
+  <!-- PIPELINE TAB -->
+  <div class="tab-content" id="tab-pipeline">
+    <div class="card">
+      <h2>Pipeline Freshness</h2>
+      <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:1.5rem;">
+        Each script and its outputs. Green = fresh. Yellow = stale (script modified since last run). Red = missing.
+      </p>
+      <div id="pipeline-view"></div>
+    </div>
+  </div>
+
+  <!-- HYPOTHESES TAB -->
+  <div class="tab-content" id="tab-hypotheses">
+    <div class="card">
+      <h2>Hypothesis DAG</h2>
+      <div id="hypotheses-view"></div>
+    </div>
+  </div>
+
+  <!-- DECISIONS TAB -->
+  <div class="tab-content" id="tab-decisions">
+    <div class="card">
+      <h2>Binding Decisions</h2>
+      <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:1rem;">
+        Once committed, these constrain all downstream work.
+      </p>
+      <table id="decisions-table">
+        <thead>
+          <tr><th>ID</th><th>Decision</th><th>Date</th><th>Rationale</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FIGURES TAB -->
+  <div class="tab-content" id="tab-figures">
+    <div class="card">
+      <h2>Figures</h2>
+      <div class="figure-grid" id="figures-grid"></div>
+    </div>
+  </div>
+
+  <!-- TABLES TAB -->
+  <div class="tab-content" id="tab-tables">
+    <div class="card">
+      <h2>Tables</h2>
+      <div id="tables-view"></div>
+    </div>
+  </div>
+
+  <!-- MANUSCRIPT TAB -->
+  <div class="tab-content" id="tab-manuscript">
+    <div class="card">
+      <h2>Manuscript View</h2>
+      <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:1.5rem;">
+        Only confirmed claims with fresh evidence appear here. Everything else is unearned.
+      </p>
+      <div class="manuscript-section" id="manuscript-earned">
+        <h3><span class="badge confirmed">earned</span> Can Assert</h3>
+        <div id="earned-claims"></div>
+      </div>
+      <div class="manuscript-section" id="manuscript-unearned">
+        <h3><span class="badge testing">unearned</span> Cannot Assert Yet</h3>
+        <div id="unearned-claims"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span id="generated-at"></span> &middot; Warrant-First Research GTD &middot; Serve with <code>python3 -m http.server 8080</code>
+</footer>
+
+<script>
+let DATA = null;
+
+async function loadData() {
+  try {
+    const resp = await fetch('dashboard_data.json');
+    DATA = await resp.json();
+    render();
+  } catch (e) {
+    document.querySelector('main').innerHTML = `
+      <div class="empty-state">
+        <p>Could not load <code>dashboard_data.json</code></p>
+        <p style="margin-top:0.5rem;font-size:0.8rem;">Run <code>python3 scripts/build_dashboard_data.py</code> to generate it,<br>then serve this directory with <code>python3 -m http.server 8080</code></p>
+      </div>`;
+  }
+}
+
+function render() {
+  renderStatus();
+  renderCourtroom();
+  renderPipeline();
+  renderHypotheses();
+  renderDecisions();
+  renderFigures();
+  renderTables();
+  renderManuscript();
+  renderFooter();
+}
+
+function renderStatus() {
+  const s = DATA.summary;
+  const counts = s.hypothesis_counts || {};
+  const total = s.total_hypotheses || 0;
+  const confirmed = counts.confirmed || 0;
+  const stale = s.pipeline_stale || 0;
+  const pTotal = s.pipeline_total || 0;
+
+  // Pulse indicator
+  const pulseEl = document.getElementById('header-pulse');
+  const pulseColor = stale > 0 ? 'yellow' : 'green';
+  pulseEl.innerHTML = `<span class="pulse-dot ${pulseColor}"></span> ${confirmed}/${total} confirmed &middot; ${pTotal - stale}/${pTotal} fresh`;
+
+  // Stats grid
+  const grid = document.getElementById('stats-grid');
+  grid.innerHTML = `
+    <div class="stat-card">
+      <div class="label">Hypotheses</div>
+      <div class="value">${total}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Confirmed</div>
+      <div class="value" style="color:var(--green)">${confirmed}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Insights</div>
+      <div class="value">${s.total_insights || 0}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Pipeline</div>
+      <div class="value" style="color:${stale > 0 ? 'var(--yellow)' : 'var(--green)'}">${pTotal - stale}/${pTotal}</div>
+    </div>
+  `;
+
+  // Latest insight
+  const latestEl = document.getElementById('latest-insight');
+  if (DATA.insights && DATA.insights.length > 0) {
+    const latest = DATA.insights[0];
+    latestEl.innerHTML = `
+      <div style="font-size:0.85rem;">
+        <span style="color:var(--text-muted)">${latest.date}</span> &mdash;
+        <strong>${latest.title}</strong>
+        <span class="badge ${latest.result}">${latest.result}</span>
+      </div>
+      <div style="color:var(--text-secondary);font-size:0.8rem;margin-top:0.5rem;">${latest.finding}</div>
+    `;
+  } else {
+    latestEl.innerHTML = '<div class="empty-state">No insights filed yet.</div>';
+  }
+
+  // Next actions
+  const actionsEl = document.getElementById('next-actions');
+  const actionable = (DATA.hypotheses || []).filter(h => h.status === 'testing' || h.status === 'complicated');
+  if (actionable.length > 0) {
+    actionsEl.innerHTML = actionable.map(h => `
+      <div style="padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.85rem;">
+        <span class="badge ${h.status}">${h.status}</span>
+        <span style="margin-left:0.5rem;"><strong>${h.id}</strong>: ${h.title}</span>
+      </div>
+    `).join('');
+  } else {
+    actionsEl.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem;">All hypotheses resolved.</div>';
+  }
+}
+
+function renderCourtroom() {
+  const container = document.getElementById('courtroom-stages');
+  const stages = (DATA.courtroom && DATA.courtroom.stages) || [
+    {id:1, name:'Show Bite', status:'missing', summary:null, evidence:[]},
+    {id:2, name:'Event Studies', status:'missing', summary:null, evidence:[]},
+    {id:3, name:'Falsification', status:'missing', summary:null, evidence:[]},
+    {id:4, name:'Main Results', status:'missing', summary:null, evidence:[]},
+    {id:5, name:'Mechanisms', status:'missing', summary:null, evidence:[]}
+  ];
+
+  container.innerHTML = stages.map(stage => `
+    <div class="courtroom-stage">
+      <div class="courtroom-stage-header" onclick="toggleStage(this)">
+        <div class="stage-name">
+          <span class="stage-num ${stage.status}">${stage.id}</span>
+          ${stage.name}
+        </div>
+        <span class="badge ${stage.status}">${stage.status}</span>
+      </div>
+      <div class="courtroom-stage-body">
+        ${stage.summary ? `<p>${stage.summary}</p>` : '<p style="color:var(--text-muted)">No evidence presented yet.</p>'}
+        ${stage.evidence && stage.evidence.length > 0 ? `
+          <ul class="evidence-list">
+            ${stage.evidence.map(e => `<li>${e}</li>`).join('')}
+          </ul>
+        ` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleStage(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+function renderPipeline() {
+  const container = document.getElementById('pipeline-view');
+  const pipeline = DATA.pipeline || [];
+
+  if (pipeline.length === 0) {
+    container.innerHTML = '<div class="empty-state">No pipeline scripts configured. Edit PIPELINE_SCRIPTS in build_dashboard_data.py.</div>';
+    return;
+  }
+
+  // Group by level
+  const levels = {};
+  const levelNames = {1:'Cleaning', 2:'Derived Data', 3:'Classification', 4:'Figures', 5:'Estimation'};
+  pipeline.forEach(p => {
+    const lvl = p.level || 0;
+    if (!levels[lvl]) levels[lvl] = [];
+    levels[lvl].push(p);
+  });
+
+  container.innerHTML = Object.keys(levels).sort().map(lvl => `
+    <div class="pipeline-level">
+      <div class="pipeline-level-header">Level ${lvl}: ${levelNames[lvl] || 'Other'}</div>
+      <div class="pipeline-level-body">
+        ${levels[lvl].map(p => {
+          const status = p.all_fresh ? 'fresh' : 'stale';
+          const outputInfo = p.outputs.map(o => {
+            if (!o.exists) return `<span style="color:var(--red)">MISSING</span> ${o.path}`;
+            if (!o.fresh) return `<span style="color:var(--yellow)">STALE</span> ${o.path}`;
+            return `<span style="color:var(--green)">fresh</span> ${o.path}`;
+          }).join('<br>');
+          return `
+            <div class="pipeline-item">
+              <div>
+                <div class="script-name">${p.script}</div>
+                <div class="script-meta">${p.name} &middot; ${p.script_mtime || 'unknown'}</div>
+              </div>
+              <span class="badge ${status}">${status}</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderHypotheses() {
+  const container = document.getElementById('hypotheses-view');
+  const hyps = DATA.hypotheses || [];
+
+  if (hyps.length === 0) {
+    container.innerHTML = '<div class="empty-state">No hypotheses filed. Use /gtd conjecture to start.</div>';
+    return;
+  }
+
+  // Render as a flat list with indentation for children
+  const parents = hyps.filter(h => !h.parent);
+  let html = '';
+
+  parents.forEach(parent => {
+    html += renderHypNode(parent, false);
+    const children = hyps.filter(h => h.parent === parent.id);
+    children.forEach(child => {
+      html += renderHypNode(child, true);
+    });
+  });
+
+  container.innerHTML = html;
+}
+
+function renderHypNode(h, isChild) {
+  return `
+    <div class="hypothesis-node ${isChild ? 'child' : ''}">
+      <div>
+        <span class="h-id">${h.id}</span>
+        <span class="h-title">${h.title}</span>
+        <span class="badge ${h.status}">${h.status}</span>
+      </div>
+      <div class="h-claim">${h.claim}</div>
+      ${h.kills_it ? `<div class="h-kills">Kills it: ${h.kills_it}</div>` : ''}
+    </div>
+  `;
+}
+
+function renderDecisions() {
+  const tbody = document.querySelector('#decisions-table tbody');
+  const decisions = DATA.decisions || [];
+
+  if (decisions.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No decisions committed yet.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = decisions.map(d => `
+    <tr>
+      <td><strong>${d.id}</strong></td>
+      <td>${d.decision}</td>
+      <td style="color:var(--text-muted);white-space:nowrap;">${d.date}</td>
+      <td style="color:var(--text-secondary)">${d.rationale}</td>
+    </tr>
+  `).join('');
+}
+
+function renderFigures() {
+  const grid = document.getElementById('figures-grid');
+  const figures = DATA.figures || [];
+
+  if (figures.length === 0) {
+    grid.innerHTML = '<div class="empty-state">No figures in output/figures/ yet.</div>';
+    return;
+  }
+
+  const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  grid.innerHTML = figures.map(f => {
+    let badge = f.orphaned ? '<span class="badge orphaned">orphaned</span>'
+      : f.fresh ? '<span class="badge fresh">fresh</span>' : '<span class="badge stale">stale</span>';
+    const back = f.code
+      ? `<div class="fig-name">${f.script}</div><pre><code>${esc(f.code)}</code></pre>`
+      : `<div class="fig-name">${f.script||'no script'}</div><div class="flip-hint">No code chunk located for this figure.</div>`;
+    return `
+      <div class="flip-card" onclick="this.querySelector('.flip-inner').classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="fig-name">${f.name} ${badge}</div>
+            <img src="${f.path}" alt="${f.name}">
+            ${f.caption ? `<div class="fig-meta" style="font-style:italic">${f.caption}</div>` : ''}
+            <div class="flip-hint">&#8635; click to flip &rarr; the exact code that generated this</div>
+          </div>
+          <div class="flip-back">${back}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderTables() {
+  const el = document.getElementById('tables-view');
+  const tables = DATA.tables || [];
+  if (!tables.length) { el.innerHTML = '<div class="empty-state">No tables.</div>'; return; }
+  el.innerHTML = tables.map(t => `
+    <div style="margin-bottom:2rem;">
+      <h3 style="font-size:1rem;margin-bottom:0.2rem;">${t.name}</h3>
+      <p style="color:var(--text-secondary);font-size:0.8rem;margin:0 0 0.5rem;">${t.caption}</p>
+      <table class="data-table" style="width:100%;font-size:0.85rem;">
+        <thead><tr>${t.headers.map(h=>`<th style="text-align:left;border-bottom:2px solid var(--border);padding:4px 8px;">${h}</th>`).join('')}</tr></thead>
+        <tbody>${t.rows.map(r=>`<tr>${r.map(c=>`<td style="border-bottom:1px solid var(--border);padding:4px 8px;">${c}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table>
+    </div>
+  `).join('');
+}
+
+function renderManuscript() {
+  const earnedEl = document.getElementById('earned-claims');
+  const unearnedEl = document.getElementById('unearned-claims');
+  const hyps = DATA.hypotheses || [];
+  const m = DATA.manuscript || {};
+
+  // thesis banner + earned narrative claims from the build script
+  if (m.thesis) {
+    earnedEl.innerHTML = `<div class="manuscript-item" style="background:var(--bg-secondary);padding:0.8rem;border-radius:6px;margin-bottom:1rem;">
+        <div class="m-claim"><strong>Thesis.</strong> ${m.thesis}</div></div>` +
+      (m.earned || []).map(c => `<div class="manuscript-item"><div class="m-claim">${c}</div></div>`).join('');
+    const notEarned = hyps.filter(h => h.status === 'rejected' || h.status === 'complicated');
+    unearnedEl.innerHTML = notEarned.length ? notEarned.map(h => `
+      <div class="manuscript-item"><div class="m-claim"><strong>${h.id}:</strong> ${h.claim}</div>
+      <div class="m-evidence">Status: ${h.status}.</div></div>`).join('')
+      : '<div style="color:var(--text-muted);font-size:0.85rem;padding:1rem 0;">—</div>';
+  } else {
+  const earned = hyps.filter(h => h.status === 'confirmed');
+  const unearned = hyps.filter(h => h.status !== 'confirmed' && h.status !== 'rejected');
+
+  if (earned.length > 0) {
+    earnedEl.innerHTML = earned.map(h => `
+      <div class="manuscript-item">
+        <div class="m-claim"><strong>${h.id}:</strong> ${h.claim}</div>
+        <div class="m-evidence">Status: confirmed. This claim can appear in the manuscript.</div>
+      </div>
+    `).join('');
+  } else {
+    earnedEl.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem;padding:1rem 0;">No confirmed claims yet. Complete the courtroom to earn assertions.</div>';
+  }
+
+  if (unearned.length > 0) {
+    unearnedEl.innerHTML = unearned.map(h => `
+      <div class="manuscript-item">
+        <div class="m-claim"><strong>${h.id}:</strong> ${h.claim}</div>
+        <div class="m-evidence">Status: ${h.status}. Cannot assert until courtroom is complete.</div>
+      </div>
+    `).join('');
+  } else {
+    unearnedEl.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem;padding:1rem 0;">All claims are earned.</div>';
+  }
+  }
+}
+
+function renderFooter() {
+  const el = document.getElementById('generated-at');
+  el.textContent = DATA.summary ? `Generated: ${DATA.summary.generated_at}` : '';
+}
+
+// Tab navigation
+document.getElementById('nav').addEventListener('click', e => {
+  if (e.target.tagName !== 'BUTTON') return;
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById('tab-' + e.target.dataset.tab).classList.add('active');
+});
+
+// Load on init
+loadData();
+</script>
+</body>
+</html>

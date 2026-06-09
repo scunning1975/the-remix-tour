@@ -1,0 +1,16 @@
+\frametitle{\texttt {/newproject}: scaffold a project in seconds}
+\vspace{0.4em}
+\begin{lstlisting}[language=]
+/newproject
+\end{lstlisting}
+\vspace{0.4em}
+Creates:
+\begin{itemize}\setlength\itemsep{0.3em}
+  \item Standard directory structure (\texttt{data/}, \texttt{code/}, \texttt{output/}, \texttt{docs/})
+  \item \texttt{CLAUDE.md} with project context
+  \item \texttt{README.md}
+\end{itemize}
+\vspace{0.3em}
+\begin{center}\color{warmgray}\small
+Give Claude access to your folder and a chapter from the Mixtape as context.
+\end{center}
