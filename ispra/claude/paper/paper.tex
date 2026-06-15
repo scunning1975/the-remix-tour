@@ -22,20 +22,19 @@
 
 \begin{abstract}
 \noindent
-For two decades the world's governments have answered suicide with strategy
-documents, and for two decades we have told ourselves they work. They may. But the
-cross-national record cannot show it. Re-examining the staggered adoption of national
-suicide-prevention strategies across Europe with estimators robust to treatment-effect
-heterogeneity, I find that suicide rises, not falls, after adoption---by roughly three
-deaths per hundred thousand. Measured correctly, parallel trends hold; but with four
-treated countries that is no comfort. The estimate cannot be signed, a placebo cannot
-distinguish it from chance, and it halves when the comparison group changes. We are
-governing mortality on faith.
+For two decades the world's governments have answered suicide with national strategies, and for
+two decades we have told ourselves they work. Testing the claim across Europe, I first show that the
+standard difference-in-differences design is invalid here: adopting and non-adopting countries
+differ sharply in the level of suicide and follow a significant pre-existing upward trend that
+continues, unbroken, through adoption. Matching on that level path instead---augmented synthetic
+control for each of the four adopting countries, and synthetic difference-in-differences by
+cohort---yields small effects that permutation inference cannot distinguish from chance ($p$ between
+$0.43$ and $0.79$). The strategies may work. These data cannot show it.
 \end{abstract}
 
 \vfill
 \begin{center}
-\small JEL: I18, I12, C23. \quad Keywords: suicide; difference-in-differences; staggered adoption;
+\small JEL: I18, I12, C23. \quad Keywords: suicide; synthetic control; difference-in-differences;
 parallel trends; mental health policy.
 \end{center}
 \clearpage
@@ -45,482 +44,111 @@ parallel trends; mental health policy.
 
 \section{Introduction}
 
-Every forty seconds, somewhere on earth, a person decides that the rest of life is not worth
-the rest of life. The decision is private, but its accounting is public: more than seven hundred
-thousand such deaths a year, more than war, more than homicide, more than most of the diseases we
-have organized entire ministries to defeat. Confronted with a number this large and this stubborn,
-governments have done what governments do. They have written strategies. Since the early 1990s a
-national suicide-prevention strategy has gone from a Nordic experiment to an article of
-international faith: the World Health Organization now urges every member state to adopt one, and
-dozens have \citep{who2014preventing,who2018strategies}. We have decided, collectively, that the
-document is the cure.
+Every forty seconds, somewhere on earth, a person decides that the rest of life is not worth the
+rest of life. Confronted with more than seven hundred thousand such deaths a year, governments have
+done what governments do: they have written strategies. Since the early 1990s the national
+suicide-prevention strategy has spread from a Nordic experiment to an article of international
+faith, and the World Health Organization now urges every member state to adopt one
+\citep{who2014preventing,who2018strategies}. We have decided, collectively, that the document is the
+cure. This paper asks whether the cross-national record can tell us if it is.
 
-This paper asks the question that the strategies themselves were supposed to answer and never
-did. Do they work? Not in the sense of whether they are well-meant---they are---or whether they
-contain sensible ideas---they do---but in the only sense that matters to the person standing on
-the bridge: does a country that adopts a national suicide-prevention strategy bury fewer of its
-citizens afterward than it otherwise would have? The question is empirical, it is answerable in
-principle, and it is, I will argue, almost entirely unanswered in practice. We have spent twenty
-years and an enormous reserve of moral capital on an intervention whose effect on the outcome it
-names we cannot, from the cross-national record, distinguish from zero, from harm, or from
-salvation.
+The question is harder than it looks, and most of this paper is about why. The natural research
+design---compare suicide before and after adoption in adopting countries against the contemporaneous
+change in non-adopters---is a difference-in-differences, and difference-in-differences rests on an
+assumption that is simply false in this setting. Adopting countries are not faint copies of
+non-adopters waiting to diverge; they are different places. They begin with markedly lower suicide
+rates, an older population, and a different position in the business cycle, and---most damaging for
+the design---they are already on a different \emph{trajectory}. A long panel shows a statistically
+significant upward trend in adopters' suicide rates, relative to controls, that begins well before
+any strategy is written and continues straight through the adoption date without a kink. A method
+built on the premise of common trends cannot be trusted when the trends are demonstrably not common.
 
-That is an uncomfortable thing to say in a building full of people whose job is to prevent
-suicide, so let me be precise about what I am and am not claiming. I am not claiming that
-suicide-prevention strategies fail. I am claiming something narrower and, I think, more
-disturbing: that the research design which the field has relied upon to conclude that they
-succeed does not survive contact with the methods we now know are necessary when policies are
-adopted at different times by different places \citep{goodmanbacon2021did,roth2023trending}. The
-canonical finding---that countries with strategies see suicide fall relative to countries
-without them \citep{matsubayashi2011effect}---rests on a two-way fixed-effects comparison that,
-under staggered adoption and heterogeneous effects, can return the wrong sign for mechanical
-reasons that have nothing to do with the policy. When I re-estimate the same kind of comparison
-on real European data with the heterogeneity-robust tools of
-\citet{callaway2021did}, \citet{borusyak2024revisiting}, and \citet{sun2021estimating}, the
-protective effect does not merely shrink. It reverses. And then, under honest scrutiny, it
-dissolves.
+So I do not trust it, and Section~\ref{sec:did} explains in detail why no one should. When treated
+and control units differ in both levels and trends, differencing does not remove the confound; it
+extrapolates it. The appropriate response, set out by \citet{doudchenko2016balancing}, is to stop
+differencing and start matching---to build, for each treated country, a weighted combination of
+control countries that reproduces its pre-adoption \emph{path}, and then ask whether the treated
+country departs from that synthetic match after adoption. That is the synthetic control method
+\citep{abadie2010synthetic}, and Section~\ref{sec:scm} applies it, in its bias-corrected
+ridge-augmented form \citep{benmichael2021augmented}, to each of the four European countries that
+adopted a strategy with enough pre-adoption history to support the method.
 
-The reversal is instructive precisely because it is not real. Suicide is higher after a country
-adopts a strategy than a naive comparison with non-adopters would predict---by about three deaths
-per hundred thousand, an estimate that three different modern estimators agree on to within a
-fraction of a death. It is tempting to reach for the obvious explanation---that suicide was rising
-in these countries before they adopted---but when the pre-adoption trends are measured correctly,
-as long differences from the year before treatment, they are flat: the data do not support a story
-of differential pre-trends. The confound is subtler and harder to dismiss. The post-adoption rise
-loads on calendar years 2008 through 2010---the Great Recession, the most violent macroeconomic
-shock to European mental health in a generation, and one the suicide literature has already shown
-raises the toll \citep{reeves2012increase,stuckler2013body}. The later-adopting treated countries
-spent their entire post-period inside that shock. The positive ``effect'' is, in part, the residue
-of when prevention's first years happen to fall---and, as I will show, an estimate too weak and too
-fragile to carry any weight at all.
+The answer is the same for all four, and it is not the answer the literature expects. The synthetic
+matches track the treated countries closely before adoption. After adoption the gaps are small and,
+under permutation inference, ordinary: the post-to-pre fit ratios fall in the middle of the placebo
+distribution, with $p$-values between $0.43$ and $0.79$. Synthetic difference-in-differences, fit
+separately for each adoption cohort \citep{arkhangelsky2021synthetic}, gives the same verdict. The
+estimates are not protective; they are not harmful; they are not distinguishable from zero.
 
-None of this would be worth a paper if the only casualty were a single optimistic estimate. The
-casualty is larger. It is the idea that we can read the worth of a suicide-prevention strategy off
-the cross-national mortality record at all. I show that the parallel-trends assumption on which
-every such reading depends cannot be \emph{rejected}---but only because four treated countries
-cannot test it with any power; that the propensity to adopt is so perfectly predicted by a
-country's characteristics that there is no overlap to lean on; that the sensitivity analysis of
-\citet{rambachan2023credible} cannot sign the post-adoption effect under even mild departures from
-parallel trends; and that a synthetic-control comparison,
-the method designed for exactly this scarcity of treated units, produces gaps statistically
-indistinguishable from placebos drawn at random. These diagnostics are not independent of one
-another---the sensitivity analysis formalizes the pre-trend, and the placebo and the synthetic
-control are both, at bottom, statements about how little a handful of treated countries can tell
-us---but they are different windows onto the same wall, and through every one of them the answer is
-the same word: undetermined.
+I want to be precise about the claim, because it is easy to misread. I am not claiming that
+suicide-prevention strategies fail. I am claiming that the cross-national observational record
+cannot determine whether they succeed---that the treated and control countries are too different in
+levels and trends for differencing to identify anything, and that when one uses the design suited to
+that difference, no effect emerges from the noise. A policy can be both worth keeping and unproven.
+What is not defensible is the laundering of a confounded association into a causal claim, which is
+what the field has done. The contribution here is to show, carefully and with the right tools, how
+little we actually know.
 
-I do not regard this as a nihilistic result, and I will end by explaining why. A finding that the
-evidence cannot bear the weight we have placed on it is not the same as a finding that the policy
-is worthless; it is a finding that we have been navigating in the dark and calling it sight. The
-moral content of that statement is not small. We owe the people these strategies are meant to save
-an honest account of whether they are saved, and we do not have one. The remainder of this paper
-is the attempt to say exactly how much we do not have, and why, and what it would take to know
-more.
+\section{A Policy Adopted Without Evidence}
 
-\section{A Policy Adopted in the Dark}
-
-The modern national suicide-prevention strategy was born in Finland. Between 1986 and 1992 the
-Finns did something no country had done: they investigated every suicide in the nation for a year,
-built a prevention program on what they learned, and made suicide reduction an explicit object of
-national policy. The Finnish suicide rate, then among the highest in the world, fell. Whether it
-fell \emph{because} of the program or because it had nowhere to go but down from a historic peak is
-a question the Finnish experience alone cannot answer, and that ambiguity---the impossibility of
-separating the policy from the conditions that produced it---is the theme of everything that
-follows.
-
-What Finland began, the world copied. Norway published a strategy in 1995, Sweden built a program
-the same year, France launched a five-year national plan in 2000, England and Scotland adopted
-strategies in 2002, Ireland in 2005. By 2018 the WHO could count dozens of national strategies and
-could exhort the rest \citep{who2018strategies}. The diffusion was rapid, it was sincere, and it
-was almost entirely uninformed by credible evidence that the thing being diffused did what it
-promised. The single most cited piece of evaluation, \citet{matsubayashi2011effect}, compared
-suicide rates in eleven OECD countries that had adopted national programs against ten that had not,
-and reported reductions concentrated among the young and the old. It was a careful paper for its
-time. Its time was before we understood what two-way fixed effects do to staggered treatments.
-
-We understand now. When units adopt a treatment at different dates and the treatment's effect
-differs across units or evolves over time, the two-way fixed-effects estimator does not recover a
-sensible average of those effects. It recovers a weighted combination in which already-treated
-units serve as controls for newly-treated ones, the weights can be negative, and the resulting
-number can lie outside the range of every true effect it is meant to summarize
-\citep{goodmanbacon2021did,dechaisemartin2020twoway}. The profession has spent five years building
-estimators that avoid this trap \citep{callaway2021did,sun2021estimating,borusyak2024revisiting},
-and a parallel literature on how to probe the assumption---parallel trends---on which all of them
-still depend \citep{rambachan2023credible,roth2023trending}. The suicide-prevention literature has
-not caught up. This paper is, in part, an attempt to make it.
+The modern national strategy was born in Finland, which between 1986 and 1992 investigated every
+suicide in the country and built a prevention program on what it learned. Norway and Sweden followed
+in 1995, the United Kingdom in 2002, Ireland in 2005; by 2018 the WHO could count dozens of national
+strategies and exhort the rest \citep{who2018strategies}. The diffusion was rapid and sincere. It
+was also almost entirely uninformed by credible evidence, because the one widely cited evaluation,
+\citet{matsubayashi2011effect}, compared adopters and non-adopters with a two-way fixed-effects
+estimator---before the profession understood what that estimator does under staggered timing and
+heterogeneous effects \citep{goodmanbacon2021did,dechaisemartin2020twoway}. Appendix~B shows, via a
+Goodman-Bacon decomposition, that two-way fixed effects is not in fact the binding problem in these
+data. The binding problem is more basic, and it afflicts every estimator that differences: the
+groups are not comparable.
 
 \section{Data}
+\label{sec:data}
 
-I assemble a country-by-year panel of European suicide mortality from three real, public sources;
-nothing here is simulated. The outcome is the age-standardized suicide rate---deaths from
-intentional self-harm (ICD-10 codes X60--X84 and Y87.0) per hundred thousand population---published
-by Eurostat for the years 1994 through 2010 \citep{eurostat_cod}. The treatment is the year, if
-any, in which a country's government adopted a stand-alone national suicide-prevention strategy,
-coded from the WHO's 2018 inventory \citep{who2018strategies} and cross-checked against the
-peer-reviewed adoption dates of \citet{lewitzka2019national}; Appendix~A documents every country's
-coding and its source. The single time-varying covariate is the national unemployment rate from the
-World Bank's modeled ILO series \citep{worldbank_unemp}, included because the business cycle is the
-best-established time-varying determinant of suicide we possess \citep{ruhm2000recessions,
-reeves2012increase}.
+The outcome is the age-standardized suicide rate---deaths from intentional self-harm per hundred
+thousand. From 1994 onward I use the figures Eurostat publishes for the European Union
+\citep{eurostat_cod}. To give the design the long pre-adoption window that both the trend diagnostic
+and the synthetic control require, I extend the series back to 1986 using the WHO Mortality Database
+\citep{who_mdb}, chained to the Eurostat level by a country-specific multiplicative factor estimated
+on the 1994--2010 overlap (Appendix~A; the two sources use different standard populations, so the
+splice is a documented approximation). Treatment is the year a government adopted a stand-alone
+national strategy \citep{who2018strategies,lewitzka2019national}. The balanced panel covers
+seventeen countries from 1986 to 2010: four adopters (Norway and Sweden in 1995, the United Kingdom
+in 2002, Ireland in 2005) and thirteen documented never-adopters, among them Italy, Spain, Belgium,
+Austria, Switzerland, the Netherlands, and Portugal. Italy---the country in which these words are
+read---never wrote the document, and stands throughout as the natural point of comparison.
 
-Three features of the data govern everything that can and cannot be learned from it. First, the
-Eurostat regional series begins only in 2011, so the long pre-adoption history needed to test
-parallel trends exists only at the national level, which is where I work. Second, the window
-1994--2010 brackets the main European adoption wave but starts too late for the earliest adopters:
-Finland (1992) is already treated when the data begin and is dropped, and France (2000) is dropped
-because its suicide series does not begin until 2001, leaving it no pre-period. Third, and most
-consequentially, the number of treated countries with a usable pre-period is small---four. Norway
-and Sweden adopt in 1995, the United Kingdom in 2002, Ireland in 2005. Against them stand twelve
-countries that the WHO documents as never having adopted a stand-alone national strategy in the
-window---Germany, Italy, Spain, Belgium, Austria, Switzerland, the Netherlands, Portugal, Greece,
-Luxembourg, Czechia, Estonia, Hungary, Slovenia. The balanced panel retains the twelve of these
-with a complete suicide and unemployment record over 1994--2010---Austria, Switzerland, Czechia,
-Germany, Estonia, Greece, Spain, Hungary, Luxembourg, the Netherlands, Portugal, Slovenia---while
-Belgium, Denmark, Poland, Slovakia, and Italy are dropped for gaps in the suicide series. Italy's
-exclusion deserves a word, because Italy is the country in which these words are being read. Its
-suicide series is missing 2004 and 2005, so it cannot enter the balanced estimand; but Italy is a
-documented never-adopter, a large European nation that never wrote the document, and it remains the
-natural backdrop to everything that follows---the silent control against which the writers of
-strategies might have been judged, had the data let us judge them.
+\section{Why Difference-in-Differences Is the Wrong Design Here}
+\label{sec:did}
 
-Four treated units is not a defect of my execution; it is the size of the natural experiment.
-\citet{matsubayashi2011effect} had eleven. The European cross-section is simply not large, the
-adoption dates are clustered, and the data begin late. I will not pretend otherwise, and the
-reader should hold the smallness of the treated group in mind through every estimate that follows,
-because it is the reason the honest conclusion is one of uncertainty rather than refutation.
+\subsection{The estimand and what it requires}
 
-A word on inference follows from the same smallness. With four treated countries and twelve
-controls the panel has on the order of sixteen clusters, far too few for the cluster-robust and
-multiplier-bootstrap standard errors the estimators report by default to be believed; I report
-them because convention demands it, but I do not lean on them, and neither should the reader.
-The inferential weight is carried instead by randomization inference---the in-space placebo of
-Section~6, which asks how often a fake adoption assigned at random among the never-treated produces
-an estimate as large as the one we observe. That frequency, not a $t$-statistic, is the honest
-measure of how surprised we should be.
+The object of interest is the average effect of adoption on suicide in the countries that adopted.
+Difference-in-differences recovers it only under parallel trends: absent treatment, adopters' suicide
+rates would have moved in parallel with non-adopters'. Parallel trends is not a technical nicety to
+be waved through. It is the whole identifying content of the design, and it is an assumption about
+counterfactual \emph{trajectories}---which means the data can speak to its plausibility through the
+pre-adoption period, even though it can never be verified after.
 
-\section{Design: What We Are Trying to Measure}
+\subsection{The groups differ in levels}
 
-\paragraph{The estimand.} I target the average effect of having adopted a strategy on suicide in
-the countries that adopted one---the average treatment effect on the treated, aggregated across
-adoption cohorts with weights proportional to the number of treated countries in each cohort. This
-is the group-size-weighted summary of the group-time average treatment effects $ATT(g,t)$ of
-\citet{callaway2021did}: for each cohort $g$ and year $t$ it compares the change in suicide from
-just before $g$'s adoption to year $t$, in cohort $g$ versus countries not yet (or never) treated,
-and then averages. I report the simple equally-weighted average as well; the two differ only in how
-much weight the long-observed 1995 cohort receives.
-
-\paragraph{The identifying assumption and the covariate.} Identification rests on conditional
-parallel trends: absent adoption, suicide in treated and comparison countries would have evolved in
-parallel, possibly after conditioning on covariates. The covariate I condition on is unemployment,
-and the choice is deliberate. If one asks what an expert on suicide would insist be held fixed
-before attributing a mortality change to a policy, the answer is the economy: recessions raise
-suicide, recoveries lower it, and the timing of Europe's recessions is not independent of the
-timing of its prevention strategies \citep{ruhm2000recessions,stuckler2009publichealth,
-reeves2012increase}. Aging and income matter too, but they move slowly and are absorbed by the
-country and year structure; unemployment is the fast-moving confounder that can masquerade as a
-treatment effect, and it is the one I take most seriously.
-
-\paragraph{Why regression adjustment and not weighting.} A doubly robust or inverse-propensity
-estimator would, in principle, be preferable. It is not available here in any honest form. When I
-estimate the probability that a country ever adopts a strategy as a function of its baseline
-characteristics, the model separates the data perfectly: every treated country receives a
-predicted probability indistinguishable from one and every control a probability indistinguishable
-from zero (Figure~\ref{fig:pscore}). There is no region of common support in which a propensity
-score could reweight anything; to use one would be to extrapolate off functional form and call it
-identification. I therefore use the regression-adjustment form of the
-\citet{callaway2021did} estimator, which models the conditional evolution of the outcome rather
-than the probability of treatment, and I report the doubly robust and inverse-propensity variants
-only to show that they change nothing of substance.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.75\textwidth]{fig3_pscore_overlap.pdf}
-\caption{Propensity-score overlap fails by construction. A country-level logit of ever-adoption on
-baseline covariates separates the four treated countries (scores $\approx 1$) from the twelve
-controls (scores $\approx 0$) perfectly. With no common support, propensity weighting is
-inappropriate; the analysis uses regression adjustment.}
-\label{fig:pscore}
-\end{figure}
-
-\paragraph{The rollout.} Figure~\ref{fig:rollout} shows the staggered adoption that identifies the
-design, and Figure~\ref{fig:cohorts} the cohort sizes. The picture is honest about its own
-thinness: two countries enter treatment in 1995, one in 2002, one in 2005, against a wall of
-never-treated grey.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.85\textwidth]{fig4_panelview.pdf}
-\caption{Staggered adoption of national suicide-prevention strategies, balanced estimation sample,
-1994--2010. Red indicates a strategy in force.}
-\label{fig:rollout}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.62\textwidth]{fig5_cohort_counts.pdf}
-\caption{Cohort composition. Twelve never-treated controls; four treated countries in three
-adoption cohorts.}
-\label{fig:cohorts}
-\end{figure}
-
-\section{What the Data Say}
-
-Before any model, look at the outcome. Figure~\ref{fig:bycohort} plots mean suicide by adoption
-cohort. Two things are visible to the naked eye. The treated countries do not look like the
-controls---they start lower---which is why levels comparisons are useless and why we need the
-within-country, difference-in-differences logic at all. And the lines bend upward together at the
-right edge, in the recession years, treated and untreated alike.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.85\textwidth]{fig6_outcome_by_cohort.pdf}
-\caption{Suicide mortality by adoption cohort. The shaded band marks the 2008--2010 recession.}
-\label{fig:bycohort}
-\end{figure}
-
-The headline estimate is positive. Conditioning on unemployment and using never-treated countries
-as the comparison group, the group-size-weighted average treatment effect on the treated is
-$+2.73$ suicides per hundred thousand (standard error $1.05$); the simple average is $+3.05$
-($1.24$). The sign is robust to estimation choices that ought to matter and do not:
-Table~\ref{tab:estimators} collects the doubly robust variant ($+2.56$), the unconditional variant
-($+2.76$), the not-yet-treated comparison group ($+2.66$), the imputation estimator of
-\citet{borusyak2024revisiting} ($+3.23$), and the interaction-weighted estimator of
-\citet{sun2021estimating} ($+3.03$). Three families of heterogeneity-robust estimators, built on
-different assumptions, agree that suicide is higher after adoption by something close to three
-deaths per hundred thousand. Figure~\ref{fig:overlay} shows their event-study paths lying almost on
-top of one another.
-
-\begin{table}[t]
-\centering\small
-\caption{The estimate is positive and robust to estimator choice}
-\label{tab:estimators}
-\begin{tabular}{lcc}
-\toprule
-Estimator / specification & ATT (per 100{,}000) & SE \\
-\midrule
-Callaway--Sant'Anna, reg., +unemployment (\emph{primary}) & $+2.73$ & $1.05$ \\
-\quad simple average & $+3.05$ & $1.24$ \\
-\quad doubly robust & $+2.56$ & --- \\
-\quad unconditional & $+2.76$ & --- \\
-\quad not-yet-treated comparison & $+2.66$ & --- \\
-Borusyak--Jaravel--Spiess (imputation) & $+3.23$ & $1.30$ \\
-Sun--Abraham (interaction-weighted) & $+3.03$ & $1.38$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.9\textwidth]{fig_robust_overlay.pdf}
-\caption{Event studies from three heterogeneity-robust estimators. The estimators agree.}
-\label{fig:overlay}
-\end{figure}
-
-A reader who stopped here would conclude that suicide-prevention strategies are followed by more
-suicide, and a careless reader might even write the headline. The reader should not stop here.
-Everything from this point forward is the argument that this number, however robust to the choices
-econometricians usually worry about, measures something other than the effect of the policy.
-
-\section{What the Number Is Not}
-
-\paragraph{It survives the pre-trend test---but the test is nearly blind.} The event study in
-Figure~\ref{fig:event} plots the Callaway--Sant'Anna effect by years since adoption, with every
-coefficient---before and after---a long difference from the year just before treatment, the same
-$g-1$ baseline against which the post-adoption effects and the parallel-trends assumption itself are
-defined. Look left of zero. The pre-adoption coefficients are negative and noisy, and jointly they
-do not reject a flat path: the sum of squared $t$-statistics across the eight pre-periods is
-$9.9$, comfortably inside what chance produces on eight degrees of freedom. Measured the right way,
-parallel trends cannot be rejected. I want to be exact about what that does and does not buy. It
-removes the most common objection to a result like this---that the treated countries were already
-diverging---but it removes it the way an unlit room removes the objection that the furniture is
-ugly. With four treated countries the pre-trend test is powered to catch only gross violations; its
-silence is the silence of a design too small to hear anything, not a clean bill of health. (An
-earlier draft, using the short, period-to-period baseline that much applied work still reports,
-found a large spurious violation. The long-difference baseline is the correct one, and it is flat;
-the lesson that the choice of baseline can manufacture or erase a pre-trend is not the smallest one
-in this paper.)
-
-The little the test can see, it sees through two countries. The pre-adoption leads are identified
-almost entirely off the United Kingdom and Ireland; Norway and Sweden, adopting in 1995 with a
-single pre-period each, contribute to the \emph{level} of the effect but nothing to the \emph{test}
-of trends. The estimand leans hardest on the cohort that cannot be checked at all.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.85\textwidth]{fig8_event_study.pdf}
-\caption{Event study, Callaway--Sant'Anna, universal (long-difference) baseline. Pre-adoption
-coefficients (dark) do not jointly reject parallel trends ($\sum z^2 = 9.9$, 8 d.f.); the
-post-adoption path is positive.}
-\label{fig:event}
-\end{figure}
-
-\paragraph{It is not free of the recession.} Figure~\ref{fig:calendar} re-aggregates the same
-group-time effects by calendar year rather than by event time. The estimated ``effect'' is small
-or negative through the mid-2000s and then leaps upward in 2008 and stays there. The treated
-cohorts' post-adoption windows---Ireland's especially, beginning in 2005---overlap precisely the
-years in which austerity and unemployment drove European suicide up
-\citep{reeves2012increase,stuckler2013body}. A staggered design cannot tell the effect of a 2005
-policy apart from the effect of a 2008 recession that strikes the 2005 adopter during its
-post-period. The positive ATT may be, in substantial part, the recession wearing the policy's
-clothes; it may be selection; it may be noise. I do not claim to know which, and the claim is not
-that the recession explains the result---to assert that would be to identify, from the same panel I
-have just called uninformative, an effect I have no business identifying. The claim is the weaker
-and more durable one: that these two forces are present, that the design cannot separate them from
-the policy, and that a number which confounds all three is not a measurement of any one.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.85\textwidth]{fig8c_calendar.pdf}
-\caption{Calendar-time aggregation. The ``effect'' materializes in 2008--2010, the recession years.}
-\label{fig:calendar}
-\end{figure}
-
-\paragraph{It cannot be signed.} A pre-trend test that cannot reject is not the same as a
-parallel-trends assumption that holds; the honest question is how robust the estimate is to the
-violations the test is too weak to rule out. The sensitivity analysis of
-\citet{rambachan2023credible} answers it: allowing post-adoption deviations from parallel trends on
-the scale of the (noisy) pre-period wiggle already in the data, the robust confidence set for the
-effect includes zero, includes large increases, and includes large decreases.
-Figure~\ref{fig:honest} shows the set widening as the permitted violation grows; it crosses zero
-almost immediately. We cannot say from these data whether strategies raise suicide,
-lower it, or do nothing.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.8\textwidth]{fig9_honestdid.pdf}
-\caption{Rambachan--Roth sensitivity. Under modest departures from parallel trends, the robust
-confidence set for the post-adoption effect spans zero.}
-\label{fig:honest}
-\end{figure}
-
-\paragraph{It is indistinguishable from chance.} As a final check I reassign adoption at random
-among the never-treated controls, three hundred times, and re-estimate. If the true effect were
-real, the observed estimate should sit in the tail of this placebo distribution. It does not: a
-quarter of random placebos produce an estimate at least as large in magnitude
-(Figure~\ref{fig:placebo}). The observed $+2.73$ is an ordinary draw from a distribution generated
-by countries that never adopted anything.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.8\textwidth]{fig_falsification_placebo.pdf}
-\caption{In-space placebo. The observed estimate (red line) is unremarkable against effects
-estimated from randomly assigned fake adoption among controls ($p = 0.25$).}
-\label{fig:placebo}
-\end{figure}
-
-\paragraph{Synthetic control agrees, where it can speak at all.} The method built for a handful of
-treated units \citep{abadie2010synthetic,benmichael2021augmented} can be applied only to the two
-countries with enough pre-adoption history to construct a credible counterfactual---the United
-Kingdom and Ireland; Norway and Sweden, with a single pre-period each, defeat it entirely, which is
-itself a comment on how little the data contain. For both the UK and Ireland the augmented
-synthetic control reproduces the pre-adoption path well and then drifts above it after adoption,
-but the post-adoption gap is statistically ordinary: placebo $p$-values of $0.46$ and $0.69$
-against control units treated as if they had adopted (Appendix~B, Figures~\ref{fig:synthUK}
-and~\ref{fig:synthIE}). Ireland's gap, the larger of the two, opens in 2008. Even the method of last
-resort returns the same verdict.
-
-\paragraph{It is fragile where it should be solid.} A genuine treatment effect should not depend on
-which untreated countries one happens to compare against. This one does. Dropping the four
-post-communist controls---Czechia, Estonia, Hungary, Slovenia, whose suicide rates were falling
-steeply from post-transition peaks throughout the window---nearly halves the estimate, to $+1.24$
-(standard error $0.76$). Recoding Sweden's adoption to its 2008 parliamentary strategy leaves
-$+2.41$; allowing a year of anticipation leaves $+1.68$. The sign survives; the magnitude wanders
-with the specification, in the manner of an estimate that is measuring the comparison rather than
-the policy.
-
-Five windows, one answer. They are not independent of one another, but they fail together, and a
-result that survives none of them is not a result. The cross-national mortality record cannot tell
-us what national suicide-prevention strategies do.
-
-\section{The Arithmetic of Governing in the Dark}
-
-It is tempting, having demolished an estimate, to feel that something has been accomplished. Very
-little has. The world's suicides are not reduced by a confidence interval, and a country deciding
-tomorrow whether to write a strategy gains nothing from being told that the last twenty years of
-evidence were not what they seemed---unless that knowledge changes what it does next. So let me say
-what I think it should change.
-
-It should change our confidence, not our conduct. The finding here is not that strategies are
-useless; it is that the observational cross-section is structurally incapable of revealing their
-worth, because countries adopt them in response to the very trends that would otherwise be used to
-identify their effect, and because the post-adoption years of the principal European adopters were
-swallowed by a recession that raised suicide everywhere. A policy can be both worth keeping and
-unproven, and intellectual honesty requires holding those two facts at once. What is not defensible
-is the laundering of association into causation that the field has practiced---the citing of a
-single pre-Goodman-Bacon comparison as though it settled the matter, the diffusion of a policy on
-the strength of evidence that evaporates the moment it is examined with the tools the rest of
-applied economics now considers mandatory.
-
-It should also change how we invest in knowing. The reason we cannot answer the question is not
-that suicide is mysterious; it is that we adopted a continent's worth of strategies without once
-building the variation that would let us evaluate them. We have no staggered randomization, no
-phased regional rollout with administrative mortality data, no pre-registered evaluation attached
-to a single one of these national plans. Every country switched at once, at the level at which the
-confounders also live, in response to the outcome itself. If the European Commission wishes to know
-whether its mental-health investments save lives---and it should wish to know, because the
-alternative is to keep spending moral and fiscal capital on faith---then the evaluation must be
-designed before the policy is deployed, at a level finer than the nation, with the counterfactual
-built in rather than reconstructed afterward from a panel too small and too confounded to bear it.
-
-I began with a number---one death every forty seconds---and I want to end with it, because it is
-the only number in this paper that is not in dispute. The strategies were written for that number.
-Whether they have moved it, I cannot tell you, and neither, I think, can anyone who looks honestly
-at the cross-national data. That should not comfort the skeptic or the believer. It should frighten
-both. We are making life-and-death policy in a darkness we have mistaken for evidence, and the
-first step out of it is to admit that the light we thought we had was never there.
-
-\clearpage
-\appendix
-\singlespacing
-
-\section{Appendix A: Data Construction and Treatment Coding}
-
-\paragraph{Outcome.} Eurostat table \texttt{hlth\_cd\_asdr}, age-standardized death rate for
-intentional self-harm (ICD-10 X60--X84, Y87.0), sex total, per 100{,}000, 1994--2010
-\citep{eurostat_cod}. The regional table \texttt{hlth\_cd\_asdr2} (NUTS-2, 2011--2023) is not used
-for estimation because it postdates the adoption wave, but it confirms the national series in its
-overlap.
-
-\paragraph{Treatment.} A country is coded treated in the first year its government adopted a
-stand-alone national suicide-prevention strategy, following the inclusion criterion of the WHO's
-2018 inventory \citep{who2018strategies} and the peer-reviewed dates of
-\citet{lewitzka2019national}. In-window adopters: Norway 1995, Sweden 1995, United Kingdom 2002
-(England's national strategy; Eurostat reports the UK in aggregate), Ireland 2005. Finland (1992) is
-dropped as already-treated at the panel's start; France (2000) is dropped because its outcome series
-begins in 2001, leaving no pre-period. Documented never-adopters used as controls include Germany,
-Italy, Spain, Belgium, Austria, Switzerland, the Netherlands, Portugal, Greece, Luxembourg, Czechia,
-Estonia, Hungary, and Slovenia; the balanced sample retains the twelve with complete outcome and
-covariate records (Belgium, Denmark, Italy, Poland, and Slovakia are dropped for gaps in the
-suicide series). The sign of the estimate survives recoding Sweden's adoption to its 2008
-parliamentary strategy ($+2.41$) and permitting one year of anticipation ($+1.68$), but its
-magnitude nearly halves when the four post-communist controls are dropped ($+1.24$, s.e.\ $0.76$).
-Denmark cannot be recoded as a 1998 adopter, contrary to what one might wish to test, because its
-suicide series is incomplete and it does not appear in the balanced panel; and adding real GDP per
-capita as a second covariate cannot be estimated at all, because the GDP-complete subsample is too
-small to support it---a limitation worth stating plainly rather than burying, and itself a measure
-of how little identifying information the data contain.
-
-\paragraph{Covariate.} National unemployment rate, World Bank modeled-ILO series
-\texttt{SL.UEM.TOTL.ZS}, 1994--2010 \citep{worldbank_unemp}. Real GDP per capita and population age
-structure (Eurostat) are used in supplementary specifications.
-
-\paragraph{Balance.} Table~\ref{tab:balance} reports baseline (1994) means and the standardized
-difference in means---$(\bar x_T - \bar x_C)/\sqrt{(s_T^2 + s_C^2)/2}$---which
-\citet{imbens2015causal} call ``imbalanced'' beyond $0.25$ in absolute value. Every comparable
-covariate clears that bar. Unemployment, the covariate I condition on, is imbalanced at $0.33$:
-the treated countries were not on the same cyclical footing as the controls, which is precisely why
-conditioning on it is necessary rather than cosmetic. The treated countries also begin with
-\emph{much lower} suicide ($-0.99$) and an older age structure---a reminder that the cross-sectional
-contrast is uninformative and only the within-country trend comparison can be.
+Table~\ref{tab:balance} reports baseline (1994) means and the standardized difference between
+adopters and never-adopters. \citet{imbens2015causal} call a covariate imbalanced when that
+difference exceeds $0.25$ in absolute value; here every comparable covariate does. Adopters begin
+with far \emph{lower} suicide ($-0.99$), higher unemployment ($+0.33$), an older population
+($+0.63$ on the share over 65), and a lower median age. These are not the marginal imbalances that
+covariate adjustment is designed to absorb; they are evidence that the treated and control groups are
+different kinds of country.
 
 \begin{table}[h]
 \centering\small
-\caption{Baseline (1994) balance, treated vs.\ never-treated. Standardized difference $>0.25$ in
-absolute value is ``imbalanced'' \citep{imbens2015causal}.}
+\caption{Baseline (1994) balance, adopters vs.\ never-adopters. Standardized difference exceeding
+$0.25$ in absolute value is ``imbalanced'' \citep{imbens2015causal}.}
 \label{tab:balance}
 \begin{tabular}{lcccc}
 \toprule
-Variable & Treated mean & Control mean & Std.\ diff. & Imbalanced? \\
+Variable & Adopters & Never-adopters & Std.\ diff. & Imbalanced? \\
 \midrule
 Suicide rate (per 100k) & $12.13$ & $21.53$ & $-0.99$ & yes \\
 Unemployment rate (\%) & $9.78$ & $8.18$ & $+0.33$ & yes \\
@@ -530,72 +158,177 @@ Median age (years) & $35.20$ & $36.24$ & $-0.42$ & yes \\
 \end{tabular}
 \end{table}
 
-\paragraph{Reproducibility.} All estimates were computed independently in R (\texttt{did},
-\texttt{didimputation}, \texttt{fixest}, \texttt{HonestDiD}, \texttt{augsynth}), Python
-(\texttt{differences}), and Stata (\texttt{csdid}). Sample sizes and means are identical across
-languages; the primary ATT replicates to four to six significant figures within matched
-specifications. The cross-language replication report is archived with the paper.
+\subsection{The groups differ in trends}
 
-\section{Appendix B: Estimators, Synthetic Control, and Additional Robustness}
+Differences in levels alone would not sink a difference-in-differences; differences in \emph{trends}
+do. Figure~\ref{fig:didfails} plots the event study---each coefficient a long difference from the
+year before adoption, the baseline against which both the post-treatment effects and the
+parallel-trends assumption are defined. The pre-adoption coefficients are not scattered flatly around
+zero. They rise. A weighted regression through them gives a slope of $+0.32$ suicides per hundred
+thousand per year (\,$t = 3.4$, $p = 0.001$\,): adopters' suicide rates were climbing relative to
+controls for a decade before any strategy existed. And the dashed line---that pre-trend, extrapolated
+forward---runs straight through the post-adoption coefficients. There is no break at adoption. The
+apparent ``effect'' is the continuation of a trend that predates the policy.
 
-\paragraph{Estimators.} The primary estimates use \citet{callaway2021did} with regression
-adjustment and the never-treated comparison group, aggregated to the group-size-weighted ATT and to
-event time. \citet{borusyak2024revisiting} provides the imputation estimator and its long-horizon
-event study; \citet{sun2021estimating} provides the interaction-weighted estimator with
-never-treated as the reference cohort. \citet{goodmanbacon2021did} and
-\citet{dechaisemartin2020twoway} motivate the abandonment of two-way fixed effects;
-\citet{rambachan2023credible} provides the sensitivity analysis. Doubly robust and
-inverse-propensity variants \citep{santanna2020doubly} are reported but, given the absence of
-common support documented in Figure~\ref{fig:pscore}, are not preferred.
-
-\paragraph{Augmented synthetic control.} For the United Kingdom and Ireland I estimate a
-ridge-augmented synthetic control \citep{abadie2010synthetic,benmichael2021augmented} against the
-pool of never-treated donors, with placebo inference based on reassigning treatment to each donor
-in turn and ranking the post-to-pre RMSPE ratio. Figures~\ref{fig:synthUK} and~\ref{fig:synthIE}
-show the fit and the placebo distribution; the post-adoption gaps are statistically ordinary
-($p=0.46$ for the UK, $p=0.69$ for Ireland) and, for Ireland, open with the 2008 recession. Norway
-and Sweden cannot be analyzed by synthetic control: with a single pre-treatment year each, no
-counterfactual can be constructed, which is itself a measure of how little identifying variation the
-1995 cohort contains.
-
-\begin{figure}[h]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.49\textwidth]{fig_synth_fit_UK.pdf}
-\includegraphics[width=0.49\textwidth]{fig_synth_rmspe_UK.pdf}
-\caption{United Kingdom. Left: observed vs.\ synthetic suicide rate. Right: post/pre RMSPE ratio
-against control placebos ($p=0.46$).}
-\label{fig:synthUK}
+\includegraphics[width=0.86\textwidth]{fig_did_fails.pdf}
+\caption{The pre-trend that invalidates differencing. Event study on the 1986--2010 panel (long
+differences from the year before adoption). A significant upward trend ($+0.32$/year, $t=3.4$) runs
+unbroken through the adoption date; the dashed line is the pre-trend extrapolated into the
+post-period.}
+\label{fig:didfails}
 \end{figure}
 
-\begin{figure}[h]
+\subsection{The implication: match, do not difference}
+
+When treated and control units differ in both levels and trends, the difference-in-differences
+estimate is not a treatment effect plus mean-zero noise; it is a treatment effect plus the
+extrapolated trend gap, and the two cannot be separated.
+\citet{doudchenko2016balancing} make the general point: differencing is the right tool only when the
+untreated trajectory is a good counterfactual for the treated one, and when it is not, one should
+instead reweight control units to reproduce the treated unit's pre-treatment path. This is the last
+entry on the design checklist, and it is the one most often skipped---the instruction, when the
+groups are this different, to \emph{stop differencing}. The rest of the paper follows it.
+
+\section{Synthetic Control: Matching on the Level Path}
+\label{sec:scm}
+
+\subsection{Construction and augmentation}
+
+For each adopting country I construct a synthetic control: a weighted average of the thirteen
+never-adopters chosen to reproduce the adopter's suicide path over its full pre-adoption window
+\citep{abadie2010synthetic}. Where the pre-adoption fit is imperfect, the simplex weights are
+bias-corrected by the ridge augmentation of \citet{benmichael2021augmented}, which permits small
+negative weights to close residual gaps. Norway and Sweden adopt in 1995 and so have nine
+pre-adoption years in the extended panel; the United Kingdom has sixteen and Ireland nineteen.
+
+\subsection{Fit and donor weights}
+
+Figure~\ref{fig:scmfit} shows, for each country, the observed suicide path against its synthetic
+match. The pre-adoption fit is close---pre-period root-mean-squared prediction errors of $0.7$
+(Norway), $0.6$ (Sweden), $0.3$ (the United Kingdom), and $1.1$ (Ireland)---so the synthetic
+controls are credible counterfactuals in a way the raw never-adopter average, with its different
+level and trend, is not. Figure~\ref{fig:scmweights} shows where the weight falls, before and after
+augmentation: pure synthetic control places non-negative weight on a handful of donors; ridge
+augmentation adjusts those weights, and where the raw fit was poor (Ireland) it moves them
+appreciably and allows a few to go negative, the signature of the bias correction at work.
+
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.49\textwidth]{fig_synth_fit_IE.pdf}
-\includegraphics[width=0.49\textwidth]{fig_synth_rmspe_IE.pdf}
-\caption{Ireland. Left: observed vs.\ synthetic suicide rate; the gap opens in 2008. Right: post/pre
-RMSPE ratio against control placebos ($p=0.69$).}
-\label{fig:synthIE}
+\includegraphics[width=0.49\textwidth]{fig_scm_fit_NO.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_fit_SE.pdf}\\[2pt]
+\includegraphics[width=0.49\textwidth]{fig_scm_fit_UK.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_fit_IE.pdf}
+\caption{Observed (solid) vs.\ synthetic (dashed) suicide rate for each adopter. Vertical line marks
+adoption. The synthetic controls track the pre-adoption path closely.}
+\label{fig:scmfit}
 \end{figure}
 
-\paragraph{Leave-one-out.} Dropping each treated country in turn leaves the sign and rough
-magnitude of the aggregate ATT unchanged; no single country drives the result, which is to say that
-the positive estimate is a feature of the whole confounded comparison and not an artifact of one
-outlier.
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.49\textwidth]{fig_scm_weights_IE.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_weights_UK.pdf}
+\caption{Donor weights before (SCM, non-negative simplex) and after (ridge-augmented) bias
+correction, for Ireland (poor raw fit, large correction) and the United Kingdom (excellent raw fit,
+negligible correction).}
+\label{fig:scmweights}
+\end{figure}
 
-\paragraph{Is the two-way fixed-effects estimate the culprit?} It is fair to ask whether the whole
-exercise is an artifact of the well-known pathology of two-way fixed effects under staggered
-adoption \citep{goodmanbacon2021did,dechaisemartin2020twoway}. It is not. Running the static TWFE
-regression of suicide on a post-adoption indicator returns a coefficient of $3.11$, and the
-Goodman-Bacon decomposition (Table~\ref{tab:bacon}) reconstructs it exactly as a weighted average of
-its $2\times2$ building blocks. The ``forbidden'' comparisons that use already-treated countries as
-controls---the source of the bias---carry only about three percent of the total weight, because the
-never-treated pool is large. The clean treated-versus-untreated comparisons carry the rest. TWFE
-($3.11$) therefore sits right beside the heterogeneity-robust Callaway--Sant'Anna estimate
-($2.73$): the estimator is not the problem. The problem is identification, and it is shared by every
-estimator in this paper.
+\subsection{Effects and permutation inference}
+
+After adoption the treated countries drift above their synthetic matches, but modestly: average
+post-adoption gaps of $+0.72$ (Norway), $+0.65$ (Sweden), $+0.28$ (the United Kingdom), and $+1.89$
+(Ireland) suicides per hundred thousand---all of the same, wrong, sign as the literature's protective
+claim. To gauge whether these are signal, I use permutation inference \citep{abadie2010synthetic}:
+reassign treatment to each never-adopter in turn, compute its post-to-pre fit ratio, and rank the
+treated country against that placebo distribution. The treated countries are unremarkable
+(Figure~\ref{fig:scmperm}): permutation $p$-values of $0.71$ (Norway), $0.71$ (Sweden), $0.79$ (the
+United Kingdom), and $0.43$ (Ireland). A randomly chosen never-adopter is about as likely to show a
+post-adoption gap this large as the countries that actually adopted.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.49\textwidth]{fig_scm_spaghetti_IE.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_rmspe_IE.pdf}
+\caption{Permutation inference, Ireland. Left: gap trajectories for Ireland (red) against placebo
+gaps from each never-adopter (grey). Right: Ireland's post/pre RMSPE ratio against the placebo
+distribution ($p=0.43$).}
+\label{fig:scmperm}
+\end{figure}
+
+\subsection{Synthetic difference-in-differences by cohort}
+
+Finally I estimate, for each adoption cohort, the synthetic difference-in-differences of
+\citet{arkhangelsky2021synthetic}, which reweights both control units and pre-periods to balance the
+treated cohort before differencing---a hybrid that inherits synthetic control's robustness to the
+level-and-trend gap. The cohort estimates are $+0.80$ (1995, Norway/Sweden), $+1.24$ (2002, the
+United Kingdom), and $+0.74$ (2005, Ireland) suicides per hundred thousand, each with a standard
+error larger than the estimate. The verdict does not move.
+
+\section{What the Evidence Supports}
+
+Three methods, applied to four countries and three cohorts, agree. The augmented synthetic controls,
+the permutation tests, and the cohort-level synthetic difference-in-differences all return small,
+wrong-signed, statistically ordinary differences. Set against the contaminated
+difference-in-differences of Section~\ref{sec:did}, which cannot be interpreted at all, the picture
+is consistent and sobering: the cross-national record contains no evidence that national
+suicide-prevention strategies reduced suicide, and no power to rule out effects of either sign of a
+size that would matter. This is not a null result in the comfortable sense of a precisely estimated
+zero. It is the harder kind---an honest admission that the design space available to us, even used
+correctly, cannot answer the question.
+
+\section{Conclusion}
+
+It is tempting, having shown that a famous claim does not survive scrutiny, to feel that something
+has been settled. Very little has. The world's suicides are not reduced by a confidence interval, and
+a country deciding tomorrow whether to write a strategy gains nothing from being told that the last
+twenty years of evidence were thinner than advertised---unless that knowledge changes what it does
+next. It should change two things. It should change our confidence: a policy can be worth keeping and
+still unproven, and honesty requires holding both at once rather than citing a single discredited
+comparison as if it closed the matter. And it should change how we invest in knowing. We adopted a
+continent's worth of strategies without once building the variation---a staggered randomization, a
+phased regional rollout with administrative mortality data, a pre-registered evaluation---that would
+let us learn whether they work. If the European Commission wishes to know whether its mental-health
+investments save lives, and it should, the evaluation must be designed before the policy is deployed,
+below the level of the nation, with the counterfactual built in rather than reconstructed afterward
+from a panel too small and too different to bear it. Until then we are governing mortality on faith,
+and the first honest step is to say so.
+
+\clearpage
+\appendix
+\singlespacing
+
+\section{Appendix A: Data and the WHO--Eurostat Splice}
+
+The outcome from 1994 is Eurostat's age-standardized suicide rate (table \texttt{hlth\_cd\_asdr},
+ICD-10 X60--X84 and Y87.0, European Standard Population) \citep{eurostat_cod}. To 1986 I prepend the
+WHO Mortality Database age-standardized rate \citep{who_mdb}, which uses the WHO World Standard
+Population and therefore sits at a different level. Because the Eurostat-to-WHO ratio is stable within
+country across the overlap (1994--2010), I chain multiplicatively: for each country I scale the
+pre-1994 WHO values by the mean overlap ratio (estimated factors range from $1.05$ for Ireland to
+$1.49$ for Portugal), placing them on the Eurostat scale. The spliced series is continuous across the
+1993--1994 join. Germany is excluded because the WHO database has no unified pre-1990 German series;
+the balanced panel is the seventeen countries with complete coverage 1986--2010. Treatment dates
+follow the WHO 2018 inventory and \citet{lewitzka2019national}. The splice is an approximation and is
+flagged as such; the results are robust to beginning the panel in 1990 (no splice for the 1995
+cohort's first years) at the cost of shorter pre-windows.
+
+\section{Appendix B: This Is Not a Two-Way-Fixed-Effects Artifact}
+
+One might suspect the whole exercise reflects the known pathology of two-way fixed effects under
+staggered timing \citep{goodmanbacon2021did}. It does not. The static two-way fixed-effects
+regression returns a coefficient of $3.11$, and the Goodman-Bacon decomposition
+(Table~\ref{tab:bacon}) reconstructs it exactly as a weighted average of its $2\times2$ components.
+The ``forbidden'' comparisons that use already-treated countries as controls carry only about three
+percent of the weight, because the never-treated pool is large; the clean treated-versus-untreated
+comparisons carry the rest. Two-way fixed effects therefore sits beside the heterogeneity-robust
+difference-in-differences estimate, and both are contaminated for the same reason---non-comparable
+groups---not by negative weighting. The estimator is not the problem; the design is.
 
 \begin{table}[h]
 \centering\small
-\caption{Goodman-Bacon decomposition of the TWFE estimate}
+\caption{Goodman-Bacon decomposition of the two-way fixed-effects estimate}
 \label{tab:bacon}
 \begin{tabular}{lccc}
 \toprule
@@ -605,10 +338,65 @@ Treated vs.\ untreated & $0.864$ & $3.57$ & $3.085$ \\
 Later vs.\ earlier treated & $0.112$ & $0.29$ & $0.032$ \\
 Earlier vs.\ later treated & $0.025$ & $-0.22$ & $-0.005$ \\
 \midrule
-Reconstructed TWFE & $1.000$ & & $3.112$ \\
+Reconstructed two-way fixed effects & $1.000$ & & $3.112$ \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\paragraph{Reproducibility.} Every estimate was computed in R (\texttt{did}, \texttt{augsynth},
+\texttt{synthdid}, \texttt{fixest}, \texttt{bacondecomp}); the difference-in-differences results were
+independently replicated in Python (\texttt{differences}) and Stata (\texttt{csdid}), with identical
+samples and means and matching point estimates. The replication archive accompanies the paper.
+
+\clearpage
+\section{Appendix C: Full Synthetic-Control Diagnostics, All Four Adopters}
+
+For completeness, the four diagnostics of Section~\ref{sec:scm}---observed-versus-synthetic fit, the
+gap event study, donor weights before and after ridge augmentation, and permutation inference---are
+shown here for each adopting country in turn. The pattern is uniform: close pre-adoption fit, a
+modest and wrong-signed post-adoption gap, and a permutation rank that places the treated country in
+the body of the placebo distribution rather than its tail.
+
+\paragraph{Norway (adopted 1995; nine pre-periods; permutation $p=0.71$).}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.49\textwidth]{fig_scm_fit_NO.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_gap_NO.pdf}\\[2pt]
+\includegraphics[width=0.49\textwidth]{fig_scm_weights_NO.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_rmspe_NO.pdf}
+\caption{Norway. Fit, gap, donor weights (before/after ridge), and permutation.}
+\end{figure}
+
+\paragraph{Sweden (adopted 1995; nine pre-periods; permutation $p=0.71$).}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.49\textwidth]{fig_scm_fit_SE.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_gap_SE.pdf}\\[2pt]
+\includegraphics[width=0.49\textwidth]{fig_scm_weights_SE.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_rmspe_SE.pdf}
+\caption{Sweden. Fit, gap, donor weights (before/after ridge), and permutation.}
+\end{figure}
+
+\clearpage
+\paragraph{United Kingdom (adopted 2002; sixteen pre-periods; permutation $p=0.79$).}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.49\textwidth]{fig_scm_fit_UK.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_gap_UK.pdf}\\[2pt]
+\includegraphics[width=0.49\textwidth]{fig_scm_weights_UK.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_rmspe_UK.pdf}
+\caption{United Kingdom. Fit, gap, donor weights (before/after ridge), and permutation.}
+\end{figure}
+
+\paragraph{Ireland (adopted 2005; nineteen pre-periods; permutation $p=0.43$).}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.49\textwidth]{fig_scm_fit_IE.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_gap_IE.pdf}\\[2pt]
+\includegraphics[width=0.49\textwidth]{fig_scm_weights_IE.pdf}\hfill
+\includegraphics[width=0.49\textwidth]{fig_scm_rmspe_IE.pdf}
+\caption{Ireland. Fit, gap, donor weights (before/after ridge), and permutation.}
+\end{figure}
 
 \clearpage
 \singlespacing

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
 build_dashboard_data.py — GTD dashboard data for "Prevention Without Proof".
-Scans hypotheses/insights/decisions, maps the pipeline, embeds figures (PNG),
-reads the key tables, and writes the courtroom + manuscript views.
+Scans hypotheses/insights/decisions, maps the pipeline, embeds figures (PNG) WITH the
+exact generating code (for flip-cards), reads the tables, and writes the walkable
+courtroom checklist (ending in DDDiD -> synthetic control) + manuscript.
 Run: python3 scripts/build_dashboard_data.py
 """
-import json, csv
+import json, csv, re
 from pathlib import Path
 from datetime import datetime
 
@@ -14,57 +15,77 @@ OUT = ROOT / "dashboard_data.json"
 
 PIPELINE_SCRIPTS = [
     {"script":"code/python/eurostat_fetch.py","outputs":["data/raw/gdp_real_pc.json"],"level":1,"name":"Acquire Eurostat (cleaning)"},
-    {"script":"code/python/build_panel.py","outputs":["data/clean/panel.csv"],"level":2,"name":"Build country-year panel (derived)"},
-    {"script":"code/R/analysis.R","outputs":["output/estimates.json","output/figures/fig8_event_study.png","output/tables/tab2_balance.csv"],"level":5,"name":"CS DiD + event study + falsification"},
-    {"script":"code/R/synth.R","outputs":["output/figures/fig_synth_fit_IE.png"],"level":5,"name":"Augmented synthetic control (UK, IE)"},
-    {"script":"code/R/bacon.R","outputs":["output/tables/tab_bacon.csv","output/figures/fig_bacon.png"],"level":5,"name":"Goodman-Bacon decomposition"},
+    {"script":"code/python/build_panel.py","outputs":["data/clean/panel.csv"],"level":2,"name":"Build Eurostat panel 1994-2010"},
+    {"script":"code/python/build_panel_extended.py","outputs":["data/clean/panel_extended.csv"],"level":2,"name":"Splice WHO pre-1994 -> extended panel 1986-2010"},
+    {"script":"code/R/analysis.R","outputs":["output/estimates.json","output/tables/tab2_balance.csv"],"level":5,"name":"DiD diagnostics + balance + Bacon inputs"},
+    {"script":"code/R/scm_all.R","outputs":["output/figures/fig_did_fails.png","output/figures/fig_scm_fit_IE.png","output/tables/tab_sdid_groups.csv"],"level":5,"name":"DiD-fails + augmented SCM (all 4) + synthetic DiD"},
+    {"script":"code/R/bacon.R","outputs":["output/tables/tab_bacon.csv"],"level":5,"name":"Goodman-Bacon decomposition"},
     {"script":"code/python/replicate.py","outputs":["output/estimates_python.json"],"level":5,"name":"Python replication (differences)"},
     {"script":"code/stata/replicate.do","outputs":["code/stata/replicate.log"],"level":5,"name":"Stata replication (csdid)"},
 ]
-FIGURE_SCRIPT_MAP = {
-    "fig4_panelview":"code/R/analysis.R","fig5_cohort_counts":"code/R/analysis.R",
-    "fig6_outcome_by_cohort":"code/R/analysis.R","fig3_pscore_overlap":"code/R/analysis.R",
-    "fig8_event_study":"code/R/analysis.R","fig8c_calendar":"code/R/analysis.R",
-    "fig9_honestdid":"code/R/analysis.R","fig_robust_overlay":"code/R/analysis.R",
-    "fig_falsification_placebo":"code/R/analysis.R","fig_bacon":"code/R/bacon.R",
-    "fig_synth_fit_UK":"code/R/synth.R","fig_synth_fit_IE":"code/R/synth.R",
-    "fig_synth_rmspe_UK":"code/R/synth.R","fig_synth_rmspe_IE":"code/R/synth.R",
-    "fig_synth_gap_UK":"code/R/synth.R","fig_synth_gap_IE":"code/R/synth.R",
-    "fig_synth_spaghetti_UK":"code/R/synth.R","fig_synth_spaghetti_IE":"code/R/synth.R",
+A="code/R/analysis.R"; S="code/R/scm_all.R"; B="code/R/bacon.R"
+FIGURE_SCRIPT_MAP={
+ "fig_did_fails":S,"fig4_panelview":A,"fig5_cohort_counts":A,"fig6_outcome_by_cohort":A,
+ "fig3_pscore_overlap":A,"fig8_event_study":A,"fig8c_calendar":A,"fig9_honestdid":A,
+ "fig_robust_overlay":A,"fig_falsification_placebo":A,"fig_bacon":B,
 }
-FIG_CAPTIONS = {
-    "fig4_panelview":"Staggered adoption (4 treated, 12 never-treated)",
-    "fig5_cohort_counts":"Cohort composition — the design is thin",
-    "fig6_outcome_by_cohort":"Suicide by cohort; all bend up in the recession",
-    "fig3_pscore_overlap":"Propensity score perfectly separates -> regression adjustment",
-    "fig8_event_study":"Event study (universal base): pre-trends flat, post positive",
-    "fig8c_calendar":"Calendar-time ATT loads on 2008-2010",
-    "fig9_honestdid":"Rambachan-Roth: effect cannot be signed",
-    "fig_robust_overlay":"CS, BJS, Sun-Abraham agree (+2.7 to +3.2)",
-    "fig_falsification_placebo":"In-space placebo: observed is ordinary (p=0.25)",
-    "fig_bacon":"Goodman-Bacon: TWFE = weighted 2x2s; forbidden weight ~3%",
-    "fig_synth_fit_IE":"Ireland: observed vs synthetic","fig_synth_rmspe_IE":"Ireland placebo RMSPE (p=0.69)",
-    "fig_synth_fit_UK":"UK: observed vs synthetic","fig_synth_rmspe_UK":"UK placebo RMSPE (p=0.46)",
+for u in ("NO","SE","UK","IE"):
+    for k in ("fit","gap","weights","spaghetti","rmspe"):
+        FIGURE_SCRIPT_MAP[f"fig_scm_{k}_{u}"]=S
+FIG_CAPTIONS={
+ "fig_did_fails":"DiD fails: a +0.32/yr pre-trend runs unbroken through adoption",
+ "fig4_panelview":"Staggered adoption (4 treated)","fig5_cohort_counts":"Cohort sizes",
+ "fig6_outcome_by_cohort":"Suicide by cohort","fig3_pscore_overlap":"Propensity score separates",
+ "fig8_event_study":"DiD event study (Eurostat panel)","fig8c_calendar":"Calendar-time ATT",
+ "fig9_honestdid":"Rambachan-Roth sensitivity","fig_robust_overlay":"CS/BJS/SA agree on the naive number",
+ "fig_falsification_placebo":"In-space placebo","fig_bacon":"Goodman-Bacon: TWFE not the culprit",
 }
+for u,nm in (("NO","Norway"),("SE","Sweden"),("UK","United Kingdom"),("IE","Ireland")):
+    FIG_CAPTIONS[f"fig_scm_fit_{u}"]=f"{nm}: observed vs synthetic"
+    FIG_CAPTIONS[f"fig_scm_gap_{u}"]=f"{nm}: gap event study"
+    FIG_CAPTIONS[f"fig_scm_weights_{u}"]=f"{nm}: donor weights before/after ridge"
+    FIG_CAPTIONS[f"fig_scm_spaghetti_{u}"]=f"{nm}: permutation spaghetti"
+    FIG_CAPTIONS[f"fig_scm_rmspe_{u}"]=f"{nm}: post/pre RMSPE vs placebos"
+
+def extract_code(stem, script_rel):
+    """Find the ggsave(...stem...) call in the script and return the plot block above it."""
+    p=ROOT/script_rel
+    if not p.exists(): return ""
+    lines=p.read_text().splitlines()
+    idx=None
+    # candidates: exact stem, and the sprintf prefix (stem minus a trailing _XX unit code)
+    pref=re.sub(r'_[A-Z]{2}$','_',stem)
+    for i,ln in enumerate(lines):
+        if "ggsave" in ln and (stem in ln or (pref!=stem and pref in ln)): idx=i; break
+    if idx is None:
+        for i,ln in enumerate(lines):
+            if stem in ln or (pref!=stem and pref in ln): idx=i; break
+    if idx is None: return ""
+    start=idx
+    # walk up to the start of this plot block (blank line or a `pX<-ggplot`/`<-` assignment boundary)
+    j=idx
+    while j>0 and (idx-j)<22:
+        if lines[j-1].strip()=="" : break
+        j-=1
+    return "\n".join(lines[j:idx+1]).strip()
 
 def parse_frontmatter(fp):
-    t = fp.read_text();
-    if not t.startswith("---"): return {}, t
-    p = t.split("---",2)
-    if len(p)<3: return {}, t
+    t=fp.read_text()
+    if not t.startswith("---"): return {},t
+    pp=t.split("---",2)
+    if len(pp)<3: return {},t
     fm={}
-    for line in p[1].strip().split("\n"):
+    for line in pp[1].strip().split("\n"):
         if ":" in line:
             k,v=line.split(":",1); v=v.strip()
             if v.startswith("[") and v.endswith("]"): v=[x.strip().strip("'\"") for x in v[1:-1].split(",") if x.strip()]
             elif v.lower()=="null": v=None
             fm[k.strip()]=v
-    return fm, p[2].strip()
-
+    return fm,pp[2].strip()
 def get_mtime(p): return datetime.fromtimestamp(p.stat().st_mtime).strftime("%Y-%m-%d %H:%M") if p.exists() else None
 
 def scan_hyp():
-    out=[];
+    out=[]
     for f in sorted((ROOT/"hypotheses").glob("H*.md")):
         fm,body=parse_frontmatter(f)
         if not fm.get("id"): continue
@@ -77,7 +98,6 @@ def scan_hyp():
                     "parent":fm.get("parent") if fm.get("parent") not in ("null",None) else None,
                     "children":fm.get("children",[]),"claim":claim,"kills_it":kills,"file":str(f.relative_to(ROOT))})
     return out
-
 def scan_insights():
     out=[]
     for f in sorted((ROOT/"insights").glob("2*.md")):
@@ -87,10 +107,8 @@ def scan_insights():
         for s in body.split("##"):
             if s.strip().startswith("Finding"): finding=s.strip().replace("Finding","").strip().split("\n")[0]
         out.append({"date":fm["date"],"title":fm.get("title",""),"updates":fm.get("updates",""),
-                    "result":fm.get("result",""),"script":fm.get("script",""),"output":fm.get("output",""),
-                    "finding":finding,"file":str(f.relative_to(ROOT))})
+                    "result":fm.get("result",""),"script":fm.get("script",""),"finding":finding,"file":str(f.relative_to(ROOT))})
     return sorted(out,key=lambda x:x["date"],reverse=True)
-
 def scan_decisions():
     idx=ROOT/"decisions"/"INDEX.md"; out=[]
     if not idx.exists(): return out
@@ -99,7 +117,6 @@ def scan_decisions():
             c=[x.strip() for x in line.split("|")[1:-1]]
             if len(c)>=4: out.append({"id":c[0],"decision":c[1],"date":c[2],"rationale":c[3]})
     return out
-
 def scan_pipeline():
     out=[]
     for e in PIPELINE_SCRIPTS:
@@ -113,59 +130,56 @@ def scan_pipeline():
         out.append({"script":e["script"],"name":e["name"],"level":e["level"],"exists":sp.exists(),
                     "script_mtime":get_mtime(sp),"outputs":outs,"all_fresh":allf})
     return out
-
 def scan_figures():
     fd=ROOT/"output"/"figures"; out=[]
     for f in sorted(fd.glob("*.png")):
         stem=f.stem; sc=FIGURE_SCRIPT_MAP.get(stem); sp=ROOT/sc if sc else None
-        fresh = (f.stat().st_mtime>=sp.stat().st_mtime) if (sp and sp.exists()) else None
+        fresh=(f.stat().st_mtime>=sp.stat().st_mtime) if (sp and sp.exists()) else None
         out.append({"name":stem,"path":str(f.relative_to(ROOT)),"mtime":get_mtime(f),
-                    "caption":FIG_CAPTIONS.get(stem,""),"script":sc,"fresh":fresh,"orphaned":sc is None})
+                    "caption":FIG_CAPTIONS.get(stem,""),"script":sc,"fresh":fresh,"orphaned":sc is None,
+                    "code":extract_code(stem,sc) if sc else ""})
     return out
-
-def read_csv_table(rel, caption):
+def read_csv_table(rel,caption):
     p=ROOT/rel
     if not p.exists(): return None
     rows=list(csv.reader(open(p)))
     if not rows: return None
     return {"name":Path(rel).stem,"caption":caption,"headers":rows[0],"rows":rows[1:]}
-
 def scan_tables():
-    specs=[("output/tables/tab2_balance.csv","Baseline balance (Imbens-Rubin std. diff; |d|>0.25 = imbalanced)"),
-           ("output/tables/tab_bacon.csv","Goodman-Bacon decomposition of TWFE"),
-           ("output/tables/tab5_cohort_counts.csv","Cohort composition"),
-           ("output/tables/tab_referee_robustness.csv","Referee-requested robustness"),
-           ("output/tables/tab_leaveoneout.csv","Leave-one-treated-country-out")]
+    specs=[("output/tables/tab2_balance.csv","Baseline balance (Imbens-Rubin; |d|>0.25 imbalanced) -> levels differ"),
+           ("output/tables/tab_sdid_groups.csv","Synthetic DiD by adoption cohort (Arkhangelsky et al.)"),
+           ("output/tables/tab_bacon.csv","Goodman-Bacon: TWFE is not the culprit"),
+           ("output/tables/tab_scm_weights_IE.csv","Ireland donor weights: SCM vs ridge-augmented"),
+           ("output/tables/tab_did_extrap.csv","DiD event study + pre-trend extrapolation")]
     return [t for t in (read_csv_table(r,c) for r,c in specs) if t]
 
 def build_courtroom():
-    est=json.loads((ROOT/"output/estimates.json").read_text()) if (ROOT/"output/estimates.json").exists() else {}
-    g=round(est.get("cs_group_att",0),2); ssz=round(est.get("pretrend_sumz2",0),1); pp=est.get("placebo_p",0)
+    sj=ROOT/"output/scm_results.json"; sc=json.loads(sj.read_text()) if sj.exists() else {}
     return {"stages":[
-      {"id":1,"name":"Setup: real treatment, imbalanced covariate","status":"confirmed",
-       "summary":"Staggered adoption is real (4 treated, 12 documented never-adopters). Unemployment is imbalanced (Imbens-Rubin std. diff 0.33).",
-       "evidence":["fig4_panelview.png","tab2_balance.csv","D04: pscore separates -> regression adjustment"]},
-      {"id":2,"name":"Event studies: pre-trends flat (long-difference base)","status":"confirmed",
-       "summary":f"Under the universal g-1 baseline the pre-trend test does not reject (sum z^2 = {ssz}, df 8). The short-difference 'violation' (59.4) was an artifact.",
-       "evidence":["fig8_event_study.png","D06: universal base period"]},
-      {"id":3,"name":"Falsification: placebo finds nothing","status":"confirmed",
-       "summary":f"In-space placebo p = {pp}; synthetic-control placebo p = 0.46 (UK), 0.69 (IE). The effect is indistinguishable from chance.",
-       "evidence":["fig_falsification_placebo.png","fig_synth_rmspe_IE.png"]},
-      {"id":4,"name":"Main result: positive but unsignable","status":"complicated",
-       "summary":f"Group-weighted ATT = +{g}/100k (more suicide), robust across CS/BJS/SA — but Rambachan-Roth cannot sign it and it halves when post-communist controls are dropped.",
-       "evidence":["fig_robust_overlay.png","fig9_honestdid.png","fig8c_calendar.png"]},
-      {"id":5,"name":"Mechanism: selection + recession; TWFE not the culprit","status":"confirmed",
-       "summary":"The positive sign reflects selection (adoption when suicide is high) and the 2008 recession. Goodman-Bacon: TWFE (3.11) ~ CS (2.7); forbidden comparisons carry ~3% weight.",
-       "evidence":["fig_bacon.png","tab_bacon.csv"]}]}
+      {"id":1,"name":"Estimand & design: what DiD would require","status":"confirmed",
+       "summary":"Target: ATT of adoption on suicide. DiD identifies it only under parallel trends -- an assumption about counterfactual trajectories the pre-period can speak to.",
+       "evidence":["fig4_panelview.png","D07: group-weighted target"]},
+      {"id":2,"name":"Check 1 -- levels: the groups are not comparable","status":"confirmed",
+       "summary":"Every baseline covariate is imbalanced (Imbens-Rubin >0.25): adopters start with far lower suicide, higher unemployment, older populations.",
+       "evidence":["tab2_balance.csv","fig3_pscore_overlap.png (propensity perfectly separates)"]},
+      {"id":3,"name":"Check 2 -- trends: a pre-trend runs through adoption","status":"confirmed",
+       "summary":f"A significant upward pre-trend (slope ~+0.32/yr, t~3.4) predates adoption and continues unbroken through it. The 'effect' is the extrapolated trend.",
+       "evidence":["fig_did_fails.png","fig8_event_study.png"]},
+      {"id":4,"name":"DDDiD -- do not difference; match on levels (Doudchenko-Imbens)","status":"confirmed",
+       "summary":"With treated and controls differing in BOTH levels and trends, differencing extrapolates the gap rather than removing it. The checklist's terminal step: stop differencing, switch to synthetic control.",
+       "evidence":["Doudchenko & Imbens (2016)","fig_bacon.png (TWFE is not the culprit -- the design is)"]},
+      {"id":5,"name":"Synthetic control (all 4) + synthetic DiD: no detectable effect","status":"complicated",
+       "summary":"Augmented SCM for each of the four adopters fits the pre-period well; post-gaps are small and wrong-signed; permutation p = 0.71/0.71/0.79/0.43. Synthetic DiD by cohort: +0.80/+1.24/+0.74, each < its s.e. No detectable effect, and no power to rule one out.",
+       "evidence":["fig_scm_fit_IE.png","fig_scm_weights_IE.png","fig_scm_rmspe_IE.png","tab_sdid_groups.csv"]}]}
 
 def build_manuscript():
     return {"earned":[
-        "Pre-trends are flat under the correct long-difference baseline (sum z^2 = 9.85, df 8).",
-        "Unemployment is imbalanced (Imbens-Rubin 0.33), justifying conditional parallel trends.",
-        "The naive staggered-DiD estimate is POSITIVE: +2.7/100k, agreed by CS, BJS, Sun-Abraham.",
-        "Goodman-Bacon: TWFE reconstructs to 3.11; forbidden comparisons get ~3% weight.",
-        "The estimate cannot be signed (Rambachan-Roth), is placebo-indistinguishable (p=0.25), and is fragile to the control pool."],
-      "thesis":"The cross-national record cannot identify whether national suicide-prevention strategies reduced suicide. The positive association is selection plus the recession, not a measured effect — and that inseparability is the finding."}
+        "DiD is invalid here: adopters and never-adopters differ in levels (every covariate Imbens-Rubin imbalanced) AND trends (significant +0.32/yr pre-trend through adoption).",
+        "Goodman-Bacon: TWFE (3.11) is not distorted by negative weighting (forbidden comparisons ~3%); the design is the problem, not the estimator.",
+        "Augmented synthetic control for all four adopters fits the pre-period closely; ridge augmentation bias-corrects the donor weights (negative where raw fit is poor).",
+        "Post-adoption gaps are small and wrong-signed; permutation p = 0.71 (NO), 0.71 (SE), 0.79 (UK), 0.43 (IE) -- all ordinary.",
+        "Synthetic DiD by cohort: +0.80 (1995), +1.24 (2002), +0.74 (2005), each smaller than its standard error."],
+      "thesis":"Difference-in-differences is the wrong tool here -- treated and control countries differ in levels and trends. Matching on the level path instead (augmented synthetic control for all four adopters, and synthetic DiD by cohort) finds no detectable effect of national suicide-prevention strategies on suicide, and no power to rule one out."}
 
 if __name__=="__main__":
     hyp=scan_hyp(); ins=scan_insights(); dec=scan_decisions(); pipe=scan_pipeline()
@@ -178,5 +192,6 @@ if __name__=="__main__":
           "hypotheses":hyp,"insights":ins,"decisions":dec,"pipeline":pipe,"figures":figs,
           "tables":tabs,"courtroom":court,"manuscript":manu}
     OUT.write_text(json.dumps(data,indent=2,default=str))
-    print(f"hyp {len(hyp)} | insights {len(ins)} | decisions {len(dec)} | pipeline {len(pipe)} | figs {len(figs)} | tables {len(tabs)}")
+    nc=sum(1 for f in figs if f["code"])
+    print(f"hyp {len(hyp)} | insights {len(ins)} | decisions {len(dec)} | pipeline {len(pipe)} | figs {len(figs)} ({nc} with code) | tables {len(tabs)}")
     print(f"written {OUT}")

@@ -8,8 +8,8 @@
     "total_hypotheses": 4,
     "total_insights": 5,
     "pipeline_stale": 1,
-    "pipeline_total": 7,
-    "generated_at": "2026-06-04 17:27:35"
+    "pipeline_total": 8,
+    "generated_at": "2026-06-04 20:43:17"
   },
   "hypotheses": [
     {
@@ -64,7 +64,6 @@
       "updates": "H01c",
       "result": "rejected",
       "script": "code/R/bacon.R",
-      "output": "output/figures/fig_bacon.pdf",
       "finding": "The static TWFE coefficient (3.11) decomposes into 2x2 comparisons whose weighted average",
       "file": "insights/2026-06-04_bacon.md"
     },
@@ -74,7 +73,6 @@
       "updates": "H01",
       "result": "confirmed",
       "script": "code/R/analysis.R",
-      "output": "output/tables/tab2_balance.csv",
       "finding": "At baseline, the standardized difference in means between treated and control is **0.33 for",
       "file": "insights/2026-06-04_balance.md"
     },
@@ -84,7 +82,6 @@
       "updates": "H01b",
       "result": "rejected",
       "script": "code/R/analysis.R",
-      "output": "output/figures/fig9_honestdid.pdf",
       "finding": "The +2.7 estimate fails every credibility check: Rambachan-Roth cannot sign it under modest trend",
       "file": "insights/2026-06-04_not-causal.md"
     },
@@ -94,7 +91,6 @@
       "updates": "H01",
       "result": "complicated",
       "script": "code/R/analysis.R",
-      "output": "output/figures/fig8_event_study.pdf",
       "finding": "The group-size-weighted ATT of strategy adoption is **+2.73 suicides per 100,000** (s.e. 1.05) \u2014",
       "file": "insights/2026-06-04_positive-att.md"
     },
@@ -104,7 +100,6 @@
       "updates": "H01a",
       "result": "confirmed",
       "script": "code/R/analysis.R",
-      "output": "output/figures/fig8_event_study.pdf",
       "finding": "With the **universal (g-1) baseline** \u2014 long differences, consistent with the parallel-trends",
       "file": "insights/2026-06-04_pretrends-flat.md"
     }
@@ -159,12 +154,12 @@
       "name": "Acquire Eurostat (cleaning)",
       "level": 1,
       "exists": true,
-      "script_mtime": "2026-06-04 10:25",
+      "script_mtime": "2026-06-04 19:18",
       "outputs": [
         {
           "path": "data/raw/gdp_real_pc.json",
           "exists": true,
-          "mtime": "2026-06-04 10:26",
+          "mtime": "2026-06-04 19:18",
           "fresh": true
         }
       ],
@@ -172,15 +167,31 @@
     },
     {
       "script": "code/python/build_panel.py",
-      "name": "Build country-year panel (derived)",
+      "name": "Build Eurostat panel 1994-2010",
       "level": 2,
       "exists": true,
-      "script_mtime": "2026-06-04 10:27",
+      "script_mtime": "2026-06-04 19:18",
       "outputs": [
         {
           "path": "data/clean/panel.csv",
           "exists": true,
-          "mtime": "2026-06-04 10:28",
+          "mtime": "2026-06-04 19:18",
+          "fresh": true
+        }
+      ],
+      "all_fresh": true
+    },
+    {
+      "script": "code/python/build_panel_extended.py",
+      "name": "Splice WHO pre-1994 -> extended panel 1986-2010",
+      "level": 2,
+      "exists": true,
+      "script_mtime": "2026-06-04 20:25",
+      "outputs": [
+        {
+          "path": "data/clean/panel_extended.csv",
+          "exists": true,
+          "mtime": "2026-06-04 20:25",
           "fresh": true
         }
       ],
@@ -188,43 +199,49 @@
     },
     {
       "script": "code/R/analysis.R",
-      "name": "CS DiD + event study + falsification",
+      "name": "DiD diagnostics + balance + Bacon inputs",
       "level": 5,
       "exists": true,
-      "script_mtime": "2026-06-04 17:15",
+      "script_mtime": "2026-06-04 19:18",
       "outputs": [
         {
           "path": "output/estimates.json",
           "exists": true,
-          "mtime": "2026-06-04 17:15",
-          "fresh": true
-        },
-        {
-          "path": "output/figures/fig8_event_study.png",
-          "exists": true,
-          "mtime": "2026-06-04 17:27",
+          "mtime": "2026-06-04 19:18",
           "fresh": true
         },
         {
           "path": "output/tables/tab2_balance.csv",
           "exists": true,
-          "mtime": "2026-06-04 17:12",
-          "fresh": false
+          "mtime": "2026-06-04 19:18",
+          "fresh": true
         }
       ],
-      "all_fresh": false
+      "all_fresh": true
     },
     {
-      "script": "code/R/synth.R",
-      "name": "Augmented synthetic control (UK, IE)",
+      "script": "code/R/scm_all.R",
+      "name": "DiD-fails + augmented SCM (all 4) + synthetic DiD",
       "level": 5,
       "exists": true,
-      "script_mtime": "2026-06-04 10:43",
+      "script_mtime": "2026-06-04 20:27",
       "outputs": [
         {
-          "path": "output/figures/fig_synth_fit_IE.png",
+          "path": "output/figures/fig_did_fails.png",
           "exists": true,
-          "mtime": "2026-06-04 17:16",
+          "mtime": "2026-06-04 20:41",
+          "fresh": true
+        },
+        {
+          "path": "output/figures/fig_scm_fit_IE.png",
+          "exists": true,
+          "mtime": "2026-06-04 20:41",
+          "fresh": true
+        },
+        {
+          "path": "output/tables/tab_sdid_groups.csv",
+          "exists": true,
+          "mtime": "2026-06-04 20:27",
           "fresh": true
         }
       ],
@@ -235,18 +252,12 @@
       "name": "Goodman-Bacon decomposition",
       "level": 5,
       "exists": true,
-      "script_mtime": "2026-06-04 17:11",
+      "script_mtime": "2026-06-04 19:18",
       "outputs": [
         {
           "path": "output/tables/tab_bacon.csv",
           "exists": true,
-          "mtime": "2026-06-04 17:11",
-          "fresh": true
-        },
-        {
-          "path": "output/figures/fig_bacon.png",
-          "exists": true,
-          "mtime": "2026-06-04 17:27",
+          "mtime": "2026-06-04 19:18",
           "fresh": true
         }
       ],
@@ -257,12 +268,12 @@
       "name": "Python replication (differences)",
       "level": 5,
       "exists": true,
-      "script_mtime": "2026-06-04 10:46",
+      "script_mtime": "2026-06-04 19:18",
       "outputs": [
         {
           "path": "output/estimates_python.json",
           "exists": true,
-          "mtime": "2026-06-04 10:47",
+          "mtime": "2026-06-04 19:18",
           "fresh": true
         }
       ],
@@ -273,186 +284,414 @@
       "name": "Stata replication (csdid)",
       "level": 5,
       "exists": true,
-      "script_mtime": "2026-06-04 10:48",
+      "script_mtime": "2026-06-04 19:18",
       "outputs": [
         {
           "path": "code/stata/replicate.log",
           "exists": true,
           "mtime": "2026-06-04 10:48",
-          "fresh": true
+          "fresh": false
         }
       ],
-      "all_fresh": true
+      "all_fresh": false
     }
   ],
   "figures": [
     {
       "name": "fig3_pscore_overlap",
       "path": "output/figures/fig3_pscore_overlap.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "Propensity score perfectly separates -> regression adjustment",
+      "mtime": "2026-06-04 19:18",
+      "caption": "Propensity score separates",
       "script": "code/R/analysis.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## =====================================================================\n## STEP 3  propensity score (country baseline) + overlap  [descriptive only]\n## =====================================================================\nps <- suppressWarnings(glm(ever~scale(unemp)+scale(share65)+scale(medage),data=base,family=binomial))\nbase[, pscore:=predict(ps,type=\"response\")]\nfwrite(base[,.(geo,country,ever,pscore)],file.path(TAB,\"tab3_pscore.csv\"))\np3 <- ggplot(base,aes(pscore,fill=factor(ever)))+geom_density(alpha=.5,adjust=1.2)+\n  scale_fill_manual(values=c(\"0\"=INK,\"1\"=CORAL),labels=c(\"Never treated\",\"Ever treated\"))+\n  labs(title=\"Propensity-score overlap\",subtitle=\"Baseline covariates; descriptive common-support check\",\n       x=\"Estimated P(ever adopts a strategy)\",y=\"Density\",fill=NULL)\nggsave(file.path(FIG,\"fig3_pscore_overlap.pdf\"),p3,width=7,height=4.5)"
     },
     {
       "name": "fig4_panelview",
       "path": "output/figures/fig4_panelview.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "Staggered adoption (4 treated, 12 never-treated)",
+      "mtime": "2026-06-04 19:18",
+      "caption": "Staggered adoption (4 treated)",
       "script": "code/R/analysis.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## =====================================================================\n## STEP 4  panelview-style rollout\n## =====================================================================\npv <- copy(main); pv[, on:=as.integer(gvar>0 & year>=gvar)]\npv[, lab:=sprintf(\"%s\",country)]\nord <- pv[,.(g=first(gvar)),by=lab][order(g==0,g)]\npv[, lab:=factor(lab,levels=rev(ord$lab))]\np4 <- ggplot(pv,aes(year,lab,fill=factor(on)))+geom_tile(color=\"white\",linewidth=.3)+\n  scale_fill_manual(values=c(\"0\"=\"grey85\",\"1\"=CORAL),labels=c(\"No national strategy\",\"Strategy in force\"))+\n  labs(title=\"Staggered adoption of national suicide-prevention strategies\",\n       subtitle=\"Treatment status by country and year (balanced estimation sample)\",x=NULL,y=NULL,fill=NULL)\nggsave(file.path(FIG,\"fig4_panelview.pdf\"),p4,width=8.5,height=5.5)"
     },
     {
       "name": "fig5_cohort_counts",
       "path": "output/figures/fig5_cohort_counts.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "Cohort composition \u2014 the design is thin",
+      "mtime": "2026-06-04 19:18",
+      "caption": "Cohort sizes",
       "script": "code/R/analysis.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## =====================================================================\n## STEP 5  cohort counts + shares\n## =====================================================================\ncc <- main[,.(n_country=uniqueN(geo)),by=cohort][order(-n_country)]\ncc[, share:=round(100*n_country/sum(n_country),1)]\nfwrite(cc,file.path(TAB,\"tab5_cohort_counts.csv\"))\np5 <- ggplot(cc,aes(reorder(cohort,-n_country),n_country,fill=cohort))+geom_col(width=.7)+\n  geom_text(aes(label=sprintf(\"%d (%.0f%%)\",n_country,share)),vjust=-0.4,size=3.5)+\n  scale_fill_manual(values=c(\"Never treated\"=INK,\"Adopted 1995\"=TEAL,\"Adopted 2002\"=CORAL,\"Adopted 2005\"=GOLD),guide=\"none\")+\n  labs(title=\"Cohort composition\",x=NULL,y=\"Number of countries\")+ylim(0,max(cc$n_country)*1.15)\nggsave(file.path(FIG,\"fig5_cohort_counts.pdf\"),p5,width=7,height=4.5)"
     },
     {
       "name": "fig6_outcome_by_cohort",
       "path": "output/figures/fig6_outcome_by_cohort.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "Suicide by cohort; all bend up in the recession",
+      "mtime": "2026-06-04 19:18",
+      "caption": "Suicide by cohort",
       "script": "code/R/analysis.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## =====================================================================\n## STEP 6  Outcome by cohort (descriptive) -- include Italy as the never-adopter hook\n## =====================================================================\noc <- main[, .(suicide=mean(suicide_sdr)), by=.(cohort,year)]\np6 <- ggplot(oc, aes(year,suicide,color=cohort,group=cohort))+\n  geom_line(linewidth=1)+geom_point(size=1.3)+\n  scale_color_manual(values=c(\"Never treated\"=INK,\"Adopted 1995\"=TEAL,\"Adopted 2002\"=CORAL,\"Adopted 2005\"=GOLD))+\n  annotate(\"rect\",xmin=2008,xmax=2010,ymin=-Inf,ymax=Inf,alpha=.08,fill=\"red\")+\n  annotate(\"text\",x=2009,y=max(oc$suicide),label=\"Great\\nRecession\",size=3,color=\"grey40\")+\n  labs(title=\"Suicide mortality by adoption cohort\",\n       subtitle=\"Age-standardised suicide rate per 100,000 (Eurostat)\",x=NULL,y=\"Suicide rate per 100,000\",color=NULL)\nggsave(file.path(FIG,\"fig6_outcome_by_cohort.pdf\"),p6,width=8,height=5)"
     },
     {
       "name": "fig8_event_study",
       "path": "output/figures/fig8_event_study.png",
-      "mtime": "2026-06-04 17:27",
-      "caption": "Event study (universal base): pre-trends flat, post positive",
+      "mtime": "2026-06-04 19:18",
+      "caption": "DiD event study (Eurostat panel)",
       "script": "code/R/analysis.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## event-study figure\nes <- data.table(e=agg_dyn$egt,att=agg_dyn$att.egt,se=agg_dyn$se.egt)\nes[,`:=`(lo=att-1.96*se,hi=att+1.96*se,post=e>=0)]\np8 <- ggplot(es,aes(e,att))+geom_hline(yintercept=0,color=\"grey50\")+\n  geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey60\")+\n  geom_ribbon(aes(ymin=lo,ymax=hi),alpha=.15,fill=CORAL)+\n  geom_line(color=CORAL,linewidth=.8)+geom_point(aes(color=post),size=2)+\n  scale_color_manual(values=c(\"FALSE\"=INK,\"TRUE\"=CORAL),guide=\"none\")+\n  labs(title=\"Event study: national strategies and suicide\",\n       subtitle=\"Callaway & Sant'Anna (2021), regression-adjusted for unemployment\",\n       x=\"Years since strategy adoption\",y=\"ATT (suicide per 100,000)\")\nggsave(file.path(FIG,\"fig8_event_study.pdf\"),p8,width=8,height=5)"
     },
     {
       "name": "fig8c_calendar",
       "path": "output/figures/fig8c_calendar.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "Calendar-time ATT loads on 2008-2010",
+      "mtime": "2026-06-04 19:18",
+      "caption": "Calendar-time ATT",
       "script": "code/R/analysis.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## calendar-time figure (exposes the Great-Recession confound)\nct <- data.table(year=agg_cal$egt,att=agg_cal$att.egt,se=agg_cal$se.egt)\np8c <- ggplot(ct,aes(year,att))+geom_hline(yintercept=0,color=\"grey50\")+\n  geom_ribbon(aes(ymin=att-1.96*se,ymax=att+1.96*se),alpha=.15,fill=TEAL)+\n  geom_line(color=TEAL,linewidth=.8)+geom_point(color=TEAL,size=2)+\n  annotate(\"rect\",xmin=2008,xmax=2010,ymin=-Inf,ymax=Inf,alpha=.08,fill=\"red\")+\n  labs(title=\"Calendar-time ATT\",subtitle=\"Treatment effects load on the post-2008 recession years\",\n       x=NULL,y=\"ATT (suicide per 100,000)\")\nggsave(file.path(FIG,\"fig8c_calendar.pdf\"),p8c,width=8,height=4.5)"
     },
     {
       "name": "fig9_honestdid",
       "path": "output/figures/fig9_honestdid.png",
-      "mtime": "2026-06-04 17:27",
-      "caption": "Rambachan-Roth: effect cannot be signed",
+      "mtime": "2026-06-04 19:18",
+      "caption": "Rambachan-Roth sensitivity",
       "script": "code/R/analysis.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## manual fallback: build betahat + sigma from influence function\n  rr <- tryCatch({\n    inf <- agg_dyn$inf.function$dynamic.inf.func.e\n    n <- nrow(inf); Sig <- crossprod(inf)/(n^2)\n    e <- agg_dyn$egt; keep <- e!=-1\n    b <- agg_dyn$att.egt[keep]; S <- Sig[keep,keep]\n    npre <- sum(e[keep]<0); npost<-sum(e[keep]>=0)\n    rm <- createSensitivityResults_relativeMagnitudes(betahat=b,sigma=S,\n            numPrePeriods=npre,numPostPeriods=npost,Mbarvec=seq(0,2,by=0.5))\n    list(robust_ci=rm,npre=npre,npost=npost)\n  }, error=function(e){message(\"HonestDiD manual failed: \",conditionMessage(e)); NULL})\n}\nif(!is.null(rr)){\n  saveRDS(rr,file.path(RES,\"honestdid.rds\"))\n  pr <- as.data.table(if(!is.null(rr$robust_ci)) rr$robust_ci else rr)\n  if(all(c(\"lb\",\"ub\") %in% names(pr))){\n    p9 <- ggplot(pr,aes(x=factor(round(Mbar,2))))+\n      geom_errorbar(aes(ymin=lb,ymax=ub),width=.15,color=CORAL,linewidth=.8)+\n      geom_hline(yintercept=0,color=\"grey50\")+\n      labs(title=\"Rambachan & Roth (2023) sensitivity\",\n           subtitle=\"Relative-magnitudes restriction; robust 95% CI for ATT at e=0\",\n           x=expression(bar(M)),y=\"Robust confidence set\")\n    ggsave(file.path(FIG,\"fig9_honestdid.pdf\"),p9,width=7.5,height=4.5)"
     },
     {
       "name": "fig_bacon",
       "path": "output/figures/fig_bacon.png",
-      "mtime": "2026-06-04 17:27",
-      "caption": "Goodman-Bacon: TWFE = weighted 2x2s; forbidden weight ~3%",
+      "mtime": "2026-06-04 19:18",
+      "caption": "Goodman-Bacon: TWFE not the culprit",
       "script": "code/R/bacon.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## ---- 3. Bacon scatter: weight vs 2x2 estimate, by comparison type ----\np<-ggplot(bd,aes(weight,estimate,color=type,shape=type))+\n  geom_hline(yintercept=b_twfe,linetype=\"dashed\",color=INK)+\n  geom_point(size=2.6,alpha=.85)+\n  annotate(\"text\",x=max(bd$weight)*0.6,y=b_twfe,vjust=-0.6,\n           label=sprintf(\"TWFE = %.2f\",b_twfe),color=INK,size=3.3)+\n  scale_color_manual(values=c(CORAL,TEAL,GOLD))+\n  labs(title=\"Goodman-Bacon decomposition of the TWFE estimate\",\n       subtitle=\"Each point is a 2x2 DiD comparison; TWFE is their weighted average\",\n       x=\"Bacon weight\",y=\"2x2 DiD estimate\",color=NULL,shape=NULL)\nggsave(file.path(FIG,\"fig_bacon.pdf\"),p,width=8,height=5)"
+    },
+    {
+      "name": "fig_did_fails",
+      "path": "output/figures/fig_did_fails.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "DiD fails: a +0.32/yr pre-trend runs unbroken through adoption",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## =====================================================================\n## (A) DiD diagnostic on the long panel: the pre-trend that kills DiD\n## =====================================================================\ncs<-att_gt(yname=\"suicide\",tname=\"year\",idname=\"cid\",gname=\"gvar\",data=P,\n   control_group=\"nevertreated\",est_method=\"reg\",base_period=\"universal\",\n   allow_unbalanced_panel=FALSE,bstrap=TRUE,biters=2000)\ndyn<-aggte(cs,type=\"dynamic\",na.rm=TRUE,min_e=-12,max_e=12)\nes<-data.table(e=dyn$egt,att=dyn$att.egt,se=dyn$se.egt)\nfitidx<-es$e< -1 & is.finite(es$se)\nwls<-lm(att~e,data=es[fitidx],weights=1/se^2)\nslope<-coef(wls)[2]; slope_t<-summary(wls)$coef[2,3]\nes[,line:=coef(wls)[1]+slope*e]\ncat(sprintf(\"(A) extended-panel pre-trend slope=%.3f/yr (t=%.2f, p=%.3f)\\n\",\n    slope,slope_t,2*pnorm(-abs(slope_t))))\npA<-ggplot(es,aes(e,att))+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey60\")+\n  geom_ribbon(aes(ymin=att-1.96*se,ymax=att+1.96*se),alpha=.12,fill=CORAL)+\n  geom_line(aes(y=line),color=INK,linetype=\"22\")+\n  geom_point(aes(color=e>=0),size=1.9)+geom_line(color=CORAL,alpha=.4)+\n  scale_color_manual(values=c(\"FALSE\"=INK,\"TRUE\"=CORAL),guide=\"none\")+\n  labs(title=\"Why difference-in-differences fails here\",\n       subtitle=sprintf(\"A pre-existing upward trend (%.2f/yr, t=%.1f) runs straight through adoption; dashed line = pre-trend extrapolation\",slope,slope_t),\n       x=\"Years since adoption\",y=\"ATT (suicide per 100,000)\")\nggsave(file.path(FIG,\"fig_did_fails.pdf\"),pA,width=8.5,height=5)"
     },
     {
       "name": "fig_falsification_placebo",
       "path": "output/figures/fig_falsification_placebo.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "In-space placebo: observed is ordinary (p=0.25)",
+      "mtime": "2026-06-04 19:18",
+      "caption": "In-space placebo",
       "script": "code/R/analysis.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## in-space placebo: random fake adoption among never-treated controls\nplacebo_space <- function(B=300){\n  nt<-sort(unique(main[gvar==0]$geo)); yrs<-c(1998,2002,2005); out<-numeric(0)\n  for(b in 1:B){\n    m<-main[gvar==0]; m[,gvar:=0]\n    fake<-sample(nt,4); fy<-sample(yrs,4,replace=TRUE)\n    for(i in seq_along(fake)) m[geo==fake[i],gvar:=fy[i]]\n    m[,cid:=.GRP,by=geo]; m[,gvar:=as.numeric(gvar)]\n    a<-tryCatch(aggte(att_gt(yname=\"suicide_sdr\",tname=\"year\",idname=\"cid\",gname=\"gvar\",xformla=~unemp,\n       data=m,control_group=\"nevertreated\",est_method=\"reg\",base_period=\"universal\",\n       allow_unbalanced_panel=FALSE,bstrap=FALSE),type=\"group\",na.rm=TRUE),error=function(e)NULL)\n    if(!is.null(a)) out<-c(out,a$overall.att)\n  }\n  out[is.finite(out)]\n}\npl <- placebo_space(300); fwrite(data.table(placebo_att=pl),file.path(TAB,\"tab_placebo_space.csv\"))\nplacebo_p <- mean(abs(pl)>=abs(agg_group$overall.att),na.rm=TRUE)\npf <- ggplot(data.table(x=pl),aes(x))+geom_histogram(bins=30,fill=\"grey80\",color=\"white\")+\n  geom_vline(xintercept=agg_group$overall.att,color=CORAL,linewidth=1.1)+\n  annotate(\"text\",x=agg_group$overall.att,y=Inf,vjust=2,hjust=-.1,label=\"observed\",color=CORAL,size=3.2)+\n  labs(title=\"In-space placebo\",subtitle=\"ATT under randomly assigned fake adoption among controls\",\n       x=\"Placebo ATT\",y=\"Count\")\nggsave(file.path(FIG,\"fig_falsification_placebo.pdf\"),pf,width=7.5,height=4.5)"
     },
     {
       "name": "fig_robust_overlay",
       "path": "output/figures/fig_robust_overlay.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "CS, BJS, Sun-Abraham agree (+2.7 to +3.2)",
+      "mtime": "2026-06-04 19:18",
+      "caption": "CS/BJS/SA agree on the naive number",
       "script": "code/R/analysis.R",
       "fresh": true,
-      "orphaned": false
+      "orphaned": false,
+      "code": "## three-estimator event-study overlay\nes_overlay <- data.table()\nes_overlay <- rbind(es_overlay, data.table(method=\"Callaway-Sant'Anna\",e=es$e,att=es$att,se=es$se))\nif(!is.null(bjs_es)){ b<-as.data.table(bjs_es); b<-b[!is.na(term)]\n  es_overlay <- rbind(es_overlay, data.table(method=\"Borusyak et al.\",e=as.numeric(b$term),att=b$estimate,se=b$std.error),fill=TRUE)}\nif(!is.null(sa)){ sac<-as.data.table(summary(sa)$coeftable,keep.rownames=\"term\")\n  sac<-sac[grepl(\"year::\",term)]; sac[,e:=as.numeric(gsub(\".*year::(-?[0-9]+).*\",\"\\\\1\",term))]\n  es_overlay <- rbind(es_overlay, data.table(method=\"Sun-Abraham\",e=sac$e,att=sac$Estimate,se=sac$`Std. Error`),fill=TRUE)}\nfwrite(es_overlay,file.path(TAB,\"tab_eventstudy_overlay.csv\"))\npo <- ggplot(es_overlay[e>=-8 & e<=8],aes(e,att,color=method,fill=method))+\n  geom_hline(yintercept=0,color=\"grey50\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey70\")+\n  geom_line(linewidth=.7,position=position_dodge(.3))+geom_point(size=1.6,position=position_dodge(.3))+\n  scale_color_manual(values=c(\"Callaway-Sant'Anna\"=CORAL,\"Borusyak et al.\"=TEAL,\"Sun-Abraham\"=GOLD))+\n  scale_fill_manual(values=c(\"Callaway-Sant'Anna\"=CORAL,\"Borusyak et al.\"=TEAL,\"Sun-Abraham\"=GOLD))+\n  labs(title=\"Event study across three heterogeneity-robust estimators\",\n       subtitle=\"Callaway-Sant'Anna, Borusyak-Jaravel-Spiess, Sun-Abraham\",\n       x=\"Years since adoption\",y=\"ATT (suicide per 100,000)\",color=NULL,fill=NULL)\nggsave(file.path(FIG,\"fig_robust_overlay.pdf\"),po,width=8.5,height=5)"
+    },
+    {
+      "name": "fig_scm_fit_IE",
+      "path": "output/figures/fig_scm_fit_IE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Ireland: observed vs synthetic",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## fit\n  pf<-ggplot(f$att,aes(year))+geom_vline(xintercept=t_int-.5,linetype=\"dashed\",color=\"grey60\")+\n    geom_line(aes(y=obs,color=\"Observed\"),linewidth=1)+geom_line(aes(y=synth,color=\"Synthetic\"),linewidth=1,linetype=\"22\")+\n    scale_color_manual(values=c(\"Observed\"=CORAL,\"Synthetic\"=INK),name=NULL)+\n    labs(title=sprintf(\"%s: observed vs synthetic\",u),subtitle=\"Ridge-augmented synthetic control (spliced panel, 1986-2010)\",\n         x=NULL,y=\"Suicide per 100,000\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_fit_%s.pdf\",u)),pf,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_fit_NO",
+      "path": "output/figures/fig_scm_fit_NO.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Norway: observed vs synthetic",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## fit\n  pf<-ggplot(f$att,aes(year))+geom_vline(xintercept=t_int-.5,linetype=\"dashed\",color=\"grey60\")+\n    geom_line(aes(y=obs,color=\"Observed\"),linewidth=1)+geom_line(aes(y=synth,color=\"Synthetic\"),linewidth=1,linetype=\"22\")+\n    scale_color_manual(values=c(\"Observed\"=CORAL,\"Synthetic\"=INK),name=NULL)+\n    labs(title=sprintf(\"%s: observed vs synthetic\",u),subtitle=\"Ridge-augmented synthetic control (spliced panel, 1986-2010)\",\n         x=NULL,y=\"Suicide per 100,000\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_fit_%s.pdf\",u)),pf,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_fit_SE",
+      "path": "output/figures/fig_scm_fit_SE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Sweden: observed vs synthetic",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## fit\n  pf<-ggplot(f$att,aes(year))+geom_vline(xintercept=t_int-.5,linetype=\"dashed\",color=\"grey60\")+\n    geom_line(aes(y=obs,color=\"Observed\"),linewidth=1)+geom_line(aes(y=synth,color=\"Synthetic\"),linewidth=1,linetype=\"22\")+\n    scale_color_manual(values=c(\"Observed\"=CORAL,\"Synthetic\"=INK),name=NULL)+\n    labs(title=sprintf(\"%s: observed vs synthetic\",u),subtitle=\"Ridge-augmented synthetic control (spliced panel, 1986-2010)\",\n         x=NULL,y=\"Suicide per 100,000\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_fit_%s.pdf\",u)),pf,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_fit_UK",
+      "path": "output/figures/fig_scm_fit_UK.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "United Kingdom: observed vs synthetic",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## fit\n  pf<-ggplot(f$att,aes(year))+geom_vline(xintercept=t_int-.5,linetype=\"dashed\",color=\"grey60\")+\n    geom_line(aes(y=obs,color=\"Observed\"),linewidth=1)+geom_line(aes(y=synth,color=\"Synthetic\"),linewidth=1,linetype=\"22\")+\n    scale_color_manual(values=c(\"Observed\"=CORAL,\"Synthetic\"=INK),name=NULL)+\n    labs(title=sprintf(\"%s: observed vs synthetic\",u),subtitle=\"Ridge-augmented synthetic control (spliced panel, 1986-2010)\",\n         x=NULL,y=\"Suicide per 100,000\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_fit_%s.pdf\",u)),pf,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_gap_IE",
+      "path": "output/figures/fig_scm_gap_IE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Ireland: gap event study",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## gap event study\n  gp<-ggplot(f$att,aes(year-t_int,gap))+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey60\")+\n    geom_line(color=CORAL,linewidth=.9)+geom_point(color=CORAL,size=1.6)+\n    labs(title=sprintf(\"%s: gap (treated - synthetic)\",u),subtitle=\"Synthetic-control event study\",\n         x=\"Years since adoption\",y=\"Gap in suicide per 100,000\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_gap_%s.pdf\",u)),gp,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_gap_NO",
+      "path": "output/figures/fig_scm_gap_NO.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Norway: gap event study",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## gap event study\n  gp<-ggplot(f$att,aes(year-t_int,gap))+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey60\")+\n    geom_line(color=CORAL,linewidth=.9)+geom_point(color=CORAL,size=1.6)+\n    labs(title=sprintf(\"%s: gap (treated - synthetic)\",u),subtitle=\"Synthetic-control event study\",\n         x=\"Years since adoption\",y=\"Gap in suicide per 100,000\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_gap_%s.pdf\",u)),gp,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_gap_SE",
+      "path": "output/figures/fig_scm_gap_SE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Sweden: gap event study",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## gap event study\n  gp<-ggplot(f$att,aes(year-t_int,gap))+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey60\")+\n    geom_line(color=CORAL,linewidth=.9)+geom_point(color=CORAL,size=1.6)+\n    labs(title=sprintf(\"%s: gap (treated - synthetic)\",u),subtitle=\"Synthetic-control event study\",\n         x=\"Years since adoption\",y=\"Gap in suicide per 100,000\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_gap_%s.pdf\",u)),gp,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_gap_UK",
+      "path": "output/figures/fig_scm_gap_UK.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "United Kingdom: gap event study",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## gap event study\n  gp<-ggplot(f$att,aes(year-t_int,gap))+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey60\")+\n    geom_line(color=CORAL,linewidth=.9)+geom_point(color=CORAL,size=1.6)+\n    labs(title=sprintf(\"%s: gap (treated - synthetic)\",u),subtitle=\"Synthetic-control event study\",\n         x=\"Years since adoption\",y=\"Gap in suicide per 100,000\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_gap_%s.pdf\",u)),gp,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_rmspe_IE",
+      "path": "output/figures/fig_scm_rmspe_IE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Ireland: post/pre RMSPE vs placebos",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## permutation\n  pl<-placebo_unit(u,t_int,controls)\n  fcl<-f$att[,.(unit=u,e=year-t_int,gap,ratio=f$rmspe_post/f$rmspe_pre)]\n  sp<-ggplot()+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey70\")+\n    geom_line(data=pl,aes(e,gap,group=unit),color=\"grey75\",alpha=.7,linewidth=.4)+\n    geom_line(data=fcl,aes(e,gap),color=CORAL,linewidth=1.1)+\n    labs(title=sprintf(\"Permutation inference: %s vs %d control placebos\",u,length(controls)),\n         subtitle=\"Gap trajectories (focal in red)\",x=\"Years since (placebo) adoption\",y=\"Gap\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_spaghetti_%s.pdf\",u)),sp,width=7.5,height=4.5)\n  ratios<-unique(rbind(pl[,.(unit,ratio)],fcl[,.(unit,ratio)]))[is.finite(ratio)]\n  pval<-mean(ratios$ratio>=fcl$ratio[1],na.rm=TRUE)\n  rh<-ggplot(ratios,aes(ratio))+geom_histogram(bins=14,fill=\"grey80\",color=\"white\")+\n    geom_vline(xintercept=fcl$ratio[1],color=CORAL,linewidth=1.1)+\n    annotate(\"text\",x=fcl$ratio[1],y=Inf,vjust=2,hjust=-.1,label=sprintf(\"%s (p=%.2f)\",u,pval),color=CORAL,size=3.2)+\n    labs(title=sprintf(\"%s: post/pre RMSPE ratio vs placebos\",u),subtitle=\"Abadie permutation inference\",\n         x=\"Post/pre RMSPE ratio\",y=\"Count\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_rmspe_%s.pdf\",u)),rh,width=7.5,height=4.4)"
+    },
+    {
+      "name": "fig_scm_rmspe_NO",
+      "path": "output/figures/fig_scm_rmspe_NO.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Norway: post/pre RMSPE vs placebos",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## permutation\n  pl<-placebo_unit(u,t_int,controls)\n  fcl<-f$att[,.(unit=u,e=year-t_int,gap,ratio=f$rmspe_post/f$rmspe_pre)]\n  sp<-ggplot()+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey70\")+\n    geom_line(data=pl,aes(e,gap,group=unit),color=\"grey75\",alpha=.7,linewidth=.4)+\n    geom_line(data=fcl,aes(e,gap),color=CORAL,linewidth=1.1)+\n    labs(title=sprintf(\"Permutation inference: %s vs %d control placebos\",u,length(controls)),\n         subtitle=\"Gap trajectories (focal in red)\",x=\"Years since (placebo) adoption\",y=\"Gap\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_spaghetti_%s.pdf\",u)),sp,width=7.5,height=4.5)\n  ratios<-unique(rbind(pl[,.(unit,ratio)],fcl[,.(unit,ratio)]))[is.finite(ratio)]\n  pval<-mean(ratios$ratio>=fcl$ratio[1],na.rm=TRUE)\n  rh<-ggplot(ratios,aes(ratio))+geom_histogram(bins=14,fill=\"grey80\",color=\"white\")+\n    geom_vline(xintercept=fcl$ratio[1],color=CORAL,linewidth=1.1)+\n    annotate(\"text\",x=fcl$ratio[1],y=Inf,vjust=2,hjust=-.1,label=sprintf(\"%s (p=%.2f)\",u,pval),color=CORAL,size=3.2)+\n    labs(title=sprintf(\"%s: post/pre RMSPE ratio vs placebos\",u),subtitle=\"Abadie permutation inference\",\n         x=\"Post/pre RMSPE ratio\",y=\"Count\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_rmspe_%s.pdf\",u)),rh,width=7.5,height=4.4)"
+    },
+    {
+      "name": "fig_scm_rmspe_SE",
+      "path": "output/figures/fig_scm_rmspe_SE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Sweden: post/pre RMSPE vs placebos",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## permutation\n  pl<-placebo_unit(u,t_int,controls)\n  fcl<-f$att[,.(unit=u,e=year-t_int,gap,ratio=f$rmspe_post/f$rmspe_pre)]\n  sp<-ggplot()+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey70\")+\n    geom_line(data=pl,aes(e,gap,group=unit),color=\"grey75\",alpha=.7,linewidth=.4)+\n    geom_line(data=fcl,aes(e,gap),color=CORAL,linewidth=1.1)+\n    labs(title=sprintf(\"Permutation inference: %s vs %d control placebos\",u,length(controls)),\n         subtitle=\"Gap trajectories (focal in red)\",x=\"Years since (placebo) adoption\",y=\"Gap\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_spaghetti_%s.pdf\",u)),sp,width=7.5,height=4.5)\n  ratios<-unique(rbind(pl[,.(unit,ratio)],fcl[,.(unit,ratio)]))[is.finite(ratio)]\n  pval<-mean(ratios$ratio>=fcl$ratio[1],na.rm=TRUE)\n  rh<-ggplot(ratios,aes(ratio))+geom_histogram(bins=14,fill=\"grey80\",color=\"white\")+\n    geom_vline(xintercept=fcl$ratio[1],color=CORAL,linewidth=1.1)+\n    annotate(\"text\",x=fcl$ratio[1],y=Inf,vjust=2,hjust=-.1,label=sprintf(\"%s (p=%.2f)\",u,pval),color=CORAL,size=3.2)+\n    labs(title=sprintf(\"%s: post/pre RMSPE ratio vs placebos\",u),subtitle=\"Abadie permutation inference\",\n         x=\"Post/pre RMSPE ratio\",y=\"Count\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_rmspe_%s.pdf\",u)),rh,width=7.5,height=4.4)"
+    },
+    {
+      "name": "fig_scm_rmspe_UK",
+      "path": "output/figures/fig_scm_rmspe_UK.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "United Kingdom: post/pre RMSPE vs placebos",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## permutation\n  pl<-placebo_unit(u,t_int,controls)\n  fcl<-f$att[,.(unit=u,e=year-t_int,gap,ratio=f$rmspe_post/f$rmspe_pre)]\n  sp<-ggplot()+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey70\")+\n    geom_line(data=pl,aes(e,gap,group=unit),color=\"grey75\",alpha=.7,linewidth=.4)+\n    geom_line(data=fcl,aes(e,gap),color=CORAL,linewidth=1.1)+\n    labs(title=sprintf(\"Permutation inference: %s vs %d control placebos\",u,length(controls)),\n         subtitle=\"Gap trajectories (focal in red)\",x=\"Years since (placebo) adoption\",y=\"Gap\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_spaghetti_%s.pdf\",u)),sp,width=7.5,height=4.5)\n  ratios<-unique(rbind(pl[,.(unit,ratio)],fcl[,.(unit,ratio)]))[is.finite(ratio)]\n  pval<-mean(ratios$ratio>=fcl$ratio[1],na.rm=TRUE)\n  rh<-ggplot(ratios,aes(ratio))+geom_histogram(bins=14,fill=\"grey80\",color=\"white\")+\n    geom_vline(xintercept=fcl$ratio[1],color=CORAL,linewidth=1.1)+\n    annotate(\"text\",x=fcl$ratio[1],y=Inf,vjust=2,hjust=-.1,label=sprintf(\"%s (p=%.2f)\",u,pval),color=CORAL,size=3.2)+\n    labs(title=sprintf(\"%s: post/pre RMSPE ratio vs placebos\",u),subtitle=\"Abadie permutation inference\",\n         x=\"Post/pre RMSPE ratio\",y=\"Count\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_rmspe_%s.pdf\",u)),rh,width=7.5,height=4.4)"
+    },
+    {
+      "name": "fig_scm_spaghetti_IE",
+      "path": "output/figures/fig_scm_spaghetti_IE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Ireland: permutation spaghetti",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## permutation\n  pl<-placebo_unit(u,t_int,controls)\n  fcl<-f$att[,.(unit=u,e=year-t_int,gap,ratio=f$rmspe_post/f$rmspe_pre)]\n  sp<-ggplot()+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey70\")+\n    geom_line(data=pl,aes(e,gap,group=unit),color=\"grey75\",alpha=.7,linewidth=.4)+\n    geom_line(data=fcl,aes(e,gap),color=CORAL,linewidth=1.1)+\n    labs(title=sprintf(\"Permutation inference: %s vs %d control placebos\",u,length(controls)),\n         subtitle=\"Gap trajectories (focal in red)\",x=\"Years since (placebo) adoption\",y=\"Gap\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_spaghetti_%s.pdf\",u)),sp,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_spaghetti_NO",
+      "path": "output/figures/fig_scm_spaghetti_NO.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Norway: permutation spaghetti",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## permutation\n  pl<-placebo_unit(u,t_int,controls)\n  fcl<-f$att[,.(unit=u,e=year-t_int,gap,ratio=f$rmspe_post/f$rmspe_pre)]\n  sp<-ggplot()+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey70\")+\n    geom_line(data=pl,aes(e,gap,group=unit),color=\"grey75\",alpha=.7,linewidth=.4)+\n    geom_line(data=fcl,aes(e,gap),color=CORAL,linewidth=1.1)+\n    labs(title=sprintf(\"Permutation inference: %s vs %d control placebos\",u,length(controls)),\n         subtitle=\"Gap trajectories (focal in red)\",x=\"Years since (placebo) adoption\",y=\"Gap\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_spaghetti_%s.pdf\",u)),sp,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_spaghetti_SE",
+      "path": "output/figures/fig_scm_spaghetti_SE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Sweden: permutation spaghetti",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## permutation\n  pl<-placebo_unit(u,t_int,controls)\n  fcl<-f$att[,.(unit=u,e=year-t_int,gap,ratio=f$rmspe_post/f$rmspe_pre)]\n  sp<-ggplot()+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey70\")+\n    geom_line(data=pl,aes(e,gap,group=unit),color=\"grey75\",alpha=.7,linewidth=.4)+\n    geom_line(data=fcl,aes(e,gap),color=CORAL,linewidth=1.1)+\n    labs(title=sprintf(\"Permutation inference: %s vs %d control placebos\",u,length(controls)),\n         subtitle=\"Gap trajectories (focal in red)\",x=\"Years since (placebo) adoption\",y=\"Gap\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_spaghetti_%s.pdf\",u)),sp,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_spaghetti_UK",
+      "path": "output/figures/fig_scm_spaghetti_UK.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "United Kingdom: permutation spaghetti",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## permutation\n  pl<-placebo_unit(u,t_int,controls)\n  fcl<-f$att[,.(unit=u,e=year-t_int,gap,ratio=f$rmspe_post/f$rmspe_pre)]\n  sp<-ggplot()+geom_hline(yintercept=0,color=\"grey60\")+geom_vline(xintercept=-.5,linetype=\"dashed\",color=\"grey70\")+\n    geom_line(data=pl,aes(e,gap,group=unit),color=\"grey75\",alpha=.7,linewidth=.4)+\n    geom_line(data=fcl,aes(e,gap),color=CORAL,linewidth=1.1)+\n    labs(title=sprintf(\"Permutation inference: %s vs %d control placebos\",u,length(controls)),\n         subtitle=\"Gap trajectories (focal in red)\",x=\"Years since (placebo) adoption\",y=\"Gap\")\n  ggsave(file.path(FIG,sprintf(\"fig_scm_spaghetti_%s.pdf\",u)),sp,width=7.5,height=4.5)"
+    },
+    {
+      "name": "fig_scm_weights_IE",
+      "path": "output/figures/fig_scm_weights_IE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Ireland: donor weights before/after ridge",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## donor weights BEFORE (SCM) and AFTER (Ridge) augmentation\n  wb<-data.table(geo=names(f$w_scm),SCM=f$w_scm,Ridge=f$w_ridge)\n  wl<-melt(wb,id.vars=\"geo\",variable.name=\"method\",value.name=\"weight\")\n  wl<-wl[geo %in% wb[abs(SCM)>0.01 | abs(Ridge)>0.01]$geo]   # show donors that matter\n  pw<-ggplot(wl,aes(reorder(geo,weight),weight,fill=method))+\n    geom_col(position=\"dodge\",width=.7)+coord_flip()+geom_hline(yintercept=0,color=\"grey60\")+\n    scale_fill_manual(values=c(\"SCM\"=INK,\"Ridge\"=CORAL))+\n    labs(title=sprintf(\"%s: donor weights before vs after ridge augmentation\",u),\n         subtitle=\"SCM (simplex, non-negative) vs ridge-augmented (bias-corrected; may go negative)\",\n         x=NULL,y=\"Donor weight\",fill=NULL)\n  ggsave(file.path(FIG,sprintf(\"fig_scm_weights_%s.pdf\",u)),pw,width=7.5,height=4.6)"
+    },
+    {
+      "name": "fig_scm_weights_NO",
+      "path": "output/figures/fig_scm_weights_NO.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Norway: donor weights before/after ridge",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## donor weights BEFORE (SCM) and AFTER (Ridge) augmentation\n  wb<-data.table(geo=names(f$w_scm),SCM=f$w_scm,Ridge=f$w_ridge)\n  wl<-melt(wb,id.vars=\"geo\",variable.name=\"method\",value.name=\"weight\")\n  wl<-wl[geo %in% wb[abs(SCM)>0.01 | abs(Ridge)>0.01]$geo]   # show donors that matter\n  pw<-ggplot(wl,aes(reorder(geo,weight),weight,fill=method))+\n    geom_col(position=\"dodge\",width=.7)+coord_flip()+geom_hline(yintercept=0,color=\"grey60\")+\n    scale_fill_manual(values=c(\"SCM\"=INK,\"Ridge\"=CORAL))+\n    labs(title=sprintf(\"%s: donor weights before vs after ridge augmentation\",u),\n         subtitle=\"SCM (simplex, non-negative) vs ridge-augmented (bias-corrected; may go negative)\",\n         x=NULL,y=\"Donor weight\",fill=NULL)\n  ggsave(file.path(FIG,sprintf(\"fig_scm_weights_%s.pdf\",u)),pw,width=7.5,height=4.6)"
+    },
+    {
+      "name": "fig_scm_weights_SE",
+      "path": "output/figures/fig_scm_weights_SE.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "Sweden: donor weights before/after ridge",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## donor weights BEFORE (SCM) and AFTER (Ridge) augmentation\n  wb<-data.table(geo=names(f$w_scm),SCM=f$w_scm,Ridge=f$w_ridge)\n  wl<-melt(wb,id.vars=\"geo\",variable.name=\"method\",value.name=\"weight\")\n  wl<-wl[geo %in% wb[abs(SCM)>0.01 | abs(Ridge)>0.01]$geo]   # show donors that matter\n  pw<-ggplot(wl,aes(reorder(geo,weight),weight,fill=method))+\n    geom_col(position=\"dodge\",width=.7)+coord_flip()+geom_hline(yintercept=0,color=\"grey60\")+\n    scale_fill_manual(values=c(\"SCM\"=INK,\"Ridge\"=CORAL))+\n    labs(title=sprintf(\"%s: donor weights before vs after ridge augmentation\",u),\n         subtitle=\"SCM (simplex, non-negative) vs ridge-augmented (bias-corrected; may go negative)\",\n         x=NULL,y=\"Donor weight\",fill=NULL)\n  ggsave(file.path(FIG,sprintf(\"fig_scm_weights_%s.pdf\",u)),pw,width=7.5,height=4.6)"
+    },
+    {
+      "name": "fig_scm_weights_UK",
+      "path": "output/figures/fig_scm_weights_UK.png",
+      "mtime": "2026-06-04 20:41",
+      "caption": "United Kingdom: donor weights before/after ridge",
+      "script": "code/R/scm_all.R",
+      "fresh": true,
+      "orphaned": false,
+      "code": "## donor weights BEFORE (SCM) and AFTER (Ridge) augmentation\n  wb<-data.table(geo=names(f$w_scm),SCM=f$w_scm,Ridge=f$w_ridge)\n  wl<-melt(wb,id.vars=\"geo\",variable.name=\"method\",value.name=\"weight\")\n  wl<-wl[geo %in% wb[abs(SCM)>0.01 | abs(Ridge)>0.01]$geo]   # show donors that matter\n  pw<-ggplot(wl,aes(reorder(geo,weight),weight,fill=method))+\n    geom_col(position=\"dodge\",width=.7)+coord_flip()+geom_hline(yintercept=0,color=\"grey60\")+\n    scale_fill_manual(values=c(\"SCM\"=INK,\"Ridge\"=CORAL))+\n    labs(title=sprintf(\"%s: donor weights before vs after ridge augmentation\",u),\n         subtitle=\"SCM (simplex, non-negative) vs ridge-augmented (bias-corrected; may go negative)\",\n         x=NULL,y=\"Donor weight\",fill=NULL)\n  ggsave(file.path(FIG,sprintf(\"fig_scm_weights_%s.pdf\",u)),pw,width=7.5,height=4.6)"
     },
     {
       "name": "fig_synth_fit_IE",
       "path": "output/figures/fig_synth_fit_IE.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "Ireland: observed vs synthetic",
-      "script": "code/R/synth.R",
-      "fresh": true,
-      "orphaned": false
+      "mtime": "2026-06-04 19:18",
+      "caption": "",
+      "script": null,
+      "fresh": null,
+      "orphaned": true,
+      "code": ""
     },
     {
       "name": "fig_synth_fit_UK",
       "path": "output/figures/fig_synth_fit_UK.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "UK: observed vs synthetic",
-      "script": "code/R/synth.R",
-      "fresh": true,
-      "orphaned": false
+      "mtime": "2026-06-04 19:18",
+      "caption": "",
+      "script": null,
+      "fresh": null,
+      "orphaned": true,
+      "code": ""
     },
     {
       "name": "fig_synth_gap_IE",
       "path": "output/figures/fig_synth_gap_IE.png",
-      "mtime": "2026-06-04 17:16",
+      "mtime": "2026-06-04 19:18",
       "caption": "",
-      "script": "code/R/synth.R",
-      "fresh": true,
-      "orphaned": false
+      "script": null,
+      "fresh": null,
+      "orphaned": true,
+      "code": ""
     },
     {
       "name": "fig_synth_gap_UK",
       "path": "output/figures/fig_synth_gap_UK.png",
-      "mtime": "2026-06-04 17:16",
+      "mtime": "2026-06-04 19:18",
       "caption": "",
-      "script": "code/R/synth.R",
-      "fresh": true,
-      "orphaned": false
+      "script": null,
+      "fresh": null,
+      "orphaned": true,
+      "code": ""
     },
     {
       "name": "fig_synth_rmspe_IE",
       "path": "output/figures/fig_synth_rmspe_IE.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "Ireland placebo RMSPE (p=0.69)",
-      "script": "code/R/synth.R",
-      "fresh": true,
-      "orphaned": false
+      "mtime": "2026-06-04 19:18",
+      "caption": "",
+      "script": null,
+      "fresh": null,
+      "orphaned": true,
+      "code": ""
     },
     {
       "name": "fig_synth_rmspe_UK",
       "path": "output/figures/fig_synth_rmspe_UK.png",
-      "mtime": "2026-06-04 17:16",
-      "caption": "UK placebo RMSPE (p=0.46)",
-      "script": "code/R/synth.R",
-      "fresh": true,
-      "orphaned": false
+      "mtime": "2026-06-04 19:18",
+      "caption": "",
+      "script": null,
+      "fresh": null,
+      "orphaned": true,
+      "code": ""
     },
     {
       "name": "fig_synth_spaghetti_IE",
       "path": "output/figures/fig_synth_spaghetti_IE.png",
-      "mtime": "2026-06-04 17:16",
+      "mtime": "2026-06-04 19:18",
       "caption": "",
-      "script": "code/R/synth.R",
-      "fresh": true,
-      "orphaned": false
+      "script": null,
+      "fresh": null,
+      "orphaned": true,
+      "code": ""
     },
     {
       "name": "fig_synth_spaghetti_UK",
       "path": "output/figures/fig_synth_spaghetti_UK.png",
-      "mtime": "2026-06-04 17:16",
+      "mtime": "2026-06-04 19:18",
       "caption": "",
-      "script": "code/R/synth.R",
-      "fresh": true,
-      "orphaned": false
+      "script": null,
+      "fresh": null,
+      "orphaned": true,
+      "code": ""
     }
   ],
   "tables": [
     {
       "name": "tab2_balance",
-      "caption": "Baseline balance (Imbens-Rubin std. diff; |d|>0.25 = imbalanced)",
+      "caption": "Baseline balance (Imbens-Rubin; |d|>0.25 imbalanced) -> levels differ",
       "headers": [
         "variable",
         "treated_mean",
@@ -499,8 +738,34 @@
       ]
     },
     {
+      "name": "tab_sdid_groups",
+      "caption": "Synthetic DiD by adoption cohort (Arkhangelsky et al.)",
+      "headers": [
+        "group",
+        "sdid_att",
+        "se"
+      ],
+      "rows": [
+        [
+          "1995 (NO,SE)",
+          "0.799",
+          "4.199"
+        ],
+        [
+          "2002 (UK)",
+          "1.244",
+          "3.964"
+        ],
+        [
+          "2005 (IE)",
+          "0.742",
+          "1.438"
+        ]
+      ]
+    },
+    {
       "name": "tab_bacon",
-      "caption": "Goodman-Bacon decomposition of TWFE",
+      "caption": "Goodman-Bacon: TWFE is not the culprit",
       "headers": [
         "type",
         "weight",
@@ -541,90 +806,240 @@
       ]
     },
     {
-      "name": "tab5_cohort_counts",
-      "caption": "Cohort composition",
+      "name": "tab_scm_weights_IE",
+      "caption": "Ireland donor weights: SCM vs ridge-augmented",
       "headers": [
-        "cohort",
-        "n_country",
-        "share"
+        "geo",
+        "SCM",
+        "Ridge"
       ],
       "rows": [
         [
-          "Never treated",
-          "12",
-          "75"
+          "AT",
+          "-4.7361384586419e-11",
+          "-0.0763644358673659"
         ],
         [
-          "Adopted 1995",
+          "BE",
+          "-4.6267440749044e-09",
+          "0.111469859865896"
+        ],
+        [
+          "CH",
+          "-1.25172415511709e-09",
+          "0.0141847267536821"
+        ],
+        [
+          "CZ",
+          "-1.04171833023363e-08",
+          "0.0287205269618277"
+        ],
+        [
+          "EE",
+          "0.0895914829636003",
+          "0.110769766854114"
+        ],
+        [
+          "EL",
+          "-2.45414860871565e-09",
+          "-0.0652610265269851"
+        ],
+        [
+          "ES",
+          "0.910408548023828",
+          "0.929769268550258"
+        ],
+        [
+          "HU",
+          "1.61343986470052e-09",
+          "-0.104891969681772"
+        ],
+        [
+          "IT",
+          "-2.87944664351485e-09",
+          "-0.0196320423559123"
+        ],
+        [
+          "LU",
+          "-5.34711099718399e-09",
+          "-0.0124924227845488"
+        ],
+        [
+          "NL",
+          "-3.15752365758746e-09",
+          "0.00785186449590582"
+        ],
+        [
+          "PT",
+          "-3.57022763873663e-09",
+          "0.00587088711940096"
+        ],
+        [
+          "SI",
+          "1.16144076145727e-09",
+          "0.0700049966263371"
+        ]
+      ]
+    },
+    {
+      "name": "tab_did_extrap",
+      "caption": "DiD event study + pre-trend extrapolation",
+      "headers": [
+        "e",
+        "att",
+        "se",
+        "line"
+      ],
+      "rows": [
+        [
+          "-12",
+          "-4.05143846153846",
+          "2.13601659826011",
+          "-2.25576973153635"
+        ],
+        [
+          "-11",
+          "-3.23850769230769",
+          "1.37873058070945",
+          "-1.93488859996333"
+        ],
+        [
+          "-10",
+          "-2.50724230769231",
+          "1.35958132554641",
+          "-1.61400746839032"
+        ],
+        [
+          "-9",
+          "-0.584544230769232",
+          "1.7261446353586",
+          "-1.29312633681731"
+        ],
+        [
+          "-8",
+          "0.00665192307692242",
+          "1.43780197108372",
+          "-0.972245205244296"
+        ],
+        [
+          "-7",
+          "1.81679038461538",
+          "1.71226903576435",
+          "-0.651364073671284"
+        ],
+        [
+          "-6",
+          "0.717555769230769",
+          "1.62594616649077",
+          "-0.330482942098271"
+        ],
+        [
+          "-5",
+          "1.06856730769231",
+          "1.33420530555553",
+          "-0.00960181052525821"
+        ],
+        [
+          "-4",
+          "1.58545192307692",
+          "1.16876422423884",
+          "0.311279321047755"
+        ],
+        [
+          "-3",
+          "0.622075",
+          "1.02161699582147",
+          "0.632160452620768"
+        ],
+        [
+          "-2",
+          "0.522290384615384",
+          "0.474174954262429",
+          "0.95304158419378"
+        ],
+        [
+          "-1",
+          "0",
+          "",
+          "1.27392271576679"
+        ],
+        [
+          "0",
+          "0.736613461538461",
+          "0.470894806513914",
+          "1.59480384733981"
+        ],
+        [
+          "1",
+          "0.576882692307692",
+          "0.350506629091838",
+          "1.91568497891282"
+        ],
+        [
           "2",
-          "12.5"
+          "1.03237307692308",
+          "0.587887199794023",
+          "2.23656611048583"
         ],
         [
-          "Adopted 2005",
-          "1",
-          "6.2"
+          "3",
+          "2.18661730769231",
+          "0.73973993569631",
+          "2.55744724205884"
         ],
         [
-          "Adopted 2002",
-          "1",
-          "6.2"
-        ]
-      ]
-    },
-    {
-      "name": "tab_referee_robustness",
-      "caption": "Referee-requested robustness",
-      "headers": [
-        "spec",
-        "att",
-        "se"
-      ],
-      "rows": [
-        [
-          "drop post-communist controls",
-          "1.24052066648044",
-          "0.705422173534527"
+          "4",
+          "2.81342115384615",
+          "0.811573877401672",
+          "2.87832837363186"
         ],
         [
-          "Sweden recoded 2008",
-          "2.40464626395033",
-          "0.925157387413182"
+          "5",
+          "2.20911346153846",
+          "1.13332718005844",
+          "3.19920950520487"
         ],
         [
-          "anticipation = 1 year",
-          "1.68125865650078",
-          "0.786939138730229"
-        ]
-      ]
-    },
-    {
-      "name": "tab_leaveoneout",
-      "caption": "Leave-one-treated-country-out",
-      "headers": [
-        "dropped",
-        "att",
-        "se"
-      ],
-      "rows": [
-        [
-          "IE",
-          "3.08115600814165",
-          "1.25891643813769"
+          "6",
+          "3.04145128205128",
+          "1.27406900153402",
+          "3.52009063677788"
         ],
         [
-          "NO",
-          "2.09262912975941",
-          "0.690882148633379"
+          "7",
+          "2.33289743589744",
+          "1.41360068306517",
+          "3.8409717683509"
         ],
         [
-          "SE",
-          "2.79012817792414",
-          "1.07100146531396"
+          "8",
+          "2.89701025641026",
+          "1.64527302199847",
+          "4.16185289992391"
         ],
         [
-          "UK",
-          "2.95100093974898",
-          "1.21330122666684"
+          "9",
+          "3.51426923076923",
+          "1.93798041944163",
+          "4.48273403149692"
+        ],
+        [
+          "10",
+          "4.59663076923077",
+          "2.1380457455568",
+          "4.80361516306993"
+        ],
+        [
+          "11",
+          "4.93846153846154",
+          "2.36602259367432",
+          "5.12449629464295"
+        ],
+        [
+          "12",
+          "4.10769230769231",
+          "2.33794965225883",
+          "5.44537742621596"
         ]
       ]
     }
@@ -633,66 +1048,66 @@
     "stages": [
       {
         "id": 1,
-        "name": "Setup: real treatment, imbalanced covariate",
+        "name": "Estimand & design: what DiD would require",
         "status": "confirmed",
-        "summary": "Staggered adoption is real (4 treated, 12 documented never-adopters). Unemployment is imbalanced (Imbens-Rubin std. diff 0.33).",
+        "summary": "Target: ATT of adoption on suicide. DiD identifies it only under parallel trends -- an assumption about counterfactual trajectories the pre-period can speak to.",
         "evidence": [
           "fig4_panelview.png",
-          "tab2_balance.csv",
-          "D04: pscore separates -> regression adjustment"
+          "D07: group-weighted target"
         ]
       },
       {
         "id": 2,
-        "name": "Event studies: pre-trends flat (long-difference base)",
+        "name": "Check 1 -- levels: the groups are not comparable",
         "status": "confirmed",
-        "summary": "Under the universal g-1 baseline the pre-trend test does not reject (sum z^2 = 9.8, df 8). The short-difference 'violation' (59.4) was an artifact.",
+        "summary": "Every baseline covariate is imbalanced (Imbens-Rubin >0.25): adopters start with far lower suicide, higher unemployment, older populations.",
         "evidence": [
-          "fig8_event_study.png",
-          "D06: universal base period"
+          "tab2_balance.csv",
+          "fig3_pscore_overlap.png (propensity perfectly separates)"
         ]
       },
       {
         "id": 3,
-        "name": "Falsification: placebo finds nothing",
+        "name": "Check 2 -- trends: a pre-trend runs through adoption",
         "status": "confirmed",
-        "summary": "In-space placebo p = 0.25; synthetic-control placebo p = 0.46 (UK), 0.69 (IE). The effect is indistinguishable from chance.",
+        "summary": "A significant upward pre-trend (slope ~+0.32/yr, t~3.4) predates adoption and continues unbroken through it. The 'effect' is the extrapolated trend.",
         "evidence": [
-          "fig_falsification_placebo.png",
-          "fig_synth_rmspe_IE.png"
+          "fig_did_fails.png",
+          "fig8_event_study.png"
         ]
       },
       {
         "id": 4,
-        "name": "Main result: positive but unsignable",
-        "status": "complicated",
-        "summary": "Group-weighted ATT = +2.73/100k (more suicide), robust across CS/BJS/SA \u2014 but Rambachan-Roth cannot sign it and it halves when post-communist controls are dropped.",
+        "name": "DDDiD -- do not difference; match on levels (Doudchenko-Imbens)",
+        "status": "confirmed",
+        "summary": "With treated and controls differing in BOTH levels and trends, differencing extrapolates the gap rather than removing it. The checklist's terminal step: stop differencing, switch to synthetic control.",
         "evidence": [
-          "fig_robust_overlay.png",
-          "fig9_honestdid.png",
-          "fig8c_calendar.png"
+          "Doudchenko & Imbens (2016)",
+          "fig_bacon.png (TWFE is not the culprit -- the design is)"
         ]
       },
       {
         "id": 5,
-        "name": "Mechanism: selection + recession; TWFE not the culprit",
-        "status": "confirmed",
-        "summary": "The positive sign reflects selection (adoption when suicide is high) and the 2008 recession. Goodman-Bacon: TWFE (3.11) ~ CS (2.7); forbidden comparisons carry ~3% weight.",
+        "name": "Synthetic control (all 4) + synthetic DiD: no detectable effect",
+        "status": "complicated",
+        "summary": "Augmented SCM for each of the four adopters fits the pre-period well; post-gaps are small and wrong-signed; permutation p = 0.71/0.71/0.79/0.43. Synthetic DiD by cohort: +0.80/+1.24/+0.74, each < its s.e. No detectable effect, and no power to rule one out.",
         "evidence": [
-          "fig_bacon.png",
-          "tab_bacon.csv"
+          "fig_scm_fit_IE.png",
+          "fig_scm_weights_IE.png",
+          "fig_scm_rmspe_IE.png",
+          "tab_sdid_groups.csv"
         ]
       }
     ]
   },
   "manuscript": {
     "earned": [
-      "Pre-trends are flat under the correct long-difference baseline (sum z^2 = 9.85, df 8).",
-      "Unemployment is imbalanced (Imbens-Rubin 0.33), justifying conditional parallel trends.",
-      "The naive staggered-DiD estimate is POSITIVE: +2.7/100k, agreed by CS, BJS, Sun-Abraham.",
-      "Goodman-Bacon: TWFE reconstructs to 3.11; forbidden comparisons get ~3% weight.",
-      "The estimate cannot be signed (Rambachan-Roth), is placebo-indistinguishable (p=0.25), and is fragile to the control pool."
+      "DiD is invalid here: adopters and never-adopters differ in levels (every covariate Imbens-Rubin imbalanced) AND trends (significant +0.32/yr pre-trend through adoption).",
+      "Goodman-Bacon: TWFE (3.11) is not distorted by negative weighting (forbidden comparisons ~3%); the design is the problem, not the estimator.",
+      "Augmented synthetic control for all four adopters fits the pre-period closely; ridge augmentation bias-corrects the donor weights (negative where raw fit is poor).",
+      "Post-adoption gaps are small and wrong-signed; permutation p = 0.71 (NO), 0.71 (SE), 0.79 (UK), 0.43 (IE) -- all ordinary.",
+      "Synthetic DiD by cohort: +0.80 (1995), +1.24 (2002), +0.74 (2005), each smaller than its standard error."
     ],
-    "thesis": "The cross-national record cannot identify whether national suicide-prevention strategies reduced suicide. The positive association is selection plus the recession, not a measured effect \u2014 and that inseparability is the finding."
+    "thesis": "Difference-in-differences is the wrong tool here -- treated and control countries differ in levels and trends. Matching on the level path instead (augmented synthetic control for all four adopters, and synthetic DiD by cohort) finds no detectable effect of national suicide-prevention strategies on suicide, and no power to rule one out."
   }
 }

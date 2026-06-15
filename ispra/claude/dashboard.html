@@ -427,6 +427,17 @@ footer {
   border-top: 1px solid var(--border);
   margin-top: 2rem;
 }
+/* flip cards: figure front, generating code back */
+.flip-card { perspective: 1400px; height: 360px; cursor: pointer; }
+.flip-inner { position: relative; width: 100%; height: 100%; transition: transform .6s; transform-style: preserve-3d; }
+.flip-inner.flipped { transform: rotateY(180deg); }
+.flip-front, .flip-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border: 1px solid var(--border); border-radius: 8px; padding: .6rem .7rem; background: var(--bg-secondary); box-sizing: border-box; }
+.flip-front { display: flex; flex-direction: column; }
+.flip-front img { width: 100%; flex: 1 1 auto; min-height: 0; object-fit: contain; background: #fff; border-radius: 4px; margin: .35rem 0; }
+.flip-back { transform: rotateY(180deg); overflow: auto; }
+.flip-back pre { font-size: .60rem; line-height: 1.25; white-space: pre-wrap; margin: .3rem 0 0; color: var(--text-secondary); }
+.flip-hint { font-size: .68rem; color: var(--text-muted); }
 </style>
 </head>
 <body>
@@ -789,19 +800,24 @@ function renderFigures() {
     return;
   }
 
+  const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   grid.innerHTML = figures.map(f => {
-    let statusBadge = '';
-    if (f.orphaned) statusBadge = '<span class="badge orphaned">orphaned</span>';
-    else if (f.fresh) statusBadge = '<span class="badge fresh">fresh</span>';
-    else statusBadge = '<span class="badge stale">stale</span>';
-
+    let badge = f.orphaned ? '<span class="badge orphaned">orphaned</span>'
+      : f.fresh ? '<span class="badge fresh">fresh</span>' : '<span class="badge stale">stale</span>';
+    const back = f.code
+      ? `<div class="fig-name">${f.script}</div><pre><code>${esc(f.code)}</code></pre>`
+      : `<div class="fig-name">${f.script||'no script'}</div><div class="flip-hint">No code chunk located for this figure.</div>`;
     return `
-      <div class="figure-card">
-        <div class="fig-name">${f.name} ${statusBadge}</div>
-        <a href="${f.path}" target="_blank"><img src="${f.path}" alt="${f.name}" style="width:100%;border:1px solid var(--border);border-radius:6px;margin:0.4rem 0;background:#fff;"></a>
-        ${f.caption ? `<div class="fig-meta" style="font-style:italic">${f.caption}</div>` : ''}
-        <div class="fig-meta">${f.mtime || 'unknown'}</div>
-        ${f.script ? `<div class="fig-script">${f.script}</div>` : '<div class="fig-script" style="color:var(--red)">no pipeline script</div>'}
+      <div class="flip-card" onclick="this.querySelector('.flip-inner').classList.toggle('flipped')">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <div class="fig-name">${f.name} ${badge}</div>
+            <img src="${f.path}" alt="${f.name}">
+            ${f.caption ? `<div class="fig-meta" style="font-style:italic">${f.caption}</div>` : ''}
+            <div class="flip-hint">&#8635; click to flip &rarr; the exact code that generated this</div>
+          </div>
+          <div class="flip-back">${back}</div>
+        </div>
       </div>
     `;
   }).join('');

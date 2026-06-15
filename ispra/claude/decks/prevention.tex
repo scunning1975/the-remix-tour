@@ -188,127 +188,82 @@ How often does \emph{fake} adoption, assigned at random among the never-treated,
 \end{alertblock}
 \end{frame}
 
-\divider{What the data say}{The inconvenient sign}
+\divider{The naive answer}{And why we must discard it}
 
-\begin{frame}{The estimate is positive: more suicide after adoption}
-\vfill
-\begin{center}
-{\fontsize{52}{52}\selectfont\bfseries\color{tricrosso}$+2.7$}\\[0.8em]
-{\Large suicides per 100{,}000, after adoption (s.e.\ 1.05)}
-\end{center}
-\vfill
-\begin{center}\color{warmgray}Group-size-weighted ATT, Callaway--Sant'Anna, conditioning on unemployment.\end{center}
-\vfill
+\begin{frame}{Differencing gives a positive, wrong-signed number}
+\vfill\begin{center}
+{\fontsize{44}{44}\selectfont\bfseries\color{tricrosso}$+2.7$ to $+3.2$}\\[0.6em]
+{\Large more suicides per 100{,}000 after adoption}
+\end{center}\vfill
+\begin{center}\color{warmgray}Callaway--Sant'Anna, Borusyak et al., Sun--Abraham --- they agree on the number. None of them is identified here.\end{center}\vfill
 \end{frame}
 
-\begin{frame}{Three heterogeneity-robust estimators agree}
+\divider{Why difference-in-differences is the wrong tool}{The groups differ in levels \emph{and} trends}
+
+\begin{frame}{A trend runs straight through adoption}
 \centering
-\includegraphics[height=0.62\textheight]{fig_robust_overlay.pdf}\\
-{\color{warmgray}\small Callaway--Sant'Anna $+2.7$ \,\textperiodcentered\, Borusyak et al.\ $+3.2$ \,\textperiodcentered\, Sun--Abraham $+3.0$.}
+\includegraphics[height=0.62\textheight]{fig_did_fails.pdf}\\
+{\color{warmgray}\small Pre-trend slope $+0.32$/yr ($t=3.4$, $p=.001$). The dashed extrapolation runs through the post-adoption points --- no break at treatment.}
 \end{frame}
 
-\begin{frame}{A careless reader would stop here}
-\vfill
-\begin{center}
-{\Large ``Suicide-prevention strategies are followed by \emph{more} suicide.''}
-\end{center}
-\vfill
-\begin{center}\color{tricrosso}\large Do not stop here.\end{center}
-\vfill
-\end{frame}
-
-\divider{What the number is \emph{not}}{Five windows, one answer}
-
-\begin{frame}{Measured correctly, pre-trends are flat}
-\centering
-\includegraphics[height=0.70\textheight]{fig8_event_study.pdf}\\
-{\color{warmgray}\small Long differences from $g\!-\!1$: $\sum z^2 = 9.9$ (8 d.f.) --- parallel trends not rejected.}
-\end{frame}
-
-\begin{frame}{A baseline can manufacture a pre-trend}
-\vspace{0.4em}
-\begin{columns}[T]
-\begin{column}{0.48\textwidth}
-\begin{alertblock}{Short differences (varying base)}
-Each pre-coefficient is a one-period change.\\[0.4em]
-$\sum z^2 = 59$ \;$\Rightarrow$\; ``trends fail.''
-\end{alertblock}
-\end{column}
-\begin{column}{0.48\textwidth}
-\begin{block}{Long differences (fixed $g\!-\!1$)}
-Cumulative deviation from $g\!-\!1$ --- the same baseline as every post-coefficient, and as parallel trends itself.\\[0.4em]
-$\sum z^2 = 9.9$ \;$\Rightarrow$\; flat.
-\end{block}
-\end{column}
-\end{columns}
+\begin{frame}{When groups differ in levels and trends, do not difference}
+\vspace{0.6em}
+\begin{itemize}
+\item \textbf{Levels} differ: every covariate is imbalanced (Imbens--Rubin $>0.25$).
+\item \textbf{Trends} differ: a significant upward slope predates \emph{and} survives adoption.
+\end{itemize}
 \vspace{0.5em}
-\begin{center}\color{warmgray}The ``violation'' was an artifact of the wrong baseline. Most applied work reports the wrong one.\end{center}
+\begin{center}{\Large Differencing extrapolates the gap --- it does not remove it.}\end{center}
+\vspace{0.3em}
+\begin{center}\color{warmgray}Doudchenko \& Imbens (2016): match on the level \emph{path} instead. That is synthetic control.\end{center}
 \end{frame}
 
-\begin{frame}{But flat is not a clean bill of health}
-\vspace{0.8em}
-The pre-trend leads are identified almost entirely off \textbf{the UK and Ireland}; Norway and Sweden (one pre-period each) feed the \emph{level} of the effect but not the \emph{test} of trends.\\[0.8em]
-With four treated countries the test catches only gross violations.
-\begin{center}\color{warmgray}It catches none --- the silence of a design too small to hear anything, not vindication.\end{center}
+\divider{Synthetic control}{Match on the level path --- for all four}
+
+\begin{frame}{Build each adopter a synthetic twin}
+\vspace{0.9em}
+For each treated country: a weighted average of the 13 never-adopters that reproduces its \textbf{pre-adoption suicide path} (Abadie 2010), bias-corrected by ridge augmentation (Ben-Michael et al.\ 2021).\\[0.8em]
+The WHO splice (from 1986) gives Norway \& Sweden 9 pre-years, the UK 16, Ireland 19.
 \end{frame}
 
-\begin{frame}{The ``effect'' loads on the 2008 recession}
+\begin{frame}{The synthetic twins track all four before adoption}
 \centering
-\includegraphics[height=0.70\textheight]{fig8c_calendar.pdf}\\
-{\color{warmgray}\small The later cohorts' post-periods overlap Europe's austerity years.}
+\includegraphics[height=0.33\textheight]{fig_scm_fit_NO.pdf}\hfill\includegraphics[height=0.33\textheight]{fig_scm_fit_SE.pdf}\\[1pt]
+\includegraphics[height=0.33\textheight]{fig_scm_fit_UK.pdf}\hfill\includegraphics[height=0.33\textheight]{fig_scm_fit_IE.pdf}
 \end{frame}
 
-\begin{frame}{The effect cannot be signed}
+\begin{frame}{Donor weights, before and after ridge augmentation}
 \centering
-\includegraphics[height=0.66\textheight]{fig9_honestdid.pdf}\\
-{\color{warmgray}\small Rambachan \& Roth (2023): under modest trend violations the robust CI spans zero.}
+\includegraphics[width=0.49\textwidth]{fig_scm_weights_IE.pdf}\hfill\includegraphics[width=0.49\textwidth]{fig_scm_weights_UK.pdf}\\
+{\color{warmgray}\small Pure SCM (simplex, non-negative) vs ridge-augmented (bias-corrected). Ireland's poorer raw fit pushes some weights negative; the UK's near-perfect fit barely moves.}
 \end{frame}
 
-\begin{frame}{Indistinguishable from chance}
+\begin{frame}{Permutation inference: every adopter is ordinary}
 \centering
-\includegraphics[height=0.66\textheight]{fig_falsification_placebo.pdf}\\
-{\color{warmgray}\small One placebo in four, drawn from never-treated countries, is at least this large ($p=0.25$).}
+\includegraphics[width=0.49\textwidth]{fig_scm_spaghetti_IE.pdf}\hfill\includegraphics[width=0.49\textwidth]{fig_scm_rmspe_IE.pdf}\\
+{\color{warmgray}\small Permutation $p$ --- Norway 0.71, Sweden 0.71, UK 0.79, Ireland 0.43 --- all in the body of the placebo distribution.}
 \end{frame}
 
-\begin{frame}{Even the method of last resort says nothing}
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\centering\includegraphics[width=\textwidth]{fig_synth_fit_IE.pdf}
-\end{column}
-\begin{column}{0.5\textwidth}
-\centering\includegraphics[width=\textwidth]{fig_synth_rmspe_IE.pdf}
-\end{column}
-\end{columns}
-\begin{center}\color{warmgray}\small Augmented synthetic control: placebo $p=0.46$ (UK), $0.69$ (Ireland). Ireland's gap opens in 2008.\end{center}
-\end{frame}
-
-\begin{frame}{Fragile where a real effect would be solid}
-\vfill
-\begin{center}
-{\Large Drop the four post-communist controls,}\\[0.4em]
-{\Large and the estimate nearly halves: $+2.7 \;\rightarrow\; +1.2$.}
-\end{center}
-\vfill
-\begin{center}\color{warmgray}A real treatment effect should not depend on which untreated countries you compare against. This one does.\end{center}
-\vfill
-\end{frame}
-
-\begin{frame}{Is it just bad two-way fixed effects? No.}
-\vspace{0.5em}
-\centering
-\begin{tabular}{lccc}
+\begin{frame}{Synthetic difference-in-differences agrees, by cohort}
+\vspace{0.6em}\centering
+\begin{tabular}{lcc}
 \toprule
-Goodman-Bacon $2\times2$ & Weight & Est. & Contrib. \\
+Adoption cohort & SDID estimate & s.e. \\
 \midrule
-\rowcolor{lightbg} Treated vs.\ untreated & 0.86 & 3.57 & 3.085 \\
-Later vs.\ earlier treated & 0.11 & 0.29 & 0.032 \\
-Earlier vs.\ later treated & 0.03 & $-0.22$ & $-0.005$ \\
-\midrule
-Reconstructed TWFE & 1.00 & & \textbf{3.11} \\
+1995 (Norway, Sweden) & $+0.80$ & $4.20$ \\
+2002 (United Kingdom) & $+1.24$ & $3.96$ \\
+2005 (Ireland) & $+0.74$ & $1.44$ \\
 \bottomrule
 \end{tabular}
-\vspace{0.8em}
-\begin{center}\color{warmgray}The ``forbidden'' comparisons carry $\sim$3\% weight. TWFE (3.11) $\approx$ CS (2.7). The estimator is not the problem --- identification is.\end{center}
+\vspace{0.9em}
+\begin{center}\color{warmgray}Arkhangelsky et al.\ (2021). Every estimate smaller than its own standard error.\end{center}
+\end{frame}
+
+\begin{frame}{The appropriate method finds nothing}
+\vfill\begin{center}
+{\Large Four countries. Three methods. One verdict.}\\[0.7em]
+{\Large No detectable effect on suicide --- and no power to rule one out.}
+\end{center}\vfill
 \end{frame}
 
 \divider{Devil's advocate}{The strongest objection}
