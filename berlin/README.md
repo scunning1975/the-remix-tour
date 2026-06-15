@@ -1,72 +1,92 @@
-# Berlin — DIW Berlin Causal Inference Masterclass
+<img src="https://github.com/Mixtape-Sessions/Codechella-Madrid/blob/main/Slides/codechella_2026.jpg?raw=true" alt="Codechella Madrid 2026" width="100%">
 
-**Stop 6 of 8** · June 15–16, 2026 · DIW Berlin (organized by Univ. of Potsdam)
+# Codechella Madrid 2026
 
-A 2-day Causal Inference Masterclass at DIW Berlin — 3 lectures + a research talk + office hours. Audience drawn from the joint PhD program of seven Berlin/Brandenburg institutions.
+Welcome to **Codechella Madrid 2026** — Mixtape Sessions' third in-person Spanish workshop.
 
----
-
-## At a glance
-
-| | |
-|---|---|
-| **Title** | Causal Inference — The Mixtape Workshop 2026 |
-| **Format** | 3 lectures (1.5 hrs each) + 1 research talk + 5 hrs of office hours |
-| **Audience** | Joint PhD program of 7 Berlin/Brandenburg institutions: Free University, DIW, Humboldt, Technical Univ., Potsdam, etc. Students from a structured advanced econometrics program; familiar with the *Mixtape Remix*. |
-| **Software** | R + Stata; Claude Code demos optional |
-| **Solo** | Yes |
-| **Venue** | DIW Berlin, Anton-Wilhelm-Amo-Straße 58, 10117 Berlin. **Lecture hall: Elinor Ostrom Hall, 1st floor.** |
+**When:** May 25–28, 2026 (Monday–Thursday)
+**Where:** CUNEF Auditorium, Madrid
+**Instructors:** Scott Cunningham (Baylor University) + Dan Rees & Mark Anderson (Hidden Curriculum)
 
 ---
 
 ## Schedule
 
-### Mon Jun 15
-
-| Time | Session |
-|---|---|
-| 9:30 AM | Pickup at DIW venue |
-| 10:00–10:30 | Registration |
-| 10:30 AM–12:00 PM | **Lecture 1/3: Difference-in-Differences** |
-| 12:00–1:00 PM | Lunch break |
-| 1:00–1:45 PM | BeNa Lunch Seminar (separate audience) |
-| 2:00–3:15 PM | **Research Talk by Scott Cunningham** |
-| 3:30–6:00 PM | Office Hours |
-| 7:00 PM | Dinner with hosts |
-
-### Tue Jun 16
-
-| Time | Session |
-|---|---|
-| 9:00–10:30 AM | **Lecture 2/3: Difference-in-Differences** |
-| 10:30–11:00 AM | Coffee break |
-| 11:00 AM–12:30 PM | **Lecture 3/3: Synthetic Control** |
-| 12:30–1:30 PM | Lunch break |
-| 1:30–4:00 PM | Office Hours |
+| Time | Mon May 25 | Tue May 26 | Wed May 27 | Thu May 28 |
+|---|---|---|---|---|
+| 8:30 – 9:00 am | **Registration** | | | |
+| **9:00 – 10:30 am** | Core DiD | Covariates | Continuous | Staggered |
+| 10:30 – 11:00 am | *Coffee* | *Coffee* | *Coffee* | *Coffee* |
+| **11:00 am – 1:00 pm** | Covariates | Covariates | Continuous | Staggered |
+| 1:00 – 2:30 pm | *Lunch (by research field)* | *Lunch* | *Lunch* | *Lunch* |
+| **2:30 – 3:30 pm** | Dan Rees & Mark Anderson — Hidden Curriculum | Continuous | Staggered | Claude Code |
+| **3:30 – 5:00 pm** | Dan Rees & Mark Anderson — Hidden Curriculum | Continuous | Dan Rees & Mark Anderson — Hidden Curriculum | Claude Code |
 
 ---
 
-## Suggested lecture content
+## Slide decks (in `Slides/`)
 
-| Session | Content |
-|---|---|
-| **Lecture 1/3** | DiD foundations: potential outcomes; canonical 2×2 DiD; parallel trends; pre-testing; event studies; placebo tests. Bridge from *Mixtape Remix* content. |
-| **Research Talk** | 75-min talk on recent work (e.g., AI Agents R&R paper, or Mixtape Sessions / Claude Code in causal inference). |
-| **Lecture 2/3** | Modern DiD: Goodman-Bacon decomposition; Callaway-Sant'Anna; Sun-Abraham; BJS; sensitivity (Roth-Sant'Anna; Rambachan-Roth). |
-| **Lecture 3/3** | Synthetic Control: ADH; permutation + conformal inference; augmented SCM; synth-DiD. When to use DiD vs. SCM. |
-| **Office Hours** | 5 hrs total. Expect students to bring papers in progress for one-on-ones. |
+| File | Topic | Workshop slot |
+|---|---|---|
+| **`01-basics.tex`** | Core DiD: the 2×2, parallel trends, event studies | Mon 9:00–10:30 (90 min) |
+| `02-covariates.tex` | DiD with covariates: PSM, IPW, doubly-robust, weighted-PT diagnostics | Mon 11–1, Tue 9–1 (~5.5 hrs) |
+| `02b-lalonde.tex` | LaLonde companion: 5 specs against the DW experimental benchmark on the NSW data | Used alongside Covariates |
+| `03-continuous.tex` | Continuous-treatment DiD: CBS decomposition, ATT(d\|d), ACRT, `contdid` | Tue 2:30–5, Wed 9–1 (~6 hrs) |
+| `04-staggered.tex` | Staggered DiD: Goodman-Bacon decomposition, Callaway–Sant'Anna, Sun-Abraham, BJS | Wed 2:30–3:30, Thu 9–1 (~4.5 hrs) |
+| `05-claude.tex` | AI agents for empirical research | Thu 2:30–5 (Claude Code session) |
+| `06-checklist.tex` | A DiD checklist — Brazil mental-health reform walkthrough (Dias & Fontes 2024) | Reference |
 
----
+All decks compile with `pdflatex <file>.tex` and use **`remix.sty`** and **`madrid_theme.sty`** (both in the same folder).
 
-## Materials
-
-- **`decks/`** — Lectures 1–3 (DiD ×2 + Synth ×1) + research talk
-- **`labs/`** — Baker (DiD diagnosis), Synth (canonical synth replication)
-- **`shiny_apps/`** — Event-study explorer
+The earlier (2025-era) Codechella decks are preserved in `Slides/archived_2025/` for reference.
 
 ---
 
-## Hosts
+## Labs (in `Labs/`)
 
-- **Theresa Henkel** (Univ. of Potsdam, organizer)
-- **Thomas Siedler** (Univ. of Potsdam, faculty co-host)
+| Lab | Companion to | Notes |
+|---|---|---|
+| `basic/` | Mon Core DiD | Five equivalent paths to the 2×2 (`equivalence.R`, `.do`, `.py`); event-study by hand |
+| `Lalonde/` | Mon Core DiD + Tue Covariates | LaLonde re-evaluation |
+| `Lalonde-Covariates/` | Tue Covariates | PSM / IPW / DR with LaLonde |
+| `Castle/` | Mon Core DiD | Cheng & Hoekstra castle doctrine — used in §3 of `01-basics` |
+| `China-WTO/` | Wed Continuous | Lu & Yu (2015) WTO tariff data — 5 estimators of ATT(d\|d) + event study |
+| `Baker/` | Thu Staggered | Staggered DiD bench data |
+| `Brazil/` | Reference | Brazil CAPS mental-health reform |
+| `Texas/` | Reference | Texas prison construction — synth + augsynth + synthdid |
+| `Triple-Diff/` | Reference | DDD simulation |
+| `DDD/`, `Example-Code/`, `Kline-Moretti/`, `Medicaid-Expansion/` | Inherited 2025 labs | Kept as reference |
+
+---
+
+## Shiny apps
+
+- **`baconplus`** — interactive continuous-DiD weight decomposer
+  https://scunning1975.github.io/baconplus/
+  Use on Wed when introducing the four CBS weight formulas
+- **Bacon decomposition explorer**: https://mixtape.shinyapps.io/Bacon-Decomposition/ (Wed PM)
+- **Event-study explorer**: https://mixtape.shinyapps.io/Event-Study/ (Mon)
+
+---
+
+## Compiling
+
+```bash
+cd Slides
+pdflatex 01-basics.tex
+pdflatex 01-basics.tex   # second pass: Madrid title banner uses tikz remember-picture
+```
+
+The second pass is required for the Gran Vía banner on the title slide to position correctly (any deck that uses `\codechellatitle` from `madrid_theme.sty`).
+
+All figures referenced by the decks are in `Slides/figures/`. Code that regenerates figures lives in `Slides/scripts/` (R, Python) and `Slides/code/` (data simulations).
+
+---
+
+## Image credits
+
+The top banner and the title slide of every deck use `Slides/codechella_2026.jpg` — Gran Vía at sunset, Madrid (Metropolis building visible left of center).
+
+---
+
+*For agents or collaborators picking up this repo, see `CLAUDE.md` in the project root for design notes, the `madrid_theme.sty` palette spec, and the workflow conventions.*

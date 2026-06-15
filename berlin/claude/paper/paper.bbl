@@ -1,0 +1,85 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abadie et~al.(2010)Abadie, Diamond, and Hainmueller]{abadie2010synthetic}
+Alberto Abadie, Alexis Diamond, and Jens Hainmueller.
+\newblock Synthetic control methods for comparative case studies: Estimating the effect of california's tobacco control program.
+\newblock \emph{Journal of the American Statistical Association}, 105\penalty0 (490):\penalty0 493--505, 2010.
+\newblock \doi{10.1198/jasa.2009.ap08746}.
+
+\bibitem[Arkhangelsky et~al.(2021)Arkhangelsky, Athey, Hirshberg, Imbens, and Wager]{arkhangelsky2021synthetic}
+Dmitry Arkhangelsky, Susan Athey, David~A. Hirshberg, Guido~W. Imbens, and Stefan Wager.
+\newblock Synthetic difference-in-differences.
+\newblock \emph{American Economic Review}, 111\penalty0 (12):\penalty0 4088--4118, 2021.
+\newblock \doi{10.1257/aer.20190159}.
+
+\bibitem[Ben-Michael et~al.(2021)Ben-Michael, Feller, and Rothstein]{benmichael2021augmented}
+Eli Ben-Michael, Avi Feller, and Jesse Rothstein.
+\newblock The augmented synthetic control method.
+\newblock \emph{Journal of the American Statistical Association}, 116\penalty0 (536):\penalty0 1789--1803, 2021.
+\newblock \doi{10.1080/01621459.2021.1929245}.
+
+\bibitem[de~Chaisemartin and D'Haultf{\oe}uille(2020)]{dechaisemartin2020twoway}
+Cl{\'e}ment de~Chaisemartin and Xavier D'Haultf{\oe}uille.
+\newblock Two-way fixed effects estimators with heterogeneous treatment effects.
+\newblock \emph{American Economic Review}, 110\penalty0 (9):\penalty0 2964--2996, 2020.
+\newblock \doi{10.1257/aer.20181169}.
+
+\bibitem[Doudchenko and Imbens(2016)]{doudchenko2016balancing}
+Nikolay Doudchenko and Guido~W. Imbens.
+\newblock Balancing, regression, difference-in-differences and synthetic control methods: A synthesis.
+\newblock NBER Working Paper 22791, National Bureau of Economic Research, 2016.
+
+\bibitem[{Eurostat}(2026)]{eurostat_cod}
+{Eurostat}.
+\newblock Causes of death --- standardised death rate by nuts 2 region of residence (hlth\_cd\_asdr, hlth\_cd\_asdr2).
+\newblock European Commission, Eurostat database, 2026.
+\newblock Accessed 2026-06-04.
+
+\bibitem[Goodman-Bacon(2021)]{goodmanbacon2021did}
+Andrew Goodman-Bacon.
+\newblock Difference-in-differences with variation in treatment timing.
+\newblock \emph{Journal of Econometrics}, 225\penalty0 (2):\penalty0 254--277, 2021.
+\newblock \doi{10.1016/j.jeconom.2021.03.014}.
+
+\bibitem[Imbens and Rubin(2015)]{imbens2015causal}
+Guido~W. Imbens and Donald~B. Rubin.
+\newblock \emph{Causal Inference for Statistics, Social, and Biomedical Sciences: An Introduction}.
+\newblock Cambridge University Press, New York, 2015.
+\newblock \doi{10.1017/CBO9781139025751}.
+
+\bibitem[Lewitzka et~al.(2019)Lewitzka, Sauer, Bauer, and Felber]{lewitzka2019national}
+Ute Lewitzka, Cathrin Sauer, Michael Bauer, and Werner Felber.
+\newblock Are national suicide prevention programs effective? a comparison of 4 verum and 4 control countries over 30 years.
+\newblock \emph{BMC Psychiatry}, 19:\penalty0 158, 2019.
+\newblock \doi{10.1186/s12888-019-2147-y}.
+
+\bibitem[Matsubayashi and Ueda(2011)]{matsubayashi2011effect}
+Tetsuya Matsubayashi and Michiko Ueda.
+\newblock The effect of national suicide prevention programs on suicide rates in 21 oecd nations.
+\newblock \emph{Social Science \& Medicine}, 73\penalty0 (9):\penalty0 1395--1400, 2011.
+\newblock \doi{10.1016/j.socscimed.2011.08.022}.
+
+\bibitem[{World Health Organization}(2014)]{who2014preventing}
+{World Health Organization}.
+\newblock Preventing suicide: A global imperative.
+\newblock Technical report, World Health Organization, Geneva, 2014.
+\newblock ISBN 978-92-4-156477-9.
+
+\bibitem[{World Health Organization}(2018)]{who2018strategies}
+{World Health Organization}.
+\newblock National suicide prevention strategies: Progress, examples and indicators.
+\newblock Technical report, World Health Organization, Geneva, 2018.
+\newblock ISBN 978-92-4-151501-6.
+
+\bibitem[{World Health Organization}(2025)]{who_mdb}
+{World Health Organization}.
+\newblock Who mortality database --- age-standardized death rate from self-inflicted injuries.
+\newblock WHO Division of Data, Analytics and Delivery for Impact, 2025.
+\newblock Accessed 2026-06-04 via the machine-readable extract distributed by Our World in Data.
+
+\end{thebibliography}

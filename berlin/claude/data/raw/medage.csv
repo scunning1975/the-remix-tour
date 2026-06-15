@@ -1,0 +1,2539 @@
+geo,country,year,median_age
+AD,Andorra,1986,31.0
+AD,Andorra,1987,31.2
+AD,Andorra,1988,31.7
+AD,Andorra,1989,32.3
+AD,Andorra,1990,32.9
+AD,Andorra,1991,32.8
+AD,Andorra,1992,32.4
+AD,Andorra,1993,32.6
+AD,Andorra,1994,33.5
+AD,Andorra,1995,34.1
+AD,Andorra,1996,34.6
+AD,Andorra,1997,35.0
+AD,Andorra,1998,35.5
+AD,Andorra,1999,35.9
+AD,Andorra,2000,36.6
+AD,Andorra,2001,37.3
+AD,Andorra,2002,38.0
+AD,Andorra,2003,38.6
+AD,Andorra,2004,38.2
+AD,Andorra,2005,37.9
+AD,Andorra,2006,37.7
+AD,Andorra,2007,38.0
+AD,Andorra,2008,38.4
+AD,Andorra,2009,38.8
+AD,Andorra,2010,39.5
+AD,Andorra,2011,39.6
+AD,Andorra,2012,39.6
+AD,Andorra,2013,39.9
+AD,Andorra,2019,42.6
+AL,Albania,2002,27.6
+AL,Albania,2003,27.9
+AL,Albania,2004,28.2
+AL,Albania,2005,28.7
+AL,Albania,2006,29.2
+AL,Albania,2007,29.8
+AL,Albania,2008,30.4
+AL,Albania,2009,31.1
+AL,Albania,2010,31.9
+AL,Albania,2011,32.6
+AL,Albania,2012,33.2
+AL,Albania,2013,33.7
+AL,Albania,2014,34.2
+AL,Albania,2015,34.7
+AL,Albania,2016,35.2
+AL,Albania,2017,35.6
+AL,Albania,2018,36.1
+AL,Albania,2019,36.7
+AL,Albania,2020,37.2
+AL,Albania,2021,37.6
+AL,Albania,2022,38.2
+AL,Albania,2023,38.8
+AL,Albania,2025,44.3
+AM,Armenia,2006,31.5
+AM,Armenia,2007,31.8
+AM,Armenia,2008,32.0
+AM,Armenia,2009,32.3
+AM,Armenia,2010,32.6
+AM,Armenia,2015,34.0
+AM,Armenia,2016,34.3
+AM,Armenia,2017,34.6
+AM,Armenia,2018,35.0
+AM,Armenia,2019,35.4
+AM,Armenia,2020,35.8
+AM,Armenia,2021,36.1
+AM,Armenia,2024,33.7
+AT,Austria,1960,35.5
+AT,Austria,1961,35.5
+AT,Austria,1962,35.5
+AT,Austria,1963,35.3
+AT,Austria,1964,35.2
+AT,Austria,1965,35.1
+AT,Austria,1966,34.9
+AT,Austria,1967,34.7
+AT,Austria,1968,34.5
+AT,Austria,1969,34.2
+AT,Austria,1970,33.9
+AT,Austria,1971,33.6
+AT,Austria,1972,33.3
+AT,Austria,1973,33.4
+AT,Austria,1974,33.6
+AT,Austria,1975,33.9
+AT,Austria,1976,34.1
+AT,Austria,1977,34.3
+AT,Austria,1978,34.4
+AT,Austria,1979,34.6
+AT,Austria,1980,34.7
+AT,Austria,1981,34.6
+AT,Austria,1982,34.6
+AT,Austria,1983,34.8
+AT,Austria,1984,35.0
+AT,Austria,1985,35.1
+AT,Austria,1986,35.2
+AT,Austria,1987,35.3
+AT,Austria,1988,35.5
+AT,Austria,1989,35.6
+AT,Austria,1990,35.6
+AT,Austria,1991,35.6
+AT,Austria,1992,35.6
+AT,Austria,1993,35.7
+AT,Austria,1994,35.9
+AT,Austria,1995,36.1
+AT,Austria,1996,36.5
+AT,Austria,1997,36.8
+AT,Austria,1998,37.2
+AT,Austria,1999,37.5
+AT,Austria,2000,37.9
+AT,Austria,2001,38.3
+AT,Austria,2002,38.8
+AT,Austria,2003,39.1
+AT,Austria,2004,39.4
+AT,Austria,2005,39.7
+AT,Austria,2006,40.1
+AT,Austria,2007,40.5
+AT,Austria,2008,40.9
+AT,Austria,2009,41.2
+AT,Austria,2010,41.6
+AT,Austria,2011,42.0
+AT,Austria,2012,42.4
+AT,Austria,2013,42.6
+AT,Austria,2014,42.9
+AT,Austria,2015,43.0
+AT,Austria,2016,43.0
+AT,Austria,2017,43.0
+AT,Austria,2018,43.2
+AT,Austria,2019,43.4
+AT,Austria,2020,43.5
+AT,Austria,2021,43.6
+AT,Austria,2022,43.6
+AT,Austria,2023,43.5
+AT,Austria,2024,43.6
+AT,Austria,2025,43.8
+AZ,Azerbaijan,2006,27.9
+AZ,Azerbaijan,2007,28.2
+AZ,Azerbaijan,2008,28.5
+AZ,Azerbaijan,2009,28.8
+AZ,Azerbaijan,2010,28.8
+AZ,Azerbaijan,2011,29.1
+AZ,Azerbaijan,2012,29.4
+AZ,Azerbaijan,2013,29.7
+AZ,Azerbaijan,2014,30.1
+AZ,Azerbaijan,2015,30.5
+AZ,Azerbaijan,2016,30.9
+AZ,Azerbaijan,2017,31.3
+AZ,Azerbaijan,2018,31.8
+AZ,Azerbaijan,2019,32.3
+AZ,Azerbaijan,2020,32.8
+AZ,Azerbaijan,2021,33.2
+AZ,Azerbaijan,2022,33.8
+AZ,Azerbaijan,2024,34.5
+AZ,Azerbaijan,2025,35.1
+BE,Belgium,1960,35.2
+BE,Belgium,1961,35.2
+BE,Belgium,1962,34.9
+BE,Belgium,1963,34.9
+BE,Belgium,1964,34.8
+BE,Belgium,1965,34.7
+BE,Belgium,1966,34.7
+BE,Belgium,1967,34.7
+BE,Belgium,1968,34.7
+BE,Belgium,1969,34.6
+BE,Belgium,1970,34.5
+BE,Belgium,1971,34.5
+BE,Belgium,1972,34.3
+BE,Belgium,1973,34.3
+BE,Belgium,1974,34.2
+BE,Belgium,1975,34.1
+BE,Belgium,1976,33.9
+BE,Belgium,1977,33.8
+BE,Belgium,1978,33.7
+BE,Belgium,1979,33.8
+BE,Belgium,1980,33.9
+BE,Belgium,1981,34.1
+BE,Belgium,1982,34.4
+BE,Belgium,1983,34.7
+BE,Belgium,1984,35.0
+BE,Belgium,1985,35.2
+BE,Belgium,1986,35.4
+BE,Belgium,1987,35.6
+BE,Belgium,1988,35.7
+BE,Belgium,1989,36.0
+BE,Belgium,1990,36.2
+BE,Belgium,1991,36.4
+BE,Belgium,1992,36.6
+BE,Belgium,1993,36.8
+BE,Belgium,1994,37.0
+BE,Belgium,1995,37.3
+BE,Belgium,1996,37.6
+BE,Belgium,1997,37.9
+BE,Belgium,1998,38.2
+BE,Belgium,1999,38.5
+BE,Belgium,2000,38.7
+BE,Belgium,2001,39.0
+BE,Belgium,2002,39.3
+BE,Belgium,2003,39.6
+BE,Belgium,2004,39.8
+BE,Belgium,2005,40.1
+BE,Belgium,2006,40.3
+BE,Belgium,2007,40.5
+BE,Belgium,2008,40.7
+BE,Belgium,2009,40.8
+BE,Belgium,2010,40.9
+BE,Belgium,2011,40.9
+BE,Belgium,2012,41.0
+BE,Belgium,2013,41.1
+BE,Belgium,2014,41.3
+BE,Belgium,2015,41.4
+BE,Belgium,2016,41.4
+BE,Belgium,2017,41.5
+BE,Belgium,2018,41.6
+BE,Belgium,2019,41.7
+BE,Belgium,2020,41.8
+BE,Belgium,2021,41.8
+BE,Belgium,2022,41.9
+BE,Belgium,2023,41.9
+BE,Belgium,2024,42.0
+BE,Belgium,2025,42.1
+BG,Bulgaria,1960,30.3
+BG,Bulgaria,1961,30.6
+BG,Bulgaria,1962,30.9
+BG,Bulgaria,1963,31.1
+BG,Bulgaria,1964,31.5
+BG,Bulgaria,1965,31.8
+BG,Bulgaria,1966,32.2
+BG,Bulgaria,1967,32.5
+BG,Bulgaria,1968,32.8
+BG,Bulgaria,1969,33.0
+BG,Bulgaria,1970,33.2
+BG,Bulgaria,1971,33.3
+BG,Bulgaria,1972,33.4
+BG,Bulgaria,1973,33.5
+BG,Bulgaria,1974,33.6
+BG,Bulgaria,1975,33.6
+BG,Bulgaria,1976,33.7
+BG,Bulgaria,1977,33.8
+BG,Bulgaria,1978,33.8
+BG,Bulgaria,1979,34.0
+BG,Bulgaria,1980,34.1
+BG,Bulgaria,1981,34.3
+BG,Bulgaria,1982,34.5
+BG,Bulgaria,1983,34.7
+BG,Bulgaria,1984,34.9
+BG,Bulgaria,1985,35.1
+BG,Bulgaria,1986,35.5
+BG,Bulgaria,1987,35.7
+BG,Bulgaria,1988,35.9
+BG,Bulgaria,1989,36.0
+BG,Bulgaria,1990,36.5
+BG,Bulgaria,1991,36.8
+BG,Bulgaria,1992,37.1
+BG,Bulgaria,1993,37.5
+BG,Bulgaria,1994,37.8
+BG,Bulgaria,1995,38.0
+BG,Bulgaria,1996,38.3
+BG,Bulgaria,1997,38.5
+BG,Bulgaria,1998,38.7
+BG,Bulgaria,1999,38.9
+BG,Bulgaria,2000,39.1
+BG,Bulgaria,2001,39.3
+BG,Bulgaria,2002,40.3
+BG,Bulgaria,2003,40.6
+BG,Bulgaria,2004,40.9
+BG,Bulgaria,2005,41.2
+BG,Bulgaria,2006,41.5
+BG,Bulgaria,2007,41.7
+BG,Bulgaria,2008,41.9
+BG,Bulgaria,2009,42.0
+BG,Bulgaria,2010,42.2
+BG,Bulgaria,2011,42.5
+BG,Bulgaria,2012,42.7
+BG,Bulgaria,2013,43.3
+BG,Bulgaria,2014,43.7
+BG,Bulgaria,2015,44.2
+BG,Bulgaria,2016,44.6
+BG,Bulgaria,2017,45.0
+BG,Bulgaria,2018,45.4
+BG,Bulgaria,2019,45.8
+BG,Bulgaria,2020,46.3
+BG,Bulgaria,2021,46.4
+BG,Bulgaria,2022,46.7
+BG,Bulgaria,2023,46.8
+BG,Bulgaria,2024,47.1
+BG,Bulgaria,2025,47.3
+BY,Belarus,2006,37.8
+BY,Belarus,2007,38.0
+BY,Belarus,2008,38.1
+BY,Belarus,2009,38.3
+BY,Belarus,2011,39.0
+BY,Belarus,2012,39.1
+BY,Belarus,2013,39.2
+BY,Belarus,2014,39.4
+BY,Belarus,2015,39.5
+BY,Belarus,2016,39.6
+BY,Belarus,2017,39.7
+BY,Belarus,2018,39.9
+BY,Belarus,2019,40.1
+CH,Switzerland,1960,32.6
+CH,Switzerland,1961,32.5
+CH,Switzerland,1962,32.1
+CH,Switzerland,1963,31.8
+CH,Switzerland,1964,31.5
+CH,Switzerland,1965,31.5
+CH,Switzerland,1966,31.6
+CH,Switzerland,1967,31.6
+CH,Switzerland,1968,31.6
+CH,Switzerland,1969,31.7
+CH,Switzerland,1970,31.7
+CH,Switzerland,1971,32.1
+CH,Switzerland,1972,32.2
+CH,Switzerland,1973,32.3
+CH,Switzerland,1974,32.5
+CH,Switzerland,1975,32.8
+CH,Switzerland,1976,33.2
+CH,Switzerland,1977,33.6
+CH,Switzerland,1978,34.0
+CH,Switzerland,1979,34.3
+CH,Switzerland,1980,34.6
+CH,Switzerland,1981,34.9
+CH,Switzerland,1982,35.2
+CH,Switzerland,1983,35.4
+CH,Switzerland,1984,35.7
+CH,Switzerland,1985,36.0
+CH,Switzerland,1986,36.3
+CH,Switzerland,1987,36.5
+CH,Switzerland,1988,36.6
+CH,Switzerland,1989,36.8
+CH,Switzerland,1990,36.9
+CH,Switzerland,1991,36.8
+CH,Switzerland,1992,36.8
+CH,Switzerland,1993,36.9
+CH,Switzerland,1994,37.0
+CH,Switzerland,1995,37.2
+CH,Switzerland,1996,37.4
+CH,Switzerland,1997,37.6
+CH,Switzerland,1998,37.9
+CH,Switzerland,1999,38.2
+CH,Switzerland,2000,38.5
+CH,Switzerland,2001,38.8
+CH,Switzerland,2002,39.1
+CH,Switzerland,2003,39.4
+CH,Switzerland,2004,39.8
+CH,Switzerland,2005,40.1
+CH,Switzerland,2006,40.4
+CH,Switzerland,2007,40.8
+CH,Switzerland,2008,41.0
+CH,Switzerland,2009,41.2
+CH,Switzerland,2010,41.5
+CH,Switzerland,2011,41.6
+CH,Switzerland,2012,41.8
+CH,Switzerland,2013,42.0
+CH,Switzerland,2014,42.1
+CH,Switzerland,2015,42.2
+CH,Switzerland,2016,42.3
+CH,Switzerland,2017,42.3
+CH,Switzerland,2018,42.4
+CH,Switzerland,2019,42.5
+CH,Switzerland,2020,42.6
+CH,Switzerland,2021,42.7
+CH,Switzerland,2022,42.8
+CH,Switzerland,2023,42.8
+CH,Switzerland,2024,42.8
+CH,Switzerland,2025,42.9
+CY,Cyprus,1976,27.4
+CY,Cyprus,1982,28.9
+CY,Cyprus,1983,29.0
+CY,Cyprus,1984,29.2
+CY,Cyprus,1985,29.3
+CY,Cyprus,1986,29.5
+CY,Cyprus,1987,29.7
+CY,Cyprus,1988,29.9
+CY,Cyprus,1989,30.2
+CY,Cyprus,1990,30.5
+CY,Cyprus,1991,30.9
+CY,Cyprus,1992,31.2
+CY,Cyprus,1993,31.6
+CY,Cyprus,1994,31.8
+CY,Cyprus,1995,32.0
+CY,Cyprus,1996,32.3
+CY,Cyprus,1997,32.5
+CY,Cyprus,1998,32.8
+CY,Cyprus,1999,33.0
+CY,Cyprus,2000,33.3
+CY,Cyprus,2001,33.6
+CY,Cyprus,2002,34.2
+CY,Cyprus,2003,34.5
+CY,Cyprus,2004,34.7
+CY,Cyprus,2005,34.9
+CY,Cyprus,2006,35.1
+CY,Cyprus,2007,35.2
+CY,Cyprus,2008,35.4
+CY,Cyprus,2009,35.5
+CY,Cyprus,2010,35.6
+CY,Cyprus,2011,35.7
+CY,Cyprus,2012,35.8
+CY,Cyprus,2013,36.1
+CY,Cyprus,2014,36.6
+CY,Cyprus,2015,37.0
+CY,Cyprus,2016,37.4
+CY,Cyprus,2017,37.9
+CY,Cyprus,2018,38.4
+CY,Cyprus,2019,38.9
+CY,Cyprus,2020,39.3
+CY,Cyprus,2021,39.6
+CY,Cyprus,2022,39.9
+CY,Cyprus,2023,40.2
+CY,Cyprus,2024,40.6
+CY,Cyprus,2025,41.0
+CZ,Czechia,1960,33.2
+CZ,Czechia,1961,33.2
+CZ,Czechia,1962,33.4
+CZ,Czechia,1963,33.5
+CZ,Czechia,1964,33.6
+CZ,Czechia,1965,33.7
+CZ,Czechia,1966,33.7
+CZ,Czechia,1967,33.8
+CZ,Czechia,1968,33.7
+CZ,Czechia,1969,33.7
+CZ,Czechia,1970,33.5
+CZ,Czechia,1971,33.4
+CZ,Czechia,1972,33.2
+CZ,Czechia,1973,33.0
+CZ,Czechia,1974,32.8
+CZ,Czechia,1975,32.7
+CZ,Czechia,1976,32.6
+CZ,Czechia,1977,32.6
+CZ,Czechia,1978,32.6
+CZ,Czechia,1979,32.7
+CZ,Czechia,1980,32.8
+CZ,Czechia,1981,33.1
+CZ,Czechia,1982,33.3
+CZ,Czechia,1983,33.5
+CZ,Czechia,1984,33.7
+CZ,Czechia,1985,33.9
+CZ,Czechia,1986,34.2
+CZ,Czechia,1987,34.4
+CZ,Czechia,1988,34.6
+CZ,Czechia,1989,34.9
+CZ,Czechia,1990,35.1
+CZ,Czechia,1991,35.4
+CZ,Czechia,1992,35.6
+CZ,Czechia,1993,35.8
+CZ,Czechia,1994,36.0
+CZ,Czechia,1995,36.2
+CZ,Czechia,1996,36.4
+CZ,Czechia,1997,36.6
+CZ,Czechia,1998,36.8
+CZ,Czechia,1999,37.1
+CZ,Czechia,2000,37.3
+CZ,Czechia,2001,37.6
+CZ,Czechia,2002,37.9
+CZ,Czechia,2003,38.3
+CZ,Czechia,2004,38.6
+CZ,Czechia,2005,38.8
+CZ,Czechia,2006,39.0
+CZ,Czechia,2007,39.2
+CZ,Czechia,2008,39.3
+CZ,Czechia,2009,39.4
+CZ,Czechia,2010,39.6
+CZ,Czechia,2011,39.8
+CZ,Czechia,2012,40.1
+CZ,Czechia,2013,40.4
+CZ,Czechia,2014,40.8
+CZ,Czechia,2015,41.1
+CZ,Czechia,2016,41.5
+CZ,Czechia,2017,41.9
+CZ,Czechia,2018,42.3
+CZ,Czechia,2019,42.6
+CZ,Czechia,2020,43.0
+CZ,Czechia,2021,43.6
+CZ,Czechia,2022,43.8
+CZ,Czechia,2023,43.7
+CZ,Czechia,2024,44.0
+CZ,Czechia,2025,44.3
+DE,Germany,1960,34.4
+DE,Germany,1961,34.4
+DE,Germany,1962,34.5
+DE,Germany,1963,34.4
+DE,Germany,1964,34.4
+DE,Germany,1965,34.3
+DE,Germany,1966,34.2
+DE,Germany,1967,34.0
+DE,Germany,1968,34.0
+DE,Germany,1969,34.0
+DE,Germany,1970,34.0
+DE,Germany,1971,34.3
+DE,Germany,1972,34.4
+DE,Germany,1973,34.6
+DE,Germany,1974,34.8
+DE,Germany,1975,35.2
+DE,Germany,1976,35.6
+DE,Germany,1977,36.1
+DE,Germany,1978,36.4
+DE,Germany,1979,36.7
+DE,Germany,1980,36.8
+DE,Germany,1981,36.9
+DE,Germany,1982,37.1
+DE,Germany,1983,37.1
+DE,Germany,1984,37.3
+DE,Germany,1985,37.4
+DE,Germany,1986,37.6
+DE,Germany,1987,37.7
+DE,Germany,1988,38.2
+DE,Germany,1989,38.3
+DE,Germany,1990,38.1
+DE,Germany,1991,37.6
+DE,Germany,1992,37.7
+DE,Germany,1993,37.8
+DE,Germany,1994,38.0
+DE,Germany,1995,38.2
+DE,Germany,1996,38.5
+DE,Germany,1997,38.7
+DE,Germany,1998,39.1
+DE,Germany,1999,39.4
+DE,Germany,2000,39.8
+DE,Germany,2001,40.2
+DE,Germany,2002,40.6
+DE,Germany,2003,40.9
+DE,Germany,2004,41.4
+DE,Germany,2005,41.8
+DE,Germany,2006,42.3
+DE,Germany,2007,42.8
+DE,Germany,2008,43.2
+DE,Germany,2009,43.7
+DE,Germany,2010,44.2
+DE,Germany,2011,44.7
+DE,Germany,2012,45.0
+DE,Germany,2013,45.4
+DE,Germany,2014,45.6
+DE,Germany,2015,45.9
+DE,Germany,2016,45.8
+DE,Germany,2017,45.9
+DE,Germany,2018,46.0
+DE,Germany,2019,46.0
+DE,Germany,2020,45.9
+DE,Germany,2021,45.9
+DE,Germany,2022,45.8
+DE,Germany,2023,45.7
+DE,Germany,2024,45.5
+DE,Germany,2025,45.5
+DE_TOT,Germany including former GDR,1960,34.8
+DE_TOT,Germany including former GDR,1961,34.7
+DE_TOT,Germany including former GDR,1962,34.8
+DE_TOT,Germany including former GDR,1963,34.6
+DE_TOT,Germany including former GDR,1964,34.5
+DE_TOT,Germany including former GDR,1965,34.5
+DE_TOT,Germany including former GDR,1966,34.3
+DE_TOT,Germany including former GDR,1967,34.2
+DE_TOT,Germany including former GDR,1968,34.1
+DE_TOT,Germany including former GDR,1969,34.0
+DE_TOT,Germany including former GDR,1970,34.0
+DE_TOT,Germany including former GDR,1971,34.3
+DE_TOT,Germany including former GDR,1972,34.4
+DE_TOT,Germany including former GDR,1973,34.6
+DE_TOT,Germany including former GDR,1974,34.8
+DE_TOT,Germany including former GDR,1975,35.2
+DE_TOT,Germany including former GDR,1976,35.6
+DE_TOT,Germany including former GDR,1977,36.0
+DE_TOT,Germany including former GDR,1978,36.3
+DE_TOT,Germany including former GDR,1979,36.5
+DE_TOT,Germany including former GDR,1980,36.6
+DE_TOT,Germany including former GDR,1981,36.7
+DE_TOT,Germany including former GDR,1982,36.7
+DE_TOT,Germany including former GDR,1983,36.6
+DE_TOT,Germany including former GDR,1984,36.7
+DE_TOT,Germany including former GDR,1985,36.9
+DE_TOT,Germany including former GDR,1986,37.0
+DE_TOT,Germany including former GDR,1987,37.1
+DE_TOT,Germany including former GDR,1988,37.5
+DE_TOT,Germany including former GDR,1989,37.6
+DE_TOT,Germany including former GDR,1990,37.6
+DE_TOT,Germany including former GDR,1991,37.6
+DE_TOT,Germany including former GDR,1992,37.7
+DE_TOT,Germany including former GDR,1993,37.8
+DE_TOT,Germany including former GDR,1994,38.0
+DE_TOT,Germany including former GDR,1995,38.2
+DE_TOT,Germany including former GDR,1996,38.5
+DE_TOT,Germany including former GDR,1997,38.7
+DE_TOT,Germany including former GDR,1998,39.1
+DE_TOT,Germany including former GDR,1999,39.4
+DE_TOT,Germany including former GDR,2000,39.8
+DE_TOT,Germany including former GDR,2001,40.2
+DE_TOT,Germany including former GDR,2002,40.6
+DE_TOT,Germany including former GDR,2003,40.9
+DE_TOT,Germany including former GDR,2004,41.4
+DE_TOT,Germany including former GDR,2005,41.8
+DE_TOT,Germany including former GDR,2006,42.3
+DE_TOT,Germany including former GDR,2007,42.8
+DE_TOT,Germany including former GDR,2008,43.2
+DE_TOT,Germany including former GDR,2009,43.7
+DE_TOT,Germany including former GDR,2010,44.2
+DE_TOT,Germany including former GDR,2011,44.7
+DE_TOT,Germany including former GDR,2012,45.0
+DE_TOT,Germany including former GDR,2013,45.4
+DE_TOT,Germany including former GDR,2014,45.6
+DE_TOT,Germany including former GDR,2015,45.9
+DE_TOT,Germany including former GDR,2016,45.8
+DE_TOT,Germany including former GDR,2017,45.9
+DE_TOT,Germany including former GDR,2018,46.0
+DE_TOT,Germany including former GDR,2019,46.0
+DE_TOT,Germany including former GDR,2020,45.9
+DE_TOT,Germany including former GDR,2021,45.9
+DE_TOT,Germany including former GDR,2022,45.8
+DE_TOT,Germany including former GDR,2023,45.7
+DE_TOT,Germany including former GDR,2024,45.5
+DE_TOT,Germany including former GDR,2025,45.5
+DK,Denmark,1960,33.0
+DK,Denmark,1961,33.1
+DK,Denmark,1962,33.1
+DK,Denmark,1963,33.0
+DK,Denmark,1964,33.0
+DK,Denmark,1965,32.8
+DK,Denmark,1966,32.7
+DK,Denmark,1967,32.5
+DK,Denmark,1968,32.4
+DK,Denmark,1969,32.4
+DK,Denmark,1970,32.5
+DK,Denmark,1971,32.5
+DK,Denmark,1972,32.5
+DK,Denmark,1973,32.5
+DK,Denmark,1974,32.6
+DK,Denmark,1975,32.7
+DK,Denmark,1976,32.9
+DK,Denmark,1977,33.1
+DK,Denmark,1978,33.5
+DK,Denmark,1979,33.8
+DK,Denmark,1980,34.1
+DK,Denmark,1981,34.5
+DK,Denmark,1982,34.9
+DK,Denmark,1983,35.3
+DK,Denmark,1984,35.6
+DK,Denmark,1985,36.0
+DK,Denmark,1986,36.2
+DK,Denmark,1987,36.4
+DK,Denmark,1988,36.6
+DK,Denmark,1989,36.8
+DK,Denmark,1990,37.0
+DK,Denmark,1991,37.2
+DK,Denmark,1992,37.3
+DK,Denmark,1993,37.4
+DK,Denmark,1994,37.6
+DK,Denmark,1995,37.7
+DK,Denmark,1996,37.7
+DK,Denmark,1997,37.8
+DK,Denmark,1998,37.9
+DK,Denmark,1999,38.1
+DK,Denmark,2000,38.2
+DK,Denmark,2001,38.4
+DK,Denmark,2002,38.6
+DK,Denmark,2003,38.8
+DK,Denmark,2004,39.1
+DK,Denmark,2005,39.4
+DK,Denmark,2006,39.7
+DK,Denmark,2007,40.0
+DK,Denmark,2008,40.2
+DK,Denmark,2009,40.3
+DK,Denmark,2010,40.5
+DK,Denmark,2011,40.6
+DK,Denmark,2012,40.8
+DK,Denmark,2013,41.0
+DK,Denmark,2014,41.3
+DK,Denmark,2015,41.5
+DK,Denmark,2016,41.5
+DK,Denmark,2017,41.6
+DK,Denmark,2018,41.8
+DK,Denmark,2019,41.9
+DK,Denmark,2020,42.1
+DK,Denmark,2021,42.2
+DK,Denmark,2022,42.3
+DK,Denmark,2023,42.2
+DK,Denmark,2024,42.2
+DK,Denmark,2025,42.2
+EA20,Euro area – 20 countries (2023-2025),2014,43.0
+EA20,Euro area – 20 countries (2023-2025),2015,43.3
+EA20,Euro area – 20 countries (2023-2025),2016,43.6
+EA20,Euro area – 20 countries (2023-2025),2017,43.8
+EA20,Euro area – 20 countries (2023-2025),2018,44.0
+EA20,Euro area – 20 countries (2023-2025),2019,44.3
+EA20,Euro area – 20 countries (2023-2025),2020,44.5
+EA20,Euro area – 20 countries (2023-2025),2021,44.7
+EA20,Euro area – 20 countries (2023-2025),2022,44.9
+EA20,Euro area – 20 countries (2023-2025),2023,45.0
+EA20,Euro area – 20 countries (2023-2025),2024,45.1
+EA20,Euro area – 20 countries (2023-2025),2025,45.3
+EA21,Euro area – 21 countries (from 2026),2025,45.3
+EE,Estonia,1960,32.0
+EE,Estonia,1961,32.3
+EE,Estonia,1962,32.5
+EE,Estonia,1963,32.6
+EE,Estonia,1964,32.8
+EE,Estonia,1965,33.0
+EE,Estonia,1966,33.1
+EE,Estonia,1967,33.3
+EE,Estonia,1968,33.4
+EE,Estonia,1969,33.5
+EE,Estonia,1970,33.6
+EE,Estonia,1971,33.7
+EE,Estonia,1972,33.8
+EE,Estonia,1973,34.0
+EE,Estonia,1974,34.1
+EE,Estonia,1975,34.2
+EE,Estonia,1976,34.4
+EE,Estonia,1977,34.4
+EE,Estonia,1978,34.2
+EE,Estonia,1979,33.9
+EE,Estonia,1980,33.7
+EE,Estonia,1981,33.7
+EE,Estonia,1982,33.7
+EE,Estonia,1983,33.8
+EE,Estonia,1984,33.8
+EE,Estonia,1985,33.8
+EE,Estonia,1986,33.9
+EE,Estonia,1987,33.9
+EE,Estonia,1988,34.0
+EE,Estonia,1989,34.1
+EE,Estonia,1990,34.2
+EE,Estonia,1991,34.5
+EE,Estonia,1992,34.8
+EE,Estonia,1993,35.3
+EE,Estonia,1994,35.8
+EE,Estonia,1995,36.2
+EE,Estonia,1996,36.5
+EE,Estonia,1997,36.8
+EE,Estonia,1998,37.2
+EE,Estonia,1999,37.5
+EE,Estonia,2000,37.9
+EE,Estonia,2001,38.2
+EE,Estonia,2002,38.5
+EE,Estonia,2003,38.7
+EE,Estonia,2004,39.0
+EE,Estonia,2005,39.2
+EE,Estonia,2006,39.4
+EE,Estonia,2007,39.6
+EE,Estonia,2008,39.8
+EE,Estonia,2009,39.9
+EE,Estonia,2010,40.1
+EE,Estonia,2011,40.4
+EE,Estonia,2012,40.7
+EE,Estonia,2013,41.0
+EE,Estonia,2014,41.3
+EE,Estonia,2015,41.4
+EE,Estonia,2016,41.6
+EE,Estonia,2017,41.8
+EE,Estonia,2018,42.0
+EE,Estonia,2019,42.1
+EE,Estonia,2020,42.3
+EE,Estonia,2021,42.5
+EE,Estonia,2022,42.6
+EE,Estonia,2023,42.3
+EE,Estonia,2024,42.5
+EE,Estonia,2025,42.9
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1985,34.1
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1990,35.2
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1991,35.4
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1992,35.7
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1993,35.9
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1994,36.2
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1995,36.5
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1996,36.8
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1997,37.0
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1998,37.3
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",1999,37.6
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2000,38.0
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2001,38.3
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2002,38.6
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2003,38.9
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2004,39.2
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2005,39.5
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2006,39.8
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2007,40.1
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2008,40.4
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2009,40.7
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2010,41.0
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2011,41.3
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2012,41.6
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2013,41.8
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2016,42.6
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2017,42.8
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2018,43.0
+EEA30_2007,"European Economic Area (EU27 - 2007-2013 and IS, LI, NO)",2019,43.3
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2001,38.3
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2002,38.6
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2003,38.9
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2004,39.2
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2005,39.5
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2006,39.8
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2007,40.1
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2008,40.4
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2009,40.7
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2010,41.0
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2011,41.3
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2012,41.6
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2014,42.1
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2015,42.4
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2016,42.6
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2017,42.8
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2018,43.1
+EEA31,"European Economic Area (EU28 - 2013-2020 and IS, LI, NO)",2019,43.3
+EFTA,European Free Trade Association,1960,33.1
+EFTA,European Free Trade Association,1961,33.1
+EFTA,European Free Trade Association,1962,32.8
+EFTA,European Free Trade Association,1963,32.5
+EFTA,European Free Trade Association,1964,32.3
+EFTA,European Free Trade Association,1965,32.2
+EFTA,European Free Trade Association,1966,32.2
+EFTA,European Free Trade Association,1967,32.2
+EFTA,European Free Trade Association,1968,32.1
+EFTA,European Free Trade Association,1969,32.0
+EFTA,European Free Trade Association,1971,32.1
+EFTA,European Free Trade Association,1973,32.1
+EFTA,European Free Trade Association,1974,32.2
+EFTA,European Free Trade Association,1975,32.4
+EFTA,European Free Trade Association,1976,32.7
+EFTA,European Free Trade Association,1977,33.0
+EFTA,European Free Trade Association,1978,33.3
+EFTA,European Free Trade Association,1979,33.6
+EFTA,European Free Trade Association,1980,33.9
+EFTA,European Free Trade Association,1981,34.2
+EFTA,European Free Trade Association,1982,34.5
+EFTA,European Free Trade Association,1983,34.7
+EFTA,European Free Trade Association,1984,35.0
+EFTA,European Free Trade Association,1985,35.3
+EFTA,European Free Trade Association,1986,35.5
+EFTA,European Free Trade Association,1987,35.7
+EFTA,European Free Trade Association,1988,35.8
+EFTA,European Free Trade Association,1989,36.0
+EFTA,European Free Trade Association,1990,36.1
+EFTA,European Free Trade Association,1991,36.1
+EFTA,European Free Trade Association,1992,36.2
+EFTA,European Free Trade Association,1993,36.3
+EFTA,European Free Trade Association,1994,36.4
+EFTA,European Free Trade Association,1995,36.6
+EFTA,European Free Trade Association,1996,36.8
+EFTA,European Free Trade Association,1997,37.0
+EFTA,European Free Trade Association,1998,37.3
+EFTA,European Free Trade Association,1999,37.5
+EFTA,European Free Trade Association,2000,37.8
+EFTA,European Free Trade Association,2001,38.0
+EFTA,European Free Trade Association,2002,38.3
+EFTA,European Free Trade Association,2003,38.6
+EFTA,European Free Trade Association,2004,38.9
+EFTA,European Free Trade Association,2005,39.2
+EFTA,European Free Trade Association,2006,39.5
+EFTA,European Free Trade Association,2007,39.7
+EFTA,European Free Trade Association,2008,39.9
+EFTA,European Free Trade Association,2009,40.1
+EFTA,European Free Trade Association,2010,40.3
+EFTA,European Free Trade Association,2011,40.4
+EFTA,European Free Trade Association,2012,40.5
+EFTA,European Free Trade Association,2014,40.8
+EFTA,European Free Trade Association,2015,40.9
+EFTA,European Free Trade Association,2016,41.0
+EFTA,European Free Trade Association,2017,41.1
+EFTA,European Free Trade Association,2018,41.2
+EFTA,European Free Trade Association,2019,41.3
+EFTA,European Free Trade Association,2020,41.5
+EFTA,European Free Trade Association,2021,41.6
+EFTA,European Free Trade Association,2022,41.8
+EFTA,European Free Trade Association,2023,41.8
+EFTA,European Free Trade Association,2024,41.9
+EFTA,European Free Trade Association,2025,42.1
+EL,Greece,1970,33.9
+EL,Greece,1971,33.1
+EL,Greece,1972,33.3
+EL,Greece,1973,33.4
+EL,Greece,1974,33.8
+EL,Greece,1975,33.9
+EL,Greece,1976,33.9
+EL,Greece,1977,33.8
+EL,Greece,1978,33.8
+EL,Greece,1979,33.9
+EL,Greece,1980,34.0
+EL,Greece,1981,34.3
+EL,Greece,1982,34.5
+EL,Greece,1983,34.7
+EL,Greece,1984,34.9
+EL,Greece,1985,35.2
+EL,Greece,1986,35.0
+EL,Greece,1987,35.3
+EL,Greece,1988,35.5
+EL,Greece,1989,35.8
+EL,Greece,1990,36.0
+EL,Greece,1991,36.1
+EL,Greece,1992,36.3
+EL,Greece,1993,36.6
+EL,Greece,1994,36.9
+EL,Greece,1995,37.1
+EL,Greece,1996,37.4
+EL,Greece,1997,37.7
+EL,Greece,1998,37.9
+EL,Greece,1999,38.2
+EL,Greece,2000,38.5
+EL,Greece,2001,38.7
+EL,Greece,2002,38.3
+EL,Greece,2003,38.6
+EL,Greece,2004,38.9
+EL,Greece,2005,39.2
+EL,Greece,2006,39.5
+EL,Greece,2007,39.9
+EL,Greece,2008,40.3
+EL,Greece,2009,40.7
+EL,Greece,2010,41.1
+EL,Greece,2012,42.0
+EL,Greece,2013,42.4
+EL,Greece,2014,43.0
+EL,Greece,2015,43.5
+EL,Greece,2016,44.0
+EL,Greece,2017,44.3
+EL,Greece,2018,44.7
+EL,Greece,2019,45.1
+EL,Greece,2020,45.4
+EL,Greece,2021,45.8
+EL,Greece,2022,46.2
+EL,Greece,2023,46.6
+EL,Greece,2024,46.9
+EL,Greece,2025,47.2
+ES,Spain,1960,29.6
+ES,Spain,1962,29.6
+ES,Spain,1963,29.8
+ES,Spain,1964,30.0
+ES,Spain,1965,30.2
+ES,Spain,1966,30.4
+ES,Spain,1967,30.4
+ES,Spain,1968,30.3
+ES,Spain,1969,30.2
+ES,Spain,1970,30.2
+ES,Spain,1971,30.1
+ES,Spain,1972,30.0
+ES,Spain,1973,29.9
+ES,Spain,1974,30.0
+ES,Spain,1975,30.0
+ES,Spain,1976,30.1
+ES,Spain,1977,30.2
+ES,Spain,1978,30.3
+ES,Spain,1979,30.5
+ES,Spain,1980,30.7
+ES,Spain,1981,30.8
+ES,Spain,1982,31.0
+ES,Spain,1983,31.2
+ES,Spain,1984,31.5
+ES,Spain,1985,31.7
+ES,Spain,1986,32.0
+ES,Spain,1987,32.3
+ES,Spain,1988,32.6
+ES,Spain,1989,33.0
+ES,Spain,1990,33.4
+ES,Spain,1991,33.7
+ES,Spain,1992,34.1
+ES,Spain,1993,34.4
+ES,Spain,1994,34.8
+ES,Spain,1995,35.2
+ES,Spain,1996,35.6
+ES,Spain,1997,36.0
+ES,Spain,1998,36.4
+ES,Spain,1999,36.8
+ES,Spain,2000,37.2
+ES,Spain,2001,37.6
+ES,Spain,2002,37.9
+ES,Spain,2003,38.1
+ES,Spain,2004,38.3
+ES,Spain,2005,38.6
+ES,Spain,2006,38.8
+ES,Spain,2007,39.0
+ES,Spain,2008,39.2
+ES,Spain,2009,39.4
+ES,Spain,2010,39.9
+ES,Spain,2011,40.3
+ES,Spain,2012,40.8
+ES,Spain,2013,41.3
+ES,Spain,2014,41.8
+ES,Spain,2015,42.3
+ES,Spain,2016,42.7
+ES,Spain,2017,43.2
+ES,Spain,2018,43.5
+ES,Spain,2019,43.9
+ES,Spain,2020,44.2
+ES,Spain,2021,44.6
+ES,Spain,2022,45.1
+ES,Spain,2023,45.3
+ES,Spain,2024,45.6
+ES,Spain,2025,45.8
+EU27_2007,European Union - 27 countries (2007-2013),1985,34.1
+EU27_2007,European Union - 27 countries (2007-2013),1990,35.2
+EU27_2007,European Union - 27 countries (2007-2013),1991,35.4
+EU27_2007,European Union - 27 countries (2007-2013),1992,35.7
+EU27_2007,European Union - 27 countries (2007-2013),1993,35.9
+EU27_2007,European Union - 27 countries (2007-2013),1994,36.2
+EU27_2007,European Union - 27 countries (2007-2013),1995,36.5
+EU27_2007,European Union - 27 countries (2007-2013),1996,36.8
+EU27_2007,European Union - 27 countries (2007-2013),1997,37.1
+EU27_2007,European Union - 27 countries (2007-2013),1998,37.3
+EU27_2007,European Union - 27 countries (2007-2013),1999,37.7
+EU27_2007,European Union - 27 countries (2007-2013),2000,38.0
+EU27_2007,European Union - 27 countries (2007-2013),2001,38.3
+EU27_2007,European Union - 27 countries (2007-2013),2002,38.6
+EU27_2007,European Union - 27 countries (2007-2013),2003,38.9
+EU27_2007,European Union - 27 countries (2007-2013),2004,39.2
+EU27_2007,European Union - 27 countries (2007-2013),2005,39.5
+EU27_2007,European Union - 27 countries (2007-2013),2006,39.8
+EU27_2007,European Union - 27 countries (2007-2013),2007,40.1
+EU27_2007,European Union - 27 countries (2007-2013),2008,40.4
+EU27_2007,European Union - 27 countries (2007-2013),2009,40.7
+EU27_2007,European Union - 27 countries (2007-2013),2010,41.0
+EU27_2007,European Union - 27 countries (2007-2013),2011,41.3
+EU27_2007,European Union - 27 countries (2007-2013),2012,41.6
+EU27_2007,European Union - 27 countries (2007-2013),2014,42.2
+EU27_2007,European Union - 27 countries (2007-2013),2015,42.4
+EU27_2007,European Union - 27 countries (2007-2013),2016,42.6
+EU27_2007,European Union - 27 countries (2007-2013),2017,42.9
+EU27_2007,European Union - 27 countries (2007-2013),2018,43.1
+EU27_2007,European Union - 27 countries (2007-2013),2019,43.3
+EU27_2020,European Union - 27 countries (from 2020),2001,38.4
+EU27_2020,European Union - 27 countries (from 2020),2002,38.7
+EU27_2020,European Union - 27 countries (from 2020),2003,39.0
+EU27_2020,European Union - 27 countries (from 2020),2004,39.3
+EU27_2020,European Union - 27 countries (from 2020),2005,39.6
+EU27_2020,European Union - 27 countries (from 2020),2006,40.0
+EU27_2020,European Union - 27 countries (from 2020),2007,40.3
+EU27_2020,European Union - 27 countries (from 2020),2008,40.6
+EU27_2020,European Union - 27 countries (from 2020),2009,41.0
+EU27_2020,European Union - 27 countries (from 2020),2010,41.3
+EU27_2020,European Union - 27 countries (from 2020),2011,41.6
+EU27_2020,European Union - 27 countries (from 2020),2012,41.9
+EU27_2020,European Union - 27 countries (from 2020),2014,42.5
+EU27_2020,European Union - 27 countries (from 2020),2015,42.8
+EU27_2020,European Union - 27 countries (from 2020),2016,43.0
+EU27_2020,European Union - 27 countries (from 2020),2017,43.2
+EU27_2020,European Union - 27 countries (from 2020),2018,43.5
+EU27_2020,European Union - 27 countries (from 2020),2019,43.7
+EU27_2020,European Union - 27 countries (from 2020),2020,43.9
+EU27_2020,European Union - 27 countries (from 2020),2021,44.2
+EU27_2020,European Union - 27 countries (from 2020),2022,44.4
+EU27_2020,European Union - 27 countries (from 2020),2023,44.5
+EU27_2020,European Union - 27 countries (from 2020),2024,44.7
+EU27_2020,European Union - 27 countries (from 2020),2025,44.9
+EU28,European Union - 28 countries (2013-2020),2001,38.3
+EU28,European Union - 28 countries (2013-2020),2002,38.6
+EU28,European Union - 28 countries (2013-2020),2003,38.9
+EU28,European Union - 28 countries (2013-2020),2004,39.2
+EU28,European Union - 28 countries (2013-2020),2005,39.5
+EU28,European Union - 28 countries (2013-2020),2006,39.8
+EU28,European Union - 28 countries (2013-2020),2007,40.1
+EU28,European Union - 28 countries (2013-2020),2008,40.4
+EU28,European Union - 28 countries (2013-2020),2009,40.7
+EU28,European Union - 28 countries (2013-2020),2010,41.0
+EU28,European Union - 28 countries (2013-2020),2011,41.3
+EU28,European Union - 28 countries (2013-2020),2012,41.6
+EU28,European Union - 28 countries (2013-2020),2014,42.2
+EU28,European Union - 28 countries (2013-2020),2015,42.4
+EU28,European Union - 28 countries (2013-2020),2016,42.6
+EU28,European Union - 28 countries (2013-2020),2017,42.9
+EU28,European Union - 28 countries (2013-2020),2018,43.1
+EU28,European Union - 28 countries (2013-2020),2019,43.3
+FI,Finland,1960,28.4
+FI,Finland,1961,28.5
+FI,Finland,1962,28.5
+FI,Finland,1963,28.4
+FI,Finland,1964,28.4
+FI,Finland,1965,28.5
+FI,Finland,1966,28.6
+FI,Finland,1967,28.8
+FI,Finland,1968,28.9
+FI,Finland,1969,29.1
+FI,Finland,1970,29.4
+FI,Finland,1971,29.8
+FI,Finland,1972,30.1
+FI,Finland,1973,30.1
+FI,Finland,1974,30.3
+FI,Finland,1975,30.5
+FI,Finland,1976,30.8
+FI,Finland,1977,31.2
+FI,Finland,1978,31.6
+FI,Finland,1979,32.1
+FI,Finland,1980,32.6
+FI,Finland,1981,33.0
+FI,Finland,1982,33.4
+FI,Finland,1983,33.8
+FI,Finland,1984,34.2
+FI,Finland,1985,34.5
+FI,Finland,1986,34.9
+FI,Finland,1987,35.3
+FI,Finland,1988,35.7
+FI,Finland,1989,36.0
+FI,Finland,1990,36.3
+FI,Finland,1991,36.6
+FI,Finland,1992,36.9
+FI,Finland,1993,37.1
+FI,Finland,1994,37.4
+FI,Finland,1995,37.7
+FI,Finland,1996,38.0
+FI,Finland,1997,38.3
+FI,Finland,1998,38.6
+FI,Finland,1999,38.9
+FI,Finland,2000,39.2
+FI,Finland,2001,39.5
+FI,Finland,2002,39.8
+FI,Finland,2003,40.1
+FI,Finland,2004,40.5
+FI,Finland,2005,40.8
+FI,Finland,2006,41.1
+FI,Finland,2007,41.3
+FI,Finland,2008,41.5
+FI,Finland,2009,41.8
+FI,Finland,2010,42.0
+FI,Finland,2011,42.1
+FI,Finland,2012,42.2
+FI,Finland,2013,42.3
+FI,Finland,2014,42.4
+FI,Finland,2015,42.4
+FI,Finland,2016,42.5
+FI,Finland,2017,42.5
+FI,Finland,2018,42.7
+FI,Finland,2019,42.9
+FI,Finland,2020,43.1
+FI,Finland,2021,43.3
+FI,Finland,2022,43.4
+FI,Finland,2023,43.5
+FI,Finland,2024,43.4
+FI,Finland,2025,43.5
+FR,France,1991,34.7
+FR,France,1992,35.0
+FR,France,1993,35.3
+FR,France,1994,35.6
+FR,France,1995,35.9
+FR,France,1996,36.2
+FR,France,1997,36.5
+FR,France,1998,36.8
+FR,France,1999,37.0
+FR,France,2000,37.3
+FR,France,2001,37.6
+FR,France,2002,37.9
+FR,France,2003,38.1
+FR,France,2004,38.4
+FR,France,2005,38.6
+FR,France,2006,38.9
+FR,France,2007,39.1
+FR,France,2008,39.3
+FR,France,2009,39.6
+FR,France,2010,39.8
+FR,France,2011,40.0
+FR,France,2012,40.3
+FR,France,2013,40.6
+FR,France,2014,40.7
+FR,France,2015,41.0
+FR,France,2016,41.2
+FR,France,2017,41.4
+FR,France,2018,41.6
+FR,France,2019,41.8
+FR,France,2020,41.9
+FR,France,2021,42.0
+FR,France,2022,42.1
+FR,France,2023,42.3
+FR,France,2024,42.6
+FR,France,2025,42.8
+FX,Metropolitan France,1960,33.0
+FX,Metropolitan France,1961,33.0
+FX,Metropolitan France,1962,33.0
+FX,Metropolitan France,1963,32.9
+FX,Metropolitan France,1964,32.8
+FX,Metropolitan France,1965,32.8
+FX,Metropolitan France,1966,32.8
+FX,Metropolitan France,1967,32.7
+FX,Metropolitan France,1968,32.7
+FX,Metropolitan France,1969,32.6
+FX,Metropolitan France,1970,32.5
+FX,Metropolitan France,1971,32.4
+FX,Metropolitan France,1972,32.2
+FX,Metropolitan France,1973,31.9
+FX,Metropolitan France,1974,31.7
+FX,Metropolitan France,1975,31.6
+FX,Metropolitan France,1976,31.5
+FX,Metropolitan France,1977,31.5
+FX,Metropolitan France,1978,31.7
+FX,Metropolitan France,1979,31.9
+FX,Metropolitan France,1980,32.2
+FX,Metropolitan France,1981,32.5
+FX,Metropolitan France,1982,32.7
+FX,Metropolitan France,1983,32.9
+FX,Metropolitan France,1984,33.2
+FX,Metropolitan France,1985,33.5
+FX,Metropolitan France,1986,33.7
+FX,Metropolitan France,1987,33.9
+FX,Metropolitan France,1988,34.2
+FX,Metropolitan France,1989,34.4
+FX,Metropolitan France,1990,34.7
+FX,Metropolitan France,1991,34.9
+FX,Metropolitan France,1992,35.2
+FX,Metropolitan France,1993,35.5
+FX,Metropolitan France,1994,35.8
+FX,Metropolitan France,1995,36.1
+FX,Metropolitan France,1996,36.4
+FX,Metropolitan France,1997,36.7
+FX,Metropolitan France,1998,37.0
+FX,Metropolitan France,1999,37.3
+FX,Metropolitan France,2000,37.6
+FX,Metropolitan France,2001,37.8
+FX,Metropolitan France,2002,38.1
+FX,Metropolitan France,2003,38.3
+FX,Metropolitan France,2004,38.6
+FX,Metropolitan France,2005,38.8
+FX,Metropolitan France,2006,39.1
+FX,Metropolitan France,2007,39.3
+FX,Metropolitan France,2008,39.5
+FX,Metropolitan France,2009,39.7
+FX,Metropolitan France,2010,40.0
+FX,Metropolitan France,2011,40.2
+FX,Metropolitan France,2012,40.4
+FX,Metropolitan France,2013,40.7
+GE,Georgia,2006,35.5
+GE,Georgia,2007,35.8
+GE,Georgia,2008,36.1
+GE,Georgia,2009,36.4
+GE,Georgia,2010,36.6
+GE,Georgia,2011,36.7
+GE,Georgia,2012,36.9
+GE,Georgia,2014,37.5
+GE,Georgia,2015,37.4
+GE,Georgia,2016,37.7
+GE,Georgia,2017,37.8
+GE,Georgia,2018,37.7
+GE,Georgia,2019,37.9
+GE,Georgia,2020,38.0
+GE,Georgia,2021,38.1
+GE,Georgia,2022,38.2
+GE,Georgia,2023,38.1
+GE,Georgia,2024,38.8
+GE,Georgia,2025,39.2
+HR,Croatia,2001,39.8
+HR,Croatia,2002,40.1
+HR,Croatia,2003,40.4
+HR,Croatia,2004,40.6
+HR,Croatia,2005,40.8
+HR,Croatia,2006,41.0
+HR,Croatia,2007,41.3
+HR,Croatia,2008,41.5
+HR,Croatia,2009,41.7
+HR,Croatia,2010,41.9
+HR,Croatia,2011,42.1
+HR,Croatia,2012,42.2
+HR,Croatia,2013,42.4
+HR,Croatia,2014,42.8
+HR,Croatia,2015,43.1
+HR,Croatia,2016,43.4
+HR,Croatia,2017,43.9
+HR,Croatia,2018,44.3
+HR,Croatia,2019,44.7
+HR,Croatia,2020,45.0
+HR,Croatia,2021,45.3
+HR,Croatia,2022,45.4
+HR,Croatia,2023,45.4
+HR,Croatia,2024,45.4
+HR,Croatia,2025,45.5
+HU,Hungary,1960,32.0
+HU,Hungary,1961,32.2
+HU,Hungary,1962,32.5
+HU,Hungary,1963,32.8
+HU,Hungary,1964,33.1
+HU,Hungary,1965,33.3
+HU,Hungary,1966,33.6
+HU,Hungary,1967,33.8
+HU,Hungary,1968,33.9
+HU,Hungary,1969,34.0
+HU,Hungary,1970,34.1
+HU,Hungary,1971,34.1
+HU,Hungary,1972,34.2
+HU,Hungary,1973,34.2
+HU,Hungary,1974,34.3
+HU,Hungary,1975,34.2
+HU,Hungary,1976,34.2
+HU,Hungary,1977,34.1
+HU,Hungary,1978,34.1
+HU,Hungary,1979,34.2
+HU,Hungary,1980,34.3
+HU,Hungary,1981,34.3
+HU,Hungary,1982,34.3
+HU,Hungary,1983,34.5
+HU,Hungary,1984,34.7
+HU,Hungary,1985,34.9
+HU,Hungary,1986,35.2
+HU,Hungary,1987,35.4
+HU,Hungary,1988,35.6
+HU,Hungary,1989,35.8
+HU,Hungary,1990,36.1
+HU,Hungary,1991,36.5
+HU,Hungary,1992,36.8
+HU,Hungary,1993,37.1
+HU,Hungary,1994,37.4
+HU,Hungary,1995,37.6
+HU,Hungary,1996,37.8
+HU,Hungary,1997,38.0
+HU,Hungary,1998,38.2
+HU,Hungary,1999,38.3
+HU,Hungary,2000,38.5
+HU,Hungary,2001,38.6
+HU,Hungary,2002,38.7
+HU,Hungary,2003,38.8
+HU,Hungary,2004,38.8
+HU,Hungary,2005,38.9
+HU,Hungary,2006,39.0
+HU,Hungary,2007,39.2
+HU,Hungary,2008,39.4
+HU,Hungary,2009,39.6
+HU,Hungary,2010,39.8
+HU,Hungary,2011,40.1
+HU,Hungary,2012,40.8
+HU,Hungary,2013,41.1
+HU,Hungary,2014,41.4
+HU,Hungary,2015,41.6
+HU,Hungary,2016,41.9
+HU,Hungary,2017,42.3
+HU,Hungary,2018,42.6
+HU,Hungary,2019,43.0
+HU,Hungary,2020,43.3
+HU,Hungary,2021,43.7
+HU,Hungary,2022,43.9
+HU,Hungary,2023,44.2
+HU,Hungary,2024,44.5
+HU,Hungary,2025,44.8
+IE,Ireland,1960,29.8
+IE,Ireland,1961,29.8
+IE,Ireland,1962,29.6
+IE,Ireland,1963,29.3
+IE,Ireland,1964,29.0
+IE,Ireland,1965,28.7
+IE,Ireland,1966,28.3
+IE,Ireland,1967,28.1
+IE,Ireland,1968,27.9
+IE,Ireland,1969,27.6
+IE,Ireland,1970,27.4
+IE,Ireland,1971,27.2
+IE,Ireland,1972,27.1
+IE,Ireland,1973,27.0
+IE,Ireland,1974,26.9
+IE,Ireland,1975,26.8
+IE,Ireland,1976,26.7
+IE,Ireland,1977,26.6
+IE,Ireland,1978,26.6
+IE,Ireland,1979,26.5
+IE,Ireland,1980,26.5
+IE,Ireland,1981,26.5
+IE,Ireland,1982,26.6
+IE,Ireland,1983,26.7
+IE,Ireland,1984,26.9
+IE,Ireland,1985,27.2
+IE,Ireland,1986,27.7
+IE,Ireland,1987,27.7
+IE,Ireland,1988,28.1
+IE,Ireland,1989,28.6
+IE,Ireland,1990,29.1
+IE,Ireland,1991,29.4
+IE,Ireland,1992,29.7
+IE,Ireland,1993,30.1
+IE,Ireland,1994,30.4
+IE,Ireland,1995,30.8
+IE,Ireland,1996,31.1
+IE,Ireland,1997,31.5
+IE,Ireland,1998,31.8
+IE,Ireland,1999,32.2
+IE,Ireland,2000,32.4
+IE,Ireland,2001,32.6
+IE,Ireland,2002,32.8
+IE,Ireland,2003,33.0
+IE,Ireland,2004,33.3
+IE,Ireland,2005,33.5
+IE,Ireland,2006,33.5
+IE,Ireland,2007,33.3
+IE,Ireland,2008,33.4
+IE,Ireland,2009,33.6
+IE,Ireland,2010,34.0
+IE,Ireland,2011,34.5
+IE,Ireland,2012,35.0
+IE,Ireland,2013,35.4
+IE,Ireland,2014,35.8
+IE,Ireland,2015,36.2
+IE,Ireland,2016,36.5
+IE,Ireland,2017,36.9
+IE,Ireland,2018,37.3
+IE,Ireland,2019,37.7
+IE,Ireland,2020,38.0
+IE,Ireland,2021,38.4
+IE,Ireland,2022,38.8
+IE,Ireland,2023,39.1
+IE,Ireland,2024,39.4
+IE,Ireland,2025,39.6
+IS,Iceland,1960,25.6
+IS,Iceland,1961,25.3
+IS,Iceland,1962,25.0
+IS,Iceland,1963,24.8
+IS,Iceland,1964,24.5
+IS,Iceland,1965,24.2
+IS,Iceland,1966,24.0
+IS,Iceland,1967,24.0
+IS,Iceland,1968,24.0
+IS,Iceland,1969,24.2
+IS,Iceland,1970,24.3
+IS,Iceland,1971,24.5
+IS,Iceland,1972,24.7
+IS,Iceland,1973,24.8
+IS,Iceland,1974,25.0
+IS,Iceland,1975,25.2
+IS,Iceland,1976,25.5
+IS,Iceland,1977,25.8
+IS,Iceland,1978,26.2
+IS,Iceland,1979,26.5
+IS,Iceland,1980,26.7
+IS,Iceland,1981,27.0
+IS,Iceland,1982,27.3
+IS,Iceland,1983,27.5
+IS,Iceland,1984,27.8
+IS,Iceland,1985,28.1
+IS,Iceland,1986,28.6
+IS,Iceland,1987,29.0
+IS,Iceland,1988,29.2
+IS,Iceland,1989,29.4
+IS,Iceland,1990,29.8
+IS,Iceland,1991,30.1
+IS,Iceland,1992,30.4
+IS,Iceland,1993,30.6
+IS,Iceland,1994,30.9
+IS,Iceland,1995,31.3
+IS,Iceland,1996,31.6
+IS,Iceland,1997,32.0
+IS,Iceland,1998,32.3
+IS,Iceland,1999,32.6
+IS,Iceland,2000,32.8
+IS,Iceland,2001,33.0
+IS,Iceland,2002,33.2
+IS,Iceland,2003,33.5
+IS,Iceland,2004,33.8
+IS,Iceland,2005,34.1
+IS,Iceland,2006,34.3
+IS,Iceland,2007,34.6
+IS,Iceland,2008,34.6
+IS,Iceland,2009,34.5
+IS,Iceland,2010,34.8
+IS,Iceland,2011,35.0
+IS,Iceland,2012,35.3
+IS,Iceland,2013,35.5
+IS,Iceland,2014,35.6
+IS,Iceland,2015,35.8
+IS,Iceland,2016,36.1
+IS,Iceland,2017,36.3
+IS,Iceland,2018,36.3
+IS,Iceland,2019,36.4
+IS,Iceland,2020,36.5
+IS,Iceland,2021,36.7
+IS,Iceland,2022,36.7
+IS,Iceland,2023,36.7
+IS,Iceland,2024,37.0
+IS,Iceland,2025,37.2
+IT,Italy,1960,31.2
+IT,Italy,1961,31.4
+IT,Italy,1962,31.6
+IT,Italy,1963,31.8
+IT,Italy,1964,32.0
+IT,Italy,1965,32.1
+IT,Italy,1966,32.2
+IT,Italy,1967,32.3
+IT,Italy,1968,32.4
+IT,Italy,1969,32.6
+IT,Italy,1970,32.7
+IT,Italy,1971,32.8
+IT,Italy,1972,33.1
+IT,Italy,1973,33.2
+IT,Italy,1974,33.4
+IT,Italy,1975,33.4
+IT,Italy,1976,33.5
+IT,Italy,1977,33.5
+IT,Italy,1978,33.6
+IT,Italy,1979,33.7
+IT,Italy,1980,33.8
+IT,Italy,1981,34.1
+IT,Italy,1982,34.4
+IT,Italy,1983,34.8
+IT,Italy,1984,35.1
+IT,Italy,1985,35.4
+IT,Italy,1986,35.7
+IT,Italy,1987,36.0
+IT,Italy,1988,36.3
+IT,Italy,1989,36.6
+IT,Italy,1990,36.9
+IT,Italy,1991,37.2
+IT,Italy,1992,37.6
+IT,Italy,1993,37.9
+IT,Italy,1994,38.2
+IT,Italy,1995,38.5
+IT,Italy,1996,38.9
+IT,Italy,1997,39.2
+IT,Italy,1998,39.4
+IT,Italy,1999,39.7
+IT,Italy,2000,40.1
+IT,Italy,2001,40.4
+IT,Italy,2002,40.7
+IT,Italy,2003,41.1
+IT,Italy,2004,41.3
+IT,Italy,2005,41.6
+IT,Italy,2006,41.9
+IT,Italy,2007,42.3
+IT,Italy,2008,42.6
+IT,Italy,2009,42.9
+IT,Italy,2010,43.3
+IT,Italy,2011,43.7
+IT,Italy,2012,44.0
+IT,Italy,2013,44.4
+IT,Italy,2014,44.7
+IT,Italy,2015,45.2
+IT,Italy,2016,45.6
+IT,Italy,2017,46.0
+IT,Italy,2018,46.4
+IT,Italy,2019,46.8
+IT,Italy,2020,47.2
+IT,Italy,2021,47.6
+IT,Italy,2022,48.0
+IT,Italy,2023,48.4
+IT,Italy,2024,48.7
+IT,Italy,2025,49.1
+LI,Liechtenstein,1960,27.7
+LI,Liechtenstein,1961,27.9
+LI,Liechtenstein,1962,27.7
+LI,Liechtenstein,1963,27.4
+LI,Liechtenstein,1964,27.2
+LI,Liechtenstein,1965,27.2
+LI,Liechtenstein,1966,26.9
+LI,Liechtenstein,1967,26.9
+LI,Liechtenstein,1968,26.8
+LI,Liechtenstein,1969,26.8
+LI,Liechtenstein,1971,27.2
+LI,Liechtenstein,1973,27.7
+LI,Liechtenstein,1974,27.8
+LI,Liechtenstein,1975,28.0
+LI,Liechtenstein,1976,28.4
+LI,Liechtenstein,1977,28.7
+LI,Liechtenstein,1978,28.9
+LI,Liechtenstein,1979,29.2
+LI,Liechtenstein,1980,29.5
+LI,Liechtenstein,1981,30.3
+LI,Liechtenstein,1982,30.0
+LI,Liechtenstein,1983,30.3
+LI,Liechtenstein,1984,30.8
+LI,Liechtenstein,1985,31.1
+LI,Liechtenstein,1986,31.4
+LI,Liechtenstein,1987,31.7
+LI,Liechtenstein,1988,32.0
+LI,Liechtenstein,1989,32.3
+LI,Liechtenstein,1990,32.6
+LI,Liechtenstein,1991,33.0
+LI,Liechtenstein,1992,33.2
+LI,Liechtenstein,1993,33.5
+LI,Liechtenstein,1994,33.9
+LI,Liechtenstein,1995,34.6
+LI,Liechtenstein,1996,34.6
+LI,Liechtenstein,1997,35.0
+LI,Liechtenstein,1998,35.3
+LI,Liechtenstein,1999,35.6
+LI,Liechtenstein,2000,36.1
+LI,Liechtenstein,2001,36.6
+LI,Liechtenstein,2002,36.9
+LI,Liechtenstein,2003,37.4
+LI,Liechtenstein,2004,37.8
+LI,Liechtenstein,2005,38.3
+LI,Liechtenstein,2006,38.7
+LI,Liechtenstein,2007,39.2
+LI,Liechtenstein,2008,39.7
+LI,Liechtenstein,2009,40.3
+LI,Liechtenstein,2010,40.8
+LI,Liechtenstein,2011,41.2
+LI,Liechtenstein,2012,41.6
+LI,Liechtenstein,2013,42.1
+LI,Liechtenstein,2014,42.5
+LI,Liechtenstein,2015,42.9
+LI,Liechtenstein,2016,43.3
+LI,Liechtenstein,2017,43.6
+LI,Liechtenstein,2018,44.0
+LI,Liechtenstein,2019,44.2
+LI,Liechtenstein,2020,44.4
+LI,Liechtenstein,2021,44.6
+LI,Liechtenstein,2022,44.8
+LI,Liechtenstein,2023,45.0
+LI,Liechtenstein,2024,45.2
+LI,Liechtenstein,2025,45.3
+LT,Lithuania,1970,30.7
+LT,Lithuania,1971,30.9
+LT,Lithuania,1972,31.0
+LT,Lithuania,1973,31.1
+LT,Lithuania,1974,31.3
+LT,Lithuania,1975,31.5
+LT,Lithuania,1976,31.5
+LT,Lithuania,1977,31.6
+LT,Lithuania,1978,31.7
+LT,Lithuania,1979,31.7
+LT,Lithuania,1980,31.7
+LT,Lithuania,1981,31.7
+LT,Lithuania,1982,31.7
+LT,Lithuania,1983,31.8
+LT,Lithuania,1984,31.8
+LT,Lithuania,1985,31.9
+LT,Lithuania,1986,31.9
+LT,Lithuania,1987,32.0
+LT,Lithuania,1988,32.1
+LT,Lithuania,1989,32.2
+LT,Lithuania,1990,32.4
+LT,Lithuania,1991,32.6
+LT,Lithuania,1992,32.9
+LT,Lithuania,1993,33.2
+LT,Lithuania,1994,33.5
+LT,Lithuania,1995,33.9
+LT,Lithuania,1996,34.3
+LT,Lithuania,1997,34.6
+LT,Lithuania,1998,35.0
+LT,Lithuania,1999,35.4
+LT,Lithuania,2000,35.8
+LT,Lithuania,2001,36.2
+LT,Lithuania,2002,36.7
+LT,Lithuania,2003,37.2
+LT,Lithuania,2004,37.7
+LT,Lithuania,2005,38.2
+LT,Lithuania,2006,38.8
+LT,Lithuania,2007,39.2
+LT,Lithuania,2008,39.6
+LT,Lithuania,2009,39.9
+LT,Lithuania,2010,40.3
+LT,Lithuania,2011,41.1
+LT,Lithuania,2012,41.7
+LT,Lithuania,2013,42.1
+LT,Lithuania,2014,42.5
+LT,Lithuania,2015,42.8
+LT,Lithuania,2016,43.2
+LT,Lithuania,2017,43.6
+LT,Lithuania,2018,44.0
+LT,Lithuania,2019,44.2
+LT,Lithuania,2020,44.4
+LT,Lithuania,2021,44.5
+LT,Lithuania,2022,44.5
+LT,Lithuania,2023,44.2
+LT,Lithuania,2024,44.2
+LT,Lithuania,2025,44.3
+LU,Luxembourg,1960,35.2
+LU,Luxembourg,1961,35.1
+LU,Luxembourg,1965,35.2
+LU,Luxembourg,1967,35.2
+LU,Luxembourg,1970,35.3
+LU,Luxembourg,1971,35.4
+LU,Luxembourg,1972,35.2
+LU,Luxembourg,1973,35.1
+LU,Luxembourg,1974,35.0
+LU,Luxembourg,1975,34.9
+LU,Luxembourg,1976,34.9
+LU,Luxembourg,1977,34.9
+LU,Luxembourg,1978,35.0
+LU,Luxembourg,1979,35.1
+LU,Luxembourg,1980,35.0
+LU,Luxembourg,1981,35.0
+LU,Luxembourg,1982,35.1
+LU,Luxembourg,1983,35.3
+LU,Luxembourg,1984,35.5
+LU,Luxembourg,1985,35.7
+LU,Luxembourg,1986,35.9
+LU,Luxembourg,1987,36.0
+LU,Luxembourg,1988,36.2
+LU,Luxembourg,1989,36.3
+LU,Luxembourg,1990,36.3
+LU,Luxembourg,1991,36.4
+LU,Luxembourg,1992,36.5
+LU,Luxembourg,1993,36.5
+LU,Luxembourg,1994,36.6
+LU,Luxembourg,1995,36.7
+LU,Luxembourg,1996,36.7
+LU,Luxembourg,1997,36.9
+LU,Luxembourg,1998,37.1
+LU,Luxembourg,1999,37.2
+LU,Luxembourg,2000,37.3
+LU,Luxembourg,2001,37.1
+LU,Luxembourg,2002,37.4
+LU,Luxembourg,2003,37.7
+LU,Luxembourg,2004,37.9
+LU,Luxembourg,2005,38.1
+LU,Luxembourg,2006,38.3
+LU,Luxembourg,2007,38.5
+LU,Luxembourg,2008,38.6
+LU,Luxembourg,2009,38.7
+LU,Luxembourg,2010,38.9
+LU,Luxembourg,2011,39.0
+LU,Luxembourg,2012,39.1
+LU,Luxembourg,2013,39.1
+LU,Luxembourg,2014,39.2
+LU,Luxembourg,2015,39.3
+LU,Luxembourg,2016,39.3
+LU,Luxembourg,2017,39.4
+LU,Luxembourg,2018,39.4
+LU,Luxembourg,2019,39.5
+LU,Luxembourg,2020,39.5
+LU,Luxembourg,2021,39.6
+LU,Luxembourg,2022,39.7
+LU,Luxembourg,2023,39.7
+LU,Luxembourg,2024,39.7
+LU,Luxembourg,2025,39.8
+LV,Latvia,1970,34.0
+LV,Latvia,1971,34.2
+LV,Latvia,1972,34.4
+LV,Latvia,1973,34.5
+LV,Latvia,1974,34.7
+LV,Latvia,1975,34.8
+LV,Latvia,1976,34.9
+LV,Latvia,1977,35.1
+LV,Latvia,1978,35.2
+LV,Latvia,1979,35.2
+LV,Latvia,1980,35.0
+LV,Latvia,1981,34.8
+LV,Latvia,1982,34.7
+LV,Latvia,1983,34.6
+LV,Latvia,1984,34.7
+LV,Latvia,1985,34.7
+LV,Latvia,1986,34.7
+LV,Latvia,1987,34.7
+LV,Latvia,1988,34.6
+LV,Latvia,1989,34.5
+LV,Latvia,1990,34.6
+LV,Latvia,1991,34.6
+LV,Latvia,1992,35.0
+LV,Latvia,1993,35.4
+LV,Latvia,1994,35.8
+LV,Latvia,1995,36.0
+LV,Latvia,1996,36.3
+LV,Latvia,1997,36.7
+LV,Latvia,1998,37.1
+LV,Latvia,1999,37.5
+LV,Latvia,2000,37.9
+LV,Latvia,2001,38.2
+LV,Latvia,2002,38.5
+LV,Latvia,2003,38.8
+LV,Latvia,2004,39.0
+LV,Latvia,2005,39.3
+LV,Latvia,2006,39.5
+LV,Latvia,2007,39.8
+LV,Latvia,2008,39.9
+LV,Latvia,2009,40.2
+LV,Latvia,2010,40.8
+LV,Latvia,2011,41.4
+LV,Latvia,2012,41.8
+LV,Latvia,2013,42.1
+LV,Latvia,2014,42.4
+LV,Latvia,2015,42.7
+LV,Latvia,2016,42.9
+LV,Latvia,2017,43.1
+LV,Latvia,2018,43.3
+LV,Latvia,2019,43.5
+LV,Latvia,2020,43.7
+LV,Latvia,2021,43.9
+LV,Latvia,2022,44.0
+LV,Latvia,2023,43.8
+LV,Latvia,2024,44.0
+LV,Latvia,2025,44.4
+MC,Monaco,2024,50.5
+MC,Monaco,2025,50.8
+MD,Moldova,2006,32.3
+MD,Moldova,2007,33.2
+MD,Moldova,2008,33.5
+MD,Moldova,2009,33.7
+MD,Moldova,2010,33.9
+MD,Moldova,2011,34.2
+MD,Moldova,2012,34.5
+MD,Moldova,2013,34.8
+MD,Moldova,2014,35.1
+MD,Moldova,2015,35.7
+MD,Moldova,2016,36.1
+MD,Moldova,2017,36.5
+MD,Moldova,2018,37.0
+MD,Moldova,2019,37.5
+MD,Moldova,2020,38.1
+MD,Moldova,2021,38.7
+MD,Moldova,2022,39.6
+MD,Moldova,2023,40.3
+MD,Moldova,2024,41.4
+MD,Moldova,2025,40.8
+ME,Montenegro,2000,34.9
+ME,Montenegro,2001,34.9
+ME,Montenegro,2002,34.9
+ME,Montenegro,2003,34.9
+ME,Montenegro,2004,34.9
+ME,Montenegro,2005,35.1
+ME,Montenegro,2006,35.4
+ME,Montenegro,2007,35.6
+ME,Montenegro,2008,35.9
+ME,Montenegro,2009,36.1
+ME,Montenegro,2010,36.3
+ME,Montenegro,2011,36.6
+ME,Montenegro,2012,36.9
+ME,Montenegro,2013,37.1
+ME,Montenegro,2014,37.4
+ME,Montenegro,2015,37.7
+ME,Montenegro,2016,38.0
+ME,Montenegro,2017,38.2
+ME,Montenegro,2018,38.5
+ME,Montenegro,2019,38.7
+ME,Montenegro,2020,39.0
+ME,Montenegro,2021,39.3
+ME,Montenegro,2022,39.4
+ME,Montenegro,2023,39.7
+ME,Montenegro,2024,40.1
+ME,Montenegro,2025,40.4
+MK,North Macedonia,1994,30.5
+MK,North Macedonia,1995,30.7
+MK,North Macedonia,1996,31.0
+MK,North Macedonia,1997,31.3
+MK,North Macedonia,1998,31.6
+MK,North Macedonia,1999,31.9
+MK,North Macedonia,2000,32.3
+MK,North Macedonia,2001,32.6
+MK,North Macedonia,2002,32.9
+MK,North Macedonia,2003,33.5
+MK,North Macedonia,2004,33.9
+MK,North Macedonia,2005,34.2
+MK,North Macedonia,2006,34.5
+MK,North Macedonia,2007,34.9
+MK,North Macedonia,2008,35.2
+MK,North Macedonia,2009,35.5
+MK,North Macedonia,2010,35.8
+MK,North Macedonia,2011,36.1
+MK,North Macedonia,2012,36.4
+MK,North Macedonia,2013,36.7
+MK,North Macedonia,2014,37.1
+MK,North Macedonia,2015,37.4
+MK,North Macedonia,2016,37.7
+MK,North Macedonia,2017,38.0
+MK,North Macedonia,2018,38.4
+MK,North Macedonia,2019,38.8
+MK,North Macedonia,2020,39.2
+MK,North Macedonia,2021,39.5
+MK,North Macedonia,2022,41.1
+MK,North Macedonia,2023,41.5
+MK,North Macedonia,2024,41.8
+MK,North Macedonia,2025,42.1
+MT,Malta,1977,27.8
+MT,Malta,1978,28.1
+MT,Malta,1979,28.5
+MT,Malta,1980,28.8
+MT,Malta,1981,29.1
+MT,Malta,1982,29.5
+MT,Malta,1984,30.8
+MT,Malta,1985,31.2
+MT,Malta,1986,31.6
+MT,Malta,1987,31.9
+MT,Malta,1988,32.2
+MT,Malta,1989,32.5
+MT,Malta,1990,32.8
+MT,Malta,1991,33.2
+MT,Malta,1992,33.5
+MT,Malta,1993,33.8
+MT,Malta,1994,34.1
+MT,Malta,1995,34.5
+MT,Malta,1996,35.1
+MT,Malta,1997,35.4
+MT,Malta,1998,35.7
+MT,Malta,1999,36.0
+MT,Malta,2000,36.3
+MT,Malta,2001,36.7
+MT,Malta,2002,37.0
+MT,Malta,2003,37.4
+MT,Malta,2004,37.7
+MT,Malta,2005,38.0
+MT,Malta,2006,38.6
+MT,Malta,2007,39.0
+MT,Malta,2008,39.3
+MT,Malta,2009,39.5
+MT,Malta,2010,39.7
+MT,Malta,2011,40.1
+MT,Malta,2012,40.4
+MT,Malta,2013,40.5
+MT,Malta,2014,40.5
+MT,Malta,2015,40.4
+MT,Malta,2016,40.4
+MT,Malta,2017,40.6
+MT,Malta,2018,40.4
+MT,Malta,2019,40.1
+MT,Malta,2020,39.8
+MT,Malta,2021,40.2
+MT,Malta,2022,40.5
+MT,Malta,2023,40.1
+MT,Malta,2024,39.8
+MT,Malta,2025,40.0
+NL,Netherlands,1960,28.7
+NL,Netherlands,1961,28.8
+NL,Netherlands,1962,28.8
+NL,Netherlands,1963,28.7
+NL,Netherlands,1964,28.6
+NL,Netherlands,1965,28.5
+NL,Netherlands,1966,28.5
+NL,Netherlands,1967,28.5
+NL,Netherlands,1968,28.5
+NL,Netherlands,1969,28.5
+NL,Netherlands,1970,28.5
+NL,Netherlands,1971,28.5
+NL,Netherlands,1972,28.6
+NL,Netherlands,1973,28.8
+NL,Netherlands,1974,29.0
+NL,Netherlands,1975,29.2
+NL,Netherlands,1976,29.6
+NL,Netherlands,1977,30.0
+NL,Netherlands,1978,30.4
+NL,Netherlands,1979,30.8
+NL,Netherlands,1980,31.2
+NL,Netherlands,1981,31.5
+NL,Netherlands,1982,31.8
+NL,Netherlands,1983,32.2
+NL,Netherlands,1984,32.6
+NL,Netherlands,1985,32.9
+NL,Netherlands,1986,33.2
+NL,Netherlands,1987,33.5
+NL,Netherlands,1988,33.8
+NL,Netherlands,1989,34.1
+NL,Netherlands,1990,34.4
+NL,Netherlands,1991,34.6
+NL,Netherlands,1992,34.9
+NL,Netherlands,1993,35.2
+NL,Netherlands,1994,35.4
+NL,Netherlands,1995,35.8
+NL,Netherlands,1996,36.1
+NL,Netherlands,1997,36.4
+NL,Netherlands,1998,36.7
+NL,Netherlands,1999,37.0
+NL,Netherlands,2000,37.3
+NL,Netherlands,2001,37.6
+NL,Netherlands,2002,37.8
+NL,Netherlands,2003,38.2
+NL,Netherlands,2004,38.5
+NL,Netherlands,2005,38.9
+NL,Netherlands,2006,39.2
+NL,Netherlands,2007,39.6
+NL,Netherlands,2008,40.0
+NL,Netherlands,2009,40.3
+NL,Netherlands,2010,40.6
+NL,Netherlands,2011,41.0
+NL,Netherlands,2012,41.3
+NL,Netherlands,2013,41.6
+NL,Netherlands,2014,42.0
+NL,Netherlands,2015,42.2
+NL,Netherlands,2016,42.4
+NL,Netherlands,2017,42.5
+NL,Netherlands,2018,42.6
+NL,Netherlands,2019,42.7
+NL,Netherlands,2020,42.7
+NL,Netherlands,2021,42.7
+NL,Netherlands,2022,42.7
+NL,Netherlands,2023,42.5
+NL,Netherlands,2024,42.5
+NL,Netherlands,2025,42.6
+NO,Norway,1960,34.3
+NO,Norway,1961,34.4
+NO,Norway,1962,34.4
+NO,Norway,1963,34.4
+NO,Norway,1964,34.3
+NO,Norway,1965,34.2
+NO,Norway,1966,34.1
+NO,Norway,1967,33.9
+NO,Norway,1968,33.6
+NO,Norway,1969,33.3
+NO,Norway,1970,33.0
+NO,Norway,1971,32.7
+NO,Norway,1972,32.5
+NO,Norway,1973,32.3
+NO,Norway,1974,32.2
+NO,Norway,1975,32.2
+NO,Norway,1976,32.2
+NO,Norway,1977,32.4
+NO,Norway,1978,32.6
+NO,Norway,1979,32.9
+NO,Norway,1980,33.2
+NO,Norway,1981,33.5
+NO,Norway,1982,33.8
+NO,Norway,1983,34.0
+NO,Norway,1984,34.3
+NO,Norway,1985,34.5
+NO,Norway,1986,34.7
+NO,Norway,1987,34.9
+NO,Norway,1988,35.0
+NO,Norway,1989,35.1
+NO,Norway,1990,35.3
+NO,Norway,1991,35.4
+NO,Norway,1992,35.6
+NO,Norway,1993,35.7
+NO,Norway,1994,35.8
+NO,Norway,1995,36.0
+NO,Norway,1996,36.2
+NO,Norway,1997,36.3
+NO,Norway,1998,36.5
+NO,Norway,1999,36.6
+NO,Norway,2000,36.7
+NO,Norway,2001,36.9
+NO,Norway,2002,37.1
+NO,Norway,2003,37.3
+NO,Norway,2004,37.5
+NO,Norway,2005,37.8
+NO,Norway,2006,38.0
+NO,Norway,2007,38.2
+NO,Norway,2008,38.4
+NO,Norway,2009,38.5
+NO,Norway,2010,38.6
+NO,Norway,2011,38.7
+NO,Norway,2012,38.8
+NO,Norway,2013,38.9
+NO,Norway,2014,39.0
+NO,Norway,2015,39.1
+NO,Norway,2016,39.2
+NO,Norway,2017,39.3
+NO,Norway,2018,39.5
+NO,Norway,2019,39.7
+NO,Norway,2020,39.9
+NO,Norway,2021,40.2
+NO,Norway,2022,40.4
+NO,Norway,2023,40.5
+NO,Norway,2024,40.6
+NO,Norway,2025,40.8
+PL,Poland,1960,26.4
+PL,Poland,1965,27.5
+PL,Poland,1970,28.3
+PL,Poland,1975,28.2
+PL,Poland,1980,29.4
+PL,Poland,1985,30.7
+PL,Poland,1990,32.2
+PL,Poland,1991,32.5
+PL,Poland,1992,32.8
+PL,Poland,1993,33.1
+PL,Poland,1994,33.4
+PL,Poland,1995,33.7
+PL,Poland,1996,34.0
+PL,Poland,1997,34.3
+PL,Poland,1998,34.6
+PL,Poland,1999,34.8
+PL,Poland,2000,35.1
+PL,Poland,2001,35.4
+PL,Poland,2002,35.7
+PL,Poland,2003,35.9
+PL,Poland,2004,36.2
+PL,Poland,2005,36.5
+PL,Poland,2006,36.7
+PL,Poland,2007,37.0
+PL,Poland,2008,37.3
+PL,Poland,2009,37.5
+PL,Poland,2010,37.9
+PL,Poland,2011,38.2
+PL,Poland,2012,38.5
+PL,Poland,2013,38.8
+PL,Poland,2014,39.2
+PL,Poland,2015,39.6
+PL,Poland,2016,39.9
+PL,Poland,2017,40.3
+PL,Poland,2018,40.6
+PL,Poland,2019,41.0
+PL,Poland,2020,41.3
+PL,Poland,2021,41.9
+PL,Poland,2022,42.2
+PL,Poland,2023,42.6
+PL,Poland,2024,43.0
+PL,Poland,2025,43.4
+PT,Portugal,1960,27.8
+PT,Portugal,1961,27.9
+PT,Portugal,1962,28.0
+PT,Portugal,1963,28.1
+PT,Portugal,1964,28.3
+PT,Portugal,1965,28.5
+PT,Portugal,1966,28.7
+PT,Portugal,1967,28.9
+PT,Portugal,1968,29.0
+PT,Portugal,1969,29.1
+PT,Portugal,1970,29.4
+PT,Portugal,1971,29.7
+PT,Portugal,1972,28.9
+PT,Portugal,1973,28.4
+PT,Portugal,1974,27.9
+PT,Portugal,1975,28.6
+PT,Portugal,1976,30.0
+PT,Portugal,1977,29.9
+PT,Portugal,1978,29.9
+PT,Portugal,1979,30.1
+PT,Portugal,1980,30.4
+PT,Portugal,1981,30.8
+PT,Portugal,1982,30.8
+PT,Portugal,1983,31.0
+PT,Portugal,1984,31.2
+PT,Portugal,1985,31.4
+PT,Portugal,1986,31.7
+PT,Portugal,1987,32.2
+PT,Portugal,1988,32.7
+PT,Portugal,1989,33.3
+PT,Portugal,1990,33.9
+PT,Portugal,1991,34.5
+PT,Portugal,1992,34.8
+PT,Portugal,1993,35.2
+PT,Portugal,1994,35.5
+PT,Portugal,1995,35.9
+PT,Portugal,1996,36.2
+PT,Portugal,1997,36.5
+PT,Portugal,1998,36.9
+PT,Portugal,1999,37.2
+PT,Portugal,2000,37.5
+PT,Portugal,2001,37.9
+PT,Portugal,2002,38.2
+PT,Portugal,2003,38.5
+PT,Portugal,2004,38.8
+PT,Portugal,2005,39.2
+PT,Portugal,2006,39.6
+PT,Portugal,2007,40.0
+PT,Portugal,2008,40.4
+PT,Portugal,2009,40.8
+PT,Portugal,2010,41.2
+PT,Portugal,2011,41.7
+PT,Portugal,2012,42.2
+PT,Portugal,2013,42.6
+PT,Portugal,2014,43.1
+PT,Portugal,2015,43.6
+PT,Portugal,2016,44.1
+PT,Portugal,2017,44.5
+PT,Portugal,2018,45.0
+PT,Portugal,2019,45.4
+PT,Portugal,2020,45.9
+PT,Portugal,2021,46.3
+PT,Portugal,2022,46.7
+PT,Portugal,2023,46.9
+PT,Portugal,2024,47.1
+PT,Portugal,2025,47.3
+RO,Romania,1968,30.8
+RO,Romania,1969,30.9
+RO,Romania,1970,30.9
+RO,Romania,1971,31.0
+RO,Romania,1972,31.1
+RO,Romania,1973,31.1
+RO,Romania,1974,31.0
+RO,Romania,1975,30.8
+RO,Romania,1976,30.6
+RO,Romania,1977,30.5
+RO,Romania,1978,30.5
+RO,Romania,1979,30.5
+RO,Romania,1980,30.5
+RO,Romania,1981,30.7
+RO,Romania,1982,30.9
+RO,Romania,1983,31.1
+RO,Romania,1984,31.4
+RO,Romania,1985,31.6
+RO,Romania,1986,31.8
+RO,Romania,1987,32.0
+RO,Romania,1988,32.2
+RO,Romania,1989,32.4
+RO,Romania,1990,32.6
+RO,Romania,1991,32.8
+RO,Romania,1992,33.4
+RO,Romania,1993,33.6
+RO,Romania,1994,33.8
+RO,Romania,1995,34.0
+RO,Romania,1996,34.2
+RO,Romania,1997,34.2
+RO,Romania,1998,34.3
+RO,Romania,1999,34.3
+RO,Romania,2000,34.4
+RO,Romania,2001,34.4
+RO,Romania,2002,35.0
+RO,Romania,2003,35.3
+RO,Romania,2004,35.4
+RO,Romania,2005,35.5
+RO,Romania,2006,37.2
+RO,Romania,2007,37.3
+RO,Romania,2008,38.7
+RO,Romania,2009,40.1
+RO,Romania,2010,40.1
+RO,Romania,2011,40.1
+RO,Romania,2012,40.2
+RO,Romania,2013,40.5
+RO,Romania,2014,40.8
+RO,Romania,2015,41.0
+RO,Romania,2016,41.4
+RO,Romania,2017,41.8
+RO,Romania,2018,42.1
+RO,Romania,2019,42.5
+RO,Romania,2020,42.8
+RO,Romania,2021,43.0
+RO,Romania,2022,43.5
+RO,Romania,2023,43.6
+RO,Romania,2024,43.8
+RO,Romania,2025,44.1
+RS,Serbia,1999,39.9
+RS,Serbia,2000,40.1
+RS,Serbia,2001,40.3
+RS,Serbia,2002,40.5
+RS,Serbia,2003,40.6
+RS,Serbia,2004,40.8
+RS,Serbia,2005,40.8
+RS,Serbia,2006,40.9
+RS,Serbia,2007,41.0
+RS,Serbia,2008,41.1
+RS,Serbia,2009,41.3
+RS,Serbia,2010,41.4
+RS,Serbia,2011,42.5
+RS,Serbia,2012,42.6
+RS,Serbia,2013,42.7
+RS,Serbia,2014,42.9
+RS,Serbia,2015,43.0
+RS,Serbia,2016,43.2
+RS,Serbia,2017,43.3
+RS,Serbia,2018,43.5
+RS,Serbia,2019,43.7
+RS,Serbia,2020,43.9
+RS,Serbia,2021,44.0
+RS,Serbia,2022,44.1
+RS,Serbia,2023,45.0
+RS,Serbia,2024,45.2
+RS,Serbia,2025,45.4
+RU,Russia,2006,37.4
+RU,Russia,2007,37.5
+RU,Russia,2008,37.6
+RU,Russia,2009,37.7
+RU,Russia,2010,37.8
+RU,Russia,2011,38.0
+RU,Russia,2014,38.4
+SE,Sweden,1960,36.0
+SE,Sweden,1961,36.2
+SE,Sweden,1962,36.3
+SE,Sweden,1963,36.4
+SE,Sweden,1964,36.4
+SE,Sweden,1965,36.3
+SE,Sweden,1966,36.1
+SE,Sweden,1967,36.0
+SE,Sweden,1968,35.9
+SE,Sweden,1969,35.8
+SE,Sweden,1970,35.5
+SE,Sweden,1971,35.3
+SE,Sweden,1972,35.2
+SE,Sweden,1973,35.2
+SE,Sweden,1974,35.3
+SE,Sweden,1975,35.3
+SE,Sweden,1976,35.3
+SE,Sweden,1977,35.4
+SE,Sweden,1978,35.5
+SE,Sweden,1979,35.7
+SE,Sweden,1980,36.0
+SE,Sweden,1981,36.2
+SE,Sweden,1982,36.6
+SE,Sweden,1983,36.9
+SE,Sweden,1984,37.3
+SE,Sweden,1985,37.6
+SE,Sweden,1986,37.8
+SE,Sweden,1987,38.1
+SE,Sweden,1988,38.3
+SE,Sweden,1989,38.4
+SE,Sweden,1990,38.4
+SE,Sweden,1991,38.3
+SE,Sweden,1992,38.4
+SE,Sweden,1993,38.4
+SE,Sweden,1994,38.4
+SE,Sweden,1995,38.4
+SE,Sweden,1996,38.6
+SE,Sweden,1997,38.7
+SE,Sweden,1998,38.9
+SE,Sweden,1999,39.1
+SE,Sweden,2000,39.3
+SE,Sweden,2001,39.4
+SE,Sweden,2002,39.6
+SE,Sweden,2003,39.7
+SE,Sweden,2004,39.9
+SE,Sweden,2005,40.1
+SE,Sweden,2006,40.3
+SE,Sweden,2007,40.5
+SE,Sweden,2008,40.6
+SE,Sweden,2009,40.7
+SE,Sweden,2010,40.7
+SE,Sweden,2011,40.8
+SE,Sweden,2012,40.8
+SE,Sweden,2013,40.9
+SE,Sweden,2014,40.9
+SE,Sweden,2015,40.9
+SE,Sweden,2016,40.9
+SE,Sweden,2017,40.8
+SE,Sweden,2018,40.6
+SE,Sweden,2019,40.5
+SE,Sweden,2020,40.5
+SE,Sweden,2021,40.6
+SE,Sweden,2022,40.7
+SE,Sweden,2023,40.8
+SE,Sweden,2024,41.0
+SE,Sweden,2025,41.2
+SI,Slovenia,1982,31.7
+SI,Slovenia,1983,32.0
+SI,Slovenia,1984,32.2
+SI,Slovenia,1985,32.5
+SI,Slovenia,1986,32.7
+SI,Slovenia,1987,33.2
+SI,Slovenia,1988,33.4
+SI,Slovenia,1989,33.7
+SI,Slovenia,1990,34.0
+SI,Slovenia,1991,34.4
+SI,Slovenia,1992,34.8
+SI,Slovenia,1993,35.2
+SI,Slovenia,1994,35.6
+SI,Slovenia,1995,36.0
+SI,Slovenia,1996,36.1
+SI,Slovenia,1997,36.5
+SI,Slovenia,1998,36.9
+SI,Slovenia,1999,37.4
+SI,Slovenia,2000,37.8
+SI,Slovenia,2001,38.2
+SI,Slovenia,2002,38.6
+SI,Slovenia,2003,39.0
+SI,Slovenia,2004,39.4
+SI,Slovenia,2005,39.9
+SI,Slovenia,2006,40.2
+SI,Slovenia,2007,40.6
+SI,Slovenia,2008,41.0
+SI,Slovenia,2009,41.2
+SI,Slovenia,2010,41.4
+SI,Slovenia,2011,41.7
+SI,Slovenia,2012,42.0
+SI,Slovenia,2013,42.2
+SI,Slovenia,2014,42.5
+SI,Slovenia,2015,42.8
+SI,Slovenia,2016,43.2
+SI,Slovenia,2017,43.5
+SI,Slovenia,2018,43.8
+SI,Slovenia,2019,44.0
+SI,Slovenia,2020,44.1
+SI,Slovenia,2021,44.4
+SI,Slovenia,2022,44.7
+SI,Slovenia,2023,44.9
+SI,Slovenia,2024,45.2
+SI,Slovenia,2025,45.5
+SK,Slovakia,1960,27.5
+SK,Slovakia,1961,27.7
+SK,Slovakia,1962,27.8
+SK,Slovakia,1963,27.9
+SK,Slovakia,1964,27.9
+SK,Slovakia,1965,27.9
+SK,Slovakia,1966,27.9
+SK,Slovakia,1967,28.0
+SK,Slovakia,1968,28.1
+SK,Slovakia,1969,28.3
+SK,Slovakia,1970,28.3
+SK,Slovakia,1971,28.2
+SK,Slovakia,1972,28.2
+SK,Slovakia,1973,28.3
+SK,Slovakia,1974,28.2
+SK,Slovakia,1975,28.1
+SK,Slovakia,1976,28.2
+SK,Slovakia,1977,28.3
+SK,Slovakia,1978,28.4
+SK,Slovakia,1979,28.6
+SK,Slovakia,1980,28.7
+SK,Slovakia,1981,29.0
+SK,Slovakia,1982,29.2
+SK,Slovakia,1983,29.5
+SK,Slovakia,1984,29.7
+SK,Slovakia,1985,30.0
+SK,Slovakia,1986,30.2
+SK,Slovakia,1987,30.5
+SK,Slovakia,1988,30.7
+SK,Slovakia,1989,31.0
+SK,Slovakia,1990,31.2
+SK,Slovakia,1991,31.5
+SK,Slovakia,1992,31.6
+SK,Slovakia,1993,31.9
+SK,Slovakia,1994,32.1
+SK,Slovakia,1995,32.4
+SK,Slovakia,1996,32.7
+SK,Slovakia,1997,33.0
+SK,Slovakia,1998,33.3
+SK,Slovakia,1999,33.6
+SK,Slovakia,2000,33.9
+SK,Slovakia,2001,34.3
+SK,Slovakia,2002,34.4
+SK,Slovakia,2003,34.7
+SK,Slovakia,2004,35.0
+SK,Slovakia,2005,35.4
+SK,Slovakia,2006,35.7
+SK,Slovakia,2007,36.0
+SK,Slovakia,2008,36.3
+SK,Slovakia,2009,36.6
+SK,Slovakia,2010,37.0
+SK,Slovakia,2011,37.4
+SK,Slovakia,2012,37.7
+SK,Slovakia,2013,38.2
+SK,Slovakia,2014,38.6
+SK,Slovakia,2015,39.0
+SK,Slovakia,2016,39.4
+SK,Slovakia,2017,39.8
+SK,Slovakia,2018,40.2
+SK,Slovakia,2019,40.6
+SK,Slovakia,2020,41.0
+SK,Slovakia,2021,41.4
+SK,Slovakia,2022,41.8
+SK,Slovakia,2023,42.2
+SK,Slovakia,2024,42.6
+SK,Slovakia,2025,43.0
+SM,San Marino,2012,43.1
+SM,San Marino,2013,43.5
+SM,San Marino,2018,45.6
+TR,Türkiye,1960,20.1
+TR,Türkiye,1961,20.0
+TR,Türkiye,1962,19.7
+TR,Türkiye,1963,19.4
+TR,Türkiye,1964,19.2
+TR,Türkiye,1965,19.0
+TR,Türkiye,1966,18.9
+TR,Türkiye,1967,18.8
+TR,Türkiye,1968,18.7
+TR,Türkiye,1969,18.7
+TR,Türkiye,1970,18.6
+TR,Türkiye,1971,18.7
+TR,Türkiye,1972,18.8
+TR,Türkiye,1973,19.0
+TR,Türkiye,1974,19.1
+TR,Türkiye,1975,19.3
+TR,Türkiye,1976,19.4
+TR,Türkiye,1977,19.4
+TR,Türkiye,1978,19.5
+TR,Türkiye,1979,19.7
+TR,Türkiye,1980,19.8
+TR,Türkiye,1981,20.0
+TR,Türkiye,1982,20.2
+TR,Türkiye,1983,20.3
+TR,Türkiye,1984,20.5
+TR,Türkiye,1985,20.7
+TR,Türkiye,1986,20.8
+TR,Türkiye,1987,21.1
+TR,Türkiye,1988,21.4
+TR,Türkiye,1989,21.7
+TR,Türkiye,1990,22.0
+TR,Türkiye,1991,22.1
+TR,Türkiye,1992,22.3
+TR,Türkiye,1993,22.6
+TR,Türkiye,1994,22.9
+TR,Türkiye,1995,23.3
+TR,Türkiye,1996,23.6
+TR,Türkiye,1997,23.9
+TR,Türkiye,1998,24.2
+TR,Türkiye,1999,24.6
+TR,Türkiye,2000,24.9
+TR,Türkiye,2001,25.8
+TR,Türkiye,2002,26.1
+TR,Türkiye,2003,26.4
+TR,Türkiye,2004,26.8
+TR,Türkiye,2005,27.2
+TR,Türkiye,2006,27.6
+TR,Türkiye,2007,28.0
+TR,Türkiye,2008,28.2
+TR,Türkiye,2009,28.5
+TR,Türkiye,2010,28.8
+TR,Türkiye,2011,29.3
+TR,Türkiye,2012,29.7
+TR,Türkiye,2013,30.1
+TR,Türkiye,2014,30.4
+TR,Türkiye,2015,30.7
+TR,Türkiye,2016,31.1
+TR,Türkiye,2017,31.4
+TR,Türkiye,2018,31.7
+TR,Türkiye,2019,32.0
+TR,Türkiye,2020,32.4
+TR,Türkiye,2021,32.8
+TR,Türkiye,2023,33.5
+TR,Türkiye,2024,34.0
+TR,Türkiye,2025,34.4
+UA,Ukraine,2006,39.0
+UA,Ukraine,2007,39.0
+UA,Ukraine,2008,39.1
+UA,Ukraine,2009,39.2
+UA,Ukraine,2010,39.3
+UA,Ukraine,2011,39.4
+UA,Ukraine,2012,39.6
+UA,Ukraine,2013,39.7
+UA,Ukraine,2014,39.8
+UA,Ukraine,2015,40.0
+UA,Ukraine,2016,40.2
+UA,Ukraine,2017,40.5
+UA,Ukraine,2018,40.8
+UA,Ukraine,2019,41.1
+UA,Ukraine,2020,41.4
+UA,Ukraine,2021,41.7
+UA,Ukraine,2022,42.0
+UK,United Kingdom,1960,35.6
+UK,United Kingdom,1961,35.4
+UK,United Kingdom,1962,35.4
+UK,United Kingdom,1963,35.3
+UK,United Kingdom,1964,35.2
+UK,United Kingdom,1965,35.1
+UK,United Kingdom,1966,34.9
+UK,United Kingdom,1967,34.8
+UK,United Kingdom,1968,34.6
+UK,United Kingdom,1969,34.4
+UK,United Kingdom,1970,34.3
+UK,United Kingdom,1971,34.1
+UK,United Kingdom,1972,34.0
+UK,United Kingdom,1973,33.9
+UK,United Kingdom,1974,33.9
+UK,United Kingdom,1975,33.8
+UK,United Kingdom,1976,33.8
+UK,United Kingdom,1977,33.9
+UK,United Kingdom,1978,34.0
+UK,United Kingdom,1979,34.1
+UK,United Kingdom,1980,34.2
+UK,United Kingdom,1981,34.4
+UK,United Kingdom,1982,34.7
+UK,United Kingdom,1983,35.0
+UK,United Kingdom,1984,35.2
+UK,United Kingdom,1985,35.3
+UK,United Kingdom,1986,35.4
+UK,United Kingdom,1987,35.5
+UK,United Kingdom,1988,35.6
+UK,United Kingdom,1989,35.7
+UK,United Kingdom,1990,35.8
+UK,United Kingdom,1991,35.8
+UK,United Kingdom,1992,35.9
+UK,United Kingdom,1993,36.0
+UK,United Kingdom,1994,36.2
+UK,United Kingdom,1995,36.4
+UK,United Kingdom,1996,36.6
+UK,United Kingdom,1997,36.8
+UK,United Kingdom,1998,37.0
+UK,United Kingdom,1999,37.2
+UK,United Kingdom,2000,37.5
+UK,United Kingdom,2001,37.7
+UK,United Kingdom,2002,38.0
+UK,United Kingdom,2003,38.2
+UK,United Kingdom,2004,38.5
+UK,United Kingdom,2005,38.6
+UK,United Kingdom,2006,38.8
+UK,United Kingdom,2007,38.9
+UK,United Kingdom,2008,39.1
+UK,United Kingdom,2009,39.2
+UK,United Kingdom,2010,39.4
+UK,United Kingdom,2011,39.5
+UK,United Kingdom,2012,39.7
+UK,United Kingdom,2013,39.8
+UK,United Kingdom,2014,39.9
+UK,United Kingdom,2015,40.0
+UK,United Kingdom,2016,40.0
+UK,United Kingdom,2017,40.0
+UK,United Kingdom,2018,40.1
+UK,United Kingdom,2019,40.2
+XK,Kosovo*,2016,27.1
+XK,Kosovo*,2017,29.1
+XK,Kosovo*,2018,29.1
+XK,Kosovo*,2019,29.9
+XK,Kosovo*,2020,30.4
+XK,Kosovo*,2021,30.6
+XK,Kosovo*,2022,31.1

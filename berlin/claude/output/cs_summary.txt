@@ -1,0 +1,120 @@
+== simple ==
+
+Call:
+aggte(MP = cs, type = "simple", na.rm = TRUE)
+
+Reference: Callaway, Brantly and Pedro H.C. Sant'Anna.  "Difference-in-Differences with Multiple Time Periods." Journal of Econometrics, Vol. 225, No. 2, pp. 200-230, 2021. <https://doi.org/10.1016/j.jeconom.2020.12.001>, <https://arxiv.org/abs/1803.09015> 
+
+
+   ATT    Std. Error     [ 95%  Conf. Int.]  
+ 3.053        1.2352     0.6321      5.4739 *
+
+
+---
+Signif. codes: `*' confidence band does not cover 0
+
+Control Group:  Never Treated,  Anticipation Periods:  0
+Estimation Method:  Outcome Regression
+NULL
+
+== group (WEIGHTED) ==
+
+Call:
+aggte(MP = cs, type = "group", na.rm = TRUE)
+
+Reference: Callaway, Brantly and Pedro H.C. Sant'Anna.  "Difference-in-Differences with Multiple Time Periods." Journal of Econometrics, Vol. 225, No. 2, pp. 200-230, 2021. <https://doi.org/10.1016/j.jeconom.2020.12.001>, <https://arxiv.org/abs/1803.09015> 
+
+
+Overall summary of ATT's based on group/cohort aggregation:  
+    ATT    Std. Error     [ 95%  Conf. Int.]  
+ 2.7287        1.0472     0.6763      4.7811 *
+
+
+Group Effects:
+ Group Estimate Std. Error [95% Simult.  Conf. Band]  
+  1995   3.5908     1.6534        0.2825      6.8991 *
+  2002   2.0619     0.9117        0.2377      3.8861 *
+  2005   1.6714     0.5371        0.5968      2.7461 *
+---
+Signif. codes: `*' confidence band does not cover 0
+
+Control Group:  Never Treated,  Anticipation Periods:  0
+Estimation Method:  Outcome Regression
+NULL
+
+== dynamic ==
+
+Call:
+aggte(MP = cs, type = "dynamic", min_e = -8, max_e = 8, na.rm = TRUE)
+
+Reference: Callaway, Brantly and Pedro H.C. Sant'Anna.  "Difference-in-Differences with Multiple Time Periods." Journal of Econometrics, Vol. 225, No. 2, pp. 200-230, 2021. <https://doi.org/10.1016/j.jeconom.2020.12.001>, <https://arxiv.org/abs/1803.09015> 
+
+
+Overall summary of ATT's based on event-study/dynamic aggregation:  
+    ATT    Std. Error     [ 95%  Conf. Int.]  
+ 2.1117        0.7908     0.5618      3.6617 *
+
+
+Dynamic Effects:
+ Event time Estimate Std. Error [95% Simult.  Conf. Band]  
+         -8  -2.4495     1.6286       -6.3057      1.4067  
+         -7  -1.2643     1.4133       -4.6107      2.0822  
+         -6  -2.1582     1.0619       -4.6726      0.3561  
+         -5  -1.1010     0.9464       -3.3419      1.1399  
+         -4  -0.0467     0.7052       -1.7164      1.6231  
+         -3  -1.1666     1.0397       -3.6284      1.2951  
+         -2   0.1241     0.6472       -1.4083      1.6565  
+         -1   0.0000         NA            NA          NA  
+          0   0.6583     0.6070       -0.7790      2.0956  
+          1   0.5059     0.3520       -0.3276      1.3394  
+          2   0.9578     0.7003       -0.7004      2.6160  
+          3   2.4063     0.6903        0.7717      4.0409 *
+          4   3.0163     0.8011        1.1195      4.9131 *
+          5   2.4520     0.9376        0.2319      4.6722 *
+          6   3.2817     1.1768        0.4953      6.0682 *
+          7   2.5619     1.3698       -0.6817      5.8054  
+          8   3.1655     1.5828       -0.5823      6.9133  
+---
+Signif. codes: `*' confidence band does not cover 0
+
+Control Group:  Never Treated,  Anticipation Periods:  0
+Estimation Method:  Outcome Regression
+NULL
+
+== calendar ==
+
+Call:
+aggte(MP = cs, type = "calendar", na.rm = TRUE)
+
+Reference: Callaway, Brantly and Pedro H.C. Sant'Anna.  "Difference-in-Differences with Multiple Time Periods." Journal of Econometrics, Vol. 225, No. 2, pp. 200-230, 2021. <https://doi.org/10.1016/j.jeconom.2020.12.001>, <https://arxiv.org/abs/1803.09015> 
+
+
+Overall summary of ATT's based on calendar time aggregation:  
+    ATT    Std. Error     [ 95%  Conf. Int.]  
+ 2.7889        1.2193      0.399      5.1788 *
+
+
+Time Effects:
+ Time Estimate Std. Error [95% Simult.  Conf. Band]  
+ 1995   1.5699     0.4423        0.5102      2.6295 *
+ 1996   0.5680     0.4135       -0.4226      1.5587  
+ 1997   1.2921     0.9181       -0.9077      3.4919  
+ 1998   2.4478     0.9387        0.1986      4.6970 *
+ 1999   2.8848     1.2694       -0.1567      5.9263  
+ 2000   2.5336     1.7202       -1.5879      6.6552  
+ 2001   3.0672     1.4175       -0.3291      6.4634  
+ 2002   1.0415     1.4026       -2.3191      4.4021  
+ 2003   2.1608     1.5870       -1.6416      5.9632  
+ 2004   3.0690     1.6367       -0.8525      6.9906  
+ 2005   3.1827     1.6623       -0.8001      7.1656  
+ 2006   3.3545     1.7075       -0.7366      7.4457  
+ 2007   2.7902     1.6453       -1.1519      6.7324  
+ 2008   4.5482     1.6689        0.5494      8.5469 *
+ 2009   5.3310     1.5856        1.5318      9.1301 *
+ 2010   4.7808     1.8235        0.4117      9.1499 *
+---
+Signif. codes: `*' confidence band does not cover 0
+
+Control Group:  Never Treated,  Anticipation Periods:  0
+Estimation Method:  Outcome Regression
+NULL

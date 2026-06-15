@@ -1,0 +1,566 @@
+%% 05-claude.tex — Sant'Anna Workshop Pisa: Claude Code for empirical research
+%% Scott Cunningham, Sant'Anna Workshop on Causal Inference, Pisa
+%% Principle: one idea per slide. No walls of text.
+
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{remix}
+\usepackage{madrid_theme}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,shapes.geometric,fit,backgrounds,decorations.pathreplacing}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{colortbl}
+
+\definecolor{harvardcrimson}{HTML}{A51C30}
+
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{accentdark}\bfseries,
+  commentstyle=\color{warmgray}\itshape,
+  stringstyle=\color{ocean},
+  backgroundcolor=\color{lightbg},
+  frame=single, framesep=4pt,
+  rulecolor=\color{warmgray!40},
+  columns=fullflexible,
+  showstringspaces=false,
+  breaklines=true,
+  numbers=none,
+  xleftmargin=0.4em, xrightmargin=0.4em,
+}
+
+\newcommand{\emphbox}[1]{%
+  \begin{beamercolorbox}[rounded=true,sep=7pt,wd=\linewidth]{block body}%
+    \small\color{slate} #1%
+  \end{beamercolorbox}}
+
+\begin{document}
+
+%% ---------- TITLE ----------
+\codechellatitle
+  {Claude Code for Empirical Research}
+  {Agents, workflows, and difference-in-differences}
+  {Scott Cunningham \textperiodcentered\ Baylor University}
+  {Sant'Anna Workshop on Causal Inference \textperiodcentered\ Pisa}
+
+%% ====================================================================
+%% PART 1 — INTRODUCTION
+%% ====================================================================
+
+\begin{frame}{Automating empirical research is no longer hypothetical}
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{0.6em}
+  \item \textbf{Natural sciences:} AlphaFold predicted protein structure at scale. Nobel Prize in Chemistry, 2024.
+  \item \textbf{Social sciences:} Stanford's \textit{Social Catalyst Lab} is automating end-to-end empirical pipelines --- data, design, estimation, write-up.
+  \item \textbf{The question is not whether.} \highlight{It's how much $H$ you intentionally keep.}
+\end{itemize}
+\end{frame}
+
+%% ----------
+\begin{frame}{An agent is an LLM wrapped in a loop}
+\vspace{0.6em}
+\begin{center}
+\begin{tabular}{lp{8cm}}
+  \textbf{LLM alone} & One prompt. One reply. Done. \\[0.6em]
+  \textbf{Agent}     & Same LLM, but it can use tools, observe results, and decide what to do next --- repeatedly. \\
+\end{tabular}
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\color{warmgray}\small
+Every small decision inside that loop is recorded in the session log.\\
+We can read them.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{Chatbot vs.\ Copilot vs.\ Agent}
+\vspace{0.5em}
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{lll}
+\toprule
+              & \textbf{What it does} & \textbf{Who steers} \\
+\midrule
+\textbf{Chatbot}  & Answers your question & You, every turn \\
+\textbf{Copilot}  & Completes what you're typing & You, inline \\
+\textbf{Agent}    & Plans, acts, iterates, and verifies & You set the goal \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+Today: agents. Claude Code is an agent.
+\end{center}
+\end{frame}
+
+%% ====================================================================
+%% PART 2 — THE ECONOMICS OF AI (Shockley first, then isoquants)
+%% ====================================================================
+
+\begin{frame}{Research output is multiplicative}
+\vspace{1.2em}
+\begin{center}
+\Large
+$P \;=\; F_1 \;\times\; F_2 \;\times\; \cdots \;\times\; F_8$
+\end{center}
+\vspace{1.0em}
+\begin{center}
+\color{warmgray}\normalsize
+Shockley (1957) \textperiodcentered\
+\textit{On the Statistics of Individual Variations of Productivity in Research Laboratories}\\[0.6em]
+\highlight{Any factor at zero kills output entirely.}
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{Shockley's eight factors}
+\vspace{0.4em}
+\begin{columns}[T]
+\column{0.48\textwidth}
+\begin{enumerate}\small\setlength\itemsep{0.35em}
+  \item Ability to think of a good problem
+  \item Ability to work on it
+  \item Ability to recognize a worthwhile result
+  \item Ability to decide when to stop and write up
+\end{enumerate}
+\column{0.48\textwidth}
+\begin{enumerate}\small\setlength\itemsep{0.35em}\setcounter{enumi}{4}
+  \item Ability to write adequately
+  \item Ability to profit constructively from criticism
+  \item Determination to submit the paper to a journal
+  \item Persistence in making changes after journal action
+\end{enumerate}
+\end{columns}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+Proxied by: publications, grants, patents.
+\end{center}
+\end{frame}
+
+\begin{frame}{AI flattens the isoquants of cognitive production}
+\vspace{-0.1cm}
+\begin{columns}[T]
+\begin{column}{0.55\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.78]
+    \draw[->] (0,0) -- (6,0) node[below right] {$H$};
+    \draw[->] (0,0) -- (0,5) node[above left] {$M$};
+    \draw[thick,ocean] (0.8,4.5) .. controls (1.5,2.2) and (2.5,1.4) .. (5,0.8);
+    \node[ocean,font=\small] at (1.7,4.3) {Pre-AI};
+    \draw[thick,harvardcrimson] (0,3) -- (5,0);
+    \node[harvardcrimson,font=\small] at (3.3,1.9) {Post-AI};
+    \filldraw[ocean] (3.6,1.2) circle (2.5pt);
+    \draw[dashed,warmgray] (3.6,0) -- (3.6,1.2);
+    \draw[dashed,warmgray] (0,1.2) -- (3.6,1.2);
+    \node[ocean,right,font=\small] at (3.7,1.25) {$M^*_{\text{pre}}$};
+    \filldraw[harvardcrimson] (0,3) circle (2.5pt);
+    \node[harvardcrimson,left,font=\small] at (-0.15,3) {$M^*_{\text{post}}$};
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.42\textwidth}
+\[ Q \;=\; f(H,\;M) \]
+\begin{itemize}\small
+  \item $H$ = human time and attention
+  \item $M$ = machine time
+\end{itemize}
+\vspace{0.4cm}
+\highlight{The question isn't whether to use $M$.\\It's how much $H$ you keep.}
+\end{column}
+\end{columns}
+\end{frame}
+
+%% ---------- Shift (no label) ----------
+\begin{frame}{AI shifts the production curve up}
+\vspace{-0.1cm}
+\centering
+\begin{tikzpicture}[scale=0.72]
+    \draw[->] (0,0) -- (6.3,0) node[below right] {$H$};
+    \draw[->] (0,0) -- (0,6.2) node[above left] {$Q$};
+    \draw[thick,ocean,domain=0.5:5,samples=100]
+        plot (\x, {2.0*ln(\x+0.5)+0.2});
+    \node[ocean,right,font=\scriptsize] at (5.05,3.61) {Pre-AI};
+    \draw[thick,harvardcrimson,domain=0.5:5,samples=100]
+        plot (\x, {2.0*ln(\x+0.5)+2.4});
+    \node[harvardcrimson,right,font=\scriptsize] at (5.05,5.81) {Post-AI};
+    \filldraw[ocean] (4,3.208) circle (2.5pt);
+    \filldraw[forest] (4,5.408) circle (2.5pt);
+    \draw[dashed,warmgray] (4,0) -- (4,5.408);
+    \draw[dashed,ocean]  (4,3.208) -- (0,3.208);
+    \draw[dashed,forest] (4,5.408) -- (0,5.408);
+    \node[left,font=\footnotesize,ocean]  at (0,3.208) {$Q_{\text{pre}}$};
+    \node[left,font=\footnotesize,forest] at (0,5.408) {$Q_{\text{post}}$};
+    \node[below,font=\footnotesize] at (4,0) {$H^*$};
+\end{tikzpicture}
+\end{frame}
+
+%% ---------- Safe ----------
+\begin{frame}{Safe: take time back, stay above $\bar{H}$}
+\vspace{-0.1cm}
+\centering
+\begin{tikzpicture}[scale=0.72]
+    \draw[->] (0,0) -- (6.3,0) node[below right] {$H$};
+    \draw[->] (0,0) -- (0,6.2) node[above left] {$Q$};
+    \draw[thick,ocean,domain=0.5:5,samples=100]
+        plot (\x, {2.0*ln(\x+0.5)+0.2});
+    \node[ocean,right,font=\scriptsize] at (5.05,3.61) {Pre-AI};
+    \draw[thick,harvardcrimson,domain=0.5:5,samples=100]
+        plot (\x, {2.0*ln(\x+0.5)+2.4});
+    \node[harvardcrimson,right,font=\scriptsize] at (5.05,5.81) {Post-AI};
+    \fill[forest,opacity=0.22]
+        (1.0,3.208) -- plot[domain=1.0:4,samples=60] (\x, {2.0*ln(\x+0.5)+2.4})
+        -- (4,3.208) -- cycle;
+    \filldraw[ocean] (4,3.208) circle (2.5pt);
+    \draw[dashed,ocean]    (0,3.208) -- (4,3.208);
+    \draw[dashed,warmgray] (4,0) -- (4,3.208);
+    \draw[dashed,warmgray] (1.0,0) -- (1.0,3.208);
+    \node[left,font=\footnotesize,ocean] at (0,3.208) {$Q_{\text{pre}}$};
+    \node[below,font=\footnotesize] at (4,0)   {$H^*$};
+    \node[below,font=\footnotesize] at (1.0,0) {$\bar{H}$};
+    \filldraw[harvardcrimson] (1.0,3.208) circle (2.5pt);
+    \node[forest,font=\footnotesize\bfseries] at (2.85,3.85) {Safe};
+\end{tikzpicture}
+\end{frame}
+
+%% ---------- Danger ----------
+\begin{frame}{Danger: $H < \bar{H}$, skills depreciate}
+\vspace{-0.1cm}
+\centering
+\begin{tikzpicture}[scale=0.72]
+    \draw[->] (0,0) -- (6.3,0) node[below right] {$H$};
+    \draw[->] (0,0) -- (0,6.2) node[above left] {$Q$};
+    \draw[thick,ocean,domain=0.5:5,samples=100]
+        plot (\x, {2.0*ln(\x+0.5)+0.2});
+    \node[ocean,right,font=\scriptsize] at (5.05,3.61) {Pre-AI};
+    \draw[thick,harvardcrimson,domain=0.5:5,samples=100]
+        plot (\x, {2.0*ln(\x+0.5)+2.4});
+    \node[harvardcrimson,right,font=\scriptsize] at (5.05,5.81) {Post-AI};
+    \fill[harvardcrimson,opacity=0.26]
+        (0.5,0) -- plot[domain=0.5:1.0,samples=50] (\x, {2.0*ln(\x+0.5)+2.4})
+        -- (1.0,0) -- cycle;
+    \filldraw[ocean] (4,3.208) circle (2.5pt);
+    \draw[dashed,ocean]    (0,3.208) -- (4,3.208);
+    \draw[dashed,warmgray] (4,0) -- (4,3.208);
+    \draw[dashed,warmgray] (1.0,0) -- (1.0,3.208);
+    \node[left,font=\footnotesize,ocean]  at (0,3.208)  {$Q_{\text{pre}}$};
+    \node[below,font=\footnotesize] at (4,0)    {$H^*$};
+    \node[below,font=\footnotesize] at (1.0,-0.05) {$\bar{H}$};
+    \filldraw[harvardcrimson] (0.55,2.50) circle (2.5pt);
+    \draw[dashed,harvardcrimson] (0.55,0) -- (0.55,2.50);
+    \draw[dashed,harvardcrimson] (0.55,2.50) -- (0,2.50);
+    \node[below,font=\scriptsize,harvardcrimson] at (0.55,-0.55) {$H_d$};
+    \node[left,font=\footnotesize,harvardcrimson] at (0,2.50) {$Q_d$};
+    \node[harvardcrimson,font=\footnotesize\bfseries] at (0.78,0.9) {Danger};
+\end{tikzpicture}
+\end{frame}
+
+%% ====================================================================
+%% PART 3 — GETTING STARTED SAFELY
+%% ====================================================================
+
+\begin{frame}{Download Claude Code from the official source only}
+\vspace{0.8em}
+\begin{center}
+\Large\texttt{claude.com/download}
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\color{warmgray}
+Start with the \highlight{desktop app} --- no terminal required to begin.\\[0.4em]
+Available for macOS and Windows.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{A new phishing attack: fake install sites}
+\vspace{0.6em}
+\emphbox{Fake ``Claude Code install'' pages are circulating. They ask you to copy and paste a command into your terminal. That command installs malware.}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item The threat won't come through email
+  \item It looks like a legitimate software install page
+  \item \highlight{Never paste terminal commands from a website you didn't navigate to yourself}
+\end{itemize}
+\vspace{0.4em}
+\begin{center}\color{warmgray}\small
+Source: TechRepublic (2026) \textperiodcentered\ \texttt{claude.com/download} is the only safe path.
+\end{center}
+\end{frame}
+
+%% ====================================================================
+%% PART 4 — MIXTAPETOOLS
+%% ====================================================================
+
+\begin{frame}{MixtapeTools: skills for empirical research}
+\vspace{0.8em}
+\begin{center}
+\Large\texttt{github.com/scunning1975/MixtapeTools}
+\end{center}
+\vspace{0.8em}
+\begin{center}
+\color{warmgray}\normalsize
+A library of Claude Code skills built for researchers.\\[0.6em]
+\end{center}
+\begin{center}
+\texttt{/newproject} \quad \texttt{/split-pdf} \quad \texttt{/referee2}\\[0.4em]
+\texttt{/beautiful\_deck} \quad \texttt{/blindspot} \quad \texttt{/compiledeck}
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}[fragile]{\texttt{/newproject}: scaffold a project in seconds}
+\vspace{0.4em}
+\begin{lstlisting}[language=]
+/newproject
+\end{lstlisting}
+\vspace{0.4em}
+Creates:
+\begin{itemize}\setlength\itemsep{0.3em}
+  \item Standard directory structure (\texttt{data/}, \texttt{code/}, \texttt{output/}, \texttt{docs/})
+  \item \texttt{CLAUDE.md} with project context
+  \item \texttt{README.md}
+\end{itemize}
+\vspace{0.3em}
+\begin{center}\color{warmgray}\small
+Give Claude access to your folder and a chapter from the Mixtape as context.
+\end{center}
+\end{frame}
+
+%% ====================================================================
+%% PART 5 — ZERO SHOT IN THE BACKGROUND
+%% ====================================================================
+
+\begin{frame}{Starting a zero-shot now --- in the background}
+\vspace{0.8em}
+\begin{center}
+\large
+One prompt. No instructions. Just a research question.\\[0.8em]
+\color{warmgray}\normalsize
+Objective: develop a DiD study using Italian or European data.\\[0.4em]
+Binary treatment. Staggered adoption.\\[0.4em]
+CS estimator.
+\end{center}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+We'll come back to this at the end of the day and see what was produced.
+\end{center}
+\end{frame}
+
+%% ====================================================================
+%% PART 6 — GROWING SUBMISSIONS FROM ZERO SHOT
+%% ====================================================================
+
+\begin{frame}{AER is already seeing the wave}
+\vspace{0.5em}
+\begin{columns}[T]
+\column{0.54\textwidth}
+\begin{beamercolorbox}[rounded=true,sep=8pt,wd=\linewidth]{block body}
+\small\color{slate}
+\textbf{Friend 1} \textperiodcentered\ 10:17 PM\\[0.4em]
+``Just learn that AER is already seeing a big inflow of AI papers lol''\\[0.4em]
+``Written by AI. They are very concerned.''\\[0.4em]
+``No way they can handle 20--50\% more papers''\\[0.4em]
+``12 editors each handling 200 papers right now''
+\end{beamercolorbox}
+
+\column{0.43\textwidth}
+\begin{beamercolorbox}[rounded=true,sep=8pt,wd=\linewidth]{block body}
+\small\color{slate}
+\textbf{Friend 2} \textperiodcentered\ 10:18 PM\\[0.4em]
+``Haha written by AI or about AI?''\\[0.6em]
+``\$1,000 submission fee!''
+\end{beamercolorbox}
+\vspace{0.5em}
+\begin{center}
+\color{warmgray}\small
+This conversation happened\\this week.
+\end{center}
+\end{columns}
+\end{frame}
+
+%% ----------
+\begin{frame}{APE: 1,000 AI-written papers vs 43 human papers}
+\begin{center}
+\includegraphics[width=0.80\textwidth,height=0.68\textheight,keepaspectratio]{figures/elo-histogram.png}
+\end{center}
+\vspace{-0.2em}
+\begin{center}\small\color{warmgray}\itshape
+Social Catalyst Lab (Stanford). AI papers cluster around human median. \highlight{Zero-shot is not the ceiling.}
+\end{center}
+\end{frame}
+
+%% ====================================================================
+%% PART 7 — THE CS WORKFLOW (LIVE DEMO)
+%% ====================================================================
+
+\begin{frame}{We'll do this together --- live}
+\vspace{0.8em}
+\begin{center}
+\large
+One DiD paper, built in plan mode, using CS.\\[0.6em]
+\color{warmgray}\normalsize
+Italian or European data. Staggered adoption. We know the estimator.\\[0.6em]
+It will run \highlight{all day}.\\[0.4em]
+We'll come back at the end and see where it is.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{The workflow: nine steps in plan mode}
+\vspace{0.4em}
+\begin{enumerate}\setlength\itemsep{0.35em}\small
+  \item \textbf{Choose covariates} via interview process
+  \item \textbf{Check balance} with balance tables
+  \item \textbf{Build propensity score}
+  \item \textbf{Visualize rollout} with \texttt{panelview}
+  \item \textbf{Rollout graphic} with cohort counts and sample shares
+  \item \textbf{Outcome by cohort} over time
+  \item \textbf{Choose target parameter} (weighted ATT)
+  \item \textbf{Estimate} simple average + event studies with CS
+  \item \textbf{Sensitivity analysis} with Rambachan--Roth
+\end{enumerate}
+\end{frame}
+
+%% ----------
+\begin{frame}{\texttt{/referee2} --- replicate in a second language}
+\vspace{1.0em}
+\begin{center}
+\large\texttt{/referee2}
+\end{center}
+\vspace{0.6em}
+\begin{center}\normalsize\color{warmgray}
+Spawns a skeptical reviewer.\\[0.4em]
+Runs your estimation pipeline in R if you wrote it in Stata.\\[0.4em]
+Flags every discrepancy.\\[0.6em]
+\highlight{If the numbers don't match, something is wrong.}
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{\texttt{/beautiful\_deck} --- turn results into a presentation}
+\vspace{1.0em}
+\begin{center}
+\large\texttt{/beautiful\_deck}
+\end{center}
+\vspace{0.6em}
+\begin{center}\normalsize\color{warmgray}
+Generates a full Beamer deck from your results folder.\\[0.4em]
+Applies assertion titles, one idea per slide, clean figures.\\[0.6em]
+\highlight{Forces the agent to present its own findings to an audience.}\\[0.4em]
+\small If it can't explain the result on a slide, it didn't understand it.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{GTD harness --- track the pipeline}
+\vspace{1.0em}
+\begin{center}
+\large GTD (Getting Things Done) harness
+\end{center}
+\vspace{0.6em}
+\begin{center}\normalsize\color{warmgray}
+A workflow file that tracks every step:\\[0.4em]
+what ran, what verified, what's pending, what failed.\\[0.6em]
+\highlight{Multi-step pipelines need a memory.}\\[0.4em]
+\small The agent touches 50 files over 4 hours.\\
+Without a log, you can't audit what it did.
+\end{center}
+\end{frame}
+
+%% ====================================================================
+%% CONCLUSION — VERIFICATION AND DESKILLING
+%% ====================================================================
+
+\begin{frame}{The traditional path from time to output}
+\vspace{0.8em}
+\begin{center}
+\begin{tikzpicture}[
+  box/.style={rectangle, rounded corners=4pt, draw=warmgray!60,
+              fill=lightbg, minimum width=2.0cm, minimum height=0.75cm,
+              align=center, font=\small},
+  arr/.style={-{Stealth[length=6pt]}, thick, color=slate},
+]
+\node[box] (T)  at (0,0)   {Time};
+\node[box] (A)  at (3,0)   {Attention};
+\node[box] (S)  at (6,0)   {Skill};
+\node[box] (O)  at (9,0)   {Output};
+\draw[arr] (T.east) -- (A.west);
+\draw[arr] (A.east) -- (S.west);
+\draw[arr] (S.east) -- (O.west);
+\draw[arr, color=accent, dashed, very thick]
+  (T.south) .. controls (4.5,-1.4) .. (O.south)
+  node[midway, below, font=\small, color=accent] {AI route};
+\end{tikzpicture}
+\end{center}
+\vspace{0.5em}
+\begin{center}\color{warmgray}\small
+The AI route shortcircuits Attention and Skill.\\
+Output arrives faster --- but the pathway that builds the researcher is skipped.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{Production costs have fallen}
+\vspace{1.0em}
+\begin{center}
+\large
+\highlight{AER is already seeing a 20--50\% inflow of AI-written submissions.}\\[0.8em]
+\color{warmgray}\normalsize
+12 editors. Each handling 200 papers. Right now.
+\end{center}
+\end{frame}
+
+%% ----------
+\begin{frame}{Submissions are rising --- verification is not}
+\vspace{0.8em}
+\begin{itemize}\setlength\itemsep{0.6em}
+  \item Agents reliably produce output (1): code ran, estimates exist
+  \item They do not guarantee correct output (2): right estimator, right design
+  \item They do not guarantee interpretable output (3): can you reconstruct every step?
+\end{itemize}
+\vspace{0.5em}
+\emphbox{Production was hard; verification was implicit. \\Now production is cheap; verification is hard.}
+\end{frame}
+
+%% ----------
+\begin{frame}{You will need to build a verification workflow}
+\vspace{0.8em}
+\begin{center}
+\large
+\highlight{Verification is the new bottleneck.}
+\end{center}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item \texttt{/referee2} --- replicate results in a second language or framework
+  \item \texttt{/blindspot} --- surface what the analysis missed
+  \item \texttt{/beautiful\_deck} --- force the agent to present its own findings
+\end{itemize}
+\vspace{0.4em}
+\begin{center}\color{warmgray}\small
+The workflow doesn't exist yet. You will probably need to develop one for yourself.
+\end{center}
+\end{frame}
+
+%% ====================================================================
+%% CLOSING
+%% ====================================================================
+
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\fill[cream] (current page.south west) rectangle (current page.north east);
+\node[anchor=center, text width=0.84\paperwidth, align=center, text=charcoal]
+  at (current page.center) {%
+  \fontsize{18pt}{26pt}\selectfont
+  The agent does the work.\\[0.5em]
+  {\color{accent}\bfseries You set the question.}\\[0.5em]
+  {\color{accent}\bfseries You verify the design.}\\[0.5em]
+  {\color{accent}\bfseries You own the answer.}
+};
+\draw[accent, line width=1pt]
+  ([yshift=1.4cm,xshift=0.25\paperwidth]current page.south west)
+  -- ([yshift=1.4cm,xshift=-0.25\paperwidth]current page.south east);
+\end{tikzpicture}
+\end{frame}
+
+\end{document}

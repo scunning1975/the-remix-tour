@@ -1,0 +1,334 @@
+%% pisa_theme.sty
+%% A Beamer theme for Sant'Anna Workshop on Causal Inference, Pisa 2026
+%% Italian Renaissance palette: parchment, Arno blue, terracotta, cypress
+%% Utterly original — nothing here was borrowed from a Beamer template.
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pisa_theme}[2026/06/09 Pisa Renaissance Beamer Theme]
+
+%% ════════════════════════════════════════════════════════════════
+%%  REQUIRED PACKAGES
+%% ════════════════════════════════════════════════════════════════
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,decorations.pathreplacing}
+\RequirePackage{xcolor}
+\RequirePackage{ragged2e}
+\RequirePackage{microtype}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{booktabs}
+\RequirePackage{graphicx}
+\RequirePackage{adjustbox}
+\RequirePackage{listings}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+%% ════════════════════════════════════════════════════════════════
+%%  PALETTE — Pisa / Italian Renaissance
+%%  Every colour has a name, a source, and a use.
+%% ════════════════════════════════════════════════════════════════
+\definecolor{PisaParchment}{HTML}{F6EDD6}   % aged book vellum — slide bg
+\definecolor{PisaStone}{HTML}{28221E}       % dark Carrara shadow — body text
+\definecolor{ArnoBlue}{HTML}{2A6496}        % Arno river at dusk — primary accent
+\definecolor{Terracotta}{HTML}{B85A30}      % Duomo roof tiles — secondary accent
+\definecolor{TuscanGold}{HTML}{C5922A}      % sunflower fields — math highlight
+\definecolor{CypressGreen}{HTML}{4A7C59}    % Pisan cypress avenue — positive
+\definecolor{ChiantiRed}{HTML}{7B1A1A}      % Chianti wine — alert / danger
+\definecolor{MarbleWhite}{HTML}{F0E8D4}     % Pisan marble — code background
+\definecolor{OldMortar}{HTML}{8B7D6B}       % lime mortar between stones — gray
+\definecolor{PisaDark}{HTML}{1A1210}        % deep stone shadow — section divider bg
+\definecolor{ArnoLight}{HTML}{D4E8F2}       % pale Arno — block background
+\definecolor{ParchmentRule}{HTML}{E6D3B0}   % slightly darker parchment — rules
+\definecolor{TerracottaLight}{HTML}{F4DDD1} % pale terracotta — subtle bg
+\definecolor{GoldLight}{HTML}{FBF0D4}       % pale gold — emphbox fill
+
+%% ════════════════════════════════════════════════════════════════
+%%  BASE BEAMER THEME
+%% ════════════════════════════════════════════════════════════════
+\usetheme{default}
+\useinnertheme{default}
+\useoutertheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+
+%% ── Background ───────────────────────────────────────────────────
+\setbeamercolor{background canvas}{bg=PisaParchment}
+\setbeamercolor{background}{bg=PisaParchment}
+
+%% ── Text ─────────────────────────────────────────────────────────
+\setbeamercolor{normal text}{fg=PisaStone, bg=PisaParchment}
+\setbeamercolor{alerted text}{fg=Terracotta}
+\setbeamercolor{example text}{fg=CypressGreen}
+
+%% ── Title page ───────────────────────────────────────────────────
+\setbeamercolor{title}{fg=PisaDark}
+\setbeamercolor{subtitle}{fg=ArnoBlue}
+\setbeamercolor{author}{fg=OldMortar}
+\setbeamercolor{institute}{fg=OldMortar}
+\setbeamercolor{date}{fg=OldMortar}
+
+%% ── Frame title ──────────────────────────────────────────────────
+\setbeamercolor{frametitle}{fg=ArnoBlue, bg=MarbleWhite}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+
+%% ── Itemize / enumerate ──────────────────────────────────────────
+\setbeamercolor{item}{fg=ArnoBlue}
+\setbeamercolor{subitem}{fg=OldMortar}
+\setbeamercolor{subsubitem}{fg=OldMortar}
+
+%% ── Block environments ───────────────────────────────────────────
+\setbeamercolor{block title}{fg=white, bg=ArnoBlue}
+\setbeamercolor{block body}{fg=PisaStone, bg=ArnoLight}
+\setbeamercolor{block title alerted}{fg=white, bg=Terracotta}
+\setbeamercolor{block body alerted}{fg=PisaStone, bg=TerracottaLight}
+\setbeamercolor{block title example}{fg=white, bg=CypressGreen}
+\setbeamercolor{block body example}{fg=PisaStone, bg=MarbleWhite}
+
+%% ── Footline ─────────────────────────────────────────────────────
+\setbeamercolor{footline}{fg=OldMortar, bg=PisaParchment}
+\setbeamerfont{footline}{size=\scriptsize}
+
+%% ── Fonts ────────────────────────────────────────────────────────
+\setbeamerfont{title}{size=\LARGE, series=\bfseries}
+\setbeamerfont{subtitle}{size=\large, series=\mdseries}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{date}{size=\small}
+
+%% ════════════════════════════════════════════════════════════════
+%%  CUSTOM BULLETS — TikZ filled circles
+%% ════════════════════════════════════════════════════════════════
+\setbeamertemplate{itemize item}{%
+  \tikz[baseline=(c.base)]{%
+    \node[circle, fill=ArnoBlue, inner sep=2.2pt] (c) {};}}
+\setbeamertemplate{itemize subitem}{%
+  \tikz[baseline=(c.base)]{%
+    \node[circle, fill=OldMortar, inner sep=1.6pt] (c) {};}}
+\setbeamertemplate{itemize subsubitem}{%
+  \tikz[baseline=(c.base)]{%
+    \node[circle, draw=OldMortar, fill=PisaParchment, inner sep=1.2pt] (c) {};}}
+
+%% ════════════════════════════════════════════════════════════════
+%%  FRAME TITLE — left-rule style (2 mm ArnoBlue bar, then title)
+%%  Use a bg-tinted colorbox: avoids full-width rule overflow.
+%% ════════════════════════════════════════════════════════════════
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.1em,dp=0.55em,
+                         leftskip=3pt,rightskip=3pt]{frametitle}%
+    \begin{tikzpicture}[baseline=(X.base)]
+      \node[inner sep=0] (X) {\phantom{X}};
+      \fill[ArnoBlue] (-1pt,0.22em) rectangle (2.5pt,-0.65em);
+    \end{tikzpicture}%
+    \hspace{6pt}%
+    {\usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}%
+      \strut\insertframetitle}%
+  \end{beamercolorbox}%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.4pt,dp=0pt]{footline}%
+  \end{beamercolorbox}%
+}
+
+%% ════════════════════════════════════════════════════════════════
+%%  FOOTLINE — venue centred, slide number right
+%% ════════════════════════════════════════════════════════════════
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.4ex,dp=1.2ex]{footline}%
+    \hspace{1.4em}%
+    \usebeamerfont{footline}\usebeamercolor[fg]{footline}%
+    \textit{Sant'Anna Workshop\,\textperiodcentered\,Pisa\,\textperiodcentered\,June 2026}%
+    \hfill
+    \insertframenumber\,/\,\inserttotalframenumber%
+    \hspace{1.4em}%
+  \end{beamercolorbox}%
+}
+
+%% ════════════════════════════════════════════════════════════════
+%%  TITLE PAGE — hand-crafted, not the Beamer default
+%% ════════════════════════════════════════════════════════════════
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    %% Top accent bar — Terracotta
+    \fill[Terracotta]
+      (current page.north west) rectangle
+      ($(current page.north east)+(0,-5pt)$);
+    %% Bottom accent bar — ArnoBlue
+    \fill[ArnoBlue]
+      (current page.south west) rectangle
+      ($(current page.south east)+(0,4pt)$);
+    %% Subtle left column shadow
+    \fill[ParchmentRule!50]
+      (current page.north west) rectangle
+      ($(current page.south west)+(3pt,0)$);
+  \end{tikzpicture}%
+  \vspace{1.8em}
+  \begin{center}
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
+    \vspace{0.55em}
+    {\color{Terracotta}\rule{0.62\textwidth}{1.4pt}\par}%
+    \vspace{0.45em}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+    \vspace{1.3em}
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
+    \vspace{0.25em}
+    {\fontsize{10}{12}\selectfont\color{OldMortar}\insertinstitute\par}%
+    \vspace{0.25em}
+    {\fontsize{9}{11}\selectfont\color{OldMortar}\insertdate\par}%
+  \end{center}
+  \vfill
+}
+
+%% ════════════════════════════════════════════════════════════════
+%%  SECTION DIVIDER — \pisasection{Title}{Subtitle}
+%%  Full-bleed PisaDark with Terracotta top rule and ArnoBlue footer
+%% ════════════════════════════════════════════════════════════════
+\newcommand{\pisasection}[2]{%
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture, overlay]
+      \fill[PisaDark]
+        (current page.south west) rectangle (current page.north east);
+      \fill[Terracotta]
+        (current page.north west) rectangle
+        ($(current page.north east)+(0,-4pt)$);
+      \fill[ArnoBlue]
+        (current page.south west) rectangle
+        ($(current page.south east)+(0,3pt)$);
+    \end{tikzpicture}
+    \vfill
+    \begin{center}
+      {\fontsize{8}{10}\selectfont\color{OldMortar!70!white}%
+        \textit{Sant'Anna Workshop on Causal Inference\;\textperiodcentered\;Pisa\;\textperiodcentered\;June 2026}\par}%
+      \vspace{1.6em}
+      {\color{white}\LARGE\bfseries #1\par}%
+      \vspace{0.65em}
+      {\color{OldMortar!80!white}\large\itshape #2\par}%
+    \end{center}
+    \vfill
+  \end{frame}%
+}
+
+%% ════════════════════════════════════════════════════════════════
+%%  EMPHBOX — key result box (ArnoBlue frame, ArnoLight fill)
+%% ════════════════════════════════════════════════════════════════
+\newcommand{\emphbox}[1]{%
+  \begin{center}
+    \begin{tikzpicture}
+      \node[rectangle, draw=ArnoBlue, fill=ArnoLight,
+            inner sep=9pt, text width=0.87\textwidth,
+            align=center, rounded corners=2pt,
+            line width=0.8pt]{#1};
+    \end{tikzpicture}
+  \end{center}%
+}
+
+%% ════════════════════════════════════════════════════════════════
+%%  GOLDBOX — terracotta-accented highlight (for assertions)
+%% ════════════════════════════════════════════════════════════════
+\newcommand{\goldbox}[1]{%
+  \begin{center}
+    \begin{tikzpicture}
+      \node[rectangle, draw=TuscanGold, fill=GoldLight,
+            inner sep=9pt, text width=0.87\textwidth,
+            align=center, rounded corners=2pt,
+            line width=0.9pt]{#1};
+    \end{tikzpicture}
+  \end{center}%
+}
+
+%% ════════════════════════════════════════════════════════════════
+%%  MATH COLOUR HELPERS
+%% ════════════════════════════════════════════════════════════════
+\newcommand{\mblue}[1]{{\color{ArnoBlue}#1}}
+\newcommand{\mred}[1]{{\color{Terracotta}#1}}
+\newcommand{\mgold}[1]{{\color{TuscanGold}#1}}
+\newcommand{\mgreen}[1]{{\color{CypressGreen}#1}}
+
+%% ════════════════════════════════════════════════════════════════
+%%  TIKZ STYLES — ALL defined here, never inside frames
+%% ════════════════════════════════════════════════════════════════
+\tikzset{
+  %% DAG nodes
+  dagnode/.style={
+    circle, draw=PisaStone, fill=MarbleWhite,
+    minimum size=1.0cm, font=\small, align=center,
+    line width=0.8pt
+  },
+  dagtreated/.style={
+    circle, draw=Terracotta, fill=TerracottaLight,
+    minimum size=1.0cm, font=\small, align=center,
+    line width=1.2pt
+  },
+  dagoutcome/.style={
+    circle, draw=ArnoBlue, fill=ArnoLight,
+    minimum size=1.0cm, font=\small, align=center,
+    line width=1.2pt
+  },
+  daglatent/.style={
+    circle, draw=OldMortar, fill=MarbleWhite,
+    minimum size=1.0cm, font=\small, align=center,
+    dashed, line width=0.8pt
+  },
+  %% Arrows
+  dagArr/.style={
+    ->, >=latex, thick, draw=PisaStone
+  },
+  dagArrBlue/.style={
+    ->, >=latex, thick, draw=ArnoBlue
+  },
+  dagArrRed/.style={
+    ->, >=latex, thick, draw=Terracotta
+  },
+  dagArrGold/.style={
+    ->, >=latex, thick, draw=TuscanGold, dashed
+  },
+  %% Box
+  pisabox/.style={
+    rectangle, rounded corners=2pt,
+    draw=ArnoBlue, fill=ArnoLight,
+    inner sep=7pt, minimum height=1.0cm,
+    font=\small, align=center
+  },
+  %% Chapter entry row
+  chaprow/.style={
+    rectangle, fill=MarbleWhite,
+    minimum height=0.7cm, minimum width=9cm,
+    inner sep=4pt, font=\footnotesize,
+    align=left, draw=ParchmentRule
+  },
+}
+
+%% ════════════════════════════════════════════════════════════════
+%%  CODE LISTING STYLE (Python)
+%% ════════════════════════════════════════════════════════════════
+\lstdefinestyle{pisapy}{%
+  language=Python,
+  basicstyle=\ttfamily\footnotesize\color{PisaStone},
+  keywordstyle=\color{ArnoBlue}\bfseries,
+  commentstyle=\color{OldMortar}\itshape,
+  stringstyle=\color{Terracotta},
+  backgroundcolor=\color{MarbleWhite},
+  frame=single, framesep=5pt,
+  rulecolor=\color{ParchmentRule},
+  xleftmargin=7pt, xrightmargin=7pt,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=2,
+  numbers=none,
+  moredelim=[s][\color{CypressGreen}]{"}{"},
+}
+\lstdefinestyle{pisaR}{%
+  language=R,
+  basicstyle=\ttfamily\footnotesize\color{PisaStone},
+  keywordstyle=\color{ArnoBlue}\bfseries,
+  commentstyle=\color{OldMortar}\itshape,
+  stringstyle=\color{Terracotta},
+  backgroundcolor=\color{MarbleWhite},
+  frame=single, framesep=5pt,
+  rulecolor=\color{ParchmentRule},
+  xleftmargin=7pt, xrightmargin=7pt,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=2,
+  numbers=none,
+}
+
+\endinput

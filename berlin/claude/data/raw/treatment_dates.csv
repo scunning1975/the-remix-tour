@@ -1,0 +1,24 @@
+geo,country,iso3,adoption_year,status,source,confidence,notes
+SE,Sweden,SWE,1995,treated,"Lewitzka et al. 2019 (BMC Psychiatry); program established 1995",med,"Robustness: parliamentary national programme 2008"
+NO,Norway,NOR,1995,treated,"Lewitzka et al. 2019; national strategy published 1995 (plan 1994-1998)",high,"T0=1994 in Lewitzka; published-strategy year 1995 used to retain one pre-period"
+FR,France,FRA,2000,treated,"WHO 2018; Strategie nationale d'actions face au suicide 2000-2005",high,
+UK,United Kingdom,GBR,2002,treated,"WHO 2018 (England national strategy 2002, revised 2012)",high,"Eurostat reports UK aggregate; England strategy dominant"
+IE,Ireland,IRL,2005,treated,"WHO 2018; Reach Out: National Strategy for Action on Suicide Prevention 2005-2014",high,
+FI,Finland,FIN,1992,always_treated_dropped,"Lewitzka et al. 2019; program 1992",high,"Adopted before 1994 panel start -> no pre-period -> excluded from main estimation"
+DE,Germany,DEU,NA,never_treated,"WHO 2018 Annex 1 excludes Germany (NaSPro non-governmental)",high,
+IT,Italy,ITA,NA,never_treated,"WHO 2018 Annex 1 excludes Italy (subpopulation programmes only)",high,"Documented never-adopter; narrative focal point"
+ES,Spain,ESP,NA,never_treated,"WHO 2018 Annex 1 (integrated, not stand-alone; national strategy 2021/22 post-window)",high,
+BE,Belgium,BEL,NA,never_treated,"WHO 2018 Annex 1 excludes Belgium (regional only)",high,
+AT,Austria,AUT,NA,never_treated,"SUPRA strategy ~2012 (post-window); Lewitzka control",med,
+CH,Switzerland,CHE,NA,never_treated,"National Action Plan 2016 (post-window); Lewitzka control",med,
+NL,Netherlands,NLD,NA,never_treated,"National agenda 2014 (post-window)",med,
+PT,Portugal,PRT,NA,never_treated,"Plano Nacional 2013 (post-window)",med,
+LU,Luxembourg,LUX,NA,never_treated,"Plan national 2015 (post-window)",low,
+EL,Greece,GRC,NA,never_treated,"Not in WHO 2018 Annex 1 stand-alone list",med,
+DK,Denmark,DNK,NA,never_treated,"Lewitzka et al. 2019 classifies Denmark as control",med,"Robustness: national plan 1998-2005 -> code as treated 1998"
+CZ,Czechia,CZE,NA,never_treated,"No stand-alone strategy by 2010 (national strategy 2020)",med,
+EE,Estonia,EST,NA,never_treated,"No stand-alone strategy in window",low,
+HU,Hungary,HUN,NA,never_treated,"No stand-alone strategy in window",low,
+PL,Poland,POL,NA,never_treated,"No stand-alone strategy in window",low,
+SK,Slovakia,SVK,NA,never_treated,"WHO 2018: integrated, not stand-alone",med,
+SI,Slovenia,SVN,NA,never_treated,"No stand-alone strategy in window",low,

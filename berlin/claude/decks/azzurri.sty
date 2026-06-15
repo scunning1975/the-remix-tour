@@ -1,0 +1,141 @@
+% =====================================================================
+%  azzurri.sty  —  an original Beamer theme
+%  Palette: Italy "Azzurri" blue + the tricolore (green/white/red) + World-Cup gold.
+%  Built from base Beamer (NOT metropolis/moloch/focus) so it is unrecognizable
+%  as any stock theme. Frame titles carry a small tricolore tab; section
+%  dividers are full-bleed azure; the title slide carries four gold stars
+%  (Italy's four World Cups).
+%  Created for "Prevention Without Proof" — JRC Ispra, June 2026.
+% =====================================================================
+\ProvidesPackage{azzurri}[2026/06/04 Azzurri original Beamer theme]
+\mode<presentation>
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\usetikzlibrary{shapes.geometric,calc}
+
+% ---------------- palette ----------------
+\definecolor{azzurro}{HTML}{1A5FAB}     % Italy blue (core accent)
+\definecolor{azzurrodark}{HTML}{0E3A6B} % deep azure (dividers)
+\definecolor{tricverde}{HTML}{009246}   % flag green
+\definecolor{tricrosso}{HTML}{CE2B37}   % flag red
+\definecolor{oro}{HTML}{C9A227}         % World-Cup gold
+\definecolor{inkdark}{HTML}{1B2733}     % body text
+\definecolor{warmgray}{HTML}{5B6770}    % secondary text
+\definecolor{cream}{HTML}{FBF8F1}       % background
+\definecolor{lightbg}{HTML}{EEF3F9}     % pale azure block bg
+\definecolor{stone}{HTML}{C9CCC8}
+
+% ---------------- base colors ----------------
+\setbeamercolor{normal text}{fg=inkdark,bg=cream}
+\setbeamercolor{structure}{fg=azzurro}
+\setbeamercolor{alerted text}{fg=tricrosso}
+\setbeamercolor{example text}{fg=tricverde}
+\setbeamercolor{frametitle}{fg=inkdark,bg=}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{itemize item}{fg=azzurro}
+\setbeamercolor{itemize subitem}{fg=oro}
+\setbeamercolor{block title}{fg=white,bg=azzurro}
+\setbeamercolor{block body}{fg=inkdark,bg=lightbg}
+\setbeamercolor{block title alerted}{fg=white,bg=tricrosso}
+\setbeamercolor{block body alerted}{fg=inkdark,bg=lightbg}
+
+\usefonttheme{professionalfonts}
+\renewcommand{\familydefault}{\sfdefault}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+\setbeamerfont{title}{series=\bfseries,size=\huge}
+\setbeamertemplate{navigation symbols}{}
+
+% ---------------- tricolore tab (reusable) ----------------
+\newcommand{\tricoloretab}[1][0.62]{%
+  \begin{tikzpicture}[baseline=-0.55ex]
+    \fill[tricverde] (0,0) rectangle (0.10,#1);
+    \fill[white]     (0.10,0) rectangle (0.20,#1);
+    \fill[tricrosso] (0.20,0) rectangle (0.30,#1);
+  \end{tikzpicture}}
+
+% ---------------- frame title: tricolore tab + bold title + hairline ----------------
+\setbeamertemplate{frametitle}{%
+  \vskip0.6em
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.9em,rightskip=0.9em]{frametitle}
+    \raisebox{-0.15ex}{\tricoloretab}~\,\insertframetitle\par
+    \vskip2pt
+    {\color{azzurro}\rule{\dimexpr\paperwidth-1.8em\relax}{1.1pt}}
+  \end{beamercolorbox}%
+}
+
+% ---------------- footline: minimal, azure, with venue ----------------
+\newcommand{\azfoot}{Prevention Without Proof \,\textperiodcentered\, JRC Ispra \,\textperiodcentered\, June 2026}
+\setbeamertemplate{footline}{%
+  \hbox{\begin{beamercolorbox}[wd=\paperwidth,ht=2.2ex,dp=1ex,leftskip=0.9em,rightskip=0.9em]{}%
+    {\color{warmgray}\scriptsize\azfoot\hfill\insertframenumber}%
+  \end{beamercolorbox}}%
+}
+
+% ---------------- itemize bullets: azure dot / gold subdot ----------------
+\setbeamertemplate{itemize item}{\tikz\fill[azzurro] (0,0) circle (1.6pt);}
+\setbeamertemplate{itemize subitem}{\tikz\fill[oro] (0,0) circle (1.3pt);}
+\setbeamertemplate{itemize subsubitem}{\tikz\draw[azzurro,thick] (0,0) circle (1.3pt);}
+
+% ---------------- title slide ----------------
+\newcommand{\fourstars}{%
+  \begin{tikzpicture}
+    \foreach \x in {0,0.62,1.24,1.86}{
+      \node[star,star points=5,star point ratio=2.3,fill=oro,inner sep=2.0pt] at (\x,0) {};}
+  \end{tikzpicture}}
+
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    % azure field
+    \fill[azzurrodark] (current page.south west) rectangle (current page.north east);
+    \fill[azzurro] ([yshift=-3.2cm]current page.north west) rectangle (current page.north east);
+    % thin tricolore band at the base of the blue header
+    \fill[tricverde] ([yshift=-3.35cm]current page.north west) rectangle ([yshift=-3.20cm]$(current page.north west)!0.3333!(current page.north east)$);
+    \fill[white]     ([yshift=-3.35cm]$(current page.north west)!0.3333!(current page.north east)$) rectangle ([yshift=-3.20cm]$(current page.north west)!0.6667!(current page.north east)$);
+    \fill[tricrosso] ([yshift=-3.35cm]$(current page.north west)!0.6667!(current page.north east)$) rectangle ([yshift=-3.20cm]current page.north east);
+    % four World-Cup stars, upper area
+    \node at ([yshift=-1.7cm]current page.north) {\fourstars};
+    % title block
+    \node[anchor=west,text width=0.86\paperwidth,align=left] at ([xshift=0.9cm,yshift=-0.6cm]current page.west) {%
+      {\color{white}\usebeamerfont{title}\inserttitle}\\[0.5em]
+      {\color{oro}\large\insertsubtitle}\\[1.4em]
+      {\color{stone}\normalsize\insertauthor}\\[0.3em]
+      {\color{stone}\footnotesize\insertinstitute}\\[0.2em]
+      {\color{stone}\footnotesize\insertdate}};
+  \end{tikzpicture}}
+
+% ---------------- section divider ----------------
+% \divider{Title}{subtitle}
+\newcommand{\divider}[2]{%
+  \begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[azzurrodark] (current page.south west) rectangle (current page.north east);
+    % tricolore hairline
+    \fill[tricverde] ([yshift=-0.0cm]current page.center -| current page.west) rectangle ([yshift=0.12cm]$(current page.center -| current page.west)!0.333!(current page.center -| current page.east)$);
+    \fill[white]     ([yshift=0.0cm]$(current page.center -| current page.west)!0.333!(current page.center -| current page.east)$) rectangle ([yshift=0.12cm]$(current page.center -| current page.west)!0.667!(current page.center -| current page.east)$);
+    \fill[tricrosso] ([yshift=0.0cm]$(current page.center -| current page.west)!0.667!(current page.center -| current page.east)$) rectangle ([yshift=0.12cm]current page.center -| current page.east);
+    \node[anchor=south west,text width=0.86\paperwidth] at ([xshift=0.9cm,yshift=0.5cm]current page.center -| current page.west)
+      {\color{white}\Large\bfseries #1};
+    \node[anchor=north west,text width=0.86\paperwidth] at ([xshift=0.9cm,yshift=-0.45cm]current page.center -| current page.west)
+      {\color{oro}\normalsize #2};
+  \end{tikzpicture}
+  \end{frame}}
+
+% ---------------- a "big number" full-bleed slide ----------------
+% \bignumber{72}{deaths per 100,000 — what the strategies were written to move}
+\newcommand{\bignumber}[2]{%
+  \begin{frame}[plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[cream] (current page.south west) rectangle (current page.north east);
+    \node[anchor=center] at ([yshift=1.3cm]current page.center)
+      {\color{azzurro}\fontsize{96}{96}\selectfont\bfseries #1};
+    \node[anchor=north,text width=0.78\paperwidth,align=center] at ([yshift=-0.7cm]current page.center)
+      {\color{inkdark}\large #2};
+    \fill[oro] ([xshift=-1.5cm,yshift=-2.3cm]current page.center) rectangle ([xshift=1.5cm,yshift=-2.22cm]current page.center);
+  \end{tikzpicture}
+  \end{frame}}
+
+\mode<all>

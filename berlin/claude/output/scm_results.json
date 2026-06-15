@@ -1,0 +1,55 @@
+{
+  "scm": {
+    "NO": {
+      "t_int": 1995,
+      "rmspe_pre": 0.72518,
+      "rmspe_post": 1.34227,
+      "ratio": 1.85094,
+      "att_post": 0.72004,
+      "pval": 0.71429
+    },
+    "SE": {
+      "t_int": 1995,
+      "rmspe_pre": 0.64526,
+      "rmspe_post": 1.35842,
+      "ratio": 2.10523,
+      "att_post": 0.65111,
+      "pval": 0.71429
+    },
+    "UK": {
+      "t_int": 2002,
+      "rmspe_pre": 0.28885,
+      "rmspe_post": 0.46132,
+      "ratio": 1.59709,
+      "att_post": 0.27655,
+      "pval": 0.78571
+    },
+    "IE": {
+      "t_int": 2005,
+      "rmspe_pre": 1.09853,
+      "rmspe_post": 2.04029,
+      "ratio": 1.85729,
+      "att_post": 1.88756,
+      "pval": 0.42857
+    }
+  },
+  "sdid": [
+    {
+      "group": "1995 (NO,SE)",
+      "sdid_att": 0.799,
+      "se": 4.199
+    },
+    {
+      "group": "2002 (UK)",
+      "sdid_att": 1.244,
+      "se": 3.964
+    },
+    {
+      "group": "2005 (IE)",
+      "sdid_att": 0.742,
+      "se": 1.438
+    }
+  ],
+  "did_pretrend_slope": 0.32088,
+  "did_pretrend_t": 3.38767
+}

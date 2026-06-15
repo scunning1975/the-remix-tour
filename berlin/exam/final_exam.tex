@@ -1,0 +1,281 @@
+% =============================================================================
+% Final Exam — Sant'Anna Workshop, Pisa, June 2026
+% Difference-in-Differences: theory, covariates, continuous, staggered
+% One dataset throughout: minwage_state_panel_1990-2022.dta
+% Compile: pdflatex final_exam.tex  (two passes for the TOC-free cross-refs)
+% =============================================================================
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Typography ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{newpxtext,newpxmath}   % Palatino — warm, bookish, Tuscan
+\renewcommand{\ttdefault}{lmtt}    % newpx's own mono (t1xtt) is not installed
+\usepackage{microtype}
+
+% ---------- Layout ----------
+\usepackage[a4paper,top=2.6cm,bottom=2.8cm,left=2.6cm,right=2.6cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.08}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+
+% ---------- Color: the Pisa palette ----------
+\usepackage{xcolor}
+\definecolor{PisaParchment}{HTML}{F6EDD6}
+\definecolor{PisaStone}{HTML}{28221E}
+\definecolor{ArnoBlue}{HTML}{2A6496}
+\definecolor{Terracotta}{HTML}{B85A30}
+\definecolor{TuscanGold}{HTML}{C5922A}
+\definecolor{CypressGreen}{HTML}{4A7C59}
+\definecolor{ChiantiRed}{HTML}{7B1A1A}
+\definecolor{MarbleWhite}{HTML}{F0E8D4}
+\definecolor{OldMortar}{HTML}{8B7D6B}
+
+\color{PisaStone}
+
+% ---------- Section styling ----------
+\usepackage{titlesec}
+\titleformat{\section}
+  {\Large\bfseries\color{ArnoBlue}}
+  {\thesection}{0.7em}{}
+  [\vspace{-0.55em}{\color{Terracotta}\rule{\textwidth}{1.1pt}}]
+\titleformat{\subsection}
+  {\large\bfseries\color{Terracotta}}
+  {\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.5em}{0.9em}
+\titlespacing*{\subsection}{0pt}{1.1em}{0.45em}
+
+% ---------- Boxes ----------
+\usepackage[skins,breakable]{tcolorbox}
+\newtcolorbox{databox}{
+  enhanced, breakable,
+  colback=MarbleWhite, colframe=ArnoBlue,
+  boxrule=0.9pt, arc=2.5pt,
+  left=9pt, right=9pt, top=7pt, bottom=7pt,
+  title={\bfseries The dataset (used in every section)},
+  fonttitle=\color{white},
+  colbacktitle=ArnoBlue
+}
+\newtcolorbox{helpbox}{
+  enhanced, breakable,
+  colback=PisaParchment, colframe=CypressGreen,
+  boxrule=0.9pt, arc=2.5pt,
+  left=9pt, right=9pt, top=7pt, bottom=7pt,
+  title={\bfseries Where to find help},
+  fonttitle=\color{white},
+  colbacktitle=CypressGreen
+}
+\newtcolorbox{checkbox}{
+  enhanced, breakable,
+  colback=white, colframe=Terracotta,
+  boxrule=0.9pt, arc=2.5pt,
+  left=9pt, right=9pt, top=7pt, bottom=7pt,
+  title={\bfseries The 10-point checklist},
+  fonttitle=\color{white},
+  colbacktitle=Terracotta
+}
+\newtcolorbox{legendbox}{
+  enhanced, breakable,
+  colback=white, colframe=TuscanGold,
+  boxrule=0.9pt, arc=2.5pt,
+  left=9pt, right=9pt, top=7pt, bottom=7pt,
+  title={\bfseries Legend: outcomes, treatments, covariates},
+  fonttitle=\color{white},
+  colbacktitle=TuscanGold
+}
+\newtcolorbox{beautybox}{
+  enhanced, breakable,
+  colback=PisaParchment, colframe=ArnoBlue,
+  boxrule=0.9pt, arc=2.5pt,
+  left=9pt, right=9pt, top=7pt, bottom=7pt
+}
+
+% ---------- Header / footer ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\small\color{OldMortar}Sant'Anna Workshop \textperiodcentered\ Pisa \textperiodcentered\ June 2026}
+\fancyfoot[R]{\small\color{OldMortar}Page \thepage\ of \pageref{LastPage}}
+\usepackage{lastpage}
+
+\usepackage{amsmath}
+
+% Inline code styling
+\newcommand{\code}[1]{\texttt{\color{ChiantiRed}#1}}
+\newcommand{\E}{\mathbb{E}}
+
+\begin{document}
+
+% =============================================================================
+% Title block
+% =============================================================================
+\begin{center}
+{\color{OldMortar}\small SCUOLA SUPERIORE SANT'ANNA \textperiodcentered\ PISA}\\[0.5em]
+{\Huge\bfseries\color{ArnoBlue} Difference-in-Differences}\\[0.35em]
+{\Large\color{Terracotta} Final Exam}\\[0.8em]
+{\color{PisaStone} Scott Cunningham \textperiodcentered\ June 2026 \textperiodcentered\ \textbf{Pass/Fail}}\\[0.4em]
+{\color{Terracotta}\rule{0.55\textwidth}{1.1pt}}
+\end{center}
+
+\vspace{0.6em}
+
+\noindent\textbf{Rules of the road.} You will only get credit if you \emph{show your work} --- don't skip steps. Submit your code, your output, and a short writeup for each section. Any language is fine (Stata, R, Python). The exam is pass/fail: I am grading the completeness of your reasoning and the intentionality of your choices, not whether you find a significant effect. Some of these analyses produce nulls. \emph{A null result, honestly estimated and clearly interpreted, is a passing answer.} When I ask for a ``beautiful figure'' or a ``beautiful table,'' I mean publication quality: titled, labeled, with units, readable by someone who never took this course.
+
+\begin{databox}
+Everything in this exam uses one dataset: \code{minwage\_state\_panel\_1990-2022.dta}, a balanced panel of 51 US states (including DC) observed annually from 1990 to 2022. The federal minimum wage has been frozen at \$7.25 since 2009; states are free to set theirs higher. Key variables:
+
+\medskip
+\begin{center}
+\small
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{0.62\textwidth}@{}}
+\toprule
+\code{statefip} & State FIPS code (the panel identifier) \\
+\code{year} & Calendar year \\
+\code{effective\_mw} & Effective minimum wage: $\max(\text{state}, \text{federal})$ \\
+\code{emp\_pop\_ratio\_teen} & Employment--population ratio, ages 16--19 \textbf{(the outcome)} \\
+\code{lfpr\_all} & Labor force participation rate, ages 16+ \\
+\code{unemp\_rate\_all} & Unemployment rate, ages 16+ \\
+\code{emp\_pop\_ratio\_prime\_age} & Employment--population ratio, ages 25--54 \\
+\code{pop\_teen}, \code{pop\_all} & Population counts (use for the teen population share) \\
+\code{wkly\_wage\_total\_private} & \textbf{Mean} weekly wage, all private employment (QCEW) --- \emph{not} the minimum wage \\
+\bottomrule
+\end{tabular}
+\end{center}
+\smallskip
+\footnotesize\textit{A note on \code{wkly\_wage\_total\_private}: this is the \textbf{average} wage paid across all private-sector jobs in the state, not the minimum wage and not the outcome. It is used only as a 2012 (pre-treatment) covariate. Because it is measured before any 2012--2016 minimum-wage change, it cannot have been affected by the treatment --- which is exactly what makes it a legitimate conditioning variable rather than a ``bad control.''}
+\end{databox}
+
+% =============================================================================
+% Section 1 — Theory
+% =============================================================================
+\section{Decomposing the 2$\times$2}
+
+Write down the population difference-in-differences as a 2$\times$2 and, using the decomposition steps we did this week, show what it identifies in the population. Under what conditions will the 2$\times$2 identify the causal parameter, and what is the name of that causal parameter? Work through each scenario separately:
+
+\begin{enumerate}[label=(\alph*), itemsep=2pt]
+  \item No anticipation, never-treated control.
+  \item No anticipation \emph{violation}, parallel trends holds, never-treated control.
+  \item No anticipation holds, parallel trends holds, spillover of the treatment to the control in the post period.
+  \item No anticipation holds, parallel trends holds, always-treated group as a control.
+  \item No anticipation violation, parallel trends violation, always-treated group as a control.
+\end{enumerate}
+
+\noindent Keep your answers to (a)--(e) in mind as you work: \emph{every one of these scenarios shows up somewhere in the data below.}
+
+% =============================================================================
+% Variable legend (unnumbered, referenced by Sections 2-4)
+% =============================================================================
+\section*{Variable definitions}
+
+Every empirical section uses the constructed variables below. Build them once, exactly as defined here, and reference this legend in your writeup. State $i$, year $t$.
+
+\begin{legendbox}
+\small
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{0.60\textwidth}@{}}
+\textbf{Outcome (all sections)} & $Y_{it} = $ \code{emp\_pop\_ratio\_teen}, the employment--population ratio of 16--19 year olds. \\
+\textbf{Binary treatment (\S2)} & $\text{treat}_i = \mathbf{1}\{\text{\code{effective\_mw}}_{i,2012} = 7.25 \text{ and } \text{\code{effective\_mw}}_{i,2016} > 7.25\}$; $\;\text{post}_t = \mathbf{1}\{t = 2016\}$. States with \code{effective\_mw}$_{i,2012} > 7.25$ are excluded from \S2 entirely. \\
+\textbf{Continuous dose (\S3)} & $D_i = \text{\code{effective\_mw}}_{i,2016} - \text{\code{effective\_mw}}_{i,2012}$, set to $0$ if smaller than \$0.01. All 51 states are used in \S3. \textbf{No covariates} --- see the note below. \\
+\textbf{Treatment timing (\S4)} & $g_i = \min\{t \in [2010, 2022]: \text{\code{effective\_mw}}_{it} > 7.25\}$; $g_i = 0$ if never. States above \$7.25 already in 2010 are excluded from \S4. \\
+\textbf{Covariates $X_i$ (\S2 only)} & The \textbf{2012 baseline (pre-treatment) values} of: \code{lfpr\_all}; \code{unemp\_rate\_all}; \code{emp\_pop\_ratio\_prime\_age}; $\text{teen\_share}_i = \text{\code{pop\_teen}}/\text{\code{pop\_all}}$; $\text{lnwage}_i = \log(\text{\code{wkly\_wage\_total\_private}})$, the log of the \textbf{mean} private wage (not the minimum wage). Time-invariant by construction; measured before treatment, so unmanipulable by it. \\
+\textbf{Covariates $X_{it}$ (\S4)} & $\text{teen\_share}_{it}$ and \code{emp\_pop\_ratio\_prime\_age}$_{it}$, time-varying, passed to the estimator's covariate formula. \\
+\end{tabular}
+\end{legendbox}
+
+% =============================================================================
+% Section 2 — The 2x2, then covariates
+% =============================================================================
+\section{The 2$\times$2 in practice, with and without covariates}
+
+\textbf{Setup.} Restrict the panel to two years: \textbf{2012} (pre) and \textbf{2016} (post). Define treatment as \emph{crossing the federal floor}: a state is treated if its effective minimum wage was exactly \$7.25 in 2012 and above \$7.25 in 2016. The control group is the states sitting at exactly \$7.25 in both years. States that were already above \$7.25 in 2012 are excluded --- in your writeup, say which scenario from Section~1 they correspond to and why they cannot serve as controls. The outcome throughout is \code{emp\_pop\_ratio\_teen}.
+
+\begin{enumerate}[label=2.\arabic*., itemsep=4pt, leftmargin=2.2em]
+  \item Report the number of treated, control, and excluded states.
+  \item Produce a \textbf{beautiful table} of the diff-in-diff regression coefficient and standard error from OLS with state and year fixed effects (``twoway fixed effects''), standard errors cluster-robust at the state level, no covariates.
+  \item Before adding covariates: are the treated and control groups balanced? Use the baseline covariate vector $X_i$ from the legend. Show a \textbf{beautiful figure} of the propensity score distributions for the two groups, and at least one other balance diagnostic of your choice.
+  \item Now create a new table where each column adds the covariates from 2.3 under the following modeling choices. In each case, compare your answer to 2.2:
+  \begin{enumerate}[label=(\alph*), itemsep=2pt]
+    \item Twoway fixed effects with additive and separable covariates, using only the 2012 baseline values.
+    \item Twoway fixed effects that is robust to changing parameters on the covariates over time.
+    \item Twoway fixed effects that is robust to heterogeneous treatment effects with respect to baseline covariates.
+    \item Twoway fixed effects robust to both --- ``outcome regression'' or ``regression adjustment'' as we called it.
+    \item Inverse probability weighting.
+    \item Doubly robust.
+  \end{enumerate}
+\end{enumerate}
+
+\begin{helpbox}
+The covariate ladder in 2.4 is exactly the sequence in \code{Labs/Lalonde-Covariates/} --- see \code{lalonde\_all\_specs.do} for all six specifications run side by side, and \code{covariates.do} / \code{covariates.R} for the worked logic behind each rung.
+\end{helpbox}
+
+% =============================================================================
+% Section 3 — Continuous treatment
+% =============================================================================
+\section{Continuous treatment: by how much did they raise it?}
+
+Section~2 asked \emph{whether} a state raised its minimum wage. This section asks whether the size of the raise matters. The continuous treatment is the dose $D_i$ from the legend --- the \textbf{change} in the effective minimum wage between 2012 and 2016. Note that \code{effective\_mw} measures the \emph{level} at a point in time, not the change: you must construct $D_i$ yourself. Use \textbf{all 51 states} here: the dose-zero group is every state whose minimum wage did not change (whether frozen at \$7.25 or frozen above it), and the treated states have doses ranging from about \$0.38 (indexation states) to \$3.25.
+
+\smallskip
+\noindent\textbf{No covariates in this section.} Identification runs entirely off the dose-zero states: they supply the counterfactual trend $\E[\Delta Y(0)]$, and every estimator below (the bins, the spline, \code{contdid}) is unconditional. Do \emph{not} add the $X_i$ from Section~2 here --- the question is whether the dose-response is identified under (strong) parallel trends alone.
+
+\begin{enumerate}[label=3.\arabic*., itemsep=4pt, leftmargin=2.2em]
+  \item Take first differences in \code{emp\_pop\_ratio\_teen} from 2012 to 2016. Create a \textbf{beautiful picture} of the dose --- the change in the minimum wage --- across all states. How many states are zeroes?
+  \item Bin the treated states into four dose bins: \$0--0.75, $>$\$0.75--1.25, $>$\$1.25--2.00, and $>$\$2.00. Calculate four 2$\times$2s, each comparing one bin against the dose-zero states. Present them in a figure or table with standard errors.
+  \item Estimate a nonparametric spline of the dose-response, similar to what we did in class: subtract the average outcome change of the dose-zero group, then fit a B-spline in the dose on the treated states only. Plot the fitted $\widehat{\text{ATT}}(d \mid d)$ curve over the raw data.
+  \item Estimate the dose-response using \code{contdid} to get smoothed point estimates and \emph{uniform} confidence bands across all doses. What is the effect of a small, a medium, and a large raise (pick a few doses, e.g.\ \$0.50, \$1.00, \$2.00)? In one paragraph: what does the uniform band buy you that pointwise bands do not, and what does it cost?
+  \item \emph{Interpretation.} The estimator in 3.4 requires \emph{strong} parallel trends rather than standard parallel trends. State the difference in one sentence each, and explain which assumption your binned 2$\times$2s in 3.2 needed.
+  \item \emph{TWFE weights.} Suppose instead you had just run the TWFE regression of the outcome on the continuous dose. From class, the TWFE coefficient is a weighted average of dose-level effects, where the \emph{level weight} at dose $d$ is
+  \[
+  w^{\text{lev}}(d) \;=\; \frac{\big(d - E[D]\big)\cdot f_D(d)}{\mathrm{Var}(D)},
+  \]
+  and with 51 states the density $f_D(d)$ at a dose held by a single state is its empirical mass, $1/51$. Some states are positively weighted and some negatively. Which is which --- and \emph{name} the states in each camp (you computed every state's dose in 3.1, so this is a sort, not a guess). Then calculate the weight, by hand, for two states: \textbf{DC} (the largest raise) and \textbf{Montana} (a small indexation raise). One of these treated states carries a \emph{negative} weight --- explain in two sentences why a state that raised its minimum wage can still enter the TWFE average negatively, and what that does to the interpretation of $\hat\beta^{\text{twfe}}$.
+\end{enumerate}
+
+\begin{helpbox}
+The demean-then-smooth workflow in 3.2--3.4 is worked out start to finish in \code{Labs/China-WTO/} --- \code{wto\_example.R} and \code{wto\_example.do} build the dose, demean by the zero-dose group, and fit the linear, spline, and bin estimators on the Lu \& Yu (2015) tariff data. The \code{README.md} maps each code block to the lecture slides.
+\end{helpbox}
+
+% =============================================================================
+% Section 4 — Staggered adoption
+% =============================================================================
+\section{Staggered adoption: the checklist, line by line}
+
+Now use the full panel from \textbf{2010 to 2022}, the years in which the federal floor sits frozen at \$7.25. Treatment is binary: a state becomes treated in the first year its effective minimum wage rises above \$7.25, and stays treated thereafter. Your task is to work through the 10-point checklist below \emph{line by line}, producing the deliverable for each step. Make your choices intentionally and defend them --- there is more than one defensible answer at several steps, but ``the default setting'' is not a defense.
+
+\begin{checkbox}
+\begin{enumerate}[itemsep=3pt, leftmargin=1.6em]
+  \item \textbf{Define your target parameter: potential outcomes, population, and weighted averages.} What exactly are you trying to estimate and who is your population? How is your research question expressed as a proper average treatment effect? Can you justify that decision to someone else?
+  \item \textbf{Count the units in your cohorts}, including the cohort of ``never treated'' and the cohort of ``always treated.''
+  \item \textbf{Plot treatment rollout:} visualize when and how treatment varies across units and time.
+  \item \textbf{Pick your control group:} decide which units will serve as your counterfactual and justify that choice.
+  \item \textbf{Choose between unconditional and conditional parallel trends:} assess whether treated and control units would have followed similar paths absent treatment.
+  \item \textbf{Check covariate imbalance} between treated and control groups --- a variety of different ways.
+  \item \textbf{Plot average outcomes across cohorts} to spot potential problems by treatment timing.
+  \item \textbf{Estimator selection and assumptions:} choose the difference-in-differences estimator that fits your design and understand what it assumes. \emph{For this exam: use Callaway--Sant'Anna, with the covariates you defended in steps 5--6, and justify your choices of comparison group and estimation method (\code{dr}, \code{ipw}, or \code{reg}).} Report the group-time ATTs aggregated by cohort and overall.
+  \item \textbf{Check for parallel trends violations with falsifications and event studies.} Produce the event-study plot with uniform bands. Make sure you understand how your pre-trends are calculated and confirm they are what you intended. Pay attention to any warnings the software gives you --- one of your cohorts is very small, and the longest pre-treatment event-time estimates rest on almost no data. Diagnose and address both.
+  \item \textbf{DDDiD, or ``Don't Do Diff-in-Diff'':} diff-in-diff needs parallel trends, and if you have lost confidence in it here, say so and name the design you would move to instead. If you have not, defend that too.
+\end{enumerate}
+\end{checkbox}
+
+\begin{helpbox}
+Two places. \code{Labs/Brazil/} is the model for this entire section: its \code{README.md} walks the same workflow step by step on the Brazilian CAPS mental-health rollout (target parameter $\to$ cohort table $\to$ rollout plot $\to$ raw outcomes $\to$ balance $\to$ TWFE as diagnostic $\to$ Bacon decomposition $\to$ Callaway--Sant'Anna), with full reference scripts in \code{code/brazil.R} and \code{code/brazil.do}. For the cleanest minimal Callaway--Sant'Anna code on its own, see \code{Labs/Baker/Solutions/baker\_cs.R} and \code{baker\_cs.do}.
+\end{helpbox}
+
+% =============================================================================
+% Closing note on beauty
+% =============================================================================
+\vspace{1.0em}
+\begin{beautybox}
+\textbf{A final word on ``beautiful.''} Beauty in a figure or table is not decoration --- it is part of the \emph{rhetoric} of scientific work. We make figures and tables because we need other people to read, understand, and \emph{believe} what we have done. So they must be two things at once: \textbf{truthful} and \textbf{pretty} --- pretty so that a reader wants to look longer than they meant to, truthful so that the longer they look, the more they trust it. But that also means a figure must never \emph{confuse}. Think carefully about what your particular reader can and cannot already understand: label what they would otherwise have to guess, name your units, say what the comparison is, and remove anything that competes for attention with the one thing you want them to see. A beautiful exhibit is the most honest one your reader will actually enjoy reading.
+\end{beautybox}
+
+\vspace{0.5em}
+\begin{center}
+{\color{Terracotta}\rule{0.55\textwidth}{1.1pt}}\\[0.6em]
+{\itshape\color{OldMortar} In bocca al lupo. Show your work.}
+\end{center}
+
+\end{document}

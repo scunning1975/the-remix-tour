@@ -1,0 +1,16 @@
+{
+  "UK": {
+    "ratio": 4.83469,
+    "pval": 0.46154,
+    "att_post": 0.66189,
+    "rmspe_pre": 0.16874,
+    "rmspe_post": 0.81583
+  },
+  "IE": {
+    "ratio": 2.24394,
+    "pval": 0.69231,
+    "att_post": 1.25936,
+    "rmspe_pre": 0.70939,
+    "rmspe_post": 1.59182
+  }
+}

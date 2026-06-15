@@ -1,0 +1,4094 @@
+National suicide prevention strategies
+Progress, examples and indicators
+
+National suicide prevention strategies
+Progress, examples and indicators
+
+National suicide prevention strategies: progress, examples and indicators
+ISBN 978-92-4-151501-6
+© World Health Organization 2018
+Some rights reserved. This work is available under the Creative Commons
+Attribution-NonCommercial-ShareAlike 3.0 IGO licence (CC BY-NC-SA 3.0 IGO;
+https://creativecommons.org/licenses/by-nc-sa/3.0/igo).
+Under the terms of this licence, you may copy, redistribute and adapt the work for non-commercial purposes,
+provided the work is appropriately cited, as indicated below. In any use of this work, there should be no
+suggestion that WHO endorses any specific organization, products or services. The use of the WHO logo is
+not permitted. If you adapt the work, then you must license your work under the same or equivalent Creative
+Commons licence. If you create a translation of this work, you should add the following disclaimer along with
+the suggested citation: “This translation was not created by the World Health Organization (WHO). WHO is not
+responsible for the content or accuracy of this translation. The original English edition shall be the binding and
+authentic edition”.
+Any mediation relating to disputes arising under the licence shall be conducted in accordance with the
+mediation rules of the World Intellectual Property Organization.
+Suggested citation. National suicide prevention strategies: progress, examples and indicators. Geneva:
+World Health Organization; 2018. Licence: CC BY-NC-SA 3.0 IGO.
+Cataloguing-in-Publication (CIP) data. CIP data are available at http://apps.who.int/iris.
+Sales, rights and licensing. To purchase WHO publications, see http://apps.who.int/bookorders. To submit
+requests for commercial use and queries on rights and licensing, see http://www.who.int/about/licensing.
+Third-party materials. If you wish to reuse material from this work that is attributed to a third party, such as
+tables, figures or images, it is your responsibility to determine whether permission is needed for that reuse and
+to obtain permission from the copyright holder. The risk of claims resulting from infringement of any
+third-party-owned component in the work rests solely with the user.
+General disclaimers. The designations employed and the presentation of the material in this publication do
+not imply the expression of any opinion whatsoever on the part of WHO concerning the legal status of any
+country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries.
+Dotted and dashed lines on maps represent approximate border lines for which there may not yet be full
+agreement.
+The mention of specific companies or of certain manufacturers’ products does not imply that they are
+endorsed or recommended by WHO in preference to others of a similar nature that are not mentioned. Errors
+and omissions expected, the names of proprietary products are distinguished by initial capital letters.
+All reasonable precautions have been taken by WHO to verify the information contained in this publication.
+However, the published material is being distributed without warranty of any kind, either expressed or implied.
+The responsibility for the interpretation and use of the material lies with the reader. In no event shall WHO be
+liable for damages arising from its use.
+Printed in Switzerland
+
+Contents
+Foreword
+
+iv
+
+Acknowledgements
+
+v
+
+1. Introduction
+1.1 Background
+1.2 Global action to prevent suicide
+1.3 National suicide prevention strategies in the historical context
+1.4 Objectives of this document
+
+01
+01
+01
+02
+03
+
+2. Developing, implementing and evaluating a comprehensive multisectoral
+national suicide prevention strategy
+2.1 Why national suicide prevention strategies are important
+2.2 How to get started
+2.3 A strategic approach
+2.4 Measuring the success of national suicide prevention strategies
+2.5 LIVE LIFE
+
+05
+05
+05
+05
+07
+08
+
+3. Barriers to implementing national suicide prevention strategies
+3.1 Identifying barriers
+3.2 Overcoming barriers
+
+12
+12
+12
+
+4. Country examples
+Example 1. Bhutan (South-East Asia Region)
+Example 2. Guyana (Region of the Americas)
+Example 3. Iran, Islamic Republic of (Eastern Mediterranean Region)
+Example 4. Ireland (European Region)
+Example 5. Japan (Western Pacific Region)
+Example 6. Namibia (African Region)
+Example 7. Republic of Korea (Western Pacific Region)
+Example 8. Switzerland (European Region)
+Example 9. USA (Region of the Americas)
+Example 10. Uruguay (Region of the Americas)
+
+17
+18
+20
+23
+25
+28
+32
+34
+36
+39
+42
+
+References
+
+44
+
+Annex 1. Countries known to have a national suicide prevention strategy
+
+45
+
+Annex 2. Monitoring and evaluation indicators
+2.1 Bhutan (South-East Asia Region)
+2.2 Guyana (Region of the Americas)
+2.3 Iran, Islamic Republic of (Eastern Mediterranean Region)
+2.4 Ireland (European Region)
+2.5 Namibia (African Region)
+2.6 Republic of Korea (Western Pacific Region)
+2.7 Uruguay (Region of the Americas)
+
+47
+47
+51
+53
+56
+60
+62
+63
+
+iii
+
+Foreword
+Suicide is a global public health concern. Close to 800 000 people lose their life to suicide every year. Suicide
+knows no boundaries and cuts across every sociodemographic level and all regions of the world. A suicide
+attempt is a crucial risk factor for subsequent suicide. Families, friends, school friends, work colleagues and
+communities affected or bereaved by suicide or suicide attempts are often left without assistance. Silence and
+stigma prevent those in need from seeking help. Suicide remains the second leading cause of death in
+15–29-year-olds and the majority of suicides (79%) occur in low- and middle-income countries, where
+resources for identification and management are often scarce. These concerning facts highlight an ongoing
+tragedy which can no longer be ignored.
+National suicide prevention strategies are essential for elevating suicide prevention on the political agenda. A
+national strategy and associated action plan are necessary to push forward the implementation of suicide
+prevention. Without these, efforts are likely to abate and suicide prevention will remain neglected. It is
+fundamental for governments to take the lead in developing comprehensive multisectoral suicide prevention
+strategies for the population as a whole and vulnerable persons in particular.
+This document aims to support countries in continuing the progress that is being made in preventing suicide
+and to inspire governments and policy-makers to establish or revise national suicide prevention strategies that
+are adapted to engage local communities. The document highlights the fact that governments are in a position
+to lead coordination between multiple stakeholders who may not otherwise collaborate. Governments have a
+crucial role in developing and strengthening surveillance for both suicide and suicide attempts at the national
+level. High-quality surveillance for suicide prevention must be perceived as a necessity in order to provide the
+data to inform necessary action. Without high-quality surveillance, the safety of a population is compromised.
+The document presents examples from each region of the World Health Organization (WHO), showing the
+variety of approaches undertaken in national suicide prevention strategies and the indicators that have been
+chosen. The elements for developing, implementing and evaluating a national suicide prevention strategy are
+described and actions to overcome common barriers are presented.
+National suicide prevention strategies are essential for working towards the ultimate goal of suicide reduction.
+The Member States of WHO have committed themselves in the Mental Health Action Plan 2013–2020 to work
+towards the global target of reducing the suicide rate in countries by 10% by 2020. The suicide rate is also one
+of the indicators for health target 3.4 of the United Nations Sustainable Development Goals. The target is to
+reduce premature mortality from noncommunicable diseases by one third by 2030 through prevention and
+treatment and the promotion of mental health and well-being. The targets are unlikely to be achieved unless
+governments actively engage in efforts to prevent suicide.
+
+Dr Svetlana Akselrod
+Assistant Director-General
+Noncommunicable Diseases and Mental Health
+World Health Organization
+
+iv
+
+Acknowledgements
+Supervision and guidance
+Shekhar Saxena (WHO), Mark van Ommeren (WHO).
+Project coordination and editing
+Alexandra Fleischmann (WHO), Aiysha Malik (WHO).
+Technical contribution and drafting
+Louis Appleby (United Kingdom of Great Britain and Northern Ireland), Elisabet Arribas-Ibar (Spain), Aislinne
+Freeman (Ireland), Anna Frühauf (Germany), Maryke Harrison (United States of America (USA)), Emma Mew
+(Canada), Jane Pirkis (Australia), Stephen Platt (United Kingdom), Danuta Wasserman (Sweden).
+Review
+Mia Aoki (Japan), Ella Arensman (Ireland), Greg Armstrong (Australia), Jason Bantjes (South Africa), Griselda
+Bittar (Uruguay), Alex Crosby (USA), Gopalkrishna Gururaj (India), Ahmad Hajebi (Islamic Republic of Iran),
+Kairi Kolves (Australia), Kedar Marahatta (Nepal), Richard McKeon (USA), Yutaka Motohashi (Japan), Thomas
+Niederkrotenthaler (Austria), Raphael Ogbolu (Nigeria), Michael Phillips (China), György Purebl (Hungary),
+Tahilia Rebello (USA), Jerry Reed (USA), Dan Reidenberg (USA), Yeonhee Seo (Republic of Korea), Pandit
+Devjyoti Sharma (India), Paulius Skruibis (Lithuania), Util Thomas (Guyana), Esther Walter (Switzerland), Yeshi
+Wangdi (Bhutan), Paul Yip (China, Hong Kong Special Administrative Region), Naohiro Yonemoto (Japan),
+Tong Yongsheng (China).
+Production
+Editing: David Bramley, Switzerland.
+Graphic design and layout: Yusuke Nakazawa, Japan.
+WHO would like to thank the Government of Japan and the Korea Suicide Prevention Center for their financial
+contributions.
+The collaboration of the International Association for Suicide Prevention (IASP) with WHO on its activities related
+with suicide prevention is greatly appreciated.
+
+v
+
+1. Introduction
+1.1 Background
+Globally, close to 800 000 people die by suicide every year; nearly one third of all suicides occur among
+young people. Suicide is the second leading cause of death among 15–29-year-olds and the second leading
+cause of death for females aged 15–19 years. These data correspond to an overall global age-standardized
+suicide rate of 10.5 per 100 000 population in 2016 – 13.7 and 7.5 per 100 000 for males and females
+respectively (WHO, 2018a).
+Suicide continues to be a serious problem in high-income countries. However, 79% of all suicides occur in lowand middle-income countries which bear the larger part of the global suicide burden (WHO, 2018a). Although in
+high-income countries three times as many men die by suicide as women, the male-to-female ratio for suicide is
+more even in low- and middle-income countries, at 1.6 men to each woman. Suicide rates for both men and
+women are lowest in persons under 15 years of age and highest in persons aged 70 years or older in almost all
+regions of the world. In some regions, suicide rates increase steadily with age, while in others there is a peak in
+suicide rates in young people. In low- and middle-income countries, young adults and elderly women have much
+higher suicide rates than their counterparts in high-income countries, while middle-aged men in high-income
+countries have much higher suicide rates than those in low- and middle-income countries (WHO, 2014).
+It is estimated that for each person who dies by suicide, more than 20 others attempt suicide. In fact, suicide
+attempts are an important risk factor for subsequent suicide (WHO, 2014).
+When the family members, friends, colleagues and communities of those who attempt suicide or die by suicide
+are taken into consideration, many millions of people worldwide are affected by suicide every year (Pitman et
+al., 2014; Cerel et al., 2018). Because suicide remains a sensitive issue, it is very likely that it is under-reported
+due to stigma, criminalization and weak surveillance systems.
+Social, psychological, cultural and many other factors can interact to increase the risk of suicidal behaviour, but
+the stigma attached to suicide means that many people who are in need of help feel unable to seek it. Risk
+factors for suicide include previous suicide attempts, mental health problems, harmful use of alcohol, drug use,
+job or financial loss, relationship breakdown, trauma or abuse, violence, conflict or disaster, and chronic pain or
+illness (WHO, 2014).
+Unfortunately, suicide prevention is too often a low priority for governments and policy-makers. Suicide
+prevention needs to be prioritized on global public health and public policy agendas and awareness of suicide
+as a public health concern must be raised by using a multidimensional approach that recognizes social,
+psychological and cultural impacts (WHO, 2014).
+A national suicide prevention strategy is important because it indicates a government’s clear commitment to
+prioritizing and tackling suicide, while providing leadership and guidance on the key evidence-based suicide
+prevention interventions (WHO, 2014).
+1.2 Global action to prevent suicide
+In 2013, the WHO Mental Health Action Plan 2013–2020 was adopted by the World Health Assembly (WHO,
+2013). The action plan describes suicide prevention as an important priority for achieving the global target of
+reducing the rate of suicide in countries by 10% by 2020. This action plan highlights that suicides are a serious
+public health problem worldwide and that, with appropriate efforts, suicides are preventable. National
+responses to suicide with comprehensive multisectoral suicide prevention strategies are essential to achieving
+this target. In 2015, the Sustainable Development Goals (SDGs), which are focused on what can be achieved
+by 2030, were adopted by the United Nations (UN) General Assembly. Far broader in scope than the
+Millennium Development Goals, the third goal of the SDGs is to ensure healthy lives and promote well-being for
+
+01
+
+all ages. Target 3.4 of the SDGs is to reduce premature mortality from noncommunicable diseases by one third
+by 2030 through prevention and treatment and the promotion of mental health and well-being. The suicide rate
+is an indicator for target 3.4. The prevention of suicide is not only important for individuals and families but also
+benefits the well-being of society, the health care system, and the economy at large.
+1.3 National suicide prevention strategies in the historical context
+In the early 1990s, the seminal document entitled Prevention of suicide: guidelines for the formulation and
+implementation of national strategies was published by the UN following consultation with a variety of experts
+and with technical support from WHO. The document emphasized the need for intersectoral collaboration,
+multidisciplinary approaches, and continued evaluation and review, and also identified key elements as a
+necessary means of increasing the effectiveness of suicide prevention strategies (UN, 1996). Further, the
+document emphasized that nations seeking to address suicide require both a national suicide prevention
+strategy and a coordinating/leading body to develop, implement and monitor the strategy.
+Knowledge about suicidal behaviour has increased greatly since the UN document was published. Research,
+for instance, has shown the importance of the interplay between biological, psychological, social,
+environmental and cultural factors in determining suicidal behaviours. At the same time, epidemiology has
+helped us to identify many risk and protective factors for suicide both in the general population and in
+vulnerable groups – such as indigenous peoples, young pregnant women, immigrants, prisoners, military
+personnel and lesbian, gay, bisexual, transgender and intersex (LGBTI) persons. Cultural variability in suicide
+risk has become more apparent, with culture and religion playing roles both in increasing risk of suicide and in
+protecting from suicidal behaviour (WHO, 2014). In 2012, the UN document was followed by WHO’s Public
+health action for the prevention of suicide: a framework which identified components and clear steps for
+developing a national suicide prevention strategy (WHO, 2012).
+In 2014, WHO published its first-ever world suicide prevention report Preventing suicide: a global imperative
+(WHO, 2014). In this report, WHO’s Director-General made a call to action for countries to employ a
+multisectoral approach which addresses suicide in a comprehensive manner, which brings together different
+stakeholders, and which is based on their current resources and contexts. Since then, the number of requests
+that WHO has received from countries for technical assistance in suicide prevention or to review and comment
+on their new or revised national suicide prevention strategies has increased. WHO is working at headquarters,
+regional and country levels, together with collaborators and partners, including the International Association for
+Suicide Prevention (IASP), to respond to such requests.
+When the UN guidelines were initially prepared, only Finland was known to have a government-supported
+systematic response to developing a national programme for suicide prevention. Today, some 40 countries at
+all income levels have adopted a national suicide prevention strategy, with some countries already developing
+or implementing further revision(s) of their national strategy. However, only a few countries in the low-income
+and middle-income categories have adopted a national suicide prevention strategy, even though 79% of
+suicides occur in these settings.
+The WHO MiNDbank1 online platform was created to provide quick and easy access to international resources
+and national/regional-level policies, strategies, laws and service standards for mental health and related areas
+such as suicide, substance abuse, disability, general health and human rights. The available national strategies
+for suicide prevention are included in this repository and are searchable and accessible by country (see Annex 1
+for an overview).
+
+1 http://www.mindbank.info, accessed 8 November 2018
+
+02
+
+Another global effort to address suicide is the creation of World Suicide Prevention Day, organized by IASP. This
+day has been observed worldwide on 10 September each year since 2003, providing an important opportunity
+for countries to raise awareness about suicide and its prevention. For some countries this event has facilitated the
+development of a national suicide prevention strategy. Furthermore, some countries have extended this day to a
+week or month in which to observe this important public health issue. In 2017, IASP launched a Special Interest
+Group on the development of effective national suicide prevention strategy and practice.
+1.4 Objectives of this document
+While a lot has been achieved since the UN report was published in the 1990s, there are still significant
+improvements to be made. This document encourages countries to continue the work where it is already
+ongoing, to strengthen suicide prevention efforts, and to place suicide prevention high on the political agenda,
+regardless of where a country stands currently in terms of suicide rate or suicide prevention efforts. By focusing
+on selected examples, this document aims to serve as a resource and inspire governments and policy-makers
+to establish their own national suicide prevention strategy adapted to their local situation. It is essential that
+governments assume a leadership role for a national suicide prevention strategy, as they are able to bring
+together stakeholders who may not otherwise collaborate. Governments are also in a unique position to
+develop and strengthen surveillance, and to provide and disseminate the data that is necessary to inform
+action (WHO, 2014).
+Much of this document contains examples of national suicide prevention strategies by country. The examples
+reflect diverse approaches and backgrounds and aim to inform the reader by outlining the variety of ways to
+implement national suicide prevention strategies. An attempt has been made to include at least one example
+from each WHO region, without peer-review of the content of the strategies or indicators. Prior to the examples,
+key elements of a strategic approach to developing, implementing and evaluating a comprehensive
+multisectoral national suicide prevention strategy are presented and are brought together in the LIVE LIFE
+approach. Common barriers to developing a national strategy are discussed, as are possible actions for
+addressing such barriers. A list of the countries known to have stand-alone national suicide prevention
+strategies is presented in Annex 1. Indicators reported for national strategies are contained in Annex 2.
+
+03
+
+Box 1. National suicide prevention strategy success stories: England
+The Cross-Government Suicide Prevention Strategy for England was published in 2012, revised
+from the original 2002 strategy. It is comprehensive, based on evidence and places an emphasis
+on cross-sectoral collaboration across national government, its agencies and voluntary and
+charitable organizations. The strategy has seven key areas for action to reduce suicides across all
+sectors, including health and social care, justice and public health.
+The suicide rate in England is currently close to the lowest on record and is low by European
+standards. After a rise following the global recession, it is now back on a downward trend. The
+male suicide rate has fallen for four consecutive years. The suicide rate in people using mental
+health services is also falling and the number of suicides by inpatients has reduced by half.
+A number of factors have been important to this apparent success, namely: 1) broad support
+from professions, charities, academics and government departments; 2) advocacy by bereaved
+families whose personal experiences have engaged political leaders and the media; 3) reliance
+on up-to-date data and evidence; 4) national oversight that allows the strategy to evolve to
+address emerging priorities; 5) partnership with national agencies such as the National Institute
+for Health and Care Excellence (NICE), which published clinical guidance on depression and
+self-harm, and Public Health England which published suicide prevention guidance for local
+government; and 6) links to wider mental health policy (e.g. on community care, psychological
+therapies and reduction of stigma).
+Suicide prevention in England has risen up the political agenda and has achieved cross-party
+consensus. A national ambition was set in 2016 to reduce suicides by 10% by 2020. The prime
+minister published an update to the strategy in 2017 with an emphasis on young people and
+self-harm. Every local authority area in the country has a multi-agency suicide prevention plan in
+place and there is a national programme to improve suicide prevention in the National Health
+Service, supported by an investment of £25 million, with a zero-suicide ambition for inpatient care.
+The most important current focus is young people. The suicide rate in 15–19-year-olds is rising, in
+contrast to the general downward trend, and the rate of non-fatal self-harm in young people is
+also going up. The highest rates are in middle-aged men, a group that is reluctant to seek help.
+Additionally, there are widespread concerns about online safety, stress on health professionals,
+gambling addiction and social media. The aim is to ensure that national policy, cross-government
+working and local suicide prevention plans reflect these new priorities.
+
+04
+
+2. Developing, implementing and evaluating a
+comprehensive multisectoral national suicide
+prevention strategy
+2.1 Why national suicide prevention strategies are important
+The importance of developing a national suicide prevention strategy has been comprehensively explored. The
+numerous benefits include (WHO, 2012):
+• A national strategy not only outlines the scope and magnitude of the problem but, more crucially, recognizes
+that suicidal behaviour is a major public health problem.
+• A strategy signals the commitment of a government to addressing the issue.
+• A cohesive strategy recommends a structural framework, incorporating various aspects of suicide prevention.
+• A strategy provides authoritative guidance on key evidence-based suicide prevention activities – i.e. it
+identifies what works and what does not work.
+• A strategy identifies key stakeholders and allocates specific responsibilities to them. Moreover, it outlines the
+necessary coordination among these various groups.
+• A strategy identifies crucial gaps in existing legislation, service provision and data collection.
+• A strategy indicates the human and financial resources required for interventions.
+• A strategy shapes advocacy, awareness-raising and media communications.
+• A strategy proposes a robust framework of monitoring and evaluation, thereby instilling a sense of
+accountability among those in charge of interventions.
+• A strategy provides a context for a research agenda on suicidal behaviours.
+2.2 How to get started
+A country that decides to work on its national response to suicide prevention has an opportunity to tackle
+suicide prevention in a way that is meaningful to that country’s context. Regardless of a country’s current
+commitment to and resources for suicide prevention, the very process of establishing a national response can
+itself improve prevention (WHO, 2014). In countries where suicide prevention activities have not yet taken place,
+the emphasis is on identifying stakeholders and developing activities where the need is greatest or where
+resources already exist. It is also important to improve surveillance. In countries with some existing suicide
+prevention activities, a situation analysis can show what is already in place and where gaps need to be filled.
+Countries that already have a relatively comprehensive national response should focus on evaluation and
+improvement, updating their data and emphasizing effectiveness and efficiency (WHO, 2014). Resources
+should be allocated to achieve both short-to-medium- and long-term objectives; there should be effective
+planning, and the strategy should be regularly evaluated, with findings feeding into future planning.
+2.3 A strategic approach
+A national suicide prevention strategy needs to be multisectoral, involving not only the health sector but also
+sectors such as education, labour, social welfare, agriculture, business, justice, law, defence, politics and the
+media. The strategy should be tailored to each country`s cultural and social context. When conceptualizing and
+implementing a national suicide prevention strategy through an action plan, it is necessary to specify clear
+objectives, targets, indicators, timelines, milestones, designated responsibilities and budget allocations. The
+government needs a strategic and systematic approach. Without an action plan, it is likely that progress will fall
+short. The following elements, which are in no particular order, are key to the success and sustainability of the
+national strategy (WHO, 2012). Some of these elements may need to occur before or simultaneously with
+others. Context-informed decisions are needed in order to establish a preferential order in any given context.
+
+05
+
+Identify stakeholders
+It is important to identify the key stakeholders in suicide prevention when developing a national strategy.
+Suicide prevention needs to involve different actors and disciplines working on suicide prevention – such as
+different ministries, health administrations, nongovernmental and nonprofit organizations, universities and civil
+society at different levels (national, regional, state or provincial, and community). Lead stakeholders are listed
+according to strategic actions for suicide prevention in WHO’s Preventing suicide: a global imperative (WHO,
+2014). Potential stakeholders at community level can be found in WHO’s Preventing suicide: a community
+engagement toolkit (WHO, 2018b).
+Undertake a situation analysis
+A thorough situation analysis, starting with the data available, identifies the extent of the problem in a particular
+geographical area (whether an entire country or a specific subregion of a country). The identification of barriers
+to implementation is an important part of the situation analysis in which all the barriers are listed and solutions
+are proposed to remove them systematically. Without barrier identification, national strategies may face
+challenges when implementing activities.
+Assess resources
+The availability of and access to both human and financial resources, for both development and
+implementation, are central to the success of any public health intervention, as is the willingness of
+policy-makers to engage with the key issues. The assessment of resources can also be included in the
+situation analysis.
+Achieve political commitment
+Without political commitment, strategies are likely to remain only on paper, being implemented only partially or
+not at all. Political commitment is essential for ensuring that suicide prevention receives the resources and
+attention that it requires from national, state and local leaders. Achieving political commitment that is
+sustainable and which transcends changes in the government is a long and arduous process, but it has the
+potential benefit of reaching the population and showing impact in the long term.
+Address stigma
+Stigma related to suicide remains a major obstacle to suicide prevention efforts. Those who are left behind or
+who have attempted suicide often face considerable stigma within their communities, which may prevent them
+from seeking help. Stigma can subsequently become a barrier to accessing suicide prevention services. This is
+of particular concern in countries where suicidal acts are criminalized. Furthermore, high levels of stigma may
+negatively affect recording and reporting of suicide and suicide attempts.
+Increase awareness
+The process of developing a suicide prevention strategy offers opportunities to increase awareness about
+suicide. It is not necessary to wait until the implementation phase of a suicide prevention strategy to seek the
+media’s support in highlighting the importance of suicide prevention. For an intervention to be successful, the
+public requires an understanding of the issue and the need for the intervention. Awareness efforts can also
+generate greater and more sustained involvement from stakeholders and buy-in from communities that
+recognize the importance of suicide prevention.
+State clear objectives
+An effective suicide prevention strategy should have several parallel and interconnected objectives that need
+to be stated clearly.
+Identify risk and protective factors
+The identification of relevant risk and protective factors at individual, family, community and societal level for
+both suicide and suicide attempts can help to determine the nature and type of interventions required in a given
+context (see also WHO, 2014; Hawton et al., 2016; Zalsman et al., 2016).
+
+06
+
+Select effective interventions
+Based on relevant risk and protective factors, as well as the situation analysis and resources allocated, a national
+strategy and its action plan for implementation can propose the most suitable type and combination of effective
+evidence-based interventions – universal, selective and indicated (see also WHO, 2014). Universal interventions
+target the general population with coverage of the population as a whole. Selective interventions focus on
+subpopulations that have an elevated risk and can be employed on the basis of sociodemographic
+characteristics, geographical distribution or prevalence of mental and substance use disorders (e.g. according to
+the contribution of these factors to the overall burden of suicide). Indicated interventions are aimed at persons
+who are already known to be vulnerable to suicide or who have attempted suicide. A comprehensive suicide
+prevention programme typically employs a combination of universal, selective and indicated interventions.
+Improve case registration and conduct research
+As suicide often remains misclassified, un- or under-reported, surveillance systems are needed to improve the
+availability and quality of data. Suicide attempt data are equally important as presented in the Practice manual
+for establishing and maintaining surveillance systems for suicide attempts and self-harm (WHO, 2016), as a
+prior suicide attempt is the strongest predictor of subsequent suicide in the general population. A systematic
+approach for gathering data in a sustained manner is key (see also WHO, 2014). Research is important for
+understanding the risk and protective factors and vulnerable persons for a given context and can be used to
+identify the link between intermediate outcomes of a strategy’s action plan e.g. enhanced practice of health
+workers, and the primary outcomes of interest, i.e. suicide and suicide attempts.
+Conduct monitoring and evaluation
+Monitoring and evaluation need to be planned and agreed upon in advance to ensure the involvement of all
+relevant stakeholders, including inputs from key personnel involved in the implementation of interventions as
+well as feedback from community members. Evaluations are important for indicating whether changes need to
+be made to an intervention or whether it can be scaled up. While evaluating the strategy as a whole, the
+evaluation of individual interventions that are being implemented offers opportunities to examine critically the
+outcome and impact of these interventions in terms of the stated objectives. Intermediate outcomes, which are
+influenced by suicide prevention efforts in the short term, provide evidence of the impact of the strategy and
+action plan with regard to achieving the goal of reducing the rate of suicide and suicide attempts in the long
+term, which is the key primary outcome. Examples of intermediate outcomes include: more responsible
+reporting of suicide in the media; enhanced knowledge, attitude and practice of health workers towards people
+who engage in suicidal behaviours; an increased number of people utilizing and accessing support and
+services; and increased awareness and understanding of suicidal behaviours. The emphasis remains clearly on
+the primary outcomes of reducing suicides and suicide attempts. Intermediate outcomes can be useful only if a
+clear and direct relationship with the primary outcomes can be established. Monitoring the quality of the
+implementation of the action plan through intermediate outcomes and their impact on primary outcomes can
+indicate which aspects of the implementation plan have the largest impact on the primary outcomes of suicide
+and suicide attempts and which aspects of the implementation plan require further improvement. This can also
+facilitate an understanding of changes that may affect implementation, such as reduced funding or lack of
+commitment to the process by stakeholders (see also WHO, 2014).
+Monitoring and evaluation should be seen as part of a continuous feedback loop that is designed to allow
+refinements to be made to improve the strategy as it progresses. More information about approaches to
+monitoring and evaluation are provided in the next section.
+2.4 Measuring the success of national suicide prevention strategies
+Measuring the success of a national strategy not always easy but there are ways to ensure that evaluations of
+national strategies are as robust as possible. One of the main concerns is that, by design, national strategies have
+multiple components and are rolled out on a large scale. Another concern is that a variety of factors influence a
+country’s suicide rates and there will be fluctuations over time. Both of these factors mean that it may be difficult
+to detect changes in suicide rates that could be attributed to the national strategy. The best evaluations address
+these issues by adopting a “programme logic” approach and using multiple indicators of success.
+
+07
+
+A programme logic approach is a way to systematize the theory of action of the given national strategy. The
+approach usually involves developing a hierarchy of objectives that operationalize the stated objectives of the
+strategy. Typically, the lowest-level objectives relate to ensuring that the structures and processes are in place
+for the strategy to achieve its aims, the next level relates to immediate and intermediate outcomes, and the
+highest level relates to the ultimate, longer-term primary outcomes. The logic asserts that, if the lowest-level
+objectives are met, then this augurs well for the intermediate objectives, and if these are met then this stands
+the strategy in good stead for meeting its highest-level objectives. Often the hierarchy is arranged in streams
+that align with the action areas of the strategy, and different indicators will be used to assess whether the
+objectives within each stream have been achieved. Thus, for example, if one of the key components of a given
+national strategy is about improving media reporting of suicide, the lowest-level objectives might relate to
+guidelines being developed and journalists being trained in good reporting practices, the next level might relate
+to improved reporting of suicide, and the higher levels might relate to reductions in suicide and suicide
+attempts. Similarly, if another key component was to improve access to and quality of care for suicidal persons,
+the lowest-level objectives might relate to resourcing and equipping the general health workforce to assess and
+manage suicidal behaviour, the intermediate-level objectives might relate to increased uptake of and
+satisfaction with care by suicidal individuals, and the higher levels might relate to reductions in suicide and
+suicide attempts. The streams will often converge at the higher points on the hierarchy because the ultimate
+aim will be to reduce rates of suicide and suicide attempts.
+Assessment of the extent to which the various objectives are achieved relies on using indicators that are clear
+and measurable. Ideally, multiple data sources and multiple methods will be used to gauge the strategy’s
+success against these indicators. Some data will come from routine sources, such as death registers or
+hospital admissions data; other data will be collected in a purpose-designed way, possibly through surveys or
+interviews. Wherever possible, the full range of perspectives on the success of the strategy should be sought,
+including the views of those who have engaged in suicidal behaviour themselves, as well as those who have
+been bereaved by suicide. The collection and analysis of data from these various sources will involve qualitative
+and quantitative approaches.
+The benefits of taking a programme logic approach and using multiple data sources and methods to evaluate
+national strategies are manifold. First, this approach ensures that key stakeholders agree what the strategy is
+trying to achieve and how it will get there. Second, it provides a framework for evaluating not only the strategy
+as a whole but also its component parts. And third, it provides a clear picture of the pathways by which the
+strategy’s overarching goals will be achieved, providing early insights into structures and processes that might
+need to be re-addressed and strengthening the conclusions that can be drawn about causality, including the
+relationship between intermediate and ultimate primary outcomes.
+2.5 LIVE LIFE
+The elements of a strategic approach for suicide prevention (WHO, 2012) along with core effective interventions
+(WHO, 2014) are embodied by LIVE LIFE for preventing suicide. LIVE stands for leadership, interventions, vision
+and evaluation and builds the pillars of LIFE – i.e. the core interventions, which are: less means (i.e. restricting
+access to means of suicide), interaction with the media for responsible reporting, formation of the young in their
+life skills, and early identification, management and follow-up (Figure 1). LIVE LIFE establishes the key
+ingredients on which the formulation of a national suicide prevention strategy should be based. The
+components of LIVE LIFE are as follows:
+LIVE
+L eadership. National governments are instrumental in providing leadership through the mobilization and
+coordination of multiple stakeholders, including governmental and nongovernmental sectors, civil society and
+communities. Governments are in a position to define a culturally adapted response through a national suicide
+prevention strategy which aims for a reduction in suicide and suicide attempts. Leadership is essential for
+conducting a situation analysis, raising awareness, and developing, adapting and enacting policies across
+sectors relevant to suicide prevention, such as those on mental health, pesticides and alcohol.
+
+08
+
+I ntervention. The core effective evidence-based interventions for implementation are described in LIFE (see
+below). This also means providing services and care for persons in need, including suicide attempters and family,
+friends and colleagues around them and after bereavement.
+V ision. Having a vision is essential to keep steering towards the goal of reducing suicide and suicide attempts while
+overcoming changes and barriers. A vision is needed for financing and resource allocation as well as for identifying
+new funding opportunities and partnerships. A champion in suicide prevention may help drive the process forward.
+A vision is also important for introducing innovations and for creativity in testing new delivery platforms.
+E valuation. Strategies and interventions must be continuously monitored and evaluated to ensure that suicide
+prevention goals and objectives are met with interventions that have the desired impact. Monitoring and
+evaluation are assured by functioning and high-quality case registration and surveillance systems that allow for
+evaluation, provide feedback to inform improvements (including in effectiveness and efficiency) and are ultimately
+the cornerstone of research activities.
+LIFE
+L ess means. Restricting access to means (e.g. pesticides, firearms) is the key universal intervention for suicide
+prevention. Well-established surveillance systems are important to identify and target the most common means in
+a country or specific context.
+I nteraction with media. Responsible reporting by the media is an essential component of suicide prevention.
+Media professionals should not only refrain from the glamorized presentation of cases of suicide and thereby
+avoid imitation by vulnerable people, but should also communicate stories of someone coping successfully,
+seeking and receiving help. In addition, the media can play a role in raising awareness about suicide, its
+prevention and mental health more generally, as well as about stigma reduction.
+F orm the young. Enhancing young people’s problem-solving, coping and life skills has been shown to be an
+effective intervention for suicide prevention among the young. Corresponding sessions can be delivered through
+different platforms (e.g. school-based programmes).
+E arly identification. Early identification, assessment, management and follow-up ensure that people who may be
+at risk of suicide, or who have attempted suicide, receive the support and care that they need. Health-care systems
+need to incorporate suicide prevention as a core component, and health workers, including those at community
+level, need to be trained and equipped to deliver these services. As vulnerable people are often at the heart of
+suicide prevention strategies, universal health coverage needs to ensure that all people are able to access care.
+Figure 1. Preventing suicide: L
+
+Leadership
+
+Less means
+
+I V E
+
+Interventions
+
+LIVE
+LIFE
+
+L I F E
+
+Vision
+
+Evaluation
+
+Leadership in policy and multisectoral collaboration
+Interventions for implementation
+Vision for innovation, financing, and delivery platforms
+Evaluation, monitoring, survelliance and research
+
+Early
+identification
+
+Preventing
+suicide
+
+Interaction
+with media
+
+Less means by restricting access
+Interaction with media for responsible reporting
+Form the young in their life skills
+Early identification, management and follow-up
+
+Form the
+young
+
+09
+
+Box 2. National suicide prevention strategy success stories: Scotland
+Over the past 17 years the Scottish Government, working in liaison with a range of partners –
+including the National Health Service, NHS Health Scotland, social services, Police Scotland and
+the third sector (voluntary and community organizations) – has prioritized efforts to reduce and
+prevent suicide through the Choose Life strategy and action plan (2002–2013)1 and the Suicide
+prevention strategy (2013–2016).2 The Scottish Government’s new Suicide Prevention Action Plan
+Every life matters3 was published in August 2018, setting out ambitious actions for a major change
+in how services and communities respond to suicide.
+Between 2002–2006 and 2013–2017 the Scottish suicide rate fell by 20%. Over much of the last
+30 years the suicide rate in Scotland has been consistently lower than the average across the 53
+countries of the WHO European Region. Key ingredients of success include:
+• a 10-year national strategy and action plan (Choose Life), (partially) evaluated and refreshed,
+generating a sustained focus on suicide prevention actions and outcomes;
+• a devolved government, with key national partners having ease of access to the suicide
+prevention policy team and Government ministers; and the creation of a new post of Minister
+for Mental Health in 2016;
+• dedicated leadership and a common vision from the Scottish Government and national
+agencies, which have positively influenced suicide prevention action involving public and
+third-sector agencies at local government level;
+• commitment to a broad public health approach to suicide prevention, combining
+population-based action and a focus on equity with interventions targeted at high-risk groups
+and individuals, incorporating but going beyond traditional (mental) health service responses;
+• improvement of the capability of the health and social care system to respond effectively and
+compassionately to individuals in emotional distress/at risk of suicide, via the provision of training
+(STORM, ASIST, safeTALK and Scottish Mental Health First Aid) and other learning materials;
+• collaborative working across national agencies in gathering, analysing, disseminating and
+acting on research and experiential evidence about what works in suicide prevention;
+• raising awareness in the general population through agreed branding (Choose Life), national
+campaigns, and national and local activities for Suicide Prevention Week;
+• tackling problem drinking, especially through alcohol brief interventions delivered in primary
+care, accident and emergency services and antenatal care settings, and increased attention to
+the identification and treatment of depression in primary care;
+• improvements in local patient safety introduced on the basis of evidence developed by the
+United Kingdom-wide National Confidential Inquiry into Suicide and Homicide by People with
+Mental Illness (in particular the work on discharge planning).
+
+1 http://www.gov.scot/Publications/2002/12/15873/14466, accessed 16 November 2018.
+2 http://www.chooselife.net/Home/index.aspx , accessed 16 November 2018.
+3 https://www.gov.scot/Publications/2018/08/8874, accessed 16 November 2018.
+
+10
+
+Elements that could be improved, or that remain to be achieved in the future include:
+• further reach into communities in order to improve support to those in emotional distress/at
+risk of suicide and those with direct and indirect experience of suicide, via a range of channels,
+including face-to-face and digital technology;
+• improvement of capacity and capability to deliver trauma-informed practice4 (which addresses
+the barriers often experienced by those affected by trauma when accessing the care, support
+and treatment they need to live a healthy life); and incorporation of this into new learning
+resources proposed under the recently published Action Plan;
+• incorporation of suicide prevention action into local (community) planning and other
+strategic documents;
+• improvement of the access of suicide prevention agencies to data (both real-time and
+historical) on the epidemiology and characteristics of suicidal behaviour at local level;
+• development of appropriate reviews/audits into all deaths by suicide (i.e. those occurring in
+the community as well those in service settings) and ensuring that findings are shared and
+acted upon;
+• undertaking more sophisticated evaluation studies in order to identify the essential
+components of complex national multilevel suicide prevention interventions such as
+Choose Life.
+
+4 https://www.nes.scot.nhs.uk/education-and-training/by-discipline/psychology/multiprofessional-psychology/
+
+national-trauma-training-framework.aspx, accessed 16 November 2018.
+
+11
+
+3. Barriers to implementing national suicide
+prevention strategies
+Even with a well-designed suicide prevention strategy, barriers (see examples in Table 1) can arise that threaten
+its success and sustainability. Overcoming barriers is vital. Actions need to be well-defined and structured,
+taking into account the stakeholders involved, the resources available and the characteristics of the national
+and local contexts. Considering this in advance may help to avoid barriers and reduce their consequences.
+3.1 Identifying barriers
+Without the early identification of their potential setbacks or barriers, prevention strategies are likely to be
+harder to implement or will fail altogether. When planning the implementation of each strategic action,
+possible barriers should be considered and preparation should include additional strategies for addressing
+identified barriers.
+3.2 Overcoming barriers
+It is important to understand the factors that create a barrier in order to overcome or circumvent it. The
+problem generated by the barrier needs to be defined, discussed among stakeholders, and potential solutions
+need to be proposed. Once actions are taken to overcome a barrier, an assessment is needed of whether the
+problem was successfully resolved.
+
+Table 1. Barriers to consider when implementing national suicide prevention strategies
+Barrier
+
+Description of the barrier
+
+How to overcome the barrier
+
+Management and logistics
+Understanding
+the problem
+
+A poor understanding of suicide in the
+national or local context makes it difficult to
+develop clear goals and actions adjusted to
+the communities’ needs.
+
+Gain a thorough understanding of the problem
+by recording the means, number and rate of
+suicides and suicide attempts; identify
+relevant risk and protective factors and
+vulnerable groups; assess the health-care
+infrastructure and resources available for
+services and care; define the problem
+properly to allow for efficient implementation
+with adequate timelines and use of resources.
+
+Actions and
+interventions
+
+A poor description of actions and
+interventions – including, for instance,
+objectives, resources required, responsibility
+for implementation, and timeline – can leave
+the strategy disorganized and ineffective.
+
+Define clear objectives for each action and
+intervention, expected results, persons in
+charge of implementation, resources
+allocated, infrastructure and timeline.
+
+Suicide-relevant stakeholders should be well
+versed in working with the wide range of
+government leaders with whom they may be
+involved. Absent or ineffective leadership,
+particularly leadership that is not accepted
+by stakeholders, can make it difficult to
+achieve goals.
+
+Learn how to communicate and work with a
+range of stakeholders; adapt to contexts
+where there is a frequent turnover in
+leadership; understand the traits of ineffective
+leadership, thus helping to avoid pitfalls and
+strengthen leadership abilities; government
+leadership with good management skills
+needs to be put in place.
+
+Stakeholders
+Leadership and
+management
+
+12
+
+Barrier
+
+Description of the barrier
+
+How to overcome the barrier
+
+Teamwork and
+collaboration
+
+Poor teamwork and lack of cohesion and
+collaboration result in following one’s own
+interests or approaches, rather than
+working towards common objectives in a
+unified manner.
+
+Clearly identify each stakeholder’s role;
+establish channels of communication
+among different stakeholders; share
+information in a timely manner and create
+synergies among different agents; these can
+serve to unite individuals for joint
+achievement of the objectives; designate a
+national resource centre for suicide
+prevention to provide briefings and reports
+and to engage internationally.
+
+Legislation and
+policies
+
+Legislation and policies that are not in line
+with suicide prevention efforts can hinder
+implementation.
+
+Increase awareness about suicide and its
+prevention, helping to align legislation and
+policies with suicide prevention efforts.
+
+Lack of political support can result in a lack
+of funding. Inadequate estimation of funding
+required can hinder the full implementation of
+interventions.
+
+Estimate the full cost of the interventions and
+monitor the funding as this can help to keep
+implementation sustainable over time;
+maintain a reserve fund as this can provide
+stability and reduce uncertainty; clearly
+demarcate the funding allocation because,
+without this, interventions are less likely to be
+implemented or evaluated.
+
+Health workers may not be prepared or
+competent to identify and manage suicidal
+behaviours. Additionally, the quality of care
+provided may be inadequate and
+inconsistent.
+
+Train specialized and non-specialized health
+workers in the assessment and management
+of suicidal behaviours and mental,
+neurological and substance use disorders
+and ensure these workers meet competency
+requirements; involving health workers in the
+adaptation of the training to the local context
+can enhance motivation and the
+effectiveness of interventions; understand the
+context-specific factors which hinder the
+implementation of evidence-based
+interventions, thus enabling training to be
+modified so that staff can be prepared to
+manage such challenges.
+
+Financial resources
+Budget for
+implementing the
+action plan
+
+Human resources
+Training
+
+Multisectoral involvement
+Restricting
+access to means
+
+One of the key methods of suicide involves
+self-ingestion of pesticides; however, in many
+contexts this remains unacknowledged and
+little or no action is taken.
+
+13
+
+Monitoring the use of pesticides in suicide
+or attempted suicide facilitates an
+understanding of the problem; engage
+regulatory bodies and relevant government
+sectors (e.g. agriculture) in the national
+regulation of access to pesticides.
+
+Barrier
+
+Description of the barrier
+
+How to overcome the barrier
+
+Responsible
+media reporting
+
+Ongoing sensationalizing of suicide in the
+media.
+
+Actively monitor media reports in order to
+intervene promptly if there are sensationalist
+articles; provide ongoing training and
+awareness sessions for media
+professionals; work with media regulatory
+bodies to manage the reporting of suicide;
+include the media in positive reporting (e.g.
+success or resilience stories and anti-stigma
+and awareness campaigns).
+
+School-based
+interventions
+
+Reluctance to address mental health
+among other topics at school; reluctance
+(of leaders, schools or parents/caregivers)
+to discuss mental health issues, emotional
+distress and suicidal behaviours with
+young people.
+
+Work closely with the educational sector on
+the need for prevention activities and
+emotional and life-skills training, given the
+risk of suicide in younger age groups;
+provide gatekeeper training for teachers;
+provide awareness-raising and/or training
+for parent/caregiver representatives in the
+community; include young people in the
+design of any prevention programme.
+
+Access to services
+
+Limited health or social care coverage
+reduces the ability to implement the
+interventions or follow-up needed for
+those who have attempted suicide, or for
+those bereaved by suicide.
+
+Train community workers; establish self-help
+groups and peer support; explore digital
+platforms.
+
+Continuity of care
+in the health-care
+system
+
+Different services and health workers who
+are not linked and not in communication
+with each other cannot keep track of
+persons seeking help and therefore
+continuity of care may be interrupted.
+
+Promote follow-up, referral, exchange,
+meetings and joint training, which can
+strengthen the care provided; promote
+integration of services and multidisciplinary
+treatment as this can promote the
+continuity of care.
+
+Lack of data and information hinders
+prioritization and resource allocation by
+decision-makers. Inadequate data collection
+throughout the implementation process can
+lead to resources being wasted on
+ineffective interventions.
+
+Establish and strengthen surveillance
+systems for suicide and suicide attempts;
+surveillance should be considered a core
+element of suicide prevention; monitor the
+effectiveness on primary outcomes with
+accurate data collection, enabling
+subsequent adjustments to enhance
+effectiveness.
+
+Persons who attempted suicide, their families
+and those who are left behind after a suicide
+are all stigmatized. Stigma negatively
+influences the willingness to utilize
+health-care resources, it affects the quality of
+care provided by health-care workers, and it
+may have an impact on the effectiveness of
+national strategies, if not addressed.
+
+Conducting awareness campaigns and
+providing information are important
+elements in fighting stigma, discrimination
+and other inequities, such as the lack of
+access to care associated with suicidal
+behaviours.
+
+Data
+Data collection
+
+Stigma
+Stigma
+
+14
+
+Box 3. National suicide prevention strategy success stories: Sweden
+In 2008, the Swedish parliament decided on a National Action Programme for Suicide Prevention,
+the “Vision Zero Policy”. The vision of the programme is that no one should be in a situation of
+such vulnerability that suicide is seen as the only way out.
+The first national suicide preventive programme in Sweden, described in the report Support in
+suicidal crisis was established in 1995 by the Swedish National Council for Suicide Prevention,
+guided by the National Institute of Public Health, the Swedish National Board of Health and
+Welfare and the National Centre for Suicide Research and Prevention of Mental Ill-Health (NASP).
+This programme was never presented to the Swedish parliament for ratification, and this fact
+could be seen as a drawback for implementation since the preventive activities had to rely on the
+goodwill of public authorities and various organizations and individuals.
+The second national suicide preventive programme was created by the National Institute of Public
+Health (now called the Public Health Agency of Sweden) and the National Board of Health and
+Welfare with support of experts from NASP. This programme was ratified by the Swedish Parliament
+in 2008 and put in force by the Swedish Government which announced the Vision Zero policy for
+suicide. The policy sends a strong signal to the whole population that the topic is important and, for
+the first time, suicidal persons and their families felt that priority was finally being given to them.
+Parliamentary ratification not only gave legal status to the national action programme for suicide
+prevention but also contributed to implementation of the following nine areas of action:
+1. Promote good life opportunities for less privileged groups
+2. Reduce alcohol consumption in the population and in groups at high risk for suicide
+3. Reduce access to means and methods of suicide
+4. View suicide as a psychological mistake
+5. Improve medical, psychological and psychosocial initiatives
+6. Distribute knowledge about evidence-based methods for reducing suicide
+7. Raise skill levels among staff and other key individuals in the care services
+8. Perform “root cause” or event analyses after suicide
+9. Support voluntary organizations
+The Public Health Agency of Sweden received a mandate from the government in 2015 to
+coordinate suicide prevention at national level. Accordingly, the agency developed the
+coordination and cooperation between relevant government agencies and stakeholders in order
+to monitor the implementation of suicide preventive activities throughout the country.
+Since it was approved, the second national suicide prevention programme has been a success in
+terms of increased awareness within Swedish society and among bodies in the health-care and
+public mental health systems. Because of the increased awareness in society, attitudes to suicidal
+persons have changed. When the stigma surrounding suicide is lifted, it becomes less of a taboo
+subject. There is a deeper understanding about the risk factors that prompt suicidal behaviours
+and how they can be reduced by social, medical/psychiatric and psychological measures.
+Moreover, there is a greater understanding of protective factors which help individuals cope with
+suicidal behaviours and improve their mental health. Subsequently, over time, the view that
+suicidal behaviours are impossible to prevent and treat has diminished. The idea that most
+suicidal acts arise in situations in which life is unbearable and everything seems out of the
+individual’s control is emphasized, as opposed to the view that suicidal acts represent control over
+one’s life situation and freedom.
+
+15
+
+Similarly, a Vision Zero policy was introduced for road accidents in Sweden in 1997. This led to
+increased public awareness and a substantial increase in funding for the relevant parties. Road
+safety improvements and changes to the traffic laws, resulted in a 50% reduction in deaths due to
+motor vehicle accidents over a 20-year time period. It is hoped that the Vision Zero policy for
+suicide will have a similar effect.
+Following the ratification of the Vision Zero policy for suicide, financial resources were provided for
+some time-limited projects. However, financial support to the Vision Zero policy for suicide has
+been greatly insufficient compared to the Vision Zero policy for traffic accidents. More funding is
+needed for permanent activities. To ensure that the best possible prevention and treatment are
+provided, there needs to be an increase in adequately trained human resources in the health-care
+and public mental health systems, backed by continuous development and dissemination of
+evidence-based methods which reduce suicidal behaviours.
+The Vision Zero policy may sometimes be misinterpreted. However, this policy does not mean that
+suicide is forbidden. The policy’s goal is to ensure that everybody does everything within their
+power to provide the best prevention, care, treatment and rehabilitation to at-risk and suicidal
+persons. This should be feasible as research shows that suicidal behaviours are preventable.
+
+16
+
+4. Country examples
+In recent decades, and particularly since 2000, many national suicide prevention strategies have been
+developed. As of 2017, almost 40 countries were known to have a stand-alone national strategy that had been
+adopted by the government (WHO, 2018c), demonstrating commitment to suicide prevention. The number of
+national strategies is increasing steadily. Close to 10% of low-income and lower-middle-income countries have
+a national strategy, while approximately one-third of upper-middle-income and high-income countries report
+having such a strategy. In addition, some countries have a national suicide prevention framework, national
+programmes for specific subpopulations, or the integration of suicide prevention into national plans for mental
+health or other health areas (WHO, 2018c).
+This section aims to provide examples of national suicide prevention strategies in order to help countries that
+are in the process of developing or revising their own strategy. The descriptions and indicators below have not
+been subject to peer review; rather, they are intended to provide examples across a range of geographical
+regions. The country examples have been summarized directly from the national strategy documents and
+indicators to which they pertain. In total, 10 country examples are described (Table 2). Sociodemographic
+information and suicide estimates by country can be found in the country profiles1 of the Mental health atlas
+2017 and WHO’s suicide prevention webpages.2
+The country examples are structured in several sections: first, the context for suicide prevention is provided;
+second, the key components of the strategy, such as the vision, mission, time frame, annual budget, goals,
+objectives and guiding principles are presented; and, third, the implementation of the strategy and its
+monitoring/evaluation are described.
+The vision that the strategies have in common is usually less or no suicide (e.g. a country free of suicide) and/or
+improved mental health and well-being.
+Among the typical components that can be found in national suicide prevention strategies are means
+restriction, responsible media reporting, access to services, treatment, crisis intervention, training, postvention,
+surveillance, awareness raising, stigma reduction, and oversight and coordination (WHO, 2014), all of which
+should reflect universal, selective and indicated interventions.
+Table 2. Overview of country examples
+1. Bhutan
+(South-East Asia Region)
+
+6. Namibia
+(African Region)
+
+2. Guyana
+(Region of the Americas)
+
+7. Republic of Korea
+(Western Pacific Region)
+
+3. Iran, Islamic Republic of
+(Eastern Mediterranean Region)
+
+8. Switzerland
+(European Region)
+
+4. Ireland
+(European Region)
+
+9. USA
+(Region of the Americas)
+
+5. Japan
+(Western Pacific Region)
+
+10. Uruguay
+(Region of the Americas)
+
+1 http://www.who.int/mental_health/evidence/atlas/profiles-2017/en, accessed 8 November 2018.
+2 https://www.who.int/mental_health/prevention/suicide/suicideprevent/en, accessed 8 November 2018.
+
+17
+
+Example 1. Bhutan (South-East Asia Region)
+The following information was summarized from the National Suicide Prevention Strategy of the Royal
+Government of Bhutan, called “Suicide prevention in Bhutan”. For further details and references please refer to
+the original source.
+Source: http://www.mindbank.info/item/6176
+Context for suicide prevention
+Before the three-year action plan was formulated in 2015 by the Royal Government of Bhutan, there had been
+no stand-alone comprehensive suicide prevention programme in Bhutan. However, some forms of integrated
+services were available through primary care mental health services, domestic violence prevention and
+de-addiction strategies for alcohol and drugs. Mental health screening or suicide risk identification was not
+routine practice and most rehabilitation services were concentrated in a few districts. Consequently, many
+people were unable to access crucial resources.
+Key components of the strategy
+Vision
+Mission
+
+A nation with zero deaths by suicide
+Promoting, coordinating and supporting appropriate intersectoral action plans and
+programmes for the prevention of suicidal behaviours at national, dzongkhags
+(district), gewogs (group of villages) and community levels
+
+Time frame
+Annual budget
+
+2015–2018
+BTN 9.6 million
+
+Goal
+
+Preventing premature deaths due to suicide across the lifespan, among the
+Bhutanese population.
+
+Objectives
+Specific objectives
+1. Improving leadership, multisectoral engagement and partnerships for suicide prevention in these communities.
+2. Strengthening governance and institutional arrangements to effectively implement comprehensive suicide
+prevention plans.
+3. Improving access to suicide prevention services and support for individuals in psychosocial crisis and those
+most at risk for suicide (including those with suicidal ideation, history of self-harm or a non-fatal suicide attempt).
+4. Improving the capacity of health services and gate keepers to provide suicide prevention services.
+5. Improving community resilience and societal support for suicide prevention in communities, including
+schools and institutions.
+6. Improving data, evidence and information for suicide prevention planning, and programming.
+Guiding principles
+• Suicide prevention is to be a broad and coordinated system working with a wide range of partners,
+organizations and sectors, including people who have been affected by suicide.
+• Suicide prevention will address a wide range of factors related to suicidal behaviour, including social support,
+mental illness, substance abuse, economic factors, and community and personal risk and resilience.
+• Suicide prevention will be a comprehensive targeting of the population, building supportive community
+systems and focusing on individual-level risks for suicide.
+• Suicide prevention will employ a combination of public health and individual clinical approaches focusing on
+risk identification and the provision of individually tailored services.
+
+18
+
+Strategies
+The action plan proposes three levels of interventions: universal suicide prevention strategies, designed to
+reach an entire population; selected suicide prevention strategies, specifically targeting vulnerable individuals
+within the population; and indicated suicide prevention strategies, targeting those who have engaged in
+non-fatal suicidal behaviour or are left behind.
+Universal strategies: promoting responsible media reporting on suicide; religious beliefs and cultural practices;
+schools providing parenting education and awareness programmes, guidance counsellors, etc.; mental health
+services by training of health workforce, infrastructure of the hospitals and psychiatric wards, etc.; and means
+restriction, limiting the availability and supply of pesticides.
+Selective strategies: for vulnerable women and children; addiction and substance abuse prevention,
+established programmes, drop-in centres, outreach centres, rehabilitation services; community resilience and
+support programmes; and counselling, such as peer counsellors, health and social counsellors.
+Indicated strategies: access to services and care for individuals at higher risk of suicide such as crisis helplines,
+health information services, etc.; survivor postvention services that include reducing further risk of suicidal
+behaviour, prevent suicide contagion by identifying other members at high risk of suicide etc.; and referral
+services and standardisation of health services.
+Implementation
+The Government of Bhutan recognized that the action plan had to be realistic and implemented it through a
+financially sustainable model. Each activity was graded on a 10-point scale in five domains – effectiveness,
+cost, feasibility, public health benefits and cultural acceptability of the action – in order to ensure an effective
+cross-sectoral implementation and governance. A Suicide Prevention Steering Committee was established,
+comprising Ministry of Health representatives and other key stakeholders to advise on the national suicide
+prevention response. The committee meets every six months and its main function is to provide thrust to the
+multisectoral response in suicide prevention.
+Implementation of the suicide prevention workplans was designed to take place in the dzonkhakgs (districts)
+and local governments, ensuring that suicide prevention activities were embedded within the Government
+Performance Management System. The Dzongdag Suicide Prevention Response Team is composed of
+appropriate representatives of relevant agencies with the Royal Bhutan Police (RBP) and health representatives,
+is also established in all 20 dzongkhags (districts). The team’s key function is to ensure effective rescue
+responses to suicide attempts and deliberate self-harm incidents occurring in communities.
+Monitoring and evaluation
+The monitoring and evaluation is conducted under the direction of the Suicide Prevention Steering Committee.
+The Committee and the Ministry of Health are responsible for evaluation and management, including the
+appointing of teams and coordination during the field work.
+The monitoring and evaluation framework follows a set of input and output indicators to show
+accomplishments or progress in the strategy (Annex 2.1). The implementing partners will submit six-monthly
+implementation reports, using standard reporting forms. The overall trend of the suicide reduction will be
+monitored through national data on suicide collected through the national registry for suicide and deliberate
+self-harm. Finally, an annual progress report will be published.
+
+19
+
+Example 2. Guyana (Region of the Americas)
+The following information was summarized from the National Suicide Prevention Strategy of the government of
+Guyana, called the “National Suicide Prevention Plan: A National Suicide Prevention Strategy for Guyana”. For
+further details and references please refer to the original source.
+Source: https://www.mindbank.info/item/6321
+Context for suicide prevention
+Guyana is facing high suicide rates, and conclusions from situation analyses have indicated that there were not
+enough primary health care centres with adequately trained personnel. Moreover, similar gaps existed in other
+sectors. The media, for instance, presented sensationalized reports on cases of suicide and suicide attempts,
+potentially enhancing the “copycat” phenomenon. Also, the quality of data on suicide attempts and suicide was
+depicted as poor. To tackle these challenges, a National Suicide Prevention Plan was developed in 2014.
+Key components of the strategy
+Vision
+Mission
+
+Improving and contributing to the mental and social well-being of all peoples in Guyana
+Addressing the health determinants and constraints in the health system to achieve
+mental health for all in Guyana, which reflects the experience gained in the country
+and expresses the government's commitment to the establishment of priorities and
+management to prevent and control suicide in Guyana
+
+Time frame
+Annual budget
+
+2015–2020
+The health budget is GYD 23 455 957 000; of this, the mental health budget was
+GYD 105 550 000 in 2018
+
+Goal
+
+To reduce the incidence of suicide mortality and attempted suicide (by 20%), thereby
+preventing premature death from suicide or disability from attempted suicide, across
+the life span from 2015–2020.
+
+Objectives
+General objectives
+1. To promote a healthy lifestyle and implement culturally-sensitive approaches, to reduce the risk of suicidal
+behaviour, especially in high-risk groups.
+2. To reduce the availability, accessibility and attractiveness of the means to suicide (e.g. pesticides,
+medications, firearms).
+3. To develop multidisciplinary effective interventions and actions to prevent suicidal behaviour and
+implement new initiatives to help those affected by suicide.
+4. To promote the use of mental health services and services for the prevention of substance abuse and suicide.
+5. To promote the quality and timeliness of national data on suicide and suicide attempts and support the
+establishment of an integrated data collection system.
+
+20
+
+Strategies
+1. Risk factor reduction, health promotion and prevention
+To develop comprehensive interventions for the promotion of healthy lifestyles and prevention of suicidal
+behaviour, especially in high-risk groups.
+Specific objectives:
+• Provide evidence-based information about the magnitude, risks and consequences of suicidal behaviour.
+• Promote healthy lifestyles within the general population including the reduction of substance abuse and
+alcohol intake as a component of suicide prevention.
+• Communication through a specialized social communication strategy focused on suicidal behaviour.
+• Reduce the risk of suicide in key high-risk groups.
+2. Reduce access to the means of suicide:
+Develop interventions to reduce access to means of suicide.
+Specific objectives:
+• Restrict access to means of self-harm/suicide.
+• Reduce the number of suicides as a result of self-poisoning.
+• Reduce the number of suicides as a result of overdose of medications.
+• Reduce the number of suicides as a result of hanging and strangulation.
+• Reduce the number of suicides at high-risk locations.
+• Reduce the number of suicides occurring on the road.
+• Response to new methods of suicide.
+3. Health system response to suicidal behaviour:
+Improve the quality of health services to treat and manage people with mental disorders.
+Specific objectives:
+• Improve the capacity and quality of the health system response.
+• Increase access to the management and interventions for treatment, control and rehabilitation of persons
+who attempted suicide.
+• Strengthen human resources in the health system and communities to provide care, treatment and
+support in cases of suicidal behaviour.
+• Train gatekeepers to identify individuals at risk, the level of risk and how to refer at-risk individuals for
+treatment.
+• Mobilize communities and develop interventions to address the factors that influence suicide risks (trauma
+or abuse, discrimination and relationship conflict).
+• Develop interventions to support survivors.
+4. Suicide Surveillance and Research:
+Improving data collection on the incidence of suicidal behaviour, research and evaluation of effective
+interventions.
+Specific objectives:
+• Improve case registration.
+• Conduct researches on suicidal behaviour.
+Implementation
+A situation analysis was conducted in order to assess the severity of the problem, resources available and
+community needs. The development of the action plan took into consideration governance, roles and
+responsibilities within the Ministry of Public Health, as well as with potential partners. Key stakeholders were
+made responsible for specific tasks and ways to coordinate these effectively among themselves. The action
+plan provides leadership and clarity on the main evidence-based suicide prevention interventions and their
+prioritization. Much is carried out locally, adjusted to local circumstances and building on existing initiatives. The
+
+21
+
+establishment of health and well-being boards supports the setting up of effective local partnerships and helps
+in the development of creative ways to utilize local resources and assets.
+Monitoring and evaluation
+Evaluation of the components of the national strategy examines the outcome and impact of interventions
+vis-à-vis the stated objectives. The monitoring and evaluation plan was planned and agreed upon in advance to
+ensure the involvement of all relevant stakeholders. The evaluation has a set of specific, measurable,
+achievable, relevant and time-bound indicators which can measure the input, process, impact and outcome of
+individual interventions as well as of the strategy as a whole (Annex 2.2).
+The main objectives of the evaluation component of this plan are:
+- monitoring the incidence and prevalence of suicidal behaviour in the 10 regions of the country,
+ascertaining and recording the number of attempted suicides and suicides;
+- evaluating the catchment, recording and processing of data collected in all levels of the surveillance
+system through the review of documents and procedures;
+- evaluating the management and treatment of suicidal behaviour in all levels of the health system
+(emergency, inpatient and outpatient services, mental health services, communities) and assessing the
+quality and effectiveness of interventions.
+
+22
+
+Example 3. Iran, Islamic Republic of
+(Eastern Mediterranean Region)
+The following information was summarized from the National Suicide Prevention Strategy of the Government of
+the Islamic Republic of Iran, called “National suicide prevention and suicide registration programmes”. For
+further details and references please refer to the original source.
+Source: Strategy document shared by WHO Collaborating Centre, Tehran, Islamic Republic of Iran.
+Context for suicide prevention
+Over the last decade and a half, the Islamic Republic of Iran has implemented a pilot suicide prevention
+programme based on the early identification and treatment of depression in a region called Khoramabad, with
+successful results. In 2009, the programme was piloted in two districts and the rate of suicide was significantly
+reduced. Based on this, in 2010 a national suicide prevention programme was released for implementation in the
+public health-care system in the Islamic Republic of Iran.
+Key components of the strategy
+Vision
+Mission
+Time frame
+Annual budget
+
+[not available]
+[not available]
+2010 - [not available]
+[not available]
+
+Goal
+
+Reducing suicidal behaviours in populations covered by the primary health
+care systems.
+
+Objectives
+Specific objectives:
+1. Improve the accuracy of statistics of suicide and suicide attempts (non-fatal self-harm).
+2. Reduce stigma relating to suicidal behaviour and mental health, and increase awareness of suicide,
+attempted suicide, and improve positive mental health promotion.
+3. Improve accessibility and consistency in care pathways for the assessment and management of people
+vulnerable to suicidal behaviour.
+4. Enhance engagement and collaboration with the media in relation to media guidelines, training and
+adherence to improve the reporting of suicidal behaviour and to disseminate information on positive mental
+health promotion.
+5. Reduce access to frequently used and highly lethal methods of suicide and attempted suicide (non-fatal
+self-harm), including pesticides and frequently-used drugs, and to address other highly lethal methods
+such as hanging and self-immolation.
+6. Improve and maintain the response to suicidal behaviour within health and community-based services and
+ensure continuity of care.
+7. Improve and maintain the capacity of suicide bereavement support services and specialist interventions for
+people with prolonged and complicated grief.
+8. Reduce the stigma of mental disorders and promote help-seeking behaviours in students.
+9. Develop a national monitoring and evaluation system, promote relevant research that supports national
+innovation, promote the suicide prevention programme and address knowledge gaps.
+Strategies
+Service strategies: inclusion of suicide prevention programmes in the health-care system; reinforcing the referral
+system by training the staff and gatekeepers; reinforcing the support and treatment services; and providing
+counselling services in the community.
+
+23
+
+Executive strategies: assigning the person in charge; establishment of a national multisectoral group at national
+and provincial levels.
+Educational strategies: public education on how to cope with daily stresses and enhancing life skills;
+preparing educational literature for health-care personnel at different levels; holding educational workshops;
+preparing educational literature for influential family members and gatekeepers in the community; and
+preparing guidelines for the media.
+Therapeutic strategies: detection of individuals at risk of suicide and suicide survivors; providing
+counselling services; and follow-up of counselling and therapeutic services in persons who attempt
+suicide after their discharge.
+Research strategies: epidemiologic evaluation of national suicide status; etiological study of suicide in the
+Islamic Republic of Iran; evaluation of incidence and etiology of suicide; evaluation of the effects of each
+intervention; evaluation of knowledge and attitude of health-care personnel and of the public towards suicide.
+Action areas (separated by population level, community level, health systems and services)
+- legal status of suicide and attempted suicide;
+- registration of suicide and attempted suicide;
+- awareness and stigma reduction;
+- treatment;
+- the media;
+- restriction of access to means;
+- crisis intervention;
+- suicide bereavement/postvention;
+- mental health promotion among young people.
+Implementation
+The first year of implementing the national prevention programme was 2010. The action plan adopted a
+cross-sectoral approach, with the Ministry of Health being the lead interlocutor but working in collaboration
+with other relevant government departments and stakeholders. The implementation of the action plan was
+divided into three levels: population level, community level, and health systems and services level.
+Monitoring and evaluation
+For the monitoring of the implementation of the national action plan, both processes and outcomes were
+evaluated. Alongside the process evaluations, the quality of the implementation of the actions were assessed,
+the progress of the implementation of actions monitored, and the outcomes measured to help determine
+whether the strategic actions produced the changes they intended to achieve (Annex 2.3).
+
+24
+
+Example 4. Ireland (European Region)
+The following information is summarized from the government strategy called “Connecting for Life: Ireland`s
+National Strategy to Reduce Suicide 2015–2020”. For further details and references please refer to the
+original source.
+Source: http://www.mindbank.info/item/5640
+Context for suicide prevention
+Suicide prevention in Ireland was guided by “Reach Out”, the first national suicide prevention strategy 2005–20141.
+This strategy brought a focus on suicide prevention work and guided activities in this area. Reach Out set out a
+vision and guiding principles for suicide prevention. During that period, 96 actions and identified lead agencies
+were outlined. Since Reach Out, there have been significant developments in the areas of research, policy and
+service delivery relating to suicide prevention. The new strategy 2015-2020 Connecting for Life is very much
+based on Reach Out.
+Key components of the strategy
+Vision
+
+An Ireland where fewer lives are lost through suicide, and where communities and
+individuals are empowered to improve their mental health and well-being
+
+Mission
+Time frame
+Annual budget
+
+[not available]
+2015-2020
+US$ 13 073 535 in 2016
+
+Goal
+
+Reducing suicide and suicide attempts rate in the whole population and among
+specified priority groups.
+
+Objectives
+1. Improving the nation’s understanding of, and attitudes to, suicidal behaviour, mental health and well-being:
+The language relating to suicide and mental health is often stigmatizing or misleading. By working with people
+and organizations across society, including the media, a greater understanding of suicide can be achieved and
+stigma reduced.
+Specific objectives:
+• Improving population-wide understanding of suicidal behaviour, mental health and well-being, and
+associated risk and protective factors.
+• Increasing awareness of available suicide prevention and mental health services.
+• Reducing stigmatizing attitudes to mental health and suicidal behaviour at population level and within
+priority groups.
+• Engaging and working collaboratively with the media in relation to media guidelines, tools and training
+programmes to improve the reporting of suicidal behaviour within broadcast, print and online media.
+2. Supporting local communities’ capacity to prevent and respond to suicidal behaviour: Well-structured and
+coordinated community-based initiatives can translate into protective benefits for families and individuals, which
+contribute to reduced risk of suicidal behaviour.
+
+1 Health Service Executive, the National Suicide Review Group and Department of Health and Children (2005) Reach Out: National
+
+Strategy for Action on Suicide Prevention http://health.gov.ie/wp-content/uploads/2014/03/reach_out.pdf, accessed 8 November 2018.
+
+25
+
+Specific objectives:
+• Improving the continuation of community-level responses to suicide through planned, multi-agency
+approaches.
+• Ensuring that accurate information and guidance on effective suicide prevention are provided for
+community-based organizations (e.g. family resource centres, sporting organizations).
+• Ensuring the provision and delivery of training and education programmes on suicide prevention to
+community-based organizations.
+3. Targeting approaches to reduce suicidal behaviour and improve mental health among priority groups: Considering
+young people aged 15–24 years, people with mental health problems of all ages, persons with alcohol and drug
+problems, the bereaved, prisoners and suicide, sex workers, people with chronic illness or disability, etc.
+Specific objectives:
+• Improving the implementation of effective approaches for reducing suicidal behaviour among priority groups.
+• Supporting, in relation to suicide prevention, the Substance Misuse Strategy, to address the high rate of
+alcohol and drug misuse.
+• Enhancing supports for young people with mental health problems or vulnerable to suicide.
+4. Enhancing accessibility, consistency and care pathways of services for people vulnerable to suicidal
+behaviour: guaranteeing a sustained approach to preventing and reducing suicide, easy access to services,
+integrating care pathways across both statutory and non-statutory services.
+Specific objectives:
+• Improving psychosocial and psychiatric assessment and care pathways for people vulnerable to
+suicidal behaviour.
+• Improving access to effective therapeutic interventions (e.g. counselling, dialectical behaviour therapy,
+cognitive behavioural therapy) for people vulnerable to suicide.
+• Improving the uniformity, effectiveness and timeliness of support services to families and communities
+bereaved by suicide.
+5. Ensuring safe and high-quality services for people vulnerable to suicide: agencies need to have good-practice
+guidelines, clear care protocols, and appropriate training and supervision mechanisms. All services must promote
+an ambition for recovery, restoring the individual’s independence built on self-worth and self-belief.
+Specific objectives:
+• Develop and implement national standards and guidelines for statutory and non-statutory organizations
+contributing to suicide prevention.
+• Improve the response to suicidal behaviour within health and social care services, with an initial focus on
+incidents with mental health services. Reduce and prevent suicidal behaviour in the criminal justice system.
+• Ensure best practice among health and social care practitioners through the implementation of clinical
+guidelines on self-harm and the delivery of accredited education programmes on suicide prevention.
+6. Reducing and restricting access to means of suicidal behaviour: implementation of strategies to restrict
+means can occur at the national level, via legislation and regulations, and at the local level.
+Specific objectives:
+• Reducing access to frequently used drugs in intentional drug overdose.
+• Reducing access to highly lethal methods used in suicidal behaviour.
+
+26
+
+7. Improving surveillance, evaluation and high-quality research relating to suicidal behaviour: having real-time
+and better-integrated data surveillance systems for suicidal behaviour as well as accelerating the transfer of
+research findings into practice
+Specific objectives:
+• Evaluating the effectiveness and cost-effectiveness of Connecting for Life.
+• Improving access to timely and high-quality data on suicide and self-harm.
+• Reviewing (and, if necessary, revising) current recording procedures for death by suicide.
+• Developing a national research and evaluation plan that supports innovation aimed at early identification of
+suicide risk, assessment, intervention and prevention.
+Guiding principles
+- collaborative: achieve together to deliver our goals;
+- accountable: clear governance structures and openness in implementing the strategy;
+- responsive: providing high-quality service responses;
+- evidence-informed and outcome focused: action targeted to identify need and based on international
+best-practice recommendations;
+- adaptive to change: responsive to new and emerging circumstances.
+Implementation
+In order to develop and implement the strategy, five supporting advisory groups were appointed, covering the
+areas of research, policy, practice, engagement and communications/media. The strategy was developed
+through an evidence-based approach and its implementation was based on knowledge of the best practice in
+terms of policy and services.
+For an effective implementation, four incremental stages were created, each requiring different conditions and
+activities. These were: exploring and preparing, planning and resourcing, implementing and operationalizing,
+and full implementation. Multiple evidence-informed interventions were included throughout the strategy.
+Communication and resource plans were formulated to support the implementation of the strategy.
+Connecting for Life depends fundamentally on coordination across government departments and agencies.
+Formal accountability, budgetary management, capacity development and evaluation structures, with clearly
+delineated roles and responsibilities, are central requirements for effective implementation. For government
+strategies with a relatively short time frame, having solid implementation structures in place facilitates
+monitoring of activities and puts a clear decision-making process in place, thus avoiding decisions being made
+hastily without clarifying accountability and implications. Five key implementation structures for Connecting for
+Life represent the different stakeholder groups involved in delivery and provide forums for engagement,
+facilitate monitoring and clear decision-making, and are designed to make the best use of existing structures to
+ensure efficient working.
+Monitoring and evaluation
+Monitoring and evaluation are embedded in the implementation process, with an accompanying outcomes
+framework in place to allow progress to be tracked and the impact of the strategy to be measured objectively
+against baseline indicators (Annex 2.4). These indicators measure principal outcomes to assess the
+achievement of the main goals, and intermediate outcomes to provide preliminary evidence of the effectiveness
+of the suicide prevention strategy in the shorter term. In addition to the measurement of principal and
+intermediate outcomes, evaluation of this strategy will include assessment of process variables. This involves
+assessment of the activities undertaken and of the causal pathways from inputs and activities to outcomes.
+
+27
+
+Example 5. Japan (Western Pacific Region)
+The following information is summarized from a translation of the 2017 Japanese Cabinet Decision called
+“The general principles of suicide prevention policy: realizing a society in which no one is driven to take their
+own life”. For further details and references please refer to the original source.
+Source: http://www.mindbank.info/item/6766
+Context for suicide prevention
+Suicide began to be viewed as a social problem in Japan around 2005 and this triggered concrete actions. In the
+symposium on suicide countermeasures held in May 2005, NGOs and some members of the Diet submitted
+urgent proposals for comprehensive suicide prevention and the Minister of Health, Labour and Welfare vowed to
+tackle the issue of suicide. Subsequently, Japan’s Basic Act for Suicide Prevention was signed into law in June
+2006. Following this, the driving force for suicide prevention shifted from the Ministry of Health, Labour and
+Welfare to the Cabinet Office, and suicide prevention became a multi-ministerial government policy. In 2007, the
+General principles of suicide prevention policy were enacted, aiming to prevent suicide and provide support to
+survivors. In 2012 these general principles were revised1,2 to emphasize support for young people and for those
+who had previously attempted suicide.
+Key components of the strategy
+Vision
+Mission
+
+Achieving a society in which no one is driven to take their own life.
+Promoting suicide countermeasures as comprehensive support for people’s lives;
+strengthening coordination, with related measures to deal with suicide
+comprehensively; interconnecting policies and measures at each level tailored to the
+stage of response; promoting awareness-raising and practical initiatives in parallel to
+each other; identifying the roles of the national government, local public entities,
+related organizations, private-sector entities, businesses and the people in Japan and
+promoting cooperation and coordination among them
+
+Time frame
+Annual budget
+
+2016–2020
+US$ 27.58 million (JPY 3.1 billion)
+
+Goal
+
+Reducing the suicide rate by 2026 to more than 30% below the 2015 level.
+
+Objectives
+1. Strengthening support for practical initiatives at the community level: promoting preventive measures based
+on the contextual conditions of suicide by encouraging research and studies in order to understand the
+circumstances such as social factors.
+Specific objectives:
+• Preparing profiles of actual local suicide conditions.
+• Preparing policy packages of local suicide countermeasures.
+• Supporting the formulation, etc., of local plans for suicide countermeasures.
+• Drawing up guidelines for formulating local plans for suicide countermeasures.
+• Assisting local support centres for suicide countermeasures.
+• Promoting the establishment of full-time departments for suicide countermeasures and the assignment of
+full-time staff to them.
+
+1
+
+Cabinet Decision. Japanese Government. The General Principles of Suicide Prevention Policy: realizing a society in which no one is
+driven to take their own life. Suicide Policy Research. 2017; 1:15-44 (https://jssc.ncnp.go.jp/file/pdf/SPR2017_1_4.pdf,
+accessed 8 November 2018).
+2
+Ministry of Health, Labour and Welfare. Guidelines for Municipal Suicide Countermeasure Planning. Suicide Policy Research.
+2018; 2(1):37-65 (https://jssc.ncnp.go.jp/file/pdf/SPR2018_1_4.pdf, accessed 8 November 2018).
+
+28
+
+2. Encouraging every citizen to be aware of and to monitor potential suicide victims: promoting public awareness.
+Specific objectives:
+• Enacting Suicide Prevention Week and Suicide Countermeasures Strengthening Month.
+• Implementing education that will contribute to suicide countermeasures among primary and secondary schools.
+• Disseminating accurate information about suicide and suicide-related phenomena.
+• Promoting public awareness campaigns about depression.
+3. Promoting research and studies that will contribute to the promotion of comprehensive suicide countermeasures.
+Specific objectives:
+• Research, studies and verification related to the actual suicide conditions and the state of implementation
+of suicide countermeasures, etc.
+• Making use of the results of research, studies and verification.
+• Collecting, organizing and providing information on progressive local approaches.
+• Studying suicide among children and young people.
+• Shedding light on actual suicide conditions in conjunction with the system to investigate cause of death.
+• Conducting interdisciplinary research to clarify the pathology of depression and other forms of mental illness,
+to develop methods of treatment and to make ongoing improvements to community-based care systems;
+• Expediting the use and application of existing data.
+4. Recruiting, training and improving the quality of personnel engaged in suicide countermeasures.
+Specific objectives:
+• Providing early detection of and early response to those at high risk for suicide.
+• Promoting education about suicide countermeasures in coordination with universities and special
+vocational schools.
+• Training personnel in charge of coordinating suicide countermeasures.
+• Improving the skills of family doctors and other primary care providers to evaluate and respond to suicide risks.
+• Awareness-raising for school staff.
+• Improving the quality of care provided by community health staff and occupational health staff.
+• Providing training for long-term care support specialists and others.
+• Providing training for district welfare commissioners, commissioned child welfare volunteers and others.
+• Improving the quality of counsellors with reference to social factors.
+• Improving the quality of personnel at public agencies who deal with bereaved family members and others.
+• Training gatekeepers in various fields.
+• Promoting mental health care for persons engaged in suicide countermeasures.
+• Assisting those who provide support, including family and friends.
+• Developing training materials.
+5. Advancing the promotion of mental health and providing a supportive environment for it.
+Specific objectives:
+• Promoting mental health measures in the workplace.
+• Improving the system for furthering mental health promotion in the community.
+• Improving the system for furthering mental health promotion in the schools.
+• Promoting mental care for, and rebuilding the lives of, victims of large-scale disasters.
+6. Ensuring that the appropriate mental health, medical care and welfare services are received.
+Specific objectives:
+• Improving the interconnectedness of each programme, psychiatric care, health care, welfare, etc.
+• Enhancing the psychiatric care system by training personnel responsible for mental health, medical care
+and welfare services.
+
+29
+
+• Assigning specialists to increase the interconnectedness of mental health, medical care and welfare services.
+• Improving the skills of family doctors and other primary care providers to evaluate and respond to suicide risk.
+• Improving the system to provide mental health, medical care and welfare services to children.
+• Implementing screening for depression and other mental illnesses.
+• Promoting measures for those at high risk for psychiatric illnesses other than depression.
+• Supporting cancer patients and the chronically ill.
+7. Lowering the risk of suicide in society as a whole.
+Specific objectives:
+• Extending a helping hand of social support.
+• Improving counselling systems in the community and transmitting easily understandable information on
+support policies, counselling services, etc.
+• Improving counselling services related to multiple debts and increasing safety-net loans.
+• Improving counselling services for the unemployed.
+• Implementing counselling programmes for business owners.
+• Improving the provision of information to resolve legal problems.
+• Regulating dangerous places, drugs, etc.
+• Strengthening suicide countermeasures that make use of information and communications technology (ICT).
+• Promoting measures to deal with suicide-related information on the Internet.
+• Dealing with suicide notices on the Internet.
+• Improving support for caregivers.
+• Improving support for hikikomori (social recluses).
+• Improving support for victims of child abuse, sex crimes and sexual violence.
+• Improving support for the poor and needy.
+• Improving counselling services for single-parent families.
+• Improving support for expectant and nursing mothers.
+• Improving support for sexual minorities.
+• Strengthening outreach and ensuring a diversity of counselling methods.
+• Making well-known information-sharing mechanisms necessary for coordination between related organizations.
+• Promoting the creation of places to go to that contribute to suicide countermeasures.
+• Making the WHO guidelines known to the news media.
+8. Preventing repeated suicide attempts.
+Specific objectives:
+• Strengthening measures to prevent repeat suicide attempts.
+• Equipping medical facilities that are responsible for the core functions of supporting individuals in the
+community who have survived a suicide attempt.
+• Upgrading the medical care system provided by psychiatrists at emergency medical facilities.
+• Strengthening comprehensive support for those who have attempted suicide by promoting coordination
+between medical care and the community.
+• Providing support through interconnectedness with measures to create places to go to.
+• Providing assistance to family members and other close supporters.
+• Encouraging a post-crisis response in schools and workplaces.
+9. Improving support for the bereaved.
+Specific objectives:
+• Providing care for the bereaved immediately after a suicide or attempted suicide in the family.
+• Supporting the operations of self-help groups for the bereaved.
+• Encouraging a post-crisis response in schools and workplaces.
+
+30
+
+• Promoting the provision of information to the bereaved.
+• Improving the quality of personnel at public agencies who deal with bereaved family members and others.
+• Supporting bereaved children.
+10. Strengthening coordination with private-sector entities.
+Specific objectives
+• Promoting suicide prevention measures.
+• Supporting human resource development at private-sector entities.
+• Establishing a community coordination system.
+• Supporting counselling programmes by private-sector entities.
+• Supporting pioneering and experimental approaches by private-sector entities as well as their efforts in
+places where multiple suicides have occurred.
+11. Promoting suicide countermeasures among children and young people even further.
+Specific objectives
+• Preventing suicide in children who are victims of bullying.
+• Improving support for elementary school children and junior and senior high school students.
+• Promoting instruction on how to raise an SOS.
+• Improving support for children.
+• Improving support for young people.
+• Improving support for young people tailored to their special traits.
+• Supporting their friends and acquaintances.
+12. Promoting suicide countermeasures for work-related problems even further.
+Specific objectives
+• Rectifying the practice of long working hours.
+• Promoting mental health measures in the workplace.
+• Measures to prevent harassment.
+Goals
+• Promote systems at the national level: encourage and support measures carried out by the relevant
+ministries and agencies to implement comprehensive suicide prevention measures, and establish a
+mechanism under which the national government, local authorities, related organizations, NGOs and others
+coordinate and cooperate so that suicide prevention measures can be promoted by the nation as a whole.
+• Ensure coordination and cooperation at community level: work actively to promote the setting up of a
+forum to study measures formulated by committees, composed of relevant groups and agencies in various
+fields in the prefectures and designated cities, and the planning of such community measures by the said
+committees, offering appropriate support by providing information, etc.
+• Policy evaluation and management: the Council on Suicide Prevention Policy shall review and improve
+policies on the basis of its evaluation, including verification of the implementation status of policies based
+on the General Principles and the establishment of new mechanisms to assess the policies’ effectiveness.
+• Review of the General principles of suicide prevention policy every five years, based on socioeconomic
+changes, in the circumstances surrounding suicide, the progress made in implementing policies, the
+status of achieving the policies’ goals, etc.
+Implementation
+Identifying the roles of the national government, local public entities, related organizations, private-sector
+entities, businesses and the people of Japan, and promoting cooperation and coordination between them.
+Monitoring and evaluation
+The Japan Support Center for Suicide Countermeasures put suicide countermeasures into practice through
+encouragement of research into the policy-making process at each step of the planning cycle.
+
+31
+
+Example 6. Namibia (African Region)
+The following information is summarized from the 2011 strategic plan of the Namibian Ministry of Health and
+Social Services, called “National Strategic Plan on the Prevention of Suicide in Namibia 2012–2016”. For
+further details and references please refer to the original source.
+Source: https://www.mindbank.info/item/6272
+Context for suicide prevention
+Before the strategy was implemented, a national SWOT analysis revealed that Namibia was struggling with a lack
+of qualifications and infrastructure, as well as high levels of stigmatization and governmental fragmentation. This
+analysis was the core information that guided Namibia to address the problem of suicide and its prevention.
+Namibia was the first country in the African region to introduce a national suicide prevention strategy. With the
+introduction of the National Strategic Plan on the Prevention of Suicide in Namibia, multi-professional teams
+received an opportunity to address the challenges through suicide prevention programmes, workshops, training
+sessions, counselling and other awareness-raising campaigns. The National Strategic Plan was developed in
+collaboration with all stakeholders in the field of suicide prevention.
+Key components of the strategy
+Vision
+Mission
+
+To be a nation free of suicide
+Providing comprehensive, affordable and accessible services by relevant
+stakeholders pertaining to suicide
+
+Time frame
+Annual budget
+
+2012–2016
+[not available]
+
+Goal
+
+[not available]
+
+Objectives
+1. Objectives regarding constituency/stakeholders
+Specific objectives
+• Ensuring a responsive legislative/ policy framework.
+• Fostering an improved relationship with stakeholders.
+• Ensuring an accountable coordinating body.
+• Ensuring accessibility to support services.
+• Ensuring reduced incidences of suicide.
+• Strengthening the stewardship role of the steering committee.
+• Ensuring strengthened suicide services.
+• Fostering an adequate understanding of the suicide phenomenon.
+2. Objectives for internal processes
+Specific objectives
+• Ensuring strengthened suicide services.
+• Ensuring implementation of the national strategic suicide prevention plan.
+• Ensuring decentralized services.
+• Ensuring a functional coordination body.
+• Ensuring efficient coordination of suicide services.
+• Ensuring public awareness of suicide.
+• Ensuring establishment of an accurate database.
+
+32
+
+3. Objectives on learning and growth
+Specific objectives
+• Ensuring skilled service providers.
+• Building capacity of relevant stakeholders on expertise, knowledge and skills.
+• Ensuring a motivated workforce.
+• Ensuring positive staff morale.
+4. Objectives for budget and finance
+Specific objectives
+• Ensuring availability of funds.
+• Ensuring equitable and efficient allocation of resources among ministries, directorates and stakeholders.
+• Ensuring effective financial management.
+Implementation
+[Not available].
+Monitoring/evaluation
+[Not available]; see indicators (Annex 2.5)
+
+33
+
+Example 7. Republic of Korea (Western Pacific Region)
+The following information was summarized from the government plan, “Life Love Plan: Third Basic Plan for
+Suicide Prevention”. For further details and references please refer to the original source.
+Source: Strategy document shared by the Korea Suicide Prevention Center.
+Context for suicide prevention
+The Life Love plan for suicide prevention developed by the Republic of Korea was the country’s third national plan
+for the prevention of suicide, following two earlier national strategies that succeeded in reducing suicide and
+reversing the trend of an increase in the rates of suicide in the country. After the Act for Prevention of Suicide and
+the Creation of Culture of Respect for Life was enacted and promulgated in 2011, the Republic of Korea saw a
+drop in suicide rates from 31.7 per 100 000 people to 27.3 in just three years, despite anticipated and sometimes
+still existent challenges such as the lack of government-wide cooperation, and the lack of tailored strategies,
+depression treatment and infrastructure. This reduction of 13.8% in just three years was a huge achievement and
+illustrated the effectiveness of the national strategy as a whole. It represented the government’s and all the
+stakeholders’ commitments to reduce suicide in the Republic of Korea.
+Key components of the strategy
+Vision
+
+Create safe and healthy communities free from suicide, reduce the risk of suicide and
+strengthen suicide prevention capabilities of people
+
+Mission
+Time frame
+Annual budget
+
+[not available]
+2016–2020
+KRW 148.14 billion total for 2016–2020
+
+Goal
+
+Lowering the rates of suicide from 27.3 per 100 000 in 2014 to 20.0 per 100 000
+(a reduction of 26.7%)
+
+Objectives
+1. Enabling society-wide suicide prevention.
+Specific objectives
+• Improve social awareness of suicide: creating a culture of respect for life and enhancing suicide prevention
+(with campaigns, supporting groups, improving press releases related to suicide, organizing campaigns
+during months when suicide rates are high, media coordination).
+• Create a social support system to prevent suicide: enhancement of a social safety net; system of
+pan-governmental suicide prevention and cooperation with local governments.
+• Improve the environment to reduce the risk of suicide: blocking access to means of suicide (hazardous
+materials management, improving risk environment); blocking harmful information online.
+2. Providing suicide prevention services.
+Specific objectives
+• Pursue suicide prevention measures by life stage: creating specific child and adolescent suicide prevention
+programmes; adolescent and middle-aged adult suicide prevention (e.g. in the workplace, in colleges);
+suicide prevention among older people (e.g. integration services, early detection systems).
+• Enhance a high-risk group support system: suicide prevention measures to target specific high-risk groups
+(e.g. bereaved families, those with physical illness, the unemployed and poor); specific suicide prevention
+guidelines regarding severely ill patients; integration across the welfare system.
+• Prepare an emergency response and follow-up management system: 24-hour suicide crisis response
+system; preparing a follow-up care system for suicide attempters.
+
+34
+
+3. Enhancing suicide prevention pursuing base.
+Specific objectives
+• Enhance regional response to suicide: improving suicide prevention competency of primary medical
+institutions (e.g. introduction and improvement of identification and treatment, distribution of guidelines).
+• Strengthen mental health infrastructure: improving regional and national mental health services delivery
+system (e.g. through gatekeepers); training experts.
+• Secure suicide prevention human resources: expanding cultivation of gatekeepers, enhancing training of
+experts (e.g. medical and mental health professionals).
+• Prepare an evidence-based suicide prevention research system: pursuing a suicide observatory;
+conducting evidence-based research (e.g. psychological autopsy).
+Implementation
+The Republic of Korea’s Life Love plan drew upon evidence-based interventions from comprehensive strategies
+of other nations and tailored these interventions to fit the Korean culture and context. The plan was therefore
+tailored to the country’s specific needs, establishing best practices and evidence-based interventions in a
+comprehensive approach. It also clearly identified the challenges that the strategy would face. Furthermore, the
+objectives outlined by the Republic of Korea’s national strategy envisaged the accomplishment of both
+short-to-medium and long-term objectives, which were to be evaluated using indicators which would then feed
+into future planning. Each of the sub-responsibilities within the three broader strategies were allocated to
+specific ministries.
+Monitoring and evaluation
+Suicide services assessment is an integral part of the plan. The plan identified a number of indicators to
+establish this aim (Annex 2.6).
+
+35
+
+Example 8. Switzerland (European Region)
+The following information was summarized from the government plan called “Suicide prevention in Switzerland.
+Initial situation, need for action and action plan”. For further details and references please refer to the original
+source.
+Source: http://www.mindbank.info/item/6764
+Context for suicide prevention
+In 2005, the Government of Switzerland published a report called Suicide and suicide prevention in Switzerland
+[“Suizid und Suizidprävention in der Schweiz”], which described the possibilities of suicide prevention, suicide
+prevention programmes in other countries and projects. In 2014, the Federal Council received the task of
+strengthening suicide prevention throughout Switzerland by accepting a motion [“Motion Ingold 11.3973”]. As a
+result, the Swiss Federal Office of Public Health, the Cantonal Health Directors and the Swiss Foundation for the
+Promotion of Health have jointly developed a suicide prevention action plan.1
+Key components of the strategy
+Vision
+Mission
+Time frame
+Annual budget
+
+Lower the rate of suicide and suicide attempts further and sustainably
+Reduce the number of suicides
+2016 - [not available]
+CHF 100 000 CHF (for knowledge base, coordination, networking and measures)
+
+Goal
+
+Reduce suicide mortality by 25% by the year 2030 (as compared to 2013),
+achieving a suicide rate of 10 per 100 000 population (men: 15 per 100 000 and
+women: 5 per 100 000 population); reduce the number of suicides by 300 per year.
+
+Objectives
+1. Strengthen personal and social resources in dealing with emotional burdens, as personal and social
+resources can strengthen psychological resistance.
+Specific objective: Strengthening personal and social resources in the different stages of life through
+learning life skills (to solve problems, to communicate and to lead relationships, to be empathetic, to
+exercise critical thinking, etc.).
+Key measure/activity: Implementing interventions that strengthen personal and social resources in children,
+adolescents, adults and older people.
+2. Sensitize and inform: sensitization measures contribute to de-stigmatization of suicidal behaviour and
+provide information on prevention.
+Specific objective: Informing and raising awareness about suicide.
+Key measures/activities: 1) Designing suicide prevention campaigns which provide information about the
+phenomenon of suicide and preventive actions, and 2) implementing awareness-raising campaigns which
+provide contact information and prevention options.
+
+1
+
+Bundesamt für Gesundheit (Federal Office of Public Health). Aktionsplan Suizidprävention Schweiz Action plan on suicide prevention in
+Switzerland) https://www.bag.admin.ch/bag/en/home/strategie-und-politik/politische-auftraege-und-aktionsplaene/aktionsplan-suizidpra
+evention.html, accessed 8 November 2018.
+
+36
+
+3. Provide easy access to help: people affected by suicidal behaviours and their environment know and use
+counselling and emergency services.
+Specific objective: Providing assistance and promoting its use.
+Key measure/activity: Offering consultancy and emergency services for everyone (24-hour services,
+youth/adult care, etc.).
+4. Early detection and intervention: the early detection of suicidal behaviours and interventions can avoid or
+reduce fatal and non-fatal consequences.
+Specific objective: Recognizing suicidal behaviours in their early stages and providing appropriate
+assistance.
+Key measures/activities: 1) Promoting education on suicide prevention for professionals, specifically for
+addressing target groups in medical and nonmedical settings, and 2) facilitating early detection and early
+intervention through processes and protocols by health organizations and institutions.
+5. Effective management and treatment: people who made a suicide attempt and those suffering after a
+suicide need to receive prompt follow-up.
+Specific objective: Treating and following up the people at risk for suicide quickly and effectively.
+Key measures/activities: Applying measures from the report The future of psychiatry in Switzerland, taking
+into account the specific needs of vulnerable groups and those who attempt suicide.
+6. Suicide means and methods: restricting access to means of suicide is effective because people with suicidal
+behaviours usually prefer a particular method or even a particular place.
+Specific objective: Reducing the availability of means and methods through collaboration of different
+sectors: rail transport sector, sale of firearms, products of the chemical industry, etc.
+Key measures/activities: 1) Developing guidelines and norms for the construction of buildings to prevent
+suicide, as well as sensitizing and informing building construction specialists, 2) reviewing and establishing
+regulations for selling medical products, 3) controlling the prescribing and dispensing of medications, and
+4) restricting the private storage of firearms on a voluntary basis.
+7. Survivors and professionals involved: suicide causes great suffering to survivors and to those who are
+involved in a professional capacity.
+Specific objective: Providing support to survivors, families and professionals in accordance with their needs.
+Key measure/activity: Establishing services such as self-help groups, individual care, programmes for
+vulnerable groups, etc.
+8. Media reporting for suicide prevention and digital communication: the media reporting after suicides can
+lead to imitation of suicides.
+Specific objective: Promote suicide-preventive media reporting as well as suicide-preventive use of digital
+communication.
+Key measure/activity: 1) Supporting journalists and media speakers to report responsibly about suicides,
+and 2) raising awareness about the proper use of the Internet and other communication channels among
+young people.
+9. Monitoring and research: suicide data allow for evaluating and controlling the actions implemented.
+Specific objective: Collecting information and data on suicide and using these to assess the effectiveness
+of interventions and programmes.
+Key measures/activities: 1) Collecting data and evaluating suicide prevention interventions, and 2) research
+to fill knowledge gaps about primary, secondary and tertiary suicide prevention.
+
+37
+
+10. Examples of good practice: the dissemination of good practice examples enables the actors to make use of
+synergies and to implement effective suicide prevention.
+Specific objective: Providing good practice examples for suicide prevention to stakeholders.
+Key measures/activities: Reviewing and proposing evidence-based and best practice examples of suicide
+prevention and making them available to stakeholders.
+Implementation
+The federal government, specifically the Federal Office of Public Health, coordinates and supports all
+stakeholders in the implementation of the action plan, establishing networking groups. The main stakeholders
+who work closely with the federal government are the network of mental health, the cantons and Swiss health
+promotion institutions.
+The action plan provides a common framework for action, with a number of key measures and actions. These
+are based on national and international examples of evidence and good practice. In particular, the federal
+government focuses its efforts on objectives 9) Monitoring and research and 10) Examples of good practice,
+and supports the implementation of the action plan as a whole through processing of data and providing
+evidence-based practice. The regional governments (cantons) are also responsible for various important areas
+of suicide prevention, such as the cantonal health care and welfare systems, the educational institutions, the
+police and judicial institutions.
+Monitoring and evaluation
+Evaluation is focused on quantifying the efficiency and effectiveness of past actions for the entire population;
+people with suicidal behaviours (including those with previous attempts) as a consequence of being exposed to
+risk factors; the environment; and professionals and other people involved in suicide prevention.
+
+38
+
+Example 9. USA (Region of the Americas)
+
+The following information was summarized from the government plan, called “2012 National Strategy for
+Suicide Prevention: Goals and Objectives for Action”. For further details and references please refer to
+the original source.
+Source: https://www.mindbank.info/item/2094
+Context for suicide prevention
+Suicide became a central issue in the USA in the mid-1990s, when survivors of suicide who were bereaved saw
+the need to bring the issue to federal attention in politics. Based on this, the first document The Surgeon
+General's call to action to prevent suicide was developed, introducing a blueprint for addressing suicide
+prevention and making 15 broad recommendations consistent with public health policy.1 This then led to the
+development of the first National Strategy for Suicide Prevention in 2001.2 Also in 2001, the Substance Abuse and
+Mental Health Services Administration (SAMHSA), with the support of many national organizations, established a
+national network of crisis centres answering a national toll-free suicide hotline number, which has become the
+national suicide prevention lifeline. The lifeline answered more than two million calls in 2017.
+The Suicide Prevention Resource Center was created in 2002 to promote the implementation of the national
+strategy. In 2005, the Congress passed, and the President signed into law, the Garrett Lee Smith Memorial Act
+launching a national youth suicide prevention effort based on the national strategy. Evaluations of this effort
+have shown reduced youth suicides and suicide attempts in counties implementing the grants compared to
+matched counties that were not. The national suicide prevention strategy also called for the development of
+comprehensive state suicide prevention plans and a national reporting system for violent deaths. Further
+milestones include the formation of the National Action Alliance for Suicide Prevention in 2010, and the revision
+of the national strategy in 2012.3 The Alliance, a public-private partnership, is fulfilling the role of the
+coordinating/lead agency.
+Key components of the strategy
+Vision
+
+A nation free from the tragedy of suicide: preventing suicide and promoting health,
+resilience, recovery and wellness for all
+
+Mission
+
+Reduce suicide through comprehensive implementation of the National Strategy for
+Suicide Prevention
+
+Time framework
+
+2012–2022 (the revised National Strategy for Suicide Prevention was designed as the
+nation’s blueprint for the next decade and was published in 2012)
+
+Annual budget
+
+US$ 69 million (Congressional appropriation to SAMHSA to implement national
+suicide prevention efforts, but not the entire federal investment in suicide
+prevention in the USA)
+
+Goal
+
+Increasing the number of Americans who are healthy at every stage of life, by
+shifting from a focus on sickness and disease to a focus on wellness and
+prevention; reducing rates of suicide by 20% by 2025.
+
+1
+
+The Surgeon General’s call to action to prevent suicide. Washington (DC): U.S. Public Health Service; 1999
+(https://profiles.nlm.nih.gov/ps/access/nnbbbh.pdf, accessed 8 November 2018).
+2
+National strategy for suicide prevention: goals and objectives for action. Rockville (MD): U.S. Department of Health and Human
+Services; 2001 (https://www.ncbi.nlm.nih.gov/books/NBK44281/pdf/Bookshelf_NBK44281.pdf, accessed 8 November 2018).
+3
+National strategy for suicide prevention: goals and objectives for action. A report of the U.S. Surgeon General and of the National Action
+Alliance for Suicide Prevention. Washington (DC): U.S. Department of Health and Human Services; 2012
+(https://www.surgeongeneral.gov/library/reports/national-strategy-suicide-prevention/full-report.pdf, accessed 8 November 2018).
+
+39
+
+Objectives
+1. Healthy and empowered individuals, families and communities: creating supportive environments that
+will promote the general health of the population and reduce the risk for suicidal behaviours and related
+problems.
+Specific objectives:
+• Integrating and coordinating suicide prevention activities across multiple sectors and settings.
+• Implementing research-informed communication efforts designed to prevent suicide by changing
+knowledge, attitudes and behaviours.
+• Increasing knowledge of the factors that offer protection from suicidal behaviours and that promote
+wellness and recovery.
+• Promoting responsible media reporting of suicide, accurate portrayals of suicide and mental illnesses in
+the entertainment industry, and safe online content related to suicide.
+2. Clinical and community preventive services: developing support systems, services and resources be in
+place to promote wellness and help individuals successfully navigate challenges.
+Specific objectives:
+• Developing, implementing, and monitoring effective programmes that promote wellness and prevent
+suicide and related behaviours.
+• Promoting efforts to reduce access to lethal means of suicide among individuals with an identified
+suicide risk.
+• Providing training to community and clinical service providers on the prevention of suicide and related
+behaviours.
+3. Treatment and support services: guaranteeing evidence-based approaches for caring for high-risk
+patients, including safety planning and specific forms of psychotherapy that can be used to support
+treatment for underlying mental health conditions.
+Specific objectives:
+• Promoting suicide prevention as a core component of health care services. Promoting the adoption of
+“zero suicides” as an aspirational goal by health care and community support systems that provide
+services and support to individuals with suicide risk in the most collaborative, responsive, and least
+restrictive settings.
+• Promoting and implementing effective clinical and professional practices for assessing and treating those
+identified as being at risk for suicidal behaviours.
+• Providing care and support to individuals affected by suicide deaths and attempts to promote healing and
+implement community strategies to help prevent further suicides.
+4. Surveillance, research, and evaluation: promoting public health surveillance through the systematic
+collection, analysis, interpretation, and timely use of data for public health action to reduce morbidity
+and mortality.
+Specific objectives:
+• Improving the timeliness and usefulness of national surveillance systems relevant to suicide prevention as
+well as the ability to collect, analyse, and use this information for action.
+• Promoting and supporting research on suicide prevention.
+• Evaluating the impact and effectiveness of suicide prevention interventions and systems and synthesizing
+and disseminating findings.
+
+40
+
+Priority areas
+• Integrate suicide prevention into health care reform and encourage the adoption of similar measures in
+the private sector.
+• Transform health-care systems to significantly reduce suicide.
+• Change the public discourse about suicide and suicide prevention.
+• Improve the quality, timeliness, and usefulness of surveillance data regarding suicidal behaviours.
+Implementation
+SAMHSA, in coordination with the National Action Alliance for Suicide Prevention and the Office of the Surgeon
+General, published an implementation assessment report in 2017.4
+Monitoring and evaluation
+Implementation of the National Strategy for Suicide Prevention is monitored by the National Action Alliance for
+Suicide Prevention and the Federal Working Group on Suicide Prevention. Evaluation of national suicide
+prevention efforts focused on youth were published in the peer-reviewed journals.
+
+4
+
+Substance Abuse and Mental Health Services Administration. National Strategy for Suicide Prevention Implementation Assessment
+Report. HHS Publication No. SMA17–5051. Rockville (MD): Center for Mental Health Services, Substance Abuse and Mental Health
+Services Administration; 2017 (https://store.samhsa.gov/system/files/sma17-5051.pdf, accessed 8 November 2018).
+
+41
+
+Example 10. Uruguay (Region of the Americas)
+The following information was summarized from the government plan, called “National Suicide Prevention
+Plan”. For further details and references please refer to the original source.
+Source: https://www.mindbank.info/item/3288
+Context for suicide prevention
+Relevant activities on suicide prevention had already been developed and implemented before the current plan.
+In 2006, the Technical Advisory Committee of the National Mental Health Programme (NMHP), and specifically
+its technical group on violence and violent deaths, prepared guidelines and recommendations regarding
+suicidal behaviour. In 2008, the Prevention and detection guide of risk factors for suicidal behaviour was
+published.1 This document was widely distributed at various events, and in public, private and nonprofit health
+services in the country. Also, special training workshops based on the guide were carried out for the fire and
+police department. In 2010, the NMHP published Strategic guidelines for suicide prevention2 and the following
+year the first national plan for suicide prevention was developed.
+Key components of the strategy
+Vision
+
+Improving the quality of life and mental health of the general population, considering
+the distinctive geographical features
+
+Mission
+Time frame
+Annual budget
+
+[not available]
+2011–2015
+[not available]
+
+Goal
+
+Reduce suicide mortality by 10% from 2011 to 2020.
+
+Objectives
+1. Organizing comprehensive mental health care: Providing treatment and follow-up for mental disorders is
+an effective measure to prevent suicide.
+Specific objectives:
+• Designing a manual to define and organize a network of care for those who attempted suicide, and
+interdisciplinary teams to ensure comprehensive care to individuals and their families.
+• Increasing the coverage of mental health services for those who attempted suicide, as well as their
+families.
+• Developing a regulatory framework for those who attempted suicide and their families.
+2. Developing an intersectoral network.
+Specific objective:
+• Strengthening the social, interinstitutional and intersectoral network, promoting a comprehensive approach
+for the problem of suicide.
+
+1
+
+Programa Nacional de Salud Mental. Guías de prevención y detección de factores de riesgo de conductas suicidas, Montevideo:
+Ministerio de Salud Pública del Uruguay; 2008
+(http://www.msp.gub.uy/sites/default/files/archivos_adjuntos/Gu%C3%ADas%20de%20detecci%C3%B3n%20de%20factores%20
+de%20riesgo%20suicida.pdf, accessed 8 November 2018).
+2
+Líneas estratégicas para la prevención del suicidio, Montevideo: Ministerio de Salud Pública, Programa Nacional de Salud Mental; 2010
+(http://www.mec.gub.uy/innovaportal/file/19089/1/plan_nacional_de_prevencion_del_suicidio.pdf, accessed 8 November 2018).
+
+42
+
+3. Raising awareness and educating the community about mental health and suicide.
+Specific objectives:
+• Promoting mental health awareness with timely and meaningful community engagement and working
+towards the de-stigmatization of mental disorders.
+• Promoting the training of trainers for mental health promotion and suicide prevention.
+• Incorporating mental health programmes on promotion and prevention in the education sector, police
+force, etc.
+4. Educating, training and reorienting human resources for addressing suicide prevention and care for
+suicide attempters and survivors.
+Specific objective:
+• Improving human resources training in health promotion, prevention, diagnosis, treatment and the
+follow-up of people at risk of suicide.
+5. Developing and implementing a national surveillance system for fatal and non-fatal suicides.
+Specific objectives:
+• Improving the national data on suicide attempts and suicides, implementing a national surveillance system
+with mandatory registration and follow-up of cases.
+• Generating evidence on the effectiveness of strategies for suicide prevention and their implementation.
+Implementation
+A National Commission was assigned to articulate, supervise, evaluate and monitor the national suicide prevention
+plan. The National Commission is composed of representatives of the Ministry of Public Health, the Ministry of
+Education and Culture, and the Ministry of Interior. The National Commission coordinates the actions of the plan
+through different subcommissions and working groups. These groups are responsible for developing the strategies
+and activities of the plan. The groups are composed of, for instance, members of scientific societies, universities, civil
+servants, and representatives of NGOs and community health services.
+Monitoring and evaluation
+Indicators were developed based on the goal and objectives (Annex 2.7).
+
+43
+
+References
+Cerel J, Brown MM, Maple M, Singleton M, van de Venne J, Moore M et al. (2018). How many people are
+exposed to suicide? Not six. Suicide Life-Threat Behav. doi: 10.1111/sltb.12450.
+Hawton K, Witt KG, Taylor Salisbury TL, Arensman E, Gunnell D, Hazell P et al. (2016). Psychosocial
+interventions following self-harm in adults: a systematic review and meta-analysis. Lancet.
+http://dx.doi.org/10.1016/S2215-0366(16)30070-0
+Pitman A, Osborn D, King M, Erlangsen A (2014). Effects of suicide bereavement on mental health and suicide
+risk. Lancet Psychiatry. 1(1):86–94.
+UN (1996). Prevention of suicide: guidelines for the formulation and implementation of national strategies. New
+York (NY): United Nations.
+WHO (2012). Public health action for the prevention of suicide: a framework. Geneva: World Health
+Organization.
+WHO (2013). Mental Health Action Plan 2013–2020. Geneva: World Health Organization.
+WHO (2014). Preventing suicide: a global imperative. Geneva: World Health Organization.
+WHO (2016). Practice manual for establishing and maintaining surveillance systems for suicide attempts and
+self-harm. Geneva: World Health Organization.
+WHO (2018a). Global health estimates. Geneva: World Health Organization
+(http://www.who.int/healthinfo/global_burden_disease/en, accessed 8 November 2018).
+WHO (2018b). Preventing suicide: a community engagement toolkit. Geneva: World Health Organization.
+WHO (2018c). Mental Health Atlas 2017. Geneva: World Health Organization.
+Zalsman G, Hawton K, Wasserman D, van Heeringen K, Arensman E, Sarchiapone M et al. (2016). Suicide
+prevention strategies revisited: 10-year systematic review. Lancet.
+http://dx.doi.org/10.1016/S2215-0366(16)30030-X.
+
+44
+
+Annex 1. Countries known to have a national
+suicide prevention strategy
+Countries which are known to have a stand-alone national suicide prevention strategy adopted by the
+government are listed below.
+In addition, several countries have integrated suicide prevention into their mental health or other health plan,
+e.g. Chad, Cook Islands, Croatia, Ecuador, El Salvador, India, Marshall Islands, Monaco, Mozambique,
+Philippines, Romania, Russian Federation, Slovakia, Spain, Timor-Leste, Turkey, Uganda, Vanuatu. Other
+examples are Canada with a national framework but not a national strategy, Belgium, where suicide prevention
+is organized at regional level, Germany with a national initiative but not a government-adopted strategy, and
+Croatia and Italy with specific programmes for subpopulations (WHO, 2018c).
+
+Country
+
+WHO Region
+
+National strategy document link / comment
+
+Namibia
+
+AFR
+
+https://www.mindbank.info/item/6272
+
+Argentina
+
+AMR
+
+Strategy document not available
+
+Chile
+
+AMR
+
+https://www.mindbank.info/item/5651
+
+Costa Rica
+
+AMR
+
+Strategy document not available
+
+Cuba
+
+AMR
+
+Strategy document not available
+
+Dominican Republic
+
+AMR
+
+https://www.mindbank.info/item/6094
+
+Guyana
+
+AMR
+
+https://www.mindbank.info/item/6321
+
+Nicaragua
+
+AMR
+
+https://www.mindbank.info/item/2849
+
+Panama
+
+AMR
+
+https://www.mindbank.info/item/6093
+
+Suriname
+
+AMR
+
+https://www.mindbank.info/item/6765
+
+USA
+
+AMR
+
+https://www.mindbank.info/item/2094
+
+Uruguay
+
+AMR
+
+https://www.mindbank.info/item/3288
+
+Afghanistan
+
+EMR
+
+Strategy document not available
+
+Iran, Islamic Republic of
+
+EMR
+
+Strategy document shared by WHO Collaborating Centre, Tehran
+
+Austria
+
+EUR
+
+https://www.mindbank.info/item/4036
+
+Belarus
+
+EUR
+
+https://www.mindbank.info/item/6756
+
+Bulgaria
+
+EUR
+
+https://www.mindbank.info/item/6089
+
+France
+
+EUR
+
+https://www.mindbank.info/item/857
+
+Ireland
+
+EUR
+
+https://www.mindbank.info/item/5640
+
+Israel
+
+EUR
+
+Strategy document not available
+
+Lithuania
+
+EUR
+
+https://www.mindbank.info/item/6755
+
+Luxembourg
+
+EUR
+
+https://www.mindbank.info/item/6095
+
+Netherlands
+
+EUR
+
+https://www.mindbank.info/item/4288
+
+Norway
+
+EUR
+
+https://www.mindbank.info/item/5371
+
+Portugal
+
+EUR
+
+https://www.mindbank.info/item/2343
+
+Sweden
+
+EUR
+
+https://www.mindbank.info/item/5200
+
+Switzerland
+
+EUR
+
+https://www.mindbank.info/item/6764
+
+45
+
+Country
+
+WHO Region
+
+National strategy document link / comment
+
+United Kingdom
+
+EUR
+
+https://www.mindbank.info/item/4911
+
+Uzbekistan
+
+EUR
+
+http://www.mindbank.info/item/6763
+
+Bhutan
+
+SEAR
+
+https://www.mindbank.info/item/6176
+
+Sri Lanka
+
+SEAR
+
+https://www.mindbank.info/item/6096
+
+Thailand
+
+SEAR
+
+Strategy document not available
+
+Australia
+
+WPR
+
+https://www.mindbank.info/item/6781
+
+Fiji
+
+WPR
+
+https://www.mindbank.info/item/5909
+
+Japan
+
+WPR
+
+http://www.mindbank.info/item/6766
+
+Malaysia
+
+WPR
+
+Strategy document not available
+
+New Zealand
+
+WPR
+
+https://www.mindbank.info/item/3839
+
+Republic of Korea
+
+WPR
+
+Strategy document shared by Korea Suicide Prevention Center
+
+Source: MiNDbank (https://www.mindbank.info/, accessed 8 November 2018). MiNDbank is an online platform
+for resources and national/regional level policies, strategies, laws and service standards for mental health and
+related areas.
+Notes: AFR = African Region, AMR = Region of the Americas, EMR = Eastern Mediterranean Region, EUR =
+European Region, SEAR = South-East Asia Region, WPR = Western Pacific Region.
+
+46
+
+Annex 2. Monitoring and evaluation indicators
+The indicators used by the example countries (section 4) that have indicators specified in their national suicide
+prevention strategy documents are listed below, by country (i.e. Bhutan, Guyana, Iran (Islamic Republic of),
+Ireland, Namibia, Republic of Korea, Uruguay). No indicators were specified in the documents from Japan,
+Switzerland and the USA, and are therefore not presented here.
+The sole purpose for listing the indicators here is to provide examples. Neither the strategy documents nor the
+indicators within them have been peer-reviewed. In general, it is important, and a particular effort should be
+made, to identify intermediate outcomes that are clearly and directly related to the primary outcomes of
+reducing suicide and suicide attempts.
+
+2.1 Bhutan (South-East Asia Region)
+Source: http://www.mindbank.info/item/6176
+Indicators
+
+Targets 2015–2018
+
+1. Objective: Improving leadership, multisectoral engagement and partnerships for suicide
+prevention in the communities
+1.1
+
+Secondary schools covered with at least one choshed leyrim visit by
+lam neten/khenpo per year that included suicide prevention
+
+100 schools per year with one
+choshed leyrim for 90% of the
+students
+
+1.2
+
+Stakeholder yearly activity plan outlined in the action plan supported
+with funding from government or other sources
+
+85%
+
+1.3
+
+Dzongkhags that included a suicide prevention agenda in the
+dzongkhag tshogdue at least once in a year
+
+20
+
+1.4
+
+Dzongkhags reporting suicide prevention implementation indicators
+within the Government Performance Monitoring System (GPMS)
+
+20
+
+2. Objective: Strengthen governance and institutional arrangements to effectively implement
+comprehensive suicide prevention plans
+2.1
+
+Meetings conducted by national SPSC at least twice a year with the
+required quorum
+
+2 meetings with the required
+quorum per year from 2016
+through 2018
+
+2.2
+
+National Suicide Prevention Programme with full-time staff
+
+One full-time staff by June 2015
+and second full-time staff by
+June 2017
+
+2.3
+
+Incidents attended by Dzongdag’s Suicide Prevention Response Team
+to rescue suicide attempters
+
+200
+
+3. Objective: Improving access to suicide prevention services and support for individuals in
+psychosocial crisis and those most at risk for suicide
+3.1
+
+One operational 24-hour national crisis helpline for suicide prevention
+
+47
+
+One centre functional by
+December 2015
+
+Indicators
+
+Targets 2015–2018
+
+3.2
+
+Number of crisis callers counselled through the helpline crisis centre
+
+600
+
+3.3
+
+Number of people with suicide attempts including intentional self-harm
+provided with counselling in the health facilities
+
+200
+
+3.4
+
+Patients presenting with suicidal ideation/intentional self-harm,
+followed up after discharge through one of the following modes: 1)
+telephone call, 2) SMS and 3) email, as per the protocol
+
+70%
+
+4. Objective: Improve the capacity of health services and gatekeepers to provide suicide
+prevention services
+4.1
+
+Number of peer counsellors certified by the Bhutan Board of Certified
+Counsellors (BBCC), including school counsellors
+
+100
+
+4.2
+
+Number of health workers, police personnel and other staff certified in
+crime, forensic and medico-legal investigations (1–2 months course
+duration)
+
+30
+
+4.3
+
+Develop forensic court procedures for criminal and suicide
+investigations
+
+2 procedures
+
+4.4
+
+Completed and attempted suicide investigations conducted by health
+workers and police personnel trained in medico-legal investigations
+
+75%
+
+4.5
+
+Number of health facilities with at least one health worker trained in
+mental health and suicide risk assessment
+
+150
+
+4.6
+
+Patients screened for mental health and suicide risk factors using the
+assessment tools at the 1) outpatient department, 2) indoor and 3)
+antenatal care settings for postnatal depressions
+
+60%
+
+4.7
+
+Number of drop-in centres (DICs), rehabilitation centres and health
+information and service centres (HISCs) using the revised form that
+includes mental health and suicide risk assessment
+
+16
+
+4.8
+
+Number of detoxification units in hospitals providing timely follow-up in
+at least 60% of detoxified clients per protocol
+
+15
+
+4.9
+
+Number of health facilities that adopted mental health assessment and
+suicide risk assessment tools for general patient examination as a
+checklist
+
+80
+
+4.10
+
+Number of clients with suicidal thoughts, ideation and severe self-harm
+cross referred to services from gatekeepers including: school,
+community-based support system (CBSS) volunteers, DICs, HISCs,
+rehabilitation centres, after establishing the memorandum of
+understanding for referrals using the client referral protocol
+
+200
+
+4.11
+
+Number of clients attending detoxification services in the four
+Detoxification Excellence Health Centres
+
+150
+
+4.12
+
+Number of health facilities with at least one health worker trained in
+detoxification and de-addiction services
+
+120
+
+48
+
+Indicators
+
+Targets 2015–2018
+
+5. Objective: Improving community resilience and societal support for suicide prevention in
+communities, including schools and institutions
+5.1
+
+Number of schools (all levels) undertaking yearly in-school mandatory
+two-hour orientation session for teachers on mental health,
+identification of behavioural disorders and suicidal behaviours among
+students and teachers
+
+400
+
+5.2
+
+Districts reporting school guidance and counselling services within the
+Government Performance Monitoring System (GPMS) of the
+dzongkhag
+
+20
+
+5.3
+
+Number of school children in distress and life triggering events
+counselled by school guidance counsellors
+
+1000 per year
+
+5.4
+
+Number of lower, middle and higher secondary schools with at least 25
+students trained and engaged in peer helpers programme in schools
+
+75%
+
+5.5
+
+Middle and higher secondary schools including private schools
+with full-time school guidance counsellors reporting monthly
+counselling service reports to the Career Education and
+Counselling Division (CECD)
+
+90
+
+5.6
+
+Schools receiving at least one supportive supervision visit per year for
+School Guidance and Counselling (SGC) by trained SGC supervisors
+
+1 visit per school per year by
+trained supervisors
+
+5.7
+
+Parents attending at least one session per year on School Parenting
+Education Awareness (SPEA) Programme in lower, middle and higher
+secondary schools
+
+Coverage of 50% of the parents
+in 60% of the schools per year
+
+5.8
+
+Number of clients in psychosocial distress (including victims of
+domestic violence) requiring psychosocial support identified and given
+on-site support by the CBSS volunteers disaggregated by rural and
+urban areas
+
+2500
+
+5.9
+
+Number of male clients in psychosocial distress requiring psychosocial
+support identified and given on-site support by the CBSS volunteers
+disaggregated by rural and urban areas
+
+500
+
+5.10
+
+Number of alcohol and drug users reached through self-help and peer
+network groups in the communities
+
+300
+
+5.11
+
+Number of community confidantes identified in gewogs and providing
+informal community services for solving relationship problems and
+other social disputes
+
+600
+
+5.12
+
+Number of community events conducted by youth groups and
+community-based groups to advocate self-help seeking behaviours or
+suicidal thoughts and promoting mental health
+
+3 per year
+
+6. Objective: Improving data, evidence and information for suicide prevention planning and
+programming
+6.1
+
+National Registry of Deliberate Self-Harm and Violent Deaths
+established and in use for data collection
+
+1
+
+6.2
+
+Key focal person of the Royal Bhutan Police, health workers, and
+counsellors trained in the national registry
+
+200
+
+49
+
+Indicators
+
+Targets 2015–2018
+
+6.3
+
+Yearly assessment report of the National Suicide Action Plan printed
+and distributed
+
+400
+
+6.4
+
+School Guidance and Counselling database which includes deliberate
+self-harm and suicidal intent and ideation developed and in use for
+monthly report collection
+
+1
+
+6.5
+
+Number of national surveys and studies conducted that included
+questions on suicidal thoughts, ideation and other suicidal behaviours
+included in surveys such the Bhutan Living Standards Survey, primary
+health care surveys, and the Children Study
+
+2-3
+
+6.6
+
+Health management and information system (HMIS) reporting suicidal
+behaviours and intent with the revised ICD coding
+
+By December 2016
+
+50
+
+2.2 Guyana (Region of the Americas)
+Source: https://www.mindbank.info/item/6321
+Indicators
+
+Targets 2015–2020
+
+1. Objective: To develop a comprehensive plan of activities for the promotion of healthy
+lifestyles and effective prevention of suicidal behaviour
+% of health units implemented the National Suicide Prevention Plan
+across the country
+
+100%
+
+Number of promotional activities to change lifestyles in communities,
+monthly
+
+3
+
+% of doctors, nurses, health workers trained in communication
+techniques to educate population
+
+80%
+
+Number of functional counselling facilities in at-risk areas identified.
+(Regions 2, 3, 4, 5, 6)
+
+5 (one per region)
+
+Numbers of supportive information materials distributed to the
+population
+
+500
+
+Services to prevent suicide through suicide prevention helpline
+
+3
+
+Reduction to 0 of negative reporting about suicidal behaviour by media
+propaganda
+
+0
+
+2. Objective: To strengthen the health and social system response to suicidal behaviour
+Number of health facilities to provide mental health services to people
+at risk or who attempted suicide
+
+12
+
+Reduction in number of suicide cases
+
+≤ 150/year
+
+Reduction in number of suicide attempt cases
+
+10-12 x 1 suicide attempt reduction reported
+
+% of cases with suicidal behaviour receiving a control and follow-up by
+psychiatrist
+
+30%
+
+% of cases with suicidal behaviour receiving a control and follow-up by
+doctor in community
+
+50%
+
+Number of cases with suicidal behaviour in special group (children,
+adolescents and older people)
+
+Cases reported by group
+
+Number of training activities done by region, monthly
+
+1/month/region
+
+Number of regions implementing regulated sale, use, and storage of
+toxic chemicals
+
+10
+
+3. Objective: To strengthen human resources in the health system for suicidal behaviour
+management
+% of doctors, nurses, health workers trained in management of
+suicidal behaviour
+
+51
+
+50%
+
+Indicators
+
+Targets 2015–2020
+
+% of personnel trained to provide crisis care, in remote areas and
+vulnerable populations
+
+According to identified areas (5)
+
+Number of NGO networks to promote shared learning
+
+5
+
+% of communities with community members who have monitored
+access to pesticides
+
+30%
+
+% of specific social and non-health professionals trained in the risk,
+consequences and management of suicidal behaviour (teachers and
+other school staff; police, fire fighters and other first line responders;
+counsellors; and media professionals; workers in prisons)
+
+50%
+
+4. Objective: To improve data collection and research for effective evaluation and interventions
+for suicidal behaviour
+Data, collected through a routine system
+
+30
+
+% of cases for whom the questionnaire for the control and
+classification of suicidal behaviour was completed
+
+80%
+
+% of cases reported as suicide as the cause of death according to
+registration of death
+
+80%
+
+% of statistical reported cases with completed declaration card of
+suicidal behaviour
+
+90%
+
+Number of research conducted in the country about suicidal behaviour
+
+10
+
+52
+
+2.3 Iran, Islamic Republic of (Eastern Mediterranean Region)
+Source: Strategy document shared by WHO Collaborating Centre, Tehran, Islamic Republic of Iran
+Targets
+
+Indicators
+
+1. Objective: To improve the accuracy of statistics of suicide and suicide attempts
+(non-fatal self-harm)
+Increasing knowledge of health staff concerning suicide registration in
+different levels
+
+Knowledge of health-care workers
+concerning suicide registration (comparing
+before and after training)
+
+Improving consistency between MoH and forensic medicine data
+
+Proportion of universities that have corrected
+their annual data on suicide with the data of
+the Legal Medicine Organization
+
+Establishing a monitoring system for controlling quality of data based
+on national protocol
+
+Established monitoring system
+
+Increase coverage of data collection
+
+Proportion of universities that are controlling
+the data according to the national protocol
+
+2. Objective: To reduce stigma relating to suicidal behaviour and mental health, and to increase
+awareness of suicide, attempted suicide, and improve mental health promotion
+Increasing knowledge and awareness and also correcting attitude of
+the general population (mental health literacy) in the field of mental
+health and suicide
+
+Proportion of the population that has been
+educated in mental health and suicide
+prevention
+
+Increasing knowledge and help-seeking behaviour in at least 70% of
+at-risk and high-risk groups for suicide
+
+Proportion of high-risk population that has
+been educated in mental health and suicide
+prevention
+
+3. Objective: To improve accessibility and consistency in care pathways for the assessment and
+management of people vulnerable to suicidal behaviour
+Keeping 80% of the suicide attempters in referral systems
+
+Proportion of suicide attempters that can be
+traced in the referral system
+
+Educating 100% of the health system staff in early detection of people
+that are at risk or high risk of suicidal behaviours
+
+Proportion of health-care workers trained in
+each district
+
+Educating gatekeepers in early identification of the people that are at
+risk or high risk of suicidal behaviours
+
+Proportion of gatekeepers trained in each
+district
+
+Collaboration with welfare organizations in 100% of universities
+through a memorandum of understanding (for active mutual
+collaboration between social emergency line and health centres)
+
+Proportion of universities which have held
+meetings and signed a memorandum of
+understanding with a welfare organization
+
+53
+
+Indicators
+
+Targets 2015–2020
+
+4. Objective: To enhance engagement and collaboration with the media in relation to media
+guidelines, training and adherence to improve the reporting of suicidal behaviour, to
+disseminate information on mental health promotion
+Intersectoral collaboration with provincial media (virtual and in print) by
+100% of universities
+
+- Proportion of universities whose local
+media are using the instructions from the
+health system for suicide reporting
+- Number of memorandum of understanding
+and plans of action
+- Number of educational meetings and
+educational programmes in the media
+per year.
+
+5. Objective: To reduce access to frequently used and highly lethal methods of suicide and
+attempted suicide (non-fatal self-harm), including pesticides, frequently used drugs, and to
+address other highly lethal methods, such as hanging and self-immolation
+Signing a memorandum of understanding and providing a plan of
+action with stakeholders
+
+Number of memorandums of understanding
+and plans of action
+
+Increasing the knowledge and awareness of the general population
+and correcting their attitudes about how they should use and maintain
+pesticides
+
+Number of educational meetings and
+programmes in the media per year
+
+Correcting policies and legislations concerning the access to
+pesticides and medications
+
+Number of policies and legislations that have
+been corrected
+
+6. Objective: To improve and maintain the response to suicidal behaviour within health and
+community-based services and ensure continuity of care
+Increasing the knowledge and improving the skills of health system
+staff for early detection and early intervention
+
+Number of missing cases in the health system
+
+Providing continued care and active follow-up for at least 70% of
+cases that are referred to emergency departments due to suicide
+attempt
+
+Percentage of suicide attempters (referred to
+emergency department) who receive
+continued care or active follow-up
+
+7. Objective: To improve and maintain the capacity of suicide bereavement support services
+and specialist interventions for people with prolonged and complicated grief
+Identification of special populations that might be affected by suicide
+for psychological support and counselling for 100% of the population,
+friends and co-workers
+
+- Proportion of families who received
+postvention services
+- Proportion of gatekeepers who were
+trained;
+- Number of universities that have
+monitoring and periodic reports
+according to national monitoring plan
+
+8. Objective: To reduce stigma of mental disorders and promote help-seeking behaviour in
+students
+Educating gatekeepers in schools, including teachers, counsellors and
+managers
+
+54
+
+Proportion of gatekeepers who were trained
+
+Indicators
+
+Targets 2015–2020
+
+9. Objective: To develop a national monitoring and evaluation system and promotion of
+applicable research that supports national innovation and promotion in suicide prevention
+programmes and addresses knowledge gaps
+Providing monitoring for National Suicide Prevention Programme
+
+Established monitoring system
+
+At least 3 health system research (HSR) projects by local research
+centres on suicide prevention programmes and their effectiveness
+and challenges
+
+Number of HSR projects by local research
+centres
+
+55
+
+2.4 Ireland (European Region)
+Source: http://www.mindbank.info/item/5640
+Primary outcomes
+
+Indicators
+
+1. Objective: Reduced suicide rate
+01.1
+
+In whole population
+
+01.2
+
+In priority groups (where data are
+available)
+
+- Standardized annual incidence of intentional self-harm deaths
+(definite suicide), overall and by each of the following comparison
+groups: gender, age group, socioeconomic status
+(individual/area level)
+- Male self-harm rate as proxy for male suicide rate [see note 1
+below]
+
+2. Objective: Reduced rate of A&E presentations for self-harm
+02.1
+
+In whole population
+
+02.2
+
+In priority groups (where data are
+available)
+
+- Standardized annual A&E self-harm rates, overall and by each of
+the following comparison groups: gender, age group,
+socioeconomic status (individual/area level)
+- Episodes (events) and persons
+- Self-harm rates using highly lethal methods
+- Proportion of persons readmitted to A&E following self-harm in
+subsequent 12 months, overall; by sex; by sex and age group
+(annual cohorts)
+- Proportion of persons admitted to A&E following self-harm who
+have had previous such admissions, overall and by each of the
+following comparison groups: gender, age group, socioeconomic
+status (individual/area level - annual cohorts)
+
+Note 1. Given the delay in the release of suicide mortality data by the Central Statistics Office (CSO), consideration will
+be given to the use of a valid proxy measure for one of the strategy’s principal outcomes, which is available in a timelier
+manner. There is evidence of a temporal association between the rate of hospital presentations for self-harm among
+males and the rate of completed suicide (intentional self-harm) among males in Ireland. National data on self-harm
+from the National Self-Harm Registry Ireland are available considerably in advance of data on suicide. In the context of
+this strategy, changes in male self-harm rates may therefore be considered a valid and useful proxy measure for
+changes in male suicide rates.
+Note 2. Current data sources will be utilized and/or further developed in finalizing these indicators.
+
+56
+
+Intermediate outcome (IO)
+
+Indicators
+
+1. Strategic goal: To improve the nation’s understanding of, and attitudes to, suicide,
+mental health and well-being
+IO1.1
+
+IO1.2
+
+Improved population-wide
+understanding of suicidal behaviour,
+mental health and well-being, and
+associated protective and risk
+factors
+Increased awareness of available
+suicide prevention and mental health
+services
+
+IO1.3
+
+Reduced stigmatizing attitudes to
+mental health and suicidal behaviour
+at population level and within
+selected priority groups
+
+IO1.4
+
+Engagement with the media in
+relation to media guidelines, tools
+and training programmes and
+improvement in the reporting of
+suicidal behaviour within broadcast,
+print and online media
+
+- Knowledge and awareness about support services
+- Understanding of protective and risk factors for suicide and
+self-harm
+- Understanding of mental health and well-being
+- Stigmatizing attitudes towards mental ill-health, self-harm and
+suicide
+- Self-stigma (priority groups)
+
+- Poor reporting (does not adhere to guidelines)
+- Positive reporting (adheres to guidelines)
+
+2. Strategic goal: To support local communities’ capacity to prevent and respond to suicide
+IO2.1
+
+Continued improvement of
+community-level responses to
+suicide through multi-agency
+approaches
+
+Local action plan available to enhance community response to
+suicidal behaviour
+
+IO2.2
+
+Accurate information and guidance
+on effective suicide prevention
+interventions provided for
+community-based organizations
+
+Community organizations’ access to, and substantive knowledge
+of, guidelines, protocol and training on effective suicide prevention
+interventions
+
+IO2.3
+
+Training and education programmes
+on suicide prevention provided and
+delivered to community-based
+organizations
+
+- Availability of relevant training and education programmes to
+community organizations
+- Delivery of relevant training and education programmes to
+community organizations
+
+3. Strategic goal: To target approaches to reduce suicidal behaviour and improve mental
+health among priority groups
+IO3.1
+
+Improved implementation of effective
+approaches to reducing suicidal
+behaviour among priority groups
+
+- Best practice interventions (based on systematic review of
+evidence).
+
+IO3.2
+
+Support provided to the Substance
+Misuse Strategy, to address the high
+rate of alcohol and drug misuse
+
+(Continued) roll-out of programmes aimed at early intervention and
+prevention of alcohol and drug misuse
+
+IO3.3
+
+Enhanced supports for young
+people with mental health problems
+or vulnerable to suicide
+
+- Enhanced availability in primary care to early intervention
+psychological supports, including counselling
+
+- Interventions that are not evidence-informed and not evaluated
+
+- Schools and centres of education adopting a whole-school
+approach to health and well-being in line with the Health
+Promoting School, Healthy Ireland and School Self-evaluation
+frameworks
+
+57
+
+Intermediate outcome (IO)
+
+Indicators
+
+4. Strategic goal: To enhance accessibility, consistency and care pathways of services for
+people vulnerable to suicidal behaviour
+IO4.1
+
+IO4.2
+
+IO4.3
+
+Improved psychosocial and
+psychiatric assessment and care
+pathways for people vulnerable to
+suicidal behaviour
+
+- Availability of crisis nurses in primary and secondary care settings
+
+Improved access to effective
+therapeutic interventions (e.g.
+dialectical behaviour therapy,
+cognitive behavioural therapy) for
+people vulnerable to suicide
+
+- Availability of effective therapeutic interventions for persons who
+have self-harmed or attempted suicide
+
+Improved uniformity, effectiveness
+and timeliness of support services to
+families and communities bereaved
+by suicide
+
+- Systematic approach to offer timely and effective support
+services to families bereaved by suicide
+
+- GPs trained to manage suicidal ideation/ behaviour in primary
+care setting
+
+- Systematic approach to offer therapeutic interventions to eligible
+persons
+
+- Timely and effective support offered to families bereaved by suicide
+
+5. Strategic goal: To ensure safe and high-quality services for people vulnerable to suicide
+IO5.1
+
+Development and implementation of
+national standards and guidelines for
+statutory and non-statutory
+organizations contributing to suicide
+prevention
+
+- Quality standards for suicide prevention programmes provided
+by statutory and non-statutory services
+
+Improved response to suicidal
+behaviour with health and social care
+services, with an initial focus on
+incidents within mental health
+services
+
+- Development and effective implementation of uniform procedure
+to respond to suicidal behaviour in mental health services
+
+IO5.3
+
+Reduction in and prevention of
+suicidal behaviour in the criminal
+justice system
+
+Self-harm and suicide incidence in prisons (adults) and children
+detention schools (minors)
+
+IO5.4
+
+Best practice among health and
+social care practitioners ensured
+through 1) the implementation of
+clinical guidelines on self-harm and
+2) the delivery of accredited
+education programmes on suicide
+prevention
+
+- Implementation of clinical guidelines on self-harm
+
+IO5.2
+
+- Implementation of quality standards
+
+- Development and effective implementation of uniform procedure
+to respond to suicidal behaviour in other health and care
+services
+
+- Delivery of accredited education programmes on suicide
+prevention
+
+6. Strategic goal: To reduce and restrict access to means of suicide
+IO6.1
+
+Reduced access to frequently used
+drugs in intentional drug overdose
+
+Potentially risky prescribing practices (including number of tablets
+provided in a single prescription; repeat prescriptions without
+review; failure to switch to lower-lethality medication where
+available)
+
+IO6.2
+
+Reduce access to highly lethal
+methods used in suicidal behaviour
+
+- Suicide-proofing of locations of concern
+- Reduced number (proportion) of suicide deaths by highly lethal
+methods
+
+58
+
+Intermediate outcome (IO)
+
+Indicators
+
+7. Strategic goal: To improve surveillance, evaluation and high-quality research related to
+suicidal behaviour
+IO7.1
+
+Improved access to timely and
+high-quality data on suicidal
+behaviour
+
+- Availability and timeliness of key data on suicide and self-harm
+
+IO7.2
+
+Current recording procedures for
+suicide deaths in Ireland reviewed
+(and, if necessary, revised)
+
+Review of current recording procedures
+
+IO7.3
+
+Development of a national plan
+that supports research innovation
+aimed at early identification of
+suicide risk, assessment,
+intervention and prevention
+
+National plan supporting research and innovation
+
+IO7.4
+
+Evaluation of the effectiveness and
+cost-effectiveness of Connecting
+for Life
+
+- Development and publication of comprehensive evaluation plan
+
+- Effectiveness and timeliness of dissemination of key data on
+suicide and self-harm
+
+- Commissioning of evaluation studies
+- Successful implementation of evaluation studies
+- Publicly available report(s) on findings of evaluation studies
+
+59
+
+2.5 Namibia (African Region)
+Source: https://www.mindbank.info/item/6272
+Indicators
+Constituency/
+stakeholders
+
+Target 2012–2016
+1. Objective: Ensure a responsive legislative/policy framework
+
+1.1
+
+Number of policies approved and developed
+
+1
+
+2. Objective: Create improved stakeholder relation
+
+2.1
+
+Number of consultative meetings held out of those planned
+
+5
+
+2.2
+
+Satisfaction rating
+
+100%
+
+3, Objective: Ensure an accountable coordinating body
+
+3.1
+
+Existence of steering committee
+
+5
+
+4. Objective: Ensure accessibility to support services
+
+4.1
+
+% of outreach conducted according from the plan
+
+100%
+
+5. Objective: Ensure reduced cases of suicide
+
+5.1
+
+% of suicide cases
+
+-
+
+5.2
+
+Suicide prevalence rate
+
+-
+
+6. Objective: Strengthen the stewardship role of the steering committee
+
+6.1
+
+% of managers trained in leadership
+
+100%
+
+6.2
+
+% of partner plans aligned to the national strategic plan
+Number of quarterly reports
+
+100%
+
+7. Objective: Ensure strengthened suicide services
+
+7.1
+
+Number of people seeking help
+
+90%
+
+7.2
+
+% reduction of cases of suicide
+
+50%
+
+7.3
+
+Satisfaction rating
+
+10 Aug
+
+8. Objective: Foster adequate understanding of suicide phenomenon
+
+Internal
+Processes
+
+8.1
+
+Number of potential suicide cases reported
+
+X
+
+8.2
+
+Survey rating (1–5)
+
+-
+
+8.3
+
+% of suicide reduction
+
+-
+
+1. Objective: Ensure strengthened suicide services
+
+1.1
+
+Number of people seeking help
+
+-
+
+1.2
+
+% of cases of suicide reported
+
+-
+
+2. Objective: Ensure implementation of the National Strategic Suicide
+Prevention Plan (NSSP)
+
+2.1
+
+% of objectives achieved/implemented
+
+-
+
+3. Objective: Ensure decentralized services
+
+3.1
+
+% (#) of districts with decentralized services
+
+100%
+
+3.2
+
+% of funds available
+
+100%
+
+60
+
+Indicators
+
+Target 2012–2016
+
+Internal
+Processes
+
+4. Objective: Ensure a functional coordinating body
+
+4.1
+
+Functional coordinating body in place
+
+-
+
+5. Objective: Ensure provision of efficient services
+
+5.1
+
+Rating of services provided
+
+100
+
+6. Objective: Ensure efficient coordination of suicide services
+
+6.1
+
+Number of coordinated activities
+
+5
+
+6.2
+
+Number of awareness campaigns conducted
+
+50
+
+6.3
+
+Develop and distribute IEC materials
+
+14
+
+6.4
+
+Number of people attended to, versus number targeted
+
+-
+
+7. Objective: Ensure public awareness on suicide
+
+7.1
+
+Number of awareness campaigns conducted
+
+-
+
+7.2
+
+Develop and distribute IEC materials
+
+-
+
+7.3
+
+Number of people attended to, versus number targeted
+
+-
+
+8. Objective: Ensure establishment of an accurate database
+
+8.1
+
+Learning and
+growth
+
+Existence of a functional database
+
+-
+
+1. Objective: Ensure skilled service providers
+
+1.1
+
+Percentage of people trained
+
+100%
+
+2. Objective: Build capacity of relevant stakeholders on expertise
+knowledge and skills
+
+2.1
+
+% of stakeholders trained
+
+100%
+
+3. Objective: Ensure a motivated workforce
+
+3.1
+
+% staff turnover
+
+5%
+
+4. Objective: Ensure positive staff morale
+
+Budget/ finance
+
+4.1
+
+% staff turnover
+
+5%
+
+4.2
+
+Ratio of staff receiving rewards/total number of staff
+
+100%
+
+1. Objective: Ensure availability of funds
+
+1.1
+
+% of funds allocated versus requested
+
+100%
+
+2. Objective: Ensure equitable and efficient allocation of resources among
+ministries, directorates and stakeholders for suicide activities
+
+2.1
+
+Existence of allocation criteria
+
+-
+
+3. Objective: Ensure effective financial management
+
+3.1
+
+Number of economizing meetings held
+
+61
+
+Quarterly
+
+2.6 Republic of Korea (Western Pacific Region)
+Source: strategy document shared by the Republic of Korea Suicide Prevention Center
+Indicators
+
+Targets 2016–2020
+
+Common
+
+1
+
+Suicide rate
+
+20.0 per 100 000 population
+
+Building
+society-wide
+suicide
+prevention
+environment
+
+2
+
+Percentage of people who are aware that
+suicide is a problem that can be prevented
+
+87.4%
+
+3
+
+Compliance rate with recommendations of
+standards for the press
+
+30%
+
+4
+
+Suicide deaths due to gas (e.g. charcoal)
+
+1 700 people
+
+5
+
+Suicide rate of adolescents 10–19 years
+of age
+
+4.0 per 100 000 population
+
+6
+
+Suicide rate of young adults and
+middle-aged people 20–64 years of age
+
+22.5 per 100 000 population
+
+7
+
+Suicide rate of older persons 65 years of
+age and over
+
+30.0 per 100 000 population
+
+8
+
+Follow-up rate of emergency room
+presentations of suicide attempters or
+case management
+
+62.1%
+
+9
+
+Primary medical institutions’ depression
+screening implementation rate
+
+50% of primary medical institutions
+
+10
+
+Number of suicide prevention gatekeepers
+
+2.5 million people
+
+11
+
+Building a database of suicide attempts
+
+-
+
+Providing
+suicide
+prevention
+services
+
+Enhancing
+suicide
+prevention
+pursuing base
+
+62
+
+2.7 Uruguay (Region of the Americas)
+Source: https://www.mindbank.info/item/3288
+Primary outcomes
+1. Component: Organizing the comprehensive care in mental health
+1.1
+
+Number of services from the National Information System on suicide attempts that meet all the provisions of a
+service established by the Mental Health Services Plan for suicide attempters and their families divided by the
+total number of services from the National Information System on suicide attempts multiplied by 100
+
+1.2
+
+Number of health services from the National Information System on suicide attempts with a flowchart of users
+with suicide attempts and their families for the reference and counter-reference divided by the total number of
+health services from the National Information System on suicide attempts multiplied by 100
+
+1.3
+
+Number of services using guides and protocols of caregiving for people with suicide attempts divided by the
+total number of health services from the National Information System on suicide attempts multiplied by 100
+
+1.4
+
+Hotline (24-hour) installed and functioning
+
+2. Component: Developing an intersectoral network
+2.1
+
+National network of suicide prevention created and functioning
+
+2.2
+
+Number of services having and using guides for community resources to prevent suicide divided by the total
+number of health services from the National Information System on suicide attempts multiplied by 100
+
+3. Components: Raising awareness and educating the community about mental health
+promotion and suicide prevention
+3.1
+
+Number of brochures and other printed material for sensitization of the problem, timely consultation and
+mental health promotion
+
+3.2
+
+Number of advertisements having been placed in mass communication media about suicide prevention
+
+3.3
+
+Number of advisories having been placed in training programmes to target population/ total number of
+target population
+
+3.4
+
+Health promotion and prevention programme implemented in a school context.
+
+4. Component: Educating, training and reorienting human resources for addressing
+suicide prevention and care for suicide attempters and survivors
+4.1
+
+Number of training programmes on the topic developed for the health area of the Uruguay Republic
+University (UDELAR)
+
+4.2
+
+Number of primary care professionals that completed a training course in suicide prevention divided by
+the number of primary care professionals from the National Information System on suicide attempts
+multiplied by 100
+
+4.3
+
+Number of health professionals of the emergency departments that completed a training course in
+suicide prevention divided by the total number of health professionals from the emergency departments
+multiplied by 100
+
+4.4
+
+Specific training module on suicide prevention
+
+4.5
+
+Number of meetings organized with universities for the inclusion of suicide as a subject in graduate and
+postgraduate curricula
+
+63
+
+Primary outcomes
+5. Component: Developing and implementing a national surveillance system for fatal and
+non-fatal suicides
+5.1
+
+National information system for suicide attempts, installed and functioning
+
+5.2
+
+Number of mandatory registration forms for suicide attempts used by services by age, origin and type of
+health service divided by the number of services from the National Information System on suicide
+attempts multiplied by 100
+
+5.3
+
+Number of people having taken a training course in health divided by the total number of health workers
+multiplied by 100
+
+5.4
+
+Number of annual investigations about suicide
+
+64
+
+For more information, please contact:
+Department of Mental Health and Substance Abuse
+World Health Organization
+Avenue Appia 20
+CH-1211 Geneva 27
+Switzerland
+http://www.who.int/mental_health/suicide-prevention
+
+
