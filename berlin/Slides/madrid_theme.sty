@@ -10,20 +10,25 @@
 \RequirePackage{tikz}
 \RequirePackage{graphicx}
 
-%% ----- 1. Madrid palette -----
-\definecolor{madridterracotta}{HTML}{C44536}
-\definecolor{madridtwilight}{HTML}{2C3E5C}
-\definecolor{madridpeach}{HTML}{FBE5D0}
-\definecolor{madridgold}{HTML}{C9982A}
-\definecolor{madridcream}{HTML}{FAF6EE}
+%% ----- 1. Berlin palette (German flag, muted) -----
+%% Red (#BC1F1F): deep German red — warm but not fire-engine
+%% Dark (#1A1A1A): near-black — German Schwarz, softened
+%% Sand (#F5EDD0): pale Brandenburg gold — barely-there block fills
+%% Gold (#C99200): Bundeswappen gold — rich, distinguished
+%% Cream (#FAF8F0): warm white
+\definecolor{berlinred}{HTML}{BC1F1F}
+\definecolor{berlindark}{HTML}{1A1A1A}
+\definecolor{berlinsand}{HTML}{F5EDD0}
+\definecolor{berlgold}{HTML}{C99200}
+\definecolor{berlcream}{HTML}{FAF8F0}
 
-\colorlet{remixgreen}{madridterracotta}
-\colorlet{remixgreendark}{madridtwilight}
-\colorlet{remixgreenlight}{madridpeach}
-\colorlet{forest}{madridgold}
-\colorlet{accent}{madridterracotta}
-\colorlet{accentdark}{madridtwilight}
-\colorlet{cream}{madridcream}
+\colorlet{remixgreen}{berlinred}
+\colorlet{remixgreendark}{berlindark}
+\colorlet{remixgreenlight}{berlinsand}
+\colorlet{forest}{berlgold}
+\colorlet{accent}{berlinred}
+\colorlet{accentdark}{berlindark}
+\colorlet{cream}{berlcream}
 
 \setbeamercolor{structure}{fg=accent}
 \setbeamercolor{alerted text}{fg=accent}
@@ -35,8 +40,8 @@
 \setbeamercolor{block body alerted}{fg=slate,bg=remixgreenlight}
 
 %% ----- 2. Codechella footer + section-divider venue -----
-\renewcommand{\remixfooter}{Sant'Anna Workshop\,\textperiodcentered\,Pisa\,\textperiodcentered\,June 8--10}
-\renewcommand{\remixsectionvenue}{Sant'Anna Workshop \textperiodcentered\ June 2026}
+\renewcommand{\remixfooter}{Berlin School of Economics\,\textperiodcentered\,Master Class 2026}
+\renewcommand{\remixsectionvenue}{Berlin School of Economics \textperiodcentered\ Master Class 2026}
 
 %% ----- 3. codechellatitle{Title}{Subtitle}{Author}{Venue} -----
 \newcommand{\codechellatitle}[4]{%
@@ -48,14 +53,14 @@
       \begin{scope}
         \clip (current page.north west) rectangle ([yshift=-0.55\paperheight]current page.north east);
         \node[anchor=north,inner sep=0pt] at (current page.north) {%
-          \includegraphics[width=\paperwidth]{../img/pisa.jpg}%
+          \includegraphics[width=\paperwidth]{../img/germany.png}%
         };
       \end{scope}
       \draw[accent,line width=1pt]
         ([yshift=-0.555\paperheight]current page.north west) --
         ([yshift=-0.555\paperheight]current page.north east);
       \node[anchor=north,text width=0.85\paperwidth,align=center] at ([yshift=-0.575\paperheight]current page.north) {%
-        {\color{accent}\fontsize{9pt}{11pt}\selectfont\bfseries\MakeUppercase{Sant'Anna Workshop on Causal Inference}\par}%
+        {\color{accent}\fontsize{9pt}{11pt}\selectfont\bfseries\MakeUppercase{Berlin School of Economics Master Class 2026}\par}%
         \vspace{0.3em}
         {\color{charcoal}\bfseries\fontsize{20pt}{24pt}\selectfont #1\par}%
         \vspace{0.25em}

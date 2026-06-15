@@ -35,8 +35,13 @@ gen y01 = `r(mean)'
 summarize l_homicide if treat==0 & post==0
 gen y00 = `r(mean)'
 
-gen did = (y11 - y10) - (y01 - y00)
-sum did
+* Way 1: first-difference arithmetic (subtract across time, then across groups)
+gen did_fd = (y11 - y10) - (y01 - y00)
+sum did_fd
+
+* Way 2: group-difference arithmetic (subtract across groups, then across time)
+gen did_gd = (y11 - y01) - (y10 - y00)
+sum did_gd
 
 
 
