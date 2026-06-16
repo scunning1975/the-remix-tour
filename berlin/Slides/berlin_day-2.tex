@@ -513,9 +513,32 @@ $\delta = Y(\text{online dating platform 1}) - Y(\text{online dating platform 2}
   \item \textbf{Robust method:} use robust methods like CS, SA, dCDH, or BJS if agnostic to heterogeneous effects.
   \item \textbf{Event study:} estimate simple averages as well as event studies.
   \begin{itemize}\small
-    \item {\color{accent}Use long-differences with \texttt{long2} or a universal base.}
+    \item Here I used the default syntax in Stata for event studies.
   \end{itemize}
   \item \textbf{Cluster standard errors:} report with clustering at the aggregate level of treatment.
+\end{itemize}
+\end{frame}
+
+%% ---------- CS ESTIMATOR ----------
+\begin{frame}{The Callaway \& Sant'Anna estimator (the IPW version)}
+\vspace{1.0em}
+\[
+\text{ATT}(g,t) = \mathbb{E}\!\left[ \left( \frac{G_g}{\mathbb{E}[G_g]} - \frac{\dfrac{\hat{p}(X)\,C}{1-\hat{p}(X)}}{\mathbb{E}\!\left[\dfrac{\hat{p}(X)\,C}{1-\hat{p}(X)}\right]} \right) \bigl(Y_t - Y_{g-1}\bigr) \right]
+\]
+\vspace{0.6em}
+\begin{itemize}\small\setlength\itemsep{0.45em}
+  \item There is an IPW version, an outcome-regression version, and a doubly-robust version, and Sant'Anna recommends \highlight{doubly robust}.
+  \item CS uses the never-treated or the not-yet-treated as controls, \highlight{never the already-treated}.
+\end{itemize}
+\end{frame}
+
+%% ---------- MY CHOICES ----------
+\begin{frame}{My choices}
+\vspace{1.0em}
+\begin{itemize}\setlength\itemsep{1.0em}
+  \item I will use \highlight{CS} because it is simple (four averages and three subtractions) and popular.
+  \item I will not use covariates.
+  \item I will make an event study.
 \end{itemize}
 \end{frame}
 
@@ -525,10 +548,70 @@ $\delta = Y(\text{online dating platform 1}) - Y(\text{online dating platform 2}
 \end{center}
 \end{frame}
 
-\begin{frame}{Long differences, no controls}
-\begin{center}
-\includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/es_births2.png}
-\end{center}
+%% ---------- DOUBT ENSUED ----------
+\begin{frame}[shrink=5]{Doubt ensued}
+\vspace{0.3em}
+\begin{itemize}\small\setlength\itemsep{0.5em}
+  \item The event study plots persuaded us that unconditional parallel trends was reasonable.
+  \item But then I learned about a ``software default'' in both R and Stata.
+  \item If you do not specify \texttt{long2} in \texttt{csdid}, or \texttt{base\_period="universal"} in R, the default is short gaps.
+  \item I had always taught long differences, and it never occurred to me that this wasn't doing that (double-check the 2$\times$2).
+  \item But my event study plots looked so good, and I already had a narrative about ``permanent dating''!
+\end{itemize}
+\end{frame}
+
+%% ---------- TRENDS OR NO TRENDS (side by side) ----------
+\begin{frame}{Trends or no trends?!}
+\vspace{0.3em}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/es_births_shortgapNC.jpg}\\[0.3em]
+{\itshape\small Short gap}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/es_births2.png}\\[0.3em]
+{\itshape\small Long difference}
+\end{column}
+\end{columns}
+\end{frame}
+
+%% ---------- SCRUTINIZING ----------
+\begin{frame}[shrink=5]{Scrutinizing that event study}
+\vspace{0.3em}
+\begin{itemize}\small\setlength\itemsep{0.5em}
+  \item I was so excited when I saw those flat pre-trends, until I learned that the default syntax in Stata's \texttt{csdid} calculated short gaps.
+  \item We had a whole story that online dating caused ``permanent dating,'' until I realized that, lol.
+  \item But that made us start wondering whether unconditional parallel trends was plausible.
+  \item We started to piece together what our different units were, that is, ``counties'' who were treated versus ``counties'' who weren't.
+  \item Why would some counties get a Craigslist but not others?
+\end{itemize}
+\end{frame}
+
+%% ---------- WHO GOT A CRAIGSLIST ----------
+\begin{frame}{Who got a Craigslist and who didn't?}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.8em}
+  \item Craigslist is organized by city, like \texttt{houston.craigslist.org} for Houston, Texas.
+  \item I grew up in Brookhaven, Mississippi, a town of 11,000, and \texttt{brookhaven.craigslist.org} is not there.
+  \item Craigslist targeted cities, but most US counties are rural.
+\end{itemize}
+\end{frame}
+
+%% ---------- IS UNCONDITIONAL PT PLAUSIBLE? ----------
+\begin{frame}[shrink=8]{Is unconditional parallel trends plausible?}
+\vspace{0.2em}
+\begin{itemize}\small\setlength\itemsep{0.45em}
+  \item My coauthors are demographers with a 20-year research agenda in maternal health and children.
+  \item We are all labor economists, familiar with ``sorting'' into rural versus cities and how population characteristics differ:
+  \begin{itemize}\small\setlength\itemsep{0.25em}
+    \item Cities have more college-educated women, delayed childbearing, lower marriage rates, different racial composition, and more access to female healthcare.
+    \item Rural towns have less-educated women, earlier age at first birth, higher marriage rates, more homogeneity, and worse healthcare access.
+  \end{itemize}
+  \item If Craigslist counties are more urban, then treatment and control are imbalanced on covariates that cause trends in $Y^0$.
+  \item So we looked at mean female population and urban measures by timing cohort to see how bad the covariate imbalance was.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Long differences without and with RUCC control (!)}
