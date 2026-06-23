@@ -1,0 +1,79 @@
+%% kuleuven_theme.sty -- KU Leuven Difference-in-Differences Workshop theme
+%% Load AFTER remix.sty. Mirrors madrid_theme.sty but with:
+%%   1. KU Leuven blue palette (replaces the German-flag palette)
+%%   2. KU Leuven footer + section-divider venue string
+%%   3. codechellatitle{Title}{Subtitle}{Author}{Venue} -- solid navy banner
+%%      (no photo, since there is no KU Leuven title image)
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kuleuven_theme}[2026/06/16 v1.0 KU Leuven theme]
+
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+
+%% ----- 1. KU Leuven palette -----
+%% Blue (#1D6FB3): KU Leuven blue, primary accent
+%% Navy (#002C5F): deep institutional navy, headers and title banner
+%% Light (#E7F0F8): pale blue, barely-there block fills
+%% Gold (#C99200): warm secondary (Flemish nod), positive / success
+%% Cream (#F6FAFD): cool white
+\definecolor{kublue}{HTML}{1D6FB3}
+\definecolor{kunavy}{HTML}{002C5F}
+\definecolor{kulight}{HTML}{E7F0F8}
+\definecolor{kugold}{HTML}{C99200}
+\definecolor{kucream}{HTML}{F6FAFD}
+
+\colorlet{remixgreen}{kublue}
+\colorlet{remixgreendark}{kunavy}
+\colorlet{remixgreenlight}{kulight}
+\colorlet{forest}{kugold}
+\colorlet{accent}{kublue}
+\colorlet{accentdark}{kunavy}
+\colorlet{cream}{kucream}
+
+\setbeamercolor{structure}{fg=accent}
+\setbeamercolor{alerted text}{fg=accent}
+\setbeamercolor{itemize item}{fg=accent}
+\setbeamercolor{itemize subitem}{fg=accent}
+\setbeamercolor{enumerate item}{fg=accent}
+\setbeamercolor{enumerate subitem}{fg=accent}
+\setbeamercolor{block title alerted}{fg=charcoal,bg=remixgreenlight}
+\setbeamercolor{block body alerted}{fg=slate,bg=remixgreenlight}
+
+%% ----- 2. KU Leuven footer + section-divider venue -----
+\renewcommand{\remixfooter}{KU Leuven\,\textperiodcentered\,Difference-in-Differences Workshop}
+\renewcommand{\remixsectionvenue}{KU Leuven \textperiodcentered\ Difference-in-Differences Workshop}
+
+%% ----- 3. codechellatitle{Title}{Subtitle}{Author}{Venue} -----
+\newcommand{\codechellatitle}[4]{%
+  \begingroup
+  \setbeamertemplate{footline}{}
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[cream] (current page.south west) rectangle (current page.north east);
+      \begin{scope}
+        \clip (current page.north west) rectangle ([yshift=-0.55\paperheight]current page.north east);
+        \node[anchor=north,inner sep=0pt] at (current page.north) {%
+          \includegraphics[width=\paperwidth]{figures/leuven_old.jpg}%
+        };
+      \end{scope}
+      \draw[accent,line width=1pt]
+        ([yshift=-0.555\paperheight]current page.north west) --
+        ([yshift=-0.555\paperheight]current page.north east);
+      \node[anchor=north,text width=0.85\paperwidth,align=center] at ([yshift=-0.575\paperheight]current page.north) {%
+        {\color{accent}\fontsize{9pt}{11pt}\selectfont\bfseries\MakeUppercase{KU Leuven Difference-in-Differences Workshop}\par}%
+        \vspace{0.3em}
+        {\color{charcoal}\bfseries\fontsize{20pt}{24pt}\selectfont #1\par}%
+        \vspace{0.25em}
+        {\color{warmgray}\itshape\fontsize{12pt}{14pt}\selectfont #2\par}%
+        \vspace{0.8em}
+        {\color{charcoal}\fontsize{10.5pt}{13pt}\selectfont #3\par}%
+        \vspace{0.1em}
+        {\color{warmgray}\fontsize{9.5pt}{12pt}\selectfont #4\par}%
+      };
+    \end{tikzpicture}
+  \end{frame}
+  \endgroup
+}
+
+\endinput
