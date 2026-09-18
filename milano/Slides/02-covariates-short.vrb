@@ -1,0 +1,15 @@
+\frametitle{DR (Sant'Anna--Zhao 2020): \$1,979}
+\vspace{0.3em}
+\begin{lstlisting}[language=]
+drdid re $X, time(year) ivar(id) tr(ever_treated) dripw
+\end{lstlisting}
+\vspace{0.5em}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Estimator & ATT & vs benchmark \\
+\midrule
+DR & \textbf{\$1,979} & $+$\$185 \\
+\bottomrule
+\end{tabular}
+\end{center}

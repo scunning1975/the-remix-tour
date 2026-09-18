@@ -1,0 +1,1755 @@
+%% 01-basics.tex — Italian Stata Conference Milano: Foundations of DiD
+%% Scott Cunningham, Italian Stata Conference, Milano
+%%
+%% Compile: pdflatex 01-basics.tex
+%% Style:   remix.sty (in same directory)
+
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage{remix}
+\usepackage{madrid_theme}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,shapes.geometric,fit,backgrounds}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{colortbl}
+
+%% ---------- Sandwich-estimator color tracing (bread / meat) ----------
+\definecolor{breadcolor}{HTML}{2B6CB0}
+\definecolor{meatcolor}{HTML}{A51C30}
+\newcommand{\bread}[1]{\textcolor{breadcolor}{#1}}
+\newcommand{\meat}[1]{\textcolor{meatcolor}{#1}}
+
+%% ---------- TikZ styles in the PREAMBLE ----------
+\tikzset{
+  ingredient/.style={
+    rectangle, rounded corners=2pt, draw=accent, line width=0.8pt,
+    fill=cream, text=charcoal, font=\bfseries,
+    minimum width=4.8cm, minimum height=1.6cm, align=center
+  },
+  ingredientdone/.style={
+    rectangle, rounded corners=2pt, draw=accent, line width=0.8pt,
+    fill=remixgreenlight, text=charcoal, font=\bfseries,
+    minimum width=4.8cm, minimum height=1.6cm, align=center
+  },
+  ingredientpending/.style={
+    rectangle, rounded corners=2pt, draw=warmgray, line width=0.6pt, dashed,
+    fill=white, text=warmgray, font=\bfseries,
+    minimum width=4.8cm, minimum height=1.6cm, align=center
+  },
+  cell/.style={
+    rectangle, draw=charcoal, line width=0.5pt,
+    fill=lightbg, text=charcoal,
+    minimum width=3.0cm, minimum height=1.3cm, align=center, font=\small
+  },
+  celltreated/.style={
+    rectangle, draw=accent, line width=1.2pt,
+    fill=remixgreenlight, text=charcoal,
+    minimum width=3.0cm, minimum height=1.3cm, align=center, font=\small
+  },
+  conceptbox/.style={
+    rectangle, rounded corners=3pt, draw=#1, line width=0.8pt,
+    fill=white, text=charcoal, font=\small,
+    minimum width=5.2cm, minimum height=2.6cm, align=left,
+    text width=4.8cm, inner sep=8pt
+  },
+  trendline/.style={line width=1pt, accent},
+  trendcontrol/.style={line width=1pt, slate, dashed},
+}
+
+%% ---------- listings setup ----------
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{accentdark}\bfseries,
+  commentstyle=\color{warmgray}\itshape,
+  stringstyle=\color{ocean},
+  backgroundcolor=\color{lightbg},
+  frame=single,
+  framesep=4pt,
+  rulecolor=\color{warmgray!40},
+  columns=fullflexible,
+  showstringspaces=false,
+  breaklines=true,
+  numbers=none,
+  xleftmargin=0.4em,
+  xrightmargin=0.4em,
+}
+
+\begin{document}
+
+\codechellatitle
+  {Foundations of Difference-in-Differences}
+  {The 2$\times$2, Parallel Trends, and Event Studies}
+  {Scott Cunningham \textperiodcentered\ Baylor University}
+  {Italian Stata Conference \textperiodcentered\ Milano}
+
+%% ===========================================================
+%% HOUSEKEEPING — opening slides (welcome, team, mission, schedule, today, week)
+%% One idea per slide. No walls of text.
+%% ===========================================================
+
+
+
+%% ---------- Slide 3: Who I am ----------
+\begin{frame}{Who am I?}
+\vspace{0.5em}
+\textbf{Scott Cunningham} \,\textperiodcentered\, Professor of Economics, Baylor University
+\vspace{0.8em}
+\begin{itemize}
+  \item Empirical work: sex work, relationship markets, drug policy, abortion, corrections, suicide and mental illness --- and AI agents and AI methodologies
+  \item Podcast: \textit{The Mixtape with Scott}
+  \item Substack: \textit{Scott's Substack}
+  \item Teaching platform: \textit{Mixtape Sessions}
+\end{itemize}
+\end{frame}
+
+%% ---------- Files + goals for the session (3 slides, 2 decks each) ----------
+\begin{frame}{What we'll use, and what we're after}
+\vspace{0.3em}
+\begin{block}{The files}
+\centering
+\texttt{00-craigslist} \;\textperiodcentered\; \texttt{01-basics} \;\textperiodcentered\; \texttt{02-covariates-short} \;\textperiodcentered\; \texttt{03-continuous} \;\textperiodcentered\; \texttt{04-staggered} \;\textperiodcentered\; \texttt{05-tripleddd}
+\end{block}
+\vspace{0.5em}
+\textbf{The goal is to cover:}
+\vspace{0.2em}
+\begin{itemize}\setlength\itemsep{0.4em}
+  \item The basic 2$\times$2 and OLS
+  \item Potential outcomes, target parameters, identification assumptions
+  \item Event studies
+\end{itemize}
+\vspace{0.4em}
+\meta{Priority order: \;basics \;$\rightarrow$\; covariates \;$\rightarrow$\; continuous \;$\rightarrow$\; staggered \;$\rightarrow$\; the checklist.}
+\end{frame}
+
+%% ---------- Deck tour 1 of 3 ----------
+\begin{frame}{The decks (1 of 3)}
+\vspace{0.2em}
+\footnotesize
+\begin{block}{\texttt{00-craigslist} \;\textemdash\; the checklist, live \hfill \textnormal{\small\color{accent}\bfseries PRIORITY 5}}
+\begin{itemize}\setlength\itemsep{0.1em}
+  \item The diff-in-diff checklist walked end to end on a real project
+  \item Craigslist Personals and birth rates; the Wayback Machine to date the rollout
+  \item Where the doubt came in: scrutinizing the event study, rural vs.\ urban imbalance
+\end{itemize}
+\end{block}
+\vspace{0.4em}
+\begin{block}{\texttt{01-basics} \;\textemdash\; foundations \hfill \textnormal{\small\color{accent}\bfseries PRIORITY 1}}
+\begin{itemize}\setlength\itemsep{0.1em}
+  \item The 2$\times$2, four equivalent regressions, and the two 2$\times$2 arithmetics
+  \item Potential outcomes; $2\times2 = \text{ATT} + \text{PTA}$; evaluating PT by falsification
+  \item Standard errors, weighting and target parameters, event studies
+\end{itemize}
+\end{block}
+\end{frame}
+
+%% ---------- Deck tour 2 of 3 ----------
+\begin{frame}{The decks (2 of 3)}
+\vspace{0.2em}
+\footnotesize
+\begin{block}{\texttt{02-covariates-short} \;\textemdash\; covariates \hfill \textnormal{\small\color{accent}\bfseries PRIORITY 2}}
+\begin{itemize}\setlength\itemsep{0.1em}
+  \item Three biases: compositional change, heterogeneous effects, absorbed time-invariant $X$
+  \item Conditional parallel trends --- and what additive $X$ quietly imposes
+  \item Regression adjustment, IPW, doubly robust (Sant'Anna \& Zhao); the LaLonde application
+\end{itemize}
+\end{block}
+\vspace{0.4em}
+\begin{block}{\texttt{03-continuous} \;\textemdash\; continuous treatment \hfill \textnormal{\small\color{accent}\bfseries PRIORITY 3}}
+\begin{itemize}\setlength\itemsep{0.1em}
+  \item When the treatment is a dose, not a switch: TWFE with a continuous $D$
+  \item Where the weights come from; the dose-specific ATT and the average causal response
+  \item Lu \& Yu (2015): China's WTO accession, 155 industries, different tariff cuts
+\end{itemize}
+\end{block}
+\end{frame}
+
+%% ---------- Deck tour 3 of 3 ----------
+\begin{frame}{The decks (3 of 3)}
+\vspace{0.2em}
+\footnotesize
+\begin{block}{\texttt{04-staggered} \;\textemdash\; differential timing \hfill \textnormal{\small\color{accent}\bfseries PRIORITY 4}}
+\begin{itemize}\setlength\itemsep{0.1em}
+  \item Bacon's decomposition and the forbidden 2$\times$2; \texttt{baker.do} written line by line
+  \item Callaway \& Sant'Anna, Sun \& Abraham, de Chaisemartin \& D'Haultf\oe{}uille
+  \item Short gaps vs.\ long differences; BJS imputation; Honest DiD
+\end{itemize}
+\end{block}
+\vspace{0.4em}
+\begin{block}{\texttt{05-tripleddd} \;\textemdash\; triple differences \hfill \textnormal{\small\color{warmgray}\itshape if time allows}}
+\begin{itemize}\setlength\itemsep{0.1em}
+  \item A design for when parallel trends has already broken down
+  \item \textit{Parallel bias}, not parallel trends --- a different assumption, not a weaker one
+  \item Gruber (1995); DDD in regression; the triple-differences event study
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+%% ===========================================================
+%% SECTION 1. DiD's empirical roots
+%% ===========================================================
+\remixsection{1.\ DiD's Empirical Roots}
+
+%% --- 1.1 Semmelweis ---
+\begin{frame}{Vienna, 1840s: two clinics, two mortality rates}
+\vspace{0.4em}
+\begin{itemize}
+  \item Vienna General Hospital, First Obstetric Clinic
+  \item Pregnant women were assigned to the \textit{physicians' wing} or the \textit{midwives' wing} by day of admission --- effectively at random
+  \item Physicians' wing: \highlight{13--18\% mortality} from puerperal fever
+  \item Midwives' wing: \highlight{about 3\%}
+  \item Women would deliver in the street rather than risk the physicians' wing
+\end{itemize}
+\end{frame}
+
+\begin{frame}{His hypothesis, and his DiD}
+\vspace{0.4em}
+\begin{itemize}
+  \item Semmelweis --- an assistant on the wards --- noticed the physicians did cadaver dissections before delivering babies. The midwives did not.
+  \item Hypothesis: something on the physicians' hands was causing the fever.
+  \item May 1847: he instituted \highlight{chlorinated lime handwashing for physicians only}
+  \item Midwives served as the untreated comparison group --- a DiD by hand
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The data}
+\begin{center}
+\includegraphics[height=0.72\textheight,keepaspectratio]{figures/semmelweis_remix.pdf}
+\end{center}
+\begin{center}
+\small\color{warmgray}\itshape Monthly mortality, First Obstetric Clinic. Handwashing began mid-1847.
+\end{center}
+\end{frame}
+
+%% --- 1.2 Princeton ---
+\begin{frame}{Princeton, 1970s: Orley Ashenfelter}
+\vspace{0.3em}
+\footnotesize
+The Industrial Relations Section was founded 1922 --- rigorous empirical labor research, the policy edge of US economics.
+\vspace{0.3em}
+\begin{block}{Orley Ashenfelter's leadership}
+\begin{itemize}
+  \item Long-time director. Set the tone: high-quality data, careful design, communicate to bureaucrats.
+  \item Trained a cohort: \textbf{David Card}, \textbf{Josh Angrist}, \textbf{Bob LaLonde}, \textbf{Janet Currie}, Pischke, Dinardo, Case, others.
+  \item Hired \textbf{Alan Krueger} as a junior colleague.
+\end{itemize}
+\end{block}
+\end{frame}
+
+%% --- 1.3 The late-1970s crisis + Orley video ---
+\begin{frame}{By the late 1970s, empirical labor was in trouble}
+\vspace{0.4em}
+\begin{itemize}
+  \item Different methods on the same question disagreed wildly
+  \item The Princeton response: \highlight{design over modeling --- estimators that mimic an RCT as closely as possible}
+  \item Worker surveys, federal job training, massive panel regressions
+  \item Audience was bureaucrats
+\end{itemize}
+\vspace{0.6em}
+\pullquote{Their eyes would glaze over whenever you said `regression.'}{Orley Ashenfelter}
+\vspace{0.6em}
+\begin{center}
+\href{https://www.youtube.com/watch?v=WnB3EJ8K7lg\&t=14s}{\color{ocean}\underline{youtu.be/WnB3EJ8K7lg}} \;\small\color{warmgray}\itshape (3:53)
+\end{center}
+\end{frame}
+
+%% ===========================================================
+%% SECTION 2. DiD = calculation + assumption
+%% ===========================================================
+\remixsection{2.\ DiD is Two Things: a Calculation and an Assumption}
+
+%% --- 2.1 Research design, not a regression ---
+\begin{frame}{DiD is a research design, not a regression}
+\vspace{1.0em}
+\pullquote{A research design is an identification strategy: it reveals the invisible target parameter hidden inside a calculation.}{}
+\vspace{1.0em}
+\begin{center}
+\begin{tikzpicture}
+\node[ingredient] (calc) at (-3.2,0) {%
+  \textcolor{accent}{\large 1.} \\[0.3em]
+  A \textit{calculation}\\[0.2em]
+  \scriptsize\textcolor{warmgray}{(the 2$\times$2)}
+};
+\node[ingredient] (assn) at (3.2,0) {%
+  \textcolor{accent}{\large 2.} \\[0.3em]
+  An \textit{assumption}\\[0.2em]
+  \scriptsize\textcolor{warmgray}{(parallel trends)}
+};
+\node[font=\Large\bfseries,text=accent] at (0,0) {+};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+%% --- 2.2 Individual treatment effect ---
+\begin{frame}{The individual treatment effect}
+\vspace{1.2em}
+\begin{center}
+\Large
+\[
+\delta_i \;=\; Y_i(1) - Y_i(0)
+\]
+\end{center}
+\vspace{0.6em}
+\begin{itemize}
+  \item One per unit. \highlight{Different} across units in general --- treatment effects are heterogeneous.
+  \item We only ever see one of $Y_i(1)$ or $Y_i(0)$. The other is the counterfactual.
+  \item So $\delta_i$ is never directly observed at the individual level.
+\end{itemize}
+\end{frame}
+
+%% --- 2.2b The ATT and the three ingredients of a causal parameter ---
+\begin{frame}{The ATT: a causal parameter has three ingredients}
+\vspace{1.4em}
+\begin{center}
+\Large
+\[
+\text{ATT} \;=\; \underbrace{\mathbb{E}\big[\,}_{\text{\normalsize \color{accent} weighted expectations}}\;
+\underbrace{Y(1) - Y(0)}_{\text{\normalsize \color{accent} potential outcomes}}\;
+\underbrace{\big|\; D = 1,\,\text{Post}\,\big]}_{\text{\normalsize \color{accent} population}}
+\]
+\end{center}
+\vspace{1.4em}
+\begin{itemize}
+  \item \highlight{Potential outcomes} --- the contrast $Y(1) - Y(0)$
+  \item \highlight{Population} --- on whom: treated units, post-period
+  \item \highlight{Weighted expectations} --- how we average across that population ($\mathbb{E}[\cdot]$ defaults to equal weights)
+\end{itemize}
+\end{frame}
+
+%% --- 2.3 Switching equation ---
+\begin{frame}{The switching equation: you see one half}
+\vspace{0.8em}
+\begin{center}
+\Large
+\[
+Y_i \;=\; D_i \cdot Y_i(1) \;+\; (1 - D_i) \cdot Y_i(0)
+\]
+\end{center}
+\vspace{1em}
+\begin{itemize}\setlength\itemsep{6pt}
+  \item For each unit: $Y_i(1)$ if treated, $Y_i(0)$ if not.
+  \item The ATT asks about \textit{both} columns. The data hands you one.
+\end{itemize}
+\vspace{0.8em}
+\meta{The rest of the day: strategies for recovering the ATT from the half you see.}
+\end{frame}
+
+%% ===========================================================
+%% SECTION 3. Four regressions and the 2x2
+%% ===========================================================
+\remixsection{3.\ Four Regressions and the 2$\times$2}
+
+%% --- 3.1 Cheng & Hoekstra (2013) setup ---
+\begin{frame}{Cheng \& Hoekstra (2013): castle doctrine and homicide}
+\vspace{0.3em}
+\footnotesize
+\textbf{The reform.} ``Castle doctrine'' laws expanded the legal right to use lethal force in self-defense, removing the duty to retreat. Many US states passed expansions from \highlight{2005--2010}.
+\vspace{0.4em}
+\begin{itemize}
+  \item \textbf{Panel:} all US states $\times$ years (state-year).
+  \item \textbf{Outcome:} log homicide rate, FBI Supplementary Homicide Reports.
+  \item \textbf{Treatment:} state passed an expansion of castle doctrine.
+  \item \textbf{Comparison:} states that did not pass (never-treated).
+\end{itemize}
+\vspace{0.4em}
+For today: a clean 2$\times$2 on \highlight{2005--2006}. Treated $=$ states adopting in 2006; control $=$ states that hadn't.
+\vspace{0.4em}
+\meta{Cheng \& Hoekstra (2013), ``Does Strengthening Self-Defense Law Deter Crime or Escalate Violence? Evidence from Expansions to Castle Doctrine.'' \textit{J. Human Resources} 48(3): 821--854.}
+\end{frame}
+
+%% --- 3.2 Four cells by hand on castle.dta ---
+\begin{frame}[fragile]{The four cells, by hand on \texttt{castle.dta}}
+\vspace{0.2em}
+\begin{lstlisting}[language={[ANSI]C}]
+use castle.dta, clear
+keep if year >= 2005 & year <= 2006
+gen post  = (year == 2006)
+gen treat = (effyear == 2006)
+
+summarize l_homicide if treat==1 & post==1   // Y11
+summarize l_homicide if treat==1 & post==0   // Y10
+summarize l_homicide if treat==0 & post==1   // Y01
+summarize l_homicide if treat==0 & post==0   // Y00
+\end{lstlisting}
+\vspace{0.4em}
+\begin{center}
+\small
+$\widehat{\text{DiD}} = (\overline{Y}_{11} - \overline{Y}_{10}) - (\overline{Y}_{01} - \overline{Y}_{00}) \;\approx\; \mathbf{0.10}$
+\end{center}
+\vspace{0.2em}
+\begin{center}
+\small\color{warmgray}\itshape Log homicide rate $\sim 10\%$ higher in 2006-adopting states relative to non-adopters.
+\end{center}
+\end{frame}
+
+%% --- 3.3 Regression 1: OLS with interactions ---
+\begin{frame}[fragile]{Regression 1: OLS with treat $\times$ post}
+\vspace{0.4em}
+\begin{lstlisting}[language={[ANSI]C}]
+reg l_homicide post##treat, cluster(sid)
+\end{lstlisting}
+\vspace{0.8em}
+The coefficient on \texttt{1.post\#1.treat} is the DiD.
+\vspace{0.6em}
+\begin{center}
+$Y \;=\; \beta_0 + \beta_1\,\text{Post} + \beta_2\,\text{Treat} + \beta_3\,(\text{Post}\times\text{Treat}) + \varepsilon$
+\end{center}
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape The saturated specification. $\hat\beta_3 \approx 0.10$.
+\end{center}
+\end{frame}
+
+%% --- 3.4 Regression 2: TWFE ---
+\begin{frame}[fragile]{Regression 2: two-way fixed effects}
+\vspace{0.4em}
+\begin{lstlisting}[language={[ANSI]C}]
+xtset sid year
+xtreg l_homicide c.treat#c.post i.year, fe vce(cluster sid)
+\end{lstlisting}
+\vspace{0.8em}
+State fixed effects absorb time-invariant level differences. \;Year fixed effects absorb common shocks.
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape In the 2$\times$2 case, the TWFE coefficient equals the DiD. \;Same number.
+\end{center}
+\end{frame}
+
+%% --- 3.5 Regression 3: First-difference on treatment dummy ---
+\begin{frame}[fragile]{Regression 3: time difference $\Delta_t Y_i$ on $D_i$}
+\vspace{0.3em}
+\begin{lstlisting}[language={[ANSI]C}]
+keep sid year l_homicide treat
+reshape wide l_homicide, i(sid) j(year)
+gen dY = l_homicide2006 - l_homicide2005
+reg dY treat, vce(cluster sid)
+\end{lstlisting}
+\vspace{0.6em}
+\begin{center}
+$\Delta_t Y_i \;=\; \alpha + \beta_{DD}\,D_i + u_i$
+\end{center}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item Difference $Y$ across \textit{time}: one $\Delta_t Y$ per unit.
+  \item Time-differencing wipes out unit fixed effects mechanically.
+  \item Slope on \texttt{treat} = the DiD. \;Same number.
+\end{itemize}
+\end{frame}
+
+%% --- 3.6 Regression 4: across-group difference on post dummy ---
+\begin{frame}[fragile]{Regression 4: group difference $\Delta_g Y_t$ on $\text{Post}_t$}
+\vspace{0.3em}
+At each period $t$, difference $Y$ \textit{across groups}: \;$\Delta_g Y_t = \overline{Y}_{1,t} - \overline{Y}_{0,t}$. \;Then regress on a post indicator:
+\vspace{0.3em}
+\begin{center}
+$\Delta_g Y_t \;=\; \alpha + \beta_{DD}\,\text{Post}_t + v_t$
+\end{center}
+\vspace{0.3em}
+\begin{lstlisting}[language={[ANSI]C}]
+collapse (mean) l_homicide, by(treat post)
+reshape wide l_homicide, i(post) j(treat)
+gen gdiff = l_homicide1 - l_homicide0   // treated - control
+reg gdiff post
+\end{lstlisting}
+\vspace{0.2em}
+\begin{itemize}\small
+  \item Still differencing $Y$ --- just across \textit{groups} rather than across \textit{time}.
+  \item Regression 3 differences over time first; Regression 4 differences over groups first.
+  \item By Frisch--Waugh--Lovell, partialling out the two-way means runs in either order. \;Same number.
+\end{itemize}
+\end{frame}
+
+%% --- 3.7 Long differences: the 2x2, time first ---
+\begin{frame}{Long differences: 2$\times$2}
+\vspace{0.5em}
+Difference \textit{across time} within each group, then subtract across groups:
+\vspace{0.3em}
+\begin{center}
+\Large
+\[
+\widehat{\text{DiD}} \;=\; \big(\overline{Y}_{11} - \overline{Y}_{10}\big) \;-\; \big(\overline{Y}_{01} - \overline{Y}_{00}\big)
+\]
+\end{center}
+\vspace{0.3em}
+\begin{itemize}\small
+  \item No regression. \;Two long differences. \;One subtraction between them.
+  \item The arithmetic twin of \textbf{Regression 3} --- time first, then groups.
+  \item This is what John Snow did in 1854 with the water-company data.
+\end{itemize}
+\end{frame}
+
+%% --- 3.8 Group differences: the 2x2, groups first (NEW) ---
+\begin{frame}[fragile]{Group differences: 2$\times$2}
+\vspace{0.5em}
+Difference \textit{across groups} within each period, then subtract across time:
+\vspace{0.3em}
+\begin{center}
+\Large
+\[
+\widehat{\text{DiD}} \;=\; \big(\overline{Y}_{11} - \overline{Y}_{01}\big) \;-\; \big(\overline{Y}_{10} - \overline{Y}_{00}\big)
+\]
+\end{center}
+\vspace{0.3em}
+\begin{lstlisting}[language={[ANSI]C}]
+gen did_gd = (y11 - y01) - (y10 - y00)
+\end{lstlisting}
+\vspace{0.2em}
+\begin{itemize}\small
+  \item Same four cells, same minus signs --- regrouped.
+  \item The arithmetic twin of \textbf{Regression 4} --- groups first, then time.
+  \item \highlight{The 2$\times$2 does not care which way you difference first.}
+\end{itemize}
+\end{frame}
+
+%% --- 3.9 Four regressions, plus the 2x2s (summary) ---
+\begin{frame}{Four regressions, plus the 2$\times$2s}
+\vspace{0.4em}
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\footnotesize
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Specification} & \textbf{What it does} & \textbf{$\hat\beta_{DD}$} \\
+\midrule
+1.\ OLS with \texttt{post\#\#treat} & saturated interaction & \;\;\highlight{$\approx 0.10$} \\
+2.\ Two-way fixed effects & absorb unit $+$ time means & \;\;\highlight{$\approx 0.10$} \\
+3.\ $\Delta_t Y_i$ on $D_i$ & difference $Y$ over time, then on $D$ & \;\;\highlight{$\approx 0.10$} \\
+4.\ $\Delta_g Y_t$ on $\text{Post}_t$ & difference $Y$ over groups, then on Post & \;\;\highlight{$\approx 0.10$} \\
+\midrule
+5.\ Long differences: 2$\times$2 & $(\overline{Y}_{11}-\overline{Y}_{10})-(\overline{Y}_{01}-\overline{Y}_{00})$ & \;\;\highlight{$\approx 0.10$} \\
+6.\ Group differences: 2$\times$2 & $(\overline{Y}_{11}-\overline{Y}_{01})-(\overline{Y}_{10}-\overline{Y}_{00})$ & \;\;\highlight{$\approx 0.10$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4em}
+\begin{center}
+\small\color{warmgray}\itshape
+Four regressions, two arithmetics, identical to machine epsilon. \\ The 2$\times$2 is the object; the rest are just ways to ask for it.
+\end{center}
+\end{frame}
+
+%% ===========================================================
+%% SECTION 4. Decomposing the 2x2
+%% ===========================================================
+\remixsection{4.\ Decomposing the 2$\times$2}
+
+%% --- 4.1 The proof: add a zero, rearrange ---
+\begin{frame}{The proof: add a zero, rearrange (five steps)}
+\vspace{-0.4em}
+\footnotesize
+
+\textbf{1.\ Start with the 2$\times$2:}
+\vspace{-0.5em}
+\[
+\widehat{\text{DiD}} \;=\; \big[\mathbb{E}[Y\mid 1,\text{Post}] - \mathbb{E}[Y\mid 1,\text{Pre}]\big]
+                    \;-\; \big[\mathbb{E}[Y\mid 0,\text{Post}] - \mathbb{E}[Y\mid 0,\text{Pre}]\big]
+\]
+\vspace{-1.0em}
+
+\textbf{2.\ Switching equation.} Treated-post is $Y(1)$; the other three cells are $Y(0)$:
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \big[\mathbb{E}[Y(1)\mid 1,\text{Post}] - \mathbb{E}[Y(0)\mid 1,\text{Pre}]\big]
+                    \;-\; \big[\mathbb{E}[Y(0)\mid 0,\text{Post}] - \mathbb{E}[Y(0)\mid 0,\text{Pre}]\big]
+\]
+\vspace{-0.4em}
+
+\textbf{3.\ Add a zero.}\;Insert $+\,\mathbb{E}[Y(0)\mid 1,\text{Post}] - \mathbb{E}[Y(0)\mid 1,\text{Post}]$:
+\vspace{-0.3em}
+\begin{align*}
+\widehat{\text{DiD}} \;=\;&
+  \mathbb{E}[Y(1)\mid 1,\text{Post}] \;-\; \mathbb{E}[Y(0)\mid 1,\text{Post}] \\
+& {} +\;\mathbb{E}[Y(0)\mid 1,\text{Post}] - \mathbb{E}[Y(0)\mid 1,\text{Pre}]
+   \;-\; \big[\mathbb{E}[Y(0)\mid 0,\text{Post}] - \mathbb{E}[Y(0)\mid 0,\text{Pre}]\big]
+\end{align*}
+\vspace{-0.4em}
+
+\textbf{4.\ Rearrange.}\;First two terms $=$ ATT; remainder $=$ difference in $Y(0)$ trends:
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\mathbb{E}[Y(1)-Y(0)\mid 1,\text{Post}]}_{\textstyle\text{\color{accent}\bfseries ATT}}
+                    \;+\; \underbrace{\big\{\Delta\mathbb{E}[Y(0)\mid 1] \;-\; \Delta\mathbb{E}[Y(0)\mid 0]\big\}}_{\text{non-parallel-trends bias}}
+\]
+\vspace{-0.4em}
+
+\textbf{5.\ Read.}\;If the bias equals zero (\textit{parallel trends}), then $\widehat{\text{DiD}} = \text{ATT}$.
+\end{frame}
+
+%% --- 4.2 The bias IS selection bias on trends ---
+\begin{frame}{The bias term \textit{is} selection bias --- on trends, not levels}
+\footnotesize
+The ``non-parallel-trends bias'' isn't a new concept. It's selection bias, in a different costume.
+\vspace{-0.5em}
+\[
+\text{bias} \;=\; \underbrace{\Delta\mathbb{E}[Y(0)\mid D{=}1]}_{\text{how treated's $Y(0)$ moves}} \;-\; \underbrace{\Delta\mathbb{E}[Y(0)\mid D{=}0]}_{\text{how controls' $Y(0)$ moves}}
+\]
+\vspace{-0.3em}
+\begin{itemize}
+  \item \textbf{Cross-section selection bias}: are treated and control different in \textit{levels} of $Y(0)$?
+  \item \textbf{DiD's selection bias}: are treated and control different in \textit{trends} of $Y(0)$?
+  \item Different levels are fine. Unit fixed effects soak them up.
+  \item What can't differ is the \textit{rate} at which $Y(0)$ moves across groups.
+\end{itemize}
+\vspace{0.2em}
+\begin{block}{The trade DiD makes vs.\ randomization}
+RCTs: treated and controls identical in everything --- levels and trends. \\
+DiD: identical only in \textit{trends} of $Y(0)$. \;\highlight{Cheaper assumption. Weaker identification.}
+\end{block}
+\end{frame}
+
+%% --- 4.3 Case 1: NA holds ---
+\begin{frame}{Case 1: NA holds, never-treated comparison}
+\footnotesize
+\textbf{Switching equation.} Treated-post is $Y(1)$; the other three cells are $Y(0)$.
+\vspace{-0.2em}
+\[
+\widehat{\text{DiD}} \;=\; \big[\mathbb{E}[Y(1)|1,\text{Post}] - \mathbb{E}[Y(0)|1,\text{Pre}]\big]
+                  \;-\; \big[\mathbb{E}[Y(0)|0,\text{Post}] - \mathbb{E}[Y(0)|0,\text{Pre}]\big]
+\]
+\vspace{-1.1em}
+
+\textbf{Add the zero.} Insert $+\,\mathbb{E}[Y(0)|1,\text{Post}] - \mathbb{E}[Y(0)|1,\text{Post}]$. Rearrange:
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\mathbb{E}[Y(1)-Y(0)|1,\text{Post}]}_{\textstyle\text{\color{accent}\bfseries ATT}}
+                  \;+\; \underbrace{\big\{\Delta\mathbb{E}[Y(0)|1] - \Delta\mathbb{E}[Y(0)|0]\big\}}_{\text{non-PT bias}\;=\;0\;\text{under PT}}
+\]
+\vspace{-0.6em}
+
+\begin{block}{Numerical example}
+ATT $= 10$, PT bias $= 0$. \quad $\widehat{\text{DiD}} = \mathbf{10}$. \;\checkmark
+\end{block}
+\end{frame}
+
+%% --- 4.4 Case 2: NA fails (anticipation) ---
+\begin{frame}{Case 2: NA fails --- anticipation contaminates $Y_{\text{Pre}}$}
+\footnotesize
+Suppose the treated group anticipates and adjusts \textit{before} the policy lands. Their pre-period outcome contains some $Y(1)$ response: \;$\mathbb{E}[Y|1,\text{Pre}] = \mathbb{E}[Y(0)|1,\text{Pre}] + \textcolor{accent}{\text{ATT}_{\text{pre}}}$.
+
+\vspace{0.3em}
+Same +0 trick, propagated:
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\text{ATT}_{\text{Post}}}_{\text{what we want}}
+                  \;+\; \underbrace{\text{non-PT bias}}_{=\,0}
+                  \;-\; \underbrace{\textcolor{accent}{\text{ATT}_{\text{pre}}}}_{\text{anticipation}}
+\]
+\vspace{-0.6em}
+
+\begin{block}{Numerical example}
+ATT $= 10$, PT bias $= 0$, ATT$_{\text{pre}} = 3$. \quad $\widehat{\text{DiD}} = 10 - 3 = \mathbf{7}$. \;\highlight{biased down}
+\end{block}
+\meta{If treatment effects are roughly constant, DiD can collapse to zero.}
+\end{frame}
+
+%% --- 4.5 Case 3: control group also treated ---
+\begin{frame}{Case 3: the control group also receives treatment in Post}
+\scriptsize
+Now the comparison group's Post outcome is also $Y(1)$, not $Y(0)$. Switching equation:
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \big[\mathbb{E}[Y(1)|1,\text{Post}] - \mathbb{E}[Y(0)|1,\text{Pre}]\big] \;-\; \big[\mathbb{E}[Y(1)|0,\text{Post}] - \mathbb{E}[Y(0)|0,\text{Pre}]\big]
+\]
+\vspace{-1.0em}
+
+\textbf{Add two zeros} --- one missing counterfactual on each side --- and rearrange:
+\vspace{-0.2em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\mathbb{E}[Y(1){-}Y(0)|1,\text{Post}]}_{\textstyle\text{\color{accent}\bfseries ATT}}
+   \;+\; \underbrace{\big\{\Delta\mathbb{E}[Y(0)|1] - \Delta\mathbb{E}[Y(0)|0]\big\}}_{\text{non-PT bias}\,=\,0\text{ under PT}}
+   \;-\; \underbrace{\mathbb{E}[Y(1){-}Y(0)|0,\text{Post}]}_{\textstyle\text{\color{accent}\bfseries ATT}_{D{=}0,\text{Post}}\;\text{\rmfamily\itshape (spillover)}}
+\]
+\vspace{-0.4em}
+
+\begin{block}{Numerical example}
+ATT $= 10$, PT bias $= 0$, ATT$_{D{=}0,\text{Post}} = 4$. \quad $\widehat{\text{DiD}} = 10 - 4 = \mathbf{6}$. \;\highlight{biased toward zero}
+\end{block}
+\end{frame}
+
+%% --- 4.6 Case 4: always-treated comparison group ---
+\begin{frame}{Case 4: the comparison group is \textit{always} treated}
+\scriptsize
+The comparison group was treated \textit{before} our data starts. Both their Pre and Post outcomes are $Y(1)$, not $Y(0)$. Switching equation:
+\vspace{-0.3em}
+\[
+\widehat{\text{DiD}} \;=\; \big[\mathbb{E}[Y(1)|1,\text{Post}] - \mathbb{E}[Y(0)|1,\text{Pre}]\big] \;-\; \big[\mathbb{E}[Y(1)|0,\text{Post}] - \mathbb{E}[Y(1)|0,\text{Pre}]\big]
+\]
+\vspace{-1.0em}
+
+\textbf{Add two zeros} --- $\pm\,\mathbb{E}[Y(0)|0,\text{Post}]$ and $\pm\,\mathbb{E}[Y(0)|0,\text{Pre}]$ on the comparison side --- and rearrange:
+\vspace{-0.2em}
+\[
+\widehat{\text{DiD}} \;=\; \underbrace{\mathbb{E}[Y(1){-}Y(0)|1,\text{Post}]}_{\textstyle\text{\color{accent}\bfseries ATT}}
+   \;+\; \underbrace{\big\{\Delta\mathbb{E}[Y(0)|1] - \Delta\mathbb{E}[Y(0)|0]\big\}}_{\text{non-PT bias}\,=\,0\text{ under PT}}
+   \;-\; \underbrace{\Delta\,\text{ATT}_{D{=}0}}_{\text{\rmfamily\itshape change in comparison TE}}
+\]
+\vspace{-0.4em}
+
+\begin{block}{Numerical example}
+ATT $= 10$, PT bias $= 0$, $\Delta$ATT$_{D{=}0} = 2$. \quad $\widehat{\text{DiD}} = 10 - 2 = \mathbf{8}$. \;\highlight{biased toward zero}
+\end{block}
+\meta{Four cases, four failures of the punchline. The $+0$ trick still works --- only the zero you add changes.}
+\end{frame}
+
+%% --- 4.7 Summary: four ways the 2x2 decomposes ---
+\begin{frame}{Summary: four ways the 2$\times$2 decomposes}
+\vspace{0.4em}
+\small
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+\begin{tabular}{@{}p{0.50\textwidth}l@{}}
+\toprule
+\textbf{What holds} & $\widehat{\text{DiD}} \;=\;$ \\
+\midrule
+NA, never-treated control & ATT $+$ \textcolor{warmgray}{PT-bias} \\
+PT, no NA, never-treated control & ATT$_{\text{Post}}$ $-$ \textcolor{warmgray}{ATT$_{\text{Pre}}$} \\
+PT, NA, always-treated control & ATT $-$ \textcolor{warmgray}{$\Delta$ATT$_{D=0}$} \\
+PT, NA, SUTVA fails (spillover) & ATT $-$ \textcolor{warmgray}{ATT$_{D=1,\text{Post}}$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.8em}
+\meta{All four derivable the same way: write down the 2$\times$2, apply the switching equation, add the right series of zeros.}
+\end{frame}
+
+%% ===========================================================
+%% SECTION 5. Card and Krueger
+%% ===========================================================
+\remixsection{5.\ Card and Krueger: Parallel Trends, Visualized}
+
+%% --- 5.0a Parallel trends, drawn (moved here) ---
+\begin{frame}{Parallel trends, drawn}
+\vspace{0.2em}
+\begin{center}
+\begin{tikzpicture}[scale=0.92]
+\draw[->, slate, thick] (0,0) -- (6.8,0) node[right, text=charcoal, font=\small] {time};
+\draw[->, slate, thick] (0,0) -- (0,3.3) node[above, text=charcoal, font=\small] {$Y$};
+
+\draw[dashed, warmgray] (2.5,0) -- (2.5,3.1);
+\node[font=\scriptsize, text=warmgray, anchor=north] at (2.5,-0.1) {treatment};
+
+\draw[trendcontrol] (0.3,0.6) -- (4.5,1.44);
+\draw[trendline] (0.3,1.6) -- (2.5,2.04);
+\draw[trendline] (2.5,2.04) -- (4.5,2.84);
+\draw[line width=0.8pt, accent, densely dotted] (2.5,2.04) -- (4.5,2.44);
+
+\draw[<->, accent, line width=0.5pt] (4.7,2.44) -- (4.7,2.84);
+\node[font=\scriptsize, text=accent, anchor=west] at (4.78,2.64) {ATT};
+
+\node[font=\scriptsize, text=slate,  anchor=west] at (5.3,1.44) {control $= Y(0)$};
+\node[font=\scriptsize, text=accent, anchor=west] at (5.3,2.84) {treated $= Y(1)$};
+\node[font=\scriptsize, text=accent, anchor=west] at (5.3,2.44) {$Y(0)$ counter.};
+\end{tikzpicture}
+\end{center}
+\vspace{-0.2em}
+\begin{center}
+\footnotesize
+$\mathbb{E}[Y(0)\mid D{=}1,\text{Post}] - \mathbb{E}[Y(0)\mid D{=}1,\text{Pre}] \;=\; \mathbb{E}[Y(0)\mid D{=}0,\text{Post}] - \mathbb{E}[Y(0)\mid D{=}0,\text{Pre}]$
+\end{center}
+\vspace{0.2em}
+\begin{center}
+\small\color{warmgray}\itshape
+A 2$\times$2 of $Y(0)$ terms. \;\highlight{If it isn't four $Y(0)$s, it isn't the PTA.}
+\end{center}
+\end{frame}
+
+%% --- 5.0b Under PT, the 2x2 hits the ATT (moved here) ---
+\begin{frame}{Under PT, the 2$\times$2 hits the ATT}
+\vspace{0.5em}
+With (i) \highlight{No Anticipation}, (ii) \highlight{Parallel Trends in $Y(0)$}, and (iii) a clean (never-treated) comparison group:
+\vspace{0.4em}
+\begin{center}
+\Large
+\[
+\text{ATT}_{\text{post}} \;=\; \underbrace{\mathbb{E}[\Delta Y \mid D=1]}_{\text{treated change}} \;-\; \underbrace{\mathbb{E}[\Delta Y \mid D=0]}_{\text{control change}}
+\]
+\end{center}
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item The 2$\times$2 calculation equals the population's ATT.
+  \item Four averages. Three subtractions. One target parameter.
+\end{itemize}
+\vspace{0.6em}
+\begin{center}
+\highlight{This is the punchline. Everything that follows is variations on this theme.}
+\end{center}
+\end{frame}
+
+%% --- 5.1 NJ raises minimum wage ---
+\begin{frame}{New Jersey raises its minimum wage. Pennsylvania doesn't.}
+\vspace{0.4em}
+\begin{itemize}
+  \item \highlight{April 1992}: New Jersey raises its minimum wage from \$4.25 to \$5.05 --- a 19\% increase.
+  \item Pennsylvania, just over the river, stays at \$4.25.
+  \item Card and Krueger survey 410 fast-food restaurants on both sides of the border, before (Feb 1992) and after (Nov 1992).
+  \item The natural 2$\times$2: \highlight{treated $=$ NJ, control $=$ PA, pre/post the policy.}
+\end{itemize}
+\vspace{0.4em}
+\meta{Card \& Krueger, \textit{American Economic Review}, 1994.}
+\end{frame}
+
+%% --- 5.2 What Card and Krueger found ---
+\begin{frame}{What Card and Krueger \textit{found}}
+\vspace{0.4em}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\footnotesize
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Employment per restaurant} & \textbf{Pre (Feb 1992)} & \textbf{Post (Nov 1992)} & \textbf{Change} \\
+\midrule
+NJ (treated) & 20.44 & 21.03 & $+0.59$ \\
+PA (control) & 23.33 & 21.17 & $-2.16$ \\
+\midrule
+\rowcolor{remixgreenlight}
+\textbf{DiD (NJ -- PA)} & & & \highlight{\textbf{+2.76 jobs/restaurant}} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.5em}
+\begin{itemize}\small
+  \item Employment in NJ fast food \textit{rose} slightly, relative to PA, after the wage hike.
+  \item Standard error puts the effect roughly indistinguishable from zero --- but the sign is the opposite of what theory predicted.
+  \item \highlight{No measurable disemployment effect.} The textbook had failed a real test.
+\end{itemize}
+\end{frame}
+
+%% --- 5.3 Buchanan + Card combined ---
+\begin{frame}{The reaction was personal}
+\vspace{0.4em}
+\pullquote{No self-respecting economist would claim that increases in the minimum wage increase employment. Such a claim becomes equivalent to a denial that there is even minimal scientific content in economics.}{James Buchanan (Nobel 1986), \textit{WSJ}, April 1996}
+\vspace{0.4em}
+\pullquote{It cost me a lot of friends. People that I had known for many years became very angry or disappointed. They thought that in publishing our work we were being traitors to the cause of economics as a whole.}{David Card, interview}
+\vspace{0.2em}
+\begin{center}
+\small\color{warmgray}\itshape
+The price of a credible empirical paper that contradicted the consensus. \;Krueger paid more.
+\end{center}
+\end{frame}
+
+%% --- 5.3b Hear it from them: three short interview clips ---
+\begin{frame}{Hear it from them --- three short interview clips}
+\vspace{0.5em}
+\begin{itemize}
+  \item \textbf{Orley Ashenfelter on the profession's reaction} (start 31:20) \\
+        \href{https://youtu.be/MOtbuRX4eyQ?t=1882}{\color{ocean}\texttt{youtu.be/MOtbuRX4eyQ?t=1882}}
+  \vspace{0.3em}
+  \item \textbf{Card on the hostility from peers} (1:07--1:10) \\
+        \href{https://youtu.be/1soLdywFb_Q?si=laAVYf_E2KBZKywG&t=4020}{\color{ocean}\texttt{youtu.be/1soLdywFb\_Q?t=4020}}
+  \vspace{0.3em}
+  \item \textbf{Card on what happened to Alan Krueger} (1:16--1:17) \\
+        \href{https://youtu.be/1soLdywFb_Q?si=jsb8h50ZosGDnKrv&t=4556}{\color{ocean}\texttt{youtu.be/1soLdywFb\_Q?t=4556}}
+\end{itemize}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+The DiD literature did not arrive politely. \;It was earned through paper-by-paper combat, much of it personal.
+\end{center}
+\end{frame}
+
+%% --- 5.4 PT visualized ---
+\begin{frame}{Parallel trends visualized: the control \textit{is} the counterfactual}
+\vspace{0.1em}
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\draw[->, slate, thick] (0,0) -- (7.0,0) node[right, text=charcoal, font=\small] {time};
+\draw[->, slate, thick] (0,0) -- (0,3.3) node[above, text=charcoal, font=\small] {employment};
+
+\draw[dashed, warmgray] (3.0,0) -- (3.0,3.0);
+\node[font=\scriptsize, text=warmgray, anchor=north] at (3.0,-0.1) {April 1992};
+
+\draw[trendcontrol] (0.5,2.2) -- (5.5,1.6);
+
+\draw[trendline] (0.5,1.4) -- (3.0,1.1);
+
+\draw[trendline] (3.0,1.1) -- (5.5,1.25);
+
+\draw[line width=0.8pt, accent, densely dotted] (3.0,1.1) -- (5.5,0.8);
+
+\draw[<->, accent, line width=0.5pt] (5.7,0.8) -- (5.7,1.25);
+\node[font=\scriptsize, text=accent, anchor=west] at (5.78,1.025) {2$\times$2 = ATT};
+
+\node[font=\scriptsize, text=slate,  anchor=west] at (5.65,1.6) {PA $= Y(0)$};
+\node[font=\scriptsize, text=accent, anchor=west] at (5.65,1.25) {NJ observed};
+\node[font=\scriptsize, text=accent, anchor=west] at (5.65,0.65) {NJ $Y(0)$ counter.};
+\end{tikzpicture}
+\end{center}
+\vspace{0.1em}
+\begin{center}
+\small\color{warmgray}\itshape
+The dotted line is what NJ would have done absent the policy. \;We never see it. \\
+\highlight{PT lets PA's slope stand in for it.}
+\end{center}
+\end{frame}
+
+%% --- 5.5 The 2x2 is ATT + PTA, and the PTA is itself a 2x2 ---
+\begin{frame}{The 2$\times$2 is ATT $+$ PTA --- and the PTA is another 2$\times$2}
+\vspace{-0.2em}
+\footnotesize
+\textbf{Write the 2$\times$2 out:}
+\vspace{-0.5em}
+\[
+2\times2 \;=\; \big\{\mathbb{E}[Y\mid D{=}1,t] - \mathbb{E}[Y\mid D{=}1,t{-}1]\big\}
+         \;-\; \big\{\mathbb{E}[Y\mid D{=}0,t] - \mathbb{E}[Y\mid D{=}0,t{-}1]\big\}
+\]
+\vspace{-0.7em}
+
+\textbf{Shorthand:}
+\vspace{-0.5em}
+\[
+2\times2 \;=\; \underbrace{\text{ATT}}_{\textstyle\text{\color{accent}\bfseries what we want}}
+         \;+\; \underbrace{\text{PTA}}_{\textstyle\text{\bfseries what has to vanish}}
+\]
+\vspace{-0.5em}
+
+\textbf{where}
+\vspace{-0.5em}
+\[
+\text{PTA} \;=\; \big\{\mathbb{E}[Y(0)\mid D{=}1,t] - \mathbb{E}[Y(0)\mid D{=}1,t{-}1]\big\}
+           \;-\; \big\{\mathbb{E}[Y(0)\mid D{=}0,t] - \mathbb{E}[Y(0)\mid D{=}0,t{-}1]\big\}
+\]
+\vspace{-0.3em}
+\begin{itemize}\setlength\itemsep{0.2em}
+  \item Look at the shape: four cells, three subtractions. \;\highlight{The PTA is itself a 2$\times$2} --- run on $Y(0)$ instead of $Y$.
+  \item Parallel trends is the assumption that this second 2$\times$2 equals zero.
+\end{itemize}
+\end{frame}
+
+%% --- 5.6 Evaluating PT uses falsifications ---
+\begin{frame}{Evaluating Parallel Trends Uses Falsifications}
+\vspace{-0.1em}
+\footnotesize
+\begin{itemize}\setlength\itemsep{0.45em}
+  \item The missing counterfactual is $\mathbb{E}[Y(0)\mid D{=}1,t]$ --- we never observe it. \;So the \highlight{PTA is not directly testable.}
+  \item So we evaluate it on \textbf{pre-treatment data} instead.
+\end{itemize}
+\vspace{0.2em}
+\begin{center}
+$\text{baseline }2\times2 \;=\; \big\{\mathbb{E}[Y\mid D{=}1,t{-}1] - \mathbb{E}[Y\mid D{=}1,t{-}2]\big\}
+ \;-\; \big\{\mathbb{E}[Y\mid D{=}0,t{-}1] - \mathbb{E}[Y\mid D{=}0,t{-}2]\big\}$
+\end{center}
+\vspace{0.2em}
+\begin{itemize}\setlength\itemsep{0.45em}
+  \item The 2$\times$2 is \textit{always} ATT $+$ PTA. \;At baseline, under no anticipation, $\text{ATT}=0$ --- so the baseline 2$\times$2 measures \highlight{only differences in trends.}
+  \item It is not the PTA. \;But it has the same form, because $Y = Y(0)$ at baseline.
+\end{itemize}
+\vspace{0.2em}
+\meta{Testing an estimator on pre-treatment data, where the answer is known to be zero, is a standard move in causal inference.}
+\end{frame}
+
+%% ===========================================================
+%% SECTION 6. Google Sheet
+%% ===========================================================
+\remixsection{6.\ Open the Sheet}
+
+\begin{frame}{Open the Sheet: stability and trends, by hand}
+\vspace{0.6em}
+\begin{block}{Live demo}
+Compute the four cells, three subtractions, and the by-hand event study --- in a spreadsheet.
+\end{block}
+\vspace{1em}
+\begin{center}
+\href{https://docs.google.com/spreadsheets/d/1onabpc14JdrGo6NFv0zCWo-nuWDLLV2L1qNogDT9SBw/edit?usp=sharing}{\color{ocean}\underline{\small\texttt{docs.google.com/spreadsheets/d/1onabpc14JdrGo6NFv0zCWo-nuWDLLV2L1qNogDT9SBw}}}
+\end{center}
+\vspace{1em}
+\begin{center}
+\small\color{warmgray}\itshape
+Four tabs in sequence: \texttt{Potential Outcomes} $\rightarrow$ \texttt{2X2} $\rightarrow$ \texttt{Balancing} $\rightarrow$ \texttt{2XT \#1}.
+\end{center}
+\end{frame}
+
+%% ===========================================================
+%% SECTION 7. Standard errors
+%% ===========================================================
+\remixsection{7.\ Standard Errors}
+
+%% --- 7.1 Three flavors ---
+\begin{frame}{Three flavors of standard error}
+\vspace{0.6em}
+\begin{itemize}
+  \item \highlight{Vanilla (homoskedastic)}: assumes $\text{Var}(\varepsilon_i \mid X_i) = \sigma^2$ for all $i$.
+  \item \highlight{Robust (Eicker--Huber--White, HC)}: each residual speaks for itself --- handles heteroskedasticity.
+  \item \highlight{Cluster-robust (CRVE)}: groups residuals by cluster; within-cluster errors correlate freely.
+\end{itemize}
+\vspace{0.6em}
+\meta{Same point estimate, three different SEs. The SE you pick is a claim about the error structure.}
+\end{frame}
+
+%% --- 7.1b HC1 numerically — worked example with 6 obs ---
+\begin{frame}[shrink=24]{HC1 numerically: each $\hat e_i^2$ weighted by leverage}
+\vspace{0.2em}
+\textbf{Six observations.}\; Three pairs at $\tilde x \in \{-2, 0, +2\}$.\; Fitted $\hat\beta_1 = 1$; residuals shown.
+\vspace{0.5em}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\footnotesize
+\begin{tabular}{@{}cccrrr@{}}
+\toprule
+$i$ & cluster $g$ & $\tilde x_i$ & $\hat e_i$ & $\hat e_i^2$ & $\meat{\tilde x_i^2 \cdot \hat e_i^2}$ \\
+\midrule
+1 & 1 & $-2$ & $+0.5$ & $0.25$ & \meat{$1.00$} \\
+2 & 1 & $-2$ & $+0.5$ & $0.25$ & \meat{$1.00$} \\
+3 & 2 & $0$  & $-1.0$ & $1.00$ & \meat{$0.00$} \\
+4 & 2 & $0$  & $-1.0$ & $1.00$ & \meat{$0.00$} \\
+5 & 3 & $+2$ & $+0.5$ & $0.25$ & \meat{$1.00$} \\
+6 & 3 & $+2$ & $+0.5$ & $0.25$ & \meat{$1.00$} \\
+\midrule
+\multicolumn{5}{r}{\meat{meat} $\;=\;$} & \meat{$\mathbf{4.00}$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4em}
+
+With $n=6$, $k=2$, and $S_{xx} = \sum_i \tilde x_i^2 = (-2)^2{+}(-2)^2{+}0{+}0{+}2^2{+}2^2 = \bread{16}$:
+\[
+\widehat{\text{Var}}_{\text{HC1}}(\hat\beta_1) \;=\; \tfrac{n}{n-k}\cdot \underbrace{\bread{\tfrac{1}{S_{xx}}}}_{\textstyle\bread{\text{bread}}}\cdot \underbrace{\meat{\text{meat}}}_{\textstyle \meat{4.00}} \cdot \underbrace{\bread{\tfrac{1}{S_{xx}}}}_{\textstyle\bread{\text{bread}}} \;=\; \tfrac{6}{4}\cdot \tfrac{\meat{4.00}}{\bread{16} \cdot \bread{16}} \;=\; \tfrac{6}{4}\cdot \tfrac{\meat{4.00}}{\bread{256}} \;=\; 0.02344
+\]
+\vspace{-0.4em}
+\[
+\;\;\Rightarrow\;\; \highlight{$\text{SE}_{\text{HC1}} = \sqrt{0.02344} \approx 0.153$}
+\]
+\vspace{0.0em}
+\meta{Obs 3--4 contribute zero because $\tilde x = 0$ kills the leverage weight. \;\textbf{HC1 treats all 6 obs as independent.}}
+\end{frame}
+
+%% --- 7.2 Why HC barely helps in DiD ---
+\begin{frame}{Why HC-robust barely helps in DiD}
+\vspace{0.4em}
+The HC correction reweights residuals by $X_i X_i'$. In a DiD with binary $D_i \in \{0,1\}$ and roughly balanced groups:
+\vspace{0.4em}
+\begin{itemize}
+  \item Treated and control units have similar \textit{leverage}: each side carries $\approx$ half the weight in $X'X$.
+  \item Residual variance is roughly symmetric across the two groups (binary $D$ doesn't generate a fan shape in $\hat e^2$).
+  \item The weighted sum $\sum_i \hat e_i^2 X_i X_i'$ ends up not very different from $\hat\sigma^2(X'X)$.
+\end{itemize}
+\vspace{0.4em}
+\begin{block}{Consequence}
+\small
+$\text{SE}_{\text{HC}} \approx \text{SE}_{\text{vanilla}}$ for typical DiD specifications. \\
+\highlight{The over-rejection problem is not heteroskedasticity. It's something else.}
+\end{block}
+\end{frame}
+
+%% --- 7.2b CRVE numerically — worked example with 6 obs ---
+\begin{frame}[shrink=12]{CRVE numerically: same 6 obs, group scores, then square}
+\vspace{0.2em}
+\textbf{Same 6 observations.} Now compute $s_g = \sum_{i \in g} \tilde x_i \hat e_i$ for each cluster, then $s_g^2$:
+\vspace{0.4em}
+\begin{center}
+\renewcommand{\arraystretch}{1.15}
+\footnotesize
+\begin{tabular}{@{}cccrr@{}}
+\toprule
+$i$ & $g$ & $\tilde x_i$ & $\hat e_i$ & $\tilde x_i \hat e_i$ \\
+\midrule
+1 & \textcolor{accent}{1} & $-2$ & $+0.5$ & \textcolor{accent}{$-1$} \\
+2 & \textcolor{accent}{1} & $-2$ & $+0.5$ & \textcolor{accent}{$-1$} \\
+3 & \textcolor{ocean}{2}  & $0$  & $-1.0$ & $0$ \\
+4 & \textcolor{ocean}{2}  & $0$  & $-1.0$ & $0$ \\
+5 & \textcolor{forest}{3} & $+2$ & $+0.5$ & \textcolor{forest}{$+1$} \\
+6 & \textcolor{forest}{3} & $+2$ & $+0.5$ & \textcolor{forest}{$+1$} \\
+\bottomrule
+\end{tabular}
+\hspace{1.0em}
+\begin{tabular}{@{}crr@{}}
+\toprule
+$g$ & $s_g$ & $\meat{s_g^2}$ \\
+\midrule
+\textcolor{accent}{1}  & \textcolor{accent}{$-2$}  & \meat{$4$} \\
+\textcolor{ocean}{2}   & $0$  & \meat{$0$} \\
+\textcolor{forest}{3}  & \textcolor{forest}{$+2$} & \meat{$4$} \\
+\midrule
+\multicolumn{2}{r}{\meat{meat} $=$} & \meat{$\mathbf{8}$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.4em}
+
+With $G=3$, $n=6$, $k=2$, and $S_{xx} = \sum_i \tilde x_i^2 = \bread{16}$, so $\bread{S_{xx}^2 = 256}$:
+\[
+\widehat{\text{Var}}_{\text{CRVE}}(\hat\beta_1) \;=\; \tfrac{G}{G-1}\cdot \tfrac{n-1}{n-k}\cdot \tfrac{\meat{\text{meat}}}{\bread{S_{xx}^2}} \;=\; \tfrac{3}{2}\cdot \tfrac{5}{4}\cdot \tfrac{\meat{8}}{\bread{256}} \;=\; 0.05859
+\;\;\Rightarrow\;\; \highlight{$\text{SE}_{\text{CRVE}} \approx 0.242$}
+\]
+\begin{center}
+\small\color{warmgray}\itshape
+\textbf{HC1}: 0.153 \quad vs.\quad \textbf{CRVE}: 0.242 \quad (\highlight{58\% larger}). \;Same data. The cluster cross-terms changed the \meat{meat} from \meat{4} to \meat{8}.
+\end{center}
+\end{frame}
+
+%% --- 7.3 BDM 2004 placebo ---
+\begin{frame}{Bertrand, Duflo \& Mullainathan (QJE 2004): the placebo-law test}
+\vspace{0.4em}
+\textbf{``How Much Should We Trust Differences-in-Differences Estimates?''}
+\vspace{0.4em}
+\begin{itemize}\small
+  \item BDM generate \textit{placebo laws}: assign random treatment dates to states in a real CPS panel.
+  \item True effect by construction: $\beta = 0$. So $\Pr(\text{reject } H_0)$ should equal $\alpha = 5\%$.
+  \item \textbf{Vanilla SE}: rejection rate $\approx \mathbf{45\%}$. Wildly over-rejects.
+  \item \textbf{Heteroskedasticity-robust (HC1)}: rejection rate \textit{also} $\approx 45\%$. \highlight{HC barely moves the needle.}
+  \item \textbf{Cluster-robust at state level}: rejection rate $\approx \mathbf{5\%}$. \;The fix.
+\end{itemize}
+\vspace{0.4em}
+\begin{block}{Why HC doesn't save you}
+\small
+Binary, balanced $D$ + within-state serial correlation. \;The het-correction has nothing to do with the actual problem. \;\highlight{Clustering is doing all the work.}
+\end{block}
+\end{frame}
+
+%% ===========================================================
+%% SECTION 8. Weighting and target parameters
+%% Ported from Causal-Inference-2/Slides/Tex/01-Codechella-Core.tex
+%% ===========================================================
+\remixsection{8.\ Weighting and Target Parameters}
+
+\begin{frame}{Choosing Target Parameter}
+
+\begin{itemize}
+\item Causal parameters are \emph{averaged treatment effects} and that has two elements
+	\begin{itemize}
+	\item What population's treatment effects are you averaging
+	\item What weight are you using to do that averaging?
+	\end{itemize}
+\item I'll use as an example a gun law in the United States called "concealed carry" or "right to carry" that lets people carry weapons "concealed" on their bodies or in their vehicles 
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Average Treatment Effects}
+
+\begin{table}[htbp]\centering
+\caption{Illustration of Potential Outcomes and Treatment Effects}\label{tab:step1_table}
+\begin{tabular}{lccc|c}
+\toprule
+\textbf{Name} & \textbf{$Y^1$} & \textbf{$Y^0$} & \textbf{$\delta$} & \textbf{D}  \\
+\midrule
+Alan    & 1 & 0 & 1  & 1  \\
+Betty   & 0 & 1 & -1 & 1  \\
+Chad    & 1 & 1 & 0  & 1  \\
+Daniel  & 0 & 0 & 0  & 0  \\
+Edith   & 1 & 0 & 1  & 0  \\
+Frank   & 1 & 0 & 1  & 0  \\
+\midrule
+$ATE =$&&& 0.33 \\
+$ATT =$&&&0 \\
+\bottomrule
+\end{tabular}
+\end{table}  
+
+\end{frame}
+
+\begin{frame}{Average Treatment Effects}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight]{figures/step1_y1y0}
+\end{figure}
+
+
+\end{frame}
+
+\begin{frame}{Average Treatment Effect on the Treated}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight]{figures/step1_att}
+\end{figure}
+
+
+\end{frame}
+
+
+
+\begin{frame}{Which causal effect do you want?}
+
+\begin{itemize}
+\item We know diff-in-diff identifies the ATT not the ATE but there are still more than one ATT!
+\item Solon, Haider and Wooldridge (2015), "What are we weighting for?"
+\item Why you weight in surveys and why you weight in causal inference are different
+	\begin{itemize}
+	\item Survey weights are to make estimates nationally representative
+	\item Population weighting in causal inference is because you want a different parameter
+	\end{itemize}
+\item How do we interpret adjustments made with population weights versus not?
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Different Levels of Aggregation, Different Weights}
+\vspace{-0.6em}
+\begin{table}[htbp]\centering
+\footnotesize
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Individuals} & \textbf{Y\textsubscript{1}} & \textbf{Y\textsubscript{0}} & \textbf{$\delta$} & \textbf{County} \\
+\midrule
+Alan    & 1 & 0 & 1  & \cellcolor{yellow!30}1 \\
+Betty   & 1 & 1 & 0  & \cellcolor{yellow!30}1 \\
+Chad    & 1 & 1 & 0  & \cellcolor{yellow!30}1 \\
+Daniel  & 0 & 0 & 0  & \cellcolor{yellow!30}1 \\
+Edith   & 1 & 0 & 1  & \cellcolor{yellow!30}1 \\
+Frank   & 1 & 0 & 1  & \cellcolor{yellow!30}1 \\
+George  & 0 & 0 & 0  & \cellcolor{yellow!30}1 \\
+Hank    & 1 & 0 & 1  & \cellcolor{yellow!30}1 \\
+Ida     & 0 & 1 & -1 & \cellcolor{green!20}2 \\
+Janet   & 0 & 1 & -1 & \cellcolor{green!20}2 \\
+\midrule
+\textbf{County} & & & \textbf{ATE\textsubscript{c}} & \\
+\cellcolor{yellow!30}1 & & & \cellcolor{yellow!30}0.5 & \\
+\cellcolor{green!20}2 & & & \cellcolor{green!20}-1 & \\
+\midrule
+\multicolumn{3}{l}{ATE for average county} & -0.25 & \\
+\multicolumn{3}{l}{ATE for average person}   & 0.2 & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\end{frame}
+
+\begin{frame}{Weighting formula}
+
+\begin{itemize}
+\item What if you have city or county level data but you want the ATE for the average person? 
+\item Then that is when you weight by population -- because you want to know the effect for the \emph{average person}
+\end{itemize}
+
+\begin{equation}
+ATE_{\text{people}} = \frac{\sum_c ATE_c \cdot N_c}{\sum_c N_c}
+\end{equation}
+
+\begin{eqnarray*}
+ATE_p &=& \frac{(0.5 \times 8) + (-1 \times 2)}{8 + 2} \\
+      &=& \frac{4 - 2}{10} \\
+      &=& 0.2
+\end{eqnarray*}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Different Levels of Aggregation, Different Weights}
+
+
+\begin{itemize}
+\item Heterogenous treatment effects is causing this, but so is weighting
+\item Consider Texas
+	\begin{itemize}
+	\item Texas has 31 million residents
+	\item Texas 254 counties
+	\end{itemize}
+\item Where do they live?
+	\begin{itemize}
+	\item 13 million live in Harris, Dallas, Fort Worth, San Antonio and Austin, or rather 41\% 
+	\end{itemize}
+\item What if concealed carry increases firearm deaths in cities, but reduces them in counties, because of sorting by treatment effects?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Simulation}
+
+\begin{itemize}
+\item Assume a state with 30 million people and 254 counties
+	\begin{itemize}
+	\item 15 million live in 5 counties
+	\item 15 million live equally spread in the other 249 counties (around 60,000 each)
+	\end{itemize}
+\item Assume that $\delta_i$ varies, sometimes positive and sometimes negative and $E[Y^1 - Y^0] = 2$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Selection into Counties is Random}
+
+\begin{itemize}
+\item People choose where to live in Texas, but the mechanism by which they do so will have implications for our datasets
+\item What if they sort into counties (i.e., where they live) by lottery
+\item Every county will therefore have the same distribution of $Y^1$ and $Y^0$
+\item Every county will have an ATE of $2$
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Average County ATE and Overall ATE Are the Same }
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.88\linewidth,height=0.72\textheight,keepaspectratio]{figures/tiebout_roy1}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Selection into Counties is Based on Potential Outcomes}
+
+\begin{itemize}
+\item Now assume that people sort into five largest counties have the highest treatment effects ($\delta_i$)
+\item Thus the five largest counties are those people for whom concealed carry guns law cause homicides
+\item Remaining 249 small counties, in decreasing order, get residents with lower treatment effects (i.e., for whom concealed carry reduces murders)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Average County ATE and Overall ATE Differ }
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.88\linewidth,height=0.72\textheight,keepaspectratio]{figures/tiebout_roy2}
+\end{figure}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Both Are Valid, But Not Necessarily Your Research Question}
+
+\begin{itemize}
+\item This has implications for what to learn from your dataset which is likely to be aggregated at some level (e.g., individual, city, county, state, country)
+\item Do you want to know the ATT for the \emph{average person} or the \emph{average county}?
+	\begin{itemize}
+	\item It depends on what your study is about
+	\item If it about the average person, then you want the overall ATT (i.e., the first case)
+	\item If it is about the average county, then you want the county average ATT (i.e., the second case)
+	\end{itemize}
+\item Since you're averaging over \emph{units} in \emph{data}, it's imperative you make a decision early on as it changes what you decide
+\item You can always use population weights but in causal inference, you ask what your target parameter is, and then decide your weights
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Choosing your ATT parameter}
+
+\begin{itemize}
+
+\item This means that even diff-in-diff has more than one ATT -- the \emph{average county} or \emph{average person}
+\item As a rule, I think your goal is probably to imagine who your audience is, and what you both agree the policy levers are
+\item In the US, local municipalities have a lot of discretion to pass their own laws -- even in areas where you might think it was impossible to imagine like the decriminalization of drugs
+\item It may be \emph{local} policy makers want to know the causal effect on \emph{local communities} in which case you \textbf{don't weight}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Choosing your ATT parameter}
+
+\begin{itemize}
+\item But the argument isn't to weight to make it nationally representative -- it's "is the average effect on the average county theoretically important, policy relevant and how one is planning to use it
+\item Others are also possible
+\item Quantile treatment effects (Athey and Imbens 2006; Callaway and Li 2019) and distribution regression target features of the marginal distributions of $Y^1_{i,t}$ and $Y^0_{i,t}$(Fernandez-Val, Meier, van Vuuren and Vella 2024a)
+\end{itemize}
+
+\end{frame}
+
+%% ===========================================================
+%% SECTION 9. Event studies as falsification
+%% ===========================================================
+\remixsection{9.\ Event Studies: PT Made Falsifiable}
+
+%% --- 9.0a What is a falsification? ---
+\begin{frame}{Event studies are PT falsifications. What is a falsification?}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item Popperian reasoning: \;you don't confirm a theory --- you try to falsify it.
+  \item A rival theory earns scrutiny by making a \textit{prediction you can check}.
+  \item Claim a confounder. Derive what \textit{else} it would do. Test that.
+  \item If the prediction holds $\to$ you haven't confirmed the rival, but you haven't ruled it out either.
+  \item If the prediction fails $\to$ the rival weakens.
+\end{itemize}
+\vspace{0.5em}
+\meta{Popperian asymmetry. Failing to reject the rival does not confirm \textit{you}. But rejecting the rival's prediction is real evidence.}
+\end{frame}
+
+%% --- 9.0b Two forms of falsification ---
+\begin{frame}{Two forms of falsification}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.7em}
+  \item \highlight{Same outcome, different group.} A group your treatment shouldn't reach, but the rival would. \\
+  \meta{Min wage on low-wage employment? Re-run on higher-wage workers.}
+  \item \highlight{Same group, different outcome.} An outcome your treatment shouldn't move, but the rival would. \\
+  \meta{Cigarette tax on smoking-related hospitalizations? Re-run on appendicitis and fractures.}
+\end{itemize}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape PT falsifications come in both forms. \;Event studies are one (same group, different ``outcome'' --- a period when no treatment happened).
+\end{center}
+\end{frame}
+
+%% --- 9.0c Famous falsification 1: obesity contagion ---
+\begin{frame}{Famous falsification 1: obesity contagion}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item Christakis \& Fowler (2007): \;\textbf{obesity is contagious} in social networks.
+  \item Cohen-Cole \& Fletcher (2008): \;re-run the same model on \highlight{height, acne, headaches} --- same Framingham network, same identification.
+  \item All three also show ``contagion.''
+\end{itemize}
+\vspace{0.8em}
+\pullquote{We have not been able to become taller by having tall friends.}{Cohen-Cole \& Fletcher (2008)}
+\vspace{0.4em}
+\meta{Same group, different outcome. \;The result isn't necessarily wrong --- the empirical model is.}
+\end{frame}
+
+%% --- 9.0d Famous falsification 2: milk addiction ---
+\begin{frame}{Famous falsification 2: milk addiction}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{0.5em}
+  \item Becker--Murphy (1988): \;serial correlation in cigarette / alcohol $\Rightarrow$ \textbf{``rational addiction.''}
+  \item Auld \& Grootendorst (2004, \textit{J.\ Health Econ.}): \;apply the same estimator to \highlight{milk, eggs, oranges}.
+  \item All three look ``rationally addictive.''
+\end{itemize}
+\vspace{0.8em}
+\begin{center}
+\small\color{warmgray}\itshape
+Same group, different outcome. \;Nobody is rationally addicted to milk. \;\highlight{The identification --- not the goods --- is what's broken.}
+\end{center}
+\vspace{0.4em}
+\meta{Point: \;PT makes predictions beyond the event study. \;Placebo groups and placebo outcomes are the other two forms.}
+\end{frame}
+
+%% --- 9.1 PT is about Y(0), not observed trends ---
+\begin{frame}{Parallel trends is about $Y(0)$, not ``trends'' abstractly}
+\footnotesize
+The parallel-trends assumption is a statement about an unobserved object:
+\vspace{-0.3em}
+\[
+\mathbb{E}\!\big[Y(0)_{t} - Y(0)_{t-1} \,\big|\, D{=}1\big] \;=\; \mathbb{E}\!\big[Y(0)_{t} - Y(0)_{t-1} \,\big|\, D{=}0\big]
+\]
+\vspace{-0.4em}
+\begin{itemize}\setlength\itemsep{2pt}
+  \item PT is the counterfactual untreated outcome's trend. \;\textbf{Not} a statement about OBSERVED $Y$ trends in general.
+  \item Observed $Y$ for treated post-treatment is $Y(1)$, not $Y(0)$. \;The PT assumption can't be read off it.
+  \item The confusion comes from saying ``trends are parallel.'' \;What we mean is ``\highlight{untreated potential outcome trends are parallel.}''
+\end{itemize}
+\begin{block}{Why this matters}
+\scriptsize
+We never see treated $Y(0)$ post-treatment. \;Pre-treatment data is the only window onto whether a similar assumption \textit{could} hold post. \;That's where event studies come in.
+\end{block}
+\end{frame}
+
+%% --- 9.2 Why event studies — falsification of PT ---
+\begin{frame}{Event studies: pre-treatment placebos for PT}
+\vspace{0.2em}
+\footnotesize
+\textbf{The falsification logic.} \;Suppose some confounder both shifts $Y(0)$ trends \textit{and} is associated with treatment timing. \;That's a PT violation.
+
+\vspace{0.4em}
+\begin{itemize}\setlength\itemsep{3pt}
+  \item If a similar confounder structure existed \textit{before} treatment, we should see treated and control $Y$ trends diverge in the pre-period too.
+  \item Estimate placebo ``effects'' at $t=-2, -3, \ldots, -q$ where there is no treatment. If those coefficients are large or trending, we've rejected the assumption that drives the post-period.
+\end{itemize}
+\vspace{0.4em}
+\begin{block}{Popperian asymmetry}
+\small
+Flat pre-trends \textit{fail to reject} PT --- they do not prove it. \\ Sloped pre-trends \textit{reject} the design.
+\end{block}
+\vspace{0.2em}
+\begin{center}
+\highlight{Pre-treatment placebos are a falsification, not a proof.}
+\end{center}
+\end{frame}
+
+%% --- 9.3 Event study is 2x2 in motion ---
+\begin{frame}{An event study is the 2$\times$2 viewed in motion}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item Instead of one pre-period and one post-period, use \textit{many}.
+  \item Estimate a separate effect at each event-time relative to treatment.
+  \item Plot them: $\hat{\beta}_{-q}, \ldots, \hat{\beta}_{-2}, \hat{\beta}_{-1}, \hat{\beta}_{0}, \hat{\beta}_{+1}, \ldots, \hat{\beta}_{+q}$.
+  \item The graph tells two stories: \highlight{pre-trends} (left of zero) and \highlight{dynamics} (right of zero).
+\end{itemize}
+\vspace{0.4em}
+\meta{Same arithmetic as the 2$\times$2, repeated against a common reference period.}
+\end{frame}
+
+%% --- 9.4 Every coefficient is a 2x2 against t = -1 ---
+\begin{frame}{Every coefficient is a 2$\times$2 against $t = -1$}
+\vspace{0.5em}
+For each event-time $k$ (with $t = -1$ as the reference):
+\vspace{-0.2em}
+\[
+\hat\beta_k \;=\; \big(\overline{Y}^T_k - \overline{Y}^T_{-1}\big) \;-\; \big(\overline{Y}^C_k - \overline{Y}^C_{-1}\big)
+\]
+\vspace{0.0em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item Two long differences, one subtraction --- the 2$\times$2 again, with $t=-1$ as the pre-period.
+  \item Pre-period $\hat\beta_k$ ($k < -1$): asks whether trends were already diverging.
+  \item Post-period $\hat\beta_k$ ($k \geq 0$): the dynamic ATTs.
+\end{itemize}
+\vspace{0.4em}
+\meta{Drop $k = -1$ as the reference. Multicollinearity won't let you keep all the dummies.}
+\end{frame}
+
+%% --- 9.5 Saturated OLS specification ---
+\begin{frame}{The saturated OLS specification}
+\vspace{0.6em}
+\begin{center}
+\[
+Y_{it} \;=\; \alpha_i \;+\; \tau_t \;+\; \sum_{t \neq t_0 - 1} \beta_t \cdot \big(D_i \cdot \mathbf{1}\{\text{year} = t\}\big) \;+\; \varepsilon_{it}
+\]
+\end{center}
+\vspace{0.6em}
+\begin{itemize}\setlength\itemsep{4pt}
+  \item $\alpha_i$ --- unit fixed effects (absorb levels).
+  \item $\tau_t$ --- calendar-year fixed effects (absorb common shocks).
+  \item One interaction per calendar year, omitting $t_0 - 1$ (the year just before treatment) as the reference.
+  \item Each $\beta_t$ is the 2$\times$2 of the previous slide: \;(treated change from $t_0{-}1$ to $t$) $-$ (control change from $t_0{-}1$ to $t$).
+\end{itemize}
+\vspace{0.4em}
+\meta{In a 2$\times$T design the calendar year \textit{is} the event-time. We save $k$ for staggered treatment, where cohorts have different treatment dates.}
+\end{frame}
+
+%% --- 9.6 Tiny panel + by-hand calc (continues under §9) ---
+\begin{frame}[fragile]{Computing $\hat\beta_{2004}$ on \texttt{castle.dta} --- by hand vs.\ OLS}
+\vspace{0.1em}
+\footnotesize Castle doctrine cohort treated in 2006. Use 2005 as the omitted reference. The 2004 coefficient is one event-study 2$\times$2.
+\vspace{0.3em}
+\begin{columns}[T,onlytextwidth]
+\column{0.46\textwidth}
+\textbf{By hand}
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+su l_homicide if treat==1 & year==2004
+* mean = 1.802504
+su l_homicide if treat==1 & year==2005
+* mean = 1.775398
+su l_homicide if treat==0 & year==2004
+* mean = 1.254353
+su l_homicide if treat==0 & year==2005
+* mean = 1.282884
+
+di (1.802504-1.775398) - (1.254353-1.282884)
+* 0.05564
+\end{lstlisting}
+\begin{center}
+\footnotesize $\hat\beta_{2004} =$ \highlight{$\mathbf{0.05564}$}
+\end{center}
+\column{0.04\textwidth}\hfill
+\column{0.46\textwidth}
+\textbf{Via OLS in Stata}
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+reg l_homicide ///
+   treat##ib2005.year, ///
+   cluster(state)
+
+di _b[1.treat#2004.year]
+* 0.05564
+\end{lstlisting}
+\begin{center}
+\footnotesize $\hat\beta_{2004} =$ \highlight{$\mathbf{0.05564}$}
+\end{center}
+\meta{Cluster-robust SE: 0.060. \;Match to 5 decimals.}
+\end{columns}
+\vspace{0.3em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+Every event-study coefficient is a 2$\times$2 \textit{relative to $t = -1$} (here, 2005).
+\end{center}
+\end{frame}
+
+%% ===========================================================
+%% SECTION 12. Closing: five pieces
+%% ===========================================================
+\remixsection{10.\ Five Pieces of a Strong DiD}
+
+%% --- 10.1 SETUP: narrative + author + headline result ---
+\begin{frame}{Medicaid expansion and near-elderly mortality}
+\vspace{0.5em}
+\textbf{Miller, Johnson \& Wherry (2021),} \textit{Quarterly Journal of Economics}.
+\vspace{0.6em}
+\begin{itemize}\small\setlength\itemsep{0.4em}
+  \item Did the ACA Medicaid expansion (2014) reduce mortality among the \highlight{near-elderly} (ages 55--64)?
+  \item Comparison: states that expanded vs.\ states that didn't, before vs.\ after 2014.
+  \item Headline finding: \highlight{$\approx 9.2\%$ reduction} in near-elderly mortality.
+\end{itemize}
+\vspace{0.6em}
+\begin{block}{Why \textit{near}-elderly?}
+\small
+Everyone 65$+$ has Medicare --- Medicaid expansion is irrelevant for them. \;The elderly become a natural \highlight{placebo group} living in the same economies.
+\end{block}
+\vspace{0.4em}
+\meta{Today: walk through how they make the case using the five pieces of a strong DiD.}
+\end{frame}
+
+%% --- 10.2 Five pieces — start with BITE ---
+\begin{frame}{Five pieces of a strong DiD --- start with bite}
+\vspace{0.6em}
+\begin{enumerate}
+  \item \textbf{\color{accent}Bite} --- the policy actually changed what it was supposed to change.
+  \item \textbf{\color{warmgray!40}Event study} \textcolor{warmgray!40}{--- pre/post coefficients around treatment.}
+  \item \textbf{\color{warmgray!40}Falsification} \textcolor{warmgray!40}{--- run a rival theory on a placebo group or outcome.}
+  \item \textbf{\color{warmgray!40}Main result} \textcolor{warmgray!40}{--- the DiD on the actual outcome.}
+  \item \textbf{\color{warmgray!40}Mechanism} \textcolor{warmgray!40}{--- the causal pathway from $D$ to $Y$.}
+\end{enumerate}
+\vspace{0.6em}
+\meta{If the policy didn't actually move what it was supposed to move, nothing downstream is attributable to it.}
+\end{frame}
+
+%% --- 12.2 Bite #1 ---
+\begin{frame}{Bite \#1: Medicaid take-up jumped in expansion states}
+\begin{center}
+\includegraphics[height=0.60\textheight,keepaspectratio]{figures/Miller_Medicaid1.png}
+\end{center}
+\vspace{-0.2em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+\highlight{Did the policy actually move people onto Medicaid?}\; Yes --- enrollment rose sharply in expansion states post-2014, flat in non-expansion. \\
+Without bite, there's no story. The mandate has to actually \textit{do} something before we can attribute downstream changes to it.
+\end{center}
+\end{frame}
+
+%% --- 12.3 Bite #2 ---
+\begin{frame}{Bite \#2: any-insurance coverage rose}
+\begin{center}
+\includegraphics[height=0.62\textheight,keepaspectratio]{figures/Miller_Medicaid2.png}
+\end{center}
+\vspace{-0.2em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+\highlight{Did the new Medicaid enrollees actually gain coverage they didn't have?}\; Or did they just shift from private to Medicaid? \\
+Any-insurance coverage rose --- the expansion brought in the previously uninsured, not the already-insured.
+\end{center}
+\end{frame}
+
+%% --- 12.4 Bite #3 ---
+\begin{frame}{Bite \#3: the uninsured rate fell}
+\begin{center}
+\includegraphics[height=0.62\textheight,keepaspectratio]{figures/Miller_Medicaid3.png}
+\end{center}
+\vspace{-0.2em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+\highlight{The mirror image of Bite \#2.}\; Uninsured rate dropped sharply in expansion states post-2014. \\
+Three measures (Medicaid up, any-insurance up, uninsured down) converge on the same conclusion: \highlight{the policy bit.}
+\end{center}
+\end{frame}
+
+%% --- 10.6 Five pieces — now FALSIFY ---
+\begin{frame}{Five pieces of a strong DiD --- now falsify}
+\vspace{0.6em}
+\begin{enumerate}
+  \item \textbf{\color{warmgray!40}Bite} \textcolor{warmgray!40}{--- the policy moved what it was supposed to move.} \;\textcolor{accent}{\textit{(established.)}}
+  \item \textbf{\color{warmgray!40}Event study} \textcolor{warmgray!40}{--- pre/post coefficients around treatment.}
+  \item \textbf{\color{accent}Falsification} --- run a rival theory on a placebo group or outcome and try to reject \textit{it}.
+  \item \textbf{\color{warmgray!40}Main result} \textcolor{warmgray!40}{--- the DiD on the actual outcome.}
+  \item \textbf{\color{warmgray!40}Mechanism} \textcolor{warmgray!40}{--- the causal pathway from $D$ to $Y$.}
+\end{enumerate}
+\vspace{0.6em}
+\meta{The rival: ``some 2014 shock hit expansion states.'' The falsification: run the same model on a group the policy shouldn't reach.}
+\end{frame}
+
+%% --- 10.7 Falsification on 65+ ---
+\begin{frame}{Falsification: same model, on the 65+ population --- no effect}
+\begin{center}
+\includegraphics[height=0.60\textheight,keepaspectratio]{figures/placebo_medicaid.png}
+\end{center}
+\vspace{-0.2em}
+\begin{center}
+\footnotesize\color{warmgray}\itshape
+\highlight{Same states, same years, same model --- but run on the 65+ population.}\; They all have Medicare, so Medicaid expansion shouldn't touch their mortality. \\
+A rival theory (``some 2014 shock hit expansion states'') would predict a mortality effect here. It didn't appear. \highlight{Rival rejected.}
+\end{center}
+\end{frame}
+
+%% --- 10.8 Five pieces — EVENT STUDY + MAIN RESULT ---
+\begin{frame}{Five pieces of a strong DiD --- the event study and main result}
+\vspace{0.6em}
+\begin{enumerate}
+  \item \textbf{\color{warmgray!40}Bite} \textcolor{warmgray!40}{--- established.}
+  \item \textbf{\color{accent}Event study} --- pre/post coefficients around treatment.
+  \item \textbf{\color{warmgray!40}Falsification} \textcolor{warmgray!40}{--- rival rejected.}
+  \item \textbf{\color{accent}Main result} --- the DiD on the actual outcome.
+  \item \textbf{\color{warmgray!40}Mechanism} \textcolor{warmgray!40}{--- the causal pathway from $D$ to $Y$.}
+\end{enumerate}
+\vspace{0.6em}
+\meta{Now we look at the outcome that matters: mortality. The event study \textit{is} the main result, viewed in motion.}
+\end{frame}
+
+%% --- 10.9 Main result event study ---
+\begin{frame}{The main result: $\approx 9.2\%$ reduction in near-elderly mortality}
+\begin{center}
+\includegraphics[height=0.50\textheight,keepaspectratio]{figures/Miller_Medicaid4.png}
+\end{center}
+\vspace{-0.1em}
+\footnotesize
+\begin{itemize}\setlength\itemsep{2pt}
+  \item Post-2014: mortality declines in expansion states. \;\highlight{$\approx 9.2\%$ reduction.}
+  \item Pre-period dots near zero, but \textbf{CIs are wide} --- you cannot reject a straight line trending downward (\textit{Rambachan \& Roth 2024} sensitivity).
+  \item The other four pieces are why the editors believed it. A critic now has to explain bite \textit{and} falsification \textit{and} the dynamic post-trend --- not just one thing.
+\end{itemize}
+\end{frame}
+
+%% --- 10.10 Five pieces — MECHANISM ---
+\begin{frame}{Five pieces of a strong DiD --- and the fifth: mechanism}
+\vspace{0.3em}
+\begin{enumerate}\setlength\itemsep{1pt}
+  \item \textbf{\color{warmgray!40}Bite} \textcolor{warmgray!40}{--- established.}
+  \item \textbf{\color{warmgray!40}Event study} \textcolor{warmgray!40}{--- established.}
+  \item \textbf{\color{warmgray!40}Falsification} \textcolor{warmgray!40}{--- rival rejected.}
+  \item \textbf{\color{warmgray!40}Main result} \textcolor{warmgray!40}{--- 9.2\% reduction in near-elderly mortality.}
+  \item \textbf{\color{accent}Mechanism} --- the causal pathway from $D$ to $Y$.
+\end{enumerate}
+\vspace{0.5em}
+\begin{itemize}\setlength\itemsep{2pt}\small
+  \item Mechanisms are the part of a result that's \highlight{transportable} --- they extend across contexts where the same pathway operates.
+  \item Reduced-form top-line results often combine \textit{several} mechanisms, which makes interpretation harder.
+  \item Here: disease-related deaths fall and compound, consistent with treated chronic conditions.
+\end{itemize}
+\end{frame}
+
+%% --- 10.11 All five present (recap, optional) ---
+\begin{frame}{The five pieces, all five present in Medicaid}
+\vspace{0.4em}
+\begin{center}
+\renewcommand{\arraystretch}{1.45}
+\footnotesize
+\begin{tabular}{@{}p{0.18\textwidth} p{0.74\textwidth}@{}}
+\toprule
+\textbf{Bite} & Three figures: Medicaid take-up up, any-insurance up, uninsured down \\
+\textbf{Event study} & Pre-trends flat; post-trends decline in expansion states \\
+\textbf{Falsification} & No effect on elderly (65+) --- same states, same years, same model \\
+\textbf{Main result} & $\approx 9.2\%$ reduction in mortality among the near-elderly \\
+\textbf{Mechanism} & Disease-related deaths fall and compound; consistent with treated chronic conditions \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.6em}
+\begin{center}
+\small\color{warmgray}\itshape
+None of these alone is the case. \;\highlight{Together they are powerful.}
+\end{center}
+\end{frame}
+
+%% --- 12.4 What we've done today + tomorrow ---
+\begin{frame}{What we've done today --- and tomorrow}
+\vspace{0.3em}
+\textbf{Today:}
+\begin{enumerate}\small
+  \item DiD's empirical roots --- Semmelweis, Ashenfelter.
+  \item DiD $=$ calculation $+$ assumption: the 2$\times$2 and parallel trends.
+  \item Four regressions, plus the 2$\times$2s.
+  \item Decomposing the 2$\times$2 --- the +0 trick and three failure cases.
+  \item Card and Krueger: parallel trends visualized.
+  \item Standard errors --- vanilla, robust, cluster.
+  \item Weighting and target parameters: the average person or the average county?
+  \item Event studies as falsifications, by hand and via OLS.
+\end{enumerate}
+\vspace{0.5em}
+\textbf{Next:} when the 2$\times$2 stops working --- covariates, staggered adoption (Goodman-Bacon, Callaway--Sant'Anna, Sun--Abraham, BJS, dCdH).
+\end{frame}
+
+\end{document}

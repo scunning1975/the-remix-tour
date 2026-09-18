@@ -63,3 +63,8 @@ readings/pdfs_build/
 ispra/Slides/archived_2025/
 ispra/Readings/
 ispra/labs/Texas/Data/synth/
+
+# Milano: reference library and archived decks
+# (kept locally, not pushed — bloat the repo and aren't workshop deliverables)
+milano/Readings/
+milano/Slides/archived/
